@@ -721,9 +721,9 @@ export const CLINICAL_TERMS: ClinicalTerm[] = [
     ar: "معدل التنفس",
     abbr: "RR",
     category: "abbreviations",
-    definition: "عدد دورات التنفس خلال دقيقة واحدة.",
-    clinicalNote: "RR علامة حيوية مهمة ويجب تفسيرها مع حجم المدّ VT والتهوية الدقيقة وثاني أكسيد الكربون والأكسجة.",
-    tags: ["respiratory rate","breathing","تنفس"]
+    definition: "عدد مرات التنفس في الدقيقة. في جهاز التنفس قد يكون RR مضبوطًا من الجهاز أو مجموع الأنفاس التي يطلقها المريض والجهاز بحسب نمط التهوية.",
+    clinicalNote: "لا توجد قيمة واحدة تصلح كإعداد طبيعي لكل المرضى. معدل التنفس العفوي للبالغ السليم غالبًا 12–20/دقيقة، أما الأطفال فتختلف القيم الطبيعية حسب العمر. على جهاز التنفس يُضبط RR وفق التهوية المطلوبة وPaCO₂/EtCO₂ والحالة السريرية.",
+    tags: ["respiratory rate","ventilator","breathing","تنفس"]
   },
   {
     id: "rt",
@@ -829,11 +829,11 @@ export const CLINICAL_TERMS: ClinicalTerm[] = [
     id: "vt",
     en: "Tidal Volume",
     ar: "حجم المدّ التنفسي",
-    abbr: "VT",
+    abbr: "VT / TV",
     category: "abbreviations",
-    definition: "حجم الهواء الداخل أو الخارج من الرئتين مع كل دورة تنفسية.",
-    clinicalNote: "في التهوية الميكانيكية يُضبط VT عادة بالاستناد إلى الوزن المثالي/المتنبأ به والسياق الرئوي لتقليل أذية الرئة.",
-    tags: ["tidal volume","ventilation","تنفس"]
+    definition: "حجم الغاز الذي يدخل إلى الرئتين أو يخرج منهما في النفس الواحد.",
+    clinicalNote: "في التهوية الميكانيكية للبالغين ذوي الرئتين السليمتين يُستخدم غالبًا نحو 6–8 mL/kg من الوزن المثالي/المتنبأ به، وتُستخدم أحجام أقل مثل 4–6 mL/kg في ARDS ضمن التهوية الواقية للرئة. لا يُحسب VT على الوزن الفعلي للمريض البدين.",
+    tags: ["tidal volume","ventilator","lung protective ventilation","تنفس"]
   },
   {
     id: "vd",
@@ -844,6 +844,207 @@ export const CLINICAL_TERMS: ClinicalTerm[] = [
     definition: "معامل حركي دوائي يربط كمية الدواء الكلية في الجسم بتركيزه في البلازما؛ وهو حجم ظاهري نظري وليس حيزًا تشريحيًا حقيقيًا.",
     clinicalNote: "ارتفاع Vd يشير عادة إلى انتشار أكبر خارج البلازما، وله أهمية في حساب جرعة التحميل وفهم توزيع الأدوية.",
     tags: ["pharmacokinetics","distribution","Vd"]
+  }
+,
+  {
+    id: "minute-ventilation",
+    en: "Minute Ventilation",
+    ar: "التهوية الدقيقة / حجم الهواء في الدقيقة",
+    abbr: "MV / V̇E",
+    category: "abbreviations",
+    definition: "حجم الغاز الكلي الذي يدخل أو يخرج من الرئتين خلال دقيقة واحدة.",
+    clinicalNote: "تُحسب تقريبًا من: Minute Ventilation = Tidal Volume × Respiratory Rate. لكنها لا تساوي التهوية السنخية؛ لأن جزءًا من كل نفس يذهب إلى الحيّز الميت.",
+    tags: ["minute ventilation","ventilator","VT","RR","تهوية"]
+  },
+  {
+    id: "fio2",
+    en: "Fraction of Inspired Oxygen",
+    ar: "الكسر المستنشق من الأوكسجين",
+    abbr: "FiO₂",
+    category: "abbreviations",
+    definition: "نسبة الأوكسجين في خليط الغاز الذي يستنشقه المريض.",
+    clinicalNote: "هواء الغرفة FiO₂ فيه نحو 0.21 (21%). أجهزة التخدير والتنفس تستطيع إعطاء تراكيز أعلى حتى 1.0 (100%) حسب الحاجة. 21–100% نطاق ممكن للإعطاء، وليس «معدلًا طبيعيًا» يجب تثبيته للجميع.",
+    tags: ["FiO2","oxygen","ventilator","أوكسجين"]
+  },
+  {
+    id: "peep",
+    en: "Positive End-Expiratory Pressure",
+    ar: "الضغط الإيجابي في نهاية الزفير",
+    abbr: "PEEP",
+    category: "abbreviations",
+    definition: "ضغط إيجابي يُحافظ عليه في المجرى الهوائي عند نهاية الزفير للمساعدة على إبقاء الوحدات الرئوية مفتوحة وتحسين الأكسجة.",
+    clinicalNote: "قيمة 5 cmH₂O شائعة كنقطة بداية عند كثير من البالغين، لكن PEEP ليس له رقم «طبيعي» ثابت؛ يُعدّل حسب الأكسجة، المطاوعة، الحالة الرئوية والديناميكا الدموية. الزيادة المفرطة قد ترفع الضغط داخل الصدر وتقلل العود الوريدي.",
+    tags: ["PEEP","ventilator","alveoli","oxygenation"]
+  },
+  {
+    id: "ie-ratio",
+    en: "Inspiratory-to-Expiratory Ratio",
+    ar: "نسبة زمن الشهيق إلى زمن الزفير",
+    abbr: "I:E",
+    category: "abbreviations",
+    definition: "النسبة بين مدة طور الشهيق ومدة طور الزفير خلال دورة التنفس.",
+    clinicalNote: "1:2 إعداد شائع في التهوية التقليدية، لكنه ليس قاعدة ثابتة. قد يحتاج مرضى الانسداد الرئوي وقت زفير أطول لتقليل احتباس الهواء وauto-PEEP، وقد تُستخدم نسب مختلفة حسب الاستراتيجية التنفسية.",
+    tags: ["I:E","ventilator","inspiration","expiration"]
+  },
+  {
+    id: "pip",
+    en: "Peak Inspiratory Pressure",
+    ar: "ذروة ضغط الشهيق",
+    abbr: "PIP / Ppeak",
+    category: "abbreviations",
+    definition: "أعلى ضغط يُسجَّل في مجرى الهواء أثناء طور الشهيق في التهوية الميكانيكية.",
+    clinicalNote: "لا يوجد مجال طبيعي ثابت مثل 20–30 cmH₂O يصلح لكل المرضى. ارتفاع PIP قد ينتج من زيادة مقاومة المجرى الهوائي مثل bronchospasm أو إفرازات/انسداد الأنبوب، أو من انخفاض مطاوعة الجهاز التنفسي. يُفسر مع Plateau Pressure ولا يُقيّم منفردًا.",
+    tags: ["PIP","peak pressure","ventilator","airway resistance"]
+  },
+  {
+    id: "spo2",
+    en: "Peripheral Oxygen Saturation",
+    ar: "التشبع المحيطي للأوكسجين",
+    abbr: "SpO₂",
+    category: "abbreviations",
+    definition: "تقدير غير باضع لنسبة الهيموغلوبين المشبع بالأوكسجين في الدم الشرياني المحيطي بواسطة جهاز Pulse Oximeter.",
+    clinicalNote: "SpO₂ تقدير ضوئي وليس قياسًا مباشرًا من عينة شريانية. قد تتأثر دقته بضعف التروية، الحركة، بعض أنواع الهيموغلوبين غير الطبيعي وعوامل تقنية أخرى.",
+    tags: ["SpO2","pulse oximetry","oxygen saturation","monitoring"]
+  },
+  {
+    id: "sao2",
+    en: "Arterial Oxygen Saturation",
+    ar: "تشبع الأوكسجين في الدم الشرياني",
+    abbr: "SaO₂",
+    category: "abbreviations",
+    definition: "نسبة الهيموغلوبين المشبع بالأوكسجين في عينة الدم الشرياني.",
+    clinicalNote: "SaO₂ ليست «تشبعًا شريانيًا مركزيًا». عند قياسها مخبريًا بواسطة co-oximetry تكون قياسًا مباشرًا من الدم الشرياني، بخلاف SpO₂ الذي يقدره جهاز النبض الضوئي.",
+    tags: ["SaO2","arterial blood","co-oximetry","ABG"]
+  },
+  {
+    id: "svo2",
+    en: "Mixed Venous Oxygen Saturation",
+    ar: "تشبع الأوكسجين في الدم الوريدي المختلط",
+    abbr: "SvO₂",
+    category: "abbreviations",
+    definition: "تشبع الأوكسجين في الدم الوريدي المختلط بعد امتزاج العود الوريدي من معظم أنحاء الجسم، ويُقاس عادة من الشريان الرئوي عبر قثطار مناسب.",
+    clinicalNote: "يعكس التوازن بين توصيل الأوكسجين إلى الأنسجة واستهلاكه. يجب عدم الخلط بين SvO₂ وScvO₂؛ فالأخير يُقاس من الوريد الأجوف العلوي/قثطار وريدي مركزي.",
+    tags: ["SvO2","mixed venous","oxygen delivery","hemodynamics"]
+  },
+  {
+    id: "scvo2",
+    en: "Central Venous Oxygen Saturation",
+    ar: "تشبع الأوكسجين الوريدي المركزي",
+    abbr: "ScvO₂",
+    category: "abbreviations",
+    definition: "تشبع الأوكسجين في الدم المسحوب من وريد مركزي، عادة قرب الوريد الأجوف العلوي أو اتصال الأجوف بالأذين الأيمن.",
+    clinicalNote: "ScvO₂ ليست مساوية تمامًا لـ SvO₂ ولا تُستبدل بها بلا سياق؛ موقع أخذ العينة ومزيج الدم الوريدي مختلفان.",
+    tags: ["ScvO2","central venous","oxygen saturation","CVC"]
+  },
+  {
+    id: "rso2",
+    en: "Regional Oxygen Saturation",
+    ar: "التشبع الإقليمي للأوكسجين في الأنسجة",
+    abbr: "rSO₂",
+    category: "abbreviations",
+    definition: "مؤشر غير باضع لتشبع الأوكسجين ضمن منطقة نسيجية محددة، ويُستخدم كثيرًا لمراقبة الأكسجة الدماغية بواسطة التحليل الطيفي للأشعة تحت الحمراء القريبة NIRS.",
+    clinicalNote: "ليس «نسبة تشبع الدم النصفي». عند استخدامه دماغيًا يمثل تشبعًا إقليميًا للنسيج ويحتوي مساهمات من الدم الشرياني والشعيري والوريدي، كما تختلف القيم المطلقة بين الأجهزة؛ لذلك تُتابع الاتجاهات وخط الأساس للمريض.",
+    tags: ["rSO2","NIRS","cerebral oximetry","brain"]
+  },
+  {
+    id: "cvp",
+    en: "Central Venous Pressure",
+    ar: "الضغط الوريدي المركزي",
+    abbr: "CVP",
+    category: "cardio",
+    definition: "الضغط المقاس في الأوردة المركزية قرب الأذين الأيمن، ويقارب ضغط الأذين الأيمن ضمن ظروف القياس المناسبة.",
+    clinicalNote: "CVP يتأثر بالحجم داخل الأوعية، وظيفة البطين الأيمن، ضغط الصدر والتهوية الميكانيكية وعوامل أخرى. لا يُعد قياسًا مباشرًا لحجم الدم ولا يجب استخدامه منفردًا للحكم على الاستجابة للسوائل.",
+    tags: ["CVP","right atrial pressure","hemodynamics","central line"]
+  },
+  {
+    id: "capnography",
+    en: "Capnography",
+    ar: "تخطيط ثاني أوكسيد الكربون في هواء الزفير",
+    category: "critical",
+    definition: "المراقبة المستمرة لتركيز أو ضغط ثاني أوكسيد الكربون في غازات التنفس مع عرضه كموجة زمنية؛ ويشمل عادة قياس End-Tidal CO₂.",
+    clinicalNote: "Capnography ليست مجرد «قياس نسبة CO₂». شكل الموجة وقيمة EtCO₂ يساعدان في تقييم التهوية، تأكيد استمرارية مجرى الهواء واكتشاف الانفصال أو الانسداد وبعض التغيرات الدورانية. EtCO₂ الطبيعي لدى معظم البالغين عادة نحو 35–45 mmHg مع ضرورة تفسيره سريريًا.",
+    tags: ["capnography","EtCO2","CO2","airway monitoring"]
+  },
+  {
+    id: "secretions",
+    en: "Secretions",
+    ar: "إفرازات",
+    category: "surgical",
+    definition: "سوائل أو مواد تنتجها الغدد والأنسجة، مثل اللعاب والمخاط وإفرازات الجهاز التنفسي.",
+    clinicalNote: "في التخدير قد تزيد الإفرازات من مقاومة مجرى الهواء أو تعيق الرؤية أثناء التنبيب، وقد تستدعي الشفط أو معالجة السبب حسب الحالة.",
+    tags: ["secretions","airway","suction","إفرازات"]
+  },
+  {
+    id: "properties",
+    en: "Properties",
+    ar: "خصائص / صفات",
+    category: "pharmacology",
+    definition: "الصفات أو السمات التي تميز مادة أو دواء أو ظاهرة، مثل الخصائص الفيزيائية والكيميائية والدوائية.",
+    clinicalNote: "في علم التخدير قد تشير Properties إلى خصائص الدواء مثل الذوبان، بدء المفعول، مدة التأثير، الارتباط بالبروتين أو التأثيرات الفسيولوجية.",
+    tags: ["properties","pharmacology","خصائص"]
+  },
+  {
+    id: "drug-absorption",
+    en: "Drug Absorption",
+    ar: "امتصاص الدواء",
+    category: "pharmacology",
+    definition: "انتقال الدواء من موقع إعطائه إلى الدورة الدموية الجهازية.",
+    clinicalNote: "يعتمد الامتصاص على طريق الإعطاء والتروية والخصائص الفيزيائية الكيميائية للدواء. الإعطاء الوريدي يتجاوز مرحلة الامتصاص لأنه يدخل الدورة الدموية مباشرة.",
+    tags: ["drug absorption","pharmacokinetics","ADME","امتصاص"]
+  },
+  {
+    id: "provision-of-anesthesia",
+    en: "Provision of Anesthesia",
+    ar: "تقديم / إجراء التخدير",
+    category: "surgical",
+    definition: "تقديم الرعاية التخديرية للمريض، بما يشمل التقييم والتجهيز وإعطاء التخدير والمراقبة والتدبير خلال الفترة المحيطة بالإجراء بحسب السياق.",
+    clinicalNote: "الترجمة الأدق ليست «تجهيز للتخدير» فقط؛ فProvision of anesthesia أوسع وتشير إلى تقديم أو إجراء خدمة التخدير والرعاية المرتبطة بها.",
+    tags: ["anesthesia","perioperative","تخدير"]
+  },
+  {
+    id: "neurosurgery",
+    en: "Neurosurgery",
+    ar: "جراحة الأعصاب",
+    category: "surgical",
+    definition: "التخصص الجراحي المعني بأمراض وإصابات الجهاز العصبي المركزي والمحيطي والعمود الفقري ذات الحاجة للتدخل الجراحي.",
+    clinicalNote: "في التخدير لجراحة الأعصاب تبرز أهمية التحكم بالتهوية والديناميكا الدموية وضغط داخل القحف والمحافظة على التروية الدماغية.",
+    tags: ["neurosurgery","brain","spine","جراحة الأعصاب"]
+  },
+  {
+    id: "operative",
+    en: "Operative",
+    ar: "متعلق بالعملية الجراحية / جراحي",
+    category: "surgical",
+    definition: "صفة تعني متعلقًا بإجراء أو عملية جراحية.",
+    clinicalNote: "Operative لا تعني «عملية» كاسم بشكل دقيق؛ الاسم هو Operation أو Surgery، بينما Operative صفة مثل operative care أو operative procedure.",
+    tags: ["operative","surgery","جراحة"]
+  },
+  {
+    id: "pre-post",
+    en: "Preoperative / Postoperative",
+    ar: "قبل العملية / بعد العملية",
+    category: "surgical",
+    definition: "Preoperative تعني الفترة السابقة للعملية الجراحية، وPostoperative تعني الفترة اللاحقة لها.",
+    clinicalNote: "في التخدير تشمل المرحلة قبل العملية التقييم والتحضير، بينما تشمل المرحلة بعد العملية الإفاقة، السيطرة على الألم، ومراقبة المضاعفات.",
+    tags: ["preoperative","postoperative","perioperative","قبل وبعد"]
+  },
+  {
+    id: "fire-extinguisher",
+    en: "Fire Extinguisher",
+    ar: "مطفأة حريق",
+    category: "surgical",
+    definition: "جهاز محمول لإطفاء الحرائق الصغيرة أو السيطرة الأولية عليها باستخدام عامل إطفاء مناسب لنوع الحريق.",
+    clinicalNote: "في غرفة العمليات تكون الوقاية من الحريق مهمة بسبب اجتماع مؤكسد مثل الأوكسجين مع مصدر اشتعال ووقود. اختيار مطفأة الحريق والتعامل مع حريق غرفة العمليات يتبع بروتوكول المؤسسة ونوع الحريق.",
+    tags: ["OR fire","safety","fire extinguisher","سلامة"]
+  },
+  {
+    id: "quantity",
+    en: "Quantity",
+    ar: "كمية",
+    category: "pharmacology",
+    definition: "مقدار أو عدد قابل للقياس من مادة أو حجم أو كتلة أو قيمة.",
+    clinicalNote: "في السياق الطبي يجب ربط الكمية بوحدة قياس واضحة مثل mL أو mg أو mcg لتقليل أخطاء الجرعات والتوثيق.",
+    tags: ["quantity","measurement","كمية"]
   }
 
 ];
