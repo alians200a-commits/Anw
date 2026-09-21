@@ -675,5 +675,441 @@ export const CLINICAL_GUIDES: ClinicalGuide[] = [
     ],
     correction: 'قاعدة “الشاش غير الممتلئ = 5 mL، الممتلئ = 10 mL، والـpack = 30 mL” غير موثوقة. التقدير البصري لفقد الدم معروف بعدم الدقة، لذلك لا تُعرض هذه الأرقام كحقائق ثابتة.',
     tags: ['blood loss','EBL','gravimetric','suction','نزف']
+  },
+  {
+    id: 'vomiting-regurgitation-aspiration',
+    titleAr: 'القيء والقلس والاستنشاق الرئوي',
+    titleEn: 'Vomiting, Regurgitation and Pulmonary Aspiration',
+    category: 'airway',
+    categoryAr: 'مجرى الهواء',
+    sourcePages: [84,85,86],
+    summary: 'القلس | Regurgitation قد يحدث دون الجهد العضلي المميز للقيء | Vomiting، والخطر الأهم أثناء التخدير هو دخول محتويات المعدة إلى الرئة | Pulmonary aspiration.',
+    sections: [
+      {
+        title: 'عوامل الخطورة | Risk factors',
+        items: [
+          'جراحة طارئة أو صيام غير كافٍ | Emergency surgery / inadequate fasting.',
+          'انسداد الأمعاء أو تأخر إفراغ المعدة | Bowel obstruction / delayed gastric emptying.',
+          'الحمل والسمنة وحالات زيادة الضغط داخل البطن | Pregnancy / obesity / raised intra-abdominal pressure.',
+          'ضعف منعكسات حماية مجرى الهواء تحت التخدير | Depressed airway protective reflexes.'
+        ]
+      },
+      {
+        title: 'إذا حدث الاستنشاق | If aspiration occurs',
+        items: [
+          'إيقاف المنبه وشفط الفم والبلعوم سريعًا | Prompt oropharyngeal suction.',
+          'وضعية مناسبة لتقليل دخول المزيد من المادة | Head-down / lateral positioning when feasible.',
+          'تأمين مجرى الهواء ودعم الأكسجة والتهوية | Airway protection / oxygenation / ventilation.',
+          'شفط الأنبوب الرغامي وقد يلزم تنظير القصبات للجزيئات الكبيرة | Tracheal suction / bronchoscopy for particulate material.'
+        ]
+      }
+    ],
+    correction: 'Metoclopramide | ميتوكلوبراميد ليس “مضاد حموضة”؛ هو دواء محفز لحركة المعدة ومضاد للقيء | Prokinetic antiemetic. كما أن المضادات الحيوية | Antibiotics والكورتيكوستيرويدات | Corticosteroids لا تُعطى روتينيًا لكل حالة aspiration pneumonitis؛ معظم الحالات الكيميائية تُعالج دعمياً وتُستخدم المضادات عند وجود دلائل عدوى أو استمرار/تدهور مناسب.',
+    tags: ['aspiration','vomiting','regurgitation','Mendelson','قيء','قلس','استنشاق رئوي']
+  },
+  {
+    id: 'laryngospasm',
+    titleAr: 'تشنج الحنجرة',
+    titleEn: 'Laryngospasm',
+    category: 'airway',
+    categoryAr: 'مجرى الهواء',
+    sourcePages: [87],
+    summary: 'انغلاق انعكاسي مستمر للمزمار | Sustained reflex glottic closure قد يسبب انسدادًا جزئيًا أو كاملًا لمجرى الهواء ونقص أكسجة سريعًا.',
+    sections: [
+      {
+        title: 'محفزات شائعة | Common triggers',
+        items: [
+          'تحفيز مجرى الهواء في تخدير خفيف | Airway stimulation at light anesthesia.',
+          'دم أو إفرازات أو قيء حول الحنجرة | Blood / secretions / vomitus.',
+          'التنظير أو نزع الأنبوب أو إدخال جهاز مجرى هوائي عند عمق غير مناسب | Laryngoscopy / extubation / airway device stimulation.'
+        ]
+      },
+      {
+        title: 'التدبير الفوري | Immediate management',
+        items: [
+          'إزالة المنبه وطلب المساعدة | Remove stimulus / call for help.',
+          'أوكسجين 100% مع ضغط إيجابي مستمر بقناع محكم | 100% O₂ + CPAP.',
+          'دفع الفك بقوة | Vigorous jaw thrust وفتح مجرى الهواء.',
+          'تعميق التخدير عند الحاجة | Deepen anesthesia.',
+          'إذا استمر الانغلاق أو حدث نقص أكسجة: مرخٍ سريع مثل سكساميثونيوم | Succinylcholine وفق الجرعة المناسبة والسياق.'
+        ]
+      }
+    ],
+    correction: 'تشنج الحنجرة الكامل حالة طارئة ولا يُنتظر أن “تنتهي خلال 20–30 دقيقة”. الأولوية للعلاج الفوري. إدخال airway فموي وحده لا يفتح الأحبال الصوتية المغلقة، ومحاولة التهوية العنيفة قد تنفخ المعدة.',
+    tags: ['laryngospasm','airway obstruction','succinylcholine','CPAP','تشنج الحنجرة']
+  },
+  {
+    id: 'airway-obstruction',
+    titleAr: 'انسداد مجرى الهواء',
+    titleEn: 'Airway Obstruction',
+    category: 'airway',
+    categoryAr: 'مجرى الهواء',
+    sourcePages: [88,91,92],
+    summary: 'قد يكون الانسداد علويًا بسبب اللسان أو الأنسجة الرخوة أو تشنج الحنجرة، أو بسبب جسم غريب/إفرازات، أو مشكلة في الأنبوب أو دائرة التنفس.',
+    sections: [
+      {
+        title: 'علامات | Signs',
+        items: [
+          'حركة صدر أو كيس خزان قليلة/معدومة | Reduced chest / reservoir-bag movement.',
+          'سحب فوق القص وبين الأضلاع | Suprasternal / intercostal retractions.',
+          'شخير أو أصوات مجرى هوائي | Snoring / noisy breathing.',
+          'صعوبة مرور الغاز وارتفاع مقاومة التهوية | Difficult ventilation / increased resistance.',
+          'انخفاض SpO₂ علامة متأخرة نسبيًا حسب احتياطي الأوكسجين | Falling oxygen saturation.'
+        ]
+      },
+      {
+        title: 'أسباب ميكانيكية | Mechanical causes',
+        items: [
+          'انثناء الأنبوب | Kinking.',
+          'انسداد الأنبوب بالإفرازات أو الدم | Mucus / blood obstruction.',
+          'انفصال الدائرة | Circuit disconnection.',
+          'عض الأنبوب | Tube biting.'
+        ]
+      }
+    ],
+    correction: 'الزرقة | Cyanosis علامة متأخرة وغير حساسة لنقص الأكسجة، لذلك لا ينبغي انتظار ظهورها؛ المراقبة بـPulse oximetry وCapnography وكشف تغير التهوية أبكر وأكثر فائدة.',
+    tags: ['airway obstruction','kinking','disconnection','cyanosis','انسداد مجرى الهواء']
+  },
+  {
+    id: 'delayed-emergence',
+    titleAr: 'تأخر الإفاقة من التخدير',
+    titleEn: 'Delayed Emergence from Anesthesia',
+    category: 'recovery',
+    categoryAr: 'الإفاقة',
+    sourcePages: [89,90],
+    summary: 'عدم عودة الوعي بالمعدل المتوقع بعد إيقاف أدوية التخدير؛ أكثر الأسباب شيوعًا بقايا الأدوية، لكن يجب التفكير أيضًا في أسباب تنفسية واستقلابية وعصبية.',
+    sections: [
+      {
+        title: 'أسباب دوائية | Drug-related',
+        items: [
+          'بقايا المنومات أو الأفيونات أو المهدئات | Residual hypnotics / opioids / sedatives.',
+          'حصار عصبي عضلي متبقٍ | Residual neuromuscular blockade.',
+          'جرعة زائدة أو تداخل دوائي | Overdose / drug interaction.',
+          'بطء الاستقلاب أو الإطراح في أمراض الكبد أو الكلى | Reduced metabolism / elimination.'
+        ]
+      },
+      {
+        title: 'أسباب غير دوائية | Non-drug causes',
+        items: [
+          'نقص الحرارة | Hypothermia.',
+          'نقص أو ارتفاع السكر | Hypoglycemia / hyperglycemia.',
+          'اضطراب الصوديوم والكالسيوم والمغنيسيوم أو الحماض | Electrolyte disturbance / acidosis.',
+          'نقص الأكسجة أو فرط ثاني أوكسيد الكربون | Hypoxemia / hypercapnia.',
+          'أسباب عصبية مثل النزف أو السكتة | Neurologic event.'
+        ]
+      },
+      {
+        title: 'التقييم | Assessment',
+        items: [
+          'ABC: مجرى الهواء والتنفس والدورة الدموية | Airway / Breathing / Circulation.',
+          'SpO₂ وEtCO₂ والحرارة والضغط والنبض | Oxygenation / ventilation / temperature / hemodynamics.',
+          'مراجعة الأدوية والجرعات والتوقيت | Drug review.',
+          'فحص السكر والشوارد/غازات الدم عند الحاجة | Glucose / electrolytes / blood gas.',
+          'استخدام مضادات نوعية عند وجود استطباب | Specific antagonists when indicated.'
+        ]
+      }
+    ],
+    correction: 'الإدرار القسري | Forced diuresis ليس علاجًا روتينيًا لتأخر الإفاقة من أدوية التخدير. التدبير الصحيح هو دعم الوظائف الحيوية وتحديد السبب وعلاجه.',
+    tags: ['delayed emergence','recovery','hypothermia','hypercapnia','تأخر الإفاقة']
+  },
+  {
+    id: 'extubation-readiness',
+    titleAr: 'الاستعداد لنزع الأنبوب الرغامي',
+    titleEn: 'Readiness for Tracheal Extubation',
+    category: 'recovery',
+    categoryAr: 'الإفاقة',
+    sourcePages: [91],
+    summary: 'نزع الأنبوب | Extubation قرار سريري يجمع بين كفاية التنفس والأكسجة، عودة الوعي/منعكسات مجرى الهواء، الاستقرار الدوري، وزوال الحصار العضلي.',
+    sections: [
+      {
+        title: 'قبل النزع | Before extubation',
+        items: [
+          'تهوية تلقائية كافية | Adequate spontaneous ventilation مع EtCO₂ مناسب للسياق.',
+          'أكسجة مناسبة | Adequate oxygenation على FiO₂ معقولة.',
+          'قدرة على حماية مجرى الهواء | Airway protective reflexes / appropriate consciousness.',
+          'استقرار ديناميكي دموي | Hemodynamic stability.',
+          'درجة حرارة مقبولة | Normothermia / adequate temperature.',
+          'عكس الحصار العضلي وتأكيد التعافي الكمي | Quantitative neuromuscular recovery.'
+        ]
+      }
+    ],
+    correction: 'لا توجد مجموعة أرقام ثابتة مثل VT >6 mL/kg وRR 12–20 وSpO₂ >95% تصلح لكل المرضى. بعد استخدام المرخيات غير المزيلة للاستقطاب، الهدف الحديث هو TOF ratio ≥0.9 بقياس كمي قبل نزع الأنبوب. وعدد وحدات الدم المنقولة ليس معيارًا لنزع الأنبوب.',
+    tags: ['extubation','TOF','neuromuscular recovery','airway reflexes','نزع الانبوب']
+  },
+  {
+    id: 'apnea',
+    titleAr: 'انقطاع النفس',
+    titleEn: 'Apnea',
+    category: 'airway',
+    categoryAr: 'مجرى الهواء',
+    sourcePages: [92],
+    summary: 'غياب التنفس التلقائي | Absence of spontaneous breathing، وقد ينتج من الأدوية أو الحصار العضلي أو اضطراب عصبي/استقلابي أو بعد انسداد شديد.',
+    sections: [
+      {
+        title: 'أسباب أثناء التخدير | Perioperative causes',
+        items: [
+          'المنومات والأفيونات والمهدئات | Hypnotics / opioids / sedatives.',
+          'المرخيات العضلية | Neuromuscular blockers.',
+          'حصار عضلي متبقٍ أو Suxamethonium apnea | Residual block / prolonged succinylcholine apnea.',
+          'تخدير عميق جدًا | Excessive anesthetic depth.',
+          'أسباب عصبية أو استقلابية | Neurologic / metabolic causes.'
+        ]
+      },
+      {
+        title: 'التدبير | Management',
+        items: [
+          'تأمين مجرى الهواء | Open / secure airway.',
+          'تهوية إيجابية مع أوكسجين حسب الحاجة | Positive-pressure ventilation / oxygen.',
+          'فحص EtCO₂ وSpO₂ والدورة الدموية | Ventilation / oxygenation / circulation assessment.',
+          'عكس السبب الدوائي عندما يكون هناك مضاد مناسب | Reversal when indicated.'
+        ]
+      }
+    ],
+    correction: 'الانسداد | Airway obstruction ليس مرادفًا لانقطاع النفس | Apnea؛ قد يكون المريض يبذل جهدًا تنفسيًا ضد مجرى هوائي مغلق. كذلك فشل مصدر الأوكسجين مشكلة منفصلة عن تعريف apnea.',
+    tags: ['apnea','ventilation','respiratory depression','انقطاع النفس']
+  },
+  {
+    id: 'hypoxemia-cyanosis',
+    titleAr: 'نقص أكسجة الدم والزرقة',
+    titleEn: 'Hypoxemia and Cyanosis',
+    category: 'airway',
+    categoryAr: 'مجرى الهواء',
+    sourcePages: [92,93],
+    summary: 'نقص أكسجة الدم | Hypoxemia هو انخفاض الأوكسجين في الدم الشرياني؛ الزرقة | Cyanosis تغير لوني قد يظهر عند زيادة الهيموغلوبين غير المؤكسج لكنها ليست وسيلة حساسة للكشف المبكر.',
+    sections: [
+      {
+        title: 'أسباب حول الجراحة | Perioperative causes',
+        items: [
+          'انسداد مجرى الهواء | Airway obstruction.',
+          'نقص التهوية | Hypoventilation.',
+          'عدم تطابق V/Q أو التحويلة | V/Q mismatch / shunt.',
+          'انفصال الدائرة أو نقص إمداد الأوكسجين | Circuit disconnection / oxygen supply problem.',
+          'تشنج قصبي أو شفط رئوي | Bronchospasm / aspiration.'
+        ]
+      },
+      {
+        title: 'التعامل | Response',
+        items: [
+          'رفع FiO₂ وتقييم مجرى الهواء والتهوية فورًا | Increase inspired oxygen / assess airway and ventilation.',
+          'فحص الدائرة والأنبوب ومصدر الغاز | Circuit / tube / gas source check.',
+          'استخدام Pulse oximetry وCapnography والتقييم السريري معًا | Multimodal monitoring.'
+        ]
+      }
+    ],
+    correction: 'الزرقة قد تكون غائبة رغم نقص أكسجة مهم، وقد تتأخر خصوصًا في فقر الدم. لا تُستخدم وحدها كمؤشر للأكسجة.',
+    tags: ['hypoxemia','cyanosis','SpO2','oxygenation','نقص الاكسجة']
+  },
+  {
+    id: 'massive-transfusion',
+    titleAr: 'النقل الدموي الكبير ومضاعفاته',
+    titleEn: 'Massive Transfusion and Complications',
+    category: 'general',
+    categoryAr: 'التخدير العام',
+    sourcePages: [94],
+    summary: 'النقل الكبير للدم | Massive transfusion قد ينقذ الحياة في النزف الشديد، لكنه قد يسبب اضطرابات تخثر وشوارد وحرارة وتوازن حمضي-قاعدي.',
+    sections: [
+      {
+        title: 'مضاعفات مهمة | Important complications',
+        items: [
+          'اعتلال التخثر التخفيفي والاستهلاكي | Dilutional / consumptive coagulopathy.',
+          'قلة الصفيحات | Thrombocytopenia.',
+          'نقص الكالسيوم بسبب السيترات | Citrate-related hypocalcemia.',
+          'اضطرابات البوتاسيوم | Potassium abnormalities.',
+          'انخفاض الحرارة | Hypothermia.',
+          'اضطرابات الحمض والقاعدة | Acid-base disturbances.'
+        ]
+      },
+      {
+        title: 'المراقبة | Monitoring',
+        items: [
+          'حرارة المريض وتسخين الدم/السوائل عند الحاجة | Temperature / warming.',
+          'Ionized calcium والشوارد وغازات الدم | Electrolytes / blood gas.',
+          'الهيموغلوبين والصفائح واختبارات التخثر أو الاختبارات اللزجة المرنة حسب التوفر | CBC / coagulation / viscoelastic testing.'
+        ]
+      }
+    ],
+    correction: 'تعريف massive transfusion ليس محصورًا بـ10–20 وحدة دائمًا؛ توجد تعريفات متعددة وتُستخدم بروتوكولات نزف كبير تعتمد على سرعة النزف واحتياجات المريض. العلاج الحديث يوازن مكونات الدم ويراقب الكالسيوم والحرارة والتخثر.',
+    tags: ['massive transfusion','coagulopathy','hypocalcemia','blood products','نقل دم']
+  },
+  {
+    id: 'acute-transfusion-reaction',
+    titleAr: 'التفاعل الحاد لنقل الدم',
+    titleEn: 'Acute Transfusion Reaction',
+    category: 'general',
+    categoryAr: 'التخدير العام',
+    sourcePages: [95,96],
+    summary: 'أي تغير غير متوقع أثناء نقل الدم—مثل هبوط الضغط، الحمى، طفح، ضيق نفس، نزف أو ارتفاع ضغط مجرى الهواء—يستدعي التفكير بتفاعل نقل دم.',
+    sections: [
+      {
+        title: 'الإجراء الأول | Immediate actions',
+        items: [
+          'إيقاف نقل الدم فورًا | Stop the transfusion.',
+          'تقييم ABC ودعم الأوكسجة والدورة الدموية | Airway / breathing / circulation support.',
+          'إبقاء خط وريدي مفتوح بمحلول مناسب دون إعادة تشغيل وحدة الدم | Maintain IV access.',
+          'إعادة التحقق من هوية المريض والوحدة | Clerical / identity check.',
+          'إبلاغ بنك الدم والفريق المسؤول وإرسال العينات/الوحدة حسب البروتوكول | Notify blood bank / reaction workup.'
+        ]
+      },
+      {
+        title: 'أسباب مهمة | Important causes',
+        items: [
+          'انحلال دم حاد بسبب عدم توافق ABO | Acute hemolytic transfusion reaction.',
+          'تفاعل تحسسي أو تأق | Allergic reaction / anaphylaxis.',
+          'تلوث جرثومي | Bacterial contamination.',
+          'إصابة رئوية حادة مرتبطة بالنقل | TRALI.',
+          'حمل حجمي زائد مرتبط بالنقل | TACO.'
+        ]
+      }
+    ],
+    correction: 'لا توجد وصفة واحدة من مضاد هيستامين + ستيرويد + مدر بول لكل تفاعل. بعد إيقاف الدم ودعم ABC، العلاج يعتمد على نوع التفاعل؛ مثلًا TACO يختلف عن TRALI أو الانحلال الدموي.',
+    tags: ['transfusion reaction','ABO','TRALI','TACO','hemolysis','نقل الدم']
+  },
+  {
+    id: 'perioperative-hypotension',
+    titleAr: 'انخفاض ضغط الدم أثناء التخدير',
+    titleEn: 'Perioperative Hypotension',
+    category: 'general',
+    categoryAr: 'التخدير العام',
+    sourcePages: [98],
+    summary: 'هبوط الضغط | Hypotension أثناء التخدير ليس رقم SBP واحدًا؛ المهم هو انخفاض ضغط التروية بالنسبة لخط الأساس وحالة المريض ومدته.',
+    sections: [
+      {
+        title: 'أسباب | Causes',
+        items: [
+          'توسع الأوعية أو تثبيط عضلة القلب بالأدوية | Vasodilation / myocardial depression.',
+          'نقص حجم الدم أو النزف | Hypovolemia / hemorrhage.',
+          'حساسية مفرطة أو إنتان | Anaphylaxis / sepsis.',
+          'اضطراب نظم أو فشل قلبي | Arrhythmia / heart failure.',
+          'استرواح صدر ضاغط أو اندكاك قلبي | Tension pneumothorax / cardiac tamponade.'
+        ]
+      },
+      {
+        title: 'المعالجة | Management',
+        items: [
+          'تقييم السبب وتصحيحه | Identify / treat cause.',
+          'تقليل عمق التخدير إذا كان زائدًا | Reduce excessive anesthetic depth.',
+          'سوائل أو دم عند وجود نقص حجم مناسب | Fluids / blood when volume deficit exists.',
+          'رافع ضغط مناسب مثل Phenylephrine أو Ephedrine أو Norepinephrine حسب الآلية | Cause-directed vasopressor.'
+        ]
+      }
+    ],
+    correction: 'تعريف SBP <100 mmHg كهبوط ضغط للجميع قديم وغير دقيق. في البالغين يرتبط MAP أقل من نحو 65 mmHg بزيادة أذية الأعضاء في عدة دراسات، لكن الهدف يجب أن يُفرد حسب خط الأساس والأمراض المزمنة مثل Hypertension.',
+    tags: ['hypotension','MAP','vasopressor','phenylephrine','ephedrine','هبوط الضغط']
+  },
+  {
+    id: 'perioperative-hypertension',
+    titleAr: 'ارتفاع ضغط الدم حول الجراحة',
+    titleEn: 'Perioperative Hypertension',
+    category: 'general',
+    categoryAr: 'التخدير العام',
+    sourcePages: [97],
+    summary: 'ارتفاع الضغط | Hypertension حول الجراحة قد يكون مزمنًا أو استجابة حادة للألم، القلق، نقص عمق التخدير، امتلاء المثانة، فرط CO₂ أو أدوية معينة.',
+    sections: [
+      {
+        title: 'أثناء التخدير | Intraoperative approach',
+        items: [
+          'تأكد من عمق التخدير والتسكين | Anesthetic depth / analgesia.',
+          'صحح نقص الأكسجة وفرط CO₂ | Hypoxemia / hypercapnia.',
+          'عالج الألم أو امتلاء المثانة أو المنبه الجراحي | Pain / bladder / surgical stimulus.',
+          'استخدم دواء خافضًا مناسبًا إذا استمر الارتفاع | Cause-directed antihypertensive.'
+        ]
+      }
+    ],
+    correction: 'لا يُتعامل مع ضغط الجراحة بجدول أرقام منفصل عن خط الأساس. الأهداف تُفرد حسب المريض، ومرضى ارتفاع الضغط المزمن قد يحتاجون ضغط تروية أعلى من المرضى الأصحاء.',
+    tags: ['hypertension','blood pressure','perioperative','ارتفاع الضغط']
+  },
+  {
+    id: 'perioperative-arrhythmias',
+    titleAr: 'اضطرابات النظم أثناء التخدير',
+    titleEn: 'Perioperative Arrhythmias',
+    category: 'general',
+    categoryAr: 'التخدير العام',
+    sourcePages: [99,100,101],
+    summary: 'اضطراب النظم | Arrhythmia قد ينتج من مرض قلبي سابق أو عوامل قابلة للتصحيح أثناء التخدير مثل نقص الأكسجة، فرط CO₂، اضطراب الشوارد أو الأدوية.',
+    sections: [
+      {
+        title: 'محفزات قابلة للتصحيح | Reversible triggers',
+        items: [
+          'نقص أكسجة الدم | Hypoxemia.',
+          'فرط ثاني أوكسيد الكربون | Hypercapnia.',
+          'اختلال البوتاسيوم أو المغنيسيوم | Potassium / magnesium disturbance.',
+          'الحماض أو القلاء | Acid-base disturbance.',
+          'الألم أو التحفيز الجراحي والتخدير غير الكافي | Pain / surgical stimulation / light anesthesia.',
+          'أدوية أو قثاطر داخل القلب | Drugs / intracardiac catheter irritation.'
+        ]
+      },
+      {
+        title: 'التقييم | Assessment',
+        items: [
+          'حدد النظم ووجود النبض والاستقرار الديناميكي | Rhythm / pulse / hemodynamic stability.',
+          'صحح السبب القابل للعلاج أولًا | Correct reversible cause.',
+          'تُعالج الاضطرابات الخطرة وفق خوارزمية الإنعاش القلبي المناسبة | ACLS-based management when indicated.'
+        ]
+      }
+    ],
+    correction: 'احتشاء عضلة القلب | Myocardial infarction ليس “نوعًا من اضطراب النظم”؛ هو مرض/سبب قد يسبب اضطرابات نظم. التصنيف الأدق يكون حسب منشأ النظم، معدل القلب، انتظامه واضطراب التوصيل.',
+    tags: ['arrhythmia','bradycardia','tachycardia','electrolytes','نظم القلب']
+  },
+  {
+    id: 'heart-failure-anesthesia',
+    titleAr: 'فشل القلب والتخدير',
+    titleEn: 'Heart Failure and Anesthesia',
+    category: 'general',
+    categoryAr: 'التخدير العام',
+    sourcePages: [102],
+    summary: 'فشل القلب | Heart failure يزيد خطر المضاعفات حول الجراحة؛ التخطيط يعتمد على شدة الأعراض، وظيفة البطين، السبب، الجراحة والأدوية الحالية.',
+    sections: [
+      {
+        title: 'أهداف التخدير | Anesthetic goals',
+        items: [
+          'الحفاظ على تروية مناسبة وتجنب هبوط الضغط المطول | Maintain perfusion / avoid prolonged hypotension.',
+          'تجنب الحمل الحجمي الزائد | Avoid fluid overload.',
+          'المحافظة على معدل ونظم قلب مناسبين | Appropriate heart rate / rhythm.',
+          'تجنب الزيادة الكبيرة في afterload أو الانخفاض المفرط في preload حسب نوع الفشل | Tailored preload / afterload.'
+        ]
+      },
+      {
+        title: 'التخطيط | Planning',
+        items: [
+          'تقييم التعويض أو وجود فشل قلب حاد | Compensated vs decompensated HF.',
+          'مراجعة Echo والأعراض والأدوية عند الحاجة | Echocardiography / symptoms / medications.',
+          'اختيار التقنية والأدوية بالتدرج وبحسب الاحتياطي القلبي | Titrated anesthetic technique.'
+        ]
+      }
+    ],
+    correction: 'لا يوجد مخدر واحد “الأفضل” لكل مرضى فشل القلب. الاختيار يعتمد على الفيزيولوجيا؛ Etomidate قد يفيد للتحريض في بعض المرضى غير المستقرين لكن له محاذير، كما أن جرعات Propofol وغيرها تحتاج معايرة حذرة.',
+    tags: ['heart failure','cardiac anesthesia','preload','afterload','فشل القلب']
+  },
+  {
+    id: 'shock',
+    titleAr: 'الصدمة الدورانية',
+    titleEn: 'Circulatory Shock',
+    category: 'general',
+    categoryAr: 'التخدير العام',
+    sourcePages: [103,104,105],
+    summary: 'الصدمة | Shock هي فشل دوراني حاد يسبب نقص تروية الأنسجة وعدم كفاية توصيل الأوكسجين، وليست مجرد انخفاض ضغط الدم.',
+    sections: [
+      {
+        title: 'الأنواع الأربعة | Four mechanisms',
+        items: [
+          'نقص حجم | Hypovolemic shock: نزف أو فقد سوائل.',
+          'توزيعية | Distributive shock: مثل Sepsis أو Anaphylaxis أو Neurogenic shock.',
+          'قلبية | Cardiogenic shock: فشل المضخة القلبية.',
+          'انسدادية | Obstructive shock: مثل Tension pneumothorax أو Cardiac tamponade أو Massive pulmonary embolism.'
+        ]
+      },
+      {
+        title: 'مبادئ العلاج | Treatment principles',
+        items: [
+          'تأمين الأكسجة والتهوية | Oxygenation / ventilation.',
+          'السيطرة على السبب: النزف، الإنتان، التأق، الانسداد أو المشكلة القلبية | Cause control.',
+          'سوائل أو دم عند وجود نقص حجم مناسب | Fluids / blood when indicated.',
+          'رافعات ضغط/مقويات قلب حسب آلية الصدمة | Vasopressors / inotropes according to mechanism.',
+          'مراقبة التروية: الوعي، البول، اللاكتات والديناميكا الدموية | Mental status / urine / lactate / hemodynamics.'
+        ]
+      }
+    ],
+    correction: 'تصنيف “Vesicular shock / central causes” الوارد في المصدر غير قياسي. التصنيف الحديث: Hypovolemic، Distributive، Cardiogenic، Obstructive. كذلك Hydrocortisone بجرعات 200–1000 mg ليس علاجًا عامًا لكل shock، وAdrenaline ليس رافع الضغط الافتراضي لكل الأنواع؛ العلاج يعتمد على السبب.',
+    tags: ['shock','hypovolemic','distributive','cardiogenic','obstructive','صدمة']
   }
 ];
