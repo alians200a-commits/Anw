@@ -17,6 +17,7 @@ export interface ClinicalGuide {
   category: ClinicalGuideCategory;
   categoryAr: string;
   sourcePages: number[];
+  sourceLabel?: string;
   summary: string;
   sections: ClinicalGuideSection[];
   correction?: string;
@@ -1365,5 +1366,46 @@ export const CLINICAL_GUIDES: ClinicalGuide[] = [
       }
     ],
     tags: ['ETT complications','endobronchial','kinking','disconnection','accidental extubation']
+  },
+  {
+    id: 'perioperative-fluid-calculations',
+    titleAr: 'حساب السوائل حول العملية: القديم مقابل الحديث',
+    titleEn: 'Perioperative Fluid Calculation: Traditional vs Modern Approach',
+    category: 'general',
+    categoryAr: 'التخدير العام',
+    sourcePages: [32],
+    sourceLabel: 'ملف كتابة أدوية التخدير — حساب السوائل الوريدية',
+    summary: 'المصدر يعرض قواعد تقليدية مثل 4-2-1، تعويض عجز الصيام، 3:1 للبلوريات وتعويض “third-space loss”. هذه مفيدة لفهم ما يُدرّس تاريخيًا، لكنها لا تُستخدم كروشتة ثابتة لكل مريض بالغ أثناء الجراحة.',
+    sections: [
+      {
+        title: 'المذكور في المصدر | Traditional formulas in source',
+        items: [
+          'قاعدة 4-2-1 لحساب maintenance rate | 4-2-1 maintenance rule.',
+          'عجز الصيام = معدل الساعة × ساعات الصيام | Fasting deficit calculation.',
+          'تعويض فقد الدم/السوائل بنسبة 3 mL crystalloid لكل 1 mL loss | Traditional 3:1 replacement.',
+          'إضافة سوائل ثابتة لما يسمى third-space loss بحسب شدة العملية.'
+        ]
+      },
+      {
+        title: 'الفهم الحديث | Modern interpretation',
+        items: [
+          'لا يُفترض أن كل مريض صائم ناقص حجم | Fasting does not automatically equal hypovolemia.',
+          'مفهوم third-space loss التقليدي جرى التخلي عنه بدرجة كبيرة | Traditional third-space replacement is largely abandoned.',
+          'الهدف هو الحفاظ على euvolemia وتجنب fluid overload ونقص التروية | Individualized near-zero fluid balance.',
+          'تعويض الخسائر يعتمد على نوع السائل المفقود، النزف، العلامات الديناميكية، المختبرات والاستجابة | Cause-directed replacement.',
+          'Balanced crystalloids تُفضّل غالبًا على 0.9% saline في كثير من سياقات الإنعاش/الجراحة، مع استثناءات سريرية.',
+          'Goal-directed fluid therapy مفيد خصوصًا للمرضى عاليي الخطورة أو الجراحات ذات الخسائر الكبيرة.'
+        ]
+      },
+      {
+        title: 'متى تبقى 4-2-1 مفيدة؟ | Where 4-2-1 still helps',
+        items: [
+          'تُستخدم أساسًا كطريقة تقليدية لتقدير maintenance fluid rate، وخصوصًا في طب الأطفال، وليست هدفًا إلزاميًا للتسريب أثناء التخدير لكل بالغ.',
+          'أي حساب أولي يجب تعديله حسب العمر، الكلى والقلب، نوع الجراحة، النزف، البول، الضغط، perfusion والكهارل.'
+        ]
+      }
+    ],
+    correction: 'لا تعتمد في التطبيق قاعدة “NPO deficit + third-space + 3:1 crystalloid” كحاسبة تلقائية؛ هذه وصفات قديمة قد تقود إلى إعطاء سوائل زائدة. إذا أضفنا حاسبة مستقبلًا فستكون أداة تعليمية تُظهر الافتراضات وتطلب بيانات المريض بدل إعطاء رقم نهائي بلا سياق.',
+    tags: ['fluid calculation','4-2-1','fasting deficit','third space','goal directed fluid','سوائل','حساب السوائل']
   }
 ];
