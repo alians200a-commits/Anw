@@ -1111,5 +1111,44 @@ export const CLINICAL_GUIDES: ClinicalGuide[] = [
     ],
     correction: 'تصنيف “Vesicular shock / central causes” الوارد في المصدر غير قياسي. التصنيف الحديث: Hypovolemic، Distributive، Cardiogenic، Obstructive. كذلك Hydrocortisone بجرعات 200–1000 mg ليس علاجًا عامًا لكل shock، وAdrenaline ليس رافع الضغط الافتراضي لكل الأنواع؛ العلاج يعتمد على السبب.',
     tags: ['shock','hypovolemic','distributive','cardiogenic','obstructive','صدمة']
+  },
+  {
+    id: 'liver-disease-anesthesia',
+    titleAr: 'أمراض الكبد والتخدير',
+    titleEn: 'Liver Disease and Anesthesia',
+    category: 'general',
+    categoryAr: 'التخدير العام',
+    sourcePages: [106],
+    summary: 'أمراض الكبد | Liver disease قد تغيّر الاستقلاب والارتباط بالبروتين والحجم الظاهري والتخثر والديناميكا الدموية، لذلك تُعاير أدوية التخدير بحسب شدة المرض وتأثيرها.',
+    sections: [
+      {
+        title: 'تغيرات مهمة | Important changes',
+        items: [
+          'نقص تصنيع بروتينات البلازما | Reduced plasma protein synthesis قد يزيد الجزء الحر لبعض الأدوية.',
+          'انخفاض الاستقلاب أو الإطراح الكبدي/الصفراوي | Reduced hepatic metabolism / biliary excretion قد يطيل تأثير بعض الأدوية.',
+          'الدوران مفرط الديناميكية | Hyperdynamic circulation مع توسع وعائي | Vasodilation شائع في التليف المتقدم.',
+          'اعتلال التخثر ونقص الصفائح | Coagulopathy / thrombocytopenia مهمان قبل الإجراءات المحورية العصبية.'
+        ]
+      },
+      {
+        title: 'اختيار الأدوية | Drug selection',
+        items: [
+          'بروبوفول | Propofol يمكن استخدامه بجرعات معايرة بعناية حسب الاستجابة.',
+          'البنزوديازيبينات | Benzodiazepines قد يطول تأثيرها وقد تساهم في الاعتلال الدماغي الكبدي | Hepatic encephalopathy؛ تُستخدم بحذر.',
+          'ريميفنتانيل | Remifentanil يعتمد على إستيرازات الأنسجة/الدم وليس الاستقلاب الكبدي، لذلك تأثير مرض الكبد عليه أقل.',
+          'أتراكوريوم وسيساتراكوريوم | Atracurium / Cisatracurium مناسبان لأن التخلص منهما لا يعتمد أساسًا على الكبد.',
+          'روكورونيوم وفيكورونيوم | Rocuronium / Vecuronium قد يطول حصارهما في المرض الكبدي المتقدم؛ يلزم Neuromuscular monitoring.'
+        ]
+      },
+      {
+        title: 'عوامل استنشاقية | Volatile agents',
+        items: [
+          'سيفوفلوران وإيزوفلوران وديسفلوران | Sevoflurane / Isoflurane / Desflurane ذات استقلاب كبدي منخفض نسبيًا وتُستخدم بحسب الحالة الديناميكية.',
+          'هالوثان | Halothane قد يسبب Halothane hepatitis وأصبح نادر الاستخدام؛ يُتجنب خصوصًا عند وجود مرض كبدي أو قصة أذية كبدية مرتبطة به.'
+        ]
+      }
+    ],
+    correction: 'القول إن Fentanyl “لا يتأثر إطلاقًا” بخلل الكبد أو أن Isoflurane هو الخيار الوحيد الموصى به مبسّط أكثر من اللازم. الاختيار الحديث يعتمد على شدة المرض والاستجابة؛ Remifentanil أكثر استقلالًا عن الكبد، وAtracurium/Cisatracurium يملكان ميزة واضحة في التخلص غير الكبدي.',
+    tags: ['liver disease','cirrhosis','hepatic failure','anesthesia','hepatic encephalopathy']
   }
 ];
