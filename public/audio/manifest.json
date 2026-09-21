@@ -477,8 +477,8 @@
       "file": "/audio/terms/anaphylactic-shock.mp3"
     },
     "abbreviations/mi": {
-      "source_text": "Muscle / Myocardial Infarction",
-      "spoken_text": "Muscle. Myocardial Infarction",
+      "source_text": "Myocardial Infarction",
+      "spoken_text": "Myocardial Infarction",
       "file": "/audio/abbreviations/mi.mp3"
     },
     "special/suxamethonium-apnoea": {
