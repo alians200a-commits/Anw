@@ -6,6 +6,7 @@ import { GamesHub } from './components/GamesHub';
 import { GuideScreen, type GuideSection } from './components/GuideScreen';
 import { HomeScreen } from './components/HomeScreen';
 import { KingdomHeader } from './components/KingdomHeader';
+import type { DrugClass } from './data/drugs';
 
 const FAVORITES_KEY = 'kingdom-anesthesia:favorites';
 
@@ -22,6 +23,7 @@ function loadFavorites() {
 export default function App() {
   const [activeTab, setActiveTab] = useState<AppTab>('home');
   const [guideSection, setGuideSection] = useState<GuideSection>('drugs');
+  const [guideDrugClass, setGuideDrugClass] = useState<'all' | DrugClass>('all');
   const [query, setQuery] = useState('');
   const [favorites, setFavorites] = useState<Set<string>>(() => loadFavorites());
 
@@ -34,8 +36,9 @@ export default function App() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const openGuide = (section: GuideSection) => {
+  const openGuide = (section: GuideSection, drugClass: 'all' | DrugClass = 'all') => {
     setGuideSection(section);
+    if (section === 'drugs') setGuideDrugClass(drugClass);
     setActiveTab('guide');
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -57,6 +60,7 @@ export default function App() {
         onSectionChange={setGuideSection}
         favorites={favorites}
         onToggleFavorite={toggleFavorite}
+        initialDrugClass={guideDrugClass}
       />
     );
   } else if (activeTab === 'games') {
