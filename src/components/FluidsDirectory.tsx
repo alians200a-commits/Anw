@@ -100,13 +100,6 @@ function FluidSheet({ item, onClose }: { item: IntravenousFluid; onClose: () => 
           <FluidList title="الدور والاستخدام | Role" items={item.role} tone="use" />
           <FluidList title="محاذير | Cautions" items={item.cautions} tone="caution" />
 
-          {item.correction && (
-            <section className="rounded-2xl border border-[#F0E1BA] bg-[#FFF9EC] px-3.5 py-3">
-              <p className="text-[10px] font-black text-[#966A22]">تصحيح علمي | Scientific correction</p>
-              <p className="mt-2 text-[11px] leading-5 text-[#5F533D]">{item.correction}</p>
-            </section>
-          )}
-
           <p className="border-t border-[#E4ECEA] pt-3 text-center text-[9px] text-[#84918F]">
             صفحات المصدر | Source pages: {item.sourcePages.join('، ')}
           </p>
@@ -134,7 +127,6 @@ export function FluidsDirectory() {
           item.composition,
           ...item.role,
           ...item.cautions,
-          item.correction ?? '',
           ...item.tags
         ].some((value) => value.toLowerCase().includes(normalized));
       return categoryMatch && queryMatch;
