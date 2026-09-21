@@ -75,7 +75,7 @@ export function TermsDirectory({ favorites, onToggleFavorite }: TermsDirectoryPr
                   </div>
                 </div>
               </div>
-              <p className="mt-3 text-[10px] leading-5 text-[#8294A4]">{term.definition}</p>
+              <p className="mt-3 whitespace-pre-line text-[10px] leading-5 text-[#8294A4]">{term.definition}</p>
             </article>
           );
         })}
