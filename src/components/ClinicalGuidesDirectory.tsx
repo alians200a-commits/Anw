@@ -76,9 +76,12 @@ function ClinicalGuideSheet({
             </section>
           )}
 
-          <p className="border-t border-white/5 pt-3 text-center text-[9px] text-[#607589]">
-            من المصدر المرفوع: الصفحات {guide.sourcePages.join('، ')}
-          </p>
+          <div className="border-t border-white/5 pt-3 text-center text-[9px] leading-4 text-[#607589]">
+            {guide.sourceLabel && <p>المصدر | Source: {guide.sourceLabel}</p>}
+            <p className={guide.sourceLabel ? 'mt-1' : ''}>
+              صفحات/أقسام المصدر | Source pages/sections: {guide.sourcePages.join('، ')}
+            </p>
+          </div>
         </div>
       </motion.div>
     </motion.div>
