@@ -473,17 +473,17 @@ export const CLINICAL_GUIDES: ClinicalGuide[] = [
   },
   {
     id: 'anesthesia-room-check',
-    titleAr: 'فحص صالة ومحطة التخدير قبل الحالة',
+    titleAr: 'فحص صالة وعربة التخدير قبل الحالة',
     titleEn: 'Pre-Anesthesia Room / Workstation Check',
     category: 'general',
     categoryAr: 'التخدير العام',
     sourcePages: [77],
-    summary: 'فحص منظم قبل بدء التخدير للتأكد من مصادر الغازات، محطة التخدير، مجرى الهواء، الشفط، المراقبة، الأدوية وخطة الطوارئ.',
+    summary: 'فحص منظم قبل بدء التخدير للتأكد من مصادر الغازات، عربة التخدير، مجرى الهواء، الشفط، المراقبة، الأدوية وخطة الطوارئ.',
     sections: [
       {
         title: 'المحطة والغازات | Workstation & gases',
         items: [
-          'تشغيل وفحص محطة التخدير | Anesthesia workstation check.',
+          'تشغيل وفحص عربة التخدير | Anesthesia Machine check.',
           'التحقق من مصدر الأوكسجين والغازات | Oxygen / medical gas supply.',
           'التحقق من المبخرات عند الحاجة | Vaporizers.',
           'فحص دائرة التنفس وجهاز التنفس | Breathing circuit / ventilator.'
@@ -506,7 +506,7 @@ export const CLINICAL_GUIDES: ClinicalGuide[] = [
         ]
       }
     ],
-    correction: 'الفحص الحديث لا يقتصر على قائمة ثابتة عامة؛ يجب اتباع قائمة فحص الشركة/المؤسسة ومحطة التخدير نفسها، مع فحص آلي ويدوي حسب الجهاز.',
+    correction: 'الفحص الحديث لا يقتصر على قائمة ثابتة عامة؛ يجب اتباع قائمة فحص الشركة/المؤسسة وعربة التخدير نفسها، مع فحص آلي ويدوي حسب الجهاز.',
     tags: ['machine check','pre anesthesia check','OR checklist','جهاز التخدير','صالة العمليات']
   },
   {
@@ -630,7 +630,7 @@ export const CLINICAL_GUIDES: ClinicalGuide[] = [
         title: 'الأكسجة والتهوية | Oxygenation & ventilation',
         items: [
           'تشبع الأوكسجين | SpO₂ بواسطة Pulse oximetry.',
-          'الأوكسجين المستنشق | Inspired O₂ عند استخدام محطة التخدير.',
+          'الأوكسجين المستنشق | Inspired O₂ عند استخدام عربة التخدير.',
           'ثاني أوكسيد الكربون الزفيري | EtCO₂ / Capnography عند التخدير العام أو التهوية وفق المعيار.',
           'حركة الصدر ودائرة التنفس وضغوط/أحجام جهاز التنفس | Chest movement / ventilator parameters.'
         ]
