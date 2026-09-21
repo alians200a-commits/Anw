@@ -1,8 +1,8 @@
 import {
+  BookOpenText,
   BookmarkSimple,
   GameController,
-  House,
-  ListMagnifyingGlass
+  House
 } from '@phosphor-icons/react';
 
 export type AppTab = 'home' | 'guide' | 'games' | 'favorites';
@@ -14,7 +14,7 @@ interface BottomNavProps {
 
 const items = [
   { id: 'home' as const, label: 'الرئيسية', icon: House },
-  { id: 'guide' as const, label: 'الدليل', icon: ListMagnifyingGlass },
+  { id: 'guide' as const, label: 'الدليل', icon: BookOpenText },
   { id: 'games' as const, label: 'الألعاب', icon: GameController },
   { id: 'favorites' as const, label: 'المحفوظات', icon: BookmarkSimple }
 ];
