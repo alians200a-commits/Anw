@@ -1262,7 +1262,9 @@ export const CLINICAL_GUIDES: ClinicalGuide[] = [
           'ويليام مورتون | William T. G. Morton قدّم العرض العام الناجح الشهير للتخدير بالإيثر | Ether anesthesia في 16 أكتوبر 1846.',
           'أوليفر وندل هولمز | Oliver Wendell Holmes اقترح مصطلحي Anaesthetic وAnaesthesia عام 1846.',
           'جون سنو | John Snow أعطى Chloroform للملكة Victoria أثناء الولادة عام 1853 ثم 1857.',
-          'كارل كولر | Karl Koller أدخل Cocaine للتخدير الموضعي العيني سريريًا عام 1884.'
+          'كارل كولر | Karl Koller أدخل Cocaine للتخدير الموضعي العيني سريريًا عام 1884.',
+          'هنري بويل | Henry E. G. Boyle طوّر عربة التخدير المستمرة الجريان المعروفة تاريخيًا باسم Boyle machine عام 1917.',
+          'Cyclopropane دخل الاستخدام التخديري في بدايات ثلاثينيات القرن العشرين، لكنه تراجع لاحقًا بسبب قابليته الشديدة للاشتعال والانفجار وظهور عوامل أكثر أمانًا.'
         ]
       }
     ],
@@ -1282,7 +1284,8 @@ export const CLINICAL_GUIDES: ClinicalGuide[] = [
         title: 'مفاهيم تاريخية | Historical concepts',
         items: [
           'ارتباط القوة بالذوبان الدهني | Meyer-Overton correlation: علاقة تاريخية مهمة بين الذوبان الدهني وقوة كثير من المخدرات.',
-          'فرضيات الغشاء الدهني | Lipid membrane hypotheses ساعدت تاريخيًا في تفسير التخدير لكنها لا تفسر كل الظواهر.'
+          'فرضيات الغشاء الدهني | Lipid membrane hypotheses ساعدت تاريخيًا في تفسير التخدير لكنها لا تفسر كل الظواهر.',
+          'فرضية البروتين/المستقبل | Protein / receptor hypothesis اقترحت أن المخدرات تتفاعل مع مواقع كارهة للماء على بروتينات عصبية؛ الفهم الحديث يدعم أهدافًا بروتينية متعددة وليس مستقبلًا واحدًا فقط.'
         ]
       },
       {
@@ -1310,7 +1313,7 @@ export const CLINICAL_GUIDES: ClinicalGuide[] = [
       {
         title: 'الشهيق | Inspiration',
         items: [
-          'الحجاب الحاجز | Diaphragm هو العضلة الرئيسية للشهيق الهادئ.',
+          'الحجاب الحاجز | Diaphragm هو العضلة الرئيسية للشهيق الهادئ، ويسهم تقريبًا بنحو 75% من تغير حجم التنفس أثناء الراحة.',
           'العضلات الوربية الخارجية | External intercostals تساعد على رفع القفص الصدري.',
           'Scalenes وSternocleidomastoid عضلات شهيقية مساعدة | Accessory inspiratory muscles أثناء الجهد.'
         ]
@@ -1358,6 +1361,15 @@ export const CLINICAL_GUIDES: ClinicalGuide[] = [
           'السعة الحيوية القسرية | Forced Vital Capacity (FVC).',
           'حجم الزفير القسري في ثانية | FEV₁.',
           'نسبة FEV₁/FVC تساعد في تقييم الانسداد | Obstructive physiology، وتُفسر باستخدام الحدود المرجعية للعمر والجنس والطول لا رقم 80% وحده.'
+        ]
+      },
+      {
+        title: 'قيم تقريبية أثناء الراحة | Typical resting values',
+        items: [
+          'معدل التنفس عند البالغ الهادئ يقارب 12–15 نفس/دقيقة.',
+          'حجم المد | Tidal Volume يقارب 500 mL في البالغ المتوسط، مع اختلافه حسب الحجم والجنس والحالة.',
+          'التهوية الدقيقة | Minute Ventilation تقارب 6–8 L/min.',
+          'استهلاك الأوكسجين | O₂ consumption يقارب 250 mL/min، وإنتاج CO₂ يقارب 200 mL/min في الراحة.'
         ]
       }
     ],
