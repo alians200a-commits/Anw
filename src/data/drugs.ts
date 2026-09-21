@@ -6,6 +6,9 @@ export type DrugCategory =
   | 'muscle-relaxants'
   | 'emergency'
   | 'antiemetics'
+  | 'local-anesthetics'
+  | 'reversal'
+  | 'cardiovascular'
   | 'adjuncts';
 
 export type DrugClass =
@@ -17,6 +20,10 @@ export type DrugClass =
   | 'muscle-relaxant'
   | 'antiemetic'
   | 'emergency'
+  | 'local-anesthetic'
+  | 'reversal'
+  | 'vasopressor'
+  | 'cardiovascular'
   | 'adjunct';
 
 export interface AnesthesiaDrug {
@@ -39,6 +46,10 @@ export const DRUG_CLASS_LABELS: Record<DrugClass, string> = {
   'muscle-relaxant': 'مرخي عضلي',
   antiemetic: 'مضاد قيء',
   emergency: 'طوارئ',
+  'local-anesthetic': 'مخدر موضعي',
+  reversal: 'عكس / ترياق',
+  vasopressor: 'رافع ضغط',
+  cardiovascular: 'قلبي وعائي',
   adjunct: 'مساعد'
 };
 
@@ -124,6 +135,36 @@ export const ANESTHESIA_DRUGS: AnesthesiaDrug[] = [
     tags: ['N2O', 'inhalational', 'analgesia', 'غاز']
   },
   {
+    id: 'methohexital',
+    en: 'Methohexital',
+    ar: 'ميثوهكسيتال',
+    category: 'hypnotics',
+    categoryAr: 'منومات وريدية',
+    classes: ['intravenous', 'hypnotic'],
+    short: 'باربيتورات وريدي فائق القصر يُستخدم لتحريض التخدير وفي إجراءات قصيرة مثل العلاج بالصدمات الكهربائية.',
+    tags: ['IV', 'barbiturate', 'induction', 'ECT', 'منوم']
+  },
+  {
+    id: 'enflurane',
+    en: 'Enflurane',
+    ar: 'إنفلوران',
+    category: 'inhalational',
+    categoryAr: 'مخدرات استنشاقية',
+    classes: ['inhalational', 'hypnotic'],
+    short: 'عامل تخدير استنشاقي متطاير قديم نسبيًا، ويتميز بإمكانية زيادة النشاط الاختلاجي عند ظروف معينة.',
+    tags: ['volatile', 'inhalational', 'seizure', 'استنشاقي']
+  },
+  {
+    id: 'desflurane',
+    en: 'Desflurane',
+    ar: 'ديسفلوران',
+    category: 'inhalational',
+    categoryAr: 'مخدرات استنشاقية',
+    classes: ['inhalational', 'hypnotic'],
+    short: 'عامل استنشاقي قليل الذوبان في الدم يسمح بتغيير سريع لعمق التخدير وإفاقة سريعة، لكنه مهيّج لمجرى الهواء.',
+    tags: ['volatile', 'inhalational', 'rapid recovery', 'airway irritant', 'استنشاقي']
+  },
+  {
     id: 'midazolam',
     en: 'Midazolam',
     ar: 'ميدازولام',
@@ -194,6 +235,16 @@ export const ANESTHESIA_DRUGS: AnesthesiaDrug[] = [
     tags: ['IV', 'opioid', 'analgesia', 'مسكن']
   },
   {
+    id: 'pethidine',
+    en: 'Meperidine (Pethidine)',
+    ar: 'ميبيريدين / بيثيدين',
+    category: 'analgesics',
+    categoryAr: 'مسكنات أفيونية',
+    classes: ['intravenous', 'analgesic'],
+    short: 'مسكن أفيوني قديم نسبيًا؛ قل استخدامه بسبب تراكم مستقلبه نورميبيريدين وخطر السمية العصبية والتداخل مع مثبطات MAO.',
+    tags: ['IV', 'opioid', 'meperidine', 'pethidine', 'analgesia', 'مسكن']
+  },
+  {
     id: 'rocuronium',
     en: 'Rocuronium',
     ar: 'روكورونيوم / إزميرون',
@@ -254,6 +305,16 @@ export const ANESTHESIA_DRUGS: AnesthesiaDrug[] = [
     tags: ['IV', 'NMB', 'non-depolarizing', 'مرخي']
   },
   {
+    id: 'cisatracurium',
+    en: 'Cisatracurium',
+    ar: 'سيساتراكوريوم / نيمبكس',
+    category: 'muscle-relaxants',
+    categoryAr: 'مرخيات عضلية',
+    classes: ['intravenous', 'muscle-relaxant'],
+    short: 'مرخٍ عضلي غير مستقطب متوسط المفعول يتحلل بدرجة مهمة عبر Hofmann elimination ويعتمد قليلًا على الكبد والكلى.',
+    tags: ['IV', 'NMB', 'non-depolarizing', 'Nimbex', 'Hofmann', 'مرخي']
+  },
+  {
     id: 'ondansetron',
     en: 'Ondansetron',
     ar: 'أوندانسيترون',
@@ -262,6 +323,86 @@ export const ANESTHESIA_DRUGS: AnesthesiaDrug[] = [
     classes: ['intravenous', 'antiemetic', 'adjunct'],
     short: 'مضاد للغثيان والقيء يُستخدم كثيرًا في الفترة المحيطة بالجراحة.',
     tags: ['IV', 'PONV', 'antiemetic', 'غثيان']
+  },
+  {
+    id: 'lidocaine',
+    en: 'Lidocaine',
+    ar: 'ليدوكائين / زايلاكين',
+    category: 'local-anesthetics',
+    categoryAr: 'مخدرات موضعية',
+    classes: ['local-anesthetic', 'intravenous', 'adjunct'],
+    short: 'مخدر موضعي من نوع الأميد يحجب قنوات الصوديوم ويُستخدم للارتشاح والحصر العصبي وتقنيات إقليمية مختارة.',
+    tags: ['local anesthetic', 'amide', 'Xylocaine', 'lidocaine', 'موضعي']
+  },
+  {
+    id: 'bupivacaine',
+    en: 'Bupivacaine',
+    ar: 'بوبيفاكائين / ماركايين',
+    category: 'local-anesthetics',
+    categoryAr: 'مخدرات موضعية',
+    classes: ['local-anesthetic'],
+    short: 'مخدر موضعي أميدي طويل المفعول يُستخدم للحصر العصبي والتخدير فوق الجافية وتقنيات إقليمية أخرى.',
+    tags: ['local anesthetic', 'amide', 'Marcaine', 'bupivacaine', 'موضعي']
+  },
+  {
+    id: 'naloxone',
+    en: 'Naloxone',
+    ar: 'نالوكسون / ناركان',
+    category: 'reversal',
+    categoryAr: 'عكس وتأثيرات مضادة',
+    classes: ['intravenous', 'reversal', 'emergency'],
+    short: 'مضاد تنافسي لمستقبلات الأفيونات يُستخدم لعكس التثبيط التنفسي والآثار السمية للأفيونات.',
+    tags: ['opioid antagonist', 'Narcan', 'reversal', 'antidote', 'ترياق']
+  },
+  {
+    id: 'sugammadex',
+    en: 'Sugammadex',
+    ar: 'سوغاماديكس / بريدِيون',
+    category: 'reversal',
+    categoryAr: 'عكس وتأثيرات مضادة',
+    classes: ['intravenous', 'reversal', 'adjunct'],
+    short: 'عامل عكس نوعي يحيط بجزيئات الروكورونيوم والفيكورونيوم ويعكس الحصار العصبي العضلي الناجم عنهما.',
+    tags: ['Bridion', 'reversal', 'rocuronium', 'vecuronium', 'مرخيات']
+  },
+  {
+    id: 'ephedrine',
+    en: 'Ephedrine',
+    ar: 'إيفيدرين',
+    category: 'cardiovascular',
+    categoryAr: 'أدوية قلبية وعائية',
+    classes: ['intravenous', 'vasopressor', 'emergency'],
+    short: 'ناهض أدرينرجي مباشر وغير مباشر يُستخدم لعلاج انخفاض ضغط الدم المهم سريريًا أثناء التخدير.',
+    tags: ['vasopressor', 'hypotension', 'adrenergic', 'رافع ضغط']
+  },
+  {
+    id: 'phenylephrine',
+    en: 'Phenylephrine',
+    ar: 'فينيليفرين',
+    category: 'cardiovascular',
+    categoryAr: 'أدوية قلبية وعائية',
+    classes: ['intravenous', 'vasopressor', 'emergency'],
+    short: 'ناهض α1 أدرينرجي مباشر يرفع المقاومة الوعائية ويُستخدم لعلاج انخفاض الضغط الناتج أساسًا عن توسع الأوعية أثناء التخدير.',
+    tags: ['alpha1', 'vasopressor', 'hypotension', 'رافع ضغط']
+  },
+  {
+    id: 'metoprolol',
+    en: 'Metoprolol',
+    ar: 'ميتوبرولول / لوبريسور',
+    category: 'cardiovascular',
+    categoryAr: 'أدوية قلبية وعائية',
+    classes: ['intravenous', 'cardiovascular', 'adjunct'],
+    short: 'حاصر بيتا-1 انتقائي نسبيًا يبطئ معدل القلب ويقلل التأثير الأدرينرجي القلبي.',
+    tags: ['beta blocker', 'beta1', 'Lopressor', 'cardiovascular', 'قلب']
+  },
+  {
+    id: 'esmolol',
+    en: 'Esmolol',
+    ar: 'إسمولول / بريفيبلوك',
+    category: 'cardiovascular',
+    categoryAr: 'أدوية قلبية وعائية',
+    classes: ['intravenous', 'cardiovascular', 'adjunct'],
+    short: 'حاصر بيتا-1 وريدي فائق القصر يُستخدم للتحكم السريع بمعدل القلب أو الضغط في سياقات محددة.',
+    tags: ['beta blocker', 'beta1', 'Brevibloc', 'tachycardia', 'قلب']
   },
   {
     id: 'atropine',
@@ -305,5 +446,9 @@ export const DRUG_FILTERS: Array<{ id: 'all' | DrugClass; label: string }> = [
   { id: 'muscle-relaxant', label: 'مرخي عضلي' },
   { id: 'antiemetic', label: 'مضاد قيء' },
   { id: 'emergency', label: 'طوارئ' },
+  { id: 'local-anesthetic', label: 'مخدر موضعي' },
+  { id: 'reversal', label: 'عكس / ترياق' },
+  { id: 'vasopressor', label: 'رافع ضغط' },
+  { id: 'cardiovascular', label: 'قلبي وعائي' },
   { id: 'adjunct', label: 'مساعد' }
 ];
