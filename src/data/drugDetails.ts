@@ -764,5 +764,30 @@ export const DRUG_DETAILS: Record<string, DrugDetail> = {
     correction: 'المصدر القديم يعرض Ranitidine injection 50 mg كدواء ثابت. FDA سحب منتجات ranitidine القديمة في 2020 بسبب NDMA، ثم وافق في نوفمبر 2025 على reformulated ranitidine tablets بشروط تخزين جديدة؛ لذلك يجب ربط أي جرعة أو طريق إعطاء بالمستحضر الحالي في البلد، لا بالمعلومة القديمة وحدها.',
     sourcePages: [18],
     sourceLabel: 'ملف كتابة أدوية التخدير — Ranitidine'
+  },
+  diphenhydramine: {
+    feature: 'H1 antihistamine مع تأثيرات Sedative وAnticholinergic.',
+    mechanism: 'يتنافس مع Histamine على مستقبلات H1 وله تأثيرات مركزية ومضادة للمسكارين.',
+    tradeNames: ['Allermin', 'Benadryl'],
+    routes: ['وريدي | Intravenous', 'عضلي | Intramuscular', 'فموي | Oral حسب المستحضر'],
+    uses: ['الحساسية الحادة عندما يتعذر العلاج الفموي | Acute allergic reactions', 'علاج مساعد بعد Adrenaline في Anaphylaxis وليس بديلًا عنه'],
+    contraindications: ['فرط التحسس', 'حديثو الولادة والخدج للمستحضر الحقني بحسب الملصق'],
+    warnings: ['النعاس وتأثيرات CNS', 'تأثيرات Anticholinergic مثل جفاف الفم واحتباس البول', 'قد يزيد تأثير الأدوية المثبطة للجهاز العصبي المركزي'],
+    adverseEffects: ['نعاس | Drowsiness', 'دوخة | Dizziness', 'جفاف الفم | Dry mouth', 'تشوش الرؤية | Blurred vision'],
+    correction: 'ورد في المصدر لعلاج الحساسية؛ في Anaphylaxis يبقى Adrenaline العلاج الأول، وDiphenhydramine علاج مساعد بعد السيطرة على الأعراض الحادة.',
+    sourcePages: [30, 80],
+    sourceLabel: 'مبادئ التخدير — Diphenhydramine'
+  },
+  droperidol: {
+    feature: 'Neuroleptic ذو تأثير Antiemetic ومهدئ.',
+    mechanism: 'يعمل أساسًا كمضاد لمستقبلات Dopamine D2 مع تأثيرات إضافية على الجهاز العصبي الذاتي.',
+    routes: ['وريدي | Intravenous', 'عضلي | Intramuscular'],
+    uses: ['تقليل الغثيان والقيء المرتبطين بالإجراءات الجراحية والتشخيصية | Perioperative nausea/vomiting'],
+    contraindications: ['Known or suspected QT prolongation', 'Congenital long-QT syndrome', 'فرط التحسس'],
+    warnings: ['QT prolongation وTorsades risk', 'الحذر مع Bradycardia أو Hypokalemia أو Hypomagnesemia أو أدوية تطيل QT', 'قد يسبب Hypotension وSedation'],
+    adverseEffects: ['نعاس | Sedation', 'هبوط الضغط | Hypotension', 'إطالة QT | QT prolongation', 'Extrapyramidal reactions'],
+    correction: 'المصدر يصفه كمضاد قيء ومهدئ/منوم؛ الاستخدام الحديث يحتاج الانتباه الشديد إلى QT وموانع الاستعمال القلبية.',
+    sourcePages: [80],
+    sourceLabel: 'مبادئ التخدير — Droperidol'
   }
 };
