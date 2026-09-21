@@ -181,6 +181,86 @@
       "spoken_text": "Esmolol",
       "file": "/audio/drugs/esmolol.mp3"
     },
+    "drugs/adenosine": {
+      "source_text": "Adenosine",
+      "spoken_text": "Adenosine",
+      "file": "/audio/drugs/adenosine.mp3"
+    },
+    "drugs/albuterol": {
+      "source_text": "Salbutamol (Albuterol)",
+      "spoken_text": "Salbutamol (Albuterol)",
+      "file": "/audio/drugs/albuterol.mp3"
+    },
+    "drugs/aminophylline": {
+      "source_text": "Aminophylline",
+      "spoken_text": "Aminophylline",
+      "file": "/audio/drugs/aminophylline.mp3"
+    },
+    "drugs/amiodarone": {
+      "source_text": "Amiodarone",
+      "spoken_text": "Amiodarone",
+      "file": "/audio/drugs/amiodarone.mp3"
+    },
+    "drugs/alteplase": {
+      "source_text": "Alteplase",
+      "spoken_text": "Alteplase",
+      "file": "/audio/drugs/alteplase.mp3"
+    },
+    "drugs/calcium-gluconate": {
+      "source_text": "Calcium Gluconate",
+      "spoken_text": "Calcium Gluconate",
+      "file": "/audio/drugs/calcium-gluconate.mp3"
+    },
+    "drugs/calcium-chloride": {
+      "source_text": "Calcium Chloride",
+      "spoken_text": "Calcium Chloride",
+      "file": "/audio/drugs/calcium-chloride.mp3"
+    },
+    "drugs/dexamethasone": {
+      "source_text": "Dexamethasone",
+      "spoken_text": "Dexamethasone",
+      "file": "/audio/drugs/dexamethasone.mp3"
+    },
+    "drugs/diltiazem": {
+      "source_text": "Diltiazem",
+      "spoken_text": "Diltiazem",
+      "file": "/audio/drugs/diltiazem.mp3"
+    },
+    "drugs/dobutamine": {
+      "source_text": "Dobutamine",
+      "spoken_text": "Dobutamine",
+      "file": "/audio/drugs/dobutamine.mp3"
+    },
+    "drugs/dopamine": {
+      "source_text": "Dopamine",
+      "spoken_text": "Dopamine",
+      "file": "/audio/drugs/dopamine.mp3"
+    },
+    "drugs/esomeprazole": {
+      "source_text": "Esomeprazole",
+      "spoken_text": "Esomeprazole",
+      "file": "/audio/drugs/esomeprazole.mp3"
+    },
+    "drugs/furosemide": {
+      "source_text": "Furosemide",
+      "spoken_text": "Furosemide",
+      "file": "/audio/drugs/furosemide.mp3"
+    },
+    "drugs/hydrocortisone": {
+      "source_text": "Hydrocortisone",
+      "spoken_text": "Hydrocortisone",
+      "file": "/audio/drugs/hydrocortisone.mp3"
+    },
+    "drugs/labetalol": {
+      "source_text": "Labetalol",
+      "spoken_text": "Labetalol",
+      "file": "/audio/drugs/labetalol.mp3"
+    },
+    "drugs/nitroglycerin": {
+      "source_text": "Nitroglycerin",
+      "spoken_text": "Nitroglycerin",
+      "file": "/audio/drugs/nitroglycerin.mp3"
+    },
     "drugs/atropine": {
       "source_text": "Atropine",
       "spoken_text": "Atropine",
