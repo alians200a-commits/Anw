@@ -1734,6 +1734,55 @@ export const CLINICAL_TERMS: ClinicalTerm[] = [
     definition: "جراحة إنشاء مسار بديل لتروية عضلة القلب حول تضيق/انسداد الشرايين التاجية | Surgical coronary revascularization.",
     tags: ["CABG","cardiac surgery","coronary","جراحة قلب"]
   }
+,
+  {
+    id: 'topical-anesthesia',
+    en: 'Topical Anesthesia',
+    ar: 'التخدير السطحي',
+    category: 'pharmacology',
+    definition: 'وضع المخدر الموضعي مباشرة على الجلد أو الغشاء المخاطي لإحداث فقد إحساس موضعي.',
+    tags: ['local anesthesia', 'topical', 'موضعي']
+  },
+  {
+    id: 'local-infiltration',
+    en: 'Local Infiltration',
+    ar: 'الارتشاح الموضعي',
+    category: 'pharmacology',
+    definition: 'حقن المخدر الموضعي داخل الأنسجة حول موضع الإجراء لإحداث تخدير محدود.',
+    tags: ['local anesthesia', 'infiltration', 'موضعي']
+  },
+  {
+    id: 'peripheral-nerve-block',
+    en: 'Peripheral Nerve Block',
+    ar: 'حصر العصب المحيطي',
+    category: 'pharmacology',
+    definition: 'حقن مخدر موضعي قرب عصب أو ضفيرة عصبية لمنع نقل الإحساس في المنطقة التي يغذيها.',
+    tags: ['regional anesthesia', 'nerve block', 'إقليمي']
+  },
+  {
+    id: 'redistribution',
+    en: 'Redistribution',
+    ar: 'إعادة التوزيع',
+    category: 'pharmacology',
+    definition: 'انتقال الدواء من الأنسجة عالية التروية إلى أنسجة أخرى، وقد يساهم في انتهاء التأثير السريري بعد جرعة وريدية مفردة.',
+    tags: ['pharmacokinetics', 'distribution', 'دواء']
+  },
+  {
+    id: 'drug-clearance',
+    en: 'Clearance',
+    ar: 'التصفية الدوائية',
+    category: 'pharmacology',
+    definition: 'حجم البلازما الذي يُزال منه الدواء بالكامل لكل وحدة زمن.',
+    tags: ['pharmacokinetics', 'clearance', 'دواء']
+  },
+  {
+    id: 'fresh-gas-flow',
+    en: 'Fresh Gas Flow',
+    ar: 'تدفق الغاز الطازج',
+    category: 'surgical',
+    definition: 'تدفق خليط الغازات الجديد من محطة التخدير إلى دائرة التنفس.',
+    tags: ['anesthesia machine', 'flowmeter', 'breathing circuit']
+  }
 
 ];
 
