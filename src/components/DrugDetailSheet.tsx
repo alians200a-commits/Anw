@@ -79,22 +79,19 @@ const MEDICAL_TERMS: Record<string, string> = {
   'التشنج العضلي': 'Muscle spasm'
 };
 
+const escapeRegExp = (value: string) =>
+  value.replace(/[.*+?^$()|[\]{}\\]/g, '\\$&');
+
 const MEDICAL_PATTERN = new RegExp(
   Object.keys(MEDICAL_TERMS)
     .sort((a, b) => b.length - a.length)
-    .map((term) => term.replace(/[.*+?^$()|[\]{}\\]/g, '\\const toneMap = {
-  use: { icon: Target, label: 'text-[#7FB69B]', line: 'border-r-[#4E8F70]' },
-  contra: { icon: Prohibit, label: 'text-[#D48A8A]', line: 'border-r-[#9C5656]' },
-  warning: { icon: ShieldWarning, label: 'text-[#D9A441]', line: 'border-r-[#D9A441]' },
-  effect: { icon: FirstAid, label: 'text-[#9BAEC0]', line: 'border-r-[#6E879C]' }
-} as const;
-'))
+    .map(escapeRegExp)
     .join('|'),
   'g'
 );
 
 function BilingualMedicalText({ text }: { text: string }) {
-  const parts: Array<string | JSX.Element> = [];
+  const parts: Array<string | ReturnType<typeof BilingualToken>> = [];
   let lastIndex = 0;
   let match: RegExpExecArray | null;
   let key = 0;
@@ -107,13 +104,7 @@ function BilingualMedicalText({ text }: { text: string }) {
     }
 
     const arabic = match[0];
-    parts.push(
-      <span key={key++}>
-        {arabic}
-        <span dir="ltr" className="font-semibold text-[#D8C389]"> | {MEDICAL_TERMS[arabic]}</span>
-      </span>
-    );
-
+    parts.push(<BilingualToken key={key++} arabic={arabic} english={MEDICAL_TERMS[arabic]} />);
     lastIndex = match.index + arabic.length;
   }
 
@@ -122,6 +113,15 @@ function BilingualMedicalText({ text }: { text: string }) {
   }
 
   return <>{parts}</>;
+}
+
+function BilingualToken({ arabic, english }: { arabic: string; english: string }) {
+  return (
+    <span>
+      {arabic}
+      <span dir="ltr" className="font-semibold text-[#D8C389]"> | {english}</span>
+    </span>
+  );
 }
 
 function DetailSection({ title, items, tone }: DetailSectionProps) {
