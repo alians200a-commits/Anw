@@ -4,9 +4,10 @@ import { AbbreviationsDirectory } from './AbbreviationsDirectory';
 import { EquipmentDirectory } from './EquipmentDirectory';
 import { ClinicalGuidesDirectory } from './ClinicalGuidesDirectory';
 import { FluidsDirectory } from './FluidsDirectory';
+import { AnesthesiaStagesDirectory } from './AnesthesiaStagesDirectory';
 import type { DrugClass } from '../data/drugs';
 
-export type GuideSection = 'drugs' | 'fluids' | 'equipment' | 'clinical' | 'terms' | 'abbreviations';
+export type GuideSection = 'drugs' | 'fluids' | 'equipment' | 'stages' | 'clinical' | 'terms' | 'abbreviations';
 
 interface GuideScreenProps {
   section: GuideSection;
@@ -39,6 +40,7 @@ export function GuideScreen({
           <option value="drugs">الأدوية</option>
           <option value="equipment">الأجهزة والأدوات</option>
           <option value="fluids">السوائل الوريدية</option>
+          <option value="stages">مراحل التخدير | Stages of Anesthesia</option>
           <option value="clinical">المفاهيم والإجراءات</option>
           <option value="terms">المصطلحات</option>
           <option value="abbreviations">الاختصارات</option>
@@ -54,6 +56,7 @@ export function GuideScreen({
       )}
       {section === 'fluids' && <FluidsDirectory />}
       {section === 'equipment' && <EquipmentDirectory />}
+      {section === 'stages' && <AnesthesiaStagesDirectory />}
       {section === 'clinical' && <ClinicalGuidesDirectory />}
       {section === 'terms' && (
         <TermsDirectory favorites={favorites} onToggleFavorite={onToggleFavorite} />
