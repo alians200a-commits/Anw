@@ -1150,5 +1150,220 @@ export const CLINICAL_GUIDES: ClinicalGuide[] = [
     ],
     correction: 'القول إن Fentanyl “لا يتأثر إطلاقًا” بخلل الكبد أو أن Isoflurane هو الخيار الوحيد الموصى به مبسّط أكثر من اللازم. الاختيار الحديث يعتمد على شدة المرض والاستجابة؛ Remifentanil أكثر استقلالًا عن الكبد، وAtracurium/Cisatracurium يملكان ميزة واضحة في التخلص غير الكبدي.',
     tags: ['liver disease','cirrhosis','hepatic failure','anesthesia','hepatic encephalopathy']
+  },
+  {
+    id: 'anesthesia-history',
+    titleAr: 'محطات من تاريخ التخدير',
+    titleEn: 'Milestones in the History of Anesthesia',
+    category: 'general',
+    categoryAr: 'التخدير العام',
+    sourcePages: [4],
+    summary: 'المصدر يلخص محطات مبكرة من تطور التخدير؛ أُعيد ترتيبها هنا كخط زمني تعليمي مع تصحيح التواريخ والمصطلحات الأساسية.',
+    sections: [
+      {
+        title: 'محطات رئيسية | Key milestones',
+        items: [
+          'هوراس ويلز | Horace Wells استخدم Nitrous oxide لخلع سن في ديسمبر 1844، ثم عرض التقنية عام 1845.',
+          'ويليام مورتون | William T. G. Morton قدّم العرض العام الناجح الشهير للتخدير بالإيثر | Ether anesthesia في 16 أكتوبر 1846.',
+          'أوليفر وندل هولمز | Oliver Wendell Holmes اقترح مصطلحي Anaesthetic وAnaesthesia عام 1846.',
+          'جون سنو | John Snow أعطى Chloroform للملكة Victoria أثناء الولادة عام 1853 ثم 1857.',
+          'كارل كولر | Karl Koller أدخل Cocaine للتخدير الموضعي العيني سريريًا عام 1884.'
+        ]
+      }
+    ],
+    correction: 'المصدر يذكر بعض التواريخ بصياغة مختصرة أو غير دقيقة، مثل topical local anesthesia عام 1844 وspinal anesthesia عام 1885. العرض السريري للكوكايين كموضعي عيني كان 1884، والتخدير النخاعي البشري الناجح يُنسب عادةً إلى August Bier عام 1898.',
+    tags: ['history','ether','Morton','Wells','John Snow','تاريخ التخدير']
+  },
+  {
+    id: 'general-anesthesia-mechanisms',
+    titleAr: 'آليات عمل التخدير العام',
+    titleEn: 'Mechanisms of General Anesthesia',
+    category: 'pharmacology',
+    categoryAr: 'علم الأدوية',
+    sourcePages: [5],
+    summary: 'لا توجد نظرية واحدة تفسر كل تأثيرات التخدير العام؛ الأدوية المختلفة تؤثر في قنوات ومستقبلات وشبكات عصبية متعددة.',
+    sections: [
+      {
+        title: 'مفاهيم تاريخية | Historical concepts',
+        items: [
+          'ارتباط القوة بالذوبان الدهني | Meyer-Overton correlation: علاقة تاريخية مهمة بين الذوبان الدهني وقوة كثير من المخدرات.',
+          'فرضيات الغشاء الدهني | Lipid membrane hypotheses ساعدت تاريخيًا في تفسير التخدير لكنها لا تفسر كل الظواهر.'
+        ]
+      },
+      {
+        title: 'الفهم الحديث | Modern understanding',
+        items: [
+          'تعزيز النقل المثبط | Enhanced inhibitory transmission عبر GABA-A وGlycine لبعض العوامل.',
+          'تقليل النقل الاستثاري | Reduced excitatory transmission عبر NMDA أو Nicotinic receptors بحسب الدواء.',
+          'تنشيط قنوات البوتاسيوم | Potassium-channel activation والمساهمة في فرط استقطاب العصبونات.',
+          'فقد الوعي والذاكرة يعتمد أكثر على شبكات الدماغ، بينما عدم الحركة استجابةً للجراحة يعتمد بدرجة كبيرة على الحبل الشوكي | Spinal cord.'
+        ]
+      }
+    ],
+    correction: 'النص القديم يوحي بأن “الحجم الحرج في الدهون” أو GABA وحدهما يفسران التخدير. الفهم الحالي متعدد الأهداف | Multi-target؛ مثلًا Nitrous oxide يعمل أساسًا عبر NMDA antagonism ولا يملك تأثيرًا مباشرًا رئيسيًا على GABA-A.',
+    tags: ['mechanism','Meyer Overton','GABA','NMDA','general anesthesia']
+  },
+  {
+    id: 'respiratory-muscle-mechanics',
+    titleAr: 'عضلات وميكانيكية التنفس',
+    titleEn: 'Respiratory Muscles and Mechanics',
+    category: 'general',
+    categoryAr: 'التخدير العام',
+    sourcePages: [6],
+    summary: 'الشهيق الهادئ | Quiet inspiration عملية فعالة يقودها الحجاب الحاجز، بينما الزفير الهادئ | Quiet expiration يحدث غالبًا بالارتداد المرن السلبي.',
+    sections: [
+      {
+        title: 'الشهيق | Inspiration',
+        items: [
+          'الحجاب الحاجز | Diaphragm هو العضلة الرئيسية للشهيق الهادئ.',
+          'العضلات الوربية الخارجية | External intercostals تساعد على رفع القفص الصدري.',
+          'Scalenes وSternocleidomastoid عضلات شهيقية مساعدة | Accessory inspiratory muscles أثناء الجهد.'
+        ]
+      },
+      {
+        title: 'الزفير | Expiration',
+        items: [
+          'الزفير الهادئ | Quiet expiration يعتمد على الارتداد المرن للرئة وجدار الصدر.',
+          'الزفير القسري | Forced expiration يستخدم عضلات البطن | Abdominal muscles والوربية الداخلية | Internal intercostals.'
+        ]
+      }
+    ],
+    tags: ['diaphragm','intercostal','respiratory muscles','inspiration','expiration']
+  },
+  {
+    id: 'lung-volumes-capacities',
+    titleAr: 'أحجام وسعات الرئة',
+    titleEn: 'Lung Volumes and Capacities',
+    category: 'general',
+    categoryAr: 'التخدير العام',
+    sourcePages: [7,8,9],
+    summary: 'أحجام الرئة | Lung volumes وسعاتها تُستخدم لفهم التهوية والاحتياطي التنفسي وتأثير التخدير والوضعية والمرض الرئوي.',
+    sections: [
+      {
+        title: 'الأحجام | Volumes',
+        items: [
+          'حجم المد | Tidal Volume (VT): حجم الغاز في نفس طبيعي.',
+          'حجم احتياطي الشهيق | Inspiratory Reserve Volume (IRV).',
+          'حجم احتياطي الزفير | Expiratory Reserve Volume (ERV).',
+          'الحجم المتبقي | Residual Volume (RV).'
+        ]
+      },
+      {
+        title: 'السعات | Capacities',
+        items: [
+          'السعة الرئوية الكلية | Total Lung Capacity (TLC) = VT + IRV + ERV + RV.',
+          'السعة الحيوية | Vital Capacity (VC) = IRV + VT + ERV.',
+          'السعة المتبقية الوظيفية | Functional Residual Capacity (FRC) = ERV + RV.',
+          'السعة الشهيقية | Inspiratory Capacity (IC) = VT + IRV.'
+        ]
+      },
+      {
+        title: 'اختبارات الجريان | Spirometry',
+        items: [
+          'السعة الحيوية القسرية | Forced Vital Capacity (FVC).',
+          'حجم الزفير القسري في ثانية | FEV₁.',
+          'نسبة FEV₁/FVC تساعد في تقييم الانسداد | Obstructive physiology، وتُفسر باستخدام الحدود المرجعية للعمر والجنس والطول لا رقم 80% وحده.'
+        ]
+      }
+    ],
+    correction: 'الأرقام المطلقة مثل TLC=6 L أو RV=1.5 L أو FRC=3 L ليست “طبيعية ثابتة” لكل شخص؛ تختلف مع الطول والعمر والجنس والوضعية. كذلك FEV₁/FVC يُفسر بالحد الأدنى الطبيعي | Lower limit of normal بدل قاعدة 80% لجميع البالغين.',
+    tags: ['lung volumes','TLC','FRC','FEV1','FVC','spirometry']
+  },
+  {
+    id: 'tracheal-intubation',
+    titleAr: 'التنبيب الرغامي',
+    titleEn: 'Tracheal Intubation',
+    category: 'airway',
+    categoryAr: 'مجرى الهواء',
+    sourcePages: [21,22,23],
+    summary: 'إدخال أنبوب عبر الحنجرة إلى الرغامى | Trachea لتأمين مجرى الهواء وتسهيل التهوية وحماية الرئة في الحالات المناسبة.',
+    sections: [
+      {
+        title: 'طرق | Routes',
+        items: [
+          'التنبيب الفموي | Orotracheal intubation هو الأكثر شيوعًا.',
+          'التنبيب الأنفي | Nasotracheal intubation يُستخدم في مؤشرات مختارة ويتطلب الانتباه لموانع مثل إصابات قاعدة الجمجمة أو اضطرابات النزف.'
+        ]
+      },
+      {
+        title: 'أنواع الأنابيب | Tube types',
+        items: [
+          'أنبوب ذو كفة | Cuffed endotracheal tube.',
+          'أنبوب غير ذي كفة | Uncuffed tube في استخدامات مختارة.',
+          'أنبوب مدعم | Reinforced / armoured tube لمقاومة الانثناء.',
+          'أنبوب مزدوج اللمعة | Double-lumen tube لعزل الرئتين في جراحات الصدر.'
+        ]
+      },
+      {
+        title: 'فوائد | Indications / benefits',
+        items: [
+          'التحكم بالتهوية بالضغط الإيجابي | Positive-pressure ventilation.',
+          'الشفط الرغامي | Tracheal suction.',
+          'تقليل خطر الاستنشاق الرئوي باستخدام أنبوب ذي كفة بطريقة مناسبة | Aspiration risk reduction.',
+          'تأمين مجرى الهواء في أوضاع وعمليات يتعذر فيها الاعتماد على القناع.'
+        ]
+      }
+    ],
+    correction: 'المصدر يقول إن الأنبوب غير ذي الكفة يُستخدم تحت عمر 8 سنوات. هذه قاعدة قديمة؛ الأنابيب ذات الكفة | Cuffed ETTs شائعة وآمنة في الأطفال عند اختيار الحجم الصحيح ومراقبة ضغط الكفة.',
+    tags: ['intubation','ETT','cuffed tube','double lumen','تنبيب']
+  },
+  {
+    id: 'ett-placement-confirmation',
+    titleAr: 'التأكد من موضع الأنبوب الرغامي',
+    titleEn: 'Confirmation of Endotracheal Tube Placement',
+    category: 'airway',
+    categoryAr: 'مجرى الهواء',
+    sourcePages: [25],
+    summary: 'التأكيد الموثوق على دخول الأنبوب إلى الرغامى يعتمد على دمج التقييم السريري مع كشف ثاني أوكسيد الكربون الزفيري المستمر.',
+    sections: [
+      {
+        title: 'أفضل دليل روتيني | Key confirmation',
+        items: [
+          'وجود موجة Capnography مستمرة ومتكررة مع CO₂ زفيري بعد عدة أنفاس | Sustained waveform capnography.',
+          'ارتفاع الصدر ثنائيًا | Bilateral chest rise.',
+          'سماع أصوات التنفس ثنائيًا وغياب أصوات واضحة فوق المعدة | Bilateral breath sounds / absent gastric insufflation.',
+          'تحسن/ثبات الأكسجة | Oxygenation مع بقية العلامات.'
+        ]
+      },
+      {
+        title: 'بعد التأكيد | After confirmation',
+        items: [
+          'تثبيت الأنبوب وتوثيق العمق عند الأسنان/اللثة | Secure / document depth.',
+          'مراقبة Capnography باستمرار لكشف الانفصال أو النزع | Continuous confirmation.'
+        ]
+      }
+    ],
+    correction: 'تحسس الكفة خارجيًا أو ارتفاع SpO₂ وحدهما لا يكفيان لتأكيد موضع الأنبوب. Capnography الموجي المستمر هو الوسيلة الأساسية لتأكيد ومراقبة وضع الأنبوب في معظم حالات التخدير والإنعاش.',
+    tags: ['ETT confirmation','capnography','intubation','EtCO2','تأكيد الانبوب']
+  },
+  {
+    id: 'tracheal-intubation-complications',
+    titleAr: 'مضاعفات ومشكلات الأنبوب الرغامي',
+    titleEn: 'Tracheal Intubation and ETT Complications',
+    category: 'airway',
+    categoryAr: 'مجرى الهواء',
+    sourcePages: [25],
+    summary: 'المشكلات قد تحدث أثناء الإدخال أو بعد التثبيت، ويجب كشفها مبكرًا بمراقبة التهوية والضغط وCapnography.',
+    sections: [
+      {
+        title: 'مشكلات شائعة | Common problems',
+        items: [
+          'تنبيب المريء | Esophageal intubation.',
+          'تنبيب قصبة رئيسية واحدة، غالبًا اليمنى | Endobronchial intubation.',
+          'انثناء أو انسداد الأنبوب | Kinking / obstruction.',
+          'عض الأنبوب | Tube biting.',
+          'انفصال الدائرة | Circuit disconnection.',
+          'نزع الأنبوب العرضي | Accidental extubation.'
+        ]
+      },
+      {
+        title: 'استجابة | Response',
+        items: [
+          'عند أي تدهور مفاجئ: أعطِ أوكسجين وقيّم المريض أولًا ثم افحص الأنبوب والدائرة والجهاز | Patient first, then tube/circuit/machine.',
+          'راقب waveform Capnography وضغوط مجرى الهواء وحركة الصدر | EtCO₂ / airway pressure / chest movement.'
+        ]
+      }
+    ],
+    tags: ['ETT complications','endobronchial','kinking','disconnection','accidental extubation']
   }
 ];
