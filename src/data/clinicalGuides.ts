@@ -58,7 +58,8 @@ export const CLINICAL_GUIDES: ClinicalGuide[] = [
           'حصر العصب المحيطي | Peripheral nerve block.',
           'التخدير الإقليمي الوريدي | Intravenous regional anesthesia (Bier block).',
           'التخدير النخاعي | Spinal anesthesia.',
-          'التخدير فوق الجافية | Epidural anesthesia.'
+          'التخدير فوق الجافية | Epidural anesthesia.',
+          'التسكين بالتبريد | Refrigeration analgesia: تقنية تاريخية/محدودة لتقليل الإحساس بالألم بالتبريد الشديد الموضعي، وليست بديلًا روتينيًا للتخدير الموضعي الحديث.'
         ]
       }
     ],
@@ -136,6 +137,35 @@ export const CLINICAL_GUIDES: ClinicalGuide[] = [
     correction: 'الضغط الحلقي | Cricoid pressure ما زال موضوعًا جدليًا ويُعدّل أو يُزال إذا أعاق التهوية أو التنبيب. كذلك منع التهوية بالقناع تمامًا ليس قاعدة مطلقة؛ يمكن استخدام تهوية لطيفة منخفضة الضغط عند خطر نقص الأكسجة.',
     tags: ['RSI','rapid sequence','cricoid','aspiration','preoxygenation']
   },
+  {
+    id: 'anesthesia-induction',
+    titleAr: 'البدء في التخدير',
+    titleEn: 'Induction of Anesthesia',
+    category: 'general',
+    categoryAr: 'التخدير العام',
+    sourcePages: [29],
+    summary: 'التحريض | Induction هو الانتقال المنظم من اليقظة إلى حالة التخدير المناسبة لبدء الإجراء، مع استمرار المراقبة والاستعداد لتأمين مجرى الهواء.',
+    sections: [
+      {
+        title: 'الطرق | Routes',
+        items: [
+          'التحريض الوريدي | Intravenous induction هو الأكثر شيوعًا عند وجود مدخل وريدي مناسب.',
+          'التحريض الاستنشاقي | Inhalational induction يُستخدم في حالات مختارة مثل الأطفال أو صعوبة الوصول الوريدي.',
+          'يذكر المصدر طرقًا فموية وشرجية تاريخيًا؛ في الممارسة الحديثة تُستخدم هذه الطرق أكثر للـPremedication أو Sedation في سياقات مختارة وليست الطريق المعتاد لتحريض التخدير العام عند البالغ.'
+        ]
+      },
+      {
+        title: 'المبادئ | Principles',
+        items: [
+          'المراقبة المستمرة | Continuous monitoring تبدأ قبل التحريض وتستمر خلال جميع مراحل التخدير.',
+          'يجب أن تكون خطة مجرى الهواء والتهوية والشفط والأدوية الاحتياطية جاهزة قبل بدء التحريض.',
+          'اختيار عامل التحريض والطريقة يعتمد على حالة المريض، خطر الاستنشاق، مجرى الهواء ونوع الإجراء.'
+        ]
+      }
+    ],
+    tags: ['induction','IV induction','inhalational induction','بدء التخدير','تحريض']
+  },
+
   {
     id: 'inhalational-induction',
     titleAr: 'التحريض الاستنشاقي',
