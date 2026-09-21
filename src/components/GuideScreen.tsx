@@ -4,8 +4,9 @@ import { AbbreviationsDirectory } from './AbbreviationsDirectory';
 import { EquipmentDirectory } from './EquipmentDirectory';
 import { ClinicalGuidesDirectory } from './ClinicalGuidesDirectory';
 import { FluidsDirectory } from './FluidsDirectory';
+import { CorrectionsDirectory } from './CorrectionsDirectory';
 
-export type GuideSection = 'drugs' | 'fluids' | 'equipment' | 'clinical' | 'terms' | 'abbreviations';
+export type GuideSection = 'drugs' | 'fluids' | 'equipment' | 'clinical' | 'corrections' | 'terms' | 'abbreviations';
 
 interface GuideScreenProps {
   section: GuideSection;
@@ -33,12 +34,13 @@ export function GuideScreen({
           <option value="fluids">السوائل الوريدية</option>
           <option value="equipment">الأجهزة والأدوات</option>
           <option value="clinical">المفاهيم والإجراءات</option>
+          <option value="corrections">تصحيح المعلومات</option>
           <option value="terms">المصطلحات</option>
           <option value="abbreviations">الاختصارات</option>
         </select>
         <div className="text-right">
           <h2 className="text-lg font-black text-[#EEE8D6]">الدليل التخديري</h2>
-          <p className="mt-0.5 text-[10px] text-[#7E91A2]">أدوية • سوائل • أجهزة • إجراءات • مصطلحات • اختصارات</p>
+          <p className="mt-0.5 text-[10px] text-[#7E91A2]">أدوية • سوائل • أجهزة • إجراءات • تصحيحات • مصطلحات</p>
         </div>
       </div>
 
@@ -48,6 +50,7 @@ export function GuideScreen({
       {section === 'fluids' && <FluidsDirectory />}
       {section === 'equipment' && <EquipmentDirectory />}
       {section === 'clinical' && <ClinicalGuidesDirectory />}
+      {section === 'corrections' && <CorrectionsDirectory />}
       {section === 'terms' && (
         <TermsDirectory favorites={favorites} onToggleFavorite={onToggleFavorite} />
       )}
