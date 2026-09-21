@@ -1,0 +1,54 @@
+name: Generate Chatterbox Sample
+
+on:
+  push:
+    paths:
+      - ".github/workflows/generate-chatterbox-sample.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install Chatterbox
+        run: |
+          python -m pip install --upgrade pip
+          pip install chatterbox-tts torchaudio
+
+      - name: Generate sample
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import torchaudio as ta
+          from chatterbox.tts import ChatterboxTTS
+
+          out = Path("public/audio/voice-samples")
+          out.mkdir(parents=True, exist_ok=True)
+
+          model = ChatterboxTTS.from_pretrained(device="cpu")
+          text = "Propofol. Suxamethonium. Rocuronium."
+          wav = model.generate(text)
+          ta.save(str(out / "chatterbox-default.wav"), wav, model.sr)
+          print("Generated Chatterbox sample")
+          PY
+
+      - name: Commit sample
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add public/audio/voice-samples/chatterbox-default.wav
+          if git diff --cached --quiet; then
+            echo "No changes"
+          else
+            git commit -m "chore: generate Chatterbox voice sample"
+            git push
+          fi
