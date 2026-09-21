@@ -1135,7 +1135,7 @@ export const CLINICAL_TERMS: ClinicalTerm[] = [
     abbr: "FRC",
     category: "abbreviations",
     definition: "حجم الغاز المتبقي في الرئتين عند نهاية زفير طبيعي | Volume remaining after a normal tidal expiration؛ وتساوي ERV + RV.",
-    clinicalNote: "يقل FRC عادةً عند الاستلقاء | Supine position وبعد تحريض التخدير العام | General anesthesia، ما قد يزيد قابلية انغلاق المجرى الهوائي وحدوث عدم تطابق V/Q.",
+    clinicalNote: "يقل FRC عادةً عند الاستلقاء | Supine position وبعد بدء التخدير العام | General anesthesia، ما قد يزيد قابلية انغلاق المجرى الهوائي وحدوث عدم تطابق V/Q.",
     tags: ["FRC","functional residual capacity","anesthesia","سعة متبقية"]
   },
   {
@@ -1471,11 +1471,11 @@ export const CLINICAL_TERMS: ClinicalTerm[] = [
   {
     id: "rsi",
     en: "Rapid Sequence Induction and Intubation",
-    ar: "التحريض والتنبيب التسلسلي السريع",
+    ar: "البدء في التخدير والتنبيب التسلسلي السريع",
     abbr: "RSI",
     category: "abbreviations",
     definition: "تقنية لتقليل الزمن بين فقد منعكسات حماية مجرى الهواء وتأمين ETT ذي كفة عندما يكون خطر aspiration مرتفعًا.",
-    clinicalNote: "تشمل عادة preoxygenation وتحريضًا سريعًا ومرخيًا سريعًا وخطة مجرى هوائي بديلة؛ Cricoid pressure والتهوية بالقناع يُفردان حسب الحالة والبروتوكول.",
+    clinicalNote: "تشمل عادة preoxygenation وبدءًا سريعًا للتخدير ومرخيًا سريعًا وخطة مجرى هوائي بديلة؛ Cricoid pressure والتهوية بالقناع يُفردان حسب الحالة والبروتوكول.",
     tags: ["RSI","rapid sequence","aspiration","intubation"]
   },
   {
