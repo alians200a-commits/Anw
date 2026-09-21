@@ -94,13 +94,6 @@ function ClinicalGuideSheet({
             <GuideItems key={section.title} title={section.title} items={section.items} />
           ))}
 
-          {guide.correction && (
-            <section className="rounded-2xl border border-[#F0E1BA] bg-[#FFF9EC] px-3.5 py-3">
-              <p className="text-[10px] font-black text-[#966A22]">تصحيح علمي | Scientific correction</p>
-              <p className="mt-2 text-[11px] leading-5 text-[#5F533D]">{guide.correction}</p>
-            </section>
-          )}
-
           <div className="border-t border-[#E7EEE8] pt-3 text-center text-[9px] leading-4 text-[#849087]">
             <p>المصدر | Source: {guide.sourceLabel ?? 'مبادئ التخدير'}</p>
             <p className="mt-1">
@@ -130,7 +123,6 @@ export function ClinicalGuidesDirectory() {
           guide.categoryAr,
           guide.summary,
           ...guide.sections.flatMap((section) => [section.title, ...section.items]),
-          guide.correction ?? '',
           ...guide.tags
         ].some((value) => value.toLowerCase().includes(normalized));
 
