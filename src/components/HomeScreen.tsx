@@ -177,7 +177,7 @@ export function HomeScreen({
                 <div className="flex items-start justify-between">
                   <span className="text-[9px] font-black text-[#536A7D]">0{index + 1}</span>
                   <div className="grid h-10 w-10 place-items-center rounded-xl border border-[#CCA039]/13 bg-[#CCA039]/7 text-[#CCA039]">
-                    {item.kind === 'drug'
+                    {'kind' in item && item.kind === 'drug'
                       ? <MedicinesHealthIcon className="h-6 w-6" />
                       : Icon && <Icon size={22} weight="regular" />}
                   </div>
