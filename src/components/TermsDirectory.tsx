@@ -76,6 +76,12 @@ export function TermsDirectory({ favorites, onToggleFavorite }: TermsDirectoryPr
                 </div>
               </div>
               <p className="mt-3 text-[10px] leading-5 text-[#8294A4]">{term.definition}</p>
+              {term.clinicalNote && (
+                <div className="mt-2 rounded-xl border border-[#CCA039]/10 bg-[#CCA039]/[0.045] px-2.5 py-2">
+                  <p className="text-[9px] font-black text-[#CCA039]">توضيح طبي</p>
+                  <p className="mt-1 text-[10px] leading-5 text-[#9EACB8]">{term.clinicalNote}</p>
+                </div>
+              )}
             </article>
           );
         })}
