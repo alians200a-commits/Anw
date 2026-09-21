@@ -512,6 +512,92 @@ export const ANESTHESIA_EQUIPMENT: AnesthesiaEquipment[] = [
     tags: ['Ambu','BVM','bag valve mask','انعاش','تهوية يدوية']
   },
   {
+    id: 'capnograph',
+    nameAr: 'Capnograph',
+    nameEn: 'Capnograph / Capnography Monitor',
+    category: 'monitoring',
+    categoryAr: 'المراقبة',
+    sourcePages: [23, 82],
+    summary: 'يراقب ثاني أوكسيد الكربون في الزفير ويعرض قيمة EtCO₂ وموجة Capnogram بصورة مستمرة.',
+    purpose: [
+      'مراقبة التهوية | Ventilation monitoring',
+      'تأكيد ومراقبة موضع الأنبوب الرغامي | ETT placement monitoring'
+    ],
+    keyPoints: [
+      'الموجة المستمرة تعطي معلومات عن التهوية والدائرة ومجرى الهواء، وليس رقم EtCO₂ وحده.',
+      'تغير شكل الموجة أو اختفاؤها قد يدل على مشكلة في التهوية أو الدائرة أو موضع مجرى الهواء.'
+    ],
+    tags: ['capnograph', 'capnography', 'EtCO2', 'CO2', 'monitor']
+  },
+  {
+    id: 'ecg-monitor',
+    nameAr: 'ECG',
+    nameEn: 'Electrocardiography Monitor',
+    category: 'monitoring',
+    categoryAr: 'المراقبة',
+    sourcePages: [82],
+    summary: 'مراقبة النشاط الكهربائي للقلب ومعدل النبض أثناء التخدير.',
+    purpose: [
+      'مراقبة معدل ونظم القلب | Heart rate / rhythm monitoring',
+      'كشف اضطرابات النظم | Arrhythmia detection'
+    ],
+    keyPoints: [
+      'اختيار Lead المناسب يعتمد على الهدف السريري.',
+      'ECG يراقب النشاط الكهربائي ولا يقيس النتاج القلبي أو التروية مباشرة.'
+    ],
+    tags: ['ECG', 'EKG', 'cardiac monitor', 'arrhythmia']
+  },
+  {
+    id: 'nibp-monitor',
+    nameAr: 'NIBP',
+    nameEn: 'Non-Invasive Blood Pressure Monitor',
+    category: 'monitoring',
+    categoryAr: 'المراقبة',
+    sourcePages: [82],
+    summary: 'يقيس ضغط الدم بطريقة غير باضعة باستخدام كفة مناسبة للحجم.',
+    purpose: [
+      'متابعة ضغط الدم أثناء التخدير | Blood pressure monitoring'
+    ],
+    keyPoints: [
+      'اختيار حجم الكفة ووضعها الصحيحان مهمان لدقة القراءة.',
+      'تكرار القياس يحدد حسب الحالة ونوع التخدير والإجراء.'
+    ],
+    tags: ['NIBP', 'blood pressure', 'cuff', 'monitor']
+  },
+  {
+    id: 'temperature-monitor',
+    nameAr: 'Temperature Monitor',
+    nameEn: 'Temperature Monitor',
+    category: 'monitoring',
+    categoryAr: 'المراقبة',
+    sourcePages: [82],
+    summary: 'يراقب حرارة المريض عندما يكون تغير الحرارة متوقعًا أو مهمًا سريريًا أثناء التخدير.',
+    purpose: [
+      'كشف انخفاض أو ارتفاع الحرارة | Hypothermia / hyperthermia detection'
+    ],
+    keyPoints: [
+      'اختيار موقع القياس يعتمد على نوع الجراحة ومدة التخدير ودقة القياس المطلوبة.'
+    ],
+    tags: ['temperature', 'monitor', 'hypothermia', 'hyperthermia']
+  },
+  {
+    id: 'anesthesia-ventilator',
+    nameAr: 'Ventilator',
+    nameEn: 'Anesthesia Ventilator',
+    category: 'machine',
+    categoryAr: 'محطة التخدير',
+    sourcePages: [77, 82],
+    summary: 'جزء من محطة التخدير يوفر تهوية ميكانيكية للمريض عند الحاجة.',
+    purpose: [
+      'التهوية الميكانيكية أثناء التخدير | Mechanical ventilation'
+    ],
+    keyPoints: [
+      'يجب مراقبة حجم وضغط ومعدل التهوية مع إنذارات الفصل أو الضغط غير الطبيعي.',
+      'تظل وسيلة تهوية يدوية احتياطية جاهزة عند تعطل الجهاز أو الدائرة.'
+    ],
+    tags: ['ventilator', 'mechanical ventilation', 'anesthesia workstation']
+  },
+  {
     id: 'pulse-oximeter',
     nameAr: 'مقياس التأكسج النبضي',
     nameEn: 'Pulse Oximeter',
