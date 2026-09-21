@@ -41,11 +41,18 @@ jobs:
           print("Generated Chatterbox sample")
           PY
 
+      - name: Create slower versions
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq ffmpeg
+          ffmpeg -y -i public/audio/voice-samples/chatterbox-default.wav -filter:a "atempo=0.90" public/audio/voice-samples/chatterbox-090.wav
+          ffmpeg -y -i public/audio/voice-samples/chatterbox-default.wav -filter:a "atempo=0.85" public/audio/voice-samples/chatterbox-085.wav
+
       - name: Commit sample
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add public/audio/voice-samples/chatterbox-default.wav
+          git add public/audio/voice-samples/chatterbox-default.wav public/audio/voice-samples/chatterbox-090.wav public/audio/voice-samples/chatterbox-085.wav
           if git diff --cached --quiet; then
             echo "No changes"
           else
