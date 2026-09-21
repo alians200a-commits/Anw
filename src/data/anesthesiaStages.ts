@@ -24,7 +24,7 @@ export const ANESTHESIA_STAGES: AnesthesiaStage[] = [
     number: '02',
     titleAr: 'البدء في التخدير',
     titleEn: 'Induction',
-    guideIds: ['inhalational-induction', 'rapid-sequence-induction']
+    guideIds: ['anesthesia-induction', 'inhalational-induction', 'rapid-sequence-induction']
   },
   {
     id: 'maintenance',
