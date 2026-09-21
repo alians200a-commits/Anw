@@ -1,21 +1,31 @@
 import { AnimatePresence, motion } from 'motion/react';
-import { Heart, MagnifyingGlass, SpeakerHigh } from '@phosphor-icons/react';
+import { CaretDown, Heart, MagnifyingGlass, SpeakerHigh } from '@phosphor-icons/react';
 import { ANESTHESIA_DRUGS, DRUG_CLASS_LABELS, DRUG_FILTERS, type DrugClass } from '../data/drugs';
 import { DRUG_DETAILS } from '../data/drugDetails';
 import { DrugDetailSheet } from './DrugDetailSheet';
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { MedicinesHealthIcon } from './MedicalIcons';
 import { playPronunciation } from '../utils/speech';
 
 interface DrugDirectoryProps {
   favorites: Set<string>;
   onToggleFavorite: (id: string) => void;
+  initialClassification?: 'all' | DrugClass;
 }
 
-export function DrugDirectory({ favorites, onToggleFavorite }: DrugDirectoryProps) {
-  const [classification, setClassification] = useState<'all' | DrugClass>('all');
+export function DrugDirectory({
+  favorites,
+  onToggleFavorite,
+  initialClassification = 'all'
+}: DrugDirectoryProps) {
+  const [classification, setClassification] = useState<'all' | DrugClass>(initialClassification);
+  const [filterOpen, setFilterOpen] = useState(false);
   const [query, setQuery] = useState('');
   const [selectedDrugId, setSelectedDrugId] = useState<string | null>(null);
+
+  useEffect(() => {
+    setClassification(initialClassification);
+  }, [initialClassification]);
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
@@ -42,27 +52,58 @@ export function DrugDirectory({ favorites, onToggleFavorite }: DrugDirectoryProp
         />
       </div>
 
-      <div className="-mx-4 flex gap-2 overflow-x-auto px-4 pb-1 scrollbar-none">
-        {DRUG_FILTERS.map((item) => {
-          const active = classification === item.id;
-          return (
-            <button
-              key={item.id}
-              onClick={() => setClassification(item.id as 'all' | DrugClass)}
-              className={
-                'whitespace-nowrap rounded-full border px-3 py-1.5 text-[10px] font-bold transition ' +
-                (active
-                  ? 'border-[#6C4AA5] bg-[#6C4AA5] text-white'
-                  : 'border-[#6C4AA5]/12 bg-[#F7F2FB] text-[#94A4B2]')
-              }
-            >
-              {item.label}
-            </button>
-          );
-        })}
+      <div className="overflow-hidden rounded-2xl border border-[#E3D8EE] bg-[#F7F2FB]">
+        <button
+          type="button"
+          onClick={() => setFilterOpen((value) => !value)}
+          className="flex w-full items-center justify-between px-3.5 py-3"
+        >
+          <CaretDown
+            size={16}
+            weight="bold"
+            className={'text-[#78658D] transition ' + (filterOpen ? 'rotate-180' : '')}
+          />
+          <div className="text-right">
+            <p className="text-[9px] font-bold text-[#8A7C96]">تصنيف الأدوية</p>
+            <p className="mt-0.5 text-xs font-black text-[#4B3B5B]">
+              {DRUG_FILTERS.find((item) => item.id === classification)?.label ?? 'الكل'}
+            </p>
+          </div>
+        </button>
+
+        {filterOpen && (
+          <div className="grid grid-cols-2 gap-1.5 border-t border-[#E8DEEF] p-2.5 sm:grid-cols-3">
+            {DRUG_FILTERS.map((item) => {
+              const active = classification === item.id;
+              return (
+                <button
+                  key={item.id}
+                  type="button"
+                  onClick={() => {
+                    setClassification(item.id as 'all' | DrugClass);
+                    setFilterOpen(false);
+                  }}
+                  className={
+                    'rounded-xl border px-3 py-2 text-[10px] font-bold transition ' +
+                    (active
+                      ? 'border-[#6C4AA5] bg-[#6C4AA5] text-white'
+                      : 'border-[#E5DAEE] bg-white text-[#675B71] active:bg-[#F0E8F7]')
+                  }
+                >
+                  {item.label}
+                </button>
+              );
+            })}
+          </div>
+        )}
       </div>
 
-      <p className="px-1 text-[10px] text-[#81748A]">{filtered.length} دواء</p>
+      <div className="flex items-center justify-between px-1">
+        <span className="rounded-full bg-[#F3EDF8] px-2 py-0.5 text-[9px] font-bold text-[#6C4AA5]">
+          {DRUG_FILTERS.find((item) => item.id === classification)?.label ?? 'الكل'}
+        </span>
+        <p className="text-[10px] text-[#81748A]">{filtered.length} دواء</p>
+      </div>
 
       <div className="space-y-2">
         {filtered.map((drug) => {
