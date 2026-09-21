@@ -1,6 +1,8 @@
-import { motion } from 'motion/react';
+import { AnimatePresence, motion } from 'motion/react';
 import { Heart, MagnifyingGlass, SpeakerHigh } from '@phosphor-icons/react';
 import { ANESTHESIA_DRUGS, DRUG_CLASS_LABELS, DRUG_FILTERS, type DrugClass } from '../data/drugs';
+import { DRUG_DETAILS } from '../data/drugDetails';
+import { DrugDetailSheet } from './DrugDetailSheet';
 import { useMemo, useState } from 'react';
 import { MedicinesHealthIcon } from './MedicalIcons';
 import { playPronunciation } from '../utils/speech';
@@ -13,6 +15,7 @@ interface DrugDirectoryProps {
 export function DrugDirectory({ favorites, onToggleFavorite }: DrugDirectoryProps) {
   const [classification, setClassification] = useState<'all' | DrugClass>('all');
   const [query, setQuery] = useState('');
+  const [selectedDrugId, setSelectedDrugId] = useState<string | null>(null);
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
@@ -108,6 +111,15 @@ export function DrugDirectory({ favorites, onToggleFavorite }: DrugDirectoryProp
                 </div>
               </div>
               <p className="mt-3 text-[10px] leading-5 text-[#8294A4]">{drug.short}</p>
+              {DRUG_DETAILS[drug.id] && (
+                <button
+                  onClick={() => setSelectedDrugId(drug.id)}
+                  className="mt-3 flex w-full items-center justify-between border-t border-white/5 pt-2.5 text-[10px] font-black text-[#CCA039]"
+                >
+                  <span className="text-[#667C8E]">الاستخدام • الموانع • التحذيرات</span>
+                  <span>التفاصيل الدوائية</span>
+                </button>
+              )}
             </motion.article>
           );
         })}
@@ -118,6 +130,21 @@ export function DrugDirectory({ favorites, onToggleFavorite }: DrugDirectoryProp
           ماكو دواء مطابق للبحث حالياً.
         </div>
       )}
+
+      <AnimatePresence>
+        {selectedDrugId && (() => {
+          const selectedDrug = ANESTHESIA_DRUGS.find((item) => item.id === selectedDrugId);
+          const detail = DRUG_DETAILS[selectedDrugId];
+          if (!selectedDrug || !detail) return null;
+          return (
+            <DrugDetailSheet
+              drug={selectedDrug}
+              detail={detail}
+              onClose={() => setSelectedDrugId(null)}
+            />
+          );
+        })()}
+      </AnimatePresence>
     </div>
   );
 }
