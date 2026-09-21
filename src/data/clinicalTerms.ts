@@ -1016,6 +1016,24 @@ export const CLINICAL_TERMS: ClinicalTerm[] = [
     definition: "مقدار أو كمية قابلة للقياس.",
     tags: ["quantity","كمية"]
   }
+,
+  {
+    id: "bis",
+    en: "Bispectral Index",
+    ar: "مؤشر ثنائي الطيف لعمق التخدير",
+    abbr: "BIS",
+    category: "abbreviations",
+    definition: "مؤشر رقمي مشتق من إشارات تخطيط الدماغ EEG يساعد في تقدير مستوى الوعي وعمق التخدير العام، وتُلتقط الإشارات بواسطة حساس يوضع على الجبهة.",
+    tags: ["BIS","Bispectral Index","EEG","depth of anesthesia","عمق التخدير","مراقبة الوعي"]
+  },
+  {
+    id: "difficult-intubation-associated-conditions",
+    en: "Conditions Associated with Difficult Intubation",
+    ar: "الحالات المرتبطة بصعوبة التنبيب",
+    category: "surgical",
+    definition: "أورام أو كتل: Cystic hygroma، Hemangioma، Hematoma.\nالتهابات: Submandibular abscess، Peritonsillar abscess، Epiglottitis.\nتشوهات خلقية: Pierre Robin syndrome، Laryngeal atresia، Goldenhar syndrome، Craniofacial dysostosis.\nجسم غريب: Foreign body.\nرضوض وإصابات: Laryngeal fracture، Mandibular أو Maxillary fracture، Inhalation burn، Cervical spine injury.\nالسمنة ومحدودية حركة الرقبة/المفاصل: Obesity، Inadequate neck extension، Rheumatoid arthritis، Ankylosing spondylitis، Halo traction.\nاختلافات تشريحية: Micrognathia، Prognathism، Large tongue (Macroglossia)، High-arched palate، Short neck.",
+    tags: ["difficult intubation","difficult airway","صعوبة التنبيب","Cystic hygroma","Hemangioma","Hematoma","Submandibular abscess","Peritonsillar abscess","Epiglottitis","Pierre Robin syndrome","Laryngeal atresia","Goldenhar syndrome","Craniofacial dysostosis","Foreign body","Laryngeal fracture","Mandibular fracture","Maxillary fracture","Inhalation burn","Cervical spine injury","Obesity","Rheumatoid arthritis","Ankylosing spondylitis","Halo traction","Micrognathia","Prognathism","Macroglossia","High-arched palate","Short neck"]
+  }
 
 ];
 
