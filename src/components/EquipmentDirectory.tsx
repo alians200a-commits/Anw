@@ -110,13 +110,6 @@ function EquipmentSheet({
           <SoftList title="الوظيفة | Purpose" items={item.purpose} tone="green" />
           <SoftList title="نقاط مهمة | Key points" items={item.keyPoints} tone="blue" />
 
-          {item.correction && (
-            <section className="rounded-2xl border border-[#F0E1BA] bg-[#FFF9EC] px-3.5 py-3">
-              <p className="text-[10px] font-black text-[#966A22]">تصحيح علمي | Scientific correction</p>
-              <p className="mt-2 text-[11px] leading-5 text-[#5F533D]">{item.correction}</p>
-            </section>
-          )}
-
           <p className="border-t border-[#E8EEF3] pt-3 text-center text-[9px] text-[#84919C]">
             من المصدر المرفوع: الصفحات {item.sourcePages.join('، ')}
           </p>
@@ -144,7 +137,6 @@ export function EquipmentDirectory() {
           item.summary,
           ...item.purpose,
           ...item.keyPoints,
-          item.correction ?? '',
           ...item.tags
         ].some((value) => value.toLowerCase().includes(normalized));
 
