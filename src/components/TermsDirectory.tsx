@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react';
-import { BookOpenText, Heart, Search } from 'lucide-react';
+import { BookOpenText, Heart, MagnifyingGlass } from '@phosphor-icons/react';
 import { CLINICAL_TERMS } from '../data/clinicalTerms';
 
 interface TermsDirectoryProps {
@@ -21,65 +21,60 @@ export function TermsDirectory({ favorites, onToggleFavorite }: TermsDirectoryPr
   }, [query]);
 
   return (
-    <div className="space-y-5">
+    <div className="space-y-4">
       <section>
-        <p className="text-xs font-bold text-[#CCA039]">ANESTHESIA TERMS</p>
-        <h2 className="mt-1 text-2xl font-black text-[#EEE8D6]">مصطلحات التخدير</h2>
-        <p className="mt-2 text-sm leading-6 text-[#8EA0B0]">
-          عربي وإنكليزي واختصارات بمكان واحد وبحث سريع.
-        </p>
+        <p className="text-[10px] font-bold text-[#CCA039]">ANESTHESIA TERMS</p>
+        <h2 className="mt-1 text-xl font-black text-[#EEE8D6]">مصطلحات التخدير</h2>
+        <p className="mt-1.5 text-xs leading-5 text-[#8EA0B0]">عربي وإنكليزي واختصارات بمكان واحد.</p>
       </section>
 
       <div className="relative">
-        <Search className="absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2 text-[#CCA039]" />
+        <MagnifyingGlass size={18} className="absolute right-3.5 top-1/2 -translate-y-1/2 text-[#CCA039]" />
         <input
           value={query}
           onChange={(e) => setQuery(e.target.value)}
-          placeholder="مثال: MAC، ICP، Bradycardia..."
-          className="h-12 w-full rounded-2xl border border-[#CCA039]/12 bg-[#0D2741] pr-11 pl-4 text-sm text-[#EEE8D6] outline-none placeholder:text-[#66798A] focus:border-[#CCA039]/40"
+          placeholder="MAC، ICP، Bradycardia..."
+          className="h-11 w-full rounded-xl border border-[#CCA039]/12 bg-[#0D2741] pr-10 pl-3 text-sm text-[#EEE8D6] outline-none placeholder:text-[#66798A] focus:border-[#CCA039]/40"
         />
       </div>
 
-      <div className="space-y-3">
+      <div className="space-y-2.5">
         {filtered.map((term) => {
           const favoriteId = 'term:' + term.id;
           const isFavorite = favorites.has(favoriteId);
           return (
-            <article
-              key={term.id}
-              className="rounded-[24px] border border-[#CCA039]/10 bg-[#0D2741] p-4"
-            >
+            <article key={term.id} className="rounded-[18px] border border-[#CCA039]/10 bg-[#0D2741] p-3.5">
               <div className="flex items-start justify-between gap-3">
                 <button
                   onClick={() => onToggleFavorite(favoriteId)}
                   className={
-                    'grid h-9 w-9 shrink-0 place-items-center rounded-xl border transition ' +
+                    'grid h-8 w-8 shrink-0 place-items-center rounded-lg border transition ' +
                     (isFavorite
-                      ? 'border-[#CCA039]/30 bg-[#CCA039]/15 text-[#CCA039]'
-                      : 'border-white/5 bg-white/[0.03] text-[#6D8193]')
+                      ? 'border-[#CCA039]/30 bg-[#CCA039]/12 text-[#CCA039]'
+                      : 'border-white/5 bg-white/[0.025] text-[#6D8193]')
                   }
                 >
-                  <Heart className="h-4 w-4" fill={isFavorite ? 'currentColor' : 'none'} />
+                  <Heart size={16} weight={isFavorite ? 'fill' : 'regular'} />
                 </button>
 
                 <div className="flex flex-1 items-start justify-end gap-3 text-right">
                   <div>
                     <div className="flex flex-wrap items-center justify-end gap-2">
                       {term.abbr && (
-                        <span className="rounded-lg bg-[#CCA039]/12 px-2 py-1 text-[10px] font-black text-[#CCA039]">
+                        <span className="rounded-md bg-[#CCA039]/10 px-2 py-0.5 text-[9px] font-black text-[#CCA039]">
                           {term.abbr}
                         </span>
                       )}
-                      <h3 className="text-base font-black text-[#EEE8D6]" dir="ltr">{term.en}</h3>
+                      <h3 className="text-sm font-black text-[#EEE8D6]" dir="ltr">{term.en}</h3>
                     </div>
-                    <p className="mt-1 text-sm font-bold text-[#B4BEC7]">{term.ar}</p>
+                    <p className="mt-1 text-xs font-bold text-[#B4BEC7]">{term.ar}</p>
                   </div>
-                  <div className="grid h-10 w-10 shrink-0 place-items-center rounded-2xl border border-[#CCA039]/15 bg-[#CCA039]/10 text-[#CCA039]">
-                    <BookOpenText className="h-5 w-5" />
+                  <div className="grid h-9 w-9 shrink-0 place-items-center rounded-xl border border-[#CCA039]/12 bg-[#CCA039]/7 text-[#CCA039]">
+                    <BookOpenText size={20} weight="regular" />
                   </div>
                 </div>
               </div>
-              <p className="mt-4 text-xs leading-6 text-[#8294A4]">{term.definition}</p>
+              <p className="mt-3 text-[10px] leading-5 text-[#8294A4]">{term.definition}</p>
             </article>
           );
         })}
