@@ -11,7 +11,7 @@ import {
   Wrench,
   Drop
 } from '@phosphor-icons/react';
-import { ANESTHESIA_DRUGS, DRUG_CLASS_LABELS } from '../data/drugs';
+import { ANESTHESIA_DRUGS, DRUG_CLASS_LABELS, DRUG_FILTERS, type DrugClass } from '../data/drugs';
 import { CLINICAL_TERMS } from '../data/clinicalTerms';
 import { ANESTHESIA_EQUIPMENT } from '../data/equipment';
 import { CLINICAL_GUIDES } from '../data/clinicalGuides';
@@ -23,12 +23,13 @@ import { MedicinesHealthIcon } from './MedicalIcons';
 interface HomeScreenProps {
   query: string;
   setQuery: (value: string) => void;
-  openGuide: (section: GuideSection) => void;
+  openGuide: (section: GuideSection, drugClass?: 'all' | DrugClass) => void;
   goTo: (tab: AppTab) => void;
 }
 
 export function HomeScreen({ query, setQuery, openGuide, goTo }: HomeScreenProps) {
   const [openMenu, setOpenMenu] = useState<'guide' | 'learn' | null>('guide');
+  const [openGuideSubmenu, setOpenGuideSubmenu] = useState<'drugs' | null>(null);
   const normalized = query.trim().toLowerCase();
 
   const drugResults = normalized
@@ -253,47 +254,106 @@ export function HomeScreen({ query, setQuery, openGuide, goTo }: HomeScreenProps
           </button>
 
           {openMenu === 'guide' && (
-            <div className="border-t border-black/[0.05] px-2 py-2">
-              <button onClick={() => openGuide('drugs')} className="flex w-full items-center justify-between rounded-xl px-2.5 py-2.5 active:bg-black/[0.025]">
-                <CaretLeft size={15} className="text-[#887B94]" />
+            <div className="space-y-1.5 border-t border-black/[0.05] p-2">
+              <div className="overflow-hidden rounded-xl border border-[#E3D8EE] bg-[#FBF8FD]">
+                <button
+                  type="button"
+                  onClick={() => setOpenGuideSubmenu(openGuideSubmenu === 'drugs' ? null : 'drugs')}
+                  className="flex w-full items-center justify-between px-3 py-2.5"
+                >
+                  <CaretDown
+                    size={15}
+                    className={'text-[#806D94] transition ' + (openGuideSubmenu === 'drugs' ? 'rotate-180' : '')}
+                  />
+                  <div className="flex items-center gap-3">
+                    <div className="text-right">
+                      <span className="block text-xs font-black text-[#493A58]">الأدوية</span>
+                      <span className="mt-0.5 block text-[9px] text-[#8A7B96]">حسب التصنيف</span>
+                    </div>
+                    <div className="grid h-8 w-8 place-items-center rounded-lg bg-[#EEE6F6] text-[#6C4AA5]">
+                      <MedicinesHealthIcon className="h-5 w-5" />
+                    </div>
+                  </div>
+                </button>
+
+                {openGuideSubmenu === 'drugs' && (
+                  <div className="grid grid-cols-2 gap-1.5 border-t border-[#E9E0F0] p-2.5">
+                    {DRUG_FILTERS.map((item) => (
+                      <button
+                        key={item.id}
+                        type="button"
+                        onClick={() => openGuide('drugs', item.id as 'all' | DrugClass)}
+                        className="rounded-lg border border-[#E6DCEE] bg-white px-2.5 py-2 text-[10px] font-bold text-[#66566F] active:bg-[#F1EAF7]"
+                      >
+                        {item.label}
+                      </button>
+                    ))}
+                  </div>
+                )}
+              </div>
+
+              <button
+                onClick={() => openGuide('equipment')}
+                className="flex w-full items-center justify-between rounded-xl border border-[#DCE8F2] bg-[#F6FAFD] px-3 py-2.5 active:bg-[#EEF5FA]"
+              >
+                <CaretLeft size={15} className="text-[#71869A]" />
                 <div className="flex items-center gap-3">
-                  <span className="text-xs font-bold text-[#43384D]">الأدوية</span>
-                  <MedicinesHealthIcon className="h-5 w-5 text-[#6C4AA5]" />
+                  <span className="text-xs font-bold text-[#40515F]">الأجهزة والأدوات</span>
+                  <div className="grid h-8 w-8 place-items-center rounded-lg bg-[#EAF2F8] text-[#557491]">
+                    <Wrench size={18} weight="bold" />
+                  </div>
                 </div>
               </button>
-              <button onClick={() => openGuide('fluids')} className="flex w-full items-center justify-between rounded-xl px-2.5 py-2.5 active:bg-black/[0.025]">
-                <CaretLeft size={15} className="text-[#887B94]" />
+
+              <button
+                onClick={() => openGuide('fluids')}
+                className="flex w-full items-center justify-between rounded-xl border border-[#D7EAE7] bg-[#F4FAF9] px-3 py-2.5 active:bg-[#EAF5F3]"
+              >
+                <CaretLeft size={15} className="text-[#6B8984]" />
                 <div className="flex items-center gap-3">
-                  <span className="text-xs font-bold text-[#43384D]">السوائل الوريدية</span>
-                  <Drop size={20} weight="fill" className="text-[#6C4AA5]" />
+                  <span className="text-xs font-bold text-[#405957]">السوائل الوريدية</span>
+                  <div className="grid h-8 w-8 place-items-center rounded-lg bg-[#E5F2EF] text-[#4E7D77]">
+                    <Drop size={18} weight="fill" />
+                  </div>
                 </div>
               </button>
-              <button onClick={() => openGuide('equipment')} className="flex w-full items-center justify-between rounded-xl px-2.5 py-2.5 active:bg-black/[0.025]">
-                <CaretLeft size={15} className="text-[#887B94]" />
+
+              <button
+                onClick={() => openGuide('clinical')}
+                className="flex w-full items-center justify-between rounded-xl border border-[#DCEADF] bg-[#F5FAF6] px-3 py-2.5 active:bg-[#ECF6EF]"
+              >
+                <CaretLeft size={15} className="text-[#6D8774]" />
                 <div className="flex items-center gap-3">
-                  <span className="text-xs font-bold text-[#43384D]">الأجهزة والأدوات</span>
-                  <Wrench size={20} weight="bold" className="text-[#6C4AA5]" />
+                  <span className="text-xs font-bold text-[#415449]">المفاهيم والإجراءات</span>
+                  <div className="grid h-8 w-8 place-items-center rounded-lg bg-[#E8F3EA] text-[#557761]">
+                    <BookOpenText size={18} />
+                  </div>
                 </div>
               </button>
-              <button onClick={() => openGuide('clinical')} className="flex w-full items-center justify-between rounded-xl px-2.5 py-2.5 active:bg-black/[0.025]">
-                <CaretLeft size={15} className="text-[#887B94]" />
+
+              <button
+                onClick={() => openGuide('terms')}
+                className="flex w-full items-center justify-between rounded-xl border border-[#F0E1D3] bg-[#FFF9F3] px-3 py-2.5 active:bg-[#FFF3E8]"
+              >
+                <CaretLeft size={15} className="text-[#907665]" />
                 <div className="flex items-center gap-3">
-                  <span className="text-xs font-bold text-[#43384D]">المفاهيم والإجراءات</span>
-                  <BookOpenText size={20} className="text-[#6C4AA5]" />
+                  <span className="text-xs font-bold text-[#56473E]">المصطلحات</span>
+                  <div className="grid h-8 w-8 place-items-center rounded-lg bg-[#F8EBDD] text-[#9A6B45]">
+                    <BookOpenText size={18} />
+                  </div>
                 </div>
               </button>
-              <button onClick={() => openGuide('terms')} className="flex w-full items-center justify-between rounded-xl px-2.5 py-2.5 active:bg-black/[0.025]">
-                <CaretLeft size={15} className="text-[#887B94]" />
+
+              <button
+                onClick={() => openGuide('abbreviations')}
+                className="flex w-full items-center justify-between rounded-xl border border-[#E4DCF0] bg-[#F8F5FC] px-3 py-2.5 active:bg-[#F1EBF8]"
+              >
+                <CaretLeft size={15} className="text-[#806F94]" />
                 <div className="flex items-center gap-3">
-                  <span className="text-xs font-bold text-[#43384D]">المصطلحات</span>
-                  <BookOpenText size={20} className="text-[#6C4AA5]" />
-                </div>
-              </button>
-              <button onClick={() => openGuide('abbreviations')} className="flex w-full items-center justify-between rounded-xl px-2.5 py-2.5 active:bg-black/[0.025]">
-                <CaretLeft size={15} className="text-[#887B94]" />
-                <div className="flex items-center gap-3">
-                  <span className="text-xs font-bold text-[#43384D]">الاختصارات</span>
-                  <TextAa size={20} weight="bold" className="text-[#6C4AA5]" />
+                  <span className="text-xs font-bold text-[#4F415E]">الاختصارات</span>
+                  <div className="grid h-8 w-8 place-items-center rounded-lg bg-[#EEE8F6] text-[#6C4AA5]">
+                    <TextAa size={18} weight="bold" />
+                  </div>
                 </div>
               </button>
             </div>
