@@ -7,6 +7,7 @@ import {
   type ClinicalGuide,
   type ClinicalGuideCategory
 } from '../data/clinicalGuides';
+import { ANESTHESIA_STAGE_GUIDE_IDS } from '../data/anesthesiaStages';
 
 function GuideItems({ title, items }: { title: string; items: string[] }) {
   const body = (
@@ -114,6 +115,8 @@ export function ClinicalGuidesDirectory() {
   const filtered = useMemo(() => {
     const normalized = query.trim().toLowerCase();
     return CLINICAL_GUIDES.filter((guide) => {
+      if (ANESTHESIA_STAGE_GUIDE_IDS.has(guide.id)) return false;
+
       const categoryMatch = category === 'all' || guide.category === category;
       const queryMatch =
         !normalized ||
