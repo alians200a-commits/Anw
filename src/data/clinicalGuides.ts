@@ -209,7 +209,7 @@ export const CLINICAL_GUIDES: ClinicalGuide[] = [
     titleEn: 'Recovery from Anesthesia',
     category: 'recovery',
     categoryAr: 'الإفاقة',
-    sourcePages: [31,32,33],
+    sourcePages: [32,33],
     summary: 'فترة الإفاقة تبدأ مع إيقاف أو خفض عوامل التخدير وتمتد حتى استعادة الوعي والتهوية والاستقرار ومنعكسات حماية مجرى الهواء بدرجة مناسبة.',
     sections: [
       {
@@ -639,7 +639,7 @@ export const CLINICAL_GUIDES: ClinicalGuide[] = [
     titleEn: 'Premedication',
     category: 'pharmacology',
     categoryAr: 'علم الأدوية',
-    sourcePages: [79,80,81,82],
+    sourcePages: [81,82],
     summary: 'التحضير قبل التخدير قد يكون نفسيًا ودوائيًا، وتُختار الأدوية حسب هدف محدد مثل تخفيف القلق، التسكين، الوقاية من PONV أو تقليل خطر الاستنشاق عند المريض عالي الخطورة؛ لا تُعطى كل الفئات لكل مريض.',
     sections: [
       {
@@ -1086,30 +1086,46 @@ export const CLINICAL_GUIDES: ClinicalGuide[] = [
     category: 'general',
     categoryAr: 'التخدير العام',
     sourcePages: [99,100,101],
-    summary: 'اضطراب النظم | Arrhythmia قد ينتج من مرض قلبي سابق أو عوامل قابلة للتصحيح أثناء التخدير مثل نقص الأكسجة، فرط CO₂، اضطراب الشوارد أو الأدوية.',
+    summary: 'اضطراب النظم | Arrhythmia هو اضطراب في تكوين النبضة أو توصيلها وقد يظهر قبل التخدير أو أثناءه بسبب مرض قلبي أو عامل قابل للتصحيح.',
     sections: [
       {
-        title: 'محفزات قابلة للتصحيح | Reversible triggers',
+        title: 'التصنيف الموجود بالمصدر | Source classification',
         items: [
-          'نقص أكسجة الدم | Hypoxemia.',
-          'فرط ثاني أوكسيد الكربون | Hypercapnia.',
-          'اختلال البوتاسيوم أو المغنيسيوم | Potassium / magnesium disturbance.',
-          'الحماض أو القلاء | Acid-base disturbance.',
-          'الألم أو التحفيز الجراحي والتخدير غير الكافي | Pain / surgical stimulation / light anesthesia.',
-          'أدوية أو قثاطر داخل القلب | Drugs / intracardiac catheter irritation.'
+          'فوق بطيني | Supraventricular: مثل Sinus bradycardia، Sinus tachycardia، Atrial fibrillation والضربات الأذينية الهاجرة.',
+          'وصلي | Junctional arrhythmia.',
+          'بطيني | Ventricular: مثل Ventricular ectopic beats، Ventricular tachycardia وVentricular fibrillation.',
+          'اضطرابات التوصيل | Conduction disorders: مثل Heart block أو مسار توصيل إضافي مثل Wolff-Parkinson-White.'
         ]
       },
       {
-        title: 'التقييم | Assessment',
+        title: 'أسباب ومحفزات مهمة | Important triggers',
+        items: [
+          'نقص أكسجة الدم | Hypoxemia وفرط ثاني أوكسيد الكربون | Hypercapnia.',
+          'اختلال الشوارد أو الحمض-القاعدة | Electrolyte / acid-base disturbance.',
+          'نقص تروية عضلة القلب | Myocardial ischemia.',
+          'تحفيز المبهم | Vagal stimulation.',
+          'الألم أو التحفيز الجراحي والتخدير غير الكافي | Pain / surgical stimulation / light anesthesia.',
+          'الأدوية أو السمية الدوائية | Drugs / toxicologic causes.',
+          'خلل جهاز تنظيم القلب أو تهيج القثاطر داخل القلب | Pacemaker malfunction / intracardiac catheter irritation.'
+        ]
+      },
+      {
+        title: 'بطء وتسرع القلب الجيبي | Sinus bradycardia / tachycardia',
+        items: [
+          'Sinus bradycardia قد يرتبط بنقص الأكسجة، تحفيز المبهم أو بعض الأدوية مثل β-blockers.',
+          'Sinus tachycardia قد يرتبط بالألم، نقص الأكسجة، Hypercapnia، نقص الحجم أو الأدوية الودية/المضادة للكولين.'
+        ]
+      },
+      {
+        title: 'التقييم والتعامل | Assessment & management',
         items: [
           'حدد النظم ووجود النبض والاستقرار الديناميكي | Rhythm / pulse / hemodynamic stability.',
-          'صحح السبب القابل للعلاج أولًا | Correct reversible cause.',
-          'تُعالج الاضطرابات الخطرة وفق خوارزمية الإنعاش القلبي المناسبة | ACLS-based management when indicated.'
+          'صحح السبب القابل للعلاج أولًا | Correct reversible causes.',
+          'عند وجود عدم استقرار أو اضطراب نظم خطِر تُتبع خوارزمية الإنعاش القلبي المناسبة | ACLS-based management.'
         ]
       }
     ],
-    correction: 'احتشاء عضلة القلب | Myocardial infarction ليس “نوعًا من اضطراب النظم”؛ هو مرض/سبب قد يسبب اضطرابات نظم. التصنيف الأدق يكون حسب منشأ النظم، معدل القلب، انتظامه واضطراب التوصيل.',
-    tags: ['arrhythmia','bradycardia','tachycardia','electrolytes','نظم القلب']
+    tags: ['arrhythmia','bradycardia','tachycardia','atrial fibrillation','ventricular tachycardia','heart block','WPW','نظم القلب']
   },
   {
     id: 'heart-failure-anesthesia',
@@ -1148,29 +1164,47 @@ export const CLINICAL_GUIDES: ClinicalGuide[] = [
     category: 'general',
     categoryAr: 'التخدير العام',
     sourcePages: [103,104,105],
-    summary: 'الصدمة | Shock هي فشل دوراني حاد يسبب نقص تروية الأنسجة وعدم كفاية توصيل الأوكسجين، وليست مجرد انخفاض ضغط الدم.',
+    summary: 'الصدمة | Shock هي فشل دوراني حاد يسبب نقص تروية الأنسجة وعدم كفاية توصيل الأوكسجين؛ انخفاض الضغط قد يحدث لكنه ليس التعريف الوحيد للصدمة.',
     sections: [
+      {
+        title: 'علامات مبكرة مذكورة بالمصدر | Early features',
+        items: [
+          'ضعف | Weakness.',
+          'تسرع القلب | Tachycardia.',
+          'تسرع التنفس | Tachypnea.',
+          'تعرق وقلق | Sweating / anxiety.',
+          'زيادة العطش | Increased thirst.',
+          'هذه العلامات غير نوعية ويجب تفسيرها مع التروية والضغط والوعي والسبب المحتمل.'
+        ]
+      },
       {
         title: 'الأنواع الأربعة | Four mechanisms',
         items: [
-          'نقص حجم | Hypovolemic shock: نزف أو فقد سوائل.',
+          'نقص حجم | Hypovolemic shock: نزف أو فقد سوائل مثل القيء أو الإسهال الشديد أو الحروق.',
           'توزيعية | Distributive shock: مثل Sepsis أو Anaphylaxis أو Neurogenic shock.',
-          'قلبية | Cardiogenic shock: فشل المضخة القلبية.',
+          'قلبية | Cardiogenic shock: فشل المضخة القلبية مثل الاحتشاء أو فشل القلب الشديد.',
           'انسدادية | Obstructive shock: مثل Tension pneumothorax أو Cardiac tamponade أو Massive pulmonary embolism.'
         ]
       },
       {
-        title: 'مبادئ العلاج | Treatment principles',
+        title: 'التعامل الأولي حول العملية | Initial perioperative approach',
         items: [
           'تأمين الأكسجة والتهوية | Oxygenation / ventilation.',
-          'السيطرة على السبب: النزف، الإنتان، التأق، الانسداد أو المشكلة القلبية | Cause control.',
+          'الحصول على وصول وريدي مناسب وسريع، وقد نحتاج أكثر من خط واسع عند الإنعاش الحجمي أو النزف.',
+          'معايرة جرعات أدوية التخدير بحذر في المريض المصاب بالصدمة بسبب عدم الاستقرار الدوراني.',
+          'السيطرة على السبب: النزف، الإنتان، التأق، الانسداد أو المشكلة القلبية | Cause control.'
+        ]
+      },
+      {
+        title: 'مبادئ الإنعاش | Resuscitation principles',
+        items: [
           'سوائل أو دم عند وجود نقص حجم مناسب | Fluids / blood when indicated.',
-          'رافعات ضغط/مقويات قلب حسب آلية الصدمة | Vasopressors / inotropes according to mechanism.',
-          'مراقبة التروية: الوعي، البول، اللاكتات والديناميكا الدموية | Mental status / urine / lactate / hemodynamics.'
+          'رافعات ضغط أو مقويات قلب حسب آلية الصدمة | Vasopressors / inotropes according to mechanism.',
+          'لا يوجد دواء واحد مثل Adrenaline أو Hydrocortisone يُعطى بصورة افتراضية لكل أنواع الصدمة.',
+          'مراقبة التروية والاستجابة: الوعي، البول، اللاكتات والديناميكا الدموية | Mental status / urine / lactate / hemodynamics.'
         ]
       }
     ],
-    correction: 'تصنيف “Vesicular shock / central causes” الوارد في المصدر غير قياسي. التصنيف الحديث: Hypovolemic، Distributive، Cardiogenic، Obstructive. كذلك Hydrocortisone بجرعات 200–1000 mg ليس علاجًا عامًا لكل shock، وAdrenaline ليس رافع الضغط الافتراضي لكل الأنواع؛ العلاج يعتمد على السبب.',
     tags: ['shock','hypovolemic','distributive','cardiogenic','obstructive','صدمة']
   },
   {
