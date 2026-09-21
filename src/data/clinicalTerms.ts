@@ -314,7 +314,538 @@ export const CLINICAL_TERMS: ClinicalTerm[] = [
     definition: 'موت أو نخر في خلايا النسيج العضلي نتيجة انقطاع مفاجئ وكامل للتروية الدموية والأكسجين (مثل الجلطة القلبية).',
     clinicalNote: 'في التخدير، يجب الحفاظ على توازن عرض وطلب الأكسجين لعضلة القلب لمنع حدوث الـ Perioperative MI.',
     tags: ['جلطة', 'احتشاء', 'قلب']
+  },
+  {
+    id: "5-ht",
+    en: "5-Hydroxytryptamine (Serotonin)",
+    ar: "5-هيدروكسي تريبتامين (السيروتونين)",
+    abbr: "5-HT",
+    category: "pharmacology",
+    definition: "ناقل عصبي أحادي الأمين يُعرف بالسيروتونين، وله أدوار في الجهاز العصبي والجهاز الهضمي وتنظيم الغثيان والتقيؤ.",
+    clinicalNote: "في التخدير، مستقبلات 5-HT3 مهمة في الغثيان والقيء بعد العمليات؛ أدوية مثل Ondansetron تعمل كمضادات لمستقبل 5-HT3.",
+    tags: ["serotonin","5-HT3","PONV","سيروتونين"]
+  },
+  {
+    id: "increase-symbol",
+    en: "Increase / Facilitation / Stimulation",
+    ar: "زيادة / تسهيل / تحفيز",
+    abbr: "↑ / ++",
+    category: "abbreviations",
+    definition: "رموز تُستخدم في الجداول والملاحظات للدلالة على زيادة متغير أو تعزيز تأثير أو تحفيز وظيفة.",
+    clinicalNote: "هذه ليست اختصارات طبية معيارية مستقلة؛ معناها النهائي يعتمد على السياق والمتغير المكتوب بجانبها.",
+    tags: ["symbol","increase","زيادة"]
+  },
+  {
+    id: "decrease-symbol",
+    en: "Decrease / Depression / Inhibition",
+    ar: "انخفاض / تثبيط / كبح",
+    abbr: "↓ / --",
+    category: "abbreviations",
+    definition: "رموز تُستخدم للدلالة على انخفاض متغير أو تثبيط تأثير أو كبح وظيفة.",
+    clinicalNote: "هذه رموز سياقية وليست اختصارات معيارية مستقلة؛ يجب تفسيرها مع المتغير أو الدواء المرتبط بها.",
+    tags: ["symbol","decrease","انخفاض"]
+  },
+  {
+    id: "delta-pyramidal",
+    en: "Pyramidal Tract (source-specific symbol)",
+    ar: "السبيل الهرمي – حسب رمز المصدر",
+    abbr: "Δ",
+    category: "abbreviations",
+    definition: "السبيل الهرمي يشير إلى المسارات الحركية النازلة، وخصوصًا القشري الشوكي والقشري البصلي، المسؤولة عن التحكم الحركي الإرادي.",
+    clinicalNote: "تنبيه: الرمز Δ ليس اختصارًا طبيًا عالميًا معتمدًا للسبيل الهرمي؛ يُفهم بهذه الدلالة فقط إذا عرّفه المرجع أو الجدول صراحة.",
+    tags: ["pyramidal tract","motor","رمز"]
+  },
+  {
+    id: "abp",
+    en: "Arterial Blood Pressure",
+    ar: "ضغط الدم الشرياني",
+    abbr: "ABP",
+    category: "cardio",
+    definition: "الضغط الذي يولده الدم داخل الشرايين، ويُعبّر عنه عادة بالضغط الانقباضي والانبساطي ويمكن قياسه غازيًا أو غير غازي.",
+    clinicalNote: "في التخدير تُراقب قيم الضغط بصورة مستمرة أو دورية للحفاظ على تروية الأعضاء وتقييم الاستجابة للأدوية والسوائل.",
+    tags: ["blood pressure","arterial","ضغط"]
+  },
+  {
+    id: "ach",
+    en: "Acetylcholine",
+    ar: "أستيل كولين",
+    abbr: "ACh",
+    category: "pharmacology",
+    definition: "ناقل عصبي يعمل في الوصلة العصبية العضلية وفي الجهاز العصبي الذاتي المركزي والمحيطي.",
+    clinicalNote: "له أهمية مباشرة في التخدير لأن الانتقال العصبي العضلي يعتمد على مستقبلات الأستيل كولين النيكوتينية، كما تؤثر المسارات الكولينية في القلب والإفرازات.",
+    tags: ["acetylcholine","NMJ","كوليني"]
+  },
+  {
+    id: "bbb",
+    en: "Blood–Brain Barrier",
+    ar: "الحاجز الدموي الدماغي",
+    abbr: "BBB",
+    category: "pharmacology",
+    definition: "حاجز انتقائي في الأوعية الدقيقة الدماغية يحدّ وينظم انتقال المواد بين الدم والأنسجة العصبية.",
+    clinicalNote: "نفاذ الأدوية عبر BBB يتأثر بخصائص منها الذوبان الدهني والحجم الجزيئي ووجود نواقل متخصصة؛ لذلك يؤثر في بدء وتأثير كثير من أدوية التخدير المركزية.",
+    tags: ["brain","barrier","CNS","دماغ"]
+  },
+  {
+    id: "beta-blockers",
+    en: "Beta-Adrenergic Blockers",
+    ar: "حاصرات مستقبلات بيتا الأدرينرجية",
+    abbr: "βB",
+    category: "cardio",
+    definition: "أدوية تثبط مستقبلات بيتا الأدرينرجية بدرجات متفاوتة من الانتقائية، فتقلل تأثير التنبيه الودي على القلب وأعضاء أخرى.",
+    clinicalNote: "الرمز βB مختصر تعليمي وغير موحد عالميًا؛ يُفضّل كتابة Beta-blocker أو اسم الدواء في الاستخدام السريري لتجنب الالتباس.",
+    tags: ["beta blocker","adrenergic","قلب"]
+  },
+  {
+    id: "bp",
+    en: "Blood Pressure",
+    ar: "ضغط الدم",
+    abbr: "BP",
+    category: "cardio",
+    definition: "القوة التي يطبقها الدم على جدار الأوعية الدموية، ويُقصد بها سريريًا غالبًا الضغط الشرياني الانقباضي والانبساطي.",
+    clinicalNote: "يُعد BP من أهم العلامات الحيوية أثناء التخدير ويُفسر مع MAP والسياق السريري وليس كرقم منفرد.",
+    tags: ["blood pressure","ضغط","vital signs"]
+  },
+  {
+    id: "bv-source",
+    en: "Blood Vessels (as used in this source)",
+    ar: "الأوعية الدموية – حسب المصدر",
+    abbr: "BV",
+    category: "abbreviations",
+    definition: "الأوعية الدموية هي الشرايين والأوردة والشعيرات التي تنقل الدم ضمن الدورة الدموية.",
+    clinicalNote: "تنبيه اصطلاحي: BV اختصار شديد الالتباس وقد يُستخدم لمعانٍ أخرى مثل Blood Volume؛ لا يُنصح اعتباره اختصارًا سريريًا ثابتًا لـ Blood Vessels دون سياق.",
+    tags: ["blood vessels","ambiguous","أوعية"]
+  },
+  {
+    id: "cic",
+    en: "Cardioinhibitory Center",
+    ar: "المركز المثبط للقلب",
+    abbr: "CIC",
+    category: "cardio",
+    definition: "مفهوم فسيولوجي يشير إلى دوائر في جذع الدماغ تسهم في زيادة النشاط نظير الودي عبر العصب المبهم، ما قد يؤدي إلى خفض معدل القلب.",
+    clinicalNote: "CIC ليس اختصارًا موحدًا في جميع المراجع الحديثة؛ يُستخدم غالبًا في الشرح الفسيولوجي أكثر من التوثيق السريري اليومي.",
+    tags: ["vagus","heart rate","brainstem"]
+  },
+  {
+    id: "cns",
+    en: "Central Nervous System",
+    ar: "الجهاز العصبي المركزي",
+    abbr: "CNS",
+    category: "abbreviations",
+    definition: "يتكون من الدماغ والحبل الشوكي، وهو المسؤول عن دمج ومعالجة الإشارات العصبية والتحكم بوظائف الجسم.",
+    clinicalNote: "كثير من أدوية التخدير تعمل أساسًا على CNS لتعديل الوعي والذاكرة والاستجابة للألم والمنعكسات.",
+    tags: ["brain","spinal cord","عصبي"]
+  },
+  {
+    id: "cop-source",
+    en: "Cardiac Output",
+    ar: "النتاج القلبي",
+    abbr: "COP",
+    category: "cardio",
+    definition: "حجم الدم الذي يضخه البطين في الدقيقة، ويُحسب تقريبًا من حاصل ضرب معدل القلب HR في حجم الضربة SV.",
+    clinicalNote: "تنبيه: الاختصار القياسي الشائع للنتاج القلبي هو CO، أما COP فيظهر في بعض المذكرات التعليمية لكنه غير مفضل لأنه غير قياسي وقد يسبب التباسًا.",
+    tags: ["cardiac output","CO","hemodynamics"]
+  },
+  {
+    id: "ctz",
+    en: "Chemoreceptor Trigger Zone",
+    ar: "منطقة التحفيز الكيميائي للمستقبلات",
+    abbr: "CTZ",
+    category: "pharmacology",
+    definition: "منطقة مرتبطة بالـ area postrema قرب أرضية البطين الرابع تستشعر مواد مقيئة في الدم والسائل الدماغي الشوكي وتشارك في تحفيز القيء.",
+    clinicalNote: "التسمية العلمية الصحيحة هي Chemoreceptor Trigger Zone، وليس Chemical Trigger Zone. وهي هدف مهم لعدد من مضادات القيء.",
+    tags: ["vomiting","area postrema","PONV"]
+  },
+  {
+    id: "cvs",
+    en: "Cardiovascular System",
+    ar: "الجهاز القلبي الوعائي",
+    abbr: "CVS",
+    category: "cardio",
+    definition: "منظومة القلب والأوعية الدموية التي تؤمن دوران الدم ونقل الأكسجين والمواد الغذائية والتخلص من نواتج الاستقلاب.",
+    clinicalNote: "في سياق التخدير يُستخدم CVS لوصف الحالة القلبية الوعائية، لكن الاختصار قد يحمل معاني أخرى في تخصصات مختلفة؛ السياق ضروري.",
+    tags: ["cardiovascular","heart","circulation"]
+  },
+  {
+    id: "ect",
+    en: "Electroconvulsive Therapy",
+    ar: "العلاج بالصدمات الكهربائية",
+    abbr: "ECT",
+    category: "surgical",
+    definition: "إجراء علاجي نفسي يُحدث نوبة اختلاجية علاجية مضبوطة بواسطة تحفيز كهربائي تحت التخدير العام القصير مع ارتخاء عضلي.",
+    clinicalNote: "للتخدير دور أساسي في ECT لتوفير فقدان الوعي وتقليل الاستجابة الحركية مع المحافظة على سلامة التهوية والدورة الدموية.",
+    tags: ["ECT","psychiatry","anesthesia"]
+  },
+  {
+    id: "eeg",
+    en: "Electroencephalogram / Electroencephalography",
+    ar: "تخطيط كهربائية الدماغ",
+    abbr: "EEG",
+    category: "abbreviations",
+    definition: "تسجيل النشاط الكهربائي الدماغي بواسطة أقطاب على فروة الرأس.",
+    clinicalNote: "يمكن استخدام مؤشرات مشتقة من EEG في بعض أجهزة مراقبة عمق التخدير، كما يُستخدم EEG أساسًا في تقييم الاختلاجات ووظيفة الدماغ.",
+    tags: ["EEG","brain","monitoring"]
+  },
+  {
+    id: "fb",
+    en: "Foreign Body",
+    ar: "جسم غريب",
+    abbr: "FB",
+    category: "surgical",
+    definition: "مادة أو جسم موجود داخل الجسم أو مجرى الهواء في موضع غير طبيعي ولا ينتمي تشريحيًا لذلك الموضع.",
+    clinicalNote: "في التخدير والطوارئ قد يكون الجسم الغريب في مجرى الهواء سببًا لانسداد جزئي أو كامل ويتطلب تقييمًا سريعًا للمجرى الهوائي.",
+    tags: ["foreign body","airway","جسم غريب"]
+  },
+  {
+    id: "gfr",
+    en: "Glomerular Filtration Rate",
+    ar: "معدل الترشيح الكبيبي",
+    abbr: "GFR",
+    category: "abbreviations",
+    definition: "معدل ترشح البلازما من الشعيرات الكبيبية إلى محفظة بومان خلال وحدة الزمن، ويُعد مؤشرًا رئيسيًا لوظيفة الكلى.",
+    clinicalNote: "انخفاض GFR قد يغير التخلص من الأدوية أو مستقلباتها المطروحة كلويًا، لذلك يؤثر في اختيار الجرعات والفواصل لبعض الأدوية.",
+    tags: ["kidney","renal","GFR"]
+  },
+  {
+    id: "git",
+    en: "Gastrointestinal Tract",
+    ar: "السبيل المعدي المعوي / الجهاز الهضمي",
+    abbr: "GIT",
+    category: "abbreviations",
+    definition: "القناة الهضمية من الفم إلى الشرج مع الأعضاء المرتبطة بوظائف الهضم والامتصاص.",
+    clinicalNote: "في التخدير يرتبط GIT بالصيام قبل العملية، خطر الاستنشاق الرئوي، الغثيان والقيء، وحركة المعدة.",
+    tags: ["GI","gastrointestinal","هضمي"]
+  },
+  {
+    id: "gm",
+    en: "Gram",
+    ar: "غرام",
+    abbr: "gm",
+    category: "abbreviations",
+    definition: "وحدة كتلة متريّة تساوي 1000 ميليغرام.",
+    clinicalNote: "الرمز القياسي وفق SI هو g وليس gm؛ الأفضل استخدام g في التوثيق العلمي والدوائي.",
+    tags: ["unit","gram","SI"]
+  },
+  {
+    id: "hf",
+    en: "Heart Failure",
+    ar: "قصور القلب",
+    abbr: "HF",
+    category: "cardio",
+    definition: "متلازمة سريرية يعجز فيها القلب عن توفير نتاج قلبي كافٍ لاحتياجات الجسم أو لا يفعل ذلك إلا بارتفاع ضغوط الامتلاء.",
+    clinicalNote: "وجود HF يؤثر في تقييم الخطورة التخديرية واختيار السوائل والأدوية ومراقبة الديناميكا الدموية.",
+    tags: ["heart failure","cardiac","قصور القلب"]
+  },
+  {
+    id: "hour",
+    en: "Hour",
+    ar: "ساعة",
+    abbr: "hr",
+    category: "abbreviations",
+    definition: "وحدة زمن تساوي 60 دقيقة.",
+    clinicalNote: "في الكتابة العلمية رمز SI المقبول للساعة هو h؛ hr شائع لكنه أقل معيارية.",
+    tags: ["time","hour","unit"]
+  },
+  {
+    id: "htn",
+    en: "Hypertension",
+    ar: "ارتفاع ضغط الدم",
+    abbr: "Htn",
+    category: "cardio",
+    definition: "ارتفاع مزمن أو متكرر في ضغط الدم الشرياني فوق الحدود التشخيصية المعتمدة سريريًا.",
+    clinicalNote: "الاختصار الشائع سريريًا هو HTN. ضبط الضغط قبل وأثناء التخدير مهم لتقليل اختلال التروية القلبية والدماغية والكلوية.",
+    tags: ["hypertension","HTN","ضغط"]
+  },
+  {
+    id: "ihd",
+    en: "Ischemic Heart Disease",
+    ar: "مرض القلب الإقفاري",
+    abbr: "IHD",
+    category: "cardio",
+    definition: "مرض ينجم عن عدم كفاية تروية عضلة القلب بالأكسجين، وغالبًا يكون بسبب مرض الشرايين التاجية.",
+    clinicalNote: "في التخدير يجب تجنب عدم التوازن بين عرض الأكسجين القلبي وطلبه، مع مراقبة الضغط والنبض وعلامات نقص التروية.",
+    tags: ["ischemia","coronary","قلب"]
+  },
+  {
+    id: "iop",
+    en: "Intraocular Pressure",
+    ar: "ضغط العين الداخلي",
+    abbr: "IOP",
+    category: "abbreviations",
+    definition: "الضغط داخل مقلة العين الناتج عن توازن إنتاج وتصريف الخلط المائي وعوامل أخرى.",
+    clinicalNote: "قد تتأثر IOP بوضعية المريض والتهوية وبعض الأدوية والتقنيات التخديرية، ولذلك تهم خصوصًا في جراحات العين والحالات ذات الخطورة العينية.",
+    tags: ["eye","IOP","عين"]
+  },
+  {
+    id: "kg",
+    en: "Kilogram",
+    ar: "كيلوغرام",
+    abbr: "kg",
+    category: "abbreviations",
+    definition: "وحدة الكتلة الأساسية في النظام الدولي SI وتساوي 1000 غرام.",
+    clinicalNote: "تُستخدم kg بكثرة في حساب الجرعات الوزنية مثل mg/kg أو mcg/kg.",
+    tags: ["unit","kilogram","dose"]
+  },
+  {
+    id: "la",
+    en: "Local Anesthetic",
+    ar: "مخدر موضعي",
+    abbr: "LA",
+    category: "pharmacology",
+    definition: "دواء يحجب التوصيل العصبي بصورة عكوسة عبر تثبيط قنوات الصوديوم المعتمدة على الجهد، فيفقد الإحساس في منطقة محددة دون فقدان الوعي بالضرورة.",
+    clinicalNote: "LA قد يُستخدم أيضًا لاختصارات أخرى مثل Left Atrium؛ في التخدير يجب تفسيره من السياق ويفضل كتابة اسم المخدر الموضعي.",
+    tags: ["local anesthetic","regional","موضعي"]
+  },
+  {
+    id: "lma",
+    en: "Laryngeal Mask Airway",
+    ar: "قناع الحنجرة الهوائي",
+    abbr: "LMA",
+    category: "surgical",
+    definition: "جهاز مجرى هوائي فوق المزمار يستقر حول مدخل الحنجرة لتسهيل التهوية دون المرور عبر الأحبال الصوتية كما في الأنبوب الرغامي.",
+    clinicalNote: "يُستخدم في التخدير وفي بعض خوارزميات إنقاذ المجرى الهوائي، لكن اختياره يعتمد على المريض والإجراء وخطر الاستنشاق الرئوي.",
+    tags: ["airway","supraglottic","LMA"]
+  },
+  {
+    id: "lt",
+    en: "Left",
+    ar: "يسار",
+    abbr: "Lt",
+    category: "abbreviations",
+    definition: "اختصار وصفي للجهة اليسرى في الملاحظات السريرية.",
+    clinicalNote: "ليس اختصارًا دوائيًا أو فسيولوجيًا؛ وفي الوثائق الحرجة يفضّل كتابة Left كاملًا لتقليل سوء القراءة.",
+    tags: ["left","direction","يسار"]
+  },
+  {
+    id: "maoi",
+    en: "Monoamine Oxidase Inhibitor",
+    ar: "مثبط إنزيم أوكسيداز أحادي الأمين",
+    abbr: "MAOI",
+    category: "pharmacology",
+    definition: "فئة أدوية تثبط إنزيم monoamine oxidase فتزيد توافر نواقل أحادية الأمين مثل النورأدرينالين والسيروتونين والدوبامين بدرجات تعتمد على الدواء.",
+    clinicalNote: "لها أهمية حول الجراحة بسبب تداخلات دوائية محتملة مع أدوية تؤثر في السيروتونين أو الكاتيكولامينات؛ التقييم يعتمد على الدواء المحدد.",
+    tags: ["MAOI","drug interaction","monoamine"]
+  },
+  {
+    id: "map",
+    en: "Mean Arterial Pressure",
+    ar: "متوسط الضغط الشرياني",
+    abbr: "MAP",
+    category: "cardio",
+    definition: "متوسط الضغط داخل الشرايين خلال دورة قلبية كاملة، ويتأثر بالنتاج القلبي والمقاومة الوعائية الجهازية.",
+    clinicalNote: "يُستخدم MAP كمؤشر عملي على ضغط التروية أثناء التخدير، لكن الهدف المناسب يختلف باختلاف حالة المريض والسياق السريري.",
+    tags: ["MAP","perfusion","ضغط"]
+  },
+  {
+    id: "mg",
+    en: "Milligram",
+    ar: "ميليغرام",
+    abbr: "mg",
+    category: "abbreviations",
+    definition: "وحدة كتلة تساوي واحدًا من ألف من الغرام.",
+    clinicalNote: "تُستخدم على نطاق واسع لجرعات الأدوية. يجب تجنب الأخطاء العشرية وكتابة الوحدات بوضوح في الأوامر الدوائية.",
+    tags: ["unit","milligram","dose"]
+  },
+  {
+    id: "microgram",
+    en: "Microgram",
+    ar: "ميكروغرام",
+    abbr: "µg",
+    category: "abbreviations",
+    definition: "وحدة كتلة تساوي واحدًا من مليون من الغرام، أو واحدًا من ألف من الميليغرام.",
+    clinicalNote: "للسلامة الدوائية توصي ISMP باستخدام mcg بدل الرمز µg لأن µg قد يُساء قراءته على أنه mg.",
+    tags: ["unit","microgram","mcg","safety"]
+  },
+  {
+    id: "mw",
+    en: "Molecular Weight",
+    ar: "الوزن الجزيئي",
+    abbr: "MW",
+    category: "pharmacology",
+    definition: "مصطلح شائع يعبّر عن كتلة الجزيء نسبةً إلى مكوناته الذرية؛ في الاستعمال العلمي الدقيق تُستخدم مفاهيم الكتلة الجزيئية أو الكتلة المولية بحسب السياق.",
+    clinicalNote: "الحجم والكتلة الجزيئية من العوامل التي قد تؤثر في الانتشار عبر الأغشية، لكنها ليست العامل الوحيد في حركية الدواء.",
+    tags: ["molecular weight","pharmacology","كتلة"]
+  },
+  {
+    id: "pr-source",
+    en: "Peripheral Resistance",
+    ar: "المقاومة الوعائية المحيطية",
+    abbr: "PR",
+    category: "cardio",
+    definition: "المقاومة التي يواجهها جريان الدم في الدوران الجهازي، وتتأثر أساسًا بقطر الشُرينات ولزوجة الدم وعوامل وعائية أخرى.",
+    clinicalNote: "PR اختصار قابل للالتباس وقد يعني Pulse Rate. في الديناميكا الدموية تُستخدم غالبًا TPR أو SVR بصورة أوضح.",
+    tags: ["vascular resistance","SVR","TPR"]
+  },
+  {
+    id: "ptn",
+    en: "Protein",
+    ar: "بروتين",
+    abbr: "Ptn",
+    category: "abbreviations",
+    definition: "جزيئات حيوية مكوّنة من أحماض أمينية تؤدي أدوارًا بنيوية وإنزيمية ونقلية وتنظيمية عديدة.",
+    clinicalNote: "Ptn اختصار تعليمي غير موحد؛ في علم الأدوية ترتبط بعض الأدوية ببروتينات البلازما مثل الألبومين، ما يؤثر في الجزء الحر من الدواء.",
+    tags: ["protein","albumin","binding"]
+  },
+  {
+    id: "pt-patient",
+    en: "Patient",
+    ar: "المريض",
+    abbr: "Pt",
+    category: "abbreviations",
+    definition: "اختصار كتابي شائع في بعض الملاحظات للإشارة إلى المريض.",
+    clinicalNote: "Pt ليس اختصارًا موحدًا في كل السياقات وقد يلتبس مع PT المستخدم لزمن البروثرومبين؛ الأفضل كتابة Patient في المواضع التي قد يحدث فيها لبس.",
+    tags: ["patient","documentation","مريض"]
+  },
+  {
+    id: "ras-reticular",
+    en: "Reticular Activating System",
+    ar: "الجهاز الشبكي المنشط",
+    abbr: "RAS",
+    category: "abbreviations",
+    definition: "شبكة عصبية ضمن التشكيل الشبكي في جذع الدماغ تسهم في اليقظة والانتباه وتنظيم دورة النوم والاستيقاظ.",
+    clinicalNote: "RAS اختصار ملتبس؛ قد يعني أيضًا Renin–Angiotensin System. في علم الأعصاب يُستخدم أحيانًا ARAS لتحديد الجهاز الشبكي المنشط الصاعد.",
+    tags: ["wakefulness","brainstem","ARAS"]
+  },
+  {
+    id: "rbf",
+    en: "Renal Blood Flow",
+    ar: "جريان الدم الكلوي",
+    abbr: "RBF",
+    category: "abbreviations",
+    definition: "كمية الدم التي تصل إلى الكليتين في وحدة الزمن، وهي عنصر أساسي في تروية الكلية ووظيفة الترشيح.",
+    clinicalNote: "يتأثر RBF بالضغط الشرياني والمقاومة الوعائية الكلوية والتنظيم الذاتي والهرمونات، وقد يتغير أثناء التخدير والمرض الحرج.",
+    tags: ["renal","kidney","blood flow"]
+  },
+  {
+    id: "rr",
+    en: "Respiratory Rate",
+    ar: "معدل التنفس",
+    abbr: "RR",
+    category: "abbreviations",
+    definition: "عدد دورات التنفس خلال دقيقة واحدة.",
+    clinicalNote: "RR علامة حيوية مهمة ويجب تفسيرها مع حجم المدّ VT والتهوية الدقيقة وثاني أكسيد الكربون والأكسجة.",
+    tags: ["respiratory rate","breathing","تنفس"]
+  },
+  {
+    id: "rt",
+    en: "Right",
+    ar: "يمين",
+    abbr: "Rt",
+    category: "abbreviations",
+    definition: "اختصار وصفي للجهة اليمنى في الملاحظات السريرية.",
+    clinicalNote: "في الوثائق أو الأوامر التي قد يسبب فيها الالتباس ضررًا يُفضّل كتابة Right كاملًا.",
+    tags: ["right","direction","يمين"]
+  },
+  {
+    id: "sbp",
+    en: "Systolic Blood Pressure",
+    ar: "ضغط الدم الانقباضي",
+    abbr: "SBP",
+    category: "cardio",
+    definition: "أعلى ضغط شرياني يصل إليه الدوران أثناء انقباض البطينين وقذف الدم.",
+    clinicalNote: "يُفسر SBP مع DBP وMAP والسياق السريري؛ لا يكفي منفردًا لتقييم التروية.",
+    tags: ["SBP","blood pressure","systolic"]
+  },
+  {
+    id: "sch-source",
+    en: "Succinylcholine (Suxamethonium)",
+    ar: "سكسينيل كولين / سكساميثونيوم",
+    abbr: "Sch",
+    category: "pharmacology",
+    definition: "مرخٍ عضلي مزيل للاستقطاب سريع البدء وقصير المفعول يُستخدم في سياقات محددة لتسهيل التنبيب أو التحكم بالمجرى الهوائي.",
+    clinicalNote: "Sch اختصار غير قياسي لاسم الدواء ولا يُفضّل في الأوامر الدوائية؛ كتابة Succinylcholine أو Suxamethonium كاملةً أكثر أمانًا.",
+    tags: ["succinylcholine","suxamethonium","muscle relaxant"]
+  },
+  {
+    id: "sc",
+    en: "Subcutaneous",
+    ar: "تحت الجلد",
+    abbr: "SC",
+    category: "abbreviations",
+    definition: "طريق إعطاء تُحقن فيه المادة داخل النسيج تحت الجلد لامتصاصها تدريجيًا.",
+    clinicalNote: "اختصارات طرق الإعطاء قد تختلف بين المؤسسات؛ في الأوامر عالية الخطورة يفضّل كتابة Subcutaneous بوضوح لتجنب الالتباس.",
+    tags: ["route","subcutaneous","حقن"]
+  },
+  {
+    id: "svp",
+    en: "Saturated Vapor Pressure",
+    ar: "ضغط البخار المشبع",
+    abbr: "SVP",
+    category: "pharmacology",
+    definition: "ضغط البخار فوق سائل عندما يكون البخار في توازن مع الطور السائل عند درجة حرارة محددة.",
+    clinicalNote: "مهم في فهم العوامل الاستنشاقية المتطايرة؛ لكل عامل تخدير متطاير ضغط بخار مشبع يعتمد على درجة الحرارة ويؤثر في تصميم ومعايرة المبخرات.",
+    tags: ["vapor pressure","volatile anesthetic","vaporizers"]
+  },
+  {
+    id: "ttt",
+    en: "Treatment",
+    ar: "العلاج",
+    abbr: "ttt",
+    category: "abbreviations",
+    definition: "اختصار كتابي غير رسمي لكلمة Treatment ويظهر في بعض الملاحظات التعليمية أو القديمة.",
+    clinicalNote: "ليس اختصارًا سريريًا معياريًا موحدًا؛ الأفضل كتابة Treatment أو Therapy كاملًا في الوثائق الرسمية.",
+    tags: ["treatment","documentation","علاج"]
+  },
+  {
+    id: "uop",
+    en: "Urine Output",
+    ar: "إدرار البول / حجم البول المطروح",
+    abbr: "UOP",
+    category: "abbreviations",
+    definition: "حجم البول الذي تنتجه الكليتان وتطرحه المثانة خلال فترة زمنية محددة.",
+    clinicalNote: "يُستخدم UOP كأحد مؤشرات التوازن الحجمي ووظيفة الكلية، لكنه لا يفسر منفردًا دون النظر إلى الحالة الدموية والكلوية والأدوية.",
+    tags: ["urine output","renal","بول"]
+  },
+  {
+    id: "vc-source",
+    en: "Vasoconstriction",
+    ar: "تضيّق الأوعية",
+    abbr: "VC",
+    category: "cardio",
+    definition: "انقباض العضلات الملساء الوعائية بما يقلل قطر الوعاء ويزيد المقاومة الوعائية موضعيًا أو جهازيًا بحسب الموقع.",
+    clinicalNote: "VC اختصار ملتبس وقد يعني Vital Capacity في الجهاز التنفسي؛ في التوثيق السريري يجب توضيح المقصود.",
+    tags: ["vasoconstriction","vascular","تضيق"]
+  },
+  {
+    id: "vd-vasodilation-source",
+    en: "Vasodilation",
+    ar: "توسّع الأوعية",
+    abbr: "VD",
+    category: "cardio",
+    definition: "ارتخاء العضلات الملساء الوعائية بما يزيد قطر الوعاء ويقلل المقاومة الوعائية.",
+    clinicalNote: "VD اختصار غير نوعي وقد يلتبس مع دلالات أخرى؛ لا ينبغي خلطه مع Vd المستخدم لVolume of Distribution.",
+    tags: ["vasodilation","vascular","توسع"]
+  },
+  {
+    id: "vmc",
+    en: "Vasomotor Center",
+    ar: "المركز الوعائي الحركي",
+    abbr: "VMC",
+    category: "cardio",
+    definition: "مصطلح فسيولوجي تقليدي لدوائر في جذع الدماغ تسهم في تنظيم النغمة الودية الوعائية وضغط الدم.",
+    clinicalNote: "المفهوم الحديث لتنظيم الضغط موزع على شبكات جذع الدماغ وليس نقطة منفردة؛ VMC اختصار تعليمي أكثر من كونه اختصارًا سريريًا معياريًا.",
+    tags: ["vasomotor","brainstem","blood pressure"]
+  },
+  {
+    id: "vt",
+    en: "Tidal Volume",
+    ar: "حجم المدّ التنفسي",
+    abbr: "VT",
+    category: "abbreviations",
+    definition: "حجم الهواء الداخل أو الخارج من الرئتين مع كل دورة تنفسية.",
+    clinicalNote: "في التهوية الميكانيكية يُضبط VT عادة بالاستناد إلى الوزن المثالي/المتنبأ به والسياق الرئوي لتقليل أذية الرئة.",
+    tags: ["tidal volume","ventilation","تنفس"]
+  },
+  {
+    id: "vd",
+    en: "Volume of Distribution",
+    ar: "حجم التوزيع الظاهري",
+    abbr: "Vd",
+    category: "pharmacology",
+    definition: "معامل حركي دوائي يربط كمية الدواء الكلية في الجسم بتركيزه في البلازما؛ وهو حجم ظاهري نظري وليس حيزًا تشريحيًا حقيقيًا.",
+    clinicalNote: "ارتفاع Vd يشير عادة إلى انتشار أكبر خارج البلازما، وله أهمية في حساب جرعة التحميل وفهم توزيع الأدوية.",
+    tags: ["pharmacokinetics","distribution","Vd"]
   }
+
 ];
 
 export const SUX_APNOEA_DATA = {
