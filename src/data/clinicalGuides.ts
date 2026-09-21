@@ -29,8 +29,7 @@ export const CLINICAL_GUIDE_FILTERS: Array<{ id: 'all' | ClinicalGuideCategory; 
   { id: 'general', label: 'التخدير العام' },
   { id: 'airway', label: 'مجرى الهواء' },
   { id: 'regional', label: 'الموضعي والإقليمي' },
-  { id: 'pharmacology', label: 'علم الأدوية' },
-  { id: 'recovery', label: 'الإفاقة' }
+  { id: 'pharmacology', label: 'علم الأدوية' }
 ];
 
 export const CLINICAL_GUIDES: ClinicalGuide[] = [
@@ -173,35 +172,26 @@ export const CLINICAL_GUIDES: ClinicalGuide[] = [
     tags: ['inhalational induction','sevoflurane','pediatric','spontaneous ventilation']
   },
   {
-    id: 'maintenance-and-emergence',
-    titleAr: 'المحافظة على التخدير والإفاقة',
-    titleEn: 'Maintenance and Emergence',
-    category: 'recovery',
-    categoryAr: 'الإفاقة',
+    id: 'anesthesia-maintenance',
+    titleAr: 'إدامة التخدير',
+    titleEn: 'Maintenance of Anesthesia',
+    category: 'general',
+    categoryAr: 'التخدير العام',
     sourcePages: [32,33],
-    summary: 'بعد التحريض يجب الحفاظ على التنويم والتسكين والاستقرار ثم إيقاف العوامل تدريجيًا واستعادة الوعي والتهوية والمنعكسات.',
+    summary: 'بعد التحريض تُحافظ خطة التخدير على التنويم والتسكين والاستقرار الفيزيولوجي، مع إضافة الارتخاء العضلي عند الحاجة ومراقبة المريض بصورة مستمرة.',
     sections: [
       {
-        title: 'المحافظة | Maintenance',
+        title: 'إدامة التخدير | Maintenance',
         items: [
           'عامل متطاير | Volatile anesthetic أو تخدير وريدي كلي | Total intravenous anesthesia (TIVA).',
           'تسكين إضافي | Analgesia مثل الأفيونات | Opioids حسب الحاجة.',
           'مرخيات عضلية | Neuromuscular blockers إذا تطلبت الجراحة ذلك.',
-          'المراقبة | Monitoring للأكسجة والتهوية والدورة الدموية والحرارة.'
-        ]
-      },
-      {
-        title: 'الإفاقة | Emergence',
-        items: [
-          'إيقاف أو خفض عوامل التخدير | Discontinue / reduce anesthetics.',
-          'التأكد من عودة التهوية التلقائية الكافية | Adequate spontaneous ventilation.',
-          'عكس الحصار العضلي عند الحاجة | Neuromuscular reversal.',
-          'تقييم الوعي ومنعكسات حماية مجرى الهواء | Consciousness and protective airway reflexes.'
+          'المراقبة المستمرة | Continuous monitoring للأكسجة والتهوية والدورة الدموية والحرارة وعمق التخدير حسب الحالة.',
+          'تعديل جرعات الأدوية والسوائل والتهوية حسب استجابة المريض ومتطلبات الجراحة.'
         ]
       }
     ],
-    correction: 'جرعات عكس المرخيات ليست وصفة ثابتة لكل مريض؛ تعتمد على نوع المرخي ودرجة الحصار المقاسة مثل TOF وعلى عامل العكس المستخدم.',
-    tags: ['maintenance','emergence','recovery','TIVA','reversal']
+    tags: ['maintenance','anesthesia maintenance','TIVA','volatile anesthetic','monitoring']
   },
   {
     id: 'anesthesia-recovery',
