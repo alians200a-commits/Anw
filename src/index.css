@@ -6,11 +6,23 @@
   font-display: swap;
 }
 
+.brand-stretch-primary {
+  display: inline-block;
+  transform: scaleX(1.10);
+  transform-origin: right center;
+}
+
+.brand-stretch-secondary {
+  display: inline-block;
+  transform: scaleX(1.06);
+  transform-origin: right center;
+}
+
 .font-vexa-brand {
   font-family: 'VEXA Brand', 'Cairo', sans-serif;
-  font-weight: 400;
+  font-weight: 600;
   font-style: normal;
-  font-synthesis: none;
+  font-synthesis: weight;
   direction: rtl;
   unicode-bidi: isolate;
   letter-spacing: normal;
