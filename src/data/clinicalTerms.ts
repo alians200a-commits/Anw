@@ -1911,6 +1911,43 @@ export const CLINICAL_TERMS: ClinicalTerm[] = [
     clinicalNote: 'قد يؤثر في الاستجابة للأدوية والشوارد ووظيفة القلب، ويُفسر مع غازات الدم والسياق السريري.',
     tags: ['acid base', 'pH', 'ABG', 'arrhythmia']
   }
+,
+  {
+    id: 'septic-shock',
+    en: 'Septic Shock',
+    ar: 'الصدمة الإنتانية',
+    category: 'critical',
+    definition: 'شكل شديد من Sepsis يتميز باضطراب دوراني واستقلابي مستمر يؤدي إلى نقص تروية الأنسجة.',
+    clinicalNote: 'تُصنف ضمن Distributive shock، ويعتمد التدبير على علاج العدوى ودعم التروية والديناميكا الدموية.',
+    tags: ['septic shock', 'sepsis', 'distributive shock']
+  },
+  {
+    id: 'neurogenic-shock',
+    en: 'Neurogenic Shock',
+    ar: 'الصدمة العصبية',
+    category: 'critical',
+    definition: 'صدمة توزيعية ناتجة عن فقدان النغمة الودية، وقد تحدث بعد أذية عالية للحبل الشوكي.',
+    clinicalNote: 'قد تترافق مع Hypotension وBradycardia بدل التسرع المعتاد في أنواع أخرى من الصدمة.',
+    tags: ['neurogenic shock', 'spinal cord injury', 'distributive shock']
+  },
+  {
+    id: 'massive-pulmonary-embolism',
+    en: 'Massive Pulmonary Embolism',
+    ar: 'انصمام رئوي ضخم',
+    category: 'critical',
+    definition: 'انسداد مهم في الدوران الرئوي بسبب خثرة يؤدي إلى إجهاد البطين الأيمن واضطراب ديناميكي دموي.',
+    clinicalNote: 'قد يسبب Obstructive shock ويحتاج تقييمًا وعلاجًا إسعافيًا حسب الاستقرار.',
+    tags: ['pulmonary embolism', 'PE', 'obstructive shock']
+  },
+  {
+    id: 'cardiac-valve-disease',
+    en: 'Valvular Heart Disease',
+    ar: 'مرض صمامات القلب',
+    category: 'cardio',
+    definition: 'تضيق أو قصور في صمام قلبي يغير تدفق الدم والتحميل القلبي.',
+    clinicalNote: 'الأهداف التخديرية تختلف باختلاف الصمام وشدة الآفة ووظيفة البطين.',
+    tags: ['valvular heart disease', 'cardiac', 'valve']
+  }
 
 ];
 
