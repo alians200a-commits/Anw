@@ -1811,6 +1811,70 @@ export const CLINICAL_TERMS: ClinicalTerm[] = [
     clinicalNote: 'وردت ضمن تصنيفات التخدير الموضعي في المصدر؛ استخدامها الحديث محدود مقارنةً بتقنيات التخدير الموضعي والإقليمي الأخرى.',
     tags: ['local anesthesia', 'cooling', 'analgesia']
   }
+,
+  {
+    id: 'junctional-rhythm',
+    en: 'Junctional Rhythm',
+    ar: 'نظم وصلي',
+    category: 'cardio',
+    definition: 'نظم ينشأ من منطقة الوصلة الأذينية البطينية | AV junction بدل العقدة الجيبية.',
+    clinicalNote: 'يُفسر حسب معدل القلب والسياق السريري وECG، وقد يظهر أثناء التخدير مع تغير النغمة الذاتية أو الأدوية.',
+    tags: ['junctional rhythm', 'ECG', 'arrhythmia']
+  },
+  {
+    id: 'ectopic-beat',
+    en: 'Ectopic Beat',
+    ar: 'ضربة هاجرة / ضربة مبكرة',
+    category: 'cardio',
+    definition: 'نبضة تنشأ من بؤرة غير العقدة الجيبية | Ectopic focus، وقد تكون أذينية أو بطينية.',
+    clinicalNote: 'قد تكون معزولة أو ترتبط بنقص الأكسجة أو اضطراب الشوارد أو التحفيز أو أدوية معينة حسب السياق.',
+    tags: ['ectopic beat', 'PAC', 'PVC', 'arrhythmia']
+  },
+  {
+    id: 'wpw',
+    en: 'Wolff–Parkinson–White Syndrome',
+    ar: 'متلازمة وولف باركنسون وايت',
+    abbr: 'WPW',
+    category: 'abbreviations',
+    definition: 'متلازمة Pre-excitation ناتجة عن مسار توصيل إضافي بين الأذين والبطين.',
+    clinicalNote: 'قد ترتبط بنوبات tachyarrhythmia؛ تفسير ECG والعلاج يعتمد على نوع النظم واستقرار المريض.',
+    tags: ['WPW', 'pre-excitation', 'arrhythmia', 'ECG']
+  },
+  {
+    id: 'oliguria',
+    en: 'Oliguria',
+    ar: 'قلة البول',
+    category: 'critical',
+    definition: 'انخفاض إخراج البول عن المتوقع بالنسبة للوزن والمدة والسياق السريري.',
+    clinicalNote: 'لا تُفسر قراءة بول واحدة بمعزل عن volume status، perfusion، renal function، الأدوية ومدة الجراحة.',
+    tags: ['oliguria', 'urine output', 'renal', 'shock']
+  },
+  {
+    id: 'cheyne-stokes',
+    en: 'Cheyne–Stokes Respiration',
+    ar: 'تنفس تشاين–ستوكس',
+    category: 'critical',
+    definition: 'نمط تنفس دوري يتزايد فيه عمق التنفس تدريجيًا ثم يتناقص ويتبعه توقف تنفس مؤقت | Apnea.',
+    tags: ['Cheyne-Stokes', 'respiration', 'apnea']
+  },
+  {
+    id: 'thyrotoxicosis',
+    en: 'Thyrotoxicosis',
+    ar: 'التسمم الدرقي',
+    category: 'critical',
+    definition: 'حالة زيادة تأثير هرمونات الغدة الدرقية في الأنسجة، وقد تترافق مع Tachycardia وArrhythmias.',
+    tags: ['thyrotoxicosis', 'thyroid', 'tachycardia', 'arrhythmia']
+  },
+  {
+    id: 'subarachnoid-haemorrhage',
+    en: 'Subarachnoid Haemorrhage',
+    ar: 'نزف تحت العنكبوتية',
+    abbr: 'SAH',
+    category: 'abbreviations',
+    definition: 'نزف في الحيز تحت العنكبوتية حول الدماغ | Subarachnoid space.',
+    clinicalNote: 'قد ترافقه تغيرات ECG واضطرابات نظم بسبب الشدة العصبية والكاتيكولامينات.',
+    tags: ['SAH', 'subarachnoid hemorrhage', 'neurosurgery', 'arrhythmia']
+  }
 
 ];
 
