@@ -26,7 +26,7 @@ export function GuideScreen({
         <select
           value={section}
           onChange={(e) => onSectionChange(e.target.value as GuideSection)}
-          className="h-10 rounded-xl border border-[#CCA039]/14 bg-[#0D2741] px-3 text-xs font-bold text-[#EEE8D6] outline-none"
+          className="h-10 rounded-xl border border-[#DCCFEB] bg-white px-3 text-xs font-bold text-[#463653] outline-none"
           aria-label="اختيار قسم الدليل"
         >
           <option value="drugs">الأدوية</option>
@@ -37,8 +37,8 @@ export function GuideScreen({
           <option value="abbreviations">الاختصارات</option>
         </select>
         <div className="text-right">
-          <h2 className="text-lg font-black text-[#EEE8D6]">الدليل التخديري</h2>
-          <p className="mt-0.5 text-[10px] text-[#7E91A2]">أدوية • سوائل • أجهزة • إجراءات • مصطلحات • اختصارات</p>
+          <h2 className="text-lg font-black text-[#34293F]">الدليل التخديري</h2>
+          <p className="mt-0.5 text-[10px] text-[#81758A]">أدوية • سوائل • أجهزة • إجراءات • مصطلحات • اختصارات</p>
         </div>
       </div>
 
