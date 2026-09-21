@@ -253,12 +253,12 @@ export const CLINICAL_TERMS: ClinicalTerm[] = [
   },
   {
     id: 'cardia',
-    en: 'Cardia',
-    ar: 'القلب / قلبي',
+    en: 'Cardiac',
+    ar: 'قلبي',
     category: 'cardio',
-    definition: 'مصطلح يرمز لعضلة القلب أو الجزء الفؤادي المرتبط بالجهاز القلبي الوعائي.',
-    clinicalNote: 'الجهاز المحوري الذي تدور حوله كل حسابات الحركية الدموية في التخدير.',
-    tags: ['قلب', 'تشريح']
+    definition: 'مصطلح وصفي يعني متعلق بالقلب | Relating to the heart.',
+    clinicalNote: 'لا يُستخدم Cardia كمرادف عام للقلب؛ Cardia قد تشير تشريحيًا إلى الجزء القريب من المعدة عند اتصالها بالمريء.',
+    tags: ['cardiac', 'heart', 'قلب']
   },
   {
     id: 'tachycardia',
@@ -1782,6 +1782,34 @@ export const CLINICAL_TERMS: ClinicalTerm[] = [
     category: 'surgical',
     definition: 'تدفق خليط الغازات الجديد من محطة التخدير إلى دائرة التنفس.',
     tags: ['anesthesia machine', 'flowmeter', 'breathing circuit']
+  }
+,
+  {
+    id: 'npo',
+    en: 'Nil Per Os',
+    ar: 'صيام عن طريق الفم',
+    abbr: 'NPO',
+    category: 'abbreviations',
+    definition: 'تعليمات بعدم تناول الطعام أو الشراب عن طريق الفم خلال فترة محددة قبل الإجراء.',
+    clinicalNote: 'مدة الصيام تختلف حسب نوع المادة المتناولة وعمر المريض وتعليمات المؤسسة؛ NPO ليس مدة ثابتة واحدة لكل الحالات.',
+    tags: ['NPO', 'fasting', 'preoperative']
+  },
+  {
+    id: 'neuraxial-anesthesia',
+    en: 'Neuraxial Anesthesia',
+    ar: 'التخدير المحوري العصبي',
+    category: 'pharmacology',
+    definition: 'تقنيات تخدير أو تسكين حول القناة الشوكية مثل Spinal وEpidural.',
+    tags: ['spinal', 'epidural', 'regional anesthesia']
+  },
+  {
+    id: 'refrigeration-analgesia',
+    en: 'Refrigeration Analgesia',
+    ar: 'Refrigeration Analgesia',
+    category: 'pharmacology',
+    definition: 'تقنية تاريخية تعتمد على تبريد الأنسجة لتقليل الإحساس بالألم بصورة مؤقتة.',
+    clinicalNote: 'وردت ضمن تصنيفات التخدير الموضعي في المصدر؛ استخدامها الحديث محدود مقارنةً بتقنيات التخدير الموضعي والإقليمي الأخرى.',
+    tags: ['local anesthesia', 'cooling', 'analgesia']
   }
 
 ];
