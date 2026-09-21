@@ -945,8 +945,17 @@ export const CLINICAL_GUIDES: ClinicalGuide[] = [
         items: [
           'جراحة طارئة أو صيام غير كافٍ | Emergency surgery / inadequate fasting.',
           'انسداد الأمعاء أو تأخر إفراغ المعدة | Bowel obstruction / delayed gastric emptying.',
-          'الحمل والسمنة وحالات زيادة الضغط داخل البطن | Pregnancy / obesity / raised intra-abdominal pressure.',
+          'الحمل والسمنة والاستسقاء وحالات زيادة الضغط داخل البطن | Pregnancy / obesity / ascites / raised intra-abdominal pressure.',
+          'فتق حجابي أو خلل في الحاجز المعدي المريئي | Hiatal hernia / impaired gastroesophageal barrier.',
           'ضعف منعكسات حماية مجرى الهواء تحت التخدير | Depressed airway protective reflexes.'
+        ]
+      },
+      {
+        title: 'المخاطر | Why it matters',
+        items: [
+          'انسداد مجرى الهواء أو نقص أكسجة حاد بسبب محتويات مستنشقة | Airway obstruction / acute hypoxemia.',
+          'تشنج قصبي والتهاب رئة كيميائي | Bronchospasm / chemical pneumonitis.',
+          'متلازمة مندلسون | Mendelson syndrome تصف أذية رئوية كيميائية بعد استنشاق محتويات معدية حمضية.'
         ]
       },
       {
@@ -1013,12 +1022,24 @@ export const CLINICAL_GUIDES: ClinicalGuide[] = [
         ]
       },
       {
-        title: 'أسباب ميكانيكية | Mechanical causes',
+        title: 'أسباب شائعة | Common causes',
         items: [
-          'انثناء الأنبوب | Kinking.',
-          'انسداد الأنبوب بالإفرازات أو الدم | Mucus / blood obstruction.',
-          'انفصال الدائرة | Circuit disconnection.',
-          'عض الأنبوب | Tube biting.'
+          'سقوط اللسان للخلف في فاقد الوعي | Posterior tongue displacement.',
+          'تشنج الحنجرة | Laryngospasm.',
+          'جسم غريب أو دم أو إفرازات | Foreign material / blood / secretions.',
+          'انثناء الأنبوب | Kinking أو انسداده بالإفرازات.',
+          'عض الأنبوب | Tube biting.',
+          'انفصال الدائرة أو خلل ميكانيكي | Circuit disconnection / mechanical problem.'
+        ]
+      },
+      {
+        title: 'الاستجابة الفورية | Immediate response',
+        items: [
+          'أعطِ أوكسجين وارفع الفك وافتح مجرى الهواء | Oxygen / jaw thrust / airway opening maneuvers.',
+          'استخدم OPA أو NPA عند ملاءمتهما | Airway adjunct when appropriate.',
+          'اشفط الدم أو الإفرازات أو المادة الغريبة المرئية | Suction visible blood / secretions / material.',
+          'إذا كان المريض منبوبًا: افحص عمق الأنبوب وانثناءه وانسداده والدائرة ومرور الشفاط | Tube / circuit check.',
+          'عالج السبب المحدد فورًا مثل Laryngospasm أو Bronchospasm ولا تنتظر ظهور الزرقة.'
         ]
       }
     ],
