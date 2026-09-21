@@ -21,7 +21,7 @@ const items = [
 
 export function BottomNav({ active, onChange }: BottomNavProps) {
   return (
-    <nav className="fixed inset-x-0 bottom-0 z-50 border-t border-[#76569D] bg-[#5A3B86]/98 px-3 pb-[max(0.45rem,env(safe-area-inset-bottom))] pt-1.5 backdrop-blur-xl">
+    <nav className="fixed inset-x-0 bottom-0 z-50 border-t border-[#173A63] bg-[#0A2036]/98 px-3 pb-[max(0.45rem,env(safe-area-inset-bottom))] pt-1.5 backdrop-blur-xl">
       <div className="mx-auto grid max-w-md grid-cols-4 gap-1">
         {items.map((item) => {
           const Icon = item.icon;
@@ -33,8 +33,8 @@ export function BottomNav({ active, onChange }: BottomNavProps) {
               className={
                 'flex min-h-[54px] flex-col items-center justify-center gap-0.5 rounded-xl px-1 transition ' +
                 (isActive
-                  ? 'bg-white/14 text-white'
-                   : 'text-[#D7CBE5] active:bg-white/10 active:text-white')
+                  ? 'bg-[#CCA039]/12 text-[#CCA039]'
+                   : 'text-[#A9B7C4] active:bg-white/8 active:text-white')
               }
             >
               <Icon size={22} weight={isActive ? 'fill' : 'regular'} />
