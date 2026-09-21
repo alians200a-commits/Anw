@@ -40,7 +40,7 @@ jobs:
           out.mkdir(parents=True, exist_ok=True)
 
           pipeline = KPipeline(lang_code="a")
-          voices = ["af_heart", "af_bella", "af_sarah"]
+          voices = ["af_nicole", "am_michael", "bf_emma", "bm_george"]
           text = "Propofol. Suxamethonium. Rocuronium."
 
           for voice in voices:
