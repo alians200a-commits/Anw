@@ -161,6 +161,16 @@
       "spoken_text": "Ranitidine",
       "file": "/audio/drugs/ranitidine.mp3"
     },
+    "drugs/diphenhydramine": {
+      "source_text": "Diphenhydramine",
+      "spoken_text": "Diphenhydramine",
+      "file": "/audio/drugs/diphenhydramine.mp3"
+    },
+    "drugs/droperidol": {
+      "source_text": "Droperidol",
+      "spoken_text": "Droperidol",
+      "file": "/audio/drugs/droperidol.mp3"
+    },
     "drugs/ondansetron": {
       "source_text": "Ondansetron",
       "spoken_text": "Ondansetron",
@@ -525,6 +535,96 @@
       "source_text": "Refrigeration Analgesia",
       "spoken_text": "Refrigeration Analgesia",
       "file": "/audio/terms/refrigeration-analgesia.mp3"
+    },
+    "terms/junctional-rhythm": {
+      "source_text": "Junctional Rhythm",
+      "spoken_text": "Junctional Rhythm",
+      "file": "/audio/terms/junctional-rhythm.mp3"
+    },
+    "terms/ectopic-beat": {
+      "source_text": "Ectopic Beat",
+      "spoken_text": "Ectopic Beat",
+      "file": "/audio/terms/ectopic-beat.mp3"
+    },
+    "abbreviations/wpw": {
+      "source_text": "Wolff–Parkinson–White Syndrome",
+      "spoken_text": "Wolff–Parkinson–White Syndrome",
+      "file": "/audio/abbreviations/wpw.mp3"
+    },
+    "terms/oliguria": {
+      "source_text": "Oliguria",
+      "spoken_text": "Oliguria",
+      "file": "/audio/terms/oliguria.mp3"
+    },
+    "terms/cheyne-stokes": {
+      "source_text": "Cheyne–Stokes Respiration",
+      "spoken_text": "Cheyne–Stokes Respiration",
+      "file": "/audio/terms/cheyne-stokes.mp3"
+    },
+    "terms/thyrotoxicosis": {
+      "source_text": "Thyrotoxicosis",
+      "spoken_text": "Thyrotoxicosis",
+      "file": "/audio/terms/thyrotoxicosis.mp3"
+    },
+    "abbreviations/subarachnoid-haemorrhage": {
+      "source_text": "Subarachnoid Haemorrhage",
+      "spoken_text": "Subarachnoid Haemorrhage",
+      "file": "/audio/abbreviations/subarachnoid-haemorrhage.mp3"
+    },
+    "terms/pacemaker": {
+      "source_text": "Cardiac Pacemaker",
+      "spoken_text": "Cardiac Pacemaker",
+      "file": "/audio/terms/pacemaker.mp3"
+    },
+    "terms/catecholamine": {
+      "source_text": "Catecholamine",
+      "spoken_text": "Catecholamine",
+      "file": "/audio/terms/catecholamine.mp3"
+    },
+    "terms/electrolyte-imbalance": {
+      "source_text": "Electrolyte Imbalance",
+      "spoken_text": "Electrolyte Imbalance",
+      "file": "/audio/terms/electrolyte-imbalance.mp3"
+    },
+    "terms/acid-base-disturbance": {
+      "source_text": "Acid–Base Disturbance",
+      "spoken_text": "Acid–Base Disturbance",
+      "file": "/audio/terms/acid-base-disturbance.mp3"
+    },
+    "terms/septic-shock": {
+      "source_text": "Septic Shock",
+      "spoken_text": "Septic Shock",
+      "file": "/audio/terms/septic-shock.mp3"
+    },
+    "terms/neurogenic-shock": {
+      "source_text": "Neurogenic Shock",
+      "spoken_text": "Neurogenic Shock",
+      "file": "/audio/terms/neurogenic-shock.mp3"
+    },
+    "terms/massive-pulmonary-embolism": {
+      "source_text": "Massive Pulmonary Embolism",
+      "spoken_text": "Massive Pulmonary Embolism",
+      "file": "/audio/terms/massive-pulmonary-embolism.mp3"
+    },
+    "terms/cardiac-valve-disease": {
+      "source_text": "Valvular Heart Disease",
+      "spoken_text": "Valvular Heart Disease",
+      "file": "/audio/terms/cardiac-valve-disease.mp3"
+    },
+    "terms/aspiration-pneumonitis": {
+      "source_text": "Aspiration Pneumonitis",
+      "spoken_text": "Aspiration Pneumonitis",
+      "file": "/audio/terms/aspiration-pneumonitis.mp3"
+    },
+    "terms/airway-obstruction": {
+      "source_text": "Airway Obstruction",
+      "spoken_text": "Airway Obstruction",
+      "file": "/audio/terms/airway-obstruction.mp3"
+    },
+    "terms/cyanosis": {
+      "source_text": "Cyanosis",
+      "spoken_text": "Cyanosis",
+      "file": "/audio/terms/cyanosis.mp3"
     },
     "special/suxamethonium-apnoea": {
       "source_text": "Suxamethonium apnoea",
