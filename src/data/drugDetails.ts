@@ -20,7 +20,7 @@ export const DRUG_DETAILS: Record<string, DrugDetail> = {
     mechanism: 'يعزز النقل المثبط عبر مستقبلات GABA-A | GABA-A receptor positive allosteric modulation، ما يؤدي إلى التنويم وفقدان الوعي.',
     tradeNames: ['Diprivan'],
     routes: ['وريدي | Intravenous (IV)'],
-    onsetDuration: ['بدء التأثير بعد الحقن الوريدي سريع، عادة خلال عشرات الثواني | Rapid IV onset.', 'مدة التنويم بعد جرعة تحريض مفردة قصيرة نسبيًا بسبب إعادة التوزيع | Short hypnotic duration after a bolus.'],
+    onsetDuration: ['بدء التأثير بعد الحقن الوريدي سريع، عادة خلال عشرات الثواني | Rapid IV onset.', 'مدة التنويم بعد جرعة واحدة لبدء التخدير قصيرة نسبيًا بسبب إعادة التوزيع | Short hypnotic duration after a bolus.'],
     correction: 'المصدر يعرض حساسية البيض/الصويا بصورة واسعة. الملصقات الأمريكية الحديثة تذكر تحديدًا تاريخ التأق | Anaphylaxis للبيض/منتجاته أو الصويا/منتجاتها ضمن الموانع، إضافة إلى الحساسية للبروبوفول أو مكونات المستحضر؛ ولا تُحوّل حساسية غذائية بسيطة تلقائيًا إلى نفس درجة الخطر دون تقييم. كذلك الربو | Asthma ليس مانعًا روتينيًا للبروبوفول كما ورد في ملف الملاحظات.',
     sourcePages: [64, 65, 70],
     uses: ['بدء التخدير العام', 'المحافظة على التخدير بالتسريب الوريدي', 'التهدئة في الإجراءات والعناية المركزة وفق المراقبة المناسبة'],
@@ -42,7 +42,7 @@ export const DRUG_DETAILS: Record<string, DrugDetail> = {
     adverseEffects: ['هبوط الضغط', 'تثبيط التنفس', 'سعال أو تشنج حنجري لدى بعض المرضى', 'ألم أو أذية موضعية عند تسرب الحقن']
   },
   etomidate: {
-    feature: 'منوم وريدي يتميز عادةً بتأثير أقل على ضغط الدم والدورة الدموية مقارنةً بعدة عوامل تحريض أخرى.',
+    feature: 'منوم وريدي يتميز عادةً بتأثير أقل على ضغط الدم والدورة الدموية مقارنةً بعدة أدوية أخرى لبدء التخدير.',
     mechanism: 'يعزز النقل المثبط عبر GABA-A | GABA-A receptor modulation ويعمل كمنوم وريدي دون تأثير مسكن مهم.',
     routes: ['وريدي | Intravenous (IV)'],
     onsetDuration: ['بدء سريع خلال نحو دقيقة | Rapid onset.', 'مدة التنويم قصيرة بعد الجرعة المفردة | Short duration after a bolus.'],
@@ -84,11 +84,11 @@ export const DRUG_DETAILS: Record<string, DrugDetail> = {
     tradeNames: ['Forane'],
     routes: ['استنشاقي | Inhalational'],
     onsetDuration: ['أبطأ نسبيًا من Sevoflurane وDesflurane في تغيير العمق بسبب ذوبانية أعلى في الدم | Higher blood-gas solubility.'],
-    correction: 'يُستخدم أساسًا للمحافظة على التخدير وليس للتحريض بالقناع بسبب الرائحة اللاذعة وتهييج مجرى الهواء.',
+    correction: 'يُستخدم أساسًا للمحافظة على التخدير وليس لبدء التخدير بالقناع بسبب الرائحة اللاذعة وتهييج مجرى الهواء.',
     sourcePages: [57, 71],
     uses: ['المحافظة على التخدير العام'],
     contraindications: ['قابلية معروفة أو مشتبه بها لفرط الحرارة الخبيث', 'فرط التحسس لعوامل التخدير الهالوجينية'],
-    warnings: ['قد يسبب هبوط الضغط وتثبيط التنفس حسب التركيز', 'رائحته لاذعة نسبيًا لذلك لا يُفضّل عادةً للتحريض بالقناع', 'قد يزيد جريان الدم الدماغي عند التراكيز المرتفعة'],
+    warnings: ['قد يسبب هبوط الضغط وتثبيط التنفس حسب التركيز', 'رائحته لاذعة نسبيًا لذلك لا يُفضّل عادةً لبدء التخدير بالقناع', 'قد يزيد جريان الدم الدماغي عند التراكيز المرتفعة'],
     adverseEffects: ['هبوط الضغط', 'تثبيط التنفس', 'غثيان وقيء', 'تسرع قلب لدى بعض المرضى']
   },
   halothane: {
@@ -342,7 +342,7 @@ export const DRUG_DETAILS: Record<string, DrugDetail> = {
     routes: ['استنشاقي | Inhalational'],
     uses: ['المحافظة على التخدير العام | Maintenance of general anesthesia'],
     contraindications: ['قابلية فرط الحرارة الخبيث | Malignant hyperthermia susceptibility', 'فرط التحسس للعوامل الهالوجينية | Halogenated anesthetic hypersensitivity'],
-    warnings: ['مهيج لمجرى الهواء | Airway irritant وقد يسبب سعالًا | Coughing أو تشنجًا حنجريًا | Laryngospasm', 'الزيادة السريعة في التركيز قد تسبب تنبيهًا وديًا | Sympathetic stimulation مع تسرع القلب | Tachycardia وارتفاع الضغط | Hypertension', 'لا يُفضّل عادةً للتحريض بالقناع | Mask induction'],
+    warnings: ['مهيج لمجرى الهواء | Airway irritant وقد يسبب سعالًا | Coughing أو تشنجًا حنجريًا | Laryngospasm', 'الزيادة السريعة في التركيز قد تسبب تنبيهًا وديًا | Sympathetic stimulation مع تسرع القلب | Tachycardia وارتفاع الضغط | Hypertension', 'لا يُفضّل عادةً لبدء التخدير بالقناع | Mask induction'],
     adverseEffects: ['سعال | Coughing', 'تشنج حنجري | Laryngospasm', 'تسرع القلب | Tachycardia', 'غثيان وقيء | Nausea & vomiting'],
     sourcePages: [58]
   },
