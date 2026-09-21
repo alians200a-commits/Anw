@@ -4,6 +4,7 @@ import { AbbreviationsDirectory } from './AbbreviationsDirectory';
 import { EquipmentDirectory } from './EquipmentDirectory';
 import { ClinicalGuidesDirectory } from './ClinicalGuidesDirectory';
 import { FluidsDirectory } from './FluidsDirectory';
+import type { DrugClass } from '../data/drugs';
 
 export type GuideSection = 'drugs' | 'fluids' | 'equipment' | 'clinical' | 'terms' | 'abbreviations';
 
@@ -12,13 +13,15 @@ interface GuideScreenProps {
   onSectionChange: (section: GuideSection) => void;
   favorites: Set<string>;
   onToggleFavorite: (id: string) => void;
+  initialDrugClass: 'all' | DrugClass;
 }
 
 export function GuideScreen({
   section,
   onSectionChange,
   favorites,
-  onToggleFavorite
+  onToggleFavorite,
+  initialDrugClass
 }: GuideScreenProps) {
   return (
     <div className="space-y-4">
@@ -43,7 +46,11 @@ export function GuideScreen({
       </div>
 
       {section === 'drugs' && (
-        <DrugDirectory favorites={favorites} onToggleFavorite={onToggleFavorite} />
+        <DrugDirectory
+          favorites={favorites}
+          onToggleFavorite={onToggleFavorite}
+          initialClassification={initialDrugClass}
+        />
       )}
       {section === 'fluids' && <FluidsDirectory />}
       {section === 'equipment' && <EquipmentDirectory />}
