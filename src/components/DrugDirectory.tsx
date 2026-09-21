@@ -33,12 +33,12 @@ export function DrugDirectory({ favorites, onToggleFavorite }: DrugDirectoryProp
   return (
     <div className="space-y-3">
       <div className="relative">
-        <MagnifyingGlass size={18} className="absolute right-3.5 top-1/2 -translate-y-1/2 text-[#CCA039]" />
+        <MagnifyingGlass size={18} className="absolute right-3.5 top-1/2 -translate-y-1/2 text-[#6C4AA5]" />
         <input
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           placeholder="ابحث عن دواء..."
-          className="h-11 w-full rounded-xl border border-[#CCA039]/12 bg-[#0D2741] pr-10 pl-3 text-sm text-[#EEE8D6] outline-none placeholder:text-[#66798A] focus:border-[#CCA039]/40"
+          className="h-11 w-full rounded-xl border border-[#DCCFEB] bg-white pr-10 pl-3 text-sm text-[#3D3348] outline-none placeholder:text-[#9B90A4] focus:border-[#A78AC8]"
         />
       </div>
 
@@ -52,8 +52,8 @@ export function DrugDirectory({ favorites, onToggleFavorite }: DrugDirectoryProp
               className={
                 'whitespace-nowrap rounded-full border px-3 py-1.5 text-[10px] font-bold transition ' +
                 (active
-                  ? 'border-[#CCA039] bg-[#CCA039] text-[#0A2036]'
-                  : 'border-[#CCA039]/12 bg-[#0D2741] text-[#94A4B2]')
+                  ? 'border-[#6C4AA5] bg-[#6C4AA5] text-[#0A2036]'
+                  : 'border-[#6C4AA5]/12 bg-[#F7F2FB] text-[#94A4B2]')
               }
             >
               {item.label}
@@ -62,7 +62,7 @@ export function DrugDirectory({ favorites, onToggleFavorite }: DrugDirectoryProp
         })}
       </div>
 
-      <p className="px-1 text-[10px] text-[#71879A]">{filtered.length} دواء</p>
+      <p className="px-1 text-[10px] text-[#81748A]">{filtered.length} دواء</p>
 
       <div className="space-y-2">
         {filtered.map((drug) => {
@@ -72,13 +72,13 @@ export function DrugDirectory({ favorites, onToggleFavorite }: DrugDirectoryProp
             <motion.article
               layout
               key={drug.id}
-              className="rounded-[17px] border border-[#CCA039]/10 bg-[#0D2741] p-3.5"
+              className="rounded-[17px] border border-[#E3D8EE] bg-[#F7F2FB] p-3.5"
             >
               <div className="flex items-start gap-3">
                 <div className="flex shrink-0 gap-1">
                   <button
                     onClick={() => playPronunciation('drugs', drug.id)}
-                    className="grid h-8 w-8 place-items-center rounded-lg border border-[#CCA039]/12 bg-[#CCA039]/7 text-[#CCA039]"
+                    className="grid h-8 w-8 place-items-center rounded-lg border border-[#6C4AA5]/12 bg-[#6C4AA5]/7 text-[#6C4AA5]"
                     title="نطق اسم الدواء"
                   >
                     <SpeakerHigh size={16} />
@@ -88,8 +88,8 @@ export function DrugDirectory({ favorites, onToggleFavorite }: DrugDirectoryProp
                     className={
                       'grid h-8 w-8 place-items-center rounded-lg border ' +
                       (isFavorite
-                        ? 'border-[#CCA039]/30 bg-[#CCA039]/12 text-[#CCA039]'
-                        : 'border-white/5 bg-white/[0.025] text-[#6D8193]')
+                        ? 'border-[#6C4AA5]/30 bg-[#6C4AA5]/12 text-[#6C4AA5]'
+                        : 'border-[#E5DAEE] bg-white/70 text-[#8B7C97]')
                     }
                     title="حفظ"
                   >
@@ -99,22 +99,22 @@ export function DrugDirectory({ favorites, onToggleFavorite }: DrugDirectoryProp
 
                 <div className="flex flex-1 items-start justify-end gap-3 text-right">
                   <div>
-                    <h3 className="text-sm font-black text-[#EEE8D6]" dir="ltr">{drug.en}</h3>
-                    <p className="mt-0.5 text-xs font-bold text-[#B4BEC7]">{drug.ar}</p>
-                    <span className="mt-2 inline-flex rounded-full bg-[#CCA039]/8 px-2.5 py-0.5 text-[9px] font-bold text-[#CCA039]">
+                    <h3 className="text-sm font-black text-[#34293F]" dir="ltr">{drug.en}</h3>
+                    <p className="mt-0.5 text-xs font-bold text-[#655A6F]">{drug.ar}</p>
+                    <span className="mt-2 inline-flex rounded-full bg-[#6C4AA5]/8 px-2.5 py-0.5 text-[9px] font-bold text-[#6C4AA5]">
                       {drug.classes.map((item) => DRUG_CLASS_LABELS[item]).join(' • ')}
                     </span>
                   </div>
-                  <div className="grid h-9 w-9 shrink-0 place-items-center rounded-xl border border-[#CCA039]/12 bg-[#CCA039]/7 text-[#CCA039]">
+                  <div className="grid h-9 w-9 shrink-0 place-items-center rounded-xl border border-[#6C4AA5]/12 bg-[#6C4AA5]/7 text-[#6C4AA5]">
                     <MedicinesHealthIcon className="h-6 w-6" />
                   </div>
                 </div>
               </div>
-              <p className="mt-3 text-[10px] leading-5 text-[#8294A4]">{drug.short}</p>
+              <p className="mt-3 text-[10px] leading-5 text-[#766C7E]">{drug.short}</p>
               {DRUG_DETAILS[drug.id] && (
                 <button
                   onClick={() => setSelectedDrugId(drug.id)}
-                  className="mt-3 flex w-full items-center justify-between border-t border-white/5 pt-2.5 text-[10px] font-black text-[#CCA039]"
+                  className="mt-3 flex w-full items-center justify-between border-t border-[#E5DAEE] pt-2.5 text-[10px] font-black text-[#6C4AA5]"
                 >
                   <span className="text-[#667C8E]">الاستخدام • الموانع • التحذيرات</span>
                   <span>التفاصيل الدوائية</span>
@@ -126,7 +126,7 @@ export function DrugDirectory({ favorites, onToggleFavorite }: DrugDirectoryProp
       </div>
 
       {filtered.length === 0 && (
-        <div className="rounded-[18px] border border-dashed border-[#CCA039]/20 p-7 text-center text-xs text-[#718598]">
+        <div className="rounded-[18px] border border-dashed border-[#6C4AA5]/20 p-7 text-center text-xs text-[#718598]">
           ماكو دواء مطابق للبحث حالياً.
         </div>
       )}
