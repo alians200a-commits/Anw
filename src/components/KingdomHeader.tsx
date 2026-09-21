@@ -1,6 +1,6 @@
 export function KingdomHeader() {
   return (
-    <header className="sticky top-0 z-40 border-b border-[#173A63] bg-[#0A2036]/98 backdrop-blur-xl">
+    <header className="sticky top-0 z-40 border-b border-[#0A2037] bg-[#0A2037] backdrop-blur-xl">
       <div className="mx-auto flex min-h-[104px] max-w-3xl items-center justify-center px-4 py-3">
         <div className="flex items-center gap-4">
           <img
