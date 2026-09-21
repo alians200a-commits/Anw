@@ -21,7 +21,7 @@ export interface AnesthesiaEquipment {
 }
 
 export const EQUIPMENT_CATEGORY_LABELS: Record<EquipmentCategory, string> = {
-  machine: 'محطة التخدير',
+  machine: 'عربة التخدير',
   'gas-supply': 'الغازات والضغط',
   breathing: 'دائرة التنفس',
   airway: 'مجرى الهواء',
@@ -31,7 +31,7 @@ export const EQUIPMENT_CATEGORY_LABELS: Record<EquipmentCategory, string> = {
 
 export const EQUIPMENT_FILTERS: Array<{ id: 'all' | EquipmentCategory; label: string }> = [
   { id: 'all', label: 'الكل' },
-  { id: 'machine', label: 'محطة التخدير' },
+  { id: 'machine', label: 'عربة التخدير' },
   { id: 'gas-supply', label: 'الغازات والضغط' },
   { id: 'breathing', label: 'دائرة التنفس' },
   { id: 'airway', label: 'مجرى الهواء' },
@@ -42,10 +42,10 @@ export const EQUIPMENT_FILTERS: Array<{ id: 'all' | EquipmentCategory; label: st
 export const ANESTHESIA_EQUIPMENT: AnesthesiaEquipment[] = [
   {
     id: 'anesthesia-workstation',
-    nameAr: 'محطة التخدير',
-    nameEn: 'Anesthesia Workstation',
+    nameAr: 'عربة التخدير',
+    nameEn: 'Anesthesia Machine',
     category: 'machine',
-    categoryAr: 'محطة التخدير',
+    categoryAr: 'عربة التخدير',
     sourcePages: [10],
     summary: 'منظومة توصيل الغازات والمخدرات الاستنشاقية ودعم التهوية والمراقبة أثناء التخدير.',
     purpose: [
@@ -59,7 +59,7 @@ export const ANESTHESIA_EQUIPMENT: AnesthesiaEquipment[] = [
       'محطات التخدير الحديثة تجمع دوائر الضغط، جهاز التنفس، المراقبة، أنظمة الإنذار وميزات أمان إلكترونية.'
     ],
     correction: 'مصطلح عربة بويل | Boyle machine تاريخي؛ الأجهزة الحالية أدق وصفًا كمحطة تخدير | Anesthesia workstation.',
-    tags: ['machine','workstation','boyle','محطة التخدير','جهاز التخدير']
+    tags: ['machine','workstation','boyle','عربة التخدير','جهاز التخدير']
   },
   {
     id: 'medical-gas-cylinders',
@@ -71,7 +71,7 @@ export const ANESTHESIA_EQUIPMENT: AnesthesiaEquipment[] = [
     summary: 'مصدر احتياطي أو مستقل للغازات الطبية مثل الأوكسجين | Oxygen وأوكسيد النيتروز | Nitrous oxide.',
     purpose: [
       'توفير الغاز عند غياب أو فشل شبكة الأنابيب | Pipeline failure backup',
-      'تزويد محطة التخدير بغاز طبي مضغوط | Compressed medical gas supply'
+      'تزويد عربة التخدير بغاز طبي مضغوط | Compressed medical gas supply'
     ],
     keyPoints: [
       'أسطوانة الأوكسجين E الممتلئة تكون تقريبًا 2000 psi وتحتوي قرابة 660 L من الأوكسجين.',
@@ -95,7 +95,7 @@ export const ANESTHESIA_EQUIPMENT: AnesthesiaEquipment[] = [
     keyPoints: [
       'يتجاوز Flowmeters وVaporizers عند تشغيله.'
     ],
-    tags: ['oxygen flush', 'oxygen', 'anesthesia workstation']
+    tags: ['oxygen flush', 'oxygen', 'anesthesia machine']
   },
   {
     id: 'oxygen-supply-failure-alarm',
@@ -104,7 +104,7 @@ export const ANESTHESIA_EQUIPMENT: AnesthesiaEquipment[] = [
     category: 'gas-supply',
     categoryAr: 'الغازات والضغط',
     sourcePages: [11],
-    summary: 'نظام إنذار ينبه عند انخفاض ضغط إمداد الأوكسجين إلى محطة التخدير.',
+    summary: 'نظام إنذار ينبه عند انخفاض ضغط إمداد الأوكسجين إلى عربة التخدير.',
     purpose: [
       'التحذير المبكر من انخفاض ضغط الأوكسجين | Low O₂ supply pressure',
       'إعطاء الفريق وقتًا للتحول إلى مصدر احتياطي وتصحيح الخلل.'
@@ -126,7 +126,7 @@ export const ANESTHESIA_EQUIPMENT: AnesthesiaEquipment[] = [
     summary: 'جهاز يخفض الضغط العالي والمتغير من الأسطوانة إلى ضغط عمل أقل وأكثر ثباتًا.',
     purpose: [
       'إعطاء ضغط عمل آمن | Safe working pressure',
-      'حماية مكونات محطة التخدير | Equipment protection',
+      'حماية مكونات عربة التخدير | Equipment protection',
       'تثبيت الضغط لتسهيل التحكم بالتدفق | Stable gas pressure'
     ],
     keyPoints: [
@@ -160,7 +160,7 @@ export const ANESTHESIA_EQUIPMENT: AnesthesiaEquipment[] = [
     nameAr: 'المبخر',
     nameEn: 'Anesthetic Vaporizer',
     category: 'machine',
-    categoryAr: 'محطة التخدير',
+    categoryAr: 'عربة التخدير',
     sourcePages: [14],
     summary: 'جهاز يحول المخدر المتطاير السائل إلى بخار ويضيف تركيزًا مضبوطًا منه إلى الغاز الطازج.',
     purpose: [
@@ -585,9 +585,9 @@ export const ANESTHESIA_EQUIPMENT: AnesthesiaEquipment[] = [
     nameAr: 'Ventilator',
     nameEn: 'Anesthesia Ventilator',
     category: 'machine',
-    categoryAr: 'محطة التخدير',
+    categoryAr: 'عربة التخدير',
     sourcePages: [77, 82],
-    summary: 'جزء من محطة التخدير يوفر تهوية ميكانيكية للمريض عند الحاجة.',
+    summary: 'جزء من عربة التخدير يوفر تهوية ميكانيكية للمريض عند الحاجة.',
     purpose: [
       'التهوية الميكانيكية أثناء التخدير | Mechanical ventilation'
     ],
@@ -595,7 +595,7 @@ export const ANESTHESIA_EQUIPMENT: AnesthesiaEquipment[] = [
       'يجب مراقبة حجم وضغط ومعدل التهوية مع إنذارات الفصل أو الضغط غير الطبيعي.',
       'تظل وسيلة تهوية يدوية احتياطية جاهزة عند تعطل الجهاز أو الدائرة.'
     ],
-    tags: ['ventilator', 'mechanical ventilation', 'anesthesia workstation']
+    tags: ['ventilator', 'mechanical ventilation', 'anesthesia machine']
   },
   {
     id: 'pulse-oximeter',
