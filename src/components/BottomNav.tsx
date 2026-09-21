@@ -21,7 +21,7 @@ const items = [
 
 export function BottomNav({ active, onChange }: BottomNavProps) {
   return (
-    <nav className="fixed inset-x-0 bottom-0 z-50 border-t border-[#173A63] bg-[#0A2036]/98 px-3 pb-[max(0.45rem,env(safe-area-inset-bottom))] pt-1.5 backdrop-blur-xl">
+    <nav className="fixed inset-x-0 bottom-0 z-50 border-t border-[#0A2037] bg-[#0A2037] px-3 pb-[max(0.45rem,env(safe-area-inset-bottom))] pt-1.5 backdrop-blur-xl">
       <div className="mx-auto grid max-w-md grid-cols-4 gap-1">
         {items.map((item) => {
           const Icon = item.icon;
