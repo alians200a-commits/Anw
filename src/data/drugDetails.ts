@@ -1,9 +1,16 @@
 export interface DrugDetail {
   feature: string;
+  mechanism?: string;
+  tradeNames?: string[];
+  routes?: string[];
+  educationalDoses?: string[];
+  onsetDuration?: string[];
   uses: string[];
   contraindications: string[];
   warnings: string[];
   adverseEffects: string[];
+  correction?: string;
+  sourcePages?: number[];
 }
 
 export const DRUG_DETAILS: Record<string, DrugDetail> = {
@@ -181,5 +188,158 @@ export const DRUG_DETAILS: Record<string, DrugDetail> = {
     contraindications: ['فرط التحسس للنيوستيغمين', 'التهاب الصفاق أو الانسداد الميكانيكي في الأمعاء أو المسالك البولية'],
     warnings: ['قد يسبب بطء القلب؛ يُعطى معه Atropine أو Glycopyrrolate حسب البروتوكول', 'الحذر في مرضى الشريان التاجي واضطرابات النظم', 'إعطاؤه عندما يكون الحصار العضلي شبه منتهٍ قد يسبب ضعفًا عصبيًا عضليًا بدل تحسينه'],
     adverseEffects: ['بطء القلب', 'زيادة الإفرازات', 'تقلصات بطنية وغثيان', 'تشنج قصبي لدى القابلين']
+  },
+  methohexital: {
+    feature: 'باربيتورات فائق القصر | Ultra-short-acting barbiturate سريع التحريض، ويُستخدم خصوصًا في الإجراءات القصيرة مثل العلاج بالصدمات الكهربائية | ECT.',
+    mechanism: 'يعزز النقل المثبط عبر مستقبلات GABA-A | GABA-A receptor potentiation، ما يؤدي إلى التنويم | Hypnosis وفقدان الوعي.',
+    tradeNames: ['Brevital'],
+    routes: ['وريدي | Intravenous (IV)'],
+    uses: ['تحريض التخدير العام | Induction of general anesthesia', 'التخدير القصير والعلاج بالصدمات الكهربائية | Short procedures / ECT'],
+    contraindications: ['فرط التحسس للباربيتورات | Barbiturate hypersensitivity', 'البورفيريا الحادة | Acute porphyria'],
+    warnings: ['تثبيط التنفس | Respiratory depression وانقطاع النفس | Apnea', 'هبوط الضغط | Hypotension', 'قد يزيد النشاط الاختلاجي/الحركات العضلية في بعض المرضى | Seizure-like activity / myoclonus'],
+    adverseEffects: ['انقطاع النفس | Apnea', 'هبوط الضغط | Hypotension', 'تشنج حنجري أو سعال | Laryngospasm / coughing', 'ألم أو أذية عند الحقن خارج الوريد | Extravasation injury'],
+    correction: 'المصدر يذكر Methohexital ضمن عوامل التحريض الوريدي؛ أُبقي هنا كدواء تاريخي/متخصص وليس كخيار يومي شائع في كل المؤسسات.',
+    sourcePages: [61, 68, 70]
+  },
+  enflurane: {
+    feature: 'عامل استنشاقي متطاير | Volatile anesthetic أقدم من العوامل الحديثة، وله ميل لزيادة النشاط الاختلاجي خصوصًا مع فرط التهوية.',
+    mechanism: 'عامل تخدير عام مستنشق | Inhaled general anesthetic يعمل عبر عدة أهداف عصبية مركزية وليس مستقبلًا منفردًا.',
+    routes: ['استنشاقي | Inhalational'],
+    uses: ['المحافظة على التخدير العام | Maintenance of general anesthesia في البيئات التي ما زال متوفرًا فيها'],
+    contraindications: ['قابلية فرط الحرارة الخبيث | Malignant hyperthermia susceptibility', 'فرط التحسس للعوامل الهالوجينية | Halogenated anesthetic hypersensitivity'],
+    warnings: ['قد يسبب نشاطًا اختلاجيًا | Seizure activity، ويزداد مع نقص PaCO₂ الناتج عن فرط التهوية', 'هبوط الضغط | Hypotension وتثبيط التنفس | Respiratory depression', 'محفز محتمل لفرط الحرارة الخبيث | Malignant hyperthermia trigger'],
+    adverseEffects: ['هبوط الضغط | Hypotension', 'تثبيط التنفس | Respiratory depression', 'غثيان وقيء | Nausea & vomiting', 'نشاط اختلاجي | Seizure activity'],
+    correction: 'وصف المصدر له بأنه “غير سام” أو مناسب بشكل عام يحتاج تقييدًا؛ إنفلوران أصبح قليل الاستخدام ويحتاج الانتباه للنشاط الاختلاجي وMH.',
+    sourcePages: [57]
+  },
+  desflurane: {
+    feature: 'أقل ذوبانًا في الدم | Low blood-gas solubility لذلك يسمح بتغيير سريع لعمق التخدير وإفاقة سريعة.',
+    mechanism: 'عامل تخدير استنشاقي متطاير | Volatile inhaled anesthetic متعدد الأهداف في الجهاز العصبي المركزي.',
+    tradeNames: ['Suprane'],
+    routes: ['استنشاقي | Inhalational'],
+    uses: ['المحافظة على التخدير العام | Maintenance of general anesthesia'],
+    contraindications: ['قابلية فرط الحرارة الخبيث | Malignant hyperthermia susceptibility', 'فرط التحسس للعوامل الهالوجينية | Halogenated anesthetic hypersensitivity'],
+    warnings: ['مهيج لمجرى الهواء | Airway irritant وقد يسبب سعالًا | Coughing أو تشنجًا حنجريًا | Laryngospasm', 'الزيادة السريعة في التركيز قد تسبب تنبيهًا وديًا | Sympathetic stimulation مع تسرع القلب | Tachycardia وارتفاع الضغط | Hypertension', 'لا يُفضّل عادةً للتحريض بالقناع | Mask induction'],
+    adverseEffects: ['سعال | Coughing', 'تشنج حنجري | Laryngospasm', 'تسرع القلب | Tachycardia', 'غثيان وقيء | Nausea & vomiting'],
+    sourcePages: [58]
+  },
+  pethidine: {
+    feature: 'أفيوني | Opioid قديم نسبيًا؛ قل استخدامه بسبب مستقلب نورميبيريدين | Normeperidine ذي السمية العصبية والتداخلات الدوائية المهمة.',
+    mechanism: 'ناهض لمستقبلات μ الأفيونية | Mu-opioid receptor agonist.',
+    tradeNames: ['Demerol', 'Pethidine'],
+    routes: ['وريدي | Intravenous', 'عضلي | Intramuscular', 'فموي | Oral حسب المستحضر'],
+    uses: ['تسكين الألم | Analgesia في سياقات محدودة'],
+    contraindications: ['استخدام مثبطات MAO أو خلال 14 يومًا منها | MAOI use within 14 days', 'تثبيط تنفسي مهم | Significant respiratory depression', 'ربو قصبي حاد غير مراقب | Acute severe bronchial asthma in unmonitored setting', 'انسداد هضمي معروف أو مشتبه | GI obstruction'],
+    warnings: ['تثبيط التنفس | Respiratory depression', 'تراكم نورميبيريدين قد يسبب هياجًا أو اختلاجات | Neurotoxicity / seizures خصوصًا مع القصور الكلوي أو الجرعات المتكررة', 'خطر متلازمة السيروتونين | Serotonin syndrome مع بعض الأدوية'],
+    adverseEffects: ['نعاس | Drowsiness', 'غثيان وقيء | Nausea & vomiting', 'هبوط الضغط | Hypotension', 'تثبيط التنفس | Respiratory depression', 'اختلاجات | Seizures عند تراكم المستقلب'],
+    correction: 'جرعة 0.25 mg/kg الواردة في جدول المصدر ليست قاعدة عامة للاستخدام السريري؛ جرعته تختلف بشدة حسب الطريق والاستطباب، واستعماله أصبح محدودًا في كثير من الممارسات.',
+    sourcePages: [70]
+  },
+  cisatracurium: {
+    feature: 'مرخٍ غير مستقطب | Nondepolarizing neuromuscular blocker متوسط المفعول، ويتحلل بدرجة مهمة بآلية Hofmann elimination.',
+    mechanism: 'مضاد تنافسي للأستيل كولين عند المستقبلات النيكوتينية في الوصلة العصبية العضلية | Competitive nicotinic ACh receptor blockade.',
+    tradeNames: ['Nimbex'],
+    routes: ['وريدي | Intravenous (IV)'],
+    educationalDoses: ['جرعة تنبيب شائعة للبالغين: 0.15 mg/kg IV | Typical adult intubating dose؛ تُعدّل حسب السياق والمراقبة العصبية العضلية.'],
+    uses: ['تسهيل التنبيب | Facilitation of tracheal intubation', 'إرخاء العضلات أثناء الجراحة أو التهوية | Surgical relaxation / mechanical ventilation'],
+    contraindications: ['فرط التحسس للسيساتراكوريوم | Cisatracurium hypersensitivity'],
+    warnings: ['يسبب شللًا دون تسكين أو فقدان وعي | Paralysis without analgesia or unconsciousness', 'قد يحدث تأق | Anaphylaxis مع المرخيات العصبية العضلية', 'يجب استخدام مراقبة الحصار العصبي العضلي | Neuromuscular monitoring مثل TOF عند الإمكان'],
+    adverseEffects: ['بطء القلب | Bradycardia أو هبوط الضغط | Hypotension بشكل غير شائع', 'تأق | Anaphylaxis نادر', 'ضعف عضلي متبقٍ | Residual neuromuscular weakness'],
+    sourcePages: [71]
+  },
+  naloxone: {
+    feature: 'مضاد أفيوني سريع | Rapid opioid antagonist يعكس خصوصًا التثبيط التنفسي الناتج عن الأفيونات.',
+    mechanism: 'مضاد تنافسي لمستقبلات الأفيونات | Competitive opioid receptor antagonist، مع أعلى ألفة وظيفية لمستقبل μ.',
+    tradeNames: ['Narcan'],
+    routes: ['وريدي | Intravenous', 'عضلي | Intramuscular', 'تحت الجلد | Subcutaneous', 'أنفي | Intranasal حسب المستحضر'],
+    uses: ['عكس التثبيط التنفسي الناتج عن الأفيونات | Reversal of opioid-induced respiratory depression', 'الاشتباه بجرعة أفيونية زائدة | Suspected opioid overdose'],
+    contraindications: ['فرط التحسس للنالوكسون | Naloxone hypersensitivity'],
+    warnings: ['قد يسبب انسحابًا أفيونيًا حادًا | Acute opioid withdrawal لدى المعتمدين على الأفيونات', 'قد يعود التثبيط التنفسي | Recurrent respiratory depression لأن مدة بعض الأفيونات أطول من النالوكسون؛ يلزم تكرار المراقبة والجرعات حسب الحالة'],
+    adverseEffects: ['غثيان وقيء | Nausea & vomiting', 'تعرق | Sweating', 'تسرع القلب | Tachycardia أو ارتفاع الضغط | Hypertension', 'أعراض انسحاب حادة | Acute withdrawal'],
+    correction: 'الجرعة ليست رقمًا ثابتًا 1–4 mcg/kg لكل الحالات كما في الجدول القديم؛ تُعاير الجرعة حسب الهدف السريري وطريق الإعطاء وشدة التثبيط.',
+    sourcePages: [71]
+  },
+  sugammadex: {
+    feature: 'عامل عكس نوعي | Selective relaxant binding agent لعكس روكورونيوم | Rocuronium وفيكورونيوم | Vecuronium.',
+    mechanism: 'يُكوّن معقدًا مع جزيئات الروكورونيوم/الفيكورونيوم في البلازما | Encapsulation، فيخفض تركيزها الحر ويدفع الدواء بعيدًا عن الوصلة العصبية العضلية.',
+    tradeNames: ['Bridion'],
+    routes: ['وريدي | Intravenous (IV)'],
+    educationalDoses: ['الجرعة تعتمد على عمق الحصار العصبي العضلي | Depth of neuromuscular block وتُختار باستخدام TOF/PTC؛ لا تُعطى كجرعة ثابتة لكل المرضى.'],
+    uses: ['عكس الحصار العصبي العضلي الناتج عن Rocuronium أو Vecuronium | Reversal of rocuronium/vecuronium blockade'],
+    contraindications: ['فرط التحسس للسوغاماديكس | Sugammadex hypersensitivity'],
+    warnings: ['تأق | Anaphylaxis قد يحدث حتى دون تعرض سابق', 'بطء قلب شديد | Marked bradycardia ونادرًا توقف القلب | Cardiac arrest خلال دقائق من الإعطاء', 'يعتمد الإطراح على الكلى | Renal elimination؛ الاستخدام في القصور الكلوي الشديد يحتاج اتباع النشرة والبروتوكول المحلي'],
+    adverseEffects: ['بطء القلب | Bradycardia', 'تفاعلات تحسسية | Hypersensitivity reactions', 'غثيان | Nausea', 'ألم | Pain'],
+    correction: 'المصدر يذكر 2–4 mg/kg فقط؛ هذا غير كافٍ كقاعدة عامة لأن الجرعة تعتمد على عمق الحصار، وقد تُستخدم جرعات أعلى في حالات عكس محددة.',
+    sourcePages: [71]
+  },
+  ephedrine: {
+    feature: 'رافع ضغط | Vasopressor ذو تأثير مباشر وغير مباشر على المستقبلات الأدرينرجية، ويرفع الضغط غالبًا مع زيادة معدل القلب.',
+    mechanism: 'ينبه مستقبلات α وβ ويزيد تحرير النورأدرينالين | Alpha/beta agonism + norepinephrine release.',
+    routes: ['وريدي | Intravenous (IV)'],
+    educationalDoses: ['في ملصقات حقن حديثة لعلاج انخفاض الضغط أثناء التخدير: 5–10 mg IV bolus حسب الحاجة، بحد إجمالي مذكور 50 mg؛ تُعاير للهدف وبحسب المستحضر.'],
+    uses: ['علاج انخفاض الضغط المهم سريريًا أثناء التخدير | Clinically important hypotension during anesthesia'],
+    contraindications: ['لا توجد موانع مطلقة مدرجة في بعض ملصقات الحقن الحديثة | No listed absolute contraindications in current US injection labels'],
+    warnings: ['تسرع القلب | Tachycardia', 'قد يحدث تحمل سريع | Tachyphylaxis مع التكرار', 'قد يزداد ارتفاع الضغط مع أدوية مقوية للرحم | Oxytocic drugs'],
+    adverseEffects: ['تسرع القلب | Tachycardia', 'غثيان وقيء | Nausea & vomiting', 'ارتفاع الضغط | Hypertension'],
+    correction: 'وصفه في المصدر بأنه لعلاج “مشاكل تنفسية” غير دقيق كاستطباب حقن حديث؛ الاستخدام المعتمد لحقن الإيفيدرين هو انخفاض الضغط المهم سريريًا في سياق التخدير.',
+    sourcePages: [71]
+  },
+  phenylephrine: {
+    feature: 'رافع ضغط α1 انتقائي نسبيًا | Alpha-1 vasopressor يرفع المقاومة الوعائية الجهازية وقد يسبب بطء قلب انعكاسي.',
+    mechanism: 'ناهض مباشر لمستقبل α1 الأدرينرجي | Direct alpha-1 adrenergic agonist.',
+    routes: ['وريدي | Intravenous (IV)'],
+    educationalDoses: ['علاج انخفاض الضغط أثناء التخدير في ملصق حديث: 40–100 mcg IV bolus، ويمكن تكرار جرعات حسب الاستجابة؛ أو تسريب وريدي معاير حسب الضغط.'],
+    uses: ['علاج انخفاض الضغط الناتج أساسًا عن توسع الأوعية أثناء التخدير | Vasodilatory hypotension during anesthesia'],
+    contraindications: ['تُراجع النشرة الخاصة بالمستحضر والحالة السريرية؛ التركيز على تصحيح نقص الحجم والحماض قبل/أثناء الاستخدام.'],
+    warnings: ['ارتفاع الضغط | Hypertension', 'بطء القلب الانعكاسي | Reflex bradycardia', 'نقص تروية الأنسجة عند الإفراط في التضيق الوعائي | Tissue ischemia'],
+    adverseEffects: ['بطء القلب | Bradycardia', 'ارتفاع الضغط | Hypertension', 'انخفاض النتاج القلبي لدى بعض المرضى | Reduced cardiac output'],
+    sourcePages: [32, 47]
+  },
+  metoprolol: {
+    feature: 'حاصر بيتا-1 انتقائي نسبيًا | Relatively beta-1 selective blocker يخفض معدل القلب والانقباضية.',
+    mechanism: 'حجب مستقبلات β1 الأدرينرجية القلبية | Beta-1 adrenergic blockade.',
+    tradeNames: ['Lopressor'],
+    routes: ['وريدي | Intravenous', 'فموي | Oral'],
+    uses: ['علاج احتشاء عضلة القلب الحاد لدى مرضى مستقرين ديناميكيًا وفق الاستطباب المعتمد | Acute myocardial infarction', 'التحكم بمعدل القلب/الضغط في ممارسات سريرية مختارة حسب البروتوكول'],
+    contraindications: ['بطء قلب شديد | Severe bradycardia', 'حصار قلبي من الدرجة الثانية/الثالثة دون ناظمة | 2nd/3rd degree AV block without pacemaker', 'متلازمة العقدة الجيبية المريضة | Sick sinus syndrome', 'فشل قلب غير معاوض | Decompensated heart failure'],
+    warnings: ['بطء القلب | Bradycardia وحصار التوصيل | Heart block', 'قد يفاقم تشنج القصبات | Bronchospasm رغم انتقائيته النسبية لـβ1', 'قد يفاقم فشل القلب غير المستقر | Worsening heart failure'],
+    adverseEffects: ['بطء القلب | Bradycardia', 'هبوط الضغط | Hypotension', 'دوخة | Dizziness', 'تعب | Fatigue'],
+    correction: 'المصدر يختصر الاستعمال إلى “Heart attack” مع جرعة وزنية؛ الملصق الوريدي الحديث يستخدم جرعات ثابتة صغيرة تحت مراقبة ECG/BP/HR في احتشاء القلب المستقر، وليس قاعدة mg/kg عامة.',
+    sourcePages: [71]
+  },
+  esmolol: {
+    feature: 'حاصر بيتا-1 فائق القصر | Ultra-short-acting beta-1 blocker، مفيد عندما نحتاج تأثيرًا سريع التعديل.',
+    mechanism: 'حجب مستقبلات β1 الأدرينرجية | Beta-1 adrenergic blockade؛ يُستقلب سريعًا بواسطة إستيرازات كريات الدم الحمراء.',
+    tradeNames: ['Brevibloc'],
+    routes: ['وريدي | Intravenous (IV)'],
+    uses: ['تسرع القلب فوق البطيني والتحكم السريع بمعدل البطين | Supraventricular tachycardia / ventricular rate control', 'تسرع القلب أو ارتفاع الضغط حول الجراحة | Perioperative tachycardia / hypertension في سياقات مختارة'],
+    contraindications: ['بطء قلب جيبي شديد | Severe sinus bradycardia', 'حصار AV أكبر من الدرجة الأولى | >1st degree AV block', 'متلازمة العقدة الجيبية المريضة | Sick sinus syndrome', 'فشل قلب غير معاوض | Decompensated heart failure', 'صدمة قلبية | Cardiogenic shock'],
+    warnings: ['هبوط الضغط | Hypotension', 'بطء القلب | Bradycardia أو حصار القلب | Heart block', 'الحذر مع أدوية مثبطة للقلب مثل Verapamil IV | Cardiovascular depression'],
+    adverseEffects: ['هبوط الضغط | Hypotension', 'بطء القلب | Bradycardia', 'دوخة | Dizziness', 'تفاعلات موقع الحقن | Infusion-site reactions'],
+    sourcePages: [71]
+  },
+  lidocaine: {
+    feature: 'مخدر موضعي أميدي | Amide local anesthetic متوسط المفعول وسريع نسبيًا، وله استخدامات عديدة في التخدير الموضعي والإقليمي.',
+    mechanism: 'حجب قنوات الصوديوم المعتمدة على الجهد | Voltage-gated sodium channel blockade ومنع توصيل النبض العصبي.',
+    tradeNames: ['Xylocaine'],
+    routes: ['ارتشاح | Infiltration', 'حصر عصب | Peripheral nerve block', 'فوق الجافية | Epidural', 'إقليمي وريدي | IV regional anesthesia حسب المستحضر/البروتوكول'],
+    uses: ['التخدير الموضعي والإقليمي | Local / regional anesthesia', 'تسكين إجراءات مختارة | Procedural local anesthesia'],
+    contraindications: ['فرط التحسس للمخدرات الموضعية من نوع الأميد | Amide local anesthetic hypersensitivity'],
+    warnings: ['الجرعة الزائدة أو الحقن داخل وعائي قد يسبب سمية جهازية للمخدر الموضعي | LAST', 'قد تحدث اختلاجات | Seizures واضطرابات نظم | Arrhythmias وانهيار قلبي وعائي في السمية الشديدة', 'يلزم توفر الإنعاش والأوكسجين ومراقبة المريض عند الحصر الكبير'],
+    adverseEffects: ['خدر حول الفم | Perioral numbness', 'طنين | Tinnitus', 'دوخة | Dizziness', 'اختلاجات | Seizures', 'اضطرابات نظم | Arrhythmias عند السمية'],
+    correction: 'جرعة 0.5–1 mg/kg الواردة في جدول المصدر لا تمثل كل استخدامات الليدوكائين الموضعي؛ الحد الأقصى والجرعة يعتمدان على التقنية والتركيز ووجود الأدرينالين والمريض.',
+    sourcePages: [34, 35, 45, 71]
+  },
+  bupivacaine: {
+    feature: 'مخدر موضعي أميدي طويل المفعول | Long-acting amide local anesthetic مفيد للحصر العصبي والتخدير فوق الجافية.',
+    mechanism: 'حجب قنوات الصوديوم المعتمدة على الجهد | Voltage-gated sodium channel blockade.',
+    tradeNames: ['Marcaine'],
+    routes: ['ارتشاح | Infiltration', 'حصر عصب محيطي | Peripheral nerve block', 'فوق الجافية / ذيلي | Epidural / caudal حسب المستحضر'],
+    uses: ['التخدير والتسكين الموضعي أو الإقليمي | Local / regional anesthesia and analgesia'],
+    contraindications: ['التخدير الإقليمي الوريدي Bier block | Intravenous regional anesthesia', 'فرط التحسس للبوبيفاكائين أو مخدرات الأميد | Amide local anesthetic hypersensitivity', 'الحصر جانب عنق الرحم في التوليد | Obstetrical paracervical block'],
+    warnings: ['سمية قلبية وعصبية مرتبطة بالجرعة | Dose-related cardiotoxicity / neurotoxicity', 'الحقن داخل وعائي غير المقصود قد يسبب LAST شديدًا | Severe local anesthetic systemic toxicity', 'يجب إعطاء جرعات متدرجة ومراقبة الاستجابة عند الحصر الكبير'],
+    adverseEffects: ['اختلاجات | Seizures', 'هبوط الضغط | Hypotension', 'بطء القلب | Bradycardia', 'اضطرابات نظم بطينية | Ventricular arrhythmias أو توقف القلب في السمية الشديدة'],
+    correction: 'المصدر يضع Bupivacaine ضمن “local, spinal, regional” بجرعة عامة 1–2 mg/kg؛ الاستعمال والتركيز والحد الأقصى يختلفان حسب التقنية والمستحضر، وBier block ممنوع.',
+    sourcePages: [45, 71]
   }
 };
