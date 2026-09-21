@@ -1,79 +1,96 @@
-import React, { useState } from 'react';
-import { Header } from './components/Header';
-import { TermsDictionary } from './components/TermsDictionary';
-import { FlashcardModal } from './components/FlashcardModal';
-import { SuxApnoeaProtocol } from './components/SuxApnoeaProtocol';
-import { ClinicalSimulator } from './components/ClinicalSimulator';
-import { MacAndMetabolismVisualizer } from './components/MacAndMetabolismVisualizer';
-import { ClinicalQuiz } from './components/ClinicalQuiz';
-import { CLINICAL_TERMS } from './data/clinicalTerms';
-import { Activity, ShieldCheck, HeartPulse, Sparkles } from 'lucide-react';
+import { useEffect, useMemo, useState } from 'react';
+import { AnimatePresence, motion } from 'motion/react';
+import { BottomNav, type AppTab } from './components/BottomNav';
+import { DrugDirectory } from './components/DrugDirectory';
+import { FavoritesScreen } from './components/FavoritesScreen';
+import { GamesHub } from './components/GamesHub';
+import { HomeScreen } from './components/HomeScreen';
+import { KingdomHeader } from './components/KingdomHeader';
+import { TermsDirectory } from './components/TermsDirectory';
+
+const FAVORITES_KEY = 'kingdom-anesthesia:favorites';
+
+function loadFavorites() {
+  try {
+    const raw = localStorage.getItem(FAVORITES_KEY);
+    const values = raw ? JSON.parse(raw) : [];
+    return new Set<string>(Array.isArray(values) ? values : []);
+  } catch {
+    return new Set<string>();
+  }
+}
 
 export default function App() {
-  const [activeTab, setActiveTab] = useState<string>('terms');
-  const [showFlashcards, setShowFlashcards] = useState<boolean>(false);
+  const [activeTab, setActiveTab] = useState<AppTab>('home');
+  const [query, setQuery] = useState('');
+  const [favorites, setFavorites] = useState<Set<string>>(() => loadFavorites());
+
+  useEffect(() => {
+    localStorage.setItem(FAVORITES_KEY, JSON.stringify(Array.from(favorites)));
+  }, [favorites]);
+
+  const handleTabChange = (tab: AppTab) => {
+    setActiveTab(tab);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const toggleFavorite = (id: string) => {
+    setFavorites((current) => {
+      const next = new Set(current);
+      if (next.has(id)) next.delete(id);
+      else next.add(id);
+      return next;
+    });
+  };
+
+  const screen = useMemo(() => {
+    switch (activeTab) {
+      case 'drugs':
+        return <DrugDirectory favorites={favorites} onToggleFavorite={toggleFavorite} />;
+      case 'terms':
+        return <TermsDirectory favorites={favorites} onToggleFavorite={toggleFavorite} />;
+      case 'games':
+        return <GamesHub />;
+      case 'favorites':
+        return <FavoritesScreen favorites={favorites} onToggleFavorite={toggleFavorite} />;
+      case 'home':
+      default:
+        return (
+          <HomeScreen
+            query={query}
+            setQuery={setQuery}
+            goTo={handleTabChange}
+            favorites={favorites}
+            onToggleFavorite={toggleFavorite}
+          />
+        );
+    }
+  }, [activeTab, favorites, query]);
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col font-sans selection:bg-teal-500/30 selection:text-teal-200">
-      {/* App Header */}
-      <Header
-        activeTab={activeTab}
-        setActiveTab={setActiveTab}
-        totalTermsCount={CLINICAL_TERMS.length}
-      />
+    <div
+      dir="rtl"
+      className="min-h-screen bg-[#0A2036] text-[#EEE8D6] selection:bg-[#CCA039]/30 selection:text-[#EEE8D6]"
+    >
+      <div className="pointer-events-none fixed inset-0 bg-[radial-gradient(circle_at_20%_0%,rgba(204,160,57,0.06),transparent_28%),radial-gradient(circle_at_90%_18%,rgba(255,255,255,0.025),transparent_25%)]" />
 
-      {/* Main Content Area */}
-      <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
-        {activeTab === 'terms' && (
-          <TermsDictionary
-            terms={CLINICAL_TERMS}
-            onOpenFlashcards={() => setShowFlashcards(true)}
-            onSelectSuxApnoea={() => setActiveTab('sux')}
-          />
-        )}
+      <KingdomHeader />
 
-        {activeTab === 'sux' && (
-          <SuxApnoeaProtocol
-            onStartSimulation={() => setActiveTab('simulator')}
-          />
-        )}
-
-        {activeTab === 'simulator' && (
-          <ClinicalSimulator />
-        )}
-
-        {activeTab === 'concepts' && (
-          <MacAndMetabolismVisualizer />
-        )}
-
-        {activeTab === 'quiz' && (
-          <ClinicalQuiz />
-        )}
+      <main className="relative mx-auto w-full max-w-5xl px-4 pb-28 pt-5 sm:px-6 sm:pt-7">
+        <AnimatePresence mode="wait" initial={false}>
+          <motion.div
+            key={activeTab}
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -6 }}
+            transition={{ duration: 0.18 }}
+          >
+            {screen}
+          </motion.div>
+        </AnimatePresence>
       </main>
 
-      {/* Flashcards Modal */}
-      {showFlashcards && (
-        <FlashcardModal
-          terms={CLINICAL_TERMS}
-          onClose={() => setShowFlashcards(false)}
-        />
-      )}
-
-      {/* Footer */}
-      <footer className="border-t border-slate-900 bg-slate-950/80 py-6 mt-12 text-xs text-slate-500">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div className="flex items-center gap-2">
-            <HeartPulse className="h-4 w-4 text-teal-400" />
-            <span className="font-bold text-slate-400">دليلي كتقني تخدير • Anesthesia Technician Clinical Handbook</span>
-          </div>
-
-          <div className="flex items-center gap-4 text-slate-400">
-            <span>Metabolism • CBF • ICP • MAC • Suxamethonium Apnoea</span>
-            <span>•</span>
-            <span className="text-teal-400 font-medium">للأغراض التعليمية والسريرية</span>
-          </div>
-        </div>
-      </footer>
+      <BottomNav active={activeTab} onChange={handleTabChange} />
     </div>
   );
 }
