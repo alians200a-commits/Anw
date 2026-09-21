@@ -1347,6 +1347,185 @@ export const CLINICAL_TERMS: ClinicalTerm[] = [
     definition: "تجمع هواء تحت ضغط في الحيز الجنبي يضغط الرئة ويقلل العود الوريدي | Pressurized pleural air causing respiratory and hemodynamic compromise.",
     tags: ["tension pneumothorax","obstructive shock","pleura","استرواح"]
   }
+,
+  {
+    id: "apl",
+    en: "Adjustable Pressure-Limiting Valve",
+    ar: "صمام تحديد الضغط القابل للضبط",
+    abbr: "APL",
+    category: "abbreviations",
+    definition: "صمام في دائرة التخدير يحدد ضغط الدائرة ويسمح بخروج الغاز الزائد إلى نظام التخلص | Scavenging أثناء الوضع اليدوي/التلقائي.",
+    clinicalNote: "يُعرف أيضًا بـ Pop-off valve. وضعه ووظيفته العملية تختلف حسب نمط الجهاز؛ في كثير من المحطات الحديثة يُعزل عن الدائرة أثناء التهوية الميكانيكية.",
+    tags: ["APL","pop-off","breathing circuit","صمام"]
+  },
+  {
+    id: "hme",
+    en: "Heat and Moisture Exchanger",
+    ar: "مبادل الحرارة والرطوبة",
+    abbr: "HME",
+    category: "abbreviations",
+    definition: "جهاز يوضع في دائرة التنفس يحتفظ بجزء من حرارة ورطوبة الزفير ويعيدهما مع الشهيق | Passive humidification.",
+    clinicalNote: "قد يزيد المقاومة والحيز الميت | Dead space، لذلك اختيار الحجم والموديل مهم خصوصًا للأطفال.",
+    tags: ["HME","humidification","airway","ترطيب"]
+  },
+  {
+    id: "ett",
+    en: "Endotracheal Tube",
+    ar: "الأنبوب الرغامي",
+    abbr: "ETT",
+    category: "abbreviations",
+    definition: "أنبوب يمر عبر الحنجرة إلى الرغامى لتأمين مجرى الهواء والتهوية وحماية الرئة في الحالات المناسبة.",
+    clinicalNote: "تأكيد موضعه يعتمد على waveform capnography المستمرة مع التقييم السريري، وليس على SpO₂ وحده.",
+    tags: ["ETT","intubation","airway","انبوب رغامي"]
+  },
+  {
+    id: "opa",
+    en: "Oropharyngeal Airway",
+    ar: "مجرى هوائي فموي بلعومي",
+    abbr: "OPA",
+    category: "abbreviations",
+    definition: "مجرى هوائي صلب يُستخدم لمنع اللسان من سد البلعوم عند المريض فاقد الوعي المناسب.",
+    clinicalNote: "لا يُستخدم عند وجود منعكس قيء فعال | Intact gag reflex لأنه قد يسبب قيئًا أو تشنجًا حنجريًا.",
+    tags: ["OPA","Guedel","airway","مجرى هوائي"]
+  },
+  {
+    id: "sga",
+    en: "Supraglottic Airway",
+    ar: "جهاز مجرى هوائي فوق المزمار",
+    abbr: "SGA",
+    category: "abbreviations",
+    definition: "جهاز مجرى هوائي يستقر فوق المزمار | Above the glottis لتسهيل التهوية، ومن أمثلته LMA.",
+    clinicalNote: "قد يكون مجرى هوائي أساسيًا أو إنقاذيًا لكنه لا يساوي الأنبوب الرغامي ذي الكفة في حماية الرئة من الاستنشاق.",
+    tags: ["SGA","LMA","airway","supraglottic"]
+  },
+  {
+    id: "bvm",
+    en: "Bag-Valve-Mask",
+    ar: "كيس-صمام-قناع للتهوية",
+    abbr: "BVM",
+    category: "abbreviations",
+    definition: "جهاز يدوي ذاتي الانتفاخ لتقديم تهوية بالضغط الإيجابي عبر قناع أو مجرى هوائي متقدم.",
+    clinicalNote: "نجاحه يعتمد على فتح مجرى الهواء وإحكام القناع ومراقبة ارتفاع الصدر؛ الضغط المفرط قد يزيد نفخ المعدة وخطر aspiration.",
+    tags: ["BVM","Ambu","manual ventilation","انعاش"]
+  },
+  {
+    id: "csf",
+    en: "Cerebrospinal Fluid",
+    ar: "السائل الدماغي الشوكي",
+    abbr: "CSF",
+    category: "abbreviations",
+    definition: "سائل يحيط بالدماغ والحبل الشوكي ويوجد في الحيز تحت العنكبوتية | Subarachnoid space.",
+    clinicalNote: "في التخدير النخاعي | Spinal anesthesia تُحقن الأدوية داخل الـCSF في الحيز تحت العنكبوتية.",
+    tags: ["CSF","spinal","subarachnoid","سائل شوكي"]
+  },
+  {
+    id: "ippv",
+    en: "Intermittent Positive-Pressure Ventilation",
+    ar: "التهوية المتقطعة بالضغط الإيجابي",
+    abbr: "IPPV",
+    category: "abbreviations",
+    definition: "تهوية ميكانيكية أو يدوية تُدخل الغاز إلى الرئتين بضغط إيجابي خلال الشهيق.",
+    clinicalNote: "المصطلح تاريخي وشائع في المذكرات؛ في الاستخدام الحديث يُوصف نمط التهوية بدقة أكبر حسب جهاز التنفس والإعدادات.",
+    tags: ["IPPV","ventilation","positive pressure","تهوية"]
+  },
+  {
+    id: "nibp",
+    en: "Non-Invasive Blood Pressure",
+    ar: "قياس ضغط الدم غير الباضع",
+    abbr: "NIBP",
+    category: "abbreviations",
+    definition: "قياس ضغط الدم بواسطة كفة خارجية دون قثطار شرياني | Non-invasive cuff blood pressure.",
+    clinicalNote: "يجب اختيار كفة بالحجم الصحيح؛ الكفة الصغيرة تميل لقراءات أعلى والكبيرة جدًا قد تعطي قراءات أقل.",
+    tags: ["NIBP","blood pressure","monitoring","ضغط"]
+  },
+  {
+    id: "ecg",
+    en: "Electrocardiogram / Electrocardiography",
+    ar: "تخطيط القلب الكهربائي",
+    abbr: "ECG",
+    category: "abbreviations",
+    definition: "تسجيل النشاط الكهربائي للقلب عبر أقطاب سطحية | Surface electrodes.",
+    clinicalNote: "مراقبة ECG مستمرة جزء من المراقبة الأساسية أثناء التخدير العام، لكن ECG لا يقيس النتاج القلبي أو التروية مباشرة.",
+    tags: ["ECG","EKG","cardiac monitoring","تخطيط قلب"]
+  },
+  {
+    id: "etco2",
+    en: "End-Tidal Carbon Dioxide",
+    ar: "ثاني أوكسيد الكربون في نهاية الزفير",
+    abbr: "EtCO₂",
+    category: "abbreviations",
+    definition: "تركيز أو ضغط CO₂ المقاس في نهاية الزفير | End of expiration ويُعرض غالبًا مع موجة capnography.",
+    clinicalNote: "مفيد لتقييم التهوية وللتأكيد المستمر على موضع ETT؛ لا يساوي PaCO₂ دائمًا وقد تتسع الفجوة في اضطرابات التروية الرئوية.",
+    tags: ["EtCO2","capnography","CO2","monitoring"]
+  },
+  {
+    id: "ponv",
+    en: "Postoperative Nausea and Vomiting",
+    ar: "الغثيان والقيء بعد العملية",
+    abbr: "PONV",
+    category: "abbreviations",
+    definition: "الغثيان و/أو القيء خلال الفترة بعد الجراحة والتخدير | Postoperative period.",
+    clinicalNote: "الوقاية تُبنى على عوامل الخطورة ويُفضّل الجمع بين تدخلات/أدوية من آليات مختلفة عند المرضى عاليي الخطورة.",
+    tags: ["PONV","nausea","vomiting","postoperative"]
+  },
+  {
+    id: "rsi",
+    en: "Rapid Sequence Induction and Intubation",
+    ar: "التحريض والتنبيب التسلسلي السريع",
+    abbr: "RSI",
+    category: "abbreviations",
+    definition: "تقنية لتقليل الزمن بين فقد منعكسات حماية مجرى الهواء وتأمين ETT ذي كفة عندما يكون خطر aspiration مرتفعًا.",
+    clinicalNote: "تشمل عادة preoxygenation وتحريضًا سريعًا ومرخيًا سريعًا وخطة مجرى هوائي بديلة؛ Cricoid pressure والتهوية بالقناع يُفردان حسب الحالة والبروتوكول.",
+    tags: ["RSI","rapid sequence","aspiration","intubation"]
+  },
+  {
+    id: "pacu",
+    en: "Post-Anesthesia Care Unit",
+    ar: "وحدة العناية بعد التخدير / الإفاقة",
+    abbr: "PACU",
+    category: "abbreviations",
+    definition: "منطقة مراقبة وتعافي المريض بعد التخدير حتى استقرار مجرى الهواء والتنفس والدورة الدموية والوعي والألم.",
+    clinicalNote: "معايير الخروج تعتمد على بروتوكول المؤسسة وقد تستخدم Modified Aldrete Score مع الحكم السريري.",
+    tags: ["PACU","recovery","post anesthesia","افاقة"]
+  },
+  {
+    id: "last",
+    en: "Local Anesthetic Systemic Toxicity",
+    ar: "السمية الجهازية للمخدر الموضعي",
+    abbr: "LAST",
+    category: "abbreviations",
+    definition: "سمية عصبية و/أو قلبية وعائية نتيجة وصول تركيز سام من المخدر الموضعي إلى الدوران.",
+    clinicalNote: "الاشتباه المبكر مهم؛ التدبير يشمل إيقاف الحقن ودعم مجرى الهواء والدورة الدموية وعلاج الاختلاجات واستخدام IV lipid emulsion في الحالات المهمة وفق بروتوكول LAST.",
+    tags: ["LAST","local anesthetic","toxicity","lipid emulsion"]
+  },
+  {
+    id: "dic",
+    en: "Disseminated Intravascular Coagulation",
+    ar: "التخثر المنتشر داخل الأوعية",
+    abbr: "DIC",
+    category: "abbreviations",
+    definition: "اضطراب شديد في التخثر يحدث فيه تنشيط جهازي للتخثر مع استهلاك الصفائح وعوامل التخثر وقد يؤدي إلى نزف وخثرات معًا.",
+    clinicalNote: "قد يظهر في الإنتان الشديد أو الرضوض أو المضاعفات التوليدية وغيرها؛ العلاج يركز على السبب ودعم مكونات الدم حسب النزف والاختبارات.",
+    tags: ["DIC","coagulopathy","bleeding","تخثر"]
+  },
+  {
+    id: "ga",
+    en: "General Anesthesia",
+    ar: "التخدير العام",
+    abbr: "GA",
+    category: "abbreviations",
+    definition: "حالة دوائية قابلة للعكس تتضمن فقدان الوعي مع مكونات أخرى حسب الحاجة مثل analgesia وamnesia وimmobility.",
+    tags: ["GA","general anesthesia","تخدير عام"]
+  },
+  {
+    id: "ra",
+    en: "Regional Anesthesia",
+    ar: "التخدير الإقليمي",
+    abbr: "RA",
+    category: "abbreviations",
+    definition: "تخدير منطقة من الجسم عبر حصر عصب أو ضفيرة أو تقنية محورية عصبية مثل spinal أو epidural.",
+    tags: ["RA","regional anesthesia","nerve block","spinal","epidural"]
+  }
 
 ];
 
