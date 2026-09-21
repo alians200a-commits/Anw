@@ -1,4 +1,10 @@
-import { BookOpenText, Gamepad2, Heart, Home, Pill } from 'lucide-react';
+import {
+  BookOpenText,
+  BookmarkSimple,
+  GameController,
+  House,
+  Pill
+} from '@phosphor-icons/react';
 
 export type AppTab = 'home' | 'drugs' | 'terms' | 'games' | 'favorites';
 
@@ -8,17 +14,17 @@ interface BottomNavProps {
 }
 
 const items = [
-  { id: 'home' as const, label: 'الرئيسية', icon: Home },
+  { id: 'home' as const, label: 'الرئيسية', icon: House },
   { id: 'drugs' as const, label: 'الأدوية', icon: Pill },
   { id: 'terms' as const, label: 'المصطلحات', icon: BookOpenText },
-  { id: 'games' as const, label: 'الألعاب', icon: Gamepad2 },
-  { id: 'favorites' as const, label: 'المحفوظات', icon: Heart }
+  { id: 'games' as const, label: 'الألعاب', icon: GameController },
+  { id: 'favorites' as const, label: 'المحفوظات', icon: BookmarkSimple }
 ];
 
 export function BottomNav({ active, onChange }: BottomNavProps) {
   return (
-    <nav className="fixed inset-x-0 bottom-0 z-50 border-t border-[#CCA039]/10 bg-[#081B2E]/95 px-2 pb-[max(0.55rem,env(safe-area-inset-bottom))] pt-2 backdrop-blur-xl">
-      <div className="mx-auto grid max-w-lg grid-cols-5 gap-1">
+    <nav className="fixed inset-x-0 bottom-0 z-50 border-t border-[#CCA039]/10 bg-[#081B2E]/97 px-2 pb-[max(0.45rem,env(safe-area-inset-bottom))] pt-1.5 backdrop-blur-xl">
+      <div className="mx-auto grid max-w-lg grid-cols-5 gap-0.5">
         {items.map((item) => {
           const Icon = item.icon;
           const isActive = active === item.id;
@@ -28,17 +34,18 @@ export function BottomNav({ active, onChange }: BottomNavProps) {
               key={item.id}
               onClick={() => onChange(item.id)}
               className={
-                'group flex min-h-14 flex-col items-center justify-center gap-1 rounded-2xl px-1 text-[10px] font-bold transition ' +
+                'flex min-h-[54px] min-w-0 flex-col items-center justify-center gap-0.5 rounded-xl px-0.5 transition ' +
                 (isActive
-                  ? 'bg-[#CCA039]/12 text-[#CCA039]'
-                  : 'text-[#91A0AF] hover:bg-white/[0.035] hover:text-[#EEE8D6]')
+                  ? 'bg-[#CCA039]/10 text-[#CCA039]'
+                  : 'text-[#8295A6] active:bg-white/[0.035] active:text-[#EEE8D6]')
               }
             >
               <Icon
-                className={'h-5 w-5 transition ' + (isActive ? 'scale-110' : 'group-active:scale-95')}
-                strokeWidth={isActive ? 2.5 : 2}
+                size={22}
+                weight={isActive ? 'fill' : 'regular'}
+                className="shrink-0"
               />
-              <span>{item.label}</span>
+              <span className="w-full truncate text-[9px] font-bold">{item.label}</span>
             </button>
           );
         })}
