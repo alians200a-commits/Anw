@@ -10,11 +10,19 @@ export function KingdomHeader() {
             draggable={false}
           />
 
-          <div className="text-right leading-tight">
-            <h1 className="font-vexa-brand text-[30px] leading-none text-white">
+          <div className="flex flex-col items-end gap-[8px] text-right">
+            <h1
+              dir="rtl"
+              lang="ar"
+              className="font-vexa-brand whitespace-nowrap text-[30px] leading-[1.05] text-white"
+            >
               دلـيـلـي
             </h1>
-            <p className="font-vexa-brand mt-[10px] text-[18px] leading-none text-[#CCA039]">
+            <p
+              dir="rtl"
+              lang="ar"
+              className="font-vexa-brand whitespace-nowrap text-[18px] leading-[1.05] text-[#CCA039]"
+            >
               ممـلـكـة الـتـخـديـر
             </p>
           </div>
