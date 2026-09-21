@@ -1,6 +1,6 @@
 export function KingdomHeader() {
   return (
-    <header className="sticky top-0 z-40 border-b border-[#76569D] bg-[#5A3B86]/98 backdrop-blur-xl">
+    <header className="sticky top-0 z-40 border-b border-[#173A63] bg-[#0A2036]/98 backdrop-blur-xl">
       <div className="mx-auto flex min-h-[104px] max-w-3xl items-center justify-center px-4 py-3">
         <div className="flex items-center gap-4">
           <img
@@ -14,7 +14,7 @@ export function KingdomHeader() {
             <h1 className="text-[22px] font-black tracking-tight text-white">
               دليلي
             </h1>
-            <p className="mt-1 text-[12px] font-extrabold text-[#F0D9A7]">
+            <p className="mt-1 text-[12px] font-extrabold text-[#CCA039]">
               مملكة التخدير
             </p>
           </div>
