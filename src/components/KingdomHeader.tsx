@@ -11,10 +11,10 @@ export function KingdomHeader() {
           />
 
           <div className="text-right leading-tight">
-            <h1 className="text-[22px] font-black tracking-tight text-white">
+            <h1 className="font-vexa-brand text-[30px] leading-none text-white">
               دليلي
             </h1>
-            <p className="mt-1 text-[12px] font-extrabold text-[#CCA039]">
+            <p className="font-vexa-brand mt-2 text-[18px] leading-none text-[#CCA039]">
               مملكة التخدير
             </p>
           </div>
