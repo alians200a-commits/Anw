@@ -73,6 +73,12 @@ export function AbbreviationsDirectory({ favorites, onToggleFavorite }: Abbrevia
                   <p className="mt-1 text-xs font-bold text-[#EEE8D6]" dir="ltr">{term.en}</p>
                   <p className="mt-1 text-[11px] text-[#A3B0BB]">{term.ar}</p>
                   <p className="mt-2 text-[10px] leading-5 text-[#8294A4]">{term.definition}</p>
+                  {term.clinicalNote && (
+                    <div className="mt-2 border-r-2 border-[#CCA039]/50 pr-2.5">
+                      <p className="text-[9px] font-black text-[#CCA039]">ملاحظة تخديرية | Clinical note</p>
+                      <p className="mt-1 text-[10px] leading-5 text-[#91A1AE]">{term.clinicalNote}</p>
+                    </div>
+                  )}
                 </div>
               </div>
             </article>
