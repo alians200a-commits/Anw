@@ -14,14 +14,14 @@ export function KingdomHeader() {
             <h1
               dir="rtl"
               lang="ar"
-              className="font-vexa-brand brand-stretch-primary whitespace-nowrap text-[30px] leading-[1.05] text-white"
+              className="font-vexa-brand brand-stretch-primary whitespace-nowrap text-[28px] leading-[1.05] text-white"
             >
               دليلي
             </h1>
             <p
               dir="rtl"
               lang="ar"
-              className="font-vexa-brand brand-stretch-secondary whitespace-nowrap text-[18px] leading-[1.05] text-[#CCA039]"
+              className="font-vexa-brand brand-stretch-secondary whitespace-nowrap text-[20px] leading-[1.05] text-[#CCA039]"
             >
               مملكة التخدير
             </p>
