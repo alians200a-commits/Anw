@@ -199,7 +199,7 @@ export const DRUG_DETAILS: Record<string, DrugDetail> = {
     mechanism: 'مضاد تنافسي لمستقبلات الأستيل كولين النيكوتينية في الوصلة العصبية العضلية | Competitive nicotinic ACh receptor antagonist.',
     tradeNames: ['Esmeron', 'Zemuron'],
     routes: ['وريدي | Intravenous (IV)'],
-    correction: 'المصدر يذكر 0.5–0.9 mg/kg بصورة عامة؛ جرعة التنبيب أو RSI تختلف حسب الهدف، ويجب متابعة الحصار كمياً عند الإمكان.',
+    correction: 'المصدر يذكر 0.5–0.9 mg/kg بصورة عامة؛ جرعة التنبيب أو RSI تختلف حسب الهدف، ويجب متابعة الحصار كمياً عند الإمكان. كما أن وصف Rocuronium بأنه يسبب vagal blockade مع زيادة النبض والضغط ليس صفة نموذجية له؛ تأثيره القلبي الوعائي عادةً محدود مقارنةً بـPancuronium.',
     sourcePages: [54, 71],
     uses: ['تسهيل التنبيب الرغامي', 'إرخاء العضلات أثناء الجراحة والتهوية الميكانيكية'],
     contraindications: ['فرط التحسس للروكورونيوم أو البروميد'],
@@ -211,7 +211,7 @@ export const DRUG_DETAILS: Record<string, DrugDetail> = {
     mechanism: 'ناهض نيكوتيني مزيل للاستقطاب | Depolarizing nicotinic acetylcholine receptor agonist يسبب إزالة استقطاب مستمرة ثم شللًا عضليًا.',
     tradeNames: ['Succinylcholine', 'Scoline'],
     routes: ['وريدي | Intravenous', 'عضلي | Intramuscular عند غياب IV في سياقات محددة'],
-    correction: 'لا يوجد “ترياق Anticholinesterase” روتيني لانقطاع النفس المطول بسبب نقص Butyrylcholinesterase؛ العلاج الأساسي هو التهوية والتهدئة المستمرة حتى عودة النقل العصبي العضلي. إعطاء Neostigmine قد يطيل Phase I block.',
+    correction: 'لا يوجد “ترياق Anticholinesterase” روتيني لانقطاع النفس المطول بسبب نقص Butyrylcholinesterase؛ العلاج الأساسي هو التهوية والتهدئة المستمرة حتى عودة النقل العصبي العضلي. إعطاء Neostigmine قد يطيل Phase I block. وبالنسبة للحروق، عبارة “مسموح فقط أول 24 ساعة” تبسيط؛ الملصق يحظر Succinylcholine بعد المرحلة الحادة من الحروق الكبيرة/الرضوض/denervation، ويذكر أن خطر hyperkalemia يزداد مع الزمن ويبلغ ذروته غالبًا 7–10 أيام، مع عدم تحديد بداية/نهاية دقيقة للخطر.',
     sourcePages: [52, 53, 71],
     uses: ['تسهيل التنبيب الرغامي', 'إرخاء العضلات قصير المدة أثناء الجراحة أو التهوية'],
     contraindications: ['قابلية معروفة أو مشتبه بها لفرط الحرارة الخبيث', 'اعتلالات العضلات الهيكلية', 'بعد المرحلة الحادة من الحروق الكبيرة أو الرضوض المتعددة أو نزع التعصيب/أذية العصبون الحركي العلوي بسبب خطر فرط البوتاسيوم', 'فرط التحسس للسكساميثونيوم'],
@@ -671,5 +671,32 @@ export const DRUG_DETAILS: Record<string, DrugDetail> = {
     correction: 'المصدر يعطي infusion 0.5–10 mcg/kg/min كمدى عام؛ في الممارسة يُعاير Nitroglycerin حسب indication والضغط والاستجابة، وغالبًا توصف جرعات IV بوحدة mcg/min بدل mg/kg.',
     sourcePages: [33],
     sourceLabel: 'أدوية الطوارئ 2021 — Nitroglycerin'
+  },
+  glucagon: {
+    feature: 'يرفع سكر الدم بسرعة نسبيًا من مخزون الكبد، كما يزيد cAMP القلبي بآلية مستقلة عن مستقبلات β؛ لذلك له استعمالات مختلفة تمامًا حسب الحالة.',
+    mechanism: 'يرتبط بمستقبل Glucagon المقترن بـGs في الكبد والقلب | Gs-coupled glucagon receptor، فيزيد cAMP؛ يحفز glycogenolysis/gluconeogenesis ويزيد inotropy/chronotropy بآلية لا تعتمد على β-receptors.',
+    routes: ['تحت الجلد | Subcutaneous', 'عضلي | Intramuscular', 'وريدي | Intravenous'],
+    educationalDoses: ['Severe hypoglycemia حسب FDA: للبالغ أو الطفل >25 kg: 1 mg SC/IM/IV؛ ويمكن تكرار الجرعة بعد 15 دقيقة إذا لم تحدث استجابة أثناء انتظار المساعدة.', 'Life-threatening β-blocker poisoning: AHA toxicology guidance يدعم bolus ثم infusion؛ الجرعات المستخدمة في الأدبيات أكبر بكثير من جرعة hypoglycemia وتحتاج toxicology/critical-care protocol.'],
+    uses: ['نقص السكر الشديد عندما يتعذر إعطاء الغلوكوز فمويًا | Severe hypoglycemia', 'علاج مساعد في تسمم β-blocker المهدد للحياة | Life-threatening beta-blocker poisoning', 'دوره في severe calcium-channel blocker poisoning أقل يقينًا | Adjunct with uncertain benefit in CCB poisoning'],
+    contraindications: ['Pheochromocytoma', 'Insulinoma', 'فرط التحسس للغلوكاغون أو مكونات المستحضر'],
+    warnings: ['غثيان وقيء | Nausea/vomiting وقد يزيد aspiration risk عند فاقد الوعي', 'قد يسبب ارتفاع ضغط شديد في pheochromocytoma', 'قد لا يفيد في hypoglycemia عند نفاد مخزون glycogen مثل starvation المطول أو بعض حالات adrenal insufficiency/chronic hypoglycemia'],
+    adverseEffects: ['غثيان | Nausea', 'قيء | Vomiting', 'صداع | Headache', 'تسرع القلب | Tachycardia', 'تفاعلات تحسسية نادرة'],
+    correction: 'المصدر يضع β-blocker وcalcium-channel blocker toxicity تحت نفس درجة الدليل. التحديثات الحديثة: glucagon معقول في life-threatening β-blocker poisoning، أما فائدته في CCB poisoning فغير مؤكدة، وhigh-dose insulin هو العلاج النوعي الأقوى دليلًا للصدمة الشديدة من CCB/β-blocker ضمن الرعاية الحرجة.',
+    sourcePages: [20],
+    sourceLabel: 'أدوية الطوارئ 2021 — Glucagon'
+  },
+  'regular-insulin': {
+    feature: 'إنسولين قصير المفعول | Short-acting insulin قابل للمعايرة، وهو النوع المستخدم وريدياً في بروتوكولات DKA/HHS وفي نقل البوتاسيوم إلى داخل الخلايا في hyperkalemia.',
+    mechanism: 'يرتبط بمستقبل insulin receptor ويزيد دخول الغلوكوز والبوتاسيوم إلى الخلايا عبر مسارات خلوية منها تنشيط Na⁺/K⁺-ATPase، ويثبط lipolysis وketogenesis.',
+    tradeNames: ['Actrapid', 'Humulin R', 'Novolin R حسب البلد'],
+    routes: ['وريدي بالتسريب في بروتوكولات حرجة | IV infusion', 'تحت الجلد | Subcutaneous'],
+    educationalDoses: ['DKA للبالغ وفق Consensus 2024: fixed-rate IV infusion 0.1 unit/kg/hour؛ إذا كان K⁺ <3.5 mmol/L يُؤخر insulin حتى تصحيح البوتاسيوم. عند glucose <250 mg/dL يُضاف dextrose وتُخفض السرعة عادةً إلى 0.05 unit/kg/hour حتى زوال ketoacidosis.', 'Acute hyperkalemia — UK Kidney Association: 10 units soluble insulin + 25 g glucose مع مراقبة glucose مكثفة؛ المرضى ذوو glucose منخفض قبل العلاج يحتاجون دعم glucose إضافيًا حسب البروتوكول.', 'β-blocker/CCB poisoning: high-dose insulin euglycemia therapy يستخدم جرعات أعلى بكثير من علاج السكري ولا يُنفذ إلا داخل بروتوكول toxicology/critical care مع glucose وK⁺ monitoring مستمر.'],
+    uses: ['Diabetic ketoacidosis | DKA', 'Hyperosmolar hyperglycemic state | HHS وفق النمط والبروتوكول', 'خفض البوتاسيوم مؤقتًا في acute hyperkalemia | Intracellular K⁺ shift', 'High-dose insulin therapy في تسمم β-blocker/CCB شديد'],
+    contraindications: ['Hypoglycemia الحالية', 'Hypokalemia غير المصححة في DKA تُعد سببًا لتأخير بدء insulin حتى تصحيح K⁺'],
+    warnings: ['Hypoglycemia أخطر مضاعفة حادة', 'Hypokalemia قد تكون شديدة وتسبب arrhythmia', 'أخطاء الوحدات والتركيز والتسريب high-alert medication errors', 'يحتاج glucose/K⁺ monitoring متكررًا حسب indication'],
+    adverseEffects: ['نقص السكر | Hypoglycemia', 'نقص البوتاسيوم | Hypokalemia', 'زيادة الوزن/وذمة مع الاستخدام المزمن', 'تفاعلات موضعية تحت الجلد'],
+    correction: 'المصدر يقترح قاعدة ثابتة أن كل 4–5 units تخفض glucose بنحو 50 mg/dL ويعطي جرعة Mixtard يومية ثابتة للجميع؛ هذا غير آمن وغير صحيح كقاعدة عامة. جرعة insulin تُفرد حسب indication، glucose، ketones، الوزن، K⁺، renal function والاستجابة، وتُستخدم بروتوكولات مكتوبة في الطوارئ.',
+    sourcePages: [22, 23],
+    sourceLabel: 'أدوية الطوارئ 2021 — Insulin'
   }
 };
