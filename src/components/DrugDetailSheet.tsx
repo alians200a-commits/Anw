@@ -124,6 +124,41 @@ function BilingualToken({ arabic, english }: { arabic: string; english: string }
   );
 }
 
+function ReferenceBlock({
+  title,
+  text,
+  items
+}: {
+  title: string;
+  text?: string;
+  items?: string[];
+}) {
+  if (!text && (!items || items.length === 0)) return null;
+
+  return (
+    <section className="border-r-2 border-r-[#526D82] pr-3">
+      <p className="text-[10px] font-black text-[#9BAEC0]">{title}</p>
+      {text && (
+        <p className="mt-1.5 text-[11px] leading-5 text-[#B1BCC5]">
+          <BilingualMedicalText text={text} />
+        </p>
+      )}
+      {items && (
+        <div className="mt-1.5 space-y-1.5">
+          {items.map((item, index) => (
+            <div key={index} className="flex items-start justify-end gap-2">
+              <p className="flex-1 text-right text-[11px] leading-5 text-[#A9B5BE]">
+                <BilingualMedicalText text={item} />
+              </p>
+              <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-[#526D82]" />
+            </div>
+          ))}
+        </div>
+      )}
+    </section>
+  );
+}
+
 function DetailSection({ title, items, tone }: DetailSectionProps) {
   const config = toneMap[tone];
   const Icon = config.icon;
@@ -212,14 +247,32 @@ export function DrugDetailSheet({ drug, detail, onClose }: DrugDetailSheetProps)
 
           <div className="h-px bg-white/5" />
 
-          <DetailSection title="غرض الاستعمال" items={detail.uses} tone="use" />
-          <DetailSection title="موانع الاستعمال" items={detail.contraindications} tone="contra" />
-          <DetailSection title="تحذيرات واحتياطات" items={detail.warnings} tone="warning" />
-          <DetailSection title="آثار جانبية مهمة" items={detail.adverseEffects} tone="effect" />
+          <ReferenceBlock title="آلية العمل | Mechanism" text={detail.mechanism} />
+          <ReferenceBlock title="الأسماء التجارية | Trade names" items={detail.tradeNames} />
+          <ReferenceBlock title="طرق الإعطاء | Routes" items={detail.routes} />
+          <ReferenceBlock title="جرعات مرجعية تعليمية | Educational reference doses" items={detail.educationalDoses} />
+          <ReferenceBlock title="بداية ومدة التأثير | Onset / duration" items={detail.onsetDuration} />
 
-          <p className="border-t border-white/5 pt-3 text-center text-[9px] leading-4 text-[#61788A]">
-            مرجع تعليمي مختصر؛ المعلومات الدوائية تُفسَّر ضمن السياق السريري وبروتوكول المؤسسة.
-          </p>
+          <DetailSection title="غرض الاستعمال | Uses" items={detail.uses} tone="use" />
+          <DetailSection title="موانع الاستعمال | Contraindications" items={detail.contraindications} tone="contra" />
+          <DetailSection title="تحذيرات واحتياطات | Warnings" items={detail.warnings} tone="warning" />
+          <DetailSection title="آثار جانبية مهمة | Important adverse effects" items={detail.adverseEffects} tone="effect" />
+
+          {detail.correction && (
+            <section className="border-r-2 border-r-[#D9A441] pr-3">
+              <p className="text-[10px] font-black text-[#D9A441]">تصحيح علمي | Scientific correction</p>
+              <p className="mt-1.5 text-[11px] leading-5 text-[#B8B8AE]">
+                <BilingualMedicalText text={detail.correction} />
+              </p>
+            </section>
+          )}
+
+          <div className="border-t border-white/5 pt-3 text-center text-[9px] leading-4 text-[#61788A]">
+            <p>مرجع تعليمي مختصر؛ الجرعة والاستعمال الفعليان يعتمدان على المريض والبروتوكول والمستحضر.</p>
+            {detail.sourcePages && (
+              <p className="mt-1">صفحات المصدر | Source pages: {detail.sourcePages.join('، ')}</p>
+            )}
+          </div>
         </div>
       </motion.div>
     </motion.div>
