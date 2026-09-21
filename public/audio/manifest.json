@@ -11,20 +11,75 @@
       "spoken_text": "Propofol",
       "file": "/audio/drugs/propofol.mp3"
     },
+    "drugs/thiopental": {
+      "source_text": "Thiopental",
+      "spoken_text": "Thiopental",
+      "file": "/audio/drugs/thiopental.mp3"
+    },
+    "drugs/etomidate": {
+      "source_text": "Etomidate",
+      "spoken_text": "Etomidate",
+      "file": "/audio/drugs/etomidate.mp3"
+    },
     "drugs/ketamine": {
       "source_text": "Ketamine",
       "spoken_text": "Ketamine",
       "file": "/audio/drugs/ketamine.mp3"
+    },
+    "drugs/sevoflurane": {
+      "source_text": "Sevoflurane",
+      "spoken_text": "Sevoflurane",
+      "file": "/audio/drugs/sevoflurane.mp3"
+    },
+    "drugs/isoflurane": {
+      "source_text": "Isoflurane",
+      "spoken_text": "Isoflurane",
+      "file": "/audio/drugs/isoflurane.mp3"
+    },
+    "drugs/halothane": {
+      "source_text": "Halothane",
+      "spoken_text": "Halothane",
+      "file": "/audio/drugs/halothane.mp3"
+    },
+    "drugs/nitrous-oxide": {
+      "source_text": "Nitrous Oxide",
+      "spoken_text": "Nitrous Oxide",
+      "file": "/audio/drugs/nitrous-oxide.mp3"
     },
     "drugs/midazolam": {
       "source_text": "Midazolam",
       "spoken_text": "Midazolam",
       "file": "/audio/drugs/midazolam.mp3"
     },
+    "drugs/diazepam": {
+      "source_text": "Diazepam",
+      "spoken_text": "Diazepam",
+      "file": "/audio/drugs/diazepam.mp3"
+    },
+    "drugs/lorazepam": {
+      "source_text": "Lorazepam",
+      "spoken_text": "Lorazepam",
+      "file": "/audio/drugs/lorazepam.mp3"
+    },
     "drugs/fentanyl": {
       "source_text": "Fentanyl",
       "spoken_text": "Fentanyl",
       "file": "/audio/drugs/fentanyl.mp3"
+    },
+    "drugs/morphine": {
+      "source_text": "Morphine",
+      "spoken_text": "Morphine",
+      "file": "/audio/drugs/morphine.mp3"
+    },
+    "drugs/alfentanil": {
+      "source_text": "Alfentanil",
+      "spoken_text": "Alfentanil",
+      "file": "/audio/drugs/alfentanil.mp3"
+    },
+    "drugs/remifentanil": {
+      "source_text": "Remifentanil",
+      "spoken_text": "Remifentanil",
+      "file": "/audio/drugs/remifentanil.mp3"
     },
     "drugs/rocuronium": {
       "source_text": "Rocuronium",
@@ -35,6 +90,26 @@
       "source_text": "Suxamethonium",
       "spoken_text": "Suxamethonium",
       "file": "/audio/drugs/suxamethonium.mp3"
+    },
+    "drugs/atracurium": {
+      "source_text": "Atracurium",
+      "spoken_text": "Atracurium",
+      "file": "/audio/drugs/atracurium.mp3"
+    },
+    "drugs/mivacurium": {
+      "source_text": "Mivacurium",
+      "spoken_text": "Mivacurium",
+      "file": "/audio/drugs/mivacurium.mp3"
+    },
+    "drugs/vecuronium": {
+      "source_text": "Vecuronium",
+      "spoken_text": "Vecuronium",
+      "file": "/audio/drugs/vecuronium.mp3"
+    },
+    "drugs/pancuronium": {
+      "source_text": "Pancuronium",
+      "spoken_text": "Pancuronium",
+      "file": "/audio/drugs/pancuronium.mp3"
     },
     "drugs/ondansetron": {
       "source_text": "Ondansetron",
