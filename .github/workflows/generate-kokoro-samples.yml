@@ -1,0 +1,66 @@
+name: Generate Kokoro Voice Samples
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - ".github/workflows/generate-kokoro-samples.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install Kokoro
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq espeak-ng
+          python -m pip install --upgrade pip
+          pip install "kokoro>=0.9.4" soundfile numpy
+
+      - name: Generate samples
+        run: |
+          python - <<'PY'
+          from kokoro import KPipeline
+          import numpy as np
+          import soundfile as sf
+          from pathlib import Path
+
+          out = Path("public/audio/voice-samples")
+          out.mkdir(parents=True, exist_ok=True)
+
+          pipeline = KPipeline(lang_code="a")
+          voices = ["af_heart", "af_bella", "af_sarah"]
+          text = "Propofol. Suxamethonium. Rocuronium."
+
+          for voice in voices:
+              chunks = []
+              for _, _, audio in pipeline(text, voice=voice, speed=0.95):
+                  chunks.append(audio)
+              full = np.concatenate(chunks) if len(chunks) > 1 else chunks[0]
+              sf.write(out / f"{voice}.wav", full, 24000)
+
+          print("Generated:", [p.name for p in out.glob("*.wav")])
+          PY
+
+      - name: Commit samples
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add public/audio/voice-samples/*.wav
+          if git diff --cached --quiet; then
+            echo "No changes"
+          else
+            git commit -m "chore: generate Kokoro voice samples"
+            git push
+          fi
