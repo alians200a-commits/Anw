@@ -1976,6 +1976,54 @@ export const CLINICAL_TERMS: ClinicalTerm[] = [
     clinicalNote: 'علامة متأخرة وغير حساسة لنقص الأكسجة، وقد تكون أقل وضوحًا في Anemia؛ لا تُستخدم بدل Pulse oximetry.',
     tags: ['cyanosis', 'hypoxemia', 'oxygenation']
   }
+,
+  {
+    id: 'cardiac-output',
+    en: 'Cardiac Output',
+    ar: 'النتاج القلبي',
+    abbr: 'CO',
+    category: 'cardio',
+    definition: 'كمية الدم التي يضخها القلب في الدقيقة | Heart rate × stroke volume.',
+    clinicalNote: 'يتأثر بمعدل القلب وPreload وAfterload وContractility، لذلك تفسيره يعتمد على الحالة الديناميكية كاملة.',
+    tags: ['cardiac output', 'CO', 'hemodynamics']
+  },
+  {
+    id: 'contractility',
+    en: 'Cardiac Contractility',
+    ar: 'قوة انقباض القلب',
+    category: 'cardio',
+    definition: 'قدرة عضلة القلب الذاتية على توليد قوة انقباض عند ظروف تحميل معينة.',
+    clinicalNote: 'Positive inotropes مثل Dobutamine قد تزيد Contractility والنتاج القلبي في حالات مختارة.',
+    tags: ['contractility', 'inotrope', 'cardiac output']
+  },
+  {
+    id: 'svr',
+    en: 'Systemic Vascular Resistance',
+    ar: 'المقاومة الوعائية الجهازية',
+    abbr: 'SVR',
+    category: 'cardio',
+    definition: 'المقاومة التي يواجهها تدفق الدم في الدوران الجهازي.',
+    clinicalNote: 'تتأثر بتقبض وتوسع الأوعية، وتمثل جزءًا مهمًا من Afterload على البطين الأيسر.',
+    tags: ['SVR', 'afterload', 'vascular resistance']
+  },
+  {
+    id: 'hepatic-encephalopathy',
+    en: 'Hepatic Encephalopathy',
+    ar: 'الاعتلال الدماغي الكبدي',
+    category: 'critical',
+    definition: 'اضطراب عصبي معرفي مرتبط بخلل كبدي شديد أو تحويلات بابية جهازية.',
+    clinicalNote: 'المهدئات والأفيونات قد تطيل أو تفاقم اضطراب الوعي عند بعض مرضى الكبد، لذلك تُعاير بحذر.',
+    tags: ['hepatic encephalopathy', 'liver disease', 'CNS']
+  },
+  {
+    id: 'hyperdynamic-circulation',
+    en: 'Hyperdynamic Circulation',
+    ar: 'الدورة الدموية مفرطة الديناميكية',
+    category: 'cardio',
+    definition: 'نمط دوري يتميز غالبًا بارتفاع Cardiac output وانخفاض SVR.',
+    clinicalNote: 'قد يُشاهد في تليف الكبد المتقدم وبعض حالات Sepsis.',
+    tags: ['hyperdynamic circulation', 'cardiac output', 'SVR', 'cirrhosis']
+  }
 
 ];
 
