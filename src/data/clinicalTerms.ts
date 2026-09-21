@@ -1175,6 +1175,178 @@ export const CLINICAL_TERMS: ClinicalTerm[] = [
     clinicalNote: "متوسط نسبة V/Q للرئة ككل يقارب 0.8 في الشخص السليم، لكن النسبة تختلف طبيعيًا بين مناطق الرئة.",
     tags: ["VQ","ventilation perfusion","hypoxemia","عدم تطابق التهوية والتروية"]
   }
+,
+  {
+    id: "aspiration",
+    en: "Pulmonary Aspiration",
+    ar: "الاستنشاق الرئوي",
+    category: "critical",
+    definition: "دخول محتويات الفم أو المعدة إلى مجرى الهواء والرئتين | Entry of oropharyngeal or gastric contents into the lower respiratory tract.",
+    tags: ["aspiration","airway","استنشاق رئوي"]
+  },
+  {
+    id: "regurgitation",
+    en: "Regurgitation",
+    ar: "القلس / الارتجاع",
+    category: "surgical",
+    definition: "عودة محتويات المعدة إلى البلعوم أو الفم دون الجهد العضلي المنسق المميز للقيء | Passive return of gastric contents.",
+    tags: ["regurgitation","gastric","قلس"]
+  },
+  {
+    id: "laryngospasm",
+    en: "Laryngospasm",
+    ar: "تشنج الحنجرة",
+    category: "critical",
+    definition: "انغلاق انعكاسي مستمر للمزمار | Sustained reflex closure of the glottis يسبب انسدادًا جزئيًا أو كاملًا لمجرى الهواء.",
+    tags: ["laryngospasm","airway","تشنج الحنجرة"]
+  },
+  {
+    id: "hypoxemia",
+    en: "Hypoxemia",
+    ar: "نقص أكسجة الدم",
+    category: "critical",
+    definition: "انخفاض الأوكسجين في الدم الشرياني | Abnormally low arterial blood oxygen.",
+    tags: ["hypoxemia","oxygen","PaO2","نقص أكسجة"]
+  },
+  {
+    id: "hypercapnia",
+    en: "Hypercapnia",
+    ar: "فرط ثاني أوكسيد الكربون في الدم",
+    category: "critical",
+    definition: "ارتفاع ضغط ثاني أوكسيد الكربون الشرياني | Elevated arterial carbon dioxide tension (PaCO₂).",
+    tags: ["hypercapnia","CO2","PaCO2","فرط ثاني اوكسيد الكربون"]
+  },
+  {
+    id: "delayed-emergence",
+    en: "Delayed Emergence",
+    ar: "تأخر الإفاقة",
+    category: "surgical",
+    definition: "تأخر عودة الوعي بالمعدل المتوقع بعد إيقاف أدوية التخدير | Delayed recovery of consciousness after anesthesia.",
+    tags: ["delayed emergence","recovery","إفاقة"]
+  },
+  {
+    id: "tof",
+    en: "Train-of-Four Ratio",
+    ar: "نسبة قطار الأربع نبضات",
+    abbr: "TOF",
+    category: "abbreviations",
+    definition: "قياس كمي للتعافي العصبي العضلي | Quantitative neuromuscular recovery assessment؛ نسبة الاستجابة الرابعة إلى الأولى في تحفيز Train-of-Four.",
+    tags: ["TOF","neuromuscular monitoring","reversal","مرخيات"]
+  },
+  {
+    id: "massive-transfusion",
+    en: "Massive Transfusion",
+    ar: "النقل الدموي الكبير",
+    category: "critical",
+    definition: "إعطاء كميات كبيرة من مكونات الدم بسرعة بسبب نزف شديد | Rapid replacement of a major proportion of blood volume with blood components.",
+    tags: ["massive transfusion","blood","hemorrhage","نقل دم"]
+  },
+  {
+    id: "coagulopathy",
+    en: "Coagulopathy",
+    ar: "اعتلال التخثر",
+    category: "critical",
+    definition: "اضطراب في قدرة الدم على التخثر بصورة طبيعية | Impaired blood coagulation.",
+    tags: ["coagulopathy","bleeding","clotting","تخثر"]
+  },
+  {
+    id: "hypocalcemia",
+    en: "Hypocalcemia",
+    ar: "نقص كالسيوم الدم",
+    category: "critical",
+    definition: "انخفاض تركيز الكالسيوم في الدم | Low blood calcium؛ ويُراقب الكالسيوم المتأين | Ionized calcium خصوصًا في النقل الدموي الكبير.",
+    tags: ["hypocalcemia","calcium","transfusion","كالسيوم"]
+  },
+  {
+    id: "trali",
+    en: "Transfusion-Related Acute Lung Injury",
+    ar: "الأذية الرئوية الحادة المرتبطة بنقل الدم",
+    abbr: "TRALI",
+    category: "abbreviations",
+    definition: "وذمة رئوية غير قلبية حادة مرتبطة زمنيًا بنقل الدم | Acute noncardiogenic pulmonary edema associated with transfusion.",
+    tags: ["TRALI","transfusion","lung injury","نقل دم"]
+  },
+  {
+    id: "taco",
+    en: "Transfusion-Associated Circulatory Overload",
+    ar: "الحمل الدوراني الزائد المرتبط بنقل الدم",
+    abbr: "TACO",
+    category: "abbreviations",
+    definition: "حمل حجمي زائد | Volume overload مرتبط بنقل الدم يسبب احتقانًا ووذمة رئوية قلبية المنشأ.",
+    tags: ["TACO","transfusion","volume overload","نقل دم"]
+  },
+  {
+    id: "sinus-bradycardia",
+    en: "Sinus Bradycardia",
+    ar: "بطء القلب الجيبي",
+    category: "cardio",
+    definition: "نظم جيبي بمعدل قلب منخفض | Sinus rhythm with a low heart rate بالنسبة للعمر والسياق السريري.",
+    tags: ["sinus bradycardia","bradycardia","ECG","بطء القلب"]
+  },
+  {
+    id: "sinus-tachycardia",
+    en: "Sinus Tachycardia",
+    ar: "تسرع القلب الجيبي",
+    category: "cardio",
+    definition: "نظم جيبي بمعدل قلب مرتفع | Sinus rhythm with an increased heart rate بالنسبة للعمر والسياق السريري.",
+    tags: ["sinus tachycardia","tachycardia","ECG","تسرع القلب"]
+  },
+  {
+    id: "shock",
+    en: "Circulatory Shock",
+    ar: "الصدمة الدورانية",
+    category: "critical",
+    definition: "فشل دوراني حاد يسبب نقص تروية الأنسجة وعدم كفاية توصيل الأوكسجين | Acute circulatory failure with tissue hypoperfusion.",
+    tags: ["shock","perfusion","صدمة"]
+  },
+  {
+    id: "hypovolemic-shock",
+    en: "Hypovolemic Shock",
+    ar: "صدمة نقص حجم الدم",
+    category: "critical",
+    definition: "صدمة ناتجة عن نقص الحجم داخل الأوعية | Shock caused by critical loss of intravascular volume.",
+    tags: ["hypovolemic shock","hemorrhage","volume","صدمة"]
+  },
+  {
+    id: "distributive-shock",
+    en: "Distributive Shock",
+    ar: "الصدمة التوزيعية",
+    category: "critical",
+    definition: "صدمة ناتجة أساسًا عن توسع وعائي وسوء توزيع الجريان | Shock caused by pathologic vasodilation and maldistribution of blood flow.",
+    tags: ["distributive shock","sepsis","anaphylaxis","صدمة"]
+  },
+  {
+    id: "cardiogenic-shock",
+    en: "Cardiogenic Shock",
+    ar: "الصدمة القلبية",
+    category: "critical",
+    definition: "صدمة ناتجة عن فشل القلب كمضخة | Shock caused by primary failure of cardiac output.",
+    tags: ["cardiogenic shock","heart failure","صدمة"]
+  },
+  {
+    id: "obstructive-shock",
+    en: "Obstructive Shock",
+    ar: "الصدمة الانسدادية",
+    category: "critical",
+    definition: "صدمة بسبب عائق ميكانيكي أمام امتلاء القلب أو إخراج الدم | Shock from mechanical obstruction to cardiac filling or outflow.",
+    tags: ["obstructive shock","tamponade","tension pneumothorax","صدمة"]
+  },
+  {
+    id: "cardiac-tamponade",
+    en: "Cardiac Tamponade",
+    ar: "اندكاك القلب",
+    category: "critical",
+    definition: "ضغط السائل أو الدم داخل التامور على القلب بما يعيق امتلاءه | Pericardial pressure impairing cardiac filling.",
+    tags: ["cardiac tamponade","pericardium","obstructive shock","اندكاك"]
+  },
+  {
+    id: "tension-pneumothorax",
+    en: "Tension Pneumothorax",
+    ar: "استرواح الصدر الضاغط",
+    category: "critical",
+    definition: "تجمع هواء تحت ضغط في الحيز الجنبي يضغط الرئة ويقلل العود الوريدي | Pressurized pleural air causing respiratory and hemodynamic compromise.",
+    tags: ["tension pneumothorax","obstructive shock","pleura","استرواح"]
+  }
 
 ];
 
