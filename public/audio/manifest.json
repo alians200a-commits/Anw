@@ -1,0 +1,235 @@
+{
+  "profile": "chatterbox-fixed-v1-speed-0.85",
+  "engine": "ChatterboxTTS",
+  "voice_reference": "/audio/voice-samples/chatterbox-default.wav",
+  "speed": 0.85,
+  "format": "mp3",
+  "bitrate": "64k",
+  "items": {
+    "drugs/propofol": {
+      "source_text": "Propofol",
+      "spoken_text": "Propofol",
+      "file": "/audio/drugs/propofol.mp3"
+    },
+    "drugs/ketamine": {
+      "source_text": "Ketamine",
+      "spoken_text": "Ketamine",
+      "file": "/audio/drugs/ketamine.mp3"
+    },
+    "drugs/midazolam": {
+      "source_text": "Midazolam",
+      "spoken_text": "Midazolam",
+      "file": "/audio/drugs/midazolam.mp3"
+    },
+    "drugs/fentanyl": {
+      "source_text": "Fentanyl",
+      "spoken_text": "Fentanyl",
+      "file": "/audio/drugs/fentanyl.mp3"
+    },
+    "drugs/rocuronium": {
+      "source_text": "Rocuronium",
+      "spoken_text": "Rocuronium",
+      "file": "/audio/drugs/rocuronium.mp3"
+    },
+    "drugs/suxamethonium": {
+      "source_text": "Suxamethonium",
+      "spoken_text": "Suxamethonium",
+      "file": "/audio/drugs/suxamethonium.mp3"
+    },
+    "drugs/ondansetron": {
+      "source_text": "Ondansetron",
+      "spoken_text": "Ondansetron",
+      "file": "/audio/drugs/ondansetron.mp3"
+    },
+    "drugs/atropine": {
+      "source_text": "Atropine",
+      "spoken_text": "Atropine",
+      "file": "/audio/drugs/atropine.mp3"
+    },
+    "drugs/adrenaline": {
+      "source_text": "Adrenaline",
+      "spoken_text": "Adrenaline",
+      "file": "/audio/drugs/adrenaline.mp3"
+    },
+    "drugs/neostigmine": {
+      "source_text": "Neostigmine",
+      "spoken_text": "Neostigmine",
+      "file": "/audio/drugs/neostigmine.mp3"
+    },
+    "terms/metabolism": {
+      "source_text": "Metabolism",
+      "spoken_text": "Metabolism",
+      "file": "/audio/terms/metabolism.mp3"
+    },
+    "abbreviations/cbf": {
+      "source_text": "Cerebral Blood Flow",
+      "spoken_text": "Cerebral Blood Flow",
+      "file": "/audio/abbreviations/cbf.mp3"
+    },
+    "abbreviations/icp": {
+      "source_text": "Intracranial Pressure",
+      "spoken_text": "Intracranial Pressure",
+      "file": "/audio/abbreviations/icp.mp3"
+    },
+    "abbreviations/mh": {
+      "source_text": "Malignant Hyperthermia",
+      "spoken_text": "Malignant Hyperthermia",
+      "file": "/audio/abbreviations/mh.mp3"
+    },
+    "abbreviations/iv": {
+      "source_text": "Intravenous",
+      "spoken_text": "Intravenous",
+      "file": "/audio/abbreviations/iv.mp3"
+    },
+    "abbreviations/im": {
+      "source_text": "Intramuscular",
+      "spoken_text": "Intramuscular",
+      "file": "/audio/abbreviations/im.mp3"
+    },
+    "terms/oral": {
+      "source_text": "Oral",
+      "spoken_text": "Oral",
+      "file": "/audio/terms/oral.mp3"
+    },
+    "terms/decrease": {
+      "source_text": "Decrease",
+      "spoken_text": "Decrease",
+      "file": "/audio/terms/decrease.mp3"
+    },
+    "terms/increase": {
+      "source_text": "Increase",
+      "spoken_text": "Increase",
+      "file": "/audio/terms/increase.mp3"
+    },
+    "abbreviations/hr": {
+      "source_text": "Heart Rate",
+      "spoken_text": "Heart Rate",
+      "file": "/audio/abbreviations/hr.mp3"
+    },
+    "abbreviations/mac": {
+      "source_text": "Minimum Alveolar Concentration",
+      "spoken_text": "Minimum Alveolar Concentration",
+      "file": "/audio/abbreviations/mac.mp3"
+    },
+    "terms/hypnotic": {
+      "source_text": "Hypnotic",
+      "spoken_text": "Hypnotic",
+      "file": "/audio/terms/hypnotic.mp3"
+    },
+    "terms/sedative": {
+      "source_text": "Sedative",
+      "spoken_text": "Sedative",
+      "file": "/audio/terms/sedative.mp3"
+    },
+    "terms/lipid-solubility": {
+      "source_text": "Lipid Solubility",
+      "spoken_text": "Lipid Solubility",
+      "file": "/audio/terms/lipid-solubility.mp3"
+    },
+    "terms/anticonvulsant": {
+      "source_text": "Anticonvulsant",
+      "spoken_text": "Anticonvulsant",
+      "file": "/audio/terms/anticonvulsant.mp3"
+    },
+    "terms/antiemetic": {
+      "source_text": "Antiemetic",
+      "spoken_text": "Antiemetic",
+      "file": "/audio/terms/antiemetic.mp3"
+    },
+    "terms/lacrimation": {
+      "source_text": "Lacrimation",
+      "spoken_text": "Lacrimation",
+      "file": "/audio/terms/lacrimation.mp3"
+    },
+    "terms/salivation": {
+      "source_text": "Salivation",
+      "spoken_text": "Salivation",
+      "file": "/audio/terms/salivation.mp3"
+    },
+    "terms/analgesia": {
+      "source_text": "Analgesia",
+      "spoken_text": "Analgesia",
+      "file": "/audio/terms/analgesia.mp3"
+    },
+    "terms/recovery-emergence": {
+      "source_text": "Recovery / Emergence",
+      "spoken_text": "Recovery. Emergence",
+      "file": "/audio/terms/recovery-emergence.mp3"
+    },
+    "terms/hallucination": {
+      "source_text": "Hallucination",
+      "spoken_text": "Hallucination",
+      "file": "/audio/terms/hallucination.mp3"
+    },
+    "terms/apnea": {
+      "source_text": "Apnea",
+      "spoken_text": "Apnea",
+      "file": "/audio/terms/apnea.mp3"
+    },
+    "terms/amnesia": {
+      "source_text": "Amnesia",
+      "spoken_text": "Amnesia",
+      "file": "/audio/terms/amnesia.mp3"
+    },
+    "terms/dose": {
+      "source_text": "Dose",
+      "spoken_text": "Dose",
+      "file": "/audio/terms/dose.mp3"
+    },
+    "terms/surgery-operation": {
+      "source_text": "Surgery / Operation",
+      "spoken_text": "Surgery. Operation",
+      "file": "/audio/terms/surgery-operation.mp3"
+    },
+    "terms/hypertension": {
+      "source_text": "Hypertension",
+      "spoken_text": "Hypertension",
+      "file": "/audio/terms/hypertension.mp3"
+    },
+    "terms/hypotension": {
+      "source_text": "Hypotension",
+      "spoken_text": "Hypotension",
+      "file": "/audio/terms/hypotension.mp3"
+    },
+    "terms/cardia": {
+      "source_text": "Cardia",
+      "spoken_text": "Cardia",
+      "file": "/audio/terms/cardia.mp3"
+    },
+    "terms/tachycardia": {
+      "source_text": "Tachycardia",
+      "spoken_text": "Tachycardia",
+      "file": "/audio/terms/tachycardia.mp3"
+    },
+    "terms/bradycardia": {
+      "source_text": "Bradycardia",
+      "spoken_text": "Bradycardia",
+      "file": "/audio/terms/bradycardia.mp3"
+    },
+    "terms/arrhythmia": {
+      "source_text": "Arrhythmia",
+      "spoken_text": "Arrhythmia",
+      "file": "/audio/terms/arrhythmia.mp3"
+    },
+    "terms/cardiac-arrest": {
+      "source_text": "Cardiac Arrest",
+      "spoken_text": "Cardiac Arrest",
+      "file": "/audio/terms/cardiac-arrest.mp3"
+    },
+    "terms/anaphylactic-shock": {
+      "source_text": "Anaphylactic Shock",
+      "spoken_text": "Anaphylactic Shock",
+      "file": "/audio/terms/anaphylactic-shock.mp3"
+    },
+    "abbreviations/mi": {
+      "source_text": "Muscle / Myocardial Infarction",
+      "spoken_text": "Muscle. Myocardial Infarction",
+      "file": "/audio/abbreviations/mi.mp3"
+    },
+    "special/suxamethonium-apnoea": {
+      "source_text": "Suxamethonium apnoea",
+      "spoken_text": "Suxamethonium apnoea",
+      "file": "/audio/special/suxamethonium-apnoea.mp3"
+    }
+  }
+}
