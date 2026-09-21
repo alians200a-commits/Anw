@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { motion } from 'motion/react';
 import {
+  CaretDown,
   FirstAid,
   Prohibit,
   ShieldWarning,
@@ -24,10 +25,30 @@ interface DetailSectionProps {
 }
 
 const toneMap = {
-  use: { icon: Target, label: 'text-[#7FB69B]', line: 'border-r-[#4E8F70]' },
-  contra: { icon: Prohibit, label: 'text-[#D48A8A]', line: 'border-r-[#9C5656]' },
-  warning: { icon: ShieldWarning, label: 'text-[#D9A441]', line: 'border-r-[#D9A441]' },
-  effect: { icon: FirstAid, label: 'text-[#9BAEC0]', line: 'border-r-[#6E879C]' }
+  use: {
+    icon: Target,
+    title: 'text-[#47745C]',
+    dot: 'bg-[#6AA582]',
+    box: 'border-[#D8EADF] bg-[#F2F8F4]'
+  },
+  contra: {
+    icon: Prohibit,
+    title: 'text-[#A15C68]',
+    dot: 'bg-[#C77A88]',
+    box: 'border-[#F0DDE1] bg-[#FFF5F6]'
+  },
+  warning: {
+    icon: ShieldWarning,
+    title: 'text-[#9A6B24]',
+    dot: 'bg-[#C8994B]',
+    box: 'border-[#F1E3C8] bg-[#FFF9ED]'
+  },
+  effect: {
+    icon: FirstAid,
+    title: 'text-[#586D8E]',
+    dot: 'bg-[#7890B5]',
+    box: 'border-[#DCE4F0] bg-[#F4F7FB]'
+  }
 } as const;
 
 const MEDICAL_TERMS: Record<string, string> = {
@@ -99,19 +120,20 @@ function BilingualMedicalText({ text }: { text: string }) {
   MEDICAL_PATTERN.lastIndex = 0;
 
   while ((match = MEDICAL_PATTERN.exec(text)) !== null) {
-    if (match.index > lastIndex) {
-      parts.push(text.slice(lastIndex, match.index));
-    }
+    if (match.index > lastIndex) parts.push(text.slice(lastIndex, match.index));
 
     const arabic = match[0];
-    parts.push(<BilingualToken key={key++} arabic={arabic} english={MEDICAL_TERMS[arabic]} />);
+    parts.push(
+      <BilingualToken
+        key={key++}
+        arabic={arabic}
+        english={MEDICAL_TERMS[arabic]}
+      />
+    );
     lastIndex = match.index + arabic.length;
   }
 
-  if (lastIndex < text.length) {
-    parts.push(text.slice(lastIndex));
-  }
-
+  if (lastIndex < text.length) parts.push(text.slice(lastIndex));
   return <>{parts}</>;
 }
 
@@ -119,8 +141,67 @@ function BilingualToken({ arabic, english }: { arabic: string; english: string }
   return (
     <span>
       {arabic}
-      <span dir="ltr" className="font-semibold text-[#D8C389]"> | {english}</span>
+      <span dir="ltr" className="font-semibold text-[#6C4AA5]"> | {english}</span>
     </span>
+  );
+}
+
+function ListBody({ items, dot = 'bg-[#8E79B4]' }: { items: string[]; dot?: string }) {
+  return (
+    <div className="space-y-2">
+      {items.map((item, index) => (
+        <div key={index} className="flex items-start justify-end gap-2 text-right">
+          <p className="flex-1 text-[11px] leading-5 text-[#51495D]">
+            <BilingualMedicalText text={item} />
+          </p>
+          <span className={'mt-[8px] h-1.5 w-1.5 shrink-0 rounded-full ' + dot} />
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function CollapsibleList({
+  title,
+  items,
+  className,
+  titleClass,
+  dot
+}: {
+  title: string;
+  items?: string[];
+  className: string;
+  titleClass: string;
+  dot?: string;
+}) {
+  if (!items || items.length === 0) return null;
+
+  if (items.length === 1) {
+    return (
+      <section className={'rounded-2xl border px-3.5 py-3 ' + className}>
+        <p className={'text-[10px] font-black ' + titleClass}>{title}</p>
+        <div className="mt-2">
+          <ListBody items={items} dot={dot} />
+        </div>
+      </section>
+    );
+  }
+
+  return (
+    <details className={'group rounded-2xl border px-3.5 py-3 ' + className}>
+      <summary className="flex cursor-pointer list-none items-center justify-between gap-3">
+        <CaretDown size={15} weight="bold" className="text-[#7A688F] transition group-open:rotate-180" />
+        <div className="flex items-center gap-2">
+          <span className="rounded-full bg-white/70 px-2 py-0.5 text-[9px] font-black text-[#6B5A78]">
+            {items.length}
+          </span>
+          <span className={'text-[10px] font-black ' + titleClass}>{title}</span>
+        </div>
+      </summary>
+      <div className="mt-3 border-t border-black/[0.05] pt-3">
+        <ListBody items={items} dot={dot} />
+      </div>
+    </details>
   );
 }
 
@@ -135,25 +216,25 @@ function ReferenceBlock({
 }) {
   if (!text && (!items || items.length === 0)) return null;
 
+  if (items && items.length > 0) {
+    return (
+      <CollapsibleList
+        title={title}
+        items={items}
+        className="border-[#E5DDF0] bg-[#F8F4FC]"
+        titleClass="text-[#61447F]"
+        dot="bg-[#8E6AB0]"
+      />
+    );
+  }
+
   return (
-    <section className="border-r-2 border-r-[#526D82] pr-3">
-      <p className="text-[10px] font-black text-[#9BAEC0]">{title}</p>
+    <section className="rounded-2xl border border-[#E5DDF0] bg-[#F8F4FC] px-3.5 py-3">
+      <p className="text-[10px] font-black text-[#61447F]">{title}</p>
       {text && (
-        <p className="mt-1.5 text-[11px] leading-5 text-[#B1BCC5]">
+        <p className="mt-1.5 text-[11px] leading-5 text-[#51495D]">
           <BilingualMedicalText text={text} />
         </p>
-      )}
-      {items && (
-        <div className="mt-1.5 space-y-1.5">
-          {items.map((item, index) => (
-            <div key={index} className="flex items-start justify-end gap-2">
-              <p className="flex-1 text-right text-[11px] leading-5 text-[#A9B5BE]">
-                <BilingualMedicalText text={item} />
-              </p>
-              <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-[#526D82]" />
-            </div>
-          ))}
-        </div>
       )}
     </section>
   );
@@ -163,21 +244,38 @@ function DetailSection({ title, items, tone }: DetailSectionProps) {
   const config = toneMap[tone];
   const Icon = config.icon;
 
+  if (!items.length) return null;
+
+  if (items.length === 1) {
+    return (
+      <section className={'rounded-2xl border px-3.5 py-3 ' + config.box}>
+        <div className="flex items-center justify-end gap-2">
+          <h4 className={'text-[10px] font-black ' + config.title}>{title}</h4>
+          <Icon size={16} weight="bold" className={config.title} />
+        </div>
+        <div className="mt-2">
+          <ListBody items={items} dot={config.dot} />
+        </div>
+      </section>
+    );
+  }
+
   return (
-    <section className={'border-r-2 py-1 pr-3 ' + config.line}>
-      <div className="flex items-center justify-end gap-2">
-        <h4 className={'text-xs font-black ' + config.label}>{title}</h4>
-        <Icon size={17} weight="bold" className={config.label} />
+    <details className={'group rounded-2xl border px-3.5 py-3 ' + config.box}>
+      <summary className="flex cursor-pointer list-none items-center justify-between gap-3">
+        <CaretDown size={15} weight="bold" className="text-[#7A688F] transition group-open:rotate-180" />
+        <div className="flex items-center gap-2">
+          <span className="rounded-full bg-white/70 px-2 py-0.5 text-[9px] font-black text-[#6B5A78]">
+            {items.length}
+          </span>
+          <h4 className={'text-[10px] font-black ' + config.title}>{title}</h4>
+          <Icon size={16} weight="bold" className={config.title} />
+        </div>
+      </summary>
+      <div className="mt-3 border-t border-black/[0.05] pt-3">
+        <ListBody items={items} dot={config.dot} />
       </div>
-      <div className="mt-2 space-y-1.5">
-        {items.map((item, index) => (
-          <div key={index} className="flex items-start justify-end gap-2 text-right">
-            <p className="flex-1 text-[11px] leading-5 text-[#A9B5BE]"><BilingualMedicalText text={item} /></p>
-            <span className="mt-[8px] h-1 w-1 shrink-0 rounded-full bg-[#50697C]" />
-          </div>
-        ))}
-      </div>
-    </section>
+    </details>
   );
 }
 
@@ -192,35 +290,35 @@ export function DrugDetailSheet({ drug, detail, onClose }: DrugDetailSheetProps)
 
   return (
     <motion.div
-      className="fixed inset-0 z-[80] bg-black/55 backdrop-blur-[2px]"
+      className="fixed inset-0 z-[80] bg-[#2F2145]/35 backdrop-blur-[2px]"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       onClick={onClose}
     >
       <motion.div
-        className="absolute inset-x-0 bottom-0 mx-auto max-h-[90vh] w-full max-w-3xl overflow-y-auto rounded-t-[28px] border-t border-[#CCA039]/20 bg-[#0A2036] shadow-2xl"
+        className="absolute inset-x-0 bottom-0 mx-auto max-h-[90vh] w-full max-w-3xl overflow-y-auto rounded-t-[28px] border-t border-[#E2D5F1] bg-white shadow-2xl"
         initial={{ y: 40, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         exit={{ y: 35, opacity: 0 }}
         transition={{ duration: 0.18 }}
         onClick={(event) => event.stopPropagation()}
       >
-        <div className="sticky top-0 z-10 border-b border-white/5 bg-[#0A2036]/95 px-4 pb-3 pt-3 backdrop-blur-xl">
-          <div className="mx-auto mb-3 h-1 w-10 rounded-full bg-[#41566A]" />
+        <div className="sticky top-0 z-10 border-b border-[#E9E2F1] bg-[#F7F1FB]/95 px-4 pb-3 pt-3 backdrop-blur-xl">
+          <div className="mx-auto mb-3 h-1 w-10 rounded-full bg-[#B9A5CF]" />
           <div className="flex items-start justify-between gap-3">
             <button
               onClick={onClose}
-              className="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-white/7 bg-white/[0.025] text-[#8296A8]"
+              className="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-[#DED3EA] bg-white text-[#695A78]"
               aria-label="إغلاق"
             >
               <X size={17} weight="bold" />
             </button>
 
             <div className="flex-1 text-right">
-              <p className="text-[10px] font-black text-[#CCA039]">{drug.categoryAr}</p>
-              <h3 className="mt-0.5 text-xl font-black text-[#EEE8D6]" dir="ltr">{drug.en}</h3>
-              <p className="mt-0.5 text-sm font-bold text-[#AEB9C2]">{drug.ar}</p>
+              <p className="text-[10px] font-black text-[#72519A]">{drug.categoryAr}</p>
+              <h3 className="mt-0.5 text-xl font-black text-[#30263F]" dir="ltr">{drug.en}</h3>
+              <p className="mt-0.5 text-sm font-bold text-[#655B70]">{drug.ar}</p>
             </div>
           </div>
 
@@ -228,7 +326,7 @@ export function DrugDetailSheet({ drug, detail, onClose }: DrugDetailSheetProps)
             {drug.classes.map((item) => (
               <span
                 key={item}
-                className="rounded-full border border-[#CCA039]/12 bg-[#CCA039]/[0.055] px-2.5 py-1 text-[9px] font-bold text-[#C9AE6D]"
+                className="rounded-full border border-[#DECEE9] bg-white px-2.5 py-1 text-[9px] font-bold text-[#6C4AA5]"
               >
                 {DRUG_CLASS_LABELS[item]}
               </span>
@@ -236,16 +334,16 @@ export function DrugDetailSheet({ drug, detail, onClose }: DrugDetailSheetProps)
           </div>
         </div>
 
-        <div className="space-y-5 px-4 pb-7 pt-4">
-          <div className="border-r-[3px] border-[#CCA039] pr-3">
+        <div className="space-y-3 px-4 pb-7 pt-4">
+          <section className="rounded-2xl border border-[#E9DFF2] bg-[#FBF8FD] px-3.5 py-3">
             <div className="flex items-center justify-end gap-2">
-              <span className="text-[10px] font-black text-[#CCA039]">ميزة الدواء</span>
-              <Sparkle size={16} weight="fill" className="text-[#CCA039]" />
+              <span className="text-[10px] font-black text-[#6C4AA5]">ميزة الدواء</span>
+              <Sparkle size={16} weight="fill" className="text-[#8C69B4]" />
             </div>
-            <p className="mt-1.5 text-[12px] leading-6 text-[#D7DBDE]"><BilingualMedicalText text={detail.feature} /></p>
-          </div>
-
-          <div className="h-px bg-white/5" />
+            <p className="mt-1.5 text-[12px] leading-6 text-[#42384D]">
+              <BilingualMedicalText text={detail.feature} />
+            </p>
+          </section>
 
           <ReferenceBlock title="آلية العمل | Mechanism" text={detail.mechanism} />
           <ReferenceBlock title="الأسماء التجارية | Trade names" items={detail.tradeNames} />
@@ -259,18 +357,17 @@ export function DrugDetailSheet({ drug, detail, onClose }: DrugDetailSheetProps)
           <DetailSection title="آثار جانبية مهمة | Important adverse effects" items={detail.adverseEffects} tone="effect" />
 
           {detail.correction && (
-            <section className="border-r-2 border-r-[#D9A441] pr-3">
-              <p className="text-[10px] font-black text-[#D9A441]">تصحيح علمي | Scientific correction</p>
-              <p className="mt-1.5 text-[11px] leading-5 text-[#B8B8AE]">
+            <section className="rounded-2xl border border-[#F0E1BA] bg-[#FFF9EC] px-3.5 py-3">
+              <p className="text-[10px] font-black text-[#966A22]">تصحيح علمي | Scientific correction</p>
+              <p className="mt-1.5 text-[11px] leading-5 text-[#5F533D]">
                 <BilingualMedicalText text={detail.correction} />
               </p>
             </section>
           )}
 
-          <div className="border-t border-white/5 pt-3 text-center text-[9px] leading-4 text-[#61788A]">
-            <p>مرجع تعليمي مختصر؛ الجرعة والاستعمال الفعليان يعتمدان على المريض والبروتوكول والمستحضر.</p>
+          <div className="border-t border-[#EEE8F2] pt-3 text-center text-[9px] leading-4 text-[#8B8192]">
             {(detail.sourceLabel || detail.sourcePages) && (
-              <p className="mt-1">المصدر | Source: {detail.sourceLabel ?? 'مبادئ التخدير'}</p>
+              <p>المصدر | Source: {detail.sourceLabel ?? 'مبادئ التخدير'}</p>
             )}
             {detail.sourcePages && (
               <p className="mt-1">صفحات/أقسام المصدر | Source pages/sections: {detail.sourcePages.join('، ')}</p>
