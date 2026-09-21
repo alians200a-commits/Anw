@@ -8,13 +8,13 @@
 
 .brand-stretch-primary {
   display: inline-block;
-  transform: scaleX(1.10);
+  transform: scaleX(1.05);
   transform-origin: right center;
 }
 
 .brand-stretch-secondary {
   display: inline-block;
-  transform: scaleX(1.06);
+  transform: scaleX(1.03);
   transform-origin: right center;
 }
 
