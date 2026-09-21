@@ -356,15 +356,6 @@ export function DrugDetailSheet({ drug, detail, onClose }: DrugDetailSheetProps)
           <DetailSection title="تحذيرات واحتياطات | Warnings" items={detail.warnings} tone="warning" />
           <DetailSection title="آثار جانبية مهمة | Important adverse effects" items={detail.adverseEffects} tone="effect" />
 
-          {detail.correction && (
-            <section className="rounded-2xl border border-[#F0E1BA] bg-[#FFF9EC] px-3.5 py-3">
-              <p className="text-[10px] font-black text-[#966A22]">تصحيح علمي | Scientific correction</p>
-              <p className="mt-1.5 text-[11px] leading-5 text-[#5F533D]">
-                <BilingualMedicalText text={detail.correction} />
-              </p>
-            </section>
-          )}
-
           <div className="border-t border-[#EEE8F2] pt-3 text-center text-[9px] leading-4 text-[#8B8192]">
             {(detail.sourceLabel || detail.sourcePages) && (
               <p>المصدر | Source: {detail.sourceLabel ?? 'مبادئ التخدير'}</p>
