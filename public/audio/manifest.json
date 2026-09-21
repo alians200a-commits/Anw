@@ -46,6 +46,21 @@
       "spoken_text": "Nitrous Oxide",
       "file": "/audio/drugs/nitrous-oxide.mp3"
     },
+    "drugs/methohexital": {
+      "source_text": "Methohexital",
+      "spoken_text": "Methohexital",
+      "file": "/audio/drugs/methohexital.mp3"
+    },
+    "drugs/enflurane": {
+      "source_text": "Enflurane",
+      "spoken_text": "Enflurane",
+      "file": "/audio/drugs/enflurane.mp3"
+    },
+    "drugs/desflurane": {
+      "source_text": "Desflurane",
+      "spoken_text": "Desflurane",
+      "file": "/audio/drugs/desflurane.mp3"
+    },
     "drugs/midazolam": {
       "source_text": "Midazolam",
       "spoken_text": "Midazolam",
@@ -81,6 +96,11 @@
       "spoken_text": "Remifentanil",
       "file": "/audio/drugs/remifentanil.mp3"
     },
+    "drugs/pethidine": {
+      "source_text": "Meperidine (Pethidine)",
+      "spoken_text": "Meperidine (Pethidine)",
+      "file": "/audio/drugs/pethidine.mp3"
+    },
     "drugs/rocuronium": {
       "source_text": "Rocuronium",
       "spoken_text": "Rocuronium",
@@ -111,10 +131,55 @@
       "spoken_text": "Pancuronium",
       "file": "/audio/drugs/pancuronium.mp3"
     },
+    "drugs/cisatracurium": {
+      "source_text": "Cisatracurium",
+      "spoken_text": "Cisatracurium",
+      "file": "/audio/drugs/cisatracurium.mp3"
+    },
     "drugs/ondansetron": {
       "source_text": "Ondansetron",
       "spoken_text": "Ondansetron",
       "file": "/audio/drugs/ondansetron.mp3"
+    },
+    "drugs/lidocaine": {
+      "source_text": "Lidocaine",
+      "spoken_text": "Lidocaine",
+      "file": "/audio/drugs/lidocaine.mp3"
+    },
+    "drugs/bupivacaine": {
+      "source_text": "Bupivacaine",
+      "spoken_text": "Bupivacaine",
+      "file": "/audio/drugs/bupivacaine.mp3"
+    },
+    "drugs/naloxone": {
+      "source_text": "Naloxone",
+      "spoken_text": "Naloxone",
+      "file": "/audio/drugs/naloxone.mp3"
+    },
+    "drugs/sugammadex": {
+      "source_text": "Sugammadex",
+      "spoken_text": "Sugammadex",
+      "file": "/audio/drugs/sugammadex.mp3"
+    },
+    "drugs/ephedrine": {
+      "source_text": "Ephedrine",
+      "spoken_text": "Ephedrine",
+      "file": "/audio/drugs/ephedrine.mp3"
+    },
+    "drugs/phenylephrine": {
+      "source_text": "Phenylephrine",
+      "spoken_text": "Phenylephrine",
+      "file": "/audio/drugs/phenylephrine.mp3"
+    },
+    "drugs/metoprolol": {
+      "source_text": "Metoprolol",
+      "spoken_text": "Metoprolol",
+      "file": "/audio/drugs/metoprolol.mp3"
+    },
+    "drugs/esmolol": {
+      "source_text": "Esmolol",
+      "spoken_text": "Esmolol",
+      "file": "/audio/drugs/esmolol.mp3"
     },
     "drugs/atropine": {
       "source_text": "Atropine",
