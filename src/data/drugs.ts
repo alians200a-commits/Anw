@@ -61,7 +61,7 @@ export const ANESTHESIA_DRUGS: AnesthesiaDrug[] = [
     category: 'hypnotics',
     categoryAr: 'منومات وريدية',
     classes: ['intravenous', 'hypnotic', 'sedative'],
-    short: 'عامل تخدير وريدي سريع البدء يُستخدم للتحريض والمحافظة على التخدير والتهدئة.',
+    short: 'عامل تخدير وريدي سريع البدء يُستخدم لبدء التخدير والمحافظة عليه والتهدئة.',
     tags: ['IV', 'induction', 'maintenance', 'sedation', 'منوم']
   },
   {
@@ -71,7 +71,7 @@ export const ANESTHESIA_DRUGS: AnesthesiaDrug[] = [
     category: 'hypnotics',
     categoryAr: 'منومات وريدية',
     classes: ['intravenous', 'hypnotic'],
-    short: 'منوم وريدي من مجموعة الباربيتورات يُستخدم لتحريض التخدير العام.',
+    short: 'منوم وريدي من مجموعة الباربيتورات يُستخدم لبدء التخدير العام.',
     tags: ['IV', 'barbiturate', 'induction', 'منوم']
   },
   {
@@ -81,7 +81,7 @@ export const ANESTHESIA_DRUGS: AnesthesiaDrug[] = [
     category: 'hypnotics',
     categoryAr: 'منومات وريدية',
     classes: ['intravenous', 'hypnotic'],
-    short: 'عامل منوم وريدي يُستخدم لتحريض التخدير العام.',
+    short: 'عامل منوم وريدي يُستخدم لبدء التخدير العام.',
     tags: ['IV', 'induction', 'hypnotic', 'منوم']
   },
   {
@@ -101,7 +101,7 @@ export const ANESTHESIA_DRUGS: AnesthesiaDrug[] = [
     category: 'inhalational',
     categoryAr: 'مخدرات استنشاقية',
     classes: ['inhalational', 'hypnotic'],
-    short: 'عامل تخدير استنشاقي متطاير يُستخدم في التحريض أو المحافظة على التخدير العام.',
+    short: 'عامل تخدير استنشاقي متطاير يُستخدم لبدء التخدير أو المحافظة على التخدير العام.',
     tags: ['volatile', 'inhalational', 'maintenance', 'استنشاقي']
   },
   {
@@ -141,7 +141,7 @@ export const ANESTHESIA_DRUGS: AnesthesiaDrug[] = [
     category: 'hypnotics',
     categoryAr: 'منومات وريدية',
     classes: ['intravenous', 'hypnotic'],
-    short: 'باربيتورات وريدي فائق القصر يُستخدم لتحريض التخدير وفي إجراءات قصيرة مثل العلاج بالصدمات الكهربائية.',
+    short: 'باربيتورات وريدي فائق القصر يُستخدم لبدء التخدير وفي إجراءات قصيرة مثل العلاج بالصدمات الكهربائية.',
     tags: ['IV', 'barbiturate', 'induction', 'ECT', 'منوم']
   },
   {
