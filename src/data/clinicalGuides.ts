@@ -469,5 +469,211 @@ export const CLINICAL_GUIDES: ClinicalGuide[] = [
     ],
     correction: 'في النسخة المعدلة الحديثة، درجة 9 أو أكثر من 10 تُستخدم عادةً كأحد معايير الجاهزية للخروج من Phase I PACU، وليس 8 كقاعدة عامة، مع بقاء الحكم السريري وبروتوكول المؤسسة ضروريين.',
     tags: ['Aldrete','PACU','recovery score','إفاقة']
+  },
+  {
+    id: 'anesthesia-room-check',
+    titleAr: 'فحص صالة ومحطة التخدير قبل الحالة',
+    titleEn: 'Pre-Anesthesia Room / Workstation Check',
+    category: 'general',
+    categoryAr: 'التخدير العام',
+    sourcePages: [77],
+    summary: 'فحص منظم قبل بدء التخدير للتأكد من مصادر الغازات، محطة التخدير، مجرى الهواء، الشفط، المراقبة، الأدوية وخطة الطوارئ.',
+    sections: [
+      {
+        title: 'المحطة والغازات | Workstation & gases',
+        items: [
+          'تشغيل وفحص محطة التخدير | Anesthesia workstation check.',
+          'التحقق من مصدر الأوكسجين والغازات | Oxygen / medical gas supply.',
+          'التحقق من المبخرات عند الحاجة | Vaporizers.',
+          'فحص دائرة التنفس وجهاز التنفس | Breathing circuit / ventilator.'
+        ]
+      },
+      {
+        title: 'مجرى الهواء | Airway',
+        items: [
+          'قناع وجه | Face mask، مجرى هوائي | Oropharyngeal / nasopharyngeal airway، أنابيب رغامي | ETT، وقناع حنجري | SGA/LMA.',
+          'منظار حنجرة يعمل | Functional laryngoscope مع خطة صعوبة مجرى الهواء | Difficult airway plan.',
+          'جهاز شفط يعمل | Functional suction.'
+        ]
+      },
+      {
+        title: 'المراقبة والأدوية | Monitoring & drugs',
+        items: [
+          'ECG، ضغط الدم | NIBP، مقياس التأكسج | Pulse oximeter، قياس CO₂ الزفيري | Capnography عند التخدير العام/التهوية.',
+          'توفر أدوية التخدير والأدوية الإسعافية المناسبة للحالة | Anesthetic / emergency drugs.',
+          'وصول وريدي وخطة السوائل/الدم عند الحاجة | IV access / fluids / blood plan.'
+        ]
+      }
+    ],
+    correction: 'الفحص الحديث لا يقتصر على قائمة ثابتة عامة؛ يجب اتباع قائمة فحص الشركة/المؤسسة ومحطة التخدير نفسها، مع فحص آلي ويدوي حسب الجهاز.',
+    tags: ['machine check','pre anesthesia check','OR checklist','جهاز التخدير','صالة العمليات']
+  },
+  {
+    id: 'unconscious-patient-care',
+    titleAr: 'رعاية المريض فاقد الوعي',
+    titleEn: 'Care of the Unconscious Anesthetized Patient',
+    category: 'general',
+    categoryAr: 'التخدير العام',
+    sourcePages: [78],
+    summary: 'المريض المخدر لا يستطيع حماية نفسه؛ الرعاية تركز على الوضعية، العينين، الأعصاب، الجلد، مجرى الهواء والتهوية.',
+    sections: [
+      {
+        title: 'الحماية من الإصابة | Injury prevention',
+        items: [
+          'إزالة الأجسام الضاغطة مثل المجوهرات عند الحاجة | Remove constricting items.',
+          'تبطيط نقاط الضغط | Pressure-point padding وتجنب شد/ضغط الأعصاب | Peripheral nerve injury.',
+          'تثبيت المريض ومنع السقوط مع وضعية جراحية آمنة | Safe positioning.',
+          'الوقاية من الحروق الحرارية والكهربائية | Thermal / electrical injury prevention.'
+        ]
+      },
+      {
+        title: 'العناية بالعين | Eye care',
+        items: [
+          'إغلاق الجفنين وحماية القرنية | Eyelid closure / corneal protection.',
+          'تجنب الضغط المباشر على العين | Avoid direct ocular pressure.'
+        ]
+      },
+      {
+        title: 'التنفس | Respiratory care',
+        items: [
+          'الحفاظ على مجرى هوائي مفتوح | Patent airway.',
+          'التأكد من تهوية وأكسجة كافيتين | Adequate ventilation / oxygenation.',
+          'منع واستباق الاستنشاق الرئوي | Aspiration prevention ومراقبة الإفرازات والدم.'
+        ]
+      }
+    ],
+    tags: ['unconscious patient','positioning','eye care','nerve injury','airway']
+  },
+  {
+    id: 'preoperative-assessment',
+    titleAr: 'التقييم قبل التخدير',
+    titleEn: 'Preoperative Anesthesia Assessment',
+    category: 'general',
+    categoryAr: 'التخدير العام',
+    sourcePages: [79,80],
+    summary: 'تقييم منظم للتاريخ المرضي والفحص ومجرى الهواء والأدوية والمخاطر، ثم طلب الفحوصات التي ستغيّر الخطة فعليًا.',
+    sections: [
+      {
+        title: 'التاريخ المرضي | History',
+        items: [
+          'أمراض القلب والرئة والكلى والكبد والسكري | Cardiopulmonary / renal / hepatic / metabolic disease.',
+          'الأدوية والحساسية | Medications / allergies.',
+          'تخدير سابق ومضاعفاته | Previous anesthesia / complications.',
+          'التدخين والكحول والمواد الأخرى | Smoking / alcohol / substance use.',
+          'الصيام وخطر الاستنشاق الرئوي | Fasting / aspiration risk.'
+        ]
+      },
+      {
+        title: 'الفحص | Examination',
+        items: [
+          'العلامات الحيوية | Vital signs وحالة الحجم | Volume status.',
+          'فحص القلب والرئة حسب الحاجة | Cardiopulmonary examination.',
+          'تقييم مجرى الهواء | Airway assessment.',
+          'الأسنان والوصول الوريدي | Dentition / IV access.',
+          'الوضع الوظيفي والهشاشة عند الحاجة | Functional status / frailty.'
+        ]
+      },
+      {
+        title: 'الفحوصات | Investigations',
+        items: [
+          'تُطلب حسب المرض، الأدوية، نوع الجراحة واحتمال أن تغيّر النتيجة الخطة | Selective testing.',
+          'قد تشمل CBC، وظائف الكلى/الشوارد، ECG، اختبارات أخرى عند وجود استطباب.'
+        ]
+      }
+    ],
+    correction: 'قاعدة “ECG لكل مريض فوق 40 سنة” وطلب البول/الأشعة/التحاليل بصورة روتينية ليست ممارسة حديثة. الفحوصات قبل الجراحة تُطلب انتقائيًا عندما قد تؤثر النتيجة في التدبير.',
+    tags: ['preoperative assessment','preanesthesia','history','airway assessment','testing']
+  },
+  {
+    id: 'premedication',
+    titleAr: 'أدوية ما قبل التخدير',
+    titleEn: 'Premedication',
+    category: 'pharmacology',
+    categoryAr: 'علم الأدوية',
+    sourcePages: [81,82],
+    summary: 'أدوية تُعطى قبل التخدير لتحقيق هدف محدد مثل تخفيف القلق، تقليل PONV أو تقليل خطر الاستنشاق في مريض عالي الخطورة؛ لا تُعطى كل الفئات لكل مريض.',
+    sections: [
+      {
+        title: 'الأهداف المحتملة | Possible goals',
+        items: [
+          'تخفيف القلق | Anxiolysis والتهدئة | Sedation عند الحاجة.',
+          'تسكين الألم | Analgesia في حالات مختارة.',
+          'الوقاية من الغثيان والقيء | PONV prophylaxis للمرضى المعرضين.',
+          'تقليل حموضة/حجم محتوى المعدة عند خطر الاستنشاق المرتفع | Aspiration-risk pharmacologic prophylaxis.'
+        ]
+      },
+      {
+        title: 'فئات مستخدمة | Drug classes',
+        items: [
+          'بنزوديازيبينات | Benzodiazepines مثل Midazolam.',
+          'مضادات القيء | Antiemetics مثل Ondansetron أو Dexamethasone حسب الخطر.',
+          'مضادات مستقبلات H2 أو مثبطات مضخة البروتون | H2 blockers / PPIs في سياقات مختارة.',
+          'محفزات حركة المعدة | Prokinetics مثل Metoclopramide في بعض المرضى.',
+          'مضادات كولين | Anticholinergics عند استطباب محدد، وليست روتينية لكل مريض.'
+        ]
+      }
+    ],
+    correction: 'المصدر يعرض فوائد ما قبل التخدير كأنها قائمة ثابتة. الممارسة الحديثة فردية؛ ASA لا توصي بإعطاء مضادات الحموضة أو مضادات الكولين أو عدة أدوية روتينيًا لمريض سليم دون زيادة واضحة في خطر الاستنشاق.',
+    tags: ['premedication','antiemetic','benzodiazepine','aspiration prophylaxis']
+  },
+  {
+    id: 'intraoperative-monitoring',
+    titleAr: 'المراقبة أثناء التخدير',
+    titleEn: 'Intraoperative Monitoring',
+    category: 'general',
+    categoryAr: 'التخدير العام',
+    sourcePages: [83],
+    summary: 'المراقبة الأساسية أثناء التخدير تركز باستمرار على الأكسجة | Oxygenation والتهوية | Ventilation والدورة الدموية | Circulation والحرارة | Temperature.',
+    sections: [
+      {
+        title: 'الأكسجة والتهوية | Oxygenation & ventilation',
+        items: [
+          'تشبع الأوكسجين | SpO₂ بواسطة Pulse oximetry.',
+          'الأوكسجين المستنشق | Inspired O₂ عند استخدام محطة التخدير.',
+          'ثاني أوكسيد الكربون الزفيري | EtCO₂ / Capnography عند التخدير العام أو التهوية وفق المعيار.',
+          'حركة الصدر ودائرة التنفس وضغوط/أحجام جهاز التنفس | Chest movement / ventilator parameters.'
+        ]
+      },
+      {
+        title: 'الدورة الدموية | Circulation',
+        items: [
+          'تخطيط القلب | ECG.',
+          'ضغط الدم | Blood pressure بصورة دورية أو مستمرة حسب الحالة.',
+          'معدل القلب | Heart rate والتروية السريرية | Perfusion.'
+        ]
+      },
+      {
+        title: 'أخرى | Other',
+        items: [
+          'درجة الحرارة | Temperature عند توقع تغير مهم أو عند الحاجة.',
+          'الحصار العصبي العضلي | Neuromuscular monitoring عندما تُستخدم المرخيات.',
+          'إخراج البول | Urine output في الحالات المناسبة وليس كمتطلب لكل إجراء قصير.'
+        ]
+      }
+    ],
+    correction: '“30 mL/hour طبيعي للجميع” ليس هدفًا ثابتًا. إخراج البول يُفسر بالنسبة للوزن والسياق ومدة الجراحة، كما أن معالجة كل نقص عابر بإعطاء سوائل ليست مدعومة تلقائيًا.',
+    tags: ['monitoring','SpO2','EtCO2','ECG','blood pressure','temperature','urine output']
+  },
+  {
+    id: 'perioperative-blood-loss',
+    titleAr: 'تقدير فقد الدم أثناء العملية',
+    titleEn: 'Perioperative Blood Loss Estimation',
+    category: 'general',
+    categoryAr: 'التخدير العام',
+    sourcePages: [83],
+    summary: 'تقدير فقد الدم يعتمد على تجميع عدة مصادر مع طرح سوائل الغسل وربط الرقم بالديناميكا الدموية والتحاليل والسياق.',
+    sections: [
+      {
+        title: 'مصادر التقدير | Sources',
+        items: [
+          'حجم الدم في جهاز الشفط بعد طرح سوائل الغسل | Suction canister minus irrigation.',
+          'وزن الشاش والمواد الماصة قبل/بعد الاستخدام | Gravimetric sponge assessment عندما يُستخدم.',
+          'الدم في الحقل الجراحي والستائر | Surgical field / drapes.',
+          'الهيموغلوبين والتحاليل المتسلسلة وحالة المريض | Serial labs / clinical context.'
+        ]
+      }
+    ],
+    correction: 'قاعدة “الشاش غير الممتلئ = 5 mL، الممتلئ = 10 mL، والـpack = 30 mL” غير موثوقة. التقدير البصري لفقد الدم معروف بعدم الدقة، لذلك لا تُعرض هذه الأرقام كحقائق ثابتة.',
+    tags: ['blood loss','EBL','gravimetric','suction','نزف']
   }
 ];
