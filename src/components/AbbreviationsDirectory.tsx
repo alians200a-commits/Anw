@@ -1,7 +1,7 @@
 import { useMemo, useState } from 'react';
 import { Heart, MagnifyingGlass, SpeakerHigh, TextAa } from '@phosphor-icons/react';
 import { CLINICAL_TERMS } from '../data/clinicalTerms';
-import { speakTerm } from '../utils/speech';
+import { playPronunciation } from '../utils/speech';
 
 interface AbbreviationsDirectoryProps {
   favorites: Set<string>;
@@ -45,7 +45,7 @@ export function AbbreviationsDirectory({ favorites, onToggleFavorite }: Abbrevia
               <div className="flex items-start gap-3">
                 <div className="flex shrink-0 gap-1">
                   <button
-                    onClick={() => speakTerm(term.en)}
+                    onClick={() => playPronunciation('abbreviations', term.id)}
                     className="grid h-8 w-8 place-items-center rounded-lg border border-[#CCA039]/12 bg-[#CCA039]/7 text-[#CCA039]"
                     title="نطق الاسم الإنجليزي"
                   >

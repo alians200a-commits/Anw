@@ -1,7 +1,7 @@
 import { useMemo, useState } from 'react';
 import { BookOpenText, Heart, MagnifyingGlass, SpeakerHigh } from '@phosphor-icons/react';
 import { CLINICAL_TERMS } from '../data/clinicalTerms';
-import { speakTerm } from '../utils/speech';
+import { playPronunciation } from '../utils/speech';
 
 interface TermsDirectoryProps {
   favorites: Set<string>;
@@ -45,7 +45,7 @@ export function TermsDirectory({ favorites, onToggleFavorite }: TermsDirectoryPr
               <div className="flex items-start gap-3">
                 <div className="flex shrink-0 gap-1">
                   <button
-                    onClick={() => speakTerm(term.en)}
+                    onClick={() => playPronunciation('terms', term.id)}
                     className="grid h-8 w-8 place-items-center rounded-lg border border-[#CCA039]/12 bg-[#CCA039]/7 text-[#CCA039]"
                     title="نطق المصطلح"
                   >

@@ -1,0 +1,46 @@
+name: Generate App Pronunciation Audio
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "src/data/drugs.ts"
+      - "src/data/clinicalTerms.ts"
+      - "tools/tts/generate_static_audio.py"
+      - "public/audio/voice-samples/chatterbox-default.wav"
+      - ".github/workflows/generate-app-audio.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install audio tools
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq ffmpeg
+          python -m pip install --upgrade pip
+          pip install chatterbox-tts torchaudio
+      - name: Generate fixed pronunciation files
+        run: python tools/tts/generate_static_audio.py
+      - name: Commit generated audio
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add public/audio/drugs public/audio/terms public/audio/abbreviations public/audio/special public/audio/manifest.json
+          if git diff --cached --quiet; then
+            echo "Audio is already up to date."
+          else
+            git commit -m "chore: generate fixed Chatterbox pronunciation audio"
+            git pull --rebase origin main
+            git push
+          fi

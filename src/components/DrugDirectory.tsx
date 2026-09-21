@@ -3,7 +3,7 @@ import { Heart, MagnifyingGlass, SpeakerHigh } from '@phosphor-icons/react';
 import { ANESTHESIA_DRUGS, DRUG_CATEGORIES, type DrugCategory } from '../data/drugs';
 import { useMemo, useState } from 'react';
 import { MedicinesHealthIcon } from './MedicalIcons';
-import { speakTerm } from '../utils/speech';
+import { playPronunciation } from '../utils/speech';
 
 interface DrugDirectoryProps {
   favorites: Set<string>;
@@ -74,7 +74,7 @@ export function DrugDirectory({ favorites, onToggleFavorite }: DrugDirectoryProp
               <div className="flex items-start gap-3">
                 <div className="flex shrink-0 gap-1">
                   <button
-                    onClick={() => speakTerm(drug.en)}
+                    onClick={() => playPronunciation('drugs', drug.id)}
                     className="grid h-8 w-8 place-items-center rounded-lg border border-[#CCA039]/12 bg-[#CCA039]/7 text-[#CCA039]"
                     title="نطق اسم الدواء"
                   >
