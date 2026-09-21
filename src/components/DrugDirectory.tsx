@@ -52,7 +52,7 @@ export function DrugDirectory({ favorites, onToggleFavorite }: DrugDirectoryProp
               className={
                 'whitespace-nowrap rounded-full border px-3 py-1.5 text-[10px] font-bold transition ' +
                 (active
-                  ? 'border-[#6C4AA5] bg-[#6C4AA5] text-[#0A2036]'
+                  ? 'border-[#6C4AA5] bg-[#6C4AA5] text-white'
                   : 'border-[#6C4AA5]/12 bg-[#F7F2FB] text-[#94A4B2]')
               }
             >
