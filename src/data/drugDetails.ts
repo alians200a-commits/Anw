@@ -11,6 +11,7 @@ export interface DrugDetail {
   adverseEffects: string[];
   correction?: string;
   sourcePages?: number[];
+  sourceLabel?: string;
 }
 
 export const DRUG_DETAILS: Record<string, DrugDetail> = {
