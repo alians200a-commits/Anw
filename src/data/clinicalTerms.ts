@@ -1034,6 +1034,147 @@ export const CLINICAL_TERMS: ClinicalTerm[] = [
     definition: "كتل وأورام: Cystic hygroma، Hemangioma، Hematoma.\nالتهابات: Submandibular abscess، Peritonsillar abscess، Epiglottitis.\nتشوهات خلقية وقحفية وجهية: Pierre Robin sequence، Goldenhar syndrome، Craniofacial dysostosis، Laryngeal atresia.\nجسم غريب: Foreign body.\nرضوض وحروق: Laryngeal fracture، Mandibular أو Maxillary fracture، Inhalation burn، Cervical spine injury.\nالسمنة والعنق: Obesity، Large neck circumference، Short neck، Inadequate neck extension.\nمحدودية حركة العمود الرقبي: Rheumatoid arthritis، Ankylosing spondylitis، Halo fixation/traction.\nاختلافات تشريحية: Micrognathia، Retrognathia أو محدودية بروز الفك السفلي، Large tongue (Macroglossia)، High-arched palate.",
     tags: ["difficult intubation","difficult airway","صعوبة التنبيب","Cystic hygroma","Hemangioma","Hematoma","Submandibular abscess","Peritonsillar abscess","Epiglottitis","Pierre Robin sequence","Laryngeal atresia","Goldenhar syndrome","Craniofacial dysostosis","Foreign body","Laryngeal fracture","Mandibular fracture","Maxillary fracture","Inhalation burn","Cervical spine injury","Obesity","large neck circumference","Rheumatoid arthritis","Ankylosing spondylitis","Halo fixation","Micrognathia","Retrognathia","Macroglossia","High-arched palate","Short neck"]
   }
+,
+  {
+    id: "anesthesia",
+    en: "Anesthesia",
+    ar: "التخدير",
+    category: "surgical",
+    definition: "حالة دوائية مضبوطة تُستخدم لإجراء العمليات والإجراءات، وقد تشمل فقدان الوعي | Unconsciousness، تسكين الألم | Analgesia، فقدان الذاكرة | Amnesia، وتثبيط المنعكسات أو ارتخاء العضلات حسب نوع التخدير.",
+    tags: ["anesthesia","general anesthesia","local anesthesia","تخدير"]
+  },
+  {
+    id: "respiration",
+    en: "Respiration",
+    ar: "التنفس",
+    category: "critical",
+    definition: "مصطلح يشمل تبادل الغازات واستخدام الأوكسجين | Oxygen وإنتاج ثاني أوكسيد الكربون | Carbon dioxide في الجسم، وليس مجرد حركة الهواء.",
+    tags: ["respiration","gas exchange","تنفس"]
+  },
+  {
+    id: "external-respiration",
+    en: "External Respiration",
+    ar: "التنفس الخارجي",
+    category: "critical",
+    definition: "تبادل الأوكسجين | Oxygen وثاني أوكسيد الكربون | Carbon dioxide بين الحويصلات الرئوية | Alveoli والدم في الشعيرات الرئوية.",
+    tags: ["external respiration","alveoli","gas exchange","تنفس خارجي"]
+  },
+  {
+    id: "internal-respiration",
+    en: "Internal Respiration",
+    ar: "التنفس الداخلي",
+    category: "critical",
+    definition: "تبادل الغازات بين الدم والأنسجة واستخدام الخلايا للأوكسجين | Cellular oxygen utilization مع إنتاج ثاني أوكسيد الكربون | Carbon dioxide.",
+    tags: ["internal respiration","cellular respiration","تنفس داخلي"]
+  },
+  {
+    id: "ventilation",
+    en: "Ventilation",
+    ar: "التهوية",
+    category: "critical",
+    definition: "حركة الهواء إلى داخل الرئتين وخارجهما | Movement of air into and out of the lungs؛ وهي تختلف عن الأكسجة | Oxygenation وتبادل الغازات | Gas exchange.",
+    tags: ["ventilation","breathing","تهوية"]
+  },
+  {
+    id: "respiratory-dead-space",
+    en: "Respiratory Dead Space",
+    ar: "الحيز التنفسي الميت",
+    category: "critical",
+    definition: "حجم الغاز الذي لا يشارك في تبادل الغازات | Gas exchange؛ يشمل الحيز التشريحي | Anatomic dead space، ويشمل الحيز الفيزيولوجي أيضًا حويصلات مهواة لكن غير مروّاة بشكل كافٍ.",
+    tags: ["dead space","anatomic dead space","physiologic dead space","حيز ميت"]
+  },
+  {
+    id: "irv",
+    en: "Inspiratory Reserve Volume",
+    ar: "حجم احتياطي الشهيق",
+    abbr: "IRV",
+    category: "abbreviations",
+    definition: "أكبر حجم إضافي يمكن استنشاقه بعد شهيق طبيعي | Maximal additional inspired volume after a normal inspiration.",
+    tags: ["IRV","lung volume","شهيق"]
+  },
+  {
+    id: "erv",
+    en: "Expiratory Reserve Volume",
+    ar: "حجم احتياطي الزفير",
+    abbr: "ERV",
+    category: "abbreviations",
+    definition: "أكبر حجم إضافي يمكن إخراجه بعد زفير طبيعي | Maximal additional expired volume after a normal expiration.",
+    tags: ["ERV","lung volume","زفير"]
+  },
+  {
+    id: "rv",
+    en: "Residual Volume",
+    ar: "الحجم المتبقي",
+    abbr: "RV",
+    category: "abbreviations",
+    definition: "حجم الغاز المتبقي في الرئتين بعد أقصى زفير ممكن | Volume remaining after maximal expiration.",
+    tags: ["RV","lung volume","حجم متبقي"]
+  },
+  {
+    id: "tlc",
+    en: "Total Lung Capacity",
+    ar: "السعة الرئوية الكلية",
+    abbr: "TLC",
+    category: "abbreviations",
+    definition: "إجمالي حجم الغاز في الرئتين بعد أقصى شهيق | Maximum lung volume؛ وتساوي مجموع VT + IRV + ERV + RV.",
+    tags: ["TLC","lung capacity","سعة الرئة"]
+  },
+  {
+    id: "vital-capacity",
+    en: "Vital Capacity",
+    ar: "السعة الحيوية",
+    abbr: "VC",
+    category: "abbreviations",
+    definition: "أكبر حجم يمكن إخراجه بعد أقصى شهيق | Maximum volume expired after full inspiration؛ وتساوي تقريبًا IRV + VT + ERV.",
+    tags: ["VC","vital capacity","lung volume","سعة حيوية"]
+  },
+  {
+    id: "frc",
+    en: "Functional Residual Capacity",
+    ar: "السعة المتبقية الوظيفية",
+    abbr: "FRC",
+    category: "abbreviations",
+    definition: "حجم الغاز المتبقي في الرئتين عند نهاية زفير طبيعي | Volume remaining after a normal tidal expiration؛ وتساوي ERV + RV.",
+    clinicalNote: "يقل FRC عادةً عند الاستلقاء | Supine position وبعد تحريض التخدير العام | General anesthesia، ما قد يزيد قابلية انغلاق المجرى الهوائي وحدوث عدم تطابق V/Q.",
+    tags: ["FRC","functional residual capacity","anesthesia","سعة متبقية"]
+  },
+  {
+    id: "fvc",
+    en: "Forced Vital Capacity",
+    ar: "السعة الحيوية القسرية",
+    abbr: "FVC",
+    category: "abbreviations",
+    definition: "حجم الهواء الذي يمكن إخراجه بقوة وبأقصى سرعة بعد أخذ أقصى شهيق | Forced exhaled volume after maximal inspiration.",
+    tags: ["FVC","spirometry","PFT","سعة حيوية قسرية"]
+  },
+  {
+    id: "fev1",
+    en: "Forced Expiratory Volume in One Second",
+    ar: "حجم الزفير القسري في ثانية واحدة",
+    abbr: "FEV₁",
+    category: "abbreviations",
+    definition: "حجم الهواء الذي يخرجه المريض خلال أول ثانية من مناورة FVC | First-second forced expiratory volume، ويُستخدم مع FVC لتقييم انسداد مجرى الهواء.",
+    tags: ["FEV1","spirometry","obstruction","زفير قسري"]
+  },
+  {
+    id: "rq",
+    en: "Respiratory Quotient",
+    ar: "الحاصل التنفسي",
+    abbr: "RQ",
+    category: "abbreviations",
+    definition: "نسبة ثاني أوكسيد الكربون المُنتج | CO₂ production إلى الأوكسجين المستهلَك | O₂ consumption أثناء الاستقلاب.",
+    tags: ["RQ","metabolism","CO2","O2","حاصل تنفسي"]
+  },
+  {
+    id: "vq-mismatch",
+    en: "Ventilation-Perfusion Mismatch",
+    ar: "عدم تطابق التهوية والتروية",
+    abbr: "V/Q mismatch",
+    category: "abbreviations",
+    definition: "عدم التوازن بين التهوية السنخية | Alveolar ventilation والتروية الرئوية | Pulmonary perfusion؛ وهو سبب شائع لنقص الأكسجة | Hypoxemia.",
+    clinicalNote: "متوسط نسبة V/Q للرئة ككل يقارب 0.8 في الشخص السليم، لكن النسبة تختلف طبيعيًا بين مناطق الرئة.",
+    tags: ["VQ","ventilation perfusion","hypoxemia","عدم تطابق التهوية والتروية"]
+  }
 
 ];
 
