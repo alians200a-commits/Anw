@@ -269,8 +269,11 @@ export function DrugDetailSheet({ drug, detail, onClose }: DrugDetailSheetProps)
 
           <div className="border-t border-white/5 pt-3 text-center text-[9px] leading-4 text-[#61788A]">
             <p>مرجع تعليمي مختصر؛ الجرعة والاستعمال الفعليان يعتمدان على المريض والبروتوكول والمستحضر.</p>
+            {detail.sourceLabel && (
+              <p className="mt-1">المصدر | Source: {detail.sourceLabel}</p>
+            )}
             {detail.sourcePages && (
-              <p className="mt-1">صفحات المصدر | Source pages: {detail.sourcePages.join('، ')}</p>
+              <p className="mt-1">صفحات/أقسام المصدر | Source pages/sections: {detail.sourcePages.join('، ')}</p>
             )}
           </div>
         </div>
