@@ -31,8 +31,8 @@ export function GuideScreen({
           <option value="abbreviations">الاختصارات</option>
         </select>
         <div className="text-right">
-          <h2 className="text-lg font-black text-[#EEE8D6]">الدليل</h2>
-          <p className="mt-0.5 text-[10px] text-[#7E91A2]">اختار القسم من القائمة</p>
+          <h2 className="text-lg font-black text-[#EEE8D6]">الدليل التخديري</h2>
+          <p className="mt-0.5 text-[10px] text-[#7E91A2]">أدوية • مصطلحات • اختصارات</p>
         </div>
       </div>
 
