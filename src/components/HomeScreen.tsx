@@ -151,7 +151,7 @@ export function HomeScreen({ query, setQuery, openGuide, goTo }: HomeScreenProps
             />
             <div className="flex items-center gap-3">
               <div>
-                <h3 className="text-sm font-black text-[#EEE8D6]">الدليل الطبي</h3>
+                <h3 className="text-sm font-black text-[#EEE8D6]">الدليل التخديري</h3>
                 <p className="mt-0.5 text-[10px] text-[#7F91A1]">أدوية، مصطلحات، اختصارات</p>
               </div>
               <div className="grid h-9 w-9 place-items-center rounded-xl bg-[#CCA039]/8 text-[#CCA039]">
