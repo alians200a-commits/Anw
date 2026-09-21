@@ -405,6 +405,166 @@ export const ANESTHESIA_DRUGS: AnesthesiaDrug[] = [
     tags: ['beta blocker', 'beta1', 'Brevibloc', 'tachycardia', 'قلب']
   },
   {
+    id: 'adenosine',
+    en: 'Adenosine',
+    ar: 'أدينوسين / أدينوكور',
+    category: 'cardiovascular',
+    categoryAr: 'أدوية قلبية وعائية',
+    classes: ['intravenous', 'emergency', 'cardiovascular'],
+    short: 'دواء فائق القصر يبطئ التوصيل عبر العقدة الأذينية البطينية ويُستخدم في أنواع محددة من تسرع القلب فوق البطيني.',
+    tags: ['Adenocor', 'SVT', 'AV node', 'tachycardia', 'طوارئ قلبية']
+  },
+  {
+    id: 'albuterol',
+    en: 'Salbutamol (Albuterol)',
+    ar: 'سالبوتامول / ألبوتيرول / فنتولين',
+    category: 'emergency',
+    categoryAr: 'أدوية طوارئ',
+    classes: ['emergency', 'adjunct'],
+    short: 'ناهض β2 موسع للقصبات يُستخدم في التشنج القصبي، ويمكن أن يساعد مؤقتًا على خفض البوتاسيوم في فرط البوتاسيوم.',
+    tags: ['Ventolin', 'salbutamol', 'albuterol', 'beta2', 'bronchospasm', 'hyperkalemia']
+  },
+  {
+    id: 'aminophylline',
+    en: 'Aminophylline',
+    ar: 'أمينوفيلين',
+    category: 'emergency',
+    categoryAr: 'أدوية طوارئ',
+    classes: ['intravenous', 'emergency', 'adjunct'],
+    short: 'مركب ثيوفيلين موسع للقصبات ذو هامش علاجي ضيق؛ أصبح دوره محدودًا مقارنةً بالعلاجات الاستنشاقية الأحدث.',
+    tags: ['theophylline', 'PDE inhibitor', 'bronchodilator', 'asthma', 'امينوفيلين']
+  },
+  {
+    id: 'amiodarone',
+    en: 'Amiodarone',
+    ar: 'أميودارون / كوردارون',
+    category: 'cardiovascular',
+    categoryAr: 'أدوية قلبية وعائية',
+    classes: ['intravenous', 'emergency', 'cardiovascular'],
+    short: 'مضاد اضطراب نظم متعدد الخصائص يُستخدم في VF/pulseless VT وبعض التسرعات واسعة المركب وفق الخوارزمية المناسبة.',
+    tags: ['Cordarone', 'VF', 'VT', 'wide complex tachycardia', 'antiarrhythmic']
+  },
+  {
+    id: 'alteplase',
+    en: 'Alteplase',
+    ar: 'ألتيبلاز / tPA',
+    category: 'emergency',
+    categoryAr: 'أدوية طوارئ',
+    classes: ['intravenous', 'emergency', 'adjunct'],
+    short: 'عامل حالّ للخثرة يحول البلازمينوجين إلى بلازمين ويُستخدم في استطبابات محددة مثل السكتة الإقفارية واحتشاء القلب والانصمام الرئوي عالي الخطورة.',
+    tags: ['tPA', 'rt-PA', 'thrombolytic', 'pulmonary embolism', 'stroke', 'MI']
+  },
+  {
+    id: 'calcium-gluconate',
+    en: 'Calcium Gluconate',
+    ar: 'غلوكونات الكالسيوم',
+    category: 'emergency',
+    categoryAr: 'أدوية طوارئ',
+    classes: ['intravenous', 'emergency', 'adjunct'],
+    short: 'مستحضر كالسيوم وريدي يُستخدم في حالات مثل نقص الكالسيوم وفرط البوتاسيوم مع تغيرات قلبية وفق السياق السريري.',
+    tags: ['calcium', 'hyperkalemia', 'hypocalcemia', 'غلوكونات الكالسيوم']
+  },
+  {
+    id: 'calcium-chloride',
+    en: 'Calcium Chloride',
+    ar: 'كلوريد الكالسيوم',
+    category: 'emergency',
+    categoryAr: 'أدوية طوارئ',
+    classes: ['intravenous', 'emergency', 'adjunct'],
+    short: 'مستحضر كالسيوم مركز يوفر كالسيومًا عنصرّيًا أكثر من Calcium gluconate ويحتاج حذرًا شديدًا من التسرب خارج الوريد.',
+    tags: ['calcium chloride', 'hyperkalemia', 'hypocalcemia', 'calcium', 'كلوريد الكالسيوم']
+  },
+  {
+    id: 'dexamethasone',
+    en: 'Dexamethasone',
+    ar: 'ديكساميثازون / ديكادرون',
+    category: 'adjuncts',
+    categoryAr: 'أدوية مساعدة',
+    classes: ['intravenous', 'antiemetic', 'adjunct'],
+    short: 'غلوكوكورتيكويد طويل المفعول له استعمالات مضادة للالتهاب والوذمة، ويُستخدم أيضًا للوقاية من PONV ضمن التخدير.',
+    tags: ['Decadron', 'steroid', 'PONV', 'cerebral edema', 'laryngeal edema']
+  },
+  {
+    id: 'diltiazem',
+    en: 'Diltiazem',
+    ar: 'ديلتيازيم',
+    category: 'cardiovascular',
+    categoryAr: 'أدوية قلبية وعائية',
+    classes: ['intravenous', 'emergency', 'cardiovascular'],
+    short: 'حاصر قنوات كالسيوم غير ثنائي الهيدروبيريدين يبطئ التوصيل عبر AV node ويُستخدم للتحكم بالمعدل في اضطرابات نظم محددة.',
+    tags: ['calcium channel blocker', 'AF', 'SVT', 'AV node', 'rate control']
+  },
+  {
+    id: 'dobutamine',
+    en: 'Dobutamine',
+    ar: 'دوبوتامين',
+    category: 'cardiovascular',
+    categoryAr: 'أدوية قلبية وعائية',
+    classes: ['intravenous', 'emergency', 'cardiovascular'],
+    short: 'دواء إينوتروبي يغلب عليه تنبيه β1 ويزيد قوة انقباض القلب والنتاج القلبي في حالات مختارة من فشل المضخة.',
+    tags: ['inotrope', 'beta1', 'cardiac output', 'heart failure', 'dobutamine']
+  },
+  {
+    id: 'dopamine',
+    en: 'Dopamine',
+    ar: 'دوبامين',
+    category: 'cardiovascular',
+    categoryAr: 'أدوية قلبية وعائية',
+    classes: ['intravenous', 'emergency', 'vasopressor', 'cardiovascular'],
+    short: 'كاتيكولامين ذو تأثيرات أدرينرجية ودوبامينية تعتمد على الجرعة؛ له استعمالات محددة في بطء القلب أو الصدمة بحسب السياق.',
+    tags: ['dopamine', 'vasopressor', 'inotrope', 'bradycardia', 'shock']
+  },
+  {
+    id: 'esomeprazole',
+    en: 'Esomeprazole',
+    ar: 'إيزوميبرازول / نيكسيوم',
+    category: 'adjuncts',
+    categoryAr: 'أدوية مساعدة',
+    classes: ['intravenous', 'adjunct'],
+    short: 'مثبط لمضخة البروتون يقلل إفراز حمض المعدة ويُستخدم في حالات هضمية محددة مثل النزف الهضمي العلوي ضمن بروتوكول كامل.',
+    tags: ['Nexium', 'PPI', 'GI bleed', 'acid suppression', 'esomeprazole']
+  },
+  {
+    id: 'furosemide',
+    en: 'Furosemide',
+    ar: 'فوروسيميد / لازكس',
+    category: 'emergency',
+    categoryAr: 'أدوية طوارئ',
+    classes: ['intravenous', 'emergency', 'adjunct'],
+    short: 'مدرّ بول عروي | Loop diuretic يثبط ناقل Na-K-2Cl ويُستخدم في احتقان السوائل والوذمة الرئوية القلبية وحالات مختارة.',
+    tags: ['Lasix', 'loop diuretic', 'pulmonary edema', 'heart failure', 'فوروسيميد']
+  },
+  {
+    id: 'hydrocortisone',
+    en: 'Hydrocortisone',
+    ar: 'هيدروكورتيزون / سولو-كورتيف',
+    category: 'emergency',
+    categoryAr: 'أدوية طوارئ',
+    classes: ['intravenous', 'emergency', 'adjunct'],
+    short: 'غلوكوكورتيكويد له أيضًا نشاط معدني قشري ويُستخدم في قصور الكظر وبعض حالات الربو والصدمة الإنتانية المقاومة للرافعات حسب البروتوكول.',
+    tags: ['Solu-Cortef', 'steroid', 'adrenal crisis', 'asthma', 'septic shock']
+  },
+  {
+    id: 'labetalol',
+    en: 'Labetalol',
+    ar: 'لابيتالول',
+    category: 'cardiovascular',
+    categoryAr: 'أدوية قلبية وعائية',
+    classes: ['intravenous', 'emergency', 'cardiovascular'],
+    short: 'حاصر α1 وβ يُستخدم لخفض ضغط الدم في حالات مختارة من ارتفاع الضغط الحاد وتسرع النبض المصاحب.',
+    tags: ['alpha blocker', 'beta blocker', 'hypertension', 'labetalol']
+  },
+  {
+    id: 'nitroglycerin',
+    en: 'Nitroglycerin',
+    ar: 'نتروغليسرين / GTN',
+    category: 'cardiovascular',
+    categoryAr: 'أدوية قلبية وعائية',
+    classes: ['intravenous', 'emergency', 'cardiovascular'],
+    short: 'نترات موسعة للأوعية يغلب تأثيرها الوريدي؛ تقلل preload وتُستخدم في الذبحة/الإقفار وارتفاع الضغط أو الوذمة الرئوية في سياقات مناسبة.',
+    tags: ['GTN', 'Angised', 'nitrate', 'angina', 'ischemia', 'pulmonary edema']
+  },
+  {
     id: 'atropine',
     en: 'Atropine',
     ar: 'أتروبين',
