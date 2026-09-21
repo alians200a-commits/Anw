@@ -1,8 +1,9 @@
 import { motion } from 'motion/react';
-import { Heart, MagnifyingGlass } from '@phosphor-icons/react';
+import { Heart, MagnifyingGlass, SpeakerHigh } from '@phosphor-icons/react';
 import { ANESTHESIA_DRUGS, DRUG_CATEGORIES, type DrugCategory } from '../data/drugs';
 import { useMemo, useState } from 'react';
 import { MedicinesHealthIcon } from './MedicalIcons';
+import { speakTerm } from '../utils/speech';
 
 interface DrugDirectoryProps {
   favorites: Set<string>;
@@ -27,13 +28,7 @@ export function DrugDirectory({ favorites, onToggleFavorite }: DrugDirectoryProp
   }, [category, query]);
 
   return (
-    <div className="space-y-4">
-      <section>
-        <p className="text-[10px] font-bold text-[#CCA039]">DRUG DIRECTORY</p>
-        <h2 className="mt-1 text-xl font-black text-[#EEE8D6]">دليل أدوية التخدير</h2>
-        <p className="mt-1.5 text-xs leading-5 text-[#8EA0B0]">وصول سريع للأسماء والتصنيفات الأساسية.</p>
-      </section>
-
+    <div className="space-y-3">
       <div className="relative">
         <MagnifyingGlass size={18} className="absolute right-3.5 top-1/2 -translate-y-1/2 text-[#CCA039]" />
         <input
@@ -64,7 +59,9 @@ export function DrugDirectory({ favorites, onToggleFavorite }: DrugDirectoryProp
         })}
       </div>
 
-      <div className="grid gap-2.5 sm:grid-cols-2">
+      <p className="px-1 text-[10px] text-[#71879A]">{filtered.length} دواء</p>
+
+      <div className="space-y-2">
         {filtered.map((drug) => {
           const favoriteId = 'drug:' + drug.id;
           const isFavorite = favorites.has(favoriteId);
@@ -72,20 +69,30 @@ export function DrugDirectory({ favorites, onToggleFavorite }: DrugDirectoryProp
             <motion.article
               layout
               key={drug.id}
-              className="rounded-[18px] border border-[#CCA039]/10 bg-[#0D2741] p-3.5"
+              className="rounded-[17px] border border-[#CCA039]/10 bg-[#0D2741] p-3.5"
             >
-              <div className="flex items-start justify-between gap-3">
-                <button
-                  onClick={() => onToggleFavorite(favoriteId)}
-                  className={
-                    'grid h-8 w-8 shrink-0 place-items-center rounded-lg border transition ' +
-                    (isFavorite
-                      ? 'border-[#CCA039]/30 bg-[#CCA039]/12 text-[#CCA039]'
-                      : 'border-white/5 bg-white/[0.025] text-[#6D8193]')
-                  }
-                >
-                  <Heart size={16} weight={isFavorite ? 'fill' : 'regular'} />
-                </button>
+              <div className="flex items-start gap-3">
+                <div className="flex shrink-0 gap-1">
+                  <button
+                    onClick={() => speakTerm(drug.en)}
+                    className="grid h-8 w-8 place-items-center rounded-lg border border-[#CCA039]/12 bg-[#CCA039]/7 text-[#CCA039]"
+                    title="نطق اسم الدواء"
+                  >
+                    <SpeakerHigh size={16} />
+                  </button>
+                  <button
+                    onClick={() => onToggleFavorite(favoriteId)}
+                    className={
+                      'grid h-8 w-8 place-items-center rounded-lg border ' +
+                      (isFavorite
+                        ? 'border-[#CCA039]/30 bg-[#CCA039]/12 text-[#CCA039]'
+                        : 'border-white/5 bg-white/[0.025] text-[#6D8193]')
+                    }
+                    title="حفظ"
+                  >
+                    <Heart size={16} weight={isFavorite ? 'fill' : 'regular'} />
+                  </button>
+                </div>
 
                 <div className="flex flex-1 items-start justify-end gap-3 text-right">
                   <div>
