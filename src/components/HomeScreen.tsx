@@ -245,7 +245,7 @@ export function HomeScreen({ query, setQuery, openGuide, goTo }: HomeScreenProps
             <div className="flex items-center gap-3">
               <div>
                 <h3 className="text-sm font-black text-[#34293F]">الدليل التخديري</h3>
-                <p className="mt-0.5 text-[10px] text-[#81758A]">أدوية، سوائل، أجهزة، إجراءات، مصطلحات، اختصارات</p>
+                <p className="mt-0.5 text-[10px] text-[#81758A]">أدوية، سوائل، أجهزة، مراحل التخدير، إجراءات، مصطلحات، اختصارات</p>
               </div>
               <div className="grid h-9 w-9 place-items-center rounded-xl bg-[#EEE6F6] text-[#6C4AA5]">
                 <BookOpenText size={20} />
@@ -314,6 +314,22 @@ export function HomeScreen({ query, setQuery, openGuide, goTo }: HomeScreenProps
                   <span className="text-xs font-bold text-[#405957]">السوائل الوريدية</span>
                   <div className="grid h-8 w-8 place-items-center rounded-lg bg-[#E5F2EF] text-[#4E7D77]">
                     <Drop size={18} weight="fill" />
+                  </div>
+                </div>
+              </button>
+
+              <button
+                onClick={() => openGuide('stages')}
+                className="flex w-full items-center justify-between rounded-xl border border-[#E5DCEF] bg-[#FAF8FC] px-3 py-2.5 active:bg-[#F3ECF8]"
+              >
+                <CaretLeft size={15} className="text-[#806D94]" />
+                <div className="flex items-center gap-3">
+                  <div className="text-right">
+                    <span className="block text-xs font-bold text-[#493A58]">مراحل التخدير</span>
+                    <span className="mt-0.5 block text-[9px] text-[#8A7B96]" dir="ltr">Stages of Anesthesia</span>
+                  </div>
+                  <div className="grid h-8 w-8 place-items-center rounded-lg bg-[#EEE6F6] text-[#6C4AA5]">
+                    <BookOpenText size={18} />
                   </div>
                 </div>
               </button>
