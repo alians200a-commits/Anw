@@ -1526,6 +1526,214 @@ export const CLINICAL_TERMS: ClinicalTerm[] = [
     definition: "تخدير منطقة من الجسم عبر حصر عصب أو ضفيرة أو تقنية محورية عصبية مثل spinal أو epidural.",
     tags: ["RA","regional anesthesia","nerve block","spinal","epidural"]
   }
+,
+  {
+    id: "preload",
+    en: "Preload",
+    ar: "الحمل القبلي",
+    category: "cardio",
+    definition: "درجة امتلاء وتمدد البطين في نهاية الانبساط قبل الانقباض | Ventricular filling/stretch at end-diastole.",
+    clinicalNote: "يتأثر بحجم الدم والعود الوريدي والامتثال البطيني؛ لا يساوي CVP بصورة مباشرة في كل الحالات.",
+    tags: ["preload","venous return","cardiac","حمل قبلي"]
+  },
+  {
+    id: "afterload",
+    en: "Afterload",
+    ar: "الحمل البعدي",
+    category: "cardio",
+    definition: "المقاومة أو الحمل الذي يجب على البطين التغلب عليه لقذف الدم | Load opposing ventricular ejection.",
+    clinicalNote: "في البطين الأيسر يرتبط بمقاومة الأوعية وضغط الأبهر وهندسة البطين، وليس SVR وحدها.",
+    tags: ["afterload","SVR","cardiac","حمل بعدي"]
+  },
+  {
+    id: "inotrope",
+    en: "Inotrope",
+    ar: "دواء مؤثر في قوة انقباض القلب",
+    category: "cardio",
+    definition: "عامل يزيد أو يقلل قوة انقباض عضلة القلب | Myocardial contractility.",
+    clinicalNote: "Dobutamine مثال positive inotrope؛ أما beta-blockers فلها negative inotropic effect.",
+    tags: ["inotrope","contractility","dobutamine","قوة الانقباض"]
+  },
+  {
+    id: "chronotrope",
+    en: "Chronotrope",
+    ar: "عامل مؤثر في معدل القلب",
+    category: "cardio",
+    definition: "عامل يزيد أو يقلل معدل ضربات القلب | Heart rate.",
+    clinicalNote: "Positive chronotropy يرفع HR وnegative chronotropy يخفضه.",
+    tags: ["chronotrope","heart rate","HR","نبض"]
+  },
+  {
+    id: "vasopressor",
+    en: "Vasopressor",
+    ar: "رافع ضغط / قابض وعائي",
+    category: "pharmacology",
+    definition: "دواء يرفع ضغط التروية غالبًا عبر زيادة التقبض الوعائي، وقد تكون له تأثيرات قلبية إضافية | Drug used to raise arterial pressure.",
+    clinicalNote: "اختيار vasopressor يعتمد على آلية الصدمة؛ Norepinephrine ليس مكافئًا آليًا لـPhenylephrine أو Ephedrine.",
+    tags: ["vasopressor","shock","blood pressure","رافع ضغط"]
+  },
+  {
+    id: "bronchodilator",
+    en: "Bronchodilator",
+    ar: "موسع القصبات",
+    category: "pharmacology",
+    definition: "دواء يرخّي العضلات الملساء في الشعب الهوائية ويقلل bronchoconstriction | Airway smooth-muscle relaxation.",
+    clinicalNote: "أمثلة: Salbutamol عبر β2، وIpratropium عبر muscarinic blockade؛ الآليات ليست واحدة.",
+    tags: ["bronchodilator","bronchospasm","salbutamol","موسع قصبات"]
+  },
+  {
+    id: "anxiolysis",
+    en: "Anxiolysis",
+    ar: "إزالة / تخفيف القلق",
+    category: "pharmacology",
+    definition: "تقليل القلق والتوتر دوائيًا أو بوسائل غير دوائية دون اشتراط فقدان الوعي | Reduction of anxiety.",
+    clinicalNote: "Midazolam قد يوفر anxiolysis وamnesia لكنه لا يوفر analgesia.",
+    tags: ["anxiolysis","anxiety","midazolam","قلق"]
+  },
+  {
+    id: "premedication-term",
+    en: "Premedication",
+    ar: "أدوية ما قبل التخدير",
+    category: "pharmacology",
+    definition: "أدوية أو تدخلات تُعطى قبل التخدير لتحقيق أهداف محددة مثل anxiolysis أو PONV prophylaxis أو تقليل aspiration risk عند المختارين.",
+    clinicalNote: "لا توجد قائمة ثابتة يجب إعطاؤها لكل مريض؛ تُفرد حسب عوامل الخطر.",
+    tags: ["premedication","preoperative","قبل التخدير"]
+  },
+  {
+    id: "extravasation",
+    en: "Extravasation",
+    ar: "تسرّب الدواء خارج الوعاء",
+    category: "critical",
+    definition: "تسرب محلول أو دواء من الوريد إلى الأنسجة المحيطة | Leakage of infusate into surrounding tissue.",
+    clinicalNote: "الأهمية تعتمد على الدواء؛ vasopressors وCalcium chloride وبعض الأدوية قد تسبب ischemia أو tissue necrosis.",
+    tags: ["extravasation","IV","tissue injury","تسرب"]
+  },
+  {
+    id: "tachyphylaxis",
+    en: "Tachyphylaxis",
+    ar: "تناقص سريع في الاستجابة للدواء",
+    category: "pharmacology",
+    definition: "انخفاض سريع في الاستجابة بعد جرعات متكررة خلال مدة قصيرة | Rapidly diminishing drug response.",
+    clinicalNote: "قد تُلاحظ مع Ephedrine بسبب استنزاف norepinephrine من النهايات العصبية.",
+    tags: ["tachyphylaxis","ephedrine","tolerance","تحمل"]
+  },
+  {
+    id: "mu-opioid-receptor",
+    en: "Mu Opioid Receptor",
+    ar: "مستقبل ميو الأفيوني",
+    abbr: "μ",
+    category: "abbreviations",
+    definition: "مستقبل أفيوني رئيسي مسؤول عن analgesia ومعه آثار مثل respiratory depression وmiosis وeuphoria وGI hypomotility.",
+    clinicalNote: "Morphine وFentanyl وRemifentanil تعمل أساسًا كـμ-opioid agonists.",
+    tags: ["mu","opioid receptor","fentanyl","morphine"]
+  },
+  {
+    id: "kappa-opioid-receptor",
+    en: "Kappa Opioid Receptor",
+    ar: "مستقبل كابا الأفيوني",
+    abbr: "κ",
+    category: "abbreviations",
+    definition: "مستقبل أفيوني يشارك في analgesia والتأثيرات العصبية مثل dysphoria/sedation بحسب الناهض والسياق.",
+    tags: ["kappa","opioid receptor","analgesia"]
+  },
+  {
+    id: "delta-opioid-receptor",
+    en: "Delta Opioid Receptor",
+    ar: "مستقبل دلتا الأفيوني",
+    abbr: "δ",
+    category: "abbreviations",
+    definition: "أحد مستقبلات الأفيونات | Opioid receptors ويشارك في تعديل الألم ووظائف عصبية متعددة.",
+    tags: ["delta","opioid receptor","analgesia"]
+  },
+  {
+    id: "dka",
+    en: "Diabetic Ketoacidosis",
+    ar: "الحماض الكيتوني السكري",
+    abbr: "DKA",
+    category: "abbreviations",
+    definition: "طارئ استقلابي يتميز بفرط كيتونات وحماض استقلابي مع نقص فعالية الإنسولين | Hyperketonemia and metabolic acidosis due to insulin deficiency.",
+    clinicalNote: "العلاج يعتمد على fluids + insulin + potassium/electrolyte monitoring ومعالجة السبب.",
+    tags: ["DKA","diabetes","ketones","acidosis"]
+  },
+  {
+    id: "hhs",
+    en: "Hyperosmolar Hyperglycemic State",
+    ar: "حالة فرط سكر الدم مفرطة الأسمولية",
+    abbr: "HHS",
+    category: "abbreviations",
+    definition: "طارئ سكري يتميز بفرط سكر وأسمولية شديدين مع dehydration، عادةً دون ketoacidosis شديد.",
+    clinicalNote: "تصحيح السوائل والأسمولية يحتاج تدرجًا؛ جرعة insulin الأولية تختلف عن DKA غير المختلط.",
+    tags: ["HHS","diabetes","hyperosmolar","hyperglycemia"]
+  },
+  {
+    id: "svt",
+    en: "Supraventricular Tachycardia",
+    ar: "تسرع القلب فوق البطيني",
+    abbr: "SVT",
+    category: "abbreviations",
+    definition: "مجموعة من اضطرابات النظم السريعة التي تنشأ فوق البطينين | Tachyarrhythmias originating above the ventricles.",
+    clinicalNote: "العلاج يعتمد على نوع النظم والاستقرار؛ Adenosine مناسب فقط لبعض tachycardias المنتظمة المعتمدة على AV node.",
+    tags: ["SVT","tachycardia","adenosine","arrhythmia"]
+  },
+  {
+    id: "vf",
+    en: "Ventricular Fibrillation",
+    ar: "الرجفان البطيني",
+    abbr: "VF",
+    category: "abbreviations",
+    definition: "نشاط بطيني فوضوي دون نتاج قلبي فعال | Chaotic ventricular electrical activity without effective cardiac output.",
+    clinicalNote: "VF rhythm قابل للصدمات | Shockable rhythm ويتطلب defibrillation + CPR وفق خوارزمية cardiac arrest.",
+    tags: ["VF","ventricular fibrillation","cardiac arrest","defibrillation"]
+  },
+  {
+    id: "af",
+    en: "Atrial Fibrillation",
+    ar: "الرجفان الأذيني",
+    abbr: "AF",
+    category: "abbreviations",
+    definition: "اضطراب نظم أذيني غير منظم يؤدي عادةً إلى ventricular rhythm غير منتظم | Irregularly irregular rhythm.",
+    clinicalNote: "غياب P waves المنتظمة شائع؛ العلاج يعتمد على الاستقرار ومعدل البطين والمدة وخطر الخثار.",
+    tags: ["AF","atrial fibrillation","arrhythmia","ECG"]
+  },
+  {
+    id: "av-block",
+    en: "Atrioventricular Block",
+    ar: "حصار أذيني بطيني",
+    abbr: "AV block",
+    category: "abbreviations",
+    definition: "تأخر أو انقطاع انتقال النبض الكهربائي من الأذين إلى البطين عبر AV conduction system.",
+    clinicalNote: "الدرجة الأولى والثانية والثالثة تختلف في الخطورة والعلاج؛ بعض الأدوية مثل Adenosine قد تسبب block عابرًا.",
+    tags: ["AV block","heart block","ECG","conduction"]
+  },
+  {
+    id: "pvc",
+    en: "Premature Ventricular Complex",
+    ar: "ضربة / مركب بطيني مبكر",
+    abbr: "PVC",
+    category: "abbreviations",
+    definition: "نبضة بطينية مبكرة تنشأ من البطين قبل موعد النبضة المتوقعة | Premature ventricular depolarization.",
+    clinicalNote: "قد تكون معزولة وحميدة أو علامة على hypoxia/electrolyte disturbance/ischemia حسب السياق.",
+    tags: ["PVC","ectopic","ventricular","ECG"]
+  },
+  {
+    id: "nsaid",
+    en: "Nonsteroidal Anti-Inflammatory Drug",
+    ar: "دواء مضاد للالتهاب غير ستيرويدي",
+    abbr: "NSAID",
+    category: "abbreviations",
+    definition: "فئة مسكنة ومضادة للالتهاب تعمل أساسًا عبر تثبيط cyclooxygenase وتقليل prostaglandins.",
+    clinicalNote: "قد تزيد خطر GI bleeding وrenal injury وcardiovascular events؛ الاختيار حول الجراحة يعتمد على المريض.",
+    tags: ["NSAID","diclofenac","analgesia","anti-inflammatory"]
+  },
+  {
+    id: "cabg",
+    en: "Coronary Artery Bypass Grafting",
+    ar: "جراحة مجازة الشريان التاجي",
+    abbr: "CABG",
+    category: "abbreviations",
+    definition: "جراحة إنشاء مسار بديل لتروية عضلة القلب حول تضيق/انسداد الشرايين التاجية | Surgical coronary revascularization.",
+    tags: ["CABG","cardiac surgery","coronary","جراحة قلب"]
+  }
 
 ];
 
