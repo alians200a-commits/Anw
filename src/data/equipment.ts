@@ -82,6 +82,22 @@ export const ANESTHESIA_EQUIPMENT: AnesthesiaEquipment[] = [
     tags: ['cylinder','oxygen','nitrous oxide','PISS','اسطوانة','غازات']
   },
   {
+    id: 'oxygen-flush-valve',
+    nameAr: 'صمام تدفق الأوكسجين السريع',
+    nameEn: 'Oxygen Flush Valve',
+    category: 'gas-supply',
+    categoryAr: 'الغازات والضغط',
+    sourcePages: [10],
+    summary: 'صمام يمرر تدفقًا عاليًا من الأوكسجين مباشرة إلى مخرج الغاز المشترك متجاوزًا عدادات التدفق والمبخرات.',
+    purpose: [
+      'إعطاء تدفق أوكسجين مرتفع بسرعة | High-flow oxygen delivery'
+    ],
+    keyPoints: [
+      'يتجاوز Flowmeters وVaporizers عند تشغيله.'
+    ],
+    tags: ['oxygen flush', 'oxygen', 'anesthesia workstation']
+  },
+  {
     id: 'oxygen-supply-failure-alarm',
     nameAr: 'إنذار فشل إمداد الأوكسجين',
     nameEn: 'Oxygen Supply Pressure Alarm',
