@@ -1,0 +1,6 @@
+{
+  "name": "دليلي كتقني تخدير | Anesthesia Tech Guide",
+  "description": "دليل مرجعي تفاعلي شامل لتقني التخدير يشمل المصطلحات الطبية، الاختصارات السريرية، وحالة سكولين ابنيه (Suxamethonium Apnoea) وبروتوكولات الطوارئ.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
