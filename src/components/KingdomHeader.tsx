@@ -15,7 +15,7 @@ export function KingdomHeader() {
           <p
             dir="rtl"
             lang="ar"
-            className="font-vexa-brand whitespace-nowrap text-[20px] leading-[1.05] text-[#CCA039]"
+            className="font-vexa-brand whitespace-nowrap text-[20px] font-[700] leading-[1.05] text-[#CCA039]"
           >
             مملكة التخدير
           </p>
