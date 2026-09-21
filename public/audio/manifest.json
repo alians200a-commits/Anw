@@ -136,6 +136,31 @@
       "spoken_text": "Cisatracurium",
       "file": "/audio/drugs/cisatracurium.mp3"
     },
+    "drugs/metoclopramide": {
+      "source_text": "Metoclopramide",
+      "spoken_text": "Metoclopramide",
+      "file": "/audio/drugs/metoclopramide.mp3"
+    },
+    "drugs/glycopyrrolate": {
+      "source_text": "Glycopyrrolate",
+      "spoken_text": "Glycopyrrolate",
+      "file": "/audio/drugs/glycopyrrolate.mp3"
+    },
+    "drugs/diclofenac": {
+      "source_text": "Diclofenac",
+      "spoken_text": "Diclofenac",
+      "file": "/audio/drugs/diclofenac.mp3"
+    },
+    "drugs/hyoscine-butylbromide": {
+      "source_text": "Hyoscine Butylbromide",
+      "spoken_text": "Hyoscine Butylbromide",
+      "file": "/audio/drugs/hyoscine-butylbromide.mp3"
+    },
+    "drugs/ranitidine": {
+      "source_text": "Ranitidine",
+      "spoken_text": "Ranitidine",
+      "file": "/audio/drugs/ranitidine.mp3"
+    },
     "drugs/ondansetron": {
       "source_text": "Ondansetron",
       "spoken_text": "Ondansetron",
@@ -245,6 +270,16 @@
       "source_text": "Furosemide",
       "spoken_text": "Furosemide",
       "file": "/audio/drugs/furosemide.mp3"
+    },
+    "drugs/glucagon": {
+      "source_text": "Glucagon",
+      "spoken_text": "Glucagon",
+      "file": "/audio/drugs/glucagon.mp3"
+    },
+    "drugs/regular-insulin": {
+      "source_text": "Regular Insulin",
+      "spoken_text": "Regular Insulin",
+      "file": "/audio/drugs/regular-insulin.mp3"
     },
     "drugs/hydrocortisone": {
       "source_text": "Hydrocortisone",
