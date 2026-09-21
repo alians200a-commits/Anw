@@ -1020,10 +1020,10 @@ export const CLINICAL_TERMS: ClinicalTerm[] = [
   {
     id: "bis",
     en: "Bispectral Index",
-    ar: "مؤشر ثنائي الطيف لعمق التخدير",
+    ar: "مؤشر ثنائي الطيف",
     abbr: "BIS",
     category: "abbreviations",
-    definition: "مؤشر رقمي مشتق من إشارات تخطيط الدماغ EEG يساعد في تقدير مستوى الوعي وعمق التخدير العام، وتُلتقط الإشارات بواسطة حساس يوضع على الجبهة.",
+    definition: "مؤشر رقمي مشتق من معالجة إشارات تخطيط الدماغ الجبهي EEG، ويُستخدم كمساعد لتقدير مستوى الوعي والمكوّن المنوِّم أثناء التخدير العام.",
     tags: ["BIS","Bispectral Index","EEG","depth of anesthesia","عمق التخدير","مراقبة الوعي"]
   },
   {
@@ -1031,8 +1031,8 @@ export const CLINICAL_TERMS: ClinicalTerm[] = [
     en: "Conditions Associated with Difficult Intubation",
     ar: "الحالات المرتبطة بصعوبة التنبيب",
     category: "surgical",
-    definition: "أورام أو كتل: Cystic hygroma، Hemangioma، Hematoma.\nالتهابات: Submandibular abscess، Peritonsillar abscess، Epiglottitis.\nتشوهات خلقية: Pierre Robin syndrome، Laryngeal atresia، Goldenhar syndrome، Craniofacial dysostosis.\nجسم غريب: Foreign body.\nرضوض وإصابات: Laryngeal fracture، Mandibular أو Maxillary fracture، Inhalation burn، Cervical spine injury.\nالسمنة ومحدودية حركة الرقبة/المفاصل: Obesity، Inadequate neck extension، Rheumatoid arthritis، Ankylosing spondylitis، Halo traction.\nاختلافات تشريحية: Micrognathia، Prognathism، Large tongue (Macroglossia)، High-arched palate، Short neck.",
-    tags: ["difficult intubation","difficult airway","صعوبة التنبيب","Cystic hygroma","Hemangioma","Hematoma","Submandibular abscess","Peritonsillar abscess","Epiglottitis","Pierre Robin syndrome","Laryngeal atresia","Goldenhar syndrome","Craniofacial dysostosis","Foreign body","Laryngeal fracture","Mandibular fracture","Maxillary fracture","Inhalation burn","Cervical spine injury","Obesity","Rheumatoid arthritis","Ankylosing spondylitis","Halo traction","Micrognathia","Prognathism","Macroglossia","High-arched palate","Short neck"]
+    definition: "كتل وأورام: Cystic hygroma، Hemangioma، Hematoma.\nالتهابات: Submandibular abscess، Peritonsillar abscess، Epiglottitis.\nتشوهات خلقية وقحفية وجهية: Pierre Robin sequence، Goldenhar syndrome، Craniofacial dysostosis، Laryngeal atresia.\nجسم غريب: Foreign body.\nرضوض وحروق: Laryngeal fracture، Mandibular أو Maxillary fracture، Inhalation burn، Cervical spine injury.\nالسمنة والعنق: Obesity، Large neck circumference، Short neck، Inadequate neck extension.\nمحدودية حركة العمود الرقبي: Rheumatoid arthritis، Ankylosing spondylitis، Halo fixation/traction.\nاختلافات تشريحية: Micrognathia، Retrognathia أو محدودية بروز الفك السفلي، Large tongue (Macroglossia)، High-arched palate.",
+    tags: ["difficult intubation","difficult airway","صعوبة التنبيب","Cystic hygroma","Hemangioma","Hematoma","Submandibular abscess","Peritonsillar abscess","Epiglottitis","Pierre Robin sequence","Laryngeal atresia","Goldenhar syndrome","Craniofacial dysostosis","Foreign body","Laryngeal fracture","Mandibular fracture","Maxillary fracture","Inhalation burn","Cervical spine injury","Obesity","large neck circumference","Rheumatoid arthritis","Ankylosing spondylitis","Halo fixation","Micrognathia","Retrognathia","Macroglossia","High-arched palate","Short neck"]
   }
 
 ];
