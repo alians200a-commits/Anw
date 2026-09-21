@@ -204,6 +204,54 @@ export const CLINICAL_GUIDES: ClinicalGuide[] = [
     tags: ['maintenance','emergence','recovery','TIVA','reversal']
   },
   {
+    id: 'anesthesia-recovery',
+    titleAr: 'الإفاقة من التخدير',
+    titleEn: 'Recovery from Anesthesia',
+    category: 'recovery',
+    categoryAr: 'الإفاقة',
+    sourcePages: [31,32,33],
+    summary: 'فترة الإفاقة تبدأ مع إيقاف أو خفض عوامل التخدير وتمتد حتى استعادة الوعي والتهوية والاستقرار ومنعكسات حماية مجرى الهواء بدرجة مناسبة.',
+    sections: [
+      {
+        title: 'المراقبة أثناء الإفاقة | Recovery monitoring',
+        items: [
+          'مراقبة مستمرة وقريبة حتى تزول التأثيرات الحادة للتخدير والجراحة.',
+          'تقييم مجرى الهواء ومعدل التنفس وتشبع الأوكسجين | Airway / respiratory rate / SpO₂.',
+          'مراقبة النبض وضغط الدم، ويكون ECG متاحًا ويُستخدم حسب الحالة.',
+          'تقييم الوعي والحرارة والألم والغثيان والقيء | Mental status / temperature / pain / PONV.',
+          'تقييم وظيفة العضلات عند استخدام مرخيات غير مزيلة للاستقطاب | Neuromuscular recovery.'
+        ]
+      },
+      {
+        title: 'الخطوات العملية | Practical steps',
+        items: [
+          'إيقاف أو خفض عوامل التخدير عند نهاية الإجراء | Discontinue / reduce anesthetics.',
+          'توفير الأوكسجين ومراقبة الأكسجة، مع إعطائه حسب الحاجة السريرية.',
+          'الشفط الفموي البلعومي عند الحاجة لإزالة الإفرازات أو الدم | Oropharyngeal suction when indicated.',
+          'التأكد من عودة التهوية التلقائية الكافية والاستقرار قبل إزالة جهاز مجرى الهواء.',
+          'إزالة ETT أو LMA عندما تتحقق معايير الإزالة المناسبة، مع بقاء خطة إعادة تأمين مجرى الهواء جاهزة.'
+        ]
+      },
+      {
+        title: 'بعد المرخيات العضلية | After neuromuscular blockers',
+        items: [
+          'لا تعتمد جرعة ثابتة من Neostigmine + Atropine لكل مريض.',
+          'يُفضّل القياس الكمي للحصار العصبي العضلي | Quantitative neuromuscular monitoring.',
+          'قبل نزع الأنبوب بعد الحصار العضلي يُستهدف TOF ratio ≥ 0.9.',
+          'اختيار عامل العكس يعتمد على نوع المرخي وعمق الحصار والاستجابة المقاسة.'
+        ]
+      },
+      {
+        title: 'جاهزية الخروج | Readiness',
+        items: [
+          'يجب أن يكون المريض متيقظًا أو مستجيبًا بصورة مناسبة، مع تهوية وأكسجة ودورة دموية مستقرة.',
+          'يمكن استخدام Modified Aldrete Score كجزء من قرار الخروج من Phase I PACU مع الحكم السريري وبروتوكول المؤسسة.'
+        ]
+      }
+    ],
+    tags: ['recovery','PACU','emergence','extubation','monitoring','TOF','Aldrete']
+  },
+  {
     id: 'local-anesthesia',
     titleAr: 'التخدير الموضعي',
     titleEn: 'Local Anesthesia',
@@ -591,31 +639,43 @@ export const CLINICAL_GUIDES: ClinicalGuide[] = [
     titleEn: 'Premedication',
     category: 'pharmacology',
     categoryAr: 'علم الأدوية',
-    sourcePages: [81,82],
-    summary: 'أدوية تُعطى قبل التخدير لتحقيق هدف محدد مثل تخفيف القلق، تقليل PONV أو تقليل خطر الاستنشاق في مريض عالي الخطورة؛ لا تُعطى كل الفئات لكل مريض.',
+    sourcePages: [79,80,81,82],
+    summary: 'التحضير قبل التخدير قد يكون نفسيًا ودوائيًا، وتُختار الأدوية حسب هدف محدد مثل تخفيف القلق، التسكين، الوقاية من PONV أو تقليل خطر الاستنشاق عند المريض عالي الخطورة؛ لا تُعطى كل الفئات لكل مريض.',
     sections: [
       {
-        title: 'الأهداف المحتملة | Possible goals',
+        title: 'الأهداف | Goals',
         items: [
-          'تخفيف القلق | Anxiolysis والتهدئة | Sedation عند الحاجة.',
-          'تسكين الألم | Analgesia في حالات مختارة.',
+          'تخفيف الخوف والقلق | Anxiolysis مع طمأنة المريض وشرح الخطة.',
+          'التهدئة وفقدان الذاكرة عند الحاجة | Sedation / amnesia.',
+          'تسكين الألم في حالات مختارة | Analgesia.',
+          'تقليل الحاجة لبعض أدوية التحريض | Reduced induction-agent requirement عند اختيار دواء تمهيدي مناسب.',
+          'تقليل الإفرازات أو منع بطء القلب الانعكاسي عند وجود استطباب | Antisialagogue / vagolytic effect when indicated.',
           'الوقاية من الغثيان والقيء | PONV prophylaxis للمرضى المعرضين.',
-          'تقليل حموضة/حجم محتوى المعدة عند خطر الاستنشاق المرتفع | Aspiration-risk pharmacologic prophylaxis.'
+          'رفع pH أو تقليل حجم محتوى المعدة دوائيًا عند ارتفاع خطر الاستنشاق | Aspiration-risk pharmacologic prophylaxis.'
         ]
       },
       {
-        title: 'فئات مستخدمة | Drug classes',
+        title: 'فئات مذكورة بالمصدر | Drug classes in the source',
         items: [
-          'بنزوديازيبينات | Benzodiazepines مثل Midazolam.',
-          'مضادات القيء | Antiemetics مثل Ondansetron أو Dexamethasone حسب الخطر.',
-          'مضادات مستقبلات H2 أو مثبطات مضخة البروتون | H2 blockers / PPIs في سياقات مختارة.',
-          'محفزات حركة المعدة | Prokinetics مثل Metoclopramide في بعض المرضى.',
-          'مضادات كولين | Anticholinergics عند استطباب محدد، وليست روتينية لكل مريض.'
+          'بنزوديازيبينات | Benzodiazepines مثل Midazolam أو Diazepam للقلق/التهدئة وفقدان الذاكرة عند الحاجة.',
+          'مضادات كولين | Anticholinergics مثل Atropine أو Glycopyrrolate عند استطباب محدد، وليست روتينية لكل مريض.',
+          'أفيونات | Opioids مثل Morphine أو Pethidine أو Fentanyl للتسكين في حالات مختارة؛ قد تسبب غثيانًا، حكة، تثبيطًا تنفسيًا أو هبوط ضغط.',
+          'مضادات القيء | Antiemetics مثل Ondansetron أو Dexamethasone أو Droperidol حسب خطر PONV.',
+          'محفزات حركة المعدة | Prokinetics مثل Metoclopramide في مرضى مختارين.',
+          'مضادات مستقبلات H2 أو مثبطات مضخة البروتون | H2 blockers / PPIs عند ارتفاع خطر الاستنشاق، وليس بصورة روتينية لكل مريض.',
+          'مضادات الهستامين | Antihistamines مثل Diphenhydramine عند وجود استطباب محدد، وليست وقاية روتينية للجميع.'
+        ]
+      },
+      {
+        title: 'نقاط أمان | Safety',
+        items: [
+          'اختيار الدواء والجرعة يعتمد على العمر، الهشاشة، الأمراض المصاحبة، خطر الاستنشاق وخطر تثبيط التنفس.',
+          'كبار السن أكثر عرضة للتهدئة المطولة وتأخر الإفاقة مع بعض المهدئات.',
+          'لا تُستخدم عدة أدوية تمهيدية تلقائيًا لمجرد أن المريض سيخضع للتخدير.'
         ]
       }
     ],
-    correction: 'المصدر يعرض فوائد ما قبل التخدير كأنها قائمة ثابتة. الممارسة الحديثة فردية؛ ASA لا توصي بإعطاء مضادات الحموضة أو مضادات الكولين أو عدة أدوية روتينيًا لمريض سليم دون زيادة واضحة في خطر الاستنشاق.',
-    tags: ['premedication','antiemetic','benzodiazepine','aspiration prophylaxis']
+    tags: ['premedication','anxiolysis','antiemetic','benzodiazepine','opioid','anticholinergic','aspiration prophylaxis']
   },
   {
     id: 'intraoperative-monitoring',
