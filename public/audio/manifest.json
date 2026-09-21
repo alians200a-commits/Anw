@@ -626,6 +626,31 @@
       "spoken_text": "Cyanosis",
       "file": "/audio/terms/cyanosis.mp3"
     },
+    "abbreviations/cardiac-output": {
+      "source_text": "Cardiac Output",
+      "spoken_text": "Cardiac Output",
+      "file": "/audio/abbreviations/cardiac-output.mp3"
+    },
+    "terms/contractility": {
+      "source_text": "Cardiac Contractility",
+      "spoken_text": "Cardiac Contractility",
+      "file": "/audio/terms/contractility.mp3"
+    },
+    "abbreviations/svr": {
+      "source_text": "Systemic Vascular Resistance",
+      "spoken_text": "Systemic Vascular Resistance",
+      "file": "/audio/abbreviations/svr.mp3"
+    },
+    "terms/hepatic-encephalopathy": {
+      "source_text": "Hepatic Encephalopathy",
+      "spoken_text": "Hepatic Encephalopathy",
+      "file": "/audio/terms/hepatic-encephalopathy.mp3"
+    },
+    "terms/hyperdynamic-circulation": {
+      "source_text": "Hyperdynamic Circulation",
+      "spoken_text": "Hyperdynamic Circulation",
+      "file": "/audio/terms/hyperdynamic-circulation.mp3"
+    },
     "special/suxamethonium-apnoea": {
       "source_text": "Suxamethonium apnoea",
       "spoken_text": "Suxamethonium apnoea",
