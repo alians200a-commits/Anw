@@ -1,6 +1,6 @@
 import { motion } from 'motion/react';
 import { Heart, MagnifyingGlass, SpeakerHigh } from '@phosphor-icons/react';
-import { ANESTHESIA_DRUGS, DRUG_CATEGORIES, type DrugCategory } from '../data/drugs';
+import { ANESTHESIA_DRUGS, DRUG_CLASS_LABELS, DRUG_FILTERS, type DrugClass } from '../data/drugs';
 import { useMemo, useState } from 'react';
 import { MedicinesHealthIcon } from './MedicalIcons';
 import { playPronunciation } from '../utils/speech';
@@ -11,13 +11,13 @@ interface DrugDirectoryProps {
 }
 
 export function DrugDirectory({ favorites, onToggleFavorite }: DrugDirectoryProps) {
-  const [category, setCategory] = useState<'all' | DrugCategory>('all');
+  const [classification, setClassification] = useState<'all' | DrugClass>('all');
   const [query, setQuery] = useState('');
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
     return ANESTHESIA_DRUGS.filter((drug) => {
-      const matchesCategory = category === 'all' || drug.category === category;
+      const matchesCategory = classification === 'all' || drug.classes.includes(classification);
       const matchesQuery =
         !q ||
         [drug.en, drug.ar, drug.categoryAr, drug.short, ...drug.tags].some((value) =>
@@ -25,7 +25,7 @@ export function DrugDirectory({ favorites, onToggleFavorite }: DrugDirectoryProp
         );
       return matchesCategory && matchesQuery;
     });
-  }, [category, query]);
+  }, [classification, query]);
 
   return (
     <div className="space-y-3">
@@ -40,12 +40,12 @@ export function DrugDirectory({ favorites, onToggleFavorite }: DrugDirectoryProp
       </div>
 
       <div className="-mx-4 flex gap-2 overflow-x-auto px-4 pb-1 scrollbar-none">
-        {DRUG_CATEGORIES.map((item) => {
-          const active = category === item.id;
+        {DRUG_FILTERS.map((item) => {
+          const active = classification === item.id;
           return (
             <button
               key={item.id}
-              onClick={() => setCategory(item.id as 'all' | DrugCategory)}
+              onClick={() => setClassification(item.id as 'all' | DrugClass)}
               className={
                 'whitespace-nowrap rounded-full border px-3 py-1.5 text-[10px] font-bold transition ' +
                 (active
@@ -99,7 +99,7 @@ export function DrugDirectory({ favorites, onToggleFavorite }: DrugDirectoryProp
                     <h3 className="text-sm font-black text-[#EEE8D6]" dir="ltr">{drug.en}</h3>
                     <p className="mt-0.5 text-xs font-bold text-[#B4BEC7]">{drug.ar}</p>
                     <span className="mt-2 inline-flex rounded-full bg-[#CCA039]/8 px-2.5 py-0.5 text-[9px] font-bold text-[#CCA039]">
-                      {drug.categoryAr}
+                      {drug.classes.map((item) => DRUG_CLASS_LABELS[item]).join(' • ')}
                     </span>
                   </div>
                   <div className="grid h-9 w-9 shrink-0 place-items-center rounded-xl border border-[#CCA039]/12 bg-[#CCA039]/7 text-[#CCA039]">
