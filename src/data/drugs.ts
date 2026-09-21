@@ -535,6 +535,26 @@ export const ANESTHESIA_DRUGS: AnesthesiaDrug[] = [
     tags: ['Lasix', 'loop diuretic', 'pulmonary edema', 'heart failure', 'فوروسيميد']
   },
   {
+    id: 'glucagon',
+    en: 'Glucagon',
+    ar: 'غلوكاغون',
+    category: 'emergency',
+    categoryAr: 'أدوية طوارئ',
+    classes: ['intravenous', 'emergency', 'adjunct'],
+    short: 'هرمون مضاد لنقص السكر الشديد، وله دور كعلاج مساعد في تسمم حاصرات بيتا وبعض حالات تسمم حاصرات قنوات الكالسيوم.',
+    tags: ['glucagon', 'hypoglycemia', 'beta blocker overdose', 'CCB overdose', 'antidote', 'غلوكاغون']
+  },
+  {
+    id: 'regular-insulin',
+    en: 'Regular Insulin',
+    ar: 'الإنسولين النظامي / قصير المفعول',
+    category: 'emergency',
+    categoryAr: 'أدوية طوارئ',
+    classes: ['intravenous', 'emergency', 'adjunct'],
+    short: 'إنسولين قصير المفعول يُستخدم ضمن بروتوكولات DKA/HHS، ولخفض البوتاسيوم مؤقتًا في فرط البوتاسيوم، وبجرعات عالية في بعض حالات التسمم القلبي.',
+    tags: ['regular insulin', 'Actrapid', 'Humulin R', 'DKA', 'HHS', 'hyperkalemia', 'high dose insulin']
+  },
+  {
     id: 'hydrocortisone',
     en: 'Hydrocortisone',
     ar: 'هيدروكورتيزون / سولو-كورتيف',
