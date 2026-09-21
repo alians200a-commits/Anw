@@ -9,7 +9,7 @@ import {
   Pill,
   TextAa
 } from '@phosphor-icons/react';
-import { ANESTHESIA_DRUGS } from '../data/drugs';
+import { ANESTHESIA_DRUGS, DRUG_CLASS_LABELS } from '../data/drugs';
 import { CLINICAL_TERMS } from '../data/clinicalTerms';
 import type { AppTab } from './BottomNav';
 import type { GuideSection } from './GuideScreen';
@@ -28,7 +28,7 @@ export function HomeScreen({ query, setQuery, openGuide, goTo }: HomeScreenProps
 
   const drugResults = normalized
     ? ANESTHESIA_DRUGS.filter((drug) =>
-        [drug.en, drug.ar, drug.categoryAr, ...drug.tags].some((value) =>
+        [drug.en, drug.ar, drug.categoryAr, ...drug.classes.map((item) => DRUG_CLASS_LABELS[item]), ...drug.tags].some((value) =>
           value.toLowerCase().includes(normalized)
         )
       ).slice(0, 3)
