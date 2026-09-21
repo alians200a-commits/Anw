@@ -365,6 +365,26 @@ export const ANESTHESIA_DRUGS: AnesthesiaDrug[] = [
     tags: ['Zantac', 'H2 blocker', 'acid suppression', 'ranitidine', 'aspiration prophylaxis']
   },
   {
+    id: 'diphenhydramine',
+    en: 'Diphenhydramine',
+    ar: 'ديفينهيدرامين',
+    category: 'adjuncts',
+    categoryAr: 'أدوية مساعدة',
+    classes: ['intravenous', 'emergency', 'adjunct'],
+    short: 'H1 antihistamine له تأثير مهدئ ومضاد كولين، ويُستخدم للحساسية كعلاج مساعد وليس بدل Adrenaline في التأق.',
+    tags: ['diphenhydramine', 'Allermin', 'Benadryl', 'antihistamine', 'allergy']
+  },
+  {
+    id: 'droperidol',
+    en: 'Droperidol',
+    ar: 'دروبيريدول',
+    category: 'antiemetics',
+    categoryAr: 'مضادات القيء',
+    classes: ['intravenous', 'antiemetic', 'sedative', 'adjunct'],
+    short: 'مضاد دوبامين ذو تأثير مضاد للقيء ومهدئ، مع أهمية خاصة لمراقبة خطر إطالة QT.',
+    tags: ['droperidol', 'antiemetic', 'PONV', 'sedative', 'QT']
+  },
+  {
     id: 'ondansetron',
     en: 'Ondansetron',
     ar: 'أوندانسيترون',
