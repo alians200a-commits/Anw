@@ -315,6 +315,56 @@ export const ANESTHESIA_DRUGS: AnesthesiaDrug[] = [
     tags: ['IV', 'NMB', 'non-depolarizing', 'Nimbex', 'Hofmann', 'مرخي']
   },
   {
+    id: 'metoclopramide',
+    en: 'Metoclopramide',
+    ar: 'ميتوكلوبراميد / بلاسيل',
+    category: 'antiemetics',
+    categoryAr: 'مضادات القيء ومحفزات الحركة',
+    classes: ['intravenous', 'antiemetic', 'adjunct'],
+    short: 'مضاد دوبامين ومحفز لحركة المعدة يُستخدم للغثيان والقيء وبعض حالات خزل المعدة، وله محاذير عصبية مهمة.',
+    tags: ['Plasil', 'Reglan', 'antiemetic', 'prokinetic', 'PONV', 'metoclopramide']
+  },
+  {
+    id: 'glycopyrrolate',
+    en: 'Glycopyrrolate',
+    ar: 'غليكوبيرولات',
+    category: 'adjuncts',
+    categoryAr: 'أدوية مساعدة',
+    classes: ['intravenous', 'adjunct'],
+    short: 'مضاد مسكاريني يقلل الإفرازات ويعالج بعض التأثيرات المبهمية، ويُستخدم مع Neostigmine عند عكس الحصار العضلي.',
+    tags: ['antimuscarinic', 'secretions', 'bradycardia', 'neostigmine', 'reversal']
+  },
+  {
+    id: 'diclofenac',
+    en: 'Diclofenac',
+    ar: 'ديكلوفيناك / فولتارين',
+    category: 'analgesics',
+    categoryAr: 'مسكنات غير أفيونية',
+    classes: ['analgesic', 'adjunct'],
+    short: 'NSAID مسكن ومضاد للالتهاب يمكن أن يدخل ضمن التسكين متعدد الوسائط مع الانتباه لمخاطر الكلى والنزف والجهاز الهضمي والقلب.',
+    tags: ['Voltaren', 'NSAID', 'analgesia', 'multimodal analgesia', 'ديكلوفيناك']
+  },
+  {
+    id: 'hyoscine-butylbromide',
+    en: 'Hyoscine Butylbromide',
+    ar: 'هيوسين بيوتيل بروميد / بوسكوبان',
+    category: 'adjuncts',
+    categoryAr: 'أدوية مساعدة',
+    classes: ['adjunct'],
+    short: 'مضاد مسكاريني محيطي مضاد للتشنج يُستخدم لتقلصات العضلات الملساء في الجهاز الهضمي أو البولي في بلدان عديدة.',
+    tags: ['Buscopan', 'antispasmodic', 'antimuscarinic', 'colic', 'هيوسين']
+  },
+  {
+    id: 'ranitidine',
+    en: 'Ranitidine',
+    ar: 'رانيتيدين / زانتاك',
+    category: 'adjuncts',
+    categoryAr: 'أدوية مساعدة',
+    classes: ['adjunct'],
+    short: 'حاصر مستقبل H2 يقلل إفراز حمض المعدة؛ وضعه التنظيمي وتوفر المستحضرات تغيرا بسبب شوائب NDMA، لذلك يجب ربط استعماله بالمستحضر المتاح حاليًا.',
+    tags: ['Zantac', 'H2 blocker', 'acid suppression', 'ranitidine', 'aspiration prophylaxis']
+  },
+  {
     id: 'ondansetron',
     en: 'Ondansetron',
     ar: 'أوندانسيترون',
