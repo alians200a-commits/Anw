@@ -11,6 +11,7 @@ from pathlib import Path
 import numpy as np
 import torch
 import torchaudio as ta
+from pydub import AudioSegment, silence
 from chatterbox.tts import ChatterboxTTS
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -49,6 +50,46 @@ def load_manifest() -> dict:
         return json.loads(MANIFEST.read_text(encoding="utf-8"))
     except Exception:
         return {}
+
+def extract_carrier_target(wav_path: Path, out_path: Path) -> None:
+    audio = AudioSegment.from_wav(wav_path)
+
+    chunks = silence.split_on_silence(
+        audio,
+        min_silence_len=110,
+        silence_thresh=audio.dBFS - 24,
+        keep_silence=30,
+    )
+
+    if len(chunks) < 3:
+        chunks = silence.split_on_silence(
+            audio,
+            min_silence_len=80,
+            silence_thresh=audio.dBFS - 20,
+            keep_silence=25,
+        )
+
+    if len(chunks) < 3:
+        raise RuntimeError(f"Could not isolate carrier target; got {len(chunks)} chunks")
+
+    useful = [chunk for chunk in chunks if len(chunk) >= 120]
+    if len(useful) < 3:
+        useful = chunks
+
+    target = useful[1]
+
+    nonsilent = silence.detect_nonsilent(
+        target,
+        min_silence_len=45,
+        silence_thresh=target.dBFS - 28,
+    )
+    if nonsilent:
+        start = max(0, nonsilent[0][0] - 20)
+        end = min(len(target), nonsilent[-1][1] + 35)
+        target = target[start:end]
+
+    clean = AudioSegment.silent(duration=45) + target + AudioSegment.silent(duration=70)
+    clean.export(out_path, format="wav")
 
 def main() -> None:
     if not REFERENCE.exists():
@@ -93,13 +134,18 @@ def main() -> None:
                 key = f"{item['group']}/{item['id']}"
                 print(f"[{i}/{len(pending)}] {key}: {item['spoken']}")
                 set_seed(key)
-                wav = model.generate(item["spoken"] + ".", exaggeration=0.5, cfg_weight=0.5)
-                temp_wav = tmp_dir / f"{item['group']}-{item['id']}.wav"
-                ta.save(str(temp_wav), wav, model.sr)
+                carrier_text = f"Okay. {item['spoken']}. Done."
+                wav = model.generate(carrier_text, exaggeration=0.45, cfg_weight=0.45)
+
+                carrier_wav = tmp_dir / f"{item['group']}-{item['id']}-carrier.wav"
+                clean_wav = tmp_dir / f"{item['group']}-{item['id']}-clean.wav"
+                ta.save(str(carrier_wav), wav, model.sr)
+                extract_carrier_target(carrier_wav, clean_wav)
+
                 output = ROOT / "public/audio" / item["group"] / f"{item['id']}.mp3"
                 subprocess.run([
                     "ffmpeg", "-y", "-loglevel", "error",
-                    "-i", str(temp_wav),
+                    "-i", str(clean_wav),
                     "-filter:a", f"atempo={SPEED}",
                     "-ac", "1", "-ar", "24000",
                     "-codec:a", "libmp3lame", "-b:a", BITRATE,
