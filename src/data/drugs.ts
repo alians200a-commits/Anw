@@ -668,17 +668,17 @@ export const ANESTHESIA_DRUGS: AnesthesiaDrug[] = [
 
 export const DRUG_FILTERS: Array<{ id: 'all' | DrugClass; label: string }> = [
   { id: 'all', label: 'الكل' },
-  { id: 'intravenous', label: 'وريدي' },
-  { id: 'inhalational', label: 'استنشاقي' },
-  { id: 'hypnotic', label: 'منوم' },
-  { id: 'analgesic', label: 'مسكن' },
-  { id: 'sedative', label: 'مهدئ' },
-  { id: 'muscle-relaxant', label: 'مرخي عضلي' },
-  { id: 'antiemetic', label: 'مضاد قيء' },
+  { id: 'intravenous', label: 'وريدية' },
+  { id: 'inhalational', label: 'استنشاقية' },
+  { id: 'hypnotic', label: 'منومة' },
+  { id: 'analgesic', label: 'مسكنة' },
+  { id: 'sedative', label: 'مهدئة' },
+  { id: 'muscle-relaxant', label: 'مرخيات عضلية' },
+  { id: 'antiemetic', label: 'مضادات القيء' },
   { id: 'emergency', label: 'طوارئ' },
-  { id: 'local-anesthetic', label: 'مخدر موضعي' },
+  { id: 'local-anesthetic', label: 'مخدرات موضعية' },
   { id: 'reversal', label: 'عكس / ترياق' },
-  { id: 'vasopressor', label: 'رافع ضغط' },
-  { id: 'cardiovascular', label: 'قلبي وعائي' },
-  { id: 'adjunct', label: 'مساعد' }
+  { id: 'vasopressor', label: 'رافعات ضغط' },
+  { id: 'cardiovascular', label: 'قلبية وعائية' },
+  { id: 'adjunct', label: 'مساعدة' }
 ];
