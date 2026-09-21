@@ -25,24 +25,24 @@ export function GuideScreen({
 }: GuideScreenProps) {
   return (
     <div className="space-y-4">
-      <div className="flex items-center justify-between gap-3">
+      <div className="rounded-[18px] border border-[#E5DCEF] bg-[#FAF8FC] p-3.5">
+        <div className="mb-2.5 text-right">
+          <h2 className="text-lg font-black text-[#34293F]">الدليل التخديري</h2>
+          <p className="mt-0.5 text-[10px] text-[#81758A]">اختار القسم، وبعدها التصنيف من داخل القسم</p>
+        </div>
         <select
           value={section}
           onChange={(e) => onSectionChange(e.target.value as GuideSection)}
-          className="h-10 rounded-xl border border-[#DCCFEB] bg-white px-3 text-xs font-bold text-[#463653] outline-none"
+          className="h-11 w-full rounded-xl border border-[#DCCFEB] bg-white px-3 text-xs font-bold text-[#463653] outline-none"
           aria-label="اختيار قسم الدليل"
         >
           <option value="drugs">الأدوية</option>
-          <option value="fluids">السوائل الوريدية</option>
           <option value="equipment">الأجهزة والأدوات</option>
+          <option value="fluids">السوائل الوريدية</option>
           <option value="clinical">المفاهيم والإجراءات</option>
           <option value="terms">المصطلحات</option>
           <option value="abbreviations">الاختصارات</option>
         </select>
-        <div className="text-right">
-          <h2 className="text-lg font-black text-[#34293F]">الدليل التخديري</h2>
-          <p className="mt-0.5 text-[10px] text-[#81758A]">أدوية • سوائل • أجهزة • إجراءات • مصطلحات • اختصارات</p>
-        </div>
       </div>
 
       {section === 'drugs' && (
