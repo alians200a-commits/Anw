@@ -1780,7 +1780,7 @@ export const CLINICAL_TERMS: ClinicalTerm[] = [
     en: 'Fresh Gas Flow',
     ar: 'تدفق الغاز الطازج',
     category: 'surgical',
-    definition: 'تدفق خليط الغازات الجديد من محطة التخدير إلى دائرة التنفس.',
+    definition: 'تدفق خليط الغازات الجديد من عربة التخدير إلى دائرة التنفس.',
     tags: ['anesthesia machine', 'flowmeter', 'breathing circuit']
   }
 ,
