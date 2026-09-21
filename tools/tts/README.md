@@ -1,16 +1,13 @@
-# Fixed TTS for Kingdom of Anesthesia
+# Fixed pronunciation audio
 
-We will not use browser `speechSynthesis` as the final production voice.
+The app uses one fixed pre-generated voice instead of browser speech synthesis.
 
-## Trial
-Open `kokoro_voice_test.ipynb` in Google Colab and run all cells. It compares:
-- af_heart
-- af_bella
-- af_sarah
+- Engine: ChatterboxTTS
+- Fixed voice reference: `public/audio/voice-samples/chatterbox-default.wav`
+- Approved playback speed: `0.85x`
+- Output: mono MP3, 24 kHz, 64 kbps
+- Runtime API cost: none
 
-on:
-- Propofol
-- Suxamethonium
-- Rocuronium
+The generator reads `src/data/drugs.ts` and `src/data/clinicalTerms.ts`, creates only missing or changed files, and writes `public/audio/manifest.json`.
 
-Kokoro is open-weight and its official Python library uses `KPipeline`. The selected voice will later be used to batch-generate all drug names, terms, and abbreviations once, then the app will play static audio files so every user hears the exact same voice.
+GitHub Actions runs the generator when vocabulary, the reference voice, or the generator itself changes. The active app and legacy pronunciation buttons all play static files, so every device hears the same voice.

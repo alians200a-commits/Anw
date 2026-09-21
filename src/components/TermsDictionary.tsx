@@ -1,7 +1,7 @@
 import React, { useState, useMemo } from 'react';
 import { Search, Volume2, Copy, Check, Filter, Layers, Zap, Heart, ShieldAlert, Sparkles, BookOpen } from 'lucide-react';
 import { ClinicalTerm, CategoryType } from '../types';
-import { speakTerm } from '../utils/speech';
+import { playPronunciation } from '../utils/speech';
 
 interface TermsDictionaryProps {
   terms: ClinicalTerm[];
@@ -196,7 +196,7 @@ export const TermsDictionary: React.FC<TermsDictionaryProps> = ({
                     <div className="flex items-center gap-1">
                       <button
                         title="استمع للنطق الإنجليزي الصحيح"
-                        onClick={() => speakTerm(term.en)}
+                        onClick={() => playPronunciation(term.abbr ? 'abbreviations' : 'terms', term.id)}
                         className="p-1.5 rounded-lg text-slate-400 hover:text-teal-300 hover:bg-slate-800 transition-colors"
                       >
                         <Volume2 className="h-4 w-4" />

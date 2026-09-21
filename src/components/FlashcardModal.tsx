@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { X, RotateCw, ChevronRight, ChevronLeft, Volume2, CheckCircle2, AlertCircle, Shuffle } from 'lucide-react';
 import { ClinicalTerm } from '../types';
-import { speakTerm } from '../utils/speech';
+import { playPronunciation } from '../utils/speech';
 
 interface FlashcardModalProps {
   terms: ClinicalTerm[];
@@ -142,7 +142,7 @@ export const FlashcardModal: React.FC<FlashcardModalProps> = ({ terms, onClose }
                     <button
                       onClick={(e) => {
                         e.stopPropagation();
-                        speakTerm(currentTerm.en);
+                        playPronunciation(currentTerm.abbr ? 'abbreviations' : 'terms', currentTerm.id);
                       }}
                       className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-slate-800 text-slate-300 hover:text-teal-300 hover:bg-slate-700 text-xs transition-colors"
                     >

@@ -14,7 +14,7 @@ import {
   Volume2
 } from 'lucide-react';
 import { SUX_APNOEA_DATA } from '../data/clinicalTerms';
-import { speakTerm } from '../utils/speech';
+import { playPronunciation } from '../utils/speech';
 
 interface SuxApnoeaProtocolProps {
   onStartSimulation: () => void;
@@ -205,7 +205,7 @@ export const SuxApnoeaProtocol: React.FC<SuxApnoeaProtocolProps> = ({ onStartSim
                 حالة سريرية كلاسيكية
               </span>
               <button
-                onClick={() => speakTerm('Suxamethonium apnoea')}
+                onClick={() => playPronunciation('special', 'suxamethonium-apnoea')}
                 className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-slate-800 text-slate-300 hover:text-amber-300 text-xs font-mono"
               >
                 <Volume2 className="h-3.5 w-3.5" />
