@@ -15,6 +15,7 @@ import { ANESTHESIA_DRUGS, DRUG_CLASS_LABELS, DRUG_FILTERS, type DrugClass } fro
 import { CLINICAL_TERMS } from '../data/clinicalTerms';
 import { ANESTHESIA_EQUIPMENT } from '../data/equipment';
 import { CLINICAL_GUIDES } from '../data/clinicalGuides';
+import { ANESTHESIA_STAGE_GUIDE_IDS } from '../data/anesthesiaStages';
 import { INTRAVENOUS_FLUIDS } from '../data/fluids';
 import type { AppTab } from './BottomNav';
 import type { GuideSection } from './GuideScreen';
@@ -64,15 +65,31 @@ export function HomeScreen({ query, setQuery, openGuide, goTo }: HomeScreenProps
       ).slice(0, 3)
     : [];
 
+  const stageResults = normalized
+    ? CLINICAL_GUIDES.filter(
+        (guide) =>
+          ANESTHESIA_STAGE_GUIDE_IDS.has(guide.id) &&
+          [
+            guide.titleAr,
+            guide.titleEn,
+            guide.categoryAr,
+            guide.summary,
+            ...guide.tags
+          ].some((value) => value.toLowerCase().includes(normalized))
+      ).slice(0, 3)
+    : [];
+
   const clinicalResults = normalized
-    ? CLINICAL_GUIDES.filter((guide) =>
-        [
-          guide.titleAr,
-          guide.titleEn,
-          guide.categoryAr,
-          guide.summary,
-          ...guide.tags
-        ].some((value) => value.toLowerCase().includes(normalized))
+    ? CLINICAL_GUIDES.filter(
+        (guide) =>
+          !ANESTHESIA_STAGE_GUIDE_IDS.has(guide.id) &&
+          [
+            guide.titleAr,
+            guide.titleEn,
+            guide.categoryAr,
+            guide.summary,
+            ...guide.tags
+          ].some((value) => value.toLowerCase().includes(normalized))
       ).slice(0, 3)
     : [];
 
@@ -94,7 +111,7 @@ export function HomeScreen({ query, setQuery, openGuide, goTo }: HomeScreenProps
       ).slice(0, 3)
     : [];
 
-  const resultCount = drugResults.length + fluidResults.length + equipmentResults.length + clinicalResults.length + abbreviationResults.length + termResults.length;
+  const resultCount = drugResults.length + fluidResults.length + equipmentResults.length + stageResults.length + clinicalResults.length + abbreviationResults.length + termResults.length;
 
   return (
     <div className="space-y-4">
@@ -169,6 +186,24 @@ export function HomeScreen({ query, setQuery, openGuide, goTo }: HomeScreenProps
                 <div className="flex-1">
                   <div className="text-xs font-black text-[#34293F]">{item.nameAr}</div>
                   <div className="mt-0.5 text-[10px] text-[#756E7C]" dir="ltr">{item.nameEn}</div>
+                </div>
+                <CaretLeft size={14} className="text-[#8B7D97]" />
+              </button>
+            ))}
+
+            {stageResults.map((guide) => (
+              <button
+                key={guide.id}
+                onClick={() => openGuide('stages')}
+                className="flex w-full items-center gap-3 border-b border-[#EAE3F0] px-3 py-2.5 text-right last:border-0"
+              >
+                <div className="grid h-8 w-8 place-items-center rounded-lg bg-[#F3ECF8] text-[#6C4AA5]">
+                  <BookOpenText size={18} />
+                </div>
+                <div className="flex-1">
+                  <div className="text-xs font-black text-[#34293F]">{guide.titleAr}</div>
+                  <div className="mt-0.5 text-[10px] text-[#756E7C]" dir="ltr">{guide.titleEn}</div>
+                  <div className="mt-0.5 text-[9px] font-bold text-[#8A7B96]">مراحل التخدير</div>
                 </div>
                 <CaretLeft size={14} className="text-[#8B7D97]" />
               </button>
