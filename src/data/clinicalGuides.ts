@@ -268,7 +268,7 @@ export const CLINICAL_GUIDES: ClinicalGuide[] = [
     category: 'general',
     categoryAr: 'التخدير العام',
     sourcePages: [32,33],
-    summary: 'بعد التحريض تُحافظ خطة التخدير على التنويم والتسكين والاستقرار الفيزيولوجي، مع إضافة الارتخاء العضلي عند الحاجة ومراقبة المريض بصورة مستمرة.',
+    summary: 'بعد بدء التخدير تُحافظ خطة التخدير على التنويم والتسكين والاستقرار الفيزيولوجي، مع إضافة الارتخاء العضلي عند الحاجة ومراقبة المريض بصورة مستمرة.',
     sections: [
       {
         title: 'إدامة التخدير | Maintenance',
@@ -610,7 +610,7 @@ export const CLINICAL_GUIDES: ClinicalGuide[] = [
       {
         title: 'كيف ينتهي تأثير الدواء؟ | Termination of drug effect',
         items: [
-          'إعادة التوزيع | Redistribution إلى أنسجة أقل فعالية قد تنهي التأثير السريري لبعض أدوية التحريض السريعة قبل التخلص النهائي منها.',
+          'إعادة التوزيع | Redistribution إلى أنسجة أقل فعالية قد تنهي التأثير السريري لبعض أدوية بدء التخدير السريعة قبل التخلص النهائي منها.',
           'الاستقلاب | Metabolism.',
           'الإطراح | Excretion.'
         ]
@@ -842,7 +842,7 @@ export const CLINICAL_GUIDES: ClinicalGuide[] = [
           'تخفيف الخوف والقلق | Anxiolysis مع طمأنة المريض وشرح الخطة.',
           'التهدئة وفقدان الذاكرة عند الحاجة | Sedation / amnesia.',
           'تسكين الألم في حالات مختارة | Analgesia.',
-          'تقليل الحاجة لبعض أدوية التحريض | Reduced induction-agent requirement عند اختيار دواء تمهيدي مناسب.',
+          'تقليل الحاجة لبعض أدوية بدء التخدير | Reduced induction-agent requirement عند اختيار دواء تمهيدي مناسب.',
           'تقليل الإفرازات أو منع بطء القلب الانعكاسي عند وجود استطباب | Antisialagogue / vagolytic effect when indicated.',
           'الوقاية من الغثيان والقيء | PONV prophylaxis للمرضى المعرضين.',
           'رفع pH أو تقليل حجم محتوى المعدة دوائيًا عند ارتفاع خطر الاستنشاق | Aspiration-risk pharmacologic prophylaxis.'
@@ -1369,7 +1369,7 @@ export const CLINICAL_GUIDES: ClinicalGuide[] = [
         ]
       }
     ],
-    correction: 'لا يوجد مخدر واحد “الأفضل” لكل مرضى فشل القلب. الاختيار يعتمد على الفيزيولوجيا؛ Etomidate قد يفيد للتحريض في بعض المرضى غير المستقرين لكن له محاذير، كما أن جرعات Propofol وغيرها تحتاج معايرة حذرة.',
+    correction: 'لا يوجد مخدر واحد “الأفضل” لكل مرضى فشل القلب. الاختيار يعتمد على الفيزيولوجيا؛ Etomidate قد يفيد لبدء التخدير في بعض المرضى غير المستقرين لكن له محاذير، كما أن جرعات Propofol وغيرها تحتاج معايرة حذرة.',
     tags: ['heart failure','cardiac anesthesia','preload','afterload','فشل القلب']
   },
   {
