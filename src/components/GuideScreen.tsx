@@ -1,8 +1,9 @@
 import { DrugDirectory } from './DrugDirectory';
 import { TermsDirectory } from './TermsDirectory';
 import { AbbreviationsDirectory } from './AbbreviationsDirectory';
+import { EquipmentDirectory } from './EquipmentDirectory';
 
-export type GuideSection = 'drugs' | 'terms' | 'abbreviations';
+export type GuideSection = 'drugs' | 'equipment' | 'terms' | 'abbreviations';
 
 interface GuideScreenProps {
   section: GuideSection;
@@ -27,18 +28,20 @@ export function GuideScreen({
           aria-label="اختيار قسم الدليل"
         >
           <option value="drugs">الأدوية</option>
+          <option value="equipment">الأجهزة والأدوات</option>
           <option value="terms">المصطلحات</option>
           <option value="abbreviations">الاختصارات</option>
         </select>
         <div className="text-right">
           <h2 className="text-lg font-black text-[#EEE8D6]">الدليل التخديري</h2>
-          <p className="mt-0.5 text-[10px] text-[#7E91A2]">أدوية • مصطلحات • اختصارات</p>
+          <p className="mt-0.5 text-[10px] text-[#7E91A2]">أدوية • أجهزة وأدوات • مصطلحات • اختصارات</p>
         </div>
       </div>
 
       {section === 'drugs' && (
         <DrugDirectory favorites={favorites} onToggleFavorite={onToggleFavorite} />
       )}
+      {section === 'equipment' && <EquipmentDirectory />}
       {section === 'terms' && (
         <TermsDirectory favorites={favorites} onToggleFavorite={onToggleFavorite} />
       )}
