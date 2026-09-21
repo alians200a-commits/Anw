@@ -1948,6 +1948,34 @@ export const CLINICAL_TERMS: ClinicalTerm[] = [
     clinicalNote: 'الأهداف التخديرية تختلف باختلاف الصمام وشدة الآفة ووظيفة البطين.',
     tags: ['valvular heart disease', 'cardiac', 'valve']
   }
+,
+  {
+    id: 'aspiration-pneumonitis',
+    en: 'Aspiration Pneumonitis',
+    ar: 'التهاب رئوي كيميائي بسبب الاستنشاق',
+    category: 'critical',
+    definition: 'أذية التهابية كيميائية للرئة بعد دخول محتويات معدية إلى المجرى التنفسي.',
+    clinicalNote: 'التدبير الأساسي داعم لمجرى الهواء والأكسجة والتهوية؛ Antibiotics لا تُعطى روتينيًا ما لم توجد دلائل عدوى أو تطور مناسب لـAspiration pneumonia.',
+    tags: ['aspiration pneumonitis', 'aspiration', 'airway', 'lung']
+  },
+  {
+    id: 'airway-obstruction',
+    en: 'Airway Obstruction',
+    ar: 'انسداد مجرى الهواء',
+    category: 'critical',
+    definition: 'انسداد جزئي أو كامل يمنع مرور الهواء عبر مجرى التنفس.',
+    clinicalNote: 'قد يبقى جهد التنفس موجودًا رغم غياب تدفق الهواء، لذلك Airway obstruction لا يساوي Apnea.',
+    tags: ['airway obstruction', 'airway', 'ventilation']
+  },
+  {
+    id: 'cyanosis',
+    en: 'Cyanosis',
+    ar: 'الزرقة',
+    category: 'critical',
+    definition: 'تلون مزرق للجلد أو الأغشية المخاطية مرتبط بزيادة الهيموغلوبين غير المؤكسج.',
+    clinicalNote: 'علامة متأخرة وغير حساسة لنقص الأكسجة، وقد تكون أقل وضوحًا في Anemia؛ لا تُستخدم بدل Pulse oximetry.',
+    tags: ['cyanosis', 'hypoxemia', 'oxygenation']
+  }
 
 ];
 
