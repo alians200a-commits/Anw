@@ -447,8 +447,8 @@
       "file": "/audio/terms/hypotension.mp3"
     },
     "terms/cardia": {
-      "source_text": "Cardia",
-      "spoken_text": "Cardia",
+      "source_text": "Cardiac",
+      "spoken_text": "Cardiac",
       "file": "/audio/terms/cardia.mp3"
     },
     "terms/tachycardia": {
@@ -480,6 +480,51 @@
       "source_text": "Myocardial Infarction",
       "spoken_text": "Myocardial Infarction",
       "file": "/audio/abbreviations/mi.mp3"
+    },
+    "terms/topical-anesthesia": {
+      "source_text": "Topical Anesthesia",
+      "spoken_text": "Topical Anesthesia",
+      "file": "/audio/terms/topical-anesthesia.mp3"
+    },
+    "terms/local-infiltration": {
+      "source_text": "Local Infiltration",
+      "spoken_text": "Local Infiltration",
+      "file": "/audio/terms/local-infiltration.mp3"
+    },
+    "terms/peripheral-nerve-block": {
+      "source_text": "Peripheral Nerve Block",
+      "spoken_text": "Peripheral Nerve Block",
+      "file": "/audio/terms/peripheral-nerve-block.mp3"
+    },
+    "terms/redistribution": {
+      "source_text": "Redistribution",
+      "spoken_text": "Redistribution",
+      "file": "/audio/terms/redistribution.mp3"
+    },
+    "terms/drug-clearance": {
+      "source_text": "Clearance",
+      "spoken_text": "Clearance",
+      "file": "/audio/terms/drug-clearance.mp3"
+    },
+    "terms/fresh-gas-flow": {
+      "source_text": "Fresh Gas Flow",
+      "spoken_text": "Fresh Gas Flow",
+      "file": "/audio/terms/fresh-gas-flow.mp3"
+    },
+    "abbreviations/npo": {
+      "source_text": "Nil Per Os",
+      "spoken_text": "Nil Per Os",
+      "file": "/audio/abbreviations/npo.mp3"
+    },
+    "terms/neuraxial-anesthesia": {
+      "source_text": "Neuraxial Anesthesia",
+      "spoken_text": "Neuraxial Anesthesia",
+      "file": "/audio/terms/neuraxial-anesthesia.mp3"
+    },
+    "terms/refrigeration-analgesia": {
+      "source_text": "Refrigeration Analgesia",
+      "spoken_text": "Refrigeration Analgesia",
+      "file": "/audio/terms/refrigeration-analgesia.mp3"
     },
     "special/suxamethonium-apnoea": {
       "source_text": "Suxamethonium apnoea",
