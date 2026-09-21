@@ -13,6 +13,7 @@ import {
 import { ANESTHESIA_DRUGS, DRUG_CLASS_LABELS } from '../data/drugs';
 import { CLINICAL_TERMS } from '../data/clinicalTerms';
 import { ANESTHESIA_EQUIPMENT } from '../data/equipment';
+import { CLINICAL_GUIDES } from '../data/clinicalGuides';
 import type { AppTab } from './BottomNav';
 import type { GuideSection } from './GuideScreen';
 import { MedicinesHealthIcon } from './MedicalIcons';
@@ -48,6 +49,18 @@ export function HomeScreen({ query, setQuery, openGuide, goTo }: HomeScreenProps
       ).slice(0, 3)
     : [];
 
+  const clinicalResults = normalized
+    ? CLINICAL_GUIDES.filter((guide) =>
+        [
+          guide.titleAr,
+          guide.titleEn,
+          guide.categoryAr,
+          guide.summary,
+          ...guide.tags
+        ].some((value) => value.toLowerCase().includes(normalized))
+      ).slice(0, 3)
+    : [];
+
   const abbreviationResults = normalized
     ? CLINICAL_TERMS.filter((term) =>
         Boolean(term.abbr) &&
@@ -66,7 +79,7 @@ export function HomeScreen({ query, setQuery, openGuide, goTo }: HomeScreenProps
       ).slice(0, 3)
     : [];
 
-  const resultCount = drugResults.length + equipmentResults.length + abbreviationResults.length + termResults.length;
+  const resultCount = drugResults.length + equipmentResults.length + clinicalResults.length + abbreviationResults.length + termResults.length;
 
   return (
     <div className="space-y-4">
@@ -129,6 +142,23 @@ export function HomeScreen({ query, setQuery, openGuide, goTo }: HomeScreenProps
               </button>
             ))}
 
+            {clinicalResults.map((guide) => (
+              <button
+                key={guide.id}
+                onClick={() => openGuide('clinical')}
+                className="flex w-full items-center gap-3 border-b border-white/5 px-3 py-2.5 text-right last:border-0"
+              >
+                <div className="grid h-8 w-8 place-items-center rounded-lg bg-[#CCA039]/8 text-[#CCA039]">
+                  <BookOpenText size={18} />
+                </div>
+                <div className="flex-1">
+                  <div className="text-xs font-black text-[#EEE8D6]">{guide.titleAr}</div>
+                  <div className="mt-0.5 text-[10px] text-[#8294A4]" dir="ltr">{guide.titleEn}</div>
+                </div>
+                <CaretLeft size={14} className="text-[#62788B]" />
+              </button>
+            ))}
+
             {abbreviationResults.map((term) => (
               <button
                 key={term.id}
@@ -183,7 +213,7 @@ export function HomeScreen({ query, setQuery, openGuide, goTo }: HomeScreenProps
             <div className="flex items-center gap-3">
               <div>
                 <h3 className="text-sm font-black text-[#EEE8D6]">الدليل التخديري</h3>
-                <p className="mt-0.5 text-[10px] text-[#7F91A1]">أدوية، أجهزة وأدوات، مصطلحات، اختصارات</p>
+                <p className="mt-0.5 text-[10px] text-[#7F91A1]">أدوية، أجهزة، إجراءات، مصطلحات، اختصارات</p>
               </div>
               <div className="grid h-9 w-9 place-items-center rounded-xl bg-[#CCA039]/8 text-[#CCA039]">
                 <BookOpenText size={20} />
@@ -205,6 +235,13 @@ export function HomeScreen({ query, setQuery, openGuide, goTo }: HomeScreenProps
                 <div className="flex items-center gap-3">
                   <span className="text-xs font-bold text-[#DDE2E6]">الأجهزة والأدوات</span>
                   <Wrench size={20} weight="bold" className="text-[#CCA039]" />
+                </div>
+              </button>
+              <button onClick={() => openGuide('clinical')} className="flex w-full items-center justify-between rounded-xl px-2.5 py-2.5 active:bg-white/[0.03]">
+                <CaretLeft size={15} className="text-[#5F7488]" />
+                <div className="flex items-center gap-3">
+                  <span className="text-xs font-bold text-[#DDE2E6]">المفاهيم والإجراءات</span>
+                  <BookOpenText size={20} className="text-[#CCA039]" />
                 </div>
               </button>
               <button onClick={() => openGuide('terms')} className="flex w-full items-center justify-between rounded-xl px-2.5 py-2.5 active:bg-white/[0.03]">
