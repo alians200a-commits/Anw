@@ -1,4 +1,5 @@
-import { Brain, Clock3, GameController, Layers3, Sparkle } from '@phosphor-icons/react';
+import { GameController } from '@phosphor-icons/react';
+import { Brain, Clock3, Layers3, Sparkles } from 'lucide-react';
 
 const games = [
   {
@@ -55,7 +56,7 @@ export function GamesHub() {
       </div>
 
       <div className="flex items-center gap-3 rounded-[16px] border border-[#CCA039]/10 bg-[#CCA039]/5 p-3.5">
-        <Sparkle size={18} weight="fill" className="shrink-0 text-[#CCA039]" />
+        <Sparkles className="h-[18px] w-[18px] shrink-0 text-[#CCA039]" />
         <p className="text-[10px] leading-5 text-[#A8B3BD]">
           ماكو زر وهمي هنا؛ اللعبة تصير قابلة للضغط فقط من نربطها فعلياً.
         </p>
