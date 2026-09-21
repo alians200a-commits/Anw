@@ -446,27 +446,80 @@ export const CLINICAL_GUIDES: ClinicalGuide[] = [
     category: 'regional',
     categoryAr: 'الموضعي والإقليمي',
     sourcePages: [48],
-    summary: 'كلاهما من التخدير المحوري العصبي | Neuraxial anesthesia لكن موضع الحقن وسرعة البدء والجرعة وإمكانية استمرار القسطرة تختلف.',
+    summary: 'كلاهما من التخدير المحوري العصبي | Neuraxial anesthesia ويمكن أن يوفرا تخديرًا جراحيًا مع بقاء المريض واعيًا، لكن موضع الدواء وسرعة البدء والجرعة وإمكانية استمرار القسطرة تختلف.',
     sections: [
+      {
+        title: 'أوجه مشتركة | Shared features',
+        items: [
+          'يمكن أن يوفرا حصرًا حسيًا وحركيًا مناسبًا للجراحة دون فقدان الوعي.',
+          'قد يقللان الحاجة إلى التلاعب بمجرى الهواء أو التهوية الميكانيكية في الحالات المناسبة.',
+          'كلاهما قد يسبب حصرًا وديًا | Sympathetic block وهبوط ضغط بحسب مستوى الحصر وحالة المريض.'
+        ]
+      },
       {
         title: 'التخدير النخاعي | Spinal',
         items: [
           'الحقن داخل السائل الدماغي الشوكي | Intrathecal / Subarachnoid.',
-          'جرعة أصغر وبداية أسرع وحصر كثيف نسبيًا.',
-          'غالبًا جرعة واحدة | Single-shot.'
+          'جرعة أصغر وبداية أسرع وحصر حسي وحركي كثيف نسبيًا.',
+          'غالبًا جرعة واحدة | Single-shot، لذلك مدة الحصر أقل قابلية للتمديد من القسطرة فوق الجافية.'
         ]
       },
       {
         title: 'فوق الجافية | Epidural',
         items: [
           'الحقن خارج الأم الجافية | Epidural space.',
-          'بداية أبطأ وجرعات أكبر نسبيًا.',
-          'إمكانية وضع قسطرة للاستمرار والتعديل | Continuous / titratable catheter.'
+          'بداية أبطأ وجرعات أكبر نسبيًا ويمكن معايرة الحصر تدريجيًا.',
+          'إمكانية وضع قسطرة للاستمرار والتعديل | Continuous / titratable catheter، ويمكن استخدامها للتسكين بعد العملية.',
+          'خطر صداع ما بعد ثقب الجافية | PDPH أقل عندما لا يحدث ثقب للجافية.'
         ]
       }
     ],
-    tags: ['spinal','epidural','neuraxial','comparison']
+    tags: ['spinal','epidural','neuraxial','comparison','PDPH']
   },
+  {
+    id: 'neuromuscular-blocking-drugs',
+    titleAr: 'مرخيات العضلات في التخدير',
+    titleEn: 'Neuromuscular Blocking Drugs',
+    category: 'pharmacology',
+    categoryAr: 'علم الأدوية',
+    sourcePages: [51,52,53],
+    summary: 'مرخيات العضلات | Neuromuscular blocking drugs تسبب شللًا عضليًا من دون تسكين أو فقدان وعي، وتنقسم عمليًا إلى مزيلة للاستقطاب وغير مزيلة للاستقطاب.',
+    sections: [
+      {
+        title: 'المزيل للاستقطاب | Depolarizing',
+        items: [
+          'السكساميثونيوم | Suxamethonium / Succinylcholine هو المثال السريري الأساسي.',
+          'ناهض نيكوتيني يسبب إزالة استقطاب مستمرة للوصلة العصبية العضلية ثم شللًا قصير المدة.',
+          'سريع البدء وقصير المفعول، لذلك قد يُستخدم لتسهيل التنبيب السريع عند عدم وجود مانع.'
+        ]
+      },
+      {
+        title: 'غير المزيل للاستقطاب | Nondepolarizing',
+        items: [
+          'مثل Rocuronium وAtracurium وCisatracurium وVecuronium وPancuronium.',
+          'تعمل كمضادات تنافسية للأستيل كولين | Competitive antagonists عند المستقبل النيكوتيني في الوصلة العصبية العضلية.',
+          'لا تسبب إزالة الاستقطاب أو ارتفاع البوتاسيوم بآلية السكساميثونيوم، ولا تُعد محفزات مباشرة لفرط الحرارة الخبيث.'
+        ]
+      },
+      {
+        title: 'العكس والمراقبة | Reversal / monitoring',
+        items: [
+          'Neostigmine قد يعكس الحصار غير المزيل للاستقطاب عند وجود تعافٍ تلقائي كافٍ، ويُعطى مع مضاد مسكاريني مناسب لتقليل التأثيرات الكولينية.',
+          'Sugammadex يعكس Rocuronium وVecuronium مباشرةً، ويُختار حسب عمق الحصار والسياق.',
+          'المراقبة الكمية للحصار العصبي العضلي | Quantitative neuromuscular monitoring تساعد على تحديد عمق الحصار وملاءمة العكس، ويُستهدف TOF ratio ≥ 0.9 قبل نزع الأنبوب بعد استخدام المرخيات غير المزيلة للاستقطاب.'
+        ]
+      },
+      {
+        title: 'أمان مهم | Safety',
+        items: [
+          'مرخي العضلات لا يوفر التخدير أو تسكين الألم؛ يجب ضمان التنويم والتسكين والتهوية بصورة مستقلة.',
+          'انقطاع النفس المطول بعد Suxamethonium يُدعم بالتهوية والتهدئة حتى عودة النقل العصبي العضلي؛ لا يُعامل بوصفة ثابتة من Anticholinesterase.'
+        ]
+      }
+    ],
+    tags: ['neuromuscular blocker','muscle relaxant','suxamethonium','rocuronium','atracurium','pancuronium','reversal','TOF']
+  },
+
   {
     id: 'pharmacokinetics',
     titleAr: 'حركية الدواء',
@@ -474,27 +527,35 @@ export const CLINICAL_GUIDES: ClinicalGuide[] = [
     category: 'pharmacology',
     categoryAr: 'علم الأدوية',
     sourcePages: [50,51],
-    summary: 'ما يفعله الجسم بالدواء | What the body does to the drug.',
+    summary: 'حركية الدواء | Pharmacokinetics هي دراسة ما يفعله الجسم بالدواء مع الزمن: الامتصاص والتوزيع والاستقلاب والتخلص.',
     sections: [
       {
         title: 'ADME',
         items: [
-          'الامتصاص | Absorption.',
-          'التوزيع | Distribution.',
+          'الامتصاص | Absorption: انتقال الدواء من موضع الإعطاء إلى الدوران، ويُتجاوز عمليًا عند الحقن الوريدي المباشر.',
+          'التوزيع | Distribution: انتقال الدواء من الدم إلى الأنسجة ويتأثر بالتروية والذوبان الدهني والارتباط بالبروتين والتأين.',
+          'الاستقلاب | Metabolism: التحويل الكيميائي للدواء، غالبًا إلى مركبات أكثر قابلية للإطراح.',
+          'الإطراح | Excretion / Elimination: التخلص من الدواء أو مستقلباته، وتشارك فيه الكلى وأعضاء أخرى حسب الدواء.'
+        ]
+      },
+      {
+        title: 'كيف ينتهي تأثير الدواء؟ | Termination of drug effect',
+        items: [
+          'إعادة التوزيع | Redistribution إلى أنسجة أقل فعالية قد تنهي التأثير السريري لبعض أدوية التحريض السريعة قبل التخلص النهائي منها.',
           'الاستقلاب | Metabolism.',
-          'الإطراح | Excretion / Elimination.'
+          'الإطراح | Excretion.'
         ]
       },
       {
         title: 'مفاهيم مهمة | Key concepts',
         items: [
-          'إعادة التوزيع | Redistribution قد تنهي تأثير بعض أدوية التحريض السريعة قبل التخلص النهائي منها.',
           'التصفية | Clearance هي حجم البلازما الذي يُزال منه الدواء لكل وحدة زمن.',
-          'الارتباط بالبروتين | Protein binding، التأين | Ionization، والذوبان الدهني | Lipid solubility تؤثر في توزيع الدواء.'
+          'الارتباط بالبروتين | Protein binding، التأين | Ionization، والذوبان الدهني | Lipid solubility تؤثر في توزيع الدواء.',
+          'سرعة بدء وزوال التأثير لا تعتمد على نصف العمر وحده؛ في أدوية التخدير القصيرة قد يكون التوزيع وإعادة التوزيع مهمين جدًا.'
         ]
       }
     ],
-    tags: ['pharmacokinetics','ADME','clearance','distribution','metabolism']
+    tags: ['pharmacokinetics','ADME','clearance','distribution','redistribution','metabolism','excretion']
   },
   {
     id: 'pharmacodynamics',
@@ -503,24 +564,25 @@ export const CLINICAL_GUIDES: ClinicalGuide[] = [
     category: 'pharmacology',
     categoryAr: 'علم الأدوية',
     sourcePages: [50],
-    summary: 'ما يفعله الدواء بالجسم | What the drug does to the body والعلاقة بين التركيز/الجرعة والاستجابة.',
+    summary: 'الديناميكا الدوائية | Pharmacodynamics تدرس ما يفعله الدواء بالجسم والعلاقة بين الجرعة أو التركيز والاستجابة.',
     sections: [
       {
         title: 'المستقبلات | Receptors',
         items: [
+          'المستقبلات | Receptors مكونات خلوية يرتبط بها الدواء وتبدأ بعد الارتباط سلسلة أحداث تؤدي إلى التأثير الدوائي.',
           'الناهض | Agonist يرتبط بالمستقبل ويفعّله.',
-          'المضاد | Antagonist يرتبط بالمستقبل ويمنع أو يقلل تفعيله.',
-          'المضاد التنافسي | Competitive antagonist يمكن التغلب على تأثيره جزئيًا بزيادة تركيز الناهض.'
+          'المضاد | Antagonist يرتبط بالمستقبل من دون تفعيله ويمنع أو يقلل تأثير الناهض.',
+          'المضاد التنافسي | Competitive antagonist ينافس الناهض على موقع المستقبل ويمكن تقليل تأثيره بزيادة تركيز الناهض ضمن حدود آمنة.'
         ]
       },
       {
         title: 'مثال تخديري | Anesthesia example',
         items: [
-          'المرخيات غير المزيلة للاستقطاب | Nondepolarizing neuromuscular blockers تنافس الأستيل كولين | Acetylcholine في المستقبل النيكوتيني بالوصلة العصبية العضلية.'
+          'المرخيات غير المزيلة للاستقطاب | Nondepolarizing neuromuscular blockers تنافس الأستيل كولين | Acetylcholine على المستقبل النيكوتيني في الوصلة العصبية العضلية.'
         ]
       }
     ],
-    tags: ['pharmacodynamics','agonist','antagonist','receptor']
+    tags: ['pharmacodynamics','agonist','antagonist','competitive antagonist','receptor']
   },
   {
     id: 'modified-aldrete',
