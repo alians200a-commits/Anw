@@ -1875,6 +1875,42 @@ export const CLINICAL_TERMS: ClinicalTerm[] = [
     clinicalNote: 'قد ترافقه تغيرات ECG واضطرابات نظم بسبب الشدة العصبية والكاتيكولامينات.',
     tags: ['SAH', 'subarachnoid hemorrhage', 'neurosurgery', 'arrhythmia']
   }
+,
+  {
+    id: 'pacemaker',
+    en: 'Cardiac Pacemaker',
+    ar: 'منظم ضربات القلب',
+    category: 'cardio',
+    definition: 'جهاز يولد نبضات كهربائية للمحافظة على معدل أو نظم القلب عند وجود اضطراب توصيل أو بطء قلب مناسب للاستطباب.',
+    clinicalNote: 'في غرفة العمليات يجب الانتباه إلى وظيفة الجهاز والتداخل الكهرومغناطيسي حسب نوع الجراحة والمعدة.',
+    tags: ['pacemaker', 'cardiac device', 'bradycardia', 'conduction']
+  },
+  {
+    id: 'catecholamine',
+    en: 'Catecholamine',
+    ar: 'كاتيكولامين',
+    category: 'pharmacology',
+    definition: 'مجموعة مواد تشمل Adrenaline وNoradrenaline وDopamine وتؤثر في القلب والأوعية عبر المستقبلات الأدرينرجية.',
+    tags: ['catecholamine', 'adrenaline', 'noradrenaline', 'dopamine']
+  },
+  {
+    id: 'electrolyte-imbalance',
+    en: 'Electrolyte Imbalance',
+    ar: 'اضطراب الشوارد',
+    category: 'critical',
+    definition: 'اختلال تركيز الشوارد مثل Potassium أو Magnesium أو Calcium، وقد يؤثر في القلب والعضلات والجهاز العصبي.',
+    clinicalNote: 'اضطرابات K⁺ وMg²⁺ من الأسباب المهمة القابلة للتصحيح لبعض Arrhythmias حول الجراحة.',
+    tags: ['electrolytes', 'potassium', 'magnesium', 'arrhythmia']
+  },
+  {
+    id: 'acid-base-disturbance',
+    en: 'Acid–Base Disturbance',
+    ar: 'اضطراب التوازن الحمضي القاعدي',
+    category: 'critical',
+    definition: 'اختلال في pH بسبب اضطراب تنفسي أو استقلابي | Respiratory / metabolic acid–base disorder.',
+    clinicalNote: 'قد يؤثر في الاستجابة للأدوية والشوارد ووظيفة القلب، ويُفسر مع غازات الدم والسياق السريري.',
+    tags: ['acid base', 'pH', 'ABG', 'arrhythmia']
+  }
 
 ];
 
