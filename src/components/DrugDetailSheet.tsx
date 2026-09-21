@@ -30,6 +30,100 @@ const toneMap = {
   effect: { icon: FirstAid, label: 'text-[#9BAEC0]', line: 'border-r-[#6E879C]' }
 } as const;
 
+const MEDICAL_TERMS: Record<string, string> = {
+  'فرط الحرارة الخبيث': 'Malignant hyperthermia',
+  'تثبيط الجهاز العصبي': 'CNS depression',
+  'تثبيط التنفس': 'Respiratory depression',
+  'انقطاع النفس': 'Apnea',
+  'هبوط الضغط': 'Hypotension',
+  'بطء القلب': 'Bradycardia',
+  'تسرع القلب': 'Tachycardia',
+  'ارتفاع ضغط الدم': 'Hypertension',
+  'اضطرابات النظم': 'Arrhythmias',
+  'نقص التروية': 'Ischemia',
+  'تشنج قصبي': 'Bronchospasm',
+  'فرط البوتاسيوم': 'Hyperkalemia',
+  'نقص البوتاسيوم': 'Hypokalemia',
+  'الغثيان والقيء': 'Nausea & vomiting',
+  'غثيان وقيء': 'Nausea & vomiting',
+  'الصداع': 'Headache',
+  'صداع': 'Headache',
+  'دوخة': 'Dizziness',
+  'نعاس': 'Drowsiness',
+  'هلاوس': 'Hallucinations',
+  'هياج': 'Agitation',
+  'احتباس البول': 'Urinary retention',
+  'جفاف الفم': 'Dry mouth',
+  'تشوش الرؤية': 'Blurred vision',
+  'ألم مكان الحقن': 'Injection-site pain',
+  'حرقة مكان الحقن': 'Injection-site burning',
+  'زيادة الإفرازات': 'Increased secretions',
+  'الحكة': 'Pruritus',
+  'حكة': 'Pruritus',
+  'الإمساك': 'Constipation',
+  'إمساك': 'Constipation',
+  'الرعشة': 'Tremor',
+  'رجفان': 'Tremor',
+  'رأرأة': 'Nystagmus',
+  'رمع عضلي': 'Myoclonus',
+  'شلل مطول': 'Prolonged neuromuscular blockade',
+  'ضعف عضلي متبقٍ': 'Residual muscle weakness',
+  'تأق': 'Anaphylaxis',
+  'تفاعلات تحسسية': 'Allergic reactions',
+  'فقدان ذاكرة أمامي': 'Anterograde amnesia',
+  'فقدان الوعي': 'Loss of consciousness',
+  'تسكين الألم': 'Analgesia',
+  'التهدئة': 'Sedation',
+  'القلق': 'Anxiety',
+  'الاختلاجات': 'Seizures',
+  'التشنج العضلي': 'Muscle spasm'
+};
+
+const MEDICAL_PATTERN = new RegExp(
+  Object.keys(MEDICAL_TERMS)
+    .sort((a, b) => b.length - a.length)
+    .map((term) => term.replace(/[.*+?^$()|[\]{}\\]/g, '\\const toneMap = {
+  use: { icon: Target, label: 'text-[#7FB69B]', line: 'border-r-[#4E8F70]' },
+  contra: { icon: Prohibit, label: 'text-[#D48A8A]', line: 'border-r-[#9C5656]' },
+  warning: { icon: ShieldWarning, label: 'text-[#D9A441]', line: 'border-r-[#D9A441]' },
+  effect: { icon: FirstAid, label: 'text-[#9BAEC0]', line: 'border-r-[#6E879C]' }
+} as const;
+'))
+    .join('|'),
+  'g'
+);
+
+function BilingualMedicalText({ text }: { text: string }) {
+  const parts: Array<string | JSX.Element> = [];
+  let lastIndex = 0;
+  let match: RegExpExecArray | null;
+  let key = 0;
+
+  MEDICAL_PATTERN.lastIndex = 0;
+
+  while ((match = MEDICAL_PATTERN.exec(text)) !== null) {
+    if (match.index > lastIndex) {
+      parts.push(text.slice(lastIndex, match.index));
+    }
+
+    const arabic = match[0];
+    parts.push(
+      <span key={key++}>
+        {arabic}
+        <span dir="ltr" className="font-semibold text-[#D8C389]"> | {MEDICAL_TERMS[arabic]}</span>
+      </span>
+    );
+
+    lastIndex = match.index + arabic.length;
+  }
+
+  if (lastIndex < text.length) {
+    parts.push(text.slice(lastIndex));
+  }
+
+  return <>{parts}</>;
+}
+
 function DetailSection({ title, items, tone }: DetailSectionProps) {
   const config = toneMap[tone];
   const Icon = config.icon;
@@ -43,7 +137,7 @@ function DetailSection({ title, items, tone }: DetailSectionProps) {
       <div className="mt-2 space-y-1.5">
         {items.map((item, index) => (
           <div key={index} className="flex items-start justify-end gap-2 text-right">
-            <p className="flex-1 text-[11px] leading-5 text-[#A9B5BE]">{item}</p>
+            <p className="flex-1 text-[11px] leading-5 text-[#A9B5BE]"><BilingualMedicalText text={item} /></p>
             <span className="mt-[8px] h-1 w-1 shrink-0 rounded-full bg-[#50697C]" />
           </div>
         ))}
@@ -113,7 +207,7 @@ export function DrugDetailSheet({ drug, detail, onClose }: DrugDetailSheetProps)
               <span className="text-[10px] font-black text-[#CCA039]">ميزة الدواء</span>
               <Sparkle size={16} weight="fill" className="text-[#CCA039]" />
             </div>
-            <p className="mt-1.5 text-[12px] leading-6 text-[#D7DBDE]">{detail.feature}</p>
+            <p className="mt-1.5 text-[12px] leading-6 text-[#D7DBDE]"><BilingualMedicalText text={detail.feature} /></p>
           </div>
 
           <div className="h-px bg-white/5" />
