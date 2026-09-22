@@ -456,7 +456,7 @@ export const CLINICAL_GUIDES: ClinicalGuide[] = [
     category: 'regional',
     categoryAr: 'الموضعي والإقليمي',
     sourcePages: [38],
-    summary: 'تقنية لتخدير طرف معزول بالدورة بواسطة عاصبة | Tourniquet ثم حقن مخدر موضعي وريدي داخل الطرف.',
+    summary: 'تقنية وصفها August Bier تاريخيًا عام 1908 لتخدير طرف معزول بالدورة بواسطة عاصبة | Tourniquet ثم حقن مخدر موضعي وريدي داخل الطرف.',
     sections: [
       {
         title: 'التقنية | Technique',
@@ -522,6 +522,15 @@ export const CLINICAL_GUIDES: ClinicalGuide[] = [
           'حساسية للمخدر المستخدم | Allergy to intended drug.',
           'اضطراب تخثر شديد | Severe coagulation abnormality.',
           'ارتفاع ضغط داخل القحف في ظروف معينة | Raised intracranial pressure.'
+        ]
+      },
+      {
+        title: 'اعتبارات وموانع نسبية | Relative considerations',
+        items: [
+          'نقص حجم الدم الشديد | Severe hypovolemia يزيد خطر هبوط الضغط بعد sympathetic block ويحتاج تصحيحًا/تقييمًا قبل الإجراء.',
+          'استخدام مضادات التخثر | Anticoagulants أو اضطراب الصفائح يحتاج تقييمًا حسب الدواء والتوقيت وإرشادات neuraxial safety.',
+          'مرض عصبي سابق أو تشوه/صعوبة تشريحية في العمود الفقري يحتاج موازنة مخاطر وفوائد وخطة تقنية مناسبة.',
+          'عدم تعاون المريض أو عدم القدرة على المحافظة على الوضعية قد يجعل الإجراء غير مناسب أو غير آمن.'
         ]
       }
     ],
