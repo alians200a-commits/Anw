@@ -22,7 +22,9 @@ export const DRUG_DETAILS: Record<string, DrugDetail> = {
     routes: ['وريدي | Intravenous (IV)'],
     educationalDoses: [
       'لبدء التخدير العام في البالغ السليم عادةً 2–2.5 mg/kg IV مع المعايرة للاستجابة؛ كبار السن أو المرضى الهشّون/ASA III–IV يحتاجون غالبًا جرعات أقل مثل 1–1.5 mg/kg.',
-      'الجرعة ليست رقمًا ثابتًا؛ Premedication، العمر، نقص الحجم والاحتياطي القلبي تغير المتطلب.'
+      'للمحافظة على التخدير العام في البالغ السليم: infusion نحو 100–200 mcg/kg/min في البداية، ثم تُخفض عادةً إلى نحو 50–100 mcg/kg/min حسب الاستجابة والعوامل المرافقة.',
+      'لـMAC sedation في البالغ السليم: initiation نحو 100–150 mcg/kg/min لمدة 3–5 دقائق أو slow injection نحو 0.5 mg/kg، ثم maintenance غالبًا 25–75 mcg/kg/min.',
+      'الجرعة ليست رقمًا ثابتًا؛ Premedication، العمر، نقص الحجم والاحتياطي القلبي والأدوية المصاحبة تغير المتطلب.'
     ],
     onsetDuration: ['بدء التأثير بعد الحقن الوريدي سريع، عادة خلال عشرات الثواني | Rapid IV onset.', 'مدة التنويم بعد جرعة واحدة لبدء التخدير قصيرة نسبيًا بسبب إعادة التوزيع | Short hypnotic duration after a bolus.'],
     correction: 'المصدر يعرض حساسية البيض/الصويا بصورة واسعة. الملصقات الأمريكية الحديثة تذكر تحديدًا تاريخ التأق | Anaphylaxis للبيض/منتجاته أو الصويا/منتجاتها ضمن الموانع، إضافة إلى الحساسية للبروبوفول أو مكونات المستحضر؛ ولا تُحوّل حساسية غذائية بسيطة تلقائيًا إلى نفس درجة الخطر دون تقييم. كذلك الربو | Asthma ليس مانعًا روتينيًا للبروبوفول كما ورد في ملف الملاحظات.',
@@ -218,6 +220,11 @@ export const DRUG_DETAILS: Record<string, DrugDetail> = {
     feature: 'أفيوني وريدي سريع البدء وأقصر من الفنتانيل، مناسب للمحفزات الجراحية القصيرة.',
     mechanism: 'ناهض لمستقبل μ الأفيوني | Mu-opioid receptor agonist.',
     routes: ['وريدي | Intravenous (IV)'],
+    educationalDoses: [
+      'كعامل مسكن مساعد أثناء التخدير العام مع controlled ventilation: induction of analgesia قد تكون 20–50 mcg/kg، ومع continuous infusion يمكن استخدام نحو 0.5–3 mcg/kg/min مع المعايرة للاستجابة.',
+      'لـMonitored Anesthesia Care: induction نحو 3–8 mcg/kg، ثم 0.25–1 mcg/kg/min أو جرعات متقطعة صغيرة حسب الحاجة.',
+      'جرعات anesthetic induction العالية جدًا للـAlfentanil موجودة في الملصق لكنها تحتاج تهوية ومراقبة كاملة وقد تسبب truncal rigidity؛ ليست جرعات روتينية عامة.'
+    ],
     sourcePages: [70],
     uses: ['التسكين أثناء التخدير', 'تخفيف استجابة التنبيب أو المنبهات الجراحية القصيرة'],
     contraindications: ['فرط التحسس للأفيونات أو الألفنتانيل'],
