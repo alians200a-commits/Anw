@@ -572,6 +572,11 @@ export const DRUG_DETAILS: Record<string, DrugDetail> = {
     mechanism: 'حجب قنوات الصوديوم المعتمدة على الجهد | Voltage-gated sodium channel blockade ومنع توصيل النبض العصبي.',
     tradeNames: ['Xylocaine'],
     routes: ['ارتشاح | Infiltration', 'حصر عصب | Peripheral nerve block', 'فوق الجافية | Epidural', 'إقليمي وريدي | IV regional anesthesia حسب المستحضر/البروتوكول'],
+    educationalDoses: [
+      'في البالغ السليم دون Epinephrine: الحد الأقصى الفردي الموصى به عادةً 4.5 mg/kg وبحد إجمالي عام 300 mg، مع خفض الجرعة حسب العمر والحالة وموقع الحقن.',
+      'مع Epinephrine في المستحضرات/التقنيات المناسبة قد يصل الحد الأقصى إلى 7 mg/kg وبحد إجمالي 500 mg وفق نشرة المستحضر.',
+      'في Bier block للبالغ: يُستخدم Lidocaine 0.5% من مستحضر مناسب دون vasoconstrictor، ولا تتجاوز الجرعة 4 mg/kg.'
+    ],
     uses: ['التخدير الموضعي والإقليمي | Local / regional anesthesia', 'تسكين إجراءات مختارة | Procedural local anesthesia'],
     contraindications: ['فرط التحسس للمخدرات الموضعية من نوع الأميد | Amide local anesthetic hypersensitivity'],
     warnings: ['الجرعة الزائدة أو الحقن داخل وعائي قد يسبب سمية جهازية للمخدر الموضعي | LAST', 'قد تحدث اختلاجات | Seizures واضطرابات نظم | Arrhythmias وانهيار قلبي وعائي في السمية الشديدة', 'يلزم توفر الإنعاش والأوكسجين ومراقبة المريض عند الحصر الكبير'],
@@ -584,6 +589,11 @@ export const DRUG_DETAILS: Record<string, DrugDetail> = {
     mechanism: 'حجب قنوات الصوديوم المعتمدة على الجهد | Voltage-gated sodium channel blockade.',
     tradeNames: ['Marcaine'],
     routes: ['ارتشاح | Infiltration', 'حصر عصب محيطي | Peripheral nerve block', 'فوق الجافية / ذيلي | Epidural / caudal حسب المستحضر'],
+    educationalDoses: [
+      'الجرعة تعتمد على التقنية والتركيز وموقع الحقن وليست mg/kg واحدة لجميع الاستعمالات.',
+      'للارتشاح الموضعي عند البالغ: 0.25% حتى 175 mg دون Epinephrine، وحتى 225 mg مع Epinephrine في المستحضرات المناسبة وفق جداول الملصق.',
+      'لا يتجاوز المجموع اليومي عادةً 400 mg خلال 24 ساعة وفق ملصقات Bupivacaine HCl الحديثة، مع ضرورة خفض الجرعة في المرضى الهشّين أو عند زيادة خطر السمية.'
+    ],
     uses: ['التخدير والتسكين الموضعي أو الإقليمي | Local / regional anesthesia and analgesia'],
     contraindications: ['التخدير الإقليمي الوريدي Bier block | Intravenous regional anesthesia', 'فرط التحسس للبوبيفاكائين أو مخدرات الأميد | Amide local anesthetic hypersensitivity', 'الحصر جانب عنق الرحم في التوليد | Obstetrical paracervical block'],
     warnings: ['سمية قلبية وعصبية مرتبطة بالجرعة | Dose-related cardiotoxicity / neurotoxicity', 'الحقن داخل وعائي غير المقصود قد يسبب LAST شديدًا | Severe local anesthetic systemic toxicity', 'يجب إعطاء جرعات متدرجة ومراقبة الاستجابة عند الحصر الكبير'],
