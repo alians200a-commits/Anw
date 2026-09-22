@@ -59,7 +59,7 @@ export function BottomNav({ active, onChange }: BottomNavProps) {
                       : 'bg-[#EEF3F6] text-[#315672]')
                   }
                 >
-                  <AnimatedIcon active={isActive} variant={item.animation}>
+                  <AnimatedIcon active={isActive} ambient={isActive} variant={item.animation}>
                     <Icon size={19} weight={isActive ? 'fill' : 'regular'} />
                   </AnimatedIcon>
                 </span>
