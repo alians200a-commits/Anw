@@ -4,10 +4,10 @@ Selection rule: best semantically accurate IconScout medical Lottie → Flaticon
 
 | App area | Arabic label | Selected IconScout primary | IconScout ID | Current animated fallback |
 |---|---|---|---:|---|
-| home | الرئيسية | Mobile Health App | 7140714 | Flaticon Home animated |
+| home | الرئيسية | Mobile Health App | 7140714 | Flaticon Health animated |
 | guide | الدليل | Medical Record | 10435818 | Flaticon Medical History animated |
 | learn | تعلّم | Microscope | 7140713 | Flaticon Microscope animated |
-| saved | المحفوظات | Health Record | 7140721 | Flaticon Bookmark animated |
+| saved | المحفوظات | Health Record | 7140721 | Flaticon Medical Record animated |
 | drugs | الأدوية | Syringe And Bottle | 9709030 | Flaticon Syringe Injection animated |
 | equipment | عربة التخدير والمعدات | Anesthesia Machine | 12020193 | Flaticon Health Monitoring animated |
 | equipment/gas | الغازات والضغط | Oxygen Cylinder | 9429418 | Flaticon Oxygen animated |
