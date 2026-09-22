@@ -910,7 +910,10 @@ export const CLINICAL_GUIDES: ClinicalGuide[] = [
         items: [
           'ECG، ضغط الدم | NIBP، مقياس التأكسج | Pulse oximeter، قياس CO₂ الزفيري | Capnography عند التخدير العام/التهوية.',
           'توفر أدوية التخدير والأدوية الإسعافية المناسبة للحالة | Anesthetic / emergency drugs.',
-          'وصول وريدي وخطة السوائل/الدم عند الحاجة | IV access / fluids / blood plan.'
+          'وصول وريدي وخطة السوائل/الدم عند الحاجة | IV access / fluids / blood plan.',
+          'إذا كانت الخطة Neuraxial/Regional تُجهز الأدوية والأدوات الخاصة مثل المخدر الموضعي والإبرة أو القسطرة المناسبة قبل البدء.',
+          'توفر وسيلة تهوية يدوية احتياطية مثل Self-inflating bag / BVM عند تعطل عربة التخدير أو مصدر التهوية.',
+          'التأكد من وجود الفريق/المساعدة المطلوبة قبل بدء الحالة، خصوصًا إذا كانت الحالة أو مجرى الهواء عاليي الخطورة.'
         ]
       }
     ],
@@ -939,15 +942,18 @@ export const CLINICAL_GUIDES: ClinicalGuide[] = [
         title: 'العناية بالعين | Eye care',
         items: [
           'إغلاق الجفنين وحماية القرنية | Eyelid closure / corneal protection.',
+          'يمكن استخدام شريط لاصق مناسب، ومع بعض الحالات/البروتوكولات مرهم أو وسيلة ترطيب واقية للقرنية | Tape / protective lubrication.',
           'تجنب الضغط المباشر على العين | Avoid direct ocular pressure.'
         ]
       },
       {
         title: 'التنفس | Respiratory care',
         items: [
-          'الحفاظ على مجرى هوائي مفتوح | Patent airway.',
-          'التأكد من تهوية وأكسجة كافيتين | Adequate ventilation / oxygenation.',
-          'منع واستباق الاستنشاق الرئوي | Aspiration prevention ومراقبة الإفرازات والدم.'
+          'الحفاظ على مجرى هوائي مفتوح | Patent airway باستخدام وضعية مناسبة وJaw thrust أو وسيلة مجرى هوائي عند الحاجة.',
+          'يمكن استخدام OPA/NPA أو LMA/SGA أو ETT، وقد يلزم Tracheostomy في سياقات خاصة بحسب خطة مجرى الهواء.',
+          'الحفاظ على صدر ومجرى هوائي خاليين من الإفرازات والدم والقيء أو الأجسام الغريبة المرئية باستخدام الشفط عند الحاجة | Suction.',
+          'التأكد من تهوية وأكسجة كافيتين | Adequate ventilation / oxygenation؛ أثناء الحصار العضلي تكون التهوية الداعمة مطلوبة حتى عودة وظيفة التنفس.',
+          'منع واستباق الاستنشاق الرئوي | Aspiration prevention.'
         ]
       }
     ],
