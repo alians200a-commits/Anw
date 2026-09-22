@@ -61,24 +61,26 @@ export const MEDICAL_SITE_ICON_ASSETS: Record<MedicalSiteIconName, AssetRecord> 
     animatedSrc: 'https://cdn-icons-gif.flaticon.com/18996/18996514.gif'
   },
   drugs: {
-    iconScoutLabel: 'Syringe + vial / ampoule',
-    iconScoutPage: 'https://iconscout.com/lottie-animations/syringe-anesthesia-injection-drugs-medicine',
-    flaticonId: 19031949,
-    flaticonPage: 'https://www.flaticon.com/free-animated-icon/medicine-bottle_19031949',
-    staticSrc: 'https://cdn-icons-png.flaticon.com/512/19031/19031949.png',
-    animatedSrc: 'https://cdn-icons-gif.flaticon.com/19031/19031949.gif'
+    iconScoutId: 9709030,
+    iconScoutLabel: 'Syringe And Bottle',
+    iconScoutPage: 'https://iconscout.com/lottie-animation/syringe-and-bottle-animation_9709030',
+    flaticonId: 19036725,
+    flaticonPage: 'https://www.flaticon.com/free-animated-icon/syringe-injection_19036725',
+    staticSrc: 'https://cdn-icons-png.flaticon.com/512/19036/19036725.png',
+    animatedSrc: 'https://cdn-icons-gif.flaticon.com/19036/19036725.gif'
   },
   equipment: {
-    iconScoutLabel: 'Anesthesia machine / laryngoscope / airway equipment',
-    iconScoutPage: 'https://iconscout.com/lottie-animations/anesthesia-machine',
-    flaticonId: 10606547,
-    flaticonPage: 'https://www.flaticon.com/free-animated-icon/scalpel_10606547',
-    staticSrc: 'https://cdn-icons-png.flaticon.com/512/10606/10606547.png',
-    animatedSrc: 'https://cdn-icons-gif.flaticon.com/10606/10606547.gif'
+    iconScoutId: 12020193,
+    iconScoutLabel: 'Anesthesia Machine',
+    iconScoutPage: 'https://iconscout.com/lottie-animation/anesthesia-machine-animation_12020193',
+    flaticonId: 18995029,
+    flaticonPage: 'https://www.flaticon.com/free-animated-icon/health-monitoring_18995029',
+    staticSrc: 'https://cdn-icons-png.flaticon.com/512/18995/18995029.png',
+    animatedSrc: 'https://cdn-icons-gif.flaticon.com/18995/18995029.gif'
   },
   fluids: {
-    iconScoutLabel: 'IV bag / infusion',
-    iconScoutPage: 'https://iconscout.com/lottie-animations/iv-infusion-bottle',
+    iconScoutLabel: 'IV Bag',
+    iconScoutPage: 'https://iconscout.com/lottie-animation/iv-bag-11577392_9449357',
     flaticonId: 19017296,
     flaticonPage: 'https://www.flaticon.com/free-animated-icon/iv-bag_19017296',
     staticSrc: 'https://cdn-icons-png.flaticon.com/512/19017/19017296.png',
