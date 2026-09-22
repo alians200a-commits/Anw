@@ -29,5 +29,8 @@ jobs:
       - name: Type check
         run: npm run lint
 
+      - name: Content audit
+        run: npm run audit:content
+
       - name: Build
         run: npm run build
