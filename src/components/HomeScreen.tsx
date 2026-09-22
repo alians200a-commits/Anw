@@ -25,6 +25,7 @@ import {
   NotificationStackMenu,
   type StackMenuItem
 } from './ui/NotificationStackMenu';
+import { DALEELI_ANIMATED_ASSETS } from './ui/RemoteAnimatedAssetIcon';
 
 interface HomeScreenProps {
   openGuide: (
@@ -235,6 +236,7 @@ export function HomeScreen({ openGuide }: HomeScreenProps) {
           title="الدليل التخديري"
           description="أدوية، سوائل، معدات، مراحل التخدير، إجراءات ومصطلحات"
           icon={<BookOpenText size={22} weight="bold" />}
+          animatedIconSrc={DALEELI_ANIMATED_ASSETS.guide}
           items={guideItems}
         />
       </section>

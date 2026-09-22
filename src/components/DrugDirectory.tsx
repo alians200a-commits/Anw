@@ -17,6 +17,7 @@ import {
   type StackMenuItem
 } from './ui/NotificationStackMenu';
 import { AnimatedIcon } from './ui/AnimatedIcon';
+import { DALEELI_ANIMATED_ASSETS } from './ui/RemoteAnimatedAssetIcon';
 
 interface DrugDirectoryProps {
   favorites: Set<string>;
@@ -106,6 +107,7 @@ export function DrugDirectory({
         title={currentFilter}
         description="تصنيف الأدوية"
         icon={<MedicinesHealthIcon className="h-[22px] w-[22px]" />}
+        animatedIconSrc={DALEELI_ANIMATED_ASSETS.medicine}
         items={filterItems}
         selectedId={classification}
       />
