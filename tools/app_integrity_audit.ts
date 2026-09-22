@@ -354,6 +354,22 @@ if (/<option[^>]*>[^<]*\|[^<]*<\/option>/.test(guideScreen)) {
 
 // Search and Favorites behavior are protected as functional contracts.
 const appCode = readFileSync('src/App.tsx', 'utf8');
+const inactivePrototypeComponents = [
+  'ClinicalQuiz',
+  'ClinicalSimulator',
+  'FlashcardModal',
+  'MacAndMetabolismVisualizer',
+  'SuxApnoeaProtocol',
+  'TermsDictionary'
+];
+
+for (const component of inactivePrototypeComponents) {
+  if (appCode.includes(`./components/${component}`)) {
+    errors.push(`App: prototype ${component} was activated without release integration review`);
+  }
+}
+
+
 const homeCode = readFileSync('src/components/HomeScreen.tsx', 'utf8');
 const favoritesCode = readFileSync('src/components/FavoritesScreen.tsx', 'utf8');
 const drugDirectoryCode = readFileSync('src/components/DrugDirectory.tsx', 'utf8');
