@@ -17,6 +17,7 @@ import { ANESTHESIA_STAGE_GUIDE_IDS } from '../data/anesthesiaStages';
 import { INTRAVENOUS_FLUIDS } from '../data/fluids';
 import type { GuideSection } from './GuideScreen';
 import { MedicinesHealthIcon } from './MedicalIcons';
+import { MEDICAL_ANIMATED_GIFS } from '../data/animatedMedicalIcons';
 import {
   MorphingSearch,
   type MorphingSearchItem
@@ -235,6 +236,7 @@ export function HomeScreen({ openGuide }: HomeScreenProps) {
           title="الدليل التخديري"
           description="أدوية، سوائل، معدات، مراحل التخدير، إجراءات ومصطلحات"
           icon={<BookOpenText size={22} weight="bold" />}
+          animatedIconSrc={MEDICAL_ANIMATED_GIFS.clinical}
           items={guideItems}
         />
       </section>
