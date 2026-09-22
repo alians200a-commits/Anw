@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { Heart, MagnifyingGlass, SpeakerHigh, TextAa } from '@phosphor-icons/react';
 import { CLINICAL_TERMS } from '../data/clinicalTerms';
 import { playPronunciation } from '../utils/speech';
+import { BilingualLabel } from './BilingualLabel';
 
 interface AbbreviationsDirectoryProps {
   favorites: Set<string>;
@@ -75,12 +76,12 @@ export function AbbreviationsDirectory({ favorites, onToggleFavorite, initialQue
                     <h3 className="text-base font-black text-[#6C4AA5]" dir="ltr">{term.abbr}</h3>
                     <TextAa size={18} className="text-[#81748A]" />
                   </div>
-                  <p className="mt-1 text-xs font-bold text-[#34293F]" dir="ltr">{term.en}</p>
-                  <p className="mt-1 text-[11px] text-[#6E6477]">{term.ar}</p>
+                  <p className="mt-1 text-[11px] font-bold text-[#34293F]">{term.ar}</p>
+                  <p className="mt-1 text-xs text-[#6E6477]" dir="ltr">{term.en}</p>
                   <p className="mt-2 text-[10px] leading-5 text-[#766D7E]">{term.definition}</p>
                   {term.clinicalNote && (
                     <div className="mt-2 border-r-2 border-[#6C4AA5]/50 pr-2.5">
-                      <p className="text-[9px] font-black text-[#6C4AA5]">ملاحظة تخديرية | Clinical note</p>
+                      <BilingualLabel label="ملاحظة تخديرية | Clinical note" className="text-[9px] font-black text-[#6C4AA5]" />
                       <p className="mt-1 text-[10px] leading-5 text-[#756B7D]">{term.clinicalNote}</p>
                     </div>
                   )}

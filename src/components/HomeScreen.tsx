@@ -150,8 +150,8 @@ export function HomeScreen({ query, setQuery, openGuide, goTo }: HomeScreenProps
                   <MedicinesHealthIcon className="h-5 w-5" />
                 </div>
                 <div className="flex-1">
-                  <div className="text-xs font-black text-[#34293F]" dir="ltr">{drug.en}</div>
-                  <div className="mt-0.5 text-[10px] text-[#756E7C]">{drug.ar}</div>
+                  <div className="text-xs font-black text-[#34293F]">{drug.ar}</div>
+                  <div className="mt-0.5 text-[10px] text-[#756E7C]" dir="ltr">{drug.en}</div>
                 </div>
                 <CaretLeft size={14} className="text-[#8B7D97]" />
               </button>
@@ -237,7 +237,8 @@ export function HomeScreen({ query, setQuery, openGuide, goTo }: HomeScreenProps
                 </div>
                 <div className="flex-1">
                   <div className="text-xs font-black text-[#34293F]" dir="ltr">{term.abbr}</div>
-                  <div className="mt-0.5 text-[10px] text-[#756E7C]">{term.en}</div>
+                  <div className="mt-0.5 text-[10px] text-[#756E7C]">{term.ar}</div>
+                  <div className="mt-0.5 text-[9px] text-[#8A8190]" dir="ltr">{term.en}</div>
                 </div>
                 <CaretLeft size={14} className="text-[#8B7D97]" />
               </button>
@@ -253,8 +254,8 @@ export function HomeScreen({ query, setQuery, openGuide, goTo }: HomeScreenProps
                   <BookOpenText size={18} />
                 </div>
                 <div className="flex-1">
-                  <div className="text-xs font-black text-[#34293F]" dir="ltr">{term.en}</div>
-                  <div className="mt-0.5 text-[10px] text-[#756E7C]">{term.ar}</div>
+                  <div className="text-xs font-black text-[#34293F]">{term.ar}</div>
+                  <div className="mt-0.5 text-[10px] text-[#756E7C]" dir="ltr">{term.en}</div>
                 </div>
                 <CaretLeft size={14} className="text-[#8B7D97]" />
               </button>

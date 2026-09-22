@@ -5,6 +5,7 @@ import { ANESTHESIA_DRUGS } from '../data/drugs';
 import { DRUG_DETAILS } from '../data/drugDetails';
 import { CLINICAL_TERMS } from '../data/clinicalTerms';
 import { DrugDetailSheet } from './DrugDetailSheet';
+import { BilingualLabel } from './BilingualLabel';
 
 interface FavoritesScreenProps {
   favorites: Set<string>;
@@ -55,8 +56,8 @@ export function FavoritesScreen({ favorites, onToggleFavorite }: FavoritesScreen
                 className="flex min-w-0 flex-1 items-center justify-end gap-3 text-right"
               >
                 <div className="min-w-0 flex-1">
-                  <h3 className="truncate font-black text-[#34293F]" dir="ltr">{drug.en}</h3>
-                  <p className="mt-0.5 text-xs text-[#746B7A]">{drug.ar}</p>
+                  <h3 className="truncate font-black text-[#34293F]">{drug.ar}</h3>
+                  <p className="mt-0.5 text-xs text-[#746B7A]" dir="ltr">{drug.en}</p>
                   <p className="mt-1 text-[9px] font-bold text-[#6C4AA5]">افتح التفاصيل الدوائية</p>
                 </div>
                 <Pill className="h-5 w-5 shrink-0 text-[#6C4AA5]" />
@@ -82,8 +83,8 @@ export function FavoritesScreen({ favorites, onToggleFavorite }: FavoritesScreen
 
                 <div className="flex min-w-0 flex-1 items-start justify-end gap-3 text-right">
                   <div className="min-w-0 flex-1">
-                    <h3 className="truncate font-black text-[#34293F]" dir="ltr">{term.abbr || term.en}</h3>
-                    <p className="mt-0.5 text-xs text-[#746B7A]">{term.ar}</p>
+                    <h3 className="truncate font-black text-[#34293F]">{term.ar}</h3>
+                    <p className="mt-0.5 text-xs text-[#746B7A]" dir="ltr">{term.abbr ? `${term.abbr} — ${term.en}` : term.en}</p>
                   </div>
                   <BookOpenText className="h-5 w-5 shrink-0 text-[#6C4AA5]" />
                 </div>
@@ -95,7 +96,7 @@ export function FavoritesScreen({ favorites, onToggleFavorite }: FavoritesScreen
 
               {term.clinicalNote && (
                 <div className="mt-2 border-r-2 border-[#6C4AA5]/40 pr-2.5">
-                  <p className="text-[9px] font-black text-[#6C4AA5]">ملاحظة تخديرية | Clinical note</p>
+                  <BilingualLabel label="ملاحظة تخديرية | Clinical note" className="text-[9px] font-black text-[#6C4AA5]" />
                   <p className="mt-1 text-[10px] leading-5 text-[#756B7D]">{term.clinicalNote}</p>
                 </div>
               )}

@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { BookOpenText, Heart, MagnifyingGlass, SpeakerHigh } from '@phosphor-icons/react';
 import { CLINICAL_TERMS } from '../data/clinicalTerms';
 import { playPronunciation } from '../utils/speech';
+import { BilingualLabel } from './BilingualLabel';
 
 interface TermsDirectoryProps {
   favorites: Set<string>;
@@ -72,8 +73,8 @@ export function TermsDirectory({ favorites, onToggleFavorite, initialQuery = '' 
 
                 <div className="flex flex-1 items-start justify-end gap-3 text-right">
                   <div>
-                    <h3 className="text-sm font-black text-[#3D312B]" dir="ltr">{term.en}</h3>
-                    <p className="mt-1 text-xs font-bold text-[#6F625A]">{term.ar}</p>
+                    <h3 className="text-sm font-black text-[#3D312B]">{term.ar}</h3>
+                    <p className="mt-1 text-xs font-bold text-[#6F625A]" dir="ltr">{term.en}</p>
                   </div>
                   <div className="grid h-9 w-9 shrink-0 place-items-center rounded-xl border border-[#9A6B45]/12 bg-[#9A6B45]/7 text-[#9A6B45]">
                     <BookOpenText size={20} weight="regular" />
@@ -83,7 +84,7 @@ export function TermsDirectory({ favorites, onToggleFavorite, initialQuery = '' 
               <p className="mt-3 whitespace-pre-line text-[10px] leading-5 text-[#7D7068]">{term.definition}</p>
               {term.clinicalNote && (
                 <div className="mt-2 border-r-2 border-[#9A6B45]/50 pr-2.5">
-                  <p className="text-[9px] font-black text-[#9A6B45]">ملاحظة تخديرية | Clinical note</p>
+                  <BilingualLabel label="ملاحظة تخديرية | Clinical note" className="text-[9px] font-black text-[#9A6B45]" />
                   <p className="mt-1 text-[10px] leading-5 text-[#756A63]">{term.clinicalNote}</p>
                 </div>
               )}
