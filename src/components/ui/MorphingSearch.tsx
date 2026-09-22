@@ -49,6 +49,7 @@ export function MorphingSearch({
   const [activeIndex, setActiveIndex] = useState(0);
   const inputRef = useRef<HTMLInputElement>(null);
   const triggerRef = useRef<HTMLButtonElement>(null);
+  const dialogRef = useRef<HTMLDivElement>(null);
   const previousFocus = useRef<HTMLElement | null>(null);
   const reduceMotion = useReducedMotion();
 
@@ -151,10 +152,32 @@ export function MorphingSearch({
       }}
     >
       <motion.div
+        ref={dialogRef}
         layoutId="daleeli-morph-search"
         role="dialog"
         aria-modal="true"
         aria-label="البحث في دليلي"
+        onKeyDown={(event) => {
+          if (event.key !== 'Tab') return;
+
+          const focusable = Array.from(
+            dialogRef.current?.querySelectorAll<HTMLElement>(
+              'input, button, [href], [tabindex]:not([tabindex="-1"])'
+            ) ?? []
+          ).filter((element) => !element.hasAttribute('disabled'));
+
+          if (!focusable.length) return;
+          const first = focusable[0];
+          const last = focusable[focusable.length - 1];
+
+          if (event.shiftKey && document.activeElement === first) {
+            event.preventDefault();
+            last.focus();
+          } else if (!event.shiftKey && document.activeElement === last) {
+            event.preventDefault();
+            first.focus();
+          }
+        }}
         className="w-full max-w-2xl overflow-hidden rounded-[22px] border border-[#DCE4EA] bg-white shadow-[0_24px_70px_rgba(3,20,34,0.28)]"
         transition={
           reduceMotion
