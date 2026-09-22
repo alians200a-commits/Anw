@@ -42,7 +42,7 @@ export function GuideScreen({
           <option value="drugs">الأدوية</option>
           <option value="equipment">الأجهزة والأدوات</option>
           <option value="fluids">السوائل الوريدية</option>
-          <option value="stages">مراحل التخدير | Stages of Anesthesia</option>
+          <option value="stages">مراحل التخدير</option>
           <option value="clinical">المفاهيم والإجراءات</option>
           <option value="terms">المصطلحات</option>
           <option value="abbreviations">الاختصارات</option>
