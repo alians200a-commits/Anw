@@ -849,7 +849,8 @@ export const CLINICAL_GUIDES: ClinicalGuide[] = [
       {
         title: 'مثال تخديري | Anesthesia example',
         items: [
-          'المرخيات غير المزيلة للاستقطاب | Nondepolarizing neuromuscular blockers تنافس الأستيل كولين | Acetylcholine على المستقبل النيكوتيني في الوصلة العصبية العضلية.'
+          'المرخيات غير المزيلة للاستقطاب | Nondepolarizing neuromuscular blockers تنافس الأستيل كولين | Acetylcholine على المستقبل النيكوتيني في الوصلة العصبية العضلية.',
+          'يعتمد عكس هذا الحصار تقليديًا بالنيوستيغمين | Neostigmine على تثبيط Acetylcholinesterase ورفع تركيز Acetylcholine في الوصلة العصبية العضلية، فينافس المرخي غير المزيل للاستقطاب على المستقبل؛ لذلك لا يُستخدم كعكس أعمى للحصار العميق دون تقييم التعافي.'
         ]
       }
     ],
