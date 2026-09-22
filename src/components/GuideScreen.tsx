@@ -17,6 +17,7 @@ import {
   type StackMenuItem
 } from './ui/NotificationStackMenu';
 import type { DrugClass } from '../data/drugs';
+import { MEDICAL_ANIMATED_GIFS } from '../data/animatedMedicalIcons';
 
 export type GuideSection =
   | 'drugs'
@@ -117,6 +118,7 @@ export function GuideScreen({
           title={sectionLabels[section]}
           description="اضغط لتغيير قسم الدليل"
           icon={<BookOpenText size={22} weight="bold" />}
+          animatedIconSrc={MEDICAL_ANIMATED_GIFS[section]}
           items={sectionItems}
           selectedId={section}
         />
