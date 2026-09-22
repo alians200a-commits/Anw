@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useRef } from 'react';
 import { motion } from 'motion/react';
 import {
   CaretDown,
@@ -13,6 +13,7 @@ import { DRUG_CLASS_LABELS, type AnesthesiaDrug } from '../data/drugs';
 import type { DrugDetail } from '../data/drugDetails';
 import { BilingualLabel } from './BilingualLabel';
 import { MixedDirectionText } from './MixedDirectionText';
+import { useModalSheetA11y } from '../hooks/useModalSheetA11y';
 
 interface DrugDetailSheetProps {
   drug: AnesthesiaDrug;
@@ -263,20 +264,10 @@ function DetailSection({ title, items, tone }: DetailSectionProps) {
 }
 
 export function DrugDetailSheet({ drug, detail, onClose }: DrugDetailSheetProps) {
-  useEffect(() => {
-    const previous = document.body.style.overflow;
-    document.body.style.overflow = 'hidden';
 
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') onClose();
-    };
-    window.addEventListener('keydown', handleKeyDown);
 
-    return () => {
-      document.body.style.overflow = previous;
-      window.removeEventListener('keydown', handleKeyDown);
-    };
-  }, [onClose]);
+  const dialogRef = useRef<HTMLDivElement>(null);
+  useModalSheetA11y(dialogRef, onClose);
 
   return (
     <motion.div
@@ -287,6 +278,8 @@ export function DrugDetailSheet({ drug, detail, onClose }: DrugDetailSheetProps)
       onClick={onClose}
     >
       <motion.div
+        ref={dialogRef}
+        tabIndex={-1}
         role="dialog"
         aria-modal="true"
         aria-label={`تفاصيل ${drug.ar}`}
