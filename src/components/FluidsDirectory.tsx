@@ -34,15 +34,6 @@ function FluidList({
     </div>
   );
 
-  if (items.length <= 1) {
-    return (
-      <section className={'rounded-2xl border px-3.5 py-3 ' + box}>
-        <p className={'text-[10px] font-black ' + titleClass}>{title}</p>
-        <div className="mt-2">{body}</div>
-      </section>
-    );
-  }
-
   return (
     <details className={'group rounded-2xl border px-3.5 py-3 ' + box}>
       <summary className="flex cursor-pointer list-none items-center justify-between gap-3">
