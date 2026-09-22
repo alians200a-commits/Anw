@@ -108,6 +108,14 @@ export function BottomNav({ active, onChange }: BottomNavProps) {
           );
         })}
       </Dock>
+      <a
+        href="https://www.flaticon.com/"
+        target="_blank"
+        rel="noreferrer"
+        className="mx-auto mt-1 block w-fit text-[9px] font-semibold leading-none text-white/55 underline-offset-2 hover:text-white/80 hover:underline"
+      >
+        Animated icons by Magnific · Flaticon
+      </a>
     </nav>
   );
 }
