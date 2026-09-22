@@ -55,16 +55,32 @@ export function MorphingSearch({
 
   const filteredItems = useMemo(() => {
     const needle = query.trim().toLowerCase();
-    if (!needle) return items.slice(0, 10);
+    if (!needle) return [];
 
     return items
-      .filter((item) =>
-        [item.title, item.description ?? '', ...(item.keywords ?? [])]
-          .join(' ')
-          .toLowerCase()
-          .includes(needle)
-      )
-      .slice(0, 14);
+      .map((item) => {
+        const title = item.title.toLowerCase();
+        const description = (item.description ?? '').toLowerCase();
+        const keywords = (item.keywords ?? []).map((value) => value.toLowerCase());
+        const searchable = [title, description, ...keywords];
+
+        let score = 0;
+        if (title === needle || keywords.includes(needle)) score = 3;
+        else if (
+          title.startsWith(needle) ||
+          keywords.some((value) => value.startsWith(needle))
+        ) {
+          score = 2;
+        } else if (searchable.some((value) => value.includes(needle))) {
+          score = 1;
+        }
+
+        return { item, score };
+      })
+      .filter((entry) => entry.score > 0)
+      .sort((a, b) => b.score - a.score)
+      .slice(0, 14)
+      .map((entry) => entry.item);
   }, [items, query]);
 
   const updateQuery = useCallback(
@@ -223,7 +239,14 @@ export function MorphingSearch({
           aria-label="نتائج البحث"
           className="max-h-[min(68vh,34rem)] overflow-y-auto p-2"
         >
-          {filteredItems.length ? (
+          {!query.trim() ? (
+            <div className="px-4 py-9 text-center">
+              <p className="text-xs font-black text-[#405E75]">ابدأ بالكتابة للبحث</p>
+              <p className="mt-1.5 text-[10px] font-semibold text-[#778793]">
+                دواء، جهاز، سائل، مصطلح أو إجراء
+              </p>
+            </div>
+          ) : filteredItems.length ? (
             filteredItems.map((item, index) => (
               <button
                 key={item.id}
@@ -246,7 +269,10 @@ export function MorphingSearch({
                   </span>
                 ) : null}
                 <span className="min-w-0 flex-1">
-                  <span className="block truncate text-[13px] font-black text-[#183149]">
+                  <span
+                    dir="auto"
+                    className="block truncate text-[13px] font-black text-[#183149]"
+                  >
                     {item.title}
                   </span>
                   {item.description ? (
