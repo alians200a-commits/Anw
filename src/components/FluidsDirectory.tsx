@@ -226,7 +226,7 @@ export function FluidsDirectory({
               </div>
             </div>
             <div className="mt-2 flex items-center justify-between border-t border-[#DDE6EB] pt-2">
-              <span className="text-[11px] text-[#657784]">تركيب • استخدام • محاذير</span>
+              <span className="text-[11px] text-[#5F7280]">تركيب • استخدام • محاذير</span>
               <Drop size={15} weight="fill" className="text-[#405E75]" />
             </div>
           </motion.button>
@@ -234,7 +234,7 @@ export function FluidsDirectory({
       </div>
 
       {filtered.length === 0 && (
-        <div className="rounded-[18px] border border-dashed border-[#C9D6DF] bg-[#F8FAFB] p-7 text-center text-xs text-[#667A89]">
+        <div className="rounded-[18px] border border-dashed border-[#C9D6DF] bg-[#F8FAFB] p-7 text-center text-xs text-[#5F7280]">
           ماكو سائل مطابق للبحث.
         </div>
       )}
