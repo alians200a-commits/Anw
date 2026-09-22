@@ -366,7 +366,7 @@ export const CLINICAL_GUIDES: ClinicalGuide[] = [
         title: 'المتابعة بعد العملية | Postoperative follow-up',
         items: [
           'تقييم وعلاج ألم ما بعد العملية | Postoperative pain.',
-          'مراقبة أي مشكلة مرتبطة بالتخدير خلال فترة ما بعد العملية بحسب الحالة وبروتوكول المؤسسة.',
+          'يركز المصدر على متابعة المشكلات المرتبطة بالتخدير خلال أول 24 ساعة بعد العملية؛ مدة المراقبة الفعلية تُفرد حسب حالة المريض ونوع التخدير وبروتوكول المؤسسة.',
           'استمرار تقييم مجرى الهواء والتنفس والدورة الدموية والغثيان والقيء قبل الانتقال أو الخروج.'
         ]
       }
@@ -974,9 +974,11 @@ export const CLINICAL_GUIDES: ClinicalGuide[] = [
       {
         title: 'التاريخ المرضي | History',
         items: [
-          'أمراض القلب والرئة والكلى والكبد والسكري | Cardiopulmonary / renal / hepatic / metabolic disease.',
-          'الأدوية والحساسية | Medications / allergies.',
+          'أعراض القلب والرئة المهمة مثل الذبحة | Angina، ضيق النفس الاضطجاعي | Orthopnea، تورم الكاحل، احتشاء عضلة قلب سابق وارتفاع الضغط.',
+          'أمراض الكلى والكبد والسكري واضطرابات الدم | Renal / hepatic / metabolic / hematologic disease.',
+          'الأدوية الحالية، بما فيها الستيرويدات والعلاجات المزمنة، والحساسية | Medications / steroids / allergies.',
           'تخدير سابق ومضاعفاته | Previous anesthesia / complications.',
+          'حالة الأسنان | Dentition لأنها قد تؤثر في خطة مجرى الهواء والتنبيب.',
           'التدخين والكحول والمواد الأخرى | Smoking / alcohol / substance use.',
           'الصيام وخطر الاستنشاق الرئوي | Fasting / aspiration risk.'
         ]
@@ -985,10 +987,11 @@ export const CLINICAL_GUIDES: ClinicalGuide[] = [
         title: 'الفحص | Examination',
         items: [
           'العلامات الحيوية | Vital signs وحالة الحجم | Volume status.',
-          'فحص القلب والرئة حسب الحاجة | Cardiopulmonary examination.',
-          'تقييم مجرى الهواء | Airway assessment.',
-          'الأسنان والوصول الوريدي | Dentition / IV access.',
-          'الوضع الوظيفي والهشاشة عند الحاجة | Functional status / frailty.'
+          'فحص القلب والرئة بالمعاينة والجس والقرع والتسمع عند الحاجة | Inspection / palpation / percussion / auscultation.',
+          'تقييم مجرى الهواء | Airway assessment وحالة الأسنان.',
+          'تقييم التغذية والسمنة | Nutrition / obesity والوضع الوظيفي أو الهشاشة عند الحاجة.',
+          'ملاحظة لون الجلد والعلامات العامة مثل الشحوب أو الزرقة أو اليرقان | Pallor / cyanosis / jaundice.',
+          'تقييم الوصول الوريدي | IV access قبل وضع الخطة.'
         ]
       },
       {
