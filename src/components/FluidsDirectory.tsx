@@ -158,7 +158,7 @@ export function FluidsDirectory({
     id: item.id,
     title: item.label,
     description: item.id === 'all' ? 'كل السوائل الوريدية' : 'تصفية هذا النوع',
-    leading: <MedicalSiteIcon name="fluids" play size={24} />,
+    leading: <MedicalSiteIcon name="fluids" play loop size={24} />,
     onSelect: () => setCategory(item.id as 'all' | FluidCategory)
   }));
 
@@ -203,7 +203,7 @@ export function FluidsDirectory({
       <NotificationStackMenu
         title={currentCategory}
         description="نوع السوائل الوريدية"
-        icon={<MedicalSiteIcon name="fluids" play size={27} />}
+        icon={<MedicalSiteIcon name="fluids" play loop size={27} />}
         items={categoryItems}
         selectedId={category}
       />
