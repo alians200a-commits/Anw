@@ -15,6 +15,7 @@ import {
   NotificationStackMenu,
   type StackMenuItem
 } from './ui/NotificationStackMenu';
+import { MedicalSiteIcon } from './ui/MedicalSiteIcon';
 
 function GuideItems({ title, items }: { title: string; items: string[] }) {
   const body = (
@@ -153,7 +154,7 @@ export function ClinicalGuidesDirectory({
     id: item.id,
     title: item.label,
     description: item.id === 'all' ? 'كل المفاهيم والإجراءات' : 'تصفية هذا القسم',
-    leading: <BookOpenText size={19} />,
+    leading: <MedicalSiteIcon name="clinical" size={24} />,
     onSelect: () => setCategory(item.id as 'all' | ClinicalGuideCategory)
   }));
 
@@ -200,7 +201,7 @@ export function ClinicalGuidesDirectory({
       <NotificationStackMenu
         title={currentCategory}
         description="تصنيف المفاهيم والإجراءات"
-        icon={<BookOpenText size={22} weight="bold" />}
+        icon={<MedicalSiteIcon name="clinical" size={27} />}
         items={categoryItems}
         selectedId={category}
       />
