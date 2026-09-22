@@ -221,7 +221,7 @@ export function EquipmentDirectory({
 
       <div className="space-y-2">
         {filtered.map((item, index) => (
-          <motion.button
+          <button
             key={item.id}
             type="button"
             onClick={() => setSelected(item)}
@@ -242,7 +242,7 @@ export function EquipmentDirectory({
             <div className="mt-2 border-t border-[#DDE6EB] pt-2 text-[11px] font-black text-[#405E75]">
               <BilingualLabel label="التفاصيل | Details" />
             </div>
-          </motion.button>
+          </button>
         ))}
       </div>
 
