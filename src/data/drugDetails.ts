@@ -10,6 +10,7 @@ export interface DrugDetail {
   warnings: string[];
   adverseEffects: string[];
   correction?: string;
+  clinicalNote?: string;
   sourcePages?: number[];
   sourceLabel?: string;
 }
@@ -17,6 +18,7 @@ export interface DrugDetail {
 export const DRUG_DETAILS: Record<string, DrugDetail> = {
   propofol: {
     feature: 'عامل تخدير وريدي سريع البدء وقصير المفعول نسبيًا، مع إفاقة سريعة وتأثير معروف بتقليل الغثيان والقيء بعد العملية.',
+    clinicalNote: 'بروبوفول عامل تخدير وريدي وليس استنشاقيًا. الربو ليس مانع استعمال روتينيًا؛ وتقييم حساسية البيض/الصويا يعتمد على تاريخ التفاعل ومكونات المستحضر المحدد لا على اسم الحساسية وحده.',
     mechanism: 'يعزز النقل المثبط عبر مستقبلات GABA-A | GABA-A receptor positive allosteric modulation، ما يؤدي إلى التنويم وفقدان الوعي.',
     tradeNames: ['Diprivan'],
     routes: ['وريدي | Intravenous (IV)'],
@@ -37,6 +39,7 @@ export const DRUG_DETAILS: Record<string, DrugDetail> = {
   },
   thiopental: {
     feature: 'باربيتورات سريع لبدء التخدير الوريدي ويخفض الاستقلاب الدماغي، لكنه لا يوفر تسكينًا للألم.',
+    clinicalNote: 'لا يوفر تسكينًا للألم. البورفيريا الحادة مانع مهم للباربيتورات، بينما الربو بحد ذاته ليس مانعًا مطلقًا.',
     mechanism: 'باربيتورات يعزز فعل GABA-A | GABA-A receptor enhancement ويثبط النشاط العصبي المركزي، ما ينتج التنويم | Hypnosis ومضاد الاختلاجات | Anticonvulsant effect.',
     tradeNames: ['Pentothal'],
     routes: ['وريدي | Intravenous (IV)'],
@@ -54,6 +57,7 @@ export const DRUG_DETAILS: Record<string, DrugDetail> = {
   },
   etomidate: {
     feature: 'منوم وريدي يتميز عادةً بتأثير أقل على ضغط الدم والدورة الدموية مقارنةً بعدة أدوية أخرى لبدء التخدير.',
+    clinicalNote: 'ميزة الثبات الدوري نسبية وليست ضمانًا لعدم هبوط الضغط. قد يثبط تصنيع الكورتيزول والألدوستيرون لعدة ساعات، لذلك لا يُستخدم كتسريب مطول.',
     mechanism: 'يعزز النقل المثبط عبر GABA-A | GABA-A receptor modulation ويعمل كمنوم وريدي دون تأثير مسكن مهم.',
     routes: ['وريدي | Intravenous (IV)'],
     educationalDoses: [
@@ -70,6 +74,7 @@ export const DRUG_DETAILS: Record<string, DrugDetail> = {
   },
   ketamine: {
     feature: 'مخدر انفصالي يجمع التخدير مع تسكين واضح، وغالبًا يحافظ على الضغط والتنفس التلقائي أفضل من كثير من المنومات الوريدية.',
+    clinicalNote: 'يحافظ غالبًا على الضغط والتنفس التلقائي أفضل من كثير من المنومات، لكنه لا يلغي الحاجة لمراقبة المجرى الهوائي والتهوية. ارتفاع ICP ليس مانعًا مطلقًا عامًا بحد ذاته.',
     mechanism: 'مضاد غير تنافسي لمستقبل NMDA | Noncompetitive NMDA receptor antagonist يسبب التخدير الانفصالي | Dissociative anesthesia مع تسكين واضح.',
     tradeNames: ['Ketalar'],
     routes: ['وريدي | Intravenous (IV)', 'عضلي | Intramuscular (IM)'],
@@ -88,6 +93,7 @@ export const DRUG_DETAILS: Record<string, DrugDetail> = {
   },
   sevoflurane: {
     feature: 'عامل استنشاقي قليل الذوبان نسبيًا في الدم، رائحته مقبولة وغير لاذع نسبيًا؛ لذلك يناسب بدء التخدير بالقناع خصوصًا لدى الأطفال، مع تحكم سريع نسبيًا بعمق التخدير وإفاقة سريعة.',
+    clinicalNote: 'مناسب لبدء التخدير بالقناع بسبب قلة تهييج مجرى الهواء نسبيًا، لكنه من محفزات فرط الحرارة الخبيث ويحتاج الانتباه إلى low-flow/Compound A حسب مدة وتركيز التعرض.',
     mechanism: 'عامل متطاير متعدد الأهداف يعزز النقل المثبط ويؤثر في قنوات أيونية متعددة | Multi-target volatile anesthetic actions.',
     tradeNames: ['Sevoflurane', 'Ultane'],
     routes: ['استنشاقي | Inhalational'],
@@ -105,6 +111,7 @@ export const DRUG_DETAILS: Record<string, DrugDetail> = {
   },
   isoflurane: {
     feature: 'عامل استنشاقي قوي ومناسب للمحافظة على التخدير، مع قابلية جيدة لتوسيع القصبات.',
+    clinicalNote: 'يمكن استخدامه للبدء والمحافظة حسب الملصق، لكنه عمليًا أقل ملاءمة لبدء التخدير بالقناع بسبب الرائحة اللاذعة وتهييج مجرى الهواء.',
     mechanism: 'عامل تخدير متطاير متعدد الأهداف في الجهاز العصبي المركزي | Multi-target volatile anesthetic.',
     tradeNames: ['Forane'],
     routes: ['استنشاقي | Inhalational'],
@@ -123,6 +130,7 @@ export const DRUG_DETAILS: Record<string, DrugDetail> = {
   },
   halothane: {
     feature: 'عامل استنشاقي تاريخي غير لاذع، لكنه أصبح أقل استخدامًا بسبب ملف السلامة مقارنةً بالعوامل الأحدث.',
+    clinicalNote: 'عامل تاريخي أصبح نادر الاستخدام في كثير من البيئات بسبب خطر التهاب الكبد وتحسيس القلب للكاتيكولامينات مقارنةً بعوامل أحدث.',
     mechanism: 'عامل متطاير يعزز GABA/Glycine ويثبط مسارات استثارية وينشط قنوات بوتاسيوم | Multi-target volatile anesthetic.',
     tradeNames: ['Fluothane'],
     routes: ['استنشاقي | Inhalational'],
@@ -139,6 +147,7 @@ export const DRUG_DETAILS: Record<string, DrugDetail> = {
   },
   'nitrous-oxide': {
     feature: 'غاز سريع الدخول والخروج ويوفر تسكينًا جيدًا، لكنه ضعيف القوة كمخدر عام إذا استُخدم منفردًا.',
+    clinicalNote: 'MAC النظري لأوكسيد النيتروز يتجاوز 100% عند البالغ متوسط العمر؛ لذلك لا يحقق تخديرًا جراحيًا بجرعة 1 MAC وحده عند الضغط الجوي ويُستخدم عادةً كعامل مساعد.',
     mechanism: 'يعمل أساسًا كمضاد غير تنافسي لمستقبل NMDA | NMDA receptor antagonism، وله مسارات إضافية مرتبطة بالتسكين.',
     routes: ['استنشاقي | Inhalational'],
     educationalDoses: [
@@ -435,6 +444,7 @@ export const DRUG_DETAILS: Record<string, DrugDetail> = {
   },
   methohexital: {
     feature: 'باربيتورات فائق القصر | Ultra-short-acting barbiturate سريع لبدء التخدير، ويُستخدم خصوصًا في الإجراءات القصيرة مثل العلاج بالصدمات الكهربائية | ECT.',
+    clinicalNote: 'باربيتورات فائق القصر مفيد للإجراءات القصيرة وECT. يحتاج مراقبة تنفسية وقلبية كاملة، والبورفيريا مانع مهم.',
     mechanism: 'يعزز النقل المثبط عبر مستقبلات GABA-A | GABA-A receptor potentiation، ما يؤدي إلى التنويم | Hypnosis وفقدان الوعي.',
     tradeNames: ['Brevital'],
     routes: ['وريدي | Intravenous (IV)'],
@@ -442,6 +452,7 @@ export const DRUG_DETAILS: Record<string, DrugDetail> = {
       'لبدء التخدير في البالغ: 1–1.5 mg/kg IV من محلول بتركيز لا يتجاوز 1%، ويُعطى تدريجيًا؛ الجرعة المعتادة تعطي تخديرًا لنحو 5–7 دقائق.',
       'للمحافظة أثناء الإجراءات القصيرة يمكن استخدام جرعات IV إضافية صغيرة أو تسريب مخفف حسب الملصق والاستجابة؛ الجرعة تُفرد ولا تُعامل كرقم ثابت.'
     ],
+    onsetDuration: ['بدء التأثير سريع بعد الحقن الوريدي، وجرعة البدء المعتادة توفر تخديرًا لنحو 5–7 دقائق قبل أن يتناقص التأثير سريعًا.'],
     uses: ['بدء التخدير العام | Induction of general anesthesia', 'التخدير القصير والعلاج بالصدمات الكهربائية | Short procedures / ECT'],
     contraindications: ['فرط التحسس للباربيتورات | Barbiturate hypersensitivity', 'البورفيريا الحادة | Acute porphyria'],
     warnings: ['تثبيط التنفس | Respiratory depression وانقطاع النفس | Apnea', 'هبوط الضغط | Hypotension', 'قد يزيد النشاط الاختلاجي/الحركات العضلية في بعض المرضى | Seizure-like activity / myoclonus'],
@@ -451,6 +462,7 @@ export const DRUG_DETAILS: Record<string, DrugDetail> = {
   },
   enflurane: {
     feature: 'عامل استنشاقي متطاير | Volatile anesthetic أقدم من العوامل الحديثة، وله ميل لزيادة النشاط الاختلاجي خصوصًا مع فرط التهوية.',
+    clinicalNote: 'عامل استنشاقي تاريخي قليل الاستخدام حاليًا؛ يزداد القلق من النشاط الاختلاجي مع فرط التهوية ونقص PaCO₂.',
     mechanism: 'عامل تخدير عام مستنشق | Inhaled general anesthetic يعمل عبر عدة أهداف عصبية مركزية وليس مستقبلًا منفردًا.',
     routes: ['استنشاقي | Inhalational'],
     educationalDoses: [
@@ -467,6 +479,7 @@ export const DRUG_DETAILS: Record<string, DrugDetail> = {
   },
   desflurane: {
     feature: 'من أقل العوامل المتطايرة ذوبانًا في الدم | Very low blood-gas solubility، لذلك يسمح بأسرع تغيرات تقريبًا في عمق التخدير وإفاقة سريعة جدًا.',
+    clinicalNote: 'سريع جدًا في تغيير عمق التخدير والإفاقة لكنه مهيج لمجرى الهواء. بدء التخدير به عند الأطفال ممنوع حسب الملصق، وفي البالغين ليس خيارًا روتينيًا مفضلًا للـmask induction.',
     mechanism: 'عامل تخدير استنشاقي متطاير | Volatile inhaled anesthetic متعدد الأهداف في الجهاز العصبي المركزي.',
     tradeNames: ['Suprane'],
     routes: ['استنشاقي | Inhalational'],

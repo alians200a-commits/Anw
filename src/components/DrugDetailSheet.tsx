@@ -322,6 +322,15 @@ export function DrugDetailSheet({ drug, detail, onClose }: DrugDetailSheetProps)
             </p>
           </section>
 
+          {detail.clinicalNote && (
+            <section className="rounded-2xl border border-[#F0DFC2] bg-[#FFF9EE] px-3.5 py-3">
+              <BilingualLabel label="ملاحظة سريرية | Clinical note" className="text-[10px] font-black text-[#8A6426]" />
+              <p className="mt-1.5 text-[11px] leading-5 text-[#5B5142]">
+                <BilingualMedicalText text={detail.clinicalNote} />
+              </p>
+            </section>
+          )}
+
           <DetailSection title="الاستخدامات | Uses" items={detail.uses} tone="use" />
           <ReferenceBlock title="آلية العمل | Mechanism" text={detail.mechanism} />
           <ReferenceBlock title="طرق الإعطاء | Routes" items={detail.routes} />
