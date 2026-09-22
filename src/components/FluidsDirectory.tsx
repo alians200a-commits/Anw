@@ -89,6 +89,13 @@ function FluidSheet({ item, onClose }: { item: IntravenousFluid; onClose: () => 
             <p className="mt-1.5 text-[12px] leading-6 text-[#455250]">{item.composition}</p>
           </section>
 
+          {item.clinicalNote && (
+            <section className="rounded-2xl border border-[#E8DFC9] bg-[#FFF9EE] px-3.5 py-3">
+              <BilingualLabel label="ملاحظة سريرية | Clinical note" className="text-[10px] font-black text-[#8A6426]" />
+              <p className="mt-1.5 text-[11px] leading-5 text-[#5B5142]">{item.clinicalNote}</p>
+            </section>
+          )}
+
           <FluidList title="الدور والاستخدام | Role" items={item.role} tone="use" />
           <FluidList title="محاذير | Cautions" items={item.cautions} tone="caution" />
 
@@ -120,6 +127,7 @@ export function FluidsDirectory({ initialQuery = '' }: { initialQuery?: string }
           item.composition,
           ...item.role,
           ...item.cautions,
+          item.clinicalNote ?? '',
           ...item.tags
         ].some((value) => value.toLowerCase().includes(normalized));
       return categoryMatch && queryMatch;

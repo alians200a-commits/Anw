@@ -130,6 +130,7 @@ for (const fluid of INTRAVENOUS_FLUIDS) {
   if (!fluid.role.length) errors.push(`fluid "${fluid.id}": no role`);
   if (!fluid.cautions.length) errors.push(`fluid "${fluid.id}": no cautions`);
   if (!fluid.tags.length) errors.push(`fluid "${fluid.id}": no tags`);
+  if (!nonEmpty(fluid.clinicalNote)) errors.push(`fluid "${fluid.id}": reviewed fluid missing clinicalNote`);
 }
 
 // Terms and abbreviations share one dataset.
