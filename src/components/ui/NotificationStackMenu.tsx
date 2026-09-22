@@ -176,14 +176,14 @@ export function NotificationStackMenu({
                     {item.title}
                   </span>
                   {item.description ? (
-                    <span className="mt-0.5 block text-[9px] font-semibold leading-4 text-[#6D7E8A]">
+                    <span className="mt-0.5 block text-[10px] font-semibold leading-4 text-[#6D7E8A]">
                       {item.description}
                     </span>
                   ) : null}
                 </span>
 
                 {item.trailing ? (
-                  <span className="shrink-0 rounded-full bg-[#EEF3F6] px-2 py-1 text-[8px] font-black text-[#536A7A]">
+                  <span className="shrink-0 rounded-full bg-[#EEF3F6] px-2 py-1 text-[10px] font-black text-[#536A7A]">
                     {item.trailing}
                   </span>
                 ) : null}
