@@ -119,6 +119,7 @@ export const CLINICAL_GUIDES: ClinicalGuide[] = [
       }
     ],
     correction: 'هذا التصنيف تاريخي ويصف علامات الإيثر أكثر من التخدير المتوازن الحديث؛ لا يُستخدم وحده لتحديد عمق التخدير الحالي.',
+    clinicalNote: 'مراحل Guedel تصنيف تاريخي وُصف أساسًا مع Ether. لا تُستخدم وحدها لتقدير عمق التخدير المتوازن الحديث، لأن المرخيات والأدوية المتعددة والمراقبة الحالية تغيّر العلامات السريرية التقليدية.',
     tags: ['Guedel','stages','depth','ether','عمق التخدير']
   },
   {
@@ -696,6 +697,7 @@ export const CLINICAL_GUIDES: ClinicalGuide[] = [
         ]
       }
     ],
+    clinicalNote: 'Neuromuscular blockers تسبب شللًا فقط ولا توفر فقدان وعي أو analgesia. بعد nondepolarizing block يُستخدم quantitative neuromuscular monitoring ويُستهدف TOF ratio ≥0.9 قبل extubation.',
     tags: ['neuromuscular blocker','muscle relaxant','suxamethonium','rocuronium','atracurium','pancuronium','reversal','TOF']
   },
 
@@ -737,6 +739,7 @@ export const CLINICAL_GUIDES: ClinicalGuide[] = [
         ]
       }
     ],
+    clinicalNote: 'البنزوديازيبينات توفر anxiolysis/sedation/amnesia ولا توفر analgesia. خطر respiratory depression يرتفع بوضوح عند دمجها مع opioids أو مثبطات CNS، لذلك تُعاير الجرعات ويُراقب مجرى الهواء والتهوية.',
     tags: ['benzodiazepines','midazolam','diazepam','lorazepam','premedication','sedation','amnesia']
   },
 
@@ -785,6 +788,7 @@ export const CLINICAL_GUIDES: ClinicalGuide[] = [
         ]
       }
     ],
+    clinicalNote: 'الأفيونات مسكنات قوية لكنها قد تسبب respiratory depression وsedation. وجود Naloxone لا يغني عن دعم Airway/Ventilation، وبعض الأفيونات القصيرة جدًا مثل Remifentanil تحتاج خطة analgesia بديلة قبل إيقاف التسريب.',
     tags: ['opioids','mu receptor','morphine','fentanyl','remifentanil','pethidine','analgesia','respiratory depression']
   },
 
@@ -1855,6 +1859,7 @@ export const CLINICAL_GUIDES: ClinicalGuide[] = [
       }
     ],
     correction: 'المصدر يذكر بعض التواريخ بصياغة مختصرة أو غير دقيقة، مثل topical local anesthesia عام 1844 وspinal anesthesia عام 1885. العرض السريري للكوكايين كموضعي عيني كان 1884، والتخدير النخاعي البشري الناجح يُنسب عادةً إلى August Bier عام 1898.',
+    clinicalNote: 'التواريخ التاريخية تُعرض هنا بعد تصحيح النقاط الملتبسة في المصدر؛ من الأمثلة Karl Koller عام 1884 للتخدير الموضعي العيني وAugust Bier عام 1898 للتخدير النخاعي البشري الناجح.',
     tags: ['history','ether','Morton','Wells','John Snow','تاريخ التخدير']
   },
   {
@@ -1886,6 +1891,7 @@ export const CLINICAL_GUIDES: ClinicalGuide[] = [
       }
     ],
     correction: 'النص القديم يوحي بأن “الحجم الحرج في الدهون” أو GABA وحدهما يفسران التخدير. الفهم الحالي متعدد الأهداف | Multi-target؛ مثلًا Nitrous oxide يعمل أساسًا عبر NMDA antagonism ولا يملك تأثيرًا مباشرًا رئيسيًا على GABA-A.',
+    clinicalNote: 'لا توجد آلية واحدة تفسر التخدير العام. الفهم الحديث Multi-target: بعض العوامل تعزز GABA-A/Glycine، وأخرى مثل Nitrous oxide تعتمد بدرجة مهمة على NMDA antagonism، مع تأثيرات على قنوات وشبكات متعددة.',
     tags: ['mechanism','Meyer Overton','GABA','NMDA','general anesthesia']
   },
   {
@@ -1918,6 +1924,7 @@ export const CLINICAL_GUIDES: ClinicalGuide[] = [
         ]
       }
     ],
+    clinicalNote: 'MAC مقياس سكاني لقوة العامل الاستنشاقي وليس هدفًا ثابتًا لكل مريض ولا يضمن وحده amnesia أو analgesia. ينخفض مع العمر ويتأثر بالأدوية والحرارة والحالة الفيزيولوجية.',
     tags: ['MAC','minimum alveolar concentration','volatile anesthetic','sevoflurane','isoflurane','desflurane']
   },
 
@@ -2026,6 +2033,7 @@ export const CLINICAL_GUIDES: ClinicalGuide[] = [
       }
     ],
     correction: 'الأرقام المطلقة مثل TLC=6 L أو RV=1.5 L أو FRC=3 L ليست “طبيعية ثابتة” لكل شخص؛ تختلف مع الطول والعمر والجنس والوضعية. كذلك FEV₁/FVC يُفسر بالحد الأدنى الطبيعي | Lower limit of normal بدل قاعدة 80% لجميع البالغين.',
+    clinicalNote: 'القيم المطلقة لأحجام الرئة ليست طبيعية ثابتة لكل شخص؛ تعتمد على العمر والطول والجنس والوضعية. كذلك FEV₁/FVC تُفسر بالنسبة للقيم المرجعية والـlower limit of normal لا بقاعدة 80% لجميع البالغين.',
     tags: ['lung volumes','TLC','FRC','FEV1','FVC','spirometry']
   },
   {
@@ -2183,6 +2191,7 @@ export const CLINICAL_GUIDES: ClinicalGuide[] = [
       }
     ],
     correction: 'لا تعتمد في التطبيق قاعدة “NPO deficit + third-space + 3:1 crystalloid” كحاسبة تلقائية؛ هذه وصفات قديمة قد تقود إلى إعطاء سوائل زائدة. إذا أضفنا حاسبة مستقبلًا فستكون أداة تعليمية تُظهر الافتراضات وتطلب بيانات المريض بدل إعطاء رقم نهائي بلا سياق.',
+    clinicalNote: 'قاعدة 4-2-1 وNPO deficit و3:1 وthird-space formulas تُحفظ هنا كتعليم تقليدي، وليست وصفة تلقائية لكل بالغ. التدبير الحديث يُفرد حسب الحجم، النزف، perfusion، القلب/الكلى، الشوارد والاستجابة.',
     tags: ['fluid calculation','4-2-1','fasting deficit','third space','goal directed fluid','سوائل','حساب السوائل']
   }
 ];

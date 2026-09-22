@@ -121,11 +121,29 @@ const REVIEWED_PERIOPERATIVE_GUIDES = new Set([
   'liver-disease-anesthesia'
 ]);
 
+const REVIEWED_FOUNDATION_GUIDES = new Set([
+  'types-of-anesthesia',
+  'general-anesthesia-components',
+  'guedel-stages',
+  'neuromuscular-blocking-drugs',
+  'benzodiazepines-in-anesthesia',
+  'opioids-in-anesthesia',
+  'pharmacokinetics',
+  'pharmacodynamics',
+  'anesthesia-history',
+  'general-anesthesia-mechanisms',
+  'minimum-alveolar-concentration',
+  'respiratory-muscle-mechanics',
+  'lung-volumes-capacities',
+  'perioperative-fluid-calculations'
+]);
+
 const REVIEWED_CLINICAL_GUIDES = new Set([
   ...REVIEWED_STAGE_GUIDES,
   ...REVIEWED_REGIONAL_GUIDES,
   ...REVIEWED_AIRWAY_GUIDES,
-  ...REVIEWED_PERIOPERATIVE_GUIDES
+  ...REVIEWED_PERIOPERATIVE_GUIDES,
+  ...REVIEWED_FOUNDATION_GUIDES
 ]);
 
 // Clinical guides.
@@ -138,6 +156,9 @@ for (const guide of CLINICAL_GUIDES) {
   if (!guide.tags.length) errors.push(`guide "${guide.id}": no tags`);
   if (REVIEWED_CLINICAL_GUIDES.has(guide.id) && guide.correction?.trim() && !nonEmpty(guide.clinicalNote)) {
     errors.push(`clinical guide "${guide.id}": reviewed correction missing clinicalNote`);
+  }
+  if (['neuromuscular-blocking-drugs','benzodiazepines-in-anesthesia','opioids-in-anesthesia','minimum-alveolar-concentration','perioperative-fluid-calculations'].includes(guide.id) && !nonEmpty(guide.clinicalNote)) {
+    errors.push(`clinical guide "${guide.id}": reviewed foundation safety guide missing clinicalNote`);
   }
   if (REVIEWED_AIRWAY_GUIDES.has(guide.id) && !nonEmpty(guide.clinicalNote)) {
     errors.push(`clinical guide "${guide.id}": reviewed airway guide missing clinicalNote`);
@@ -346,7 +367,7 @@ if (errors.length) {
 console.log('App integrity audit passed.');
 console.log(`Drugs: ${ANESTHESIA_DRUGS.length}`);
 console.log(`Clinical guides: ${CLINICAL_GUIDES.length}`);
-console.log(`Reviewed clinical guides: ${REVIEWED_CLINICAL_GUIDES.size}/${CLINICAL_GUIDES.length} (stages: ${REVIEWED_STAGE_GUIDES.size}, regional: ${REVIEWED_REGIONAL_GUIDES.size}, airway: ${REVIEWED_AIRWAY_GUIDES.size}, perioperative: ${REVIEWED_PERIOPERATIVE_GUIDES.size})`);
+console.log(`Reviewed clinical guides: ${REVIEWED_CLINICAL_GUIDES.size}/${CLINICAL_GUIDES.length} (stages: ${REVIEWED_STAGE_GUIDES.size}, regional: ${REVIEWED_REGIONAL_GUIDES.size}, airway: ${REVIEWED_AIRWAY_GUIDES.size}, perioperative: ${REVIEWED_PERIOPERATIVE_GUIDES.size}, foundation: ${REVIEWED_FOUNDATION_GUIDES.size})`);
 console.log(`Stage guide references: ${stageGuideRefs.size}`);
 console.log(`Equipment: ${ANESTHESIA_EQUIPMENT.length}`);
 console.log(`Reviewed equipment: ${REVIEWED_EQUIPMENT.size}/${ANESTHESIA_EQUIPMENT.length}`);
