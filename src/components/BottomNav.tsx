@@ -36,6 +36,7 @@ export function BottomNav({ active, onChange }: BottomNavProps) {
         iconSize={52}
         iconMagnification={60}
         iconDistance={92}
+        disableMagnification
         className="mx-auto flex h-[62px] max-w-md items-center justify-around gap-1 rounded-[22px] border border-white/70 bg-white/95 px-1.5 shadow-[0_10px_30px_rgba(0,0,0,0.22)] backdrop-blur-xl"
       >
         {items.map((item) => {
@@ -59,7 +60,7 @@ export function BottomNav({ active, onChange }: BottomNavProps) {
                       : 'bg-[#EEF3F6] text-[#315672]')
                   }
                 >
-                  <AnimatedIcon active={isActive} ambient={isActive} variant={item.animation}>
+                  <AnimatedIcon active={isActive} variant={item.animation}>
                     <Icon size={19} weight={isActive ? 'fill' : 'regular'} />
                   </AnimatedIcon>
                 </span>
