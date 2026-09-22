@@ -9,7 +9,7 @@ export function GamesHub() {
             <h2 className="text-lg font-black text-[#183149]">
               تعلّم واختبر نفسك
             </h2>
-            <p className="mt-1 text-[11px] font-semibold leading-5 text-[#657784]">
+            <p className="mt-1 text-[11px] font-semibold leading-5 text-[#5F7280]">
               قسم الأنشطة التعليمية والاختبارات قيد التجهيز.
             </p>
           </div>
@@ -22,7 +22,7 @@ export function GamesHub() {
 
       <div className="rounded-[18px] border border-dashed border-[#C9D6DF] bg-white px-4 py-6 text-center">
         <p className="text-[11px] font-black text-[#405E75]">قريباً</p>
-        <p className="mt-1.5 text-[11px] font-semibold leading-5 text-[#667A89]">
+        <p className="mt-1.5 text-[11px] font-semibold leading-5 text-[#5F7280]">
           ستظهر هنا الأنشطة والاختبارات بعد اكتمال تجهيزها.
         </p>
       </div>
