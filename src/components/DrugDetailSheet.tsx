@@ -266,10 +266,17 @@ export function DrugDetailSheet({ drug, detail, onClose }: DrugDetailSheetProps)
   useEffect(() => {
     const previous = document.body.style.overflow;
     document.body.style.overflow = 'hidden';
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') onClose();
+    };
+    window.addEventListener('keydown', handleKeyDown);
+
     return () => {
       document.body.style.overflow = previous;
+      window.removeEventListener('keydown', handleKeyDown);
     };
-  }, []);
+  }, [onClose]);
 
   return (
     <motion.div
@@ -280,6 +287,8 @@ export function DrugDetailSheet({ drug, detail, onClose }: DrugDetailSheetProps)
       onClick={onClose}
     >
       <motion.div
+        role="dialog"
+        aria-modal="true"
         className="absolute inset-x-0 bottom-0 mx-auto max-h-[90vh] w-full max-w-3xl overflow-y-auto rounded-t-[28px] border-t border-[#DCE5EA] bg-white shadow-2xl"
         initial={{ y: 40, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
