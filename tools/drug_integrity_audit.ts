@@ -17,6 +17,22 @@ const REVIEWED_BATCH_1 = new Set([
   'desflurane'
 ]);
 
+const REVIEWED_BATCH_2 = new Set([
+  'midazolam',
+  'diazepam',
+  'lorazepam',
+  'fentanyl',
+  'morphine',
+  'alfentanil',
+  'remifentanil',
+  'pethidine'
+]);
+
+const REVIEWED_DRUGS = new Set([
+  ...REVIEWED_BATCH_1,
+  ...REVIEWED_BATCH_2
+]);
+
 const hasIvRoute = (routes: string[] = []) =>
   routes.some((route) => /وريدي|intravenous|\biv\b/i.test(route));
 
@@ -66,7 +82,7 @@ for (const drug of ANESTHESIA_DRUGS) {
     errors.push(`${drug.id}: inhalational route conflicts with IV feature`);
   }
 
-  if (REVIEWED_BATCH_1.has(drug.id)) {
+  if (REVIEWED_DRUGS.has(drug.id)) {
     if (!detail.onsetDuration?.length) {
       errors.push(`${drug.id}: reviewed Batch 1 drug missing onset/duration`);
     }
@@ -100,6 +116,6 @@ if (errors.length) {
 
 console.log('Drug integrity audit passed.');
 console.log(`Core completeness: ${ANESTHESIA_DRUGS.length}/${ANESTHESIA_DRUGS.length}`);
-console.log(`Reviewed Batch 1: ${REVIEWED_BATCH_1.size}/${REVIEWED_BATCH_1.size}`);
+console.log(`Reviewed drugs: ${REVIEWED_DRUGS.size}/${ANESTHESIA_DRUGS.length} (Batch 1: ${REVIEWED_BATCH_1.size}, Batch 2: ${REVIEWED_BATCH_2.size})`);
 console.log(`Onset/duration coverage: ${onsetComplete}/${ANESTHESIA_DRUGS.length}`);
 console.log(`Clinical-note coverage: ${notesComplete}/${ANESTHESIA_DRUGS.length}`);
