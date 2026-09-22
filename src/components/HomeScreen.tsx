@@ -18,7 +18,6 @@ import { ANESTHESIA_EQUIPMENT } from '../data/equipment';
 import { CLINICAL_GUIDES } from '../data/clinicalGuides';
 import { ANESTHESIA_STAGE_GUIDE_IDS } from '../data/anesthesiaStages';
 import { INTRAVENOUS_FLUIDS } from '../data/fluids';
-import type { AppTab } from './BottomNav';
 import type { GuideSection } from './GuideScreen';
 import { MedicinesHealthIcon } from './MedicalIcons';
 import {
@@ -36,19 +35,15 @@ export interface RecentGuideItem {
 }
 
 interface HomeScreenProps {
-  query: string;
-  setQuery: (value: string) => void;
   openGuide: (
     section: GuideSection,
     drugClass?: 'all' | DrugClass,
     initialQuery?: string
   ) => void;
-  goTo: (tab: AppTab) => void;
   recentItems: RecentGuideItem[];
 }
 
 export function HomeScreen({
-  setQuery,
   openGuide,
   recentItems
 }: HomeScreenProps) {
@@ -308,7 +303,6 @@ export function HomeScreen({
 
         <MorphingSearch
           items={searchItems}
-          onQueryChange={setQuery}
           placeholder="ابحث في دليلي"
         />
       </section>
