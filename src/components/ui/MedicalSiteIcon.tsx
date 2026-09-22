@@ -34,19 +34,19 @@ export const MEDICAL_SITE_ICON_ASSETS: Record<MedicalSiteIconName, AssetRecord> 
     iconScoutId: 7140714,
     iconScoutLabel: 'Mobile Health App',
     iconScoutPage: 'https://iconscout.com/lottie-animation/mobile-health-app-animation_7140714',
-    flaticonId: 17882602,
-    flaticonPage: 'https://www.flaticon.com/free-animated-icon/health_17882602',
-    staticSrc: 'https://cdn-icons-png.flaticon.com/512/17882/17882602.png',
-    animatedSrc: 'https://cdn-icons-gif.flaticon.com/17882/17882602.gif'
+    flaticonId: 18997667,
+    flaticonPage: 'https://www.flaticon.com/free-animated-icon/home_18997667',
+    staticSrc: 'https://cdn-icons-png.flaticon.com/512/18997/18997667.png',
+    animatedSrc: 'https://cdn-icons-gif.flaticon.com/18997/18997667.gif'
   },
   guide: {
     iconScoutId: 10435818,
     iconScoutLabel: 'Medical Record',
     iconScoutPage: 'https://iconscout.com/lottie-animation/medical-record-animation_10435818',
-    flaticonId: 11880586,
-    flaticonPage: 'https://www.flaticon.com/free-animated-icon/medical-history_11880586',
-    staticSrc: 'https://cdn-icons-png.flaticon.com/512/11880/11880586.png',
-    animatedSrc: 'https://cdn-icons-gif.flaticon.com/11880/11880586.gif'
+    flaticonId: 19031946,
+    flaticonPage: 'https://www.flaticon.com/free-animated-icon/medical-record_19031946',
+    staticSrc: 'https://cdn-icons-png.flaticon.com/512/19031/19031946.png',
+    animatedSrc: 'https://cdn-icons-gif.flaticon.com/19031/19031946.gif'
   },
   learn: {
     iconScoutId: 7140713,
@@ -61,19 +61,19 @@ export const MEDICAL_SITE_ICON_ASSETS: Record<MedicalSiteIconName, AssetRecord> 
     iconScoutId: 7140721,
     iconScoutLabel: 'Health Record',
     iconScoutPage: 'https://iconscout.com/lottie-animation/health-record-animation_7140721',
-    flaticonId: 19031946,
-    flaticonPage: 'https://www.flaticon.com/free-animated-icon/medical-record_19031946',
-    staticSrc: 'https://cdn-icons-png.flaticon.com/512/19031/19031946.png',
-    animatedSrc: 'https://cdn-icons-gif.flaticon.com/19031/19031946.gif'
+    flaticonId: 8121312,
+    flaticonPage: 'https://www.flaticon.com/free-animated-icon/bookmark_8121312',
+    staticSrc: 'https://cdn-icons-png.flaticon.com/512/8121/8121312.png',
+    animatedSrc: 'https://cdn-icons-gif.flaticon.com/8121/8121312.gif'
   },
   drugs: {
     iconScoutId: 9709030,
     iconScoutLabel: 'Syringe And Bottle',
     iconScoutPage: 'https://iconscout.com/lottie-animation/syringe-and-bottle-animation_9709030',
-    flaticonId: 19035782,
-    flaticonPage: 'https://www.flaticon.com/free-animated-icon/syringe_19035782',
-    staticSrc: 'https://cdn-icons-png.flaticon.com/512/19035/19035782.png',
-    animatedSrc: 'https://cdn-icons-gif.flaticon.com/19035/19035782.gif'
+    flaticonId: 6449631,
+    flaticonPage: 'https://www.flaticon.com/free-animated-icon/syringe_6449631',
+    staticSrc: 'https://cdn-icons-png.flaticon.com/512/6449/6449631.png',
+    animatedSrc: 'https://cdn-icons-gif.flaticon.com/6449/6449631.gif'
   },
   inhalational: {
     iconScoutId: 3644300,
@@ -88,10 +88,10 @@ export const MEDICAL_SITE_ICON_ASSETS: Record<MedicalSiteIconName, AssetRecord> 
     iconScoutId: 12020193,
     iconScoutLabel: 'Anesthesia Machine',
     iconScoutPage: 'https://iconscout.com/lottie-animation/anesthesia-machine-animation_12020193',
-    flaticonId: 18995029,
-    flaticonPage: 'https://www.flaticon.com/free-animated-icon/health-monitoring_18995029',
-    staticSrc: 'https://cdn-icons-png.flaticon.com/512/18995/18995029.png',
-    animatedSrc: 'https://cdn-icons-gif.flaticon.com/18995/18995029.gif'
+    flaticonId: 18995012,
+    flaticonPage: 'https://www.flaticon.com/free-animated-icon/health-monitoring_18995012',
+    staticSrc: 'https://cdn-icons-png.flaticon.com/512/18995/18995012.png',
+    animatedSrc: 'https://cdn-icons-gif.flaticon.com/18995/18995012.gif'
   },
   gas: {
     iconScoutId: 9429418,
@@ -124,10 +124,10 @@ export const MEDICAL_SITE_ICON_ASSETS: Record<MedicalSiteIconName, AssetRecord> 
     iconScoutId: 9472910,
     iconScoutLabel: 'Monitoring Patient Blood',
     iconScoutPage: 'https://iconscout.com/lottie-animation/monitoring-patient-blood-animation_9472910',
-    flaticonId: 18995029,
-    flaticonPage: 'https://www.flaticon.com/free-animated-icon/health-monitoring_18995029',
-    staticSrc: 'https://cdn-icons-png.flaticon.com/512/18995/18995029.png',
-    animatedSrc: 'https://cdn-icons-gif.flaticon.com/18995/18995029.gif'
+    flaticonId: 18995012,
+    flaticonPage: 'https://www.flaticon.com/free-animated-icon/health-monitoring_18995012',
+    staticSrc: 'https://cdn-icons-png.flaticon.com/512/18995/18995012.png',
+    animatedSrc: 'https://cdn-icons-gif.flaticon.com/18995/18995012.gif'
   },
   tools: {
     iconScoutId: 5950723,
@@ -141,10 +141,10 @@ export const MEDICAL_SITE_ICON_ASSETS: Record<MedicalSiteIconName, AssetRecord> 
   fluids: {
     iconScoutLabel: 'IV Bag',
     iconScoutPage: 'https://iconscout.com/lottie-animation/iv-bag-11577392_9449357',
-    flaticonId: 19017296,
-    flaticonPage: 'https://www.flaticon.com/free-animated-icon/iv-bag_19017296',
-    staticSrc: 'https://cdn-icons-png.flaticon.com/512/19017/19017296.png',
-    animatedSrc: 'https://cdn-icons-gif.flaticon.com/19017/19017296.gif'
+    flaticonId: 19021834,
+    flaticonPage: 'https://www.flaticon.com/free-animated-icon/iv-bag_19021834',
+    staticSrc: 'https://cdn-icons-png.flaticon.com/512/19021/19021834.png',
+    animatedSrc: 'https://cdn-icons-gif.flaticon.com/19021/19021834.gif'
   },
   stages: {
     iconScoutId: 3644300,
@@ -275,34 +275,34 @@ export function MedicalSiteIcon({
   }
 
   if (name === 'equipment') {
-    const monitor = MEDICAL_SITE_ICON_ASSETS.monitoring;
-    const mask = MEDICAL_SITE_ICON_ASSETS.inhalational;
-    const monitorSrc = play && !gifFailed ? monitor.animatedSrc : monitor.staticSrc;
-    const maskSrc = play && !gifFailed ? mask.animatedSrc : mask.staticSrc;
-
     return (
-      <span
+      <svg
         aria-hidden="true"
-        className={'relative inline-grid shrink-0 place-items-center overflow-visible ' + className}
-        style={{ width: size, height: size }}
+        viewBox="0 0 64 64"
+        width={size}
+        height={size}
+        className={'pointer-events-none shrink-0 overflow-visible ' + className}
       >
-        <img
-          src={monitorSrc}
-          alt=""
-          draggable={false}
-          decoding="async"
-          loading={play ? 'eager' : 'lazy'}
-          className="pointer-events-none absolute h-[82%] w-[82%] object-contain mix-blend-multiply"
-        />
-        <img
-          src={maskSrc}
-          alt=""
-          draggable={false}
-          decoding="async"
-          loading={play ? 'eager' : 'lazy'}
-          className="pointer-events-none absolute bottom-[-3%] left-[-3%] h-[48%] w-[48%] rounded-full object-contain mix-blend-multiply"
-        />
-      </span>
+        <g fill="none" strokeLinecap="round" strokeLinejoin="round">
+          <rect x="15" y="7" width="34" height="45" rx="7" fill="#F7FAFC" stroke="#173A63" strokeWidth="2.8" />
+          <rect x="20" y="12" width="24" height="15" rx="3.5" fill="#EEF3F8" stroke="#2F69A8" strokeWidth="2.4" />
+          <path d="M23 21h4l2.5-5 3.2 9 2.3-5h6" stroke="#D9A441" strokeWidth="2.4">
+            {play && loop ? <animate attributeName="stroke-dashoffset" from="18" to="0" dur="1.2s" repeatCount="indefinite" /> : null}
+          </path>
+          <circle cx="23" cy="34" r="2.2" fill="#D9A441" stroke="#173A63" strokeWidth="1.8" />
+          <circle cx="32" cy="34" r="2.2" fill="#D9A441" stroke="#173A63" strokeWidth="1.8" />
+          <path d="M39 31h6v8h-6z" fill="#D9E6F2" stroke="#173A63" strokeWidth="2" />
+          <path d="M44 35c6 0 8 4 8 8" stroke="#2F69A8" strokeWidth="2.4" />
+          <path d="M52 43c0 4-2.2 7-5.2 7s-5.2-3-5.2-7c0-3.5 2.2-6 5.2-6s5.2 2.5 5.2 6z" fill="#EEF3F8" stroke="#173A63" strokeWidth="2.4">
+            {play && loop ? <animate attributeName="d" dur="1.4s" repeatCount="indefinite"
+              values="M52 43c0 4-2.2 7-5.2 7s-5.2-3-5.2-7c0-3.5 2.2-6 5.2-6s5.2 2.5 5.2 6z;M52 43c0 4.6-2.2 8-5.2 8s-5.2-3.4-5.2-8c0-3 2.2-5.2 5.2-5.2S52 40 52 43z;M52 43c0 4-2.2 7-5.2 7s-5.2-3-5.2-7c0-3.5 2.2-6 5.2-6s5.2 2.5 5.2 6z" /> : null}
+          </path>
+          <path d="M21 41h22M21 46h22" stroke="#AFC3D6" strokeWidth="2" />
+          <path d="M19 52v4M45 52v4" stroke="#173A63" strokeWidth="2.6" />
+          <circle cx="19" cy="57" r="2.2" fill="#173A63" />
+          <circle cx="45" cy="57" r="2.2" fill="#173A63" />
+        </g>
+      </svg>
     );
   }
 
