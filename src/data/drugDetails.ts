@@ -168,9 +168,14 @@ export const DRUG_DETAILS: Record<string, DrugDetail> = {
   fentanyl: {
     feature: 'أفيوني شديد القوة وسريع نسبيًا، مفيد لتسكين الألم وتخفيف الاستجابة الودية للتنبيب والجراحة.',
     mechanism: 'ناهض قوي لمستقبل μ الأفيوني | Potent mu-opioid receptor agonist.',
-    routes: ['وريدي | Intravenous؛ توجد مستحضرات وطرق أخرى خارج سياق التخدير'],
+    routes: ['وريدي | Intravenous', 'عضلي | Intramuscular في مستحضرات/استطبابات محددة'],
+    educationalDoses: [
+      'كعامل مساعد للتخدير العام عند البالغ: Low dose نحو 2 mcg/kg؛ Moderate dose 2–20 mcg/kg؛ High dose 20–50 mcg/kg في إجراءات مختارة مع توقع الحاجة إلى تهوية ومراقبة مكثفة.',
+      'كـPremedication للبالغ: 50–100 mcg IM قبل الجراحة بنحو 30–60 دقيقة بحسب ملصق الحقن.'
+    ],
     correction: 'الجرعات العالية أو الحقن السريع قد يسببان تيبسًا عضليًا/جدار الصدر | Chest-wall rigidity، لذلك يلزم الاستعداد لدعم التهوية. “Airway obstruction” ليس مانع استعمال مطلق للفنتانيل كما ورد في ملف الطوارئ؛ المشكلة هي خطورة respiratory depression والحاجة لتأمين المجرى الهوائي والمراقبة.',
-    sourcePages: [70, 81],
+    sourcePages: [23, 70, 81],
+    sourceLabel: 'مبادئ التخدير + ملف كتابة أدوية التخدير',
     uses: ['تسكين الألم أثناء التخدير', 'عامل مساعد في بدء التخدير والمحافظة عليه', 'التهدئة مع مسكن في العناية والإجراءات وفق المراقبة'],
     contraindications: ['فرط التحسس للفنتانيل'],
     warnings: ['قد يسبب تثبيطًا تنفسيًا شديدًا', 'الجرعات الكبيرة أو الحقن السريع قد يسببان تيبس جدار الصدر', 'قد يسبب بطء القلب وهبوط الضغط', 'يزداد خطر تثبيط الجهاز العصبي مع المهدئات الأخرى'],
@@ -181,7 +186,12 @@ export const DRUG_DETAILS: Record<string, DrugDetail> = {
     mechanism: 'ناهض لمستقبل μ الأفيوني | Mu-opioid receptor agonist.',
     tradeNames: ['Duramorph ضمن بعض المستحضرات/الطرق'],
     routes: ['وريدي | Intravenous', 'عضلي | Intramuscular', 'محوري عصبي في مستحضرات مخصصة | Neuraxial formulations'],
-    sourcePages: [70, 81],
+    educationalDoses: [
+      'للألم الحاد عند البالغ بحسب ملصقات الحقن الحديثة: 0.1–0.2 mg/kg IV ببطء كل 4 ساعات عند الحاجة، مع استخدام أقل جرعة تحقق تسكينًا مناسبًا.',
+      'جرعات neuraxial تختلف جذريًا حسب المستحضر والطريق ولا تُستنتج من جرعة IV.'
+    ],
+    sourcePages: [20, 70, 81],
+    sourceLabel: 'مبادئ التخدير + ملف كتابة أدوية التخدير',
     uses: ['تسكين الألم المتوسط إلى الشديد', 'تسكين الألم بعد العمليات في سياقات مناسبة'],
     contraindications: ['فرط التحسس للمورفين'],
     warnings: ['قد يسبب تثبيط التنفس وهبوط الضغط', 'قد يؤدي تراكم المستقلبات في القصور الكلوي إلى إطالة التأثير', 'قد يزيد الغثيان والحكة واحتباس البول'],
@@ -202,8 +212,14 @@ export const DRUG_DETAILS: Record<string, DrugDetail> = {
     mechanism: 'ناهض لمستقبل μ الأفيوني | Mu-opioid receptor agonist يتحلل سريعًا بواسطة إستيرازات غير نوعية في الدم والأنسجة.',
     tradeNames: ['Ultiva'],
     routes: ['وريدي بالتسريب | Intravenous infusion'],
+    educationalDoses: [
+      'لبدء التخدير مع Hypnotic أو volatile agent: 0.5–1 mcg/kg/min IV infusion؛ إذا كان التنبيب خلال أقل من 8 دقائق يمكن إعطاء 1 mcg/kg على 30–60 ثانية.',
+      'للمحافظة على التخدير عند البالغ تكون معدلات البداية الشائعة نحو 0.25 mcg/kg/min مع Propofol أو Isoflurane، ثم تُعاير عادة ضمن 0.05–2 mcg/kg/min حسب الاستجابة والعامل المرافق.',
+      'لا يُعطى غير مخفف ويجب استعمال infusion device؛ تراكيز التخفيف الشائعة بالملصق تشمل 20 أو 25 أو 50 mcg/mL.'
+    ],
     correction: 'زوال التأثير سريع جدًا؛ لا يوفر تسكينًا مستمرًا بعد إيقافه، لذلك يجب تجهيز خطة تسكين بديلة قبل نهاية التسريب. يعمل أساسًا كـμ-opioid agonist؛ عبارة المصدر بأنه يعمل على μ وκ وأنه “لا يستخدم مع spinal” ليست قاعدة دوائية صحيحة.',
-    sourcePages: [70],
+    sourcePages: [21, 70],
+    sourceLabel: 'مبادئ التخدير + ملف كتابة أدوية التخدير',
     uses: ['التسكين أثناء التخدير العام', 'التحكم السريع بالاستجابة للمنبهات الجراحية'],
     contraindications: ['فرط التحسس للريميفنتانيل', 'لا يُستخدم بطريق فوق الجافية أو داخل السحايا بسبب مكونات المستحضر'],
     warnings: ['تأثيره يزول سريعًا جدًا لذلك يجب التخطيط لتسكين بديل قبل إيقافه', 'قد يسبب تثبيط التنفس وبطء القلب وهبوط الضغط', 'قد يسبب تيبسًا عضليًا وفرط حساسية للألم بعد الإيقاف في بعض السياقات'],
@@ -389,7 +405,11 @@ export const DRUG_DETAILS: Record<string, DrugDetail> = {
     feature: 'أفيوني | Opioid قديم نسبيًا؛ قل استخدامه بسبب مستقلب نورميبيريدين | Normeperidine ذي السمية العصبية والتداخلات الدوائية المهمة.',
     mechanism: 'ناهض لمستقبلات μ الأفيونية | Mu-opioid receptor agonist.',
     tradeNames: ['Demerol', 'Pethidine'],
-    routes: ['وريدي | Intravenous', 'عضلي | Intramuscular', 'فموي | Oral حسب المستحضر'],
+    routes: ['وريدي ببطء | Slow IV', 'عضلي | Intramuscular', 'تحت الجلد | Subcutaneous', 'فموي | Oral حسب المستحضر'],
+    educationalDoses: [
+      'للألم عند البالغ بحسب ملصق الحقن: 50–150 mg IM أو SC كل 3–4 ساعات عند الحاجة؛ إذا استُخدم IV تُخفض الجرعة ويُعطى ببطء ويفضل بعد التخفيف.',
+      'كـPreoperative medication: 50–100 mg IM أو SC قبل بدء التخدير بنحو 30–90 دقيقة؛ قل استعماله حاليًا بسبب سمية Normeperidine والتداخلات.'
+    ],
     uses: ['تسكين الألم | Analgesia في سياقات محدودة'],
     contraindications: ['استخدام مثبطات MAO أو خلال 14 يومًا منها | MAOI use within 14 days', 'تثبيط تنفسي مهم | Significant respiratory depression', 'ربو قصبي حاد غير مراقب | Acute severe bronchial asthma in unmonitored setting', 'انسداد هضمي معروف أو مشتبه | GI obstruction'],
     warnings: ['تثبيط التنفس | Respiratory depression', 'تراكم نورميبيريدين قد يسبب هياجًا أو اختلاجات | Neurotoxicity / seizures خصوصًا مع القصور الكلوي أو الجرعات المتكررة', 'خطر متلازمة السيروتونين | Serotonin syndrome مع بعض الأدوية'],
@@ -472,8 +492,7 @@ export const DRUG_DETAILS: Record<string, DrugDetail> = {
     tradeNames: ['Lopressor'],
     routes: ['وريدي | Intravenous', 'فموي | Oral'],
     educationalDoses: [
-      'للوذمة عند البالغ: جرعة ابتدائية شائعة 20–40 mg IV أو IM مرة واحدة؛ الجرعة الوريدية تُعطى ببطء خلال 1–2 دقيقة وتُعاير حسب الاستجابة.',
-      'في Acute pulmonary edema كعلاج مساعد: 40 mg IV ببطء جرعة أولية؛ إذا لم تحصل استجابة كافية يمكن أن تُرفع الجرعة وفق البروتوكول والحالة، مع مراقبة الضغط والكلية والشوارد.'
+      'في Acute MI المستقر ديناميكيًا وفق ملصق الحقن: 5 mg IV bolus، تُكرر ثلاث جرعات بفاصل يقارب دقيقتين مع مراقبة BP/HR/ECG، ثم الانتقال إلى الجرعة الفموية وفق البروتوكول.'
     ],
     uses: ['علاج احتشاء عضلة القلب الحاد لدى مرضى مستقرين ديناميكيًا وفق الاستطباب المعتمد | Acute myocardial infarction', 'التحكم بمعدل القلب/الضغط في ممارسات سريرية مختارة حسب البروتوكول'],
     contraindications: ['بطء قلب شديد | Severe bradycardia', 'حصار قلبي من الدرجة الثانية/الثالثة دون ناظمة | 2nd/3rd degree AV block without pacemaker', 'متلازمة العقدة الجيبية المريضة | Sick sinus syndrome', 'فشل قلب غير معاوض | Decompensated heart failure'],
@@ -677,7 +696,11 @@ export const DRUG_DETAILS: Record<string, DrugDetail> = {
     feature: 'مدر عروة قوي | Loop diuretic يقلل احتقان الحجم عندما يكون لدى المريض volume overload.',
     mechanism: 'يثبط ناقل Na-K-2Cl في thick ascending limb of loop of Henle فيزيد طرح الصوديوم والماء والبوتاسيوم.',
     tradeNames: ['Lasix'],
-    routes: ['وريدي | Intravenous', 'فموي | Oral'],
+    routes: ['وريدي | Intravenous', 'عضلي | Intramuscular', 'فموي | Oral حسب المستحضر'],
+    educationalDoses: [
+      'للوذمة عند البالغ: 20–40 mg IV أو IM كجرعة أولية، والجرعة الوريدية تُعطى ببطء خلال 1–2 دقيقة؛ يمكن تكرار/زيادة الجرعة بعد ساعتين حسب الاستجابة.',
+      'في Acute pulmonary edema كعلاج مساعد: 40 mg IV ببطء خلال 1–2 دقيقة؛ إذا كانت الاستجابة غير كافية يمكن إعطاء 80 mg IV ببطء بعد نحو ساعة وفق الملصق والحالة.'
+    ],
     uses: ['Acute cardiogenic pulmonary edema مع volume overload', 'احتقان وفشل قلب | Congestive heart failure', 'حالات وذمة أخرى حسب السبب'],
     contraindications: ['Anuria غير القابلة للاستجابة', 'فرط التحسس الشديد للمستحضر'],
     warnings: ['نقص الحجم | Hypovolemia وهبوط الضغط', 'Hypokalemia/Hyponatremia/Metabolic alkalosis', 'Ototoxicity خصوصًا مع الجرعات العالية أو الإعطاء السريع', 'تحتاج متابعة الكرياتينين والشوارد'],
