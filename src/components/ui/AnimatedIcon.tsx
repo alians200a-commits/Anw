@@ -5,6 +5,7 @@ export type AnimatedIconVariant = 'lift' | 'tilt' | 'pop' | 'pulse';
 interface AnimatedIconProps {
   children: ReactNode;
   active?: boolean;
+  ambient?: boolean;
   variant?: AnimatedIconVariant;
   className?: string;
 }
@@ -12,6 +13,7 @@ interface AnimatedIconProps {
 export function AnimatedIcon({
   children,
   active = false,
+  ambient = false,
   variant = 'pop',
   className = ''
 }: AnimatedIconProps) {
@@ -32,6 +34,7 @@ export function AnimatedIcon({
         variantClass +
         ' group-active:scale-90 group-active:translate-y-0 ' +
         (active ? 'scale-105 ' : '') +
+        (ambient ? 'daleeli-icon-ambient ' : '') +
         className
       }
     >
