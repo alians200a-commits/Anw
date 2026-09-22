@@ -67,12 +67,28 @@ Coverage decisions in this report therefore use the source content + topic ident
 
 A future source-reference UI refinement can split merged references into source-specific page groups if exact per-source display is required.
 
-## Remaining before final lock
-1. Manual UI/mobile QA.
-2. Source-reference display smoke test.
-3. Search and Favorites QA.
-4. Collapsible sections QA.
-5. RTL/mobile-width/header/bottom-nav checks.
-6. Final TypeScript + Content Audit + Build after any UI fixes.
+## UI / mobile QA status
 
-Do not mark the base guide 100% locked until the final UI/mobile QA passes.
+Static code-path and CI QA completed on 2026-09-22:
+
+- Home search deep-links into the matching guide query instead of opening only the broad section: PASS.
+- Stage search narrows to the matching stage topic and opens the matched hierarchy: PASS.
+- Favorites: saved drugs open their full drug detail sheet; removing a favorite is a separate control: PASS.
+- Saved terms remain readable in Favorites with definition/clinical note and separate remove control: PASS.
+- Collapsible detail sections in drugs, clinical guides, equipment and fluids: PASS.
+- Root RTL and Arabic document direction: PASS.
+- Mobile viewport includes `viewport-fit=cover`: PASS.
+- Bottom navigation uses safe-area bottom inset: PASS.
+- Drug/clinical/equipment/fluid detail sheets use safe-area bottom padding: PASS.
+- Equipment and fluid source names are explicit; mixed drug source page numbers are labeled as combined references: PASS.
+- Locked header geometry/branding was not changed: PASS.
+- Forbidden visible terms search: 0 matches for `تحريض`, `محطة التخدير`, `محطات التخدير`, and `Anesthesia Workstation`.
+- Latest code verification after UI fixes: TypeScript + Content Audit + Build = PASS.
+
+Latest verified UI code commit: `db1374bceda435978667bcd2a77b43909f913bd3`.
+
+## Remaining before final 100% lock
+
+Only a rendered-device/browser visual smoke test remains: inspect the built app at narrow mobile widths and interactively confirm no clipping/overlap in the locked header, bottom navigation, sheets, search transitions and saved-item interactions.
+
+Do not mark the base guide 100% locked until that rendered visual smoke test is completed.
