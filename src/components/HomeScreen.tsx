@@ -170,49 +170,49 @@ export function HomeScreen({ openGuide }: HomeScreenProps) {
       id: 'drugs',
       title: 'الأدوية',
       description: 'Drug Reference',
-      leading: <MedicalSiteIcon name="drugs" size={25} />,
+      leading: <MedicalSiteIcon name="drugs" play size={25} />,
       onSelect: () => openGuide('drugs')
     },
     {
       id: 'equipment',
       title: 'عربة التخدير والمعدات',
       description: 'Machine • Airway • Monitoring • Tools',
-      leading: <MedicalSiteIcon name="equipment" size={25} />,
+      leading: <MedicalSiteIcon name="equipment" play size={25} />,
       onSelect: () => openGuide('equipment')
     },
     {
       id: 'fluids',
       title: 'السوائل الوريدية',
       description: 'IV Fluids',
-      leading: <MedicalSiteIcon name="fluids" size={25} />,
+      leading: <MedicalSiteIcon name="fluids" play size={25} />,
       onSelect: () => openGuide('fluids')
     },
     {
       id: 'stages',
       title: 'مراحل التخدير',
       description: 'Stages of Anesthesia',
-      leading: <MedicalSiteIcon name="stages" size={25} />,
+      leading: <MedicalSiteIcon name="stages" play size={25} />,
       onSelect: () => openGuide('stages')
     },
     {
       id: 'clinical',
       title: 'المفاهيم والإجراءات',
       description: 'Clinical Guides',
-      leading: <MedicalSiteIcon name="clinical" size={25} />,
+      leading: <MedicalSiteIcon name="clinical" play size={25} />,
       onSelect: () => openGuide('clinical')
     },
     {
       id: 'terms',
       title: 'المصطلحات',
       description: 'Clinical Terms',
-      leading: <MedicalSiteIcon name="terms" size={25} />,
+      leading: <MedicalSiteIcon name="terms" play size={25} />,
       onSelect: () => openGuide('terms')
     },
     {
       id: 'abbreviations',
       title: 'الاختصارات',
       description: 'Abbreviations',
-      leading: <MedicalSiteIcon name="abbreviations" size={25} />,
+      leading: <MedicalSiteIcon name="abbreviations" play size={25} />,
       onSelect: () => openGuide('abbreviations')
     }
   ];
