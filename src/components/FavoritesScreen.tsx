@@ -7,6 +7,7 @@ import { CLINICAL_TERMS } from '../data/clinicalTerms';
 import { DrugDetailSheet } from './DrugDetailSheet';
 import { BilingualLabel } from './BilingualLabel';
 import { MixedDirectionText } from './MixedDirectionText';
+import { AnimatedIcon } from './ui/AnimatedIcon';
 
 interface FavoritesScreenProps {
   favorites: Set<string>;
@@ -28,7 +29,7 @@ export function FavoritesScreen({ favorites, onToggleFavorite }: FavoritesScreen
       {drugs.length === 0 && terms.length === 0 ? (
         <div className="rounded-[28px] border border-dashed border-[#DCE4EA] bg-[#F8FAFB] p-8 text-center">
           <div className="mx-auto grid h-12 w-12 place-items-center rounded-2xl bg-[#315672]/10 text-[#315672]">
-            <Heart size={20} />
+            <AnimatedIcon variant="pulse"><Heart size={20} /></AnimatedIcon>
           </div>
           <h3 className="mt-4 font-black text-[#183149]">لم تحفظ أي عنصر بعد</h3>
           <p className="mt-2 text-xs leading-5 text-[#5F7280]">اضغط على رمز القلب في أي دواء أو مصطلح ليظهر هنا.</p>
@@ -47,7 +48,7 @@ export function FavoritesScreen({ favorites, onToggleFavorite }: FavoritesScreen
                 aria-label={`إزالة ${drug.ar} من المحفوظات`}
                 title="إزالة من المحفوظات"
               >
-                <Heart size={18} weight="fill" />
+                <AnimatedIcon active variant="pulse"><Heart size={18} weight="fill" /></AnimatedIcon>
               </button>
 
               <button
@@ -60,7 +61,7 @@ export function FavoritesScreen({ favorites, onToggleFavorite }: FavoritesScreen
                   <p className="mt-0.5 text-xs text-[#526675]" dir="ltr">{drug.en}</p>
                   <p className="mt-1 text-[11px] font-bold text-[#315672]">افتح التفاصيل الدوائية</p>
                 </div>
-                <Pill size={20} className="shrink-0 text-[#315672]" />
+                <AnimatedIcon variant="tilt" className="shrink-0 text-[#315672]"><Pill size={20} /></AnimatedIcon>
               </button>
             </article>
           ))}
@@ -78,7 +79,7 @@ export function FavoritesScreen({ favorites, onToggleFavorite }: FavoritesScreen
                   aria-label={`إزالة ${term.ar} من المحفوظات`}
                   title="إزالة من المحفوظات"
                 >
-                  <Heart size={18} weight="fill" />
+                  <AnimatedIcon active variant="pulse"><Heart size={18} weight="fill" /></AnimatedIcon>
                 </button>
 
                 <div className="flex min-w-0 flex-1 items-start justify-end gap-3 text-right">
@@ -86,7 +87,7 @@ export function FavoritesScreen({ favorites, onToggleFavorite }: FavoritesScreen
                     <h3 className="truncate font-black text-[#183149]">{term.ar}</h3>
                     <p className="mt-0.5 text-xs text-[#526675]" dir="ltr">{term.abbr ? `${term.abbr} — ${term.en}` : term.en}</p>
                   </div>
-                  <BookOpenText size={20} className="shrink-0 text-[#315672]" />
+                  <AnimatedIcon variant="lift" className="shrink-0 text-[#315672]"><BookOpenText size={20} /></AnimatedIcon>
                 </div>
               </div>
 
