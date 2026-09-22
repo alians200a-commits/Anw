@@ -119,7 +119,7 @@ function EquipmentSheet({
               <p className="mt-0.5 text-sm font-bold text-[#526675]" dir="ltr">{item.nameEn}</p>
               </div>
               <span className="grid h-11 w-11 shrink-0 place-items-center rounded-[13px] border border-[#D7E2E9] bg-white">
-                <MedicalSiteIcon name={equipmentIcon(item)} play size={28} />
+                <MedicalSiteIcon name={equipmentIcon(item)} play loop size={28} />
               </span>
             </div>
           </div>
@@ -182,7 +182,7 @@ export function EquipmentDirectory({
     id: item.id,
     title: item.label,
     description: item.id === 'all' ? 'كل المعدات والأدوات' : 'تصفية هذا القسم',
-    leading: <MedicalSiteIcon name={equipmentCategoryIcon[item.id]} play size={24} />,
+    leading: <MedicalSiteIcon name={equipmentCategoryIcon[item.id]} play loop size={24} />,
     onSelect: () => setCategory(item.id as 'all' | EquipmentCategory)
   }));
 
@@ -228,7 +228,7 @@ export function EquipmentDirectory({
       <NotificationStackMenu
         title={currentCategory}
         description="قسم عربة التخدير والمعدات"
-        icon={<MedicalSiteIcon name={equipmentCategoryIcon[category]} play size={27} />}
+        icon={<MedicalSiteIcon name={equipmentCategoryIcon[category]} play loop size={27} />}
         items={categoryItems}
         selectedId={category}
       />
