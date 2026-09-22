@@ -1,6 +1,7 @@
 import {
   createContext,
   useContext,
+  useEffect,
   useRef,
   type ReactNode
 } from 'react';
@@ -42,6 +43,19 @@ export function Dock({
 }: DockProps) {
   const mouseX = useMotionValue(Infinity);
   const reduceMotion = useReducedMotion();
+
+  useEffect(() => {
+    const resetPointerInfluence = () => mouseX.set(Infinity);
+    const viewport = window.visualViewport;
+
+    window.addEventListener('resize', resetPointerInfluence, { passive: true });
+    viewport?.addEventListener('resize', resetPointerInfluence, { passive: true });
+
+    return () => {
+      window.removeEventListener('resize', resetPointerInfluence);
+      viewport?.removeEventListener('resize', resetPointerInfluence);
+    };
+  }, [mouseX]);
 
   return (
     <DockContext.Provider
