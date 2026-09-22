@@ -109,7 +109,7 @@ export function DrugDirectory({
       />
 
       <div className="px-1 text-left">
-        <p className="text-[10px] font-semibold text-[#657784]">{filtered.length} دواء</p>
+        <p className="text-[11px] font-semibold text-[#657784]">{filtered.length} دواء</p>
       </div>
 
       <div className="space-y-2">
@@ -154,7 +154,7 @@ export function DrugDirectory({
                   <div className="min-w-0">
                     <h3 className="text-sm font-black text-[#183149]">{drug.ar}</h3>
                     <p className="mt-0.5 text-xs font-bold text-[#526675]" dir="ltr">{drug.en}</p>
-                    <span className="mt-2 inline-flex max-w-full rounded-full bg-[#EAF0F4] px-2.5 py-1 text-[9px] font-bold leading-4 text-[#405E75]">
+                    <span className="mt-2 inline-flex max-w-full rounded-full bg-[#EAF0F4] px-2.5 py-1 text-[11px] font-bold leading-4 text-[#405E75]">
                       {drug.classes
                         .map((item) => DRUG_CLASS_LABELS[item])
                         .join(' • ')}
@@ -166,7 +166,7 @@ export function DrugDirectory({
                 </div>
               </div>
 
-              <p className="mt-3 text-[10px] leading-5 text-[#526675]">
+              <p className="mt-3 text-[11px] leading-5 text-[#526675]">
                 <MixedDirectionText text={drug.short} />
               </p>
 
@@ -174,7 +174,7 @@ export function DrugDirectory({
                 <button
                   type="button"
                   onClick={() => setSelectedDrugId(drug.id)}
-                  className="mt-2 flex min-h-11 w-full items-center justify-between border-t border-[#DDE6EB] pt-2 text-[10px] font-black text-[#315672] outline-none focus-visible:ring-2 focus-visible:ring-[#CCA039]/50"
+                  className="mt-2 flex min-h-11 w-full items-center justify-between border-t border-[#DDE6EB] pt-2 text-[11px] font-black text-[#315672] outline-none focus-visible:ring-2 focus-visible:ring-[#CCA039]/50"
                 >
                   <span className="text-[#667A89]">الاستخدام • الموانع • التحذيرات</span>
                   <span>التفاصيل الدوائية</span>
