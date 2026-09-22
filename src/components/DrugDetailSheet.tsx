@@ -176,17 +176,6 @@ function CollapsibleList({
 }) {
   if (!items || items.length === 0) return null;
 
-  if (items.length === 1) {
-    return (
-      <section className={'rounded-2xl border px-3.5 py-3 ' + className}>
-        <p className={'text-[10px] font-black ' + titleClass}>{title}</p>
-        <div className="mt-2">
-          <ListBody items={items} dot={dot} />
-        </div>
-      </section>
-    );
-  }
-
   return (
     <details className={'group rounded-2xl border px-3.5 py-3 ' + className}>
       <summary className="flex cursor-pointer list-none items-center justify-between gap-3">
@@ -245,20 +234,6 @@ function DetailSection({ title, items, tone }: DetailSectionProps) {
   const Icon = config.icon;
 
   if (!items.length) return null;
-
-  if (items.length === 1) {
-    return (
-      <section className={'rounded-2xl border px-3.5 py-3 ' + config.box}>
-        <div className="flex items-center justify-end gap-2">
-          <h4 className={'text-[10px] font-black ' + config.title}>{title}</h4>
-          <Icon size={16} weight="bold" className={config.title} />
-        </div>
-        <div className="mt-2">
-          <ListBody items={items} dot={config.dot} />
-        </div>
-      </section>
-    );
-  }
 
   return (
     <details className={'group rounded-2xl border px-3.5 py-3 ' + config.box}>
