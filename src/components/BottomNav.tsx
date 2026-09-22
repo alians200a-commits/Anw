@@ -45,20 +45,20 @@ export function BottomNav({ active, onChange }: BottomNavProps) {
               >
                 <span
                   className={
-                    'grid h-9 w-9 place-items-center rounded-xl transition ' +
+                    'grid h-9 w-9 place-items-center rounded-full transition ' +
                     (isActive
-                      ? 'bg-[#CCA039]/18 shadow-[0_4px_12px_rgba(204,160,57,0.18)]'
-                      : 'bg-[#EEF3F6]')
+                      ? 'bg-[#CCA039]/12 shadow-[0_3px_12px_rgba(204,160,57,0.14)]'
+                      : 'bg-transparent')
                   }
                 >
                   <MedicalSiteIcon
                     name={item.siteIcon}
-                    play={isActive}
-                    loop={isActive}
+                    play
+                    loop
                     size={27}
                   />
                 </span>
-                <span className="text-[11px] font-black leading-none text-[#183149]">
+                <span className={'text-[11px] font-black leading-none ' + (isActive ? 'text-[#8A6426]' : 'text-[#183149]')}>
                   {item.label}
                 </span>
               </button>
