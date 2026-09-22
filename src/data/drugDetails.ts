@@ -820,7 +820,7 @@ export const DRUG_DETAILS: Record<string, DrugDetail> = {
     mechanism: 'يثبط Phosphodiesterase بصورة غير نوعية ويعاكس Adenosine receptors، ما يرفع cAMP ويؤدي إلى Bronchodilation مع تأثيرات قلبية وعصبية.',
     routes: ['وريدي بالتسريب | Intravenous infusion'],
     educationalDoses: [
-      'إذا استُخدم IV في بروتوكول مختار ولم يكن المريض قد تلقى Theophylline/Aminophylline حديثًا: loading dose نحو 5 mg/kg بالتسريب البطيء خلال 20–30 دقيقة، ثم maintenance نحو 0.5 mg/kg/hour في البالغ مع تعديل الجرعة حسب العمر والتدخين ووظائف الكبد والتداخلات ومستوى Theophylline.',
+      'إذا استُخدم IV في بروتوكول مختار ولم يكن المريض قد تلقى Theophylline/Aminophylline حديثًا: loading dose نحو 5.7 mg/kg Aminophylline (≈4.6 mg/kg Theophylline) بالتسريب خلال نحو 30 دقيقة، ثم maintenance نحو 0.5 mg/kg/hour في البالغ مع تعديل الجرعة حسب العمر والتدخين ووظائف الكبد والتداخلات ومستوى Theophylline.',
       'لا يُستخدم IV aminophylline روتينيًا لعلاج نوبات الربو الحادة الحديثة بسبب هامش الأمان الضيق وعدم تفوقه على العلاج الاستنشاقي القياسي.'
     ],
     onsetDuration: [
