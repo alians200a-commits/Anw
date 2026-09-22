@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
-import { CaretDown, MagnifyingGlass, X } from '@phosphor-icons/react';
+import { BookOpenText, CaretDown, MagnifyingGlass, X } from '@phosphor-icons/react';
 import {
   CLINICAL_GUIDES,
   CLINICAL_GUIDE_FILTERS,
@@ -10,6 +10,10 @@ import {
 import { ANESTHESIA_STAGE_GUIDE_IDS } from '../data/anesthesiaStages';
 import { BilingualLabel } from './BilingualLabel';
 import { MixedDirectionText } from './MixedDirectionText';
+import {
+  NotificationStackMenu,
+  type StackMenuItem
+} from './ui/NotificationStackMenu';
 
 function GuideItems({ title, items }: { title: string; items: string[] }) {
   const body = (
@@ -25,7 +29,7 @@ function GuideItems({ title, items }: { title: string; items: string[] }) {
 
   return (
     <details className="group rounded-2xl border border-[#DDEBE1] bg-[#F2F8F4] px-3.5 py-3">
-      <summary className="flex cursor-pointer list-none items-center justify-between gap-3">
+      <summary className="flex min-h-11 cursor-pointer list-none items-center justify-between gap-3">
         <CaretDown size={15} weight="bold" className="text-[#66806E] transition group-open:rotate-180" />
         <div className="flex items-center gap-2">
           <span className="rounded-full bg-white/80 px-2 py-0.5 text-[9px] font-black text-[#607264]">{items.length}</span>
@@ -46,7 +50,7 @@ function ClinicalGuideSheet({
 }) {
   return (
     <motion.div
-      className="fixed inset-0 z-[86] bg-[#2F2145]/35 backdrop-blur-[2px]"
+      className="fixed inset-0 z-[86] bg-[#0A2037]/42 backdrop-blur-[2px]"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
@@ -65,7 +69,7 @@ function ClinicalGuideSheet({
           <div className="flex items-start justify-between gap-3">
             <button
               onClick={onClose}
-              className="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-[#D7E6DC] bg-white text-[#617468]"
+              className="grid h-11 w-11 shrink-0 place-items-center rounded-full border border-[#D6E1EA] bg-white text-[#526675] outline-none focus-visible:ring-2 focus-visible:ring-[#CCA039]/55"
               aria-label="إغلاق"
             >
               <X size={17} weight="bold" />
@@ -110,6 +114,17 @@ export function ClinicalGuidesDirectory({ initialQuery = '' }: { initialQuery?: 
     setQuery(initialQuery);
   }, [initialQuery]);
 
+  const currentCategory =
+    CLINICAL_GUIDE_FILTERS.find((item) => item.id === category)?.label ?? 'الكل';
+
+  const categoryItems: StackMenuItem[] = CLINICAL_GUIDE_FILTERS.map((item) => ({
+    id: item.id,
+    title: item.label,
+    description: item.id === 'all' ? 'كل المفاهيم والإجراءات' : 'تصفية هذا القسم',
+    leading: <BookOpenText size={19} />,
+    onSelect: () => setCategory(item.id as 'all' | ClinicalGuideCategory)
+  }));
+
   const filtered = useMemo(() => {
     const normalized = query.trim().toLowerCase();
     return CLINICAL_GUIDES.filter((guide) => {
@@ -138,35 +153,22 @@ export function ClinicalGuidesDirectory({ initialQuery = '' }: { initialQuery?: 
         <MagnifyingGlass
           size={18}
           weight="bold"
-          className="absolute right-3 top-1/2 -translate-y-1/2 text-[#567964]"
+          className="absolute right-3 top-1/2 -translate-y-1/2 text-[#526F85]"
         />
         <input
           value={query}
           onChange={(event) => setQuery(event.target.value)}
           placeholder="RSI، Spinal، حركية الدواء..."
-          className="h-11 w-full rounded-xl border border-[#DDE8E1] bg-white pr-10 pl-3 text-xs font-semibold text-[#344139] outline-none placeholder:text-[#98A59D] focus:border-[#A9C3B2]"
+          className="h-11 w-full rounded-xl border border-[#DCE4EA] bg-white pr-10 pl-3 text-xs font-semibold text-[#183149] outline-none placeholder:text-[#83919C] focus:border-[#B58B2A] focus:ring-2 focus:ring-[#CCA039]/15"
         />
       </div>
 
-      <div className="flex gap-1.5 overflow-x-auto pb-1 [scrollbar-width:none]">
-        {CLINICAL_GUIDE_FILTERS.map((item) => {
-          const active = category === item.id;
-          return (
-            <button
-              key={item.id}
-              onClick={() => setCategory(item.id)}
-              className={
-                'shrink-0 rounded-full border px-3 py-1.5 text-[10px] font-black transition ' +
-                (active
-                  ? 'border-[#CCA039]/35 bg-[#CCA039]/12 text-[#E5C979]'
-                  : 'border-white/6 bg-white/[0.02] text-[#778B9B]')
-              }
-            >
-              {item.label}
-            </button>
-          );
-        })}
-      </div>
+      <NotificationStackMenu
+        title={currentCategory}
+        description="تصنيف المفاهيم والإجراءات"
+        icon={<BookOpenText size={22} weight="bold" />}
+        items={categoryItems}
+      />
 
       <div className="space-y-2">
         {filtered.map((guide, index) => (
