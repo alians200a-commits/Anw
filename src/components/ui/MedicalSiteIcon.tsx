@@ -159,10 +159,10 @@ export const MEDICAL_SITE_ICON_ASSETS: Record<MedicalSiteIconName, AssetRecord> 
     iconScoutId: 3277635,
     iconScoutLabel: 'Medical Treatment',
     iconScoutPage: 'https://iconscout.com/lottie-animation/medical-treatment-animation_3277635',
-    flaticonId: 19003377,
-    flaticonPage: 'https://www.flaticon.com/free-animated-icon/medical-care_19003377',
-    staticSrc: 'https://cdn-icons-png.flaticon.com/512/19003/19003377.png',
-    animatedSrc: 'https://cdn-icons-gif.flaticon.com/19003/19003377.gif'
+    flaticonId: 17882611,
+    flaticonPage: 'https://www.flaticon.com/free-animated-icon/medical_17882611',
+    staticSrc: 'https://cdn-icons-png.flaticon.com/512/17882/17882611.png',
+    animatedSrc: 'https://cdn-icons-gif.flaticon.com/17882/17882611.gif'
   },
   terms: {
     iconScoutId: 7140720,
@@ -177,10 +177,10 @@ export const MEDICAL_SITE_ICON_ASSETS: Record<MedicalSiteIconName, AssetRecord> 
     iconScoutId: 7140721,
     iconScoutLabel: 'Health Record',
     iconScoutPage: 'https://iconscout.com/lottie-animation/health-record-animation_7140721',
-    flaticonId: 8800763,
-    flaticonPage: 'https://www.flaticon.com/free-animated-icon/text-box_8800763',
-    staticSrc: 'https://cdn-icons-png.flaticon.com/512/8800/8800763.png',
-    animatedSrc: 'https://cdn-icons-gif.flaticon.com/8800/8800763.gif'
+    flaticonId: 19031946,
+    flaticonPage: 'https://www.flaticon.com/free-animated-icon/medical-record_19031946',
+    staticSrc: 'https://cdn-icons-png.flaticon.com/512/19031/19031946.png',
+    animatedSrc: 'https://cdn-icons-gif.flaticon.com/19031/19031946.gif'
   }
 };
 
