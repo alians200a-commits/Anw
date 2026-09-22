@@ -1,4 +1,4 @@
-import { useEffect, type RefObject } from 'react';
+import { useEffect, useRef, type RefObject } from 'react';
 
 const FOCUSABLE =
   'button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), a[href], [tabindex]:not([tabindex="-1"])';
@@ -7,6 +7,12 @@ export function useModalSheetA11y(
   dialogRef: RefObject<HTMLElement | null>,
   onClose: () => void
 ) {
+  const onCloseRef = useRef(onClose);
+
+  useEffect(() => {
+    onCloseRef.current = onClose;
+  }, [onClose]);
+
   useEffect(() => {
     const previousOverflow = document.body.style.overflow;
     const previousFocus =
@@ -27,7 +33,7 @@ export function useModalSheetA11y(
 
       if (event.key === 'Escape') {
         event.preventDefault();
-        onClose();
+        onCloseRef.current();
         return;
       }
 
@@ -63,5 +69,5 @@ export function useModalSheetA11y(
       document.body.style.overflow = previousOverflow;
       if (previousFocus?.isConnected) previousFocus.focus();
     };
-  }, [dialogRef, onClose]);
+  }, [dialogRef]);
 }
