@@ -72,7 +72,9 @@ export function HomeScreen({ openGuide }: HomeScreenProps) {
 
     const equipment: MorphingSearchItem[] = ANESTHESIA_EQUIPMENT.map((item) => ({
       id: 'equipment:' + item.id,
-      title: item.nameAr + ' | ' + item.nameEn,
+      title: item.nameAr,
+      titleAr: item.nameAr,
+      titleEn: item.nameEn,
       description: item.categoryAr,
       keywords: [
         item.nameAr,
