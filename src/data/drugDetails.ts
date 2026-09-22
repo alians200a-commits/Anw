@@ -307,12 +307,17 @@ export const DRUG_DETAILS: Record<string, DrugDetail> = {
   },
   rocuronium: {
     feature: 'مرخٍ غير مستقطب سريع البدء نسبيًا، ويمكن استخدامه كبديل للسكساميثونيوم في البدء السريع للتخدير.',
+    clinicalNote: 'مرخٍ عضلي فقط؛ لا يسبب فقدان الوعي ولا يسكن الألم. جرعة 0.6 mg/kg تعطي غالبًا شروط تنبيب خلال أقل من دقيقتين، وجرعات RSI الأعلى تطيل مدة الحصار؛ يجب ضمان التخدير والتهوية ومراقبة الحصار.',
     mechanism: 'مضاد تنافسي لمستقبلات الأستيل كولين النيكوتينية في الوصلة العصبية العضلية | Competitive nicotinic ACh receptor antagonist.',
     tradeNames: ['Esmeron', 'Zemuron'],
     routes: ['وريدي | Intravenous (IV)'],
     educationalDoses: [
       'للتنبيب الاعتيادي: 0.6 mg/kg IV جرعة ابتدائية مرجعية.',
       'لـRSI: نحو 0.6–1.2 mg/kg IV حسب سرعة الشروط المطلوبة والحالة؛ تُفرد الجرعة ويُستخدم Neuromuscular monitoring.'
+    ],
+    onsetDuration: [
+      'بعد 0.6 mg/kg IV يتحقق حصر كافٍ للتنبيب بوسيط يقارب دقيقة واحدة، ويتم التنبيب لدى معظم المرضى خلال أقل من دقيقتين.',
+      'جرعة 0.6 mg/kg توفر عادة نحو 31 دقيقة من الارتخاء السريري تحت balanced anesthesia، مع تفاوت واسع بين المرضى وإطالة محتملة مع العوامل الاستنشاقية.'
     ],
     correction: 'المصدر يذكر 0.5–0.9 mg/kg بصورة عامة؛ جرعة التنبيب أو RSI تختلف حسب الهدف، ويجب متابعة الحصار كمياً عند الإمكان. كما أن وصف Rocuronium بأنه يسبب vagal blockade مع زيادة النبض والضغط ليس صفة نموذجية له؛ تأثيره القلبي الوعائي عادةً محدود مقارنةً بـPancuronium. والقصور الكلوي | Renal failure ليس مانعًا مطلقًا؛ قد تتغير مدة الحصار ويجب الاعتماد على neuromuscular monitoring.',
     sourcePages: [6, 54, 71],
@@ -324,12 +329,17 @@ export const DRUG_DETAILS: Record<string, DrugDetail> = {
   },
   suxamethonium: {
     feature: 'مرخٍ مستقطب سريع جدًا وقصير المفعول، لذلك يُستخدم كثيرًا عندما يلزم تنبيب سريع.',
+    clinicalNote: 'مرخٍ مزيل للاستقطاب يسبب شللًا بلا تسكين أو فقدان وعي. يبدأ خلال أقل من دقيقة ويدوم عادة دقائق قليلة؛ انقطاع النفس المطول يُعالج بالتهوية والتهدئة والمراقبة حتى التعافي، وليس بإعطاء Neostigmine روتينيًا.',
     mechanism: 'ناهض نيكوتيني مزيل للاستقطاب | Depolarizing nicotinic acetylcholine receptor agonist يسبب إزالة استقطاب مستمرة ثم شللًا عضليًا.',
     tradeNames: ['Succinylcholine', 'Scoline'],
     routes: ['وريدي | Intravenous', 'عضلي | Intramuscular عند غياب IV في سياقات محددة'],
     educationalDoses: [
       'للبالغ في التنبيب القصير: متوسط الجرعة الوريدية نحو 0.6 mg/kg، والمدى المرجعي في الملصقات 0.3–1.1 mg/kg حسب الاستجابة والسياق.',
       'بعد الجرعات الوريدية المعتادة يبدأ الحصار غالبًا خلال نحو دقيقة ويكون قصير المدة؛ الجرعات الكبيرة أو المتكررة قد تطيل الحصار.'
+    ],
+    onsetDuration: [
+      'بعد IV يبدأ الشلل الرخو عادة خلال أقل من دقيقة.',
+      'بعد جرعة مفردة يستمر الحصار عادة نحو 4–6 دقائق، وقد يطول بوضوح مع نقص/خلل Butyrylcholinesterase أو الجرعات المتكررة.'
     ],
     correction: 'لا يوجد “ترياق Anticholinesterase” روتيني لانقطاع النفس المطول بسبب نقص Butyrylcholinesterase؛ العلاج الأساسي هو التهوية والتهدئة المستمرة حتى عودة النقل العصبي العضلي. إعطاء Neostigmine قد يطيل Phase I block. وبالنسبة للحروق، عبارة “مسموح فقط أول 24 ساعة” تبسيط؛ الملصق يحظر Succinylcholine بعد المرحلة الحادة من الحروق الكبيرة/الرضوض/denervation، ويذكر أن خطر hyperkalemia يزداد مع الزمن ويبلغ ذروته غالبًا 7–10 أيام، مع عدم تحديد بداية/نهاية دقيقة للخطر.',
     sourcePages: [5, 52, 53, 71],
@@ -341,11 +351,16 @@ export const DRUG_DETAILS: Record<string, DrugDetail> = {
   },
   atracurium: {
     feature: 'مرخٍ غير مستقطب يتحلل جزئيًا بآلية Hofmann، لذلك يعتمد بدرجة أقل على الكبد والكلى من عدة مرخيات أخرى.',
+    clinicalNote: 'يسبب شللًا بلا تسكين أو فقدان وعي. التخلص المعتمد على Hofmann والتحلل الإستري يجعله أقل اعتمادًا على الكبد والكلية، لكنه ليس «الاختيار الوحيد» في القصور الكلوي.',
     mechanism: 'مضاد تنافسي لمستقبلات النيكوتين العضلية | Competitive nondepolarizing neuromuscular blocker. يُعطّل في البلازما بطريقين مهمين: Hofmann elimination غير الإنزيمي عند pH فسيولوجي وEster hydrolysis بواسطة esterases غير نوعية.',
     tradeNames: ['Tracrium'],
     routes: ['وريدي | Intravenous (IV)'],
     educationalDoses: [
       'جرعة تنبيب تعليمية شائعة للبالغ: 0.4–0.5 mg/kg IV؛ يبدأ الحصار المناسب للتنبيب عادة خلال 2–2.5 دقيقة وتدوم الحاجة السريرية للحصار قرابة 20–35 دقيقة تحت التخدير المتوازن.'
+    ],
+    onsetDuration: [
+      'بعد 0.4–0.5 mg/kg IV تظهر عادة شروط تنبيب جيدة خلال 2–2.5 دقيقة ويبلغ الحصار الأقصى خلال 3–5 دقائق.',
+      'يبدأ التعافي عادة بعد 20–35 دقيقة؛ يصل التعافي إلى 25% تقريبًا خلال 35–45 دقيقة وإلى نحو 95% خلال 60–70 دقيقة تحت balanced anesthesia.'
     ],
     correction: 'ليس “دواء الاختيار الوحيد” في الفشل الكلوي، لكنه مفيد لأن التخلص يعتمد بدرجة كبيرة على Hofmann elimination والتحلل الإستري بدل الكلية.',
     sourcePages: [4, 54, 71],
@@ -373,12 +388,17 @@ export const DRUG_DETAILS: Record<string, DrugDetail> = {
   },
   vecuronium: {
     feature: 'مرخٍ غير مستقطب بتأثيرات قلبية وعائية محدودة نسبيًا.',
+    clinicalNote: 'مرخٍ عضلي غير مستقطب بلا تسكين أو فقدان وعي. العوامل الاستنشاقية قد تقوّي الحصار، وقد يطول المفعول في القصور الكبدي أو الكلوي؛ لذلك تعتمد إعادة الجرعة والنزع على المراقبة العصبية العضلية.',
     mechanism: 'مضاد تنافسي لمستقبلات النيكوتين العضلية | Competitive nondepolarizing neuromuscular blocker.',
     tradeNames: ['Norcuron'],
     routes: ['وريدي | Intravenous (IV)'],
     educationalDoses: [
       'جرعة ابتدائية مرجعية للتنبيب غير الطارئ: 0.08–0.1 mg/kg IV.',
       'بهذه الجرعة تظهر عادة شروط تنبيب جيدة خلال نحو 2.5–3 دقائق، ويستمر الحصار المطلوب سريريًا قرابة 25–30 دقيقة تحت التخدير المتوازن؛ العوامل الاستنشاقية قد تقوّي الحصار.'
+    ],
+    onsetDuration: [
+      'بعد 0.08–0.1 mg/kg IV يبدأ انخفاض twitch خلال نحو دقيقة وتظهر شروط تنبيب جيدة عادة خلال 2.5–3 دقائق؛ الحصار الأقصى خلال 3–5 دقائق.',
+      'المدة السريرية حتى 25% recovery نحو 25–40 دقيقة، ويكون التعافي إلى نحو 95% غالبًا خلال 45–65 دقيقة تحت balanced anesthesia.'
     ],
     sourcePages: [71],
     uses: ['تسهيل التنبيب', 'إرخاء العضلات أثناء التخدير والتهوية'],
@@ -453,6 +473,7 @@ export const DRUG_DETAILS: Record<string, DrugDetail> = {
   },
   neostigmine: {
     feature: 'يعكس الحصار العضلي غير المستقطب بزيادة الأستيل كولين، ويحتاج عادةً إلى مضاد مسكاريني لتقليل البطء والإفرازات.',
+    clinicalNote: 'لا يُستخدم لعكس حصر عميق بلا تعافٍ تلقائي كافٍ. يجب وجود twitch مناسب وقياس TOF، ويُعطى معه Atropine أو Glycopyrrolate لتقليل التأثيرات المسكارينية.',
     mechanism: 'مثبط عكوس لإنزيم Acetylcholinesterase | Reversible acetylcholinesterase inhibitor يرفع الأستيل كولين في الوصلة العصبية العضلية.',
     tradeNames: ['Prostigmin'],
     routes: ['وريدي | Intravenous (IV)'],
@@ -460,6 +481,10 @@ export const DRUG_DETAILS: Record<string, DrugDetail> = {
       'لعكس الحصار غير المستقطب بعد ظهور تعافٍ مناسب: 0.03 mg/kg IV عندما تكون الاستجابة الأولى >10% بوضوح أو يظهر twitch ثانٍ، وقد تصل إلى 0.07 mg/kg في الحصار الأعمق أو مع المرخيات الأطول مفعولًا.',
       'الحد الأعلى في ملصقات حديثة: 0.07 mg/kg أو 5 mg إجمالًا أيهما أقل.',
       'يُعطى مضاد مسكاريني قبل Neostigmine أو بالتزامن معه؛ مثال مرجعي من الملصق: Atropine نحو 15 mcg/kg أو Glycopyrrolate نحو 10 mcg/kg IV، مع اتباع المستحضر والبروتوكول.'
+    ],
+    onsetDuration: [
+      'بعد 0.03–0.07 mg/kg IV يصل TOF ratio إلى نحو 0.9 عادة خلال 10–20 دقيقة عندما يُعطى في مرحلة تعافٍ مناسبة.',
+      'سرعة العكس تعتمد على عمق الحصار ونوع المرخي ودرجة التعافي قبل إعطاء Neostigmine، لذلك لا يوجد زمن ثابت لكل مريض.'
     ],
     correction: 'يُعطى مع مضاد مسكاريني مثل Glycopyrrolate أو Atropine، لكن الجرعة تعتمد على عمق الحصار والوزن؛ لا تُستخدم وصفة ثابتة 2.5 mg + 1 mg لكل مريض.',
     sourcePages: [25, 54, 71],
@@ -545,12 +570,17 @@ export const DRUG_DETAILS: Record<string, DrugDetail> = {
   },
   cisatracurium: {
     feature: 'مرخٍ غير مستقطب | Nondepolarizing neuromuscular blocker متوسط المفعول، ويتحلل بدرجة مهمة بآلية Hofmann elimination.',
+    clinicalNote: 'مرخٍ عضلي بلا تسكين أو فقدان وعي، ويعتمد بدرجة مهمة على Hofmann elimination. زمن البدء والمدة يتغيران بوضوح مع الجرعة، لذلك لا يُفصل عن TOF/neuromuscular monitoring.',
     mechanism: 'مضاد تنافسي للأستيل كولين عند المستقبلات النيكوتينية في الوصلة العصبية العضلية | Competitive nicotinic ACh receptor blockade.',
     tradeNames: ['Nimbex'],
     routes: ['وريدي | Intravenous (IV)'],
     educationalDoses: [
       'جرعة البدء الموصى بها للتنبيب عند البالغ: 0.15–0.2 mg/kg IV bolus مع المعايرة حسب وقت التنبيب المتوقع وطول العملية والعوامل المرافقة.',
       'يُستخدم peripheral nerve stimulator / quantitative monitoring لتحديد الحاجة إلى جرعات إضافية وتقييم التعافي.'
+    ],
+    onsetDuration: [
+      'بعد 0.15 mg/kg IV يبلغ الحصار الأقصى في المتوسط خلال نحو 3 دقائق.',
+      'عند 0.15 mg/kg تكون مدة الحصار الفعالة سريريًا نحو 36 دقيقة في المتوسط؛ الجرعات الأعلى تبدأ أسرع وتدوم أطول.'
     ],
     uses: ['تسهيل التنبيب | Facilitation of tracheal intubation', 'إرخاء العضلات أثناء الجراحة أو التهوية | Surgical relaxation / mechanical ventilation'],
     contraindications: ['فرط التحسس للسيساتراكوريوم | Cisatracurium hypersensitivity'],
@@ -560,12 +590,17 @@ export const DRUG_DETAILS: Record<string, DrugDetail> = {
   },
   naloxone: {
     feature: 'مضاد أفيوني سريع | Rapid opioid antagonist يعكس خصوصًا التثبيط التنفسي الناتج عن الأفيونات.',
+    clinicalNote: 'يُعاير لتحقيق تهوية ووعي مناسبين بدل إلغاء التسكين بالكامل بلا داعٍ. مفعوله قد ينتهي قبل الأفيون المسبب، لذلك عودة التثبيط التنفسي ممكنة وتستلزم مراقبة وتكرار الجرعات حسب الحالة.',
     mechanism: 'مضاد تنافسي لمستقبلات الأفيونات | Competitive opioid receptor antagonist، مع أعلى ألفة وظيفية لمستقبل μ.',
     tradeNames: ['Narcan'],
     routes: ['وريدي | Intravenous', 'عضلي | Intramuscular', 'تحت الجلد | Subcutaneous', 'أنفي | Intranasal حسب المستحضر'],
     educationalDoses: [
       'لعكس التثبيط التنفسي بعد الأفيونات أثناء/بعد الجراحة: 0.1–0.2 mg IV على دفعات كل 2–3 دقائق وتُعاير للوصول إلى تهوية ووعي مناسبين من دون إلغاء التسكين أكثر من اللازم.',
       'في الجرعة الأفيونية الزائدة المعروفة أو المشتبه بها لدى البالغ: 0.4–2 mg IV كجرعة أولية ويمكن التكرار كل 2–3 دقائق بحسب الاستجابة؛ تختلف الخطة حسب طريق الإعطاء ونوع الأفيون.'
+    ],
+    onsetDuration: [
+      'بعد IV يظهر التأثير عادة خلال نحو دقيقتين؛ يكون البدء أبطأ قليلًا بعد IM أو SC.',
+      'مدة التأثير تعتمد على الجرعة والطريق، وقد تكون أقصر من مدة الأفيون؛ لذلك قد يعود التثبيط التنفسي بعد تحسن أولي.'
     ],
     uses: ['عكس التثبيط التنفسي الناتج عن الأفيونات | Reversal of opioid-induced respiratory depression', 'الاشتباه بجرعة أفيونية زائدة | Suspected opioid overdose'],
     contraindications: ['فرط التحسس للنالوكسون | Naloxone hypersensitivity'],
@@ -576,6 +611,7 @@ export const DRUG_DETAILS: Record<string, DrugDetail> = {
   },
   sugammadex: {
     feature: 'عامل عكس نوعي | Selective relaxant binding agent لعكس روكورونيوم | Rocuronium وفيكورونيوم | Vecuronium.',
+    clinicalNote: 'يعكس Rocuronium أو Vecuronium فقط ضمن هذا السياق، والجرعة تُحدد حسب عمق الحصار. 16 mg/kg مخصصة للعكس الفوري بعد جرعة Rocuronium محددة وليست جرعة روتينية. لا يُوصى به في القصور الكلوي الشديد CrCl <30 mL/min وفق الملصق.',
     mechanism: 'يُكوّن معقدًا مع جزيئات الروكورونيوم/الفيكورونيوم في البلازما | Encapsulation، فيخفض تركيزها الحر ويدفع الدواء بعيدًا عن الوصلة العصبية العضلية.',
     tradeNames: ['Bridion'],
     routes: ['وريدي | Intravenous (IV)'],
@@ -585,9 +621,13 @@ export const DRUG_DETAILS: Record<string, DrugDetail> = {
       '16 mg/kg IV للعكس الفوري في البالغ عند الحاجة بعد نحو 3 دقائق من Rocuronium 1.2 mg/kg؛ ليست جرعة روتينية.',
       'تعتمد الجرعة على الوزن الفعلي وعمق الحصار المقاس بـTOF/PTC.'
     ],
+    onsetDuration: [
+      'العكس عادة سريع بعد الجرعة المناسبة لعمق الحصار، ويجب الاستمرار بالمراقبة حتى استعادة وظيفة عصبية عضلية كافية.',
+      'جرعة 16 mg/kg مخصصة للحاجة إلى عكس سريع بعد نحو 3 دقائق من Rocuronium 1.2 mg/kg لدى البالغ؛ ليست قاعدة عامة لبقية الحالات.'
+    ],
     uses: ['عكس الحصار العصبي العضلي الناتج عن Rocuronium أو Vecuronium | Reversal of rocuronium/vecuronium blockade'],
     contraindications: ['فرط التحسس للسوغاماديكس | Sugammadex hypersensitivity'],
-    warnings: ['تأق | Anaphylaxis قد يحدث حتى دون تعرض سابق', 'بطء قلب شديد | Marked bradycardia ونادرًا توقف القلب | Cardiac arrest خلال دقائق من الإعطاء', 'يعتمد الإطراح على الكلى | Renal elimination؛ الاستخدام في القصور الكلوي الشديد يحتاج اتباع النشرة والبروتوكول المحلي'],
+    warnings: ['تأق | Anaphylaxis قد يحدث حتى دون تعرض سابق', 'بطء قلب شديد | Marked bradycardia ونادرًا توقف القلب | Cardiac arrest خلال دقائق من الإعطاء', 'يعتمد الإطراح على الكلى | Renal elimination؛ لا يُوصى به في القصور الكلوي الشديد CrCl <30 mL/min وفق الملصق'],
     adverseEffects: ['بطء القلب | Bradycardia', 'تفاعلات تحسسية | Hypersensitivity reactions', 'غثيان | Nausea', 'ألم | Pain'],
     correction: 'المصدر يذكر 2–4 mg/kg فقط؛ هذا غير كافٍ كقاعدة عامة لأن الجرعة تعتمد على عمق الحصار، وقد تُستخدم جرعات أعلى في حالات عكس محددة.',
     sourcePages: [71]
