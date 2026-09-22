@@ -43,7 +43,7 @@ function SoftList({
 
   return (
     <details className={'group rounded-2xl border px-3.5 py-3 ' + box}>
-      <summary className="flex cursor-pointer list-none items-center justify-between gap-3">
+      <summary className="flex min-h-11 cursor-pointer list-none items-center justify-between gap-3">
         <CaretDown size={15} weight="bold" className="text-[#718297] transition group-open:rotate-180" />
         <div className="flex items-center gap-2">
           <span className="rounded-full bg-white/75 px-2 py-0.5 text-[9px] font-black text-[#647486]">
@@ -111,7 +111,7 @@ function EquipmentSheet({
             </section>
           )}
 
-          <SoftList title="الوظيفة | Purpose" items={item.purpose} tone="green" />
+          <SoftList title="الوظيفة | Purpose" items={item.purpose} tone="blue" />
           <SoftList title="نقاط مهمة | Key points" items={item.keyPoints} tone="blue" />
 
         </div>
