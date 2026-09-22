@@ -1,4 +1,4 @@
-import { useRef, useState, type ReactNode } from 'react';
+import { useId, useRef, useState, type ReactNode } from 'react';
 import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
 import { CaretDown } from '@phosphor-icons/react';
 
@@ -33,6 +33,7 @@ export function NotificationStackMenu({
   const [expanded, setExpanded] = useState(defaultExpanded);
   const rootRef = useRef<HTMLDivElement>(null);
   const pointerTypeRef = useRef<string | null>(null);
+  const listId = useId();
   const reduceMotion = useReducedMotion();
 
   const setOpen = (next: boolean) => {
@@ -99,6 +100,7 @@ export function NotificationStackMenu({
           data-stack-trigger
           type="button"
           aria-expanded={expanded}
+          aria-controls={listId}
           onPointerDown={(event) => {
             pointerTypeRef.current = event.pointerType;
           }}
@@ -145,6 +147,8 @@ export function NotificationStackMenu({
         {expanded ? (
           <motion.div
             key="stack-list"
+            id={listId}
+            role="group"
             initial={reduceMotion ? false : { opacity: 0, y: -18 }}
             animate={{ opacity: 1, y: 0 }}
             exit={reduceMotion ? undefined : { opacity: 0, y: -12 }}
