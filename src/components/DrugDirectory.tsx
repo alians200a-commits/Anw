@@ -109,7 +109,7 @@ export function DrugDirectory({
       />
 
       <div className="px-1 text-left">
-        <p className="text-[11px] font-semibold text-[#657784]">{filtered.length} دواء</p>
+        <p className="text-[11px] font-semibold text-[#5F7280]">{filtered.length} دواء</p>
       </div>
 
       <div className="space-y-2">
@@ -176,7 +176,7 @@ export function DrugDirectory({
                   onClick={() => setSelectedDrugId(drug.id)}
                   className="mt-2 flex min-h-11 w-full items-center justify-between border-t border-[#DDE6EB] pt-2 text-[11px] font-black text-[#315672] outline-none focus-visible:ring-2 focus-visible:ring-[#CCA039]/50"
                 >
-                  <span className="text-[#667A89]">الاستخدام • الموانع • التحذيرات</span>
+                  <span className="text-[#5F7280]">الاستخدام • الموانع • التحذيرات</span>
                   <span>التفاصيل الدوائية</span>
                 </button>
               )}
@@ -186,7 +186,7 @@ export function DrugDirectory({
       </div>
 
       {filtered.length === 0 && (
-        <div className="rounded-[18px] border border-dashed border-[#C9D6DF] bg-[#F8FAFB] p-7 text-center text-xs font-semibold text-[#667A89]">
+        <div className="rounded-[18px] border border-dashed border-[#C9D6DF] bg-[#F8FAFB] p-7 text-center text-xs font-semibold text-[#5F7280]">
           ماكو دواء مطابق للبحث حالياً.
         </div>
       )}
