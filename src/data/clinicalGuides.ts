@@ -1426,6 +1426,19 @@ export const CLINICAL_GUIDES: ClinicalGuide[] = [
         ]
       },
       {
+        title: 'مضاعفات محددة يذكرها المصدر | Specific complications in the source',
+        items: [
+          'تفاعل انحلال دم حاد | Acute hemolytic transfusion reaction.',
+          'تفاعلات متأخرة قد تظهر بعد عدة أيام | Delayed transfusion reactions.',
+          'تلوث/عدوى الوحدة الدموية | Contaminated blood / transfusion-transmitted infection.',
+          'زيادة الحمل الدوراني | Circulatory overload؛ ويقابله سريريًا TACO ضمن التشخيصات الحديثة.',
+          'اضطرابات البوتاسيوم | Potassium abnormalities وتسمم/تأثير السيترات | Citrate effect مع نقص الكالسيوم خصوصًا عند النقل الكبير.',
+          'انخفاض الحرارة | Hypothermia واضطرابات الحمض والقاعدة | Acid-base changes.',
+          'اعتلال التخثر | Coagulopathy وقلة الصفائح عند النقل الكبير أو النزف المستمر.',
+          'تفاعلات الحمى والحساسية | Febrile / allergic reactions.'
+        ]
+      },
+      {
         title: 'علامات مهمة أثناء التخدير | Warning signs under anesthesia',
         items: [
           'هبوط ضغط مفاجئ أو متفاقم | Hypotension.',
