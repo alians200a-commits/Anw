@@ -4,6 +4,7 @@ import { CLINICAL_TERMS } from '../data/clinicalTerms';
 import { playPronunciation } from '../utils/speech';
 import { BilingualLabel } from './BilingualLabel';
 import { MixedDirectionText } from './MixedDirectionText';
+import { AnimatedIcon } from './ui/AnimatedIcon';
 
 interface TermsDirectoryProps {
   favorites: Set<string>;
@@ -60,7 +61,7 @@ export function TermsDirectory({ favorites, onToggleFavorite, initialQuery = '' 
                     title="نطق المصطلح"
                     aria-label={'نطق ' + term.ar}
                   >
-                    <SpeakerHigh size={19} />
+                    <AnimatedIcon variant="tilt"><SpeakerHigh size={19} /></AnimatedIcon>
                   </button>
                   <button
                     type="button"
@@ -74,7 +75,7 @@ export function TermsDirectory({ favorites, onToggleFavorite, initialQuery = '' 
                     title="حفظ"
                     aria-label={isFavorite ? 'إزالة من المحفوظات' : 'حفظ المصطلح'}
                   >
-                    <Heart size={19} weight={isFavorite ? 'fill' : 'regular'} />
+                    <AnimatedIcon active={isFavorite} variant="pulse"><Heart size={19} weight={isFavorite ? 'fill' : 'regular'} /></AnimatedIcon>
                   </button>
                 </div>
 
