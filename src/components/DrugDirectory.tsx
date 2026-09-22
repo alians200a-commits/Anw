@@ -10,13 +10,12 @@ import { DRUG_DETAILS } from '../data/drugDetails';
 import { DrugDetailSheet } from './DrugDetailSheet';
 import { MixedDirectionText } from './MixedDirectionText';
 import { useEffect, useMemo, useState } from 'react';
-import { MedicinesHealthIcon } from './MedicalIcons';
 import { playPronunciation } from '../utils/speech';
 import {
   NotificationStackMenu,
   type StackMenuItem
 } from './ui/NotificationStackMenu';
-import { AnimatedIcon } from './ui/AnimatedIcon';
+import { MedicalSiteIcon } from './ui/MedicalSiteIcon';
 
 interface DrugDirectoryProps {
   favorites: Set<string>;
@@ -80,7 +79,7 @@ export function DrugDirectory({
     id: item.id,
     title: item.label,
     description: item.id === 'all' ? 'جميع الأدوية' : 'تصفية حسب هذا التصنيف',
-    leading: <MedicinesHealthIcon className="h-5 w-5" />,
+    leading: <MedicalSiteIcon name="drugs" size={24} />,
     onSelect: () => setClassification(item.id as 'all' | DrugClass)
   }));
 
@@ -105,7 +104,7 @@ export function DrugDirectory({
       <NotificationStackMenu
         title={currentFilter}
         description="تصنيف الأدوية"
-        icon={<MedicinesHealthIcon className="h-[22px] w-[22px]" />}
+        icon={<MedicalSiteIcon name="drugs" size={27} />}
         items={filterItems}
         selectedId={classification}
       />
@@ -134,7 +133,7 @@ export function DrugDirectory({
                     title="نطق اسم الدواء"
                     aria-label={'نطق اسم ' + drug.ar}
                   >
-                    <AnimatedIcon variant="tilt"><SpeakerHigh size={19} /></AnimatedIcon>
+                    <SpeakerHigh size={19} />
                   </button>
                   <button
                     type="button"
@@ -148,7 +147,7 @@ export function DrugDirectory({
                     title="حفظ"
                     aria-label={isFavorite ? 'إزالة من المحفوظات' : 'حفظ الدواء'}
                   >
-                    <AnimatedIcon active={isFavorite} variant="pulse"><Heart size={19} weight={isFavorite ? 'fill' : 'regular'} /></AnimatedIcon>
+                    <MedicalSiteIcon name="saved" play={isFavorite} size={25} />
                   </button>
                 </div>
 
@@ -163,7 +162,7 @@ export function DrugDirectory({
                     </span>
                   </div>
                   <div className="grid h-11 w-11 shrink-0 place-items-center rounded-[14px] border border-[#D7E2E9] bg-[#EEF3F6] text-[#315672]">
-                    <AnimatedIcon variant="pop"><MedicinesHealthIcon className="h-6 w-6" /></AnimatedIcon>
+                    <MedicalSiteIcon name="drugs" size={28} />
                   </div>
                 </div>
               </div>

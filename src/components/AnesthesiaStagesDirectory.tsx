@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
-import { BookOpenText, CaretDown, X } from '@phosphor-icons/react';
+import { CaretDown, X } from '@phosphor-icons/react';
 import {
   ANESTHESIA_STAGES,
   getStageGuides
@@ -13,6 +13,7 @@ import {
   NotificationStackMenu,
   type StackMenuItem
 } from './ui/NotificationStackMenu';
+import { MedicalSiteIcon } from './ui/MedicalSiteIcon';
 
 function StageSection({
   title,
@@ -222,7 +223,7 @@ export function AnesthesiaStagesDirectory({
     title: stage.titleAr,
     description: stage.titleEn,
     trailing: stage.number,
-    leading: <BookOpenText size={19} />,
+    leading: <MedicalSiteIcon name="stages" size={24} />,
     onSelect: () => {
       setSelectedStageId(stage.id);
       setSelectedGuide(null);
@@ -243,11 +244,7 @@ export function AnesthesiaStagesDirectory({
       <NotificationStackMenu
         title={currentEntry.stage.titleAr}
         description={currentEntry.stage.titleEn}
-        icon={
-          <span className="text-[11px] font-black text-[#315672]">
-            {currentEntry.stage.number}
-          </span>
-        }
+        icon={<MedicalSiteIcon name="stages" size={27} />}
         items={stageItems}
         selectedId={selectedStageId}
       />
@@ -267,7 +264,7 @@ export function AnesthesiaStagesDirectory({
             className="flex min-h-[68px] w-full items-center gap-3 rounded-[18px] border border-[#DCE5EA] bg-[#F7F9FA] px-3.5 py-3 text-right outline-none transition active:bg-[#EEF3F6] focus-visible:ring-2 focus-visible:ring-[#CCA039]/50"
           >
             <div className="grid h-11 w-11 shrink-0 place-items-center rounded-[14px] border border-[#D7E2E9] bg-[#EEF3F6] text-[#315672]">
-              <BookOpenText size={21} />
+              <MedicalSiteIcon name="stages" size={27} />
             </div>
 
             <div className="min-w-0 flex-1">

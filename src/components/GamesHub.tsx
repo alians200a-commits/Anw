@@ -1,4 +1,4 @@
-import { GameController } from '@phosphor-icons/react';
+import { MedicalSiteIcon } from './ui/MedicalSiteIcon';
 
 export function GamesHub() {
   return (
@@ -15,7 +15,7 @@ export function GamesHub() {
           </div>
 
           <div className="grid h-12 w-12 shrink-0 place-items-center rounded-[15px] border border-[#D7E2E9] bg-[#EEF3F6] text-[#315672]">
-            <GameController size={25} weight="bold" />
+            <MedicalSiteIcon name="learn" play size={32} />
           </div>
         </div>
       </section>

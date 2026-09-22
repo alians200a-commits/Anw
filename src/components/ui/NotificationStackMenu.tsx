@@ -1,7 +1,6 @@
 import { useEffect, useId, useRef, useState, type ReactNode } from 'react';
 import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
 import { CaretDown, Check } from '@phosphor-icons/react';
-import { AnimatedIcon } from './AnimatedIcon';
 
 export interface StackMenuItem {
   id: string;
@@ -92,9 +91,7 @@ export function NotificationStackMenu({
       >
         {icon ? (
           <span className="grid h-10 w-10 shrink-0 place-items-center rounded-[12px] bg-[#EEF3F6] text-[#315672]">
-            <AnimatedIcon active={expanded} variant="lift">
-              {icon}
-            </AnimatedIcon>
+            {icon}
           </span>
         ) : null}
 
@@ -166,9 +163,7 @@ export function NotificationStackMenu({
                           : 'bg-[#F3F6F8] text-[#526F85] group-hover:bg-white')
                       }
                     >
-                      <AnimatedIcon active={selected} variant="pop">
-                        {item.leading}
-                      </AnimatedIcon>
+                      {item.leading}
                     </span>
                   ) : null}
 

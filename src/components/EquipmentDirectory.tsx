@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
-import { CaretDown, MagnifyingGlass, Wrench, X } from '@phosphor-icons/react';
+import { CaretDown, MagnifyingGlass, X } from '@phosphor-icons/react';
 import {
   ANESTHESIA_EQUIPMENT,
   EQUIPMENT_FILTERS,
@@ -14,6 +14,7 @@ import {
   NotificationStackMenu,
   type StackMenuItem
 } from './ui/NotificationStackMenu';
+import { MedicalSiteIcon } from './ui/MedicalSiteIcon';
 
 function SoftList({
   title,
@@ -162,7 +163,7 @@ export function EquipmentDirectory({
     id: item.id,
     title: item.label,
     description: item.id === 'all' ? 'كل المعدات والأدوات' : 'تصفية هذا القسم',
-    leading: <Wrench size={19} weight="bold" />,
+    leading: <MedicalSiteIcon name="equipment" size={24} />,
     onSelect: () => setCategory(item.id as 'all' | EquipmentCategory)
   }));
 
@@ -208,7 +209,7 @@ export function EquipmentDirectory({
       <NotificationStackMenu
         title={currentCategory}
         description="قسم عربة التخدير والمعدات"
-        icon={<Wrench size={22} weight="bold" />}
+        icon={<MedicalSiteIcon name="equipment" size={27} />}
         items={categoryItems}
         selectedId={category}
       />

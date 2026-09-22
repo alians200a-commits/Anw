@@ -1,10 +1,10 @@
 import { useEffect, useMemo, useState } from 'react';
-import { Heart, MagnifyingGlass, SpeakerHigh } from '@phosphor-icons/react';
+import { MagnifyingGlass, SpeakerHigh } from '@phosphor-icons/react';
 import { CLINICAL_TERMS } from '../data/clinicalTerms';
 import { playPronunciation } from '../utils/speech';
 import { BilingualLabel } from './BilingualLabel';
 import { MixedDirectionText } from './MixedDirectionText';
-import { AnimatedIcon } from './ui/AnimatedIcon';
+import { MedicalSiteIcon } from './ui/MedicalSiteIcon';
 
 interface AbbreviationsDirectoryProps {
   favorites: Set<string>;
@@ -61,7 +61,7 @@ export function AbbreviationsDirectory({ favorites, onToggleFavorite, initialQue
                     title="نطق الاسم الإنجليزي"
                     aria-label={'نطق ' + (term.abbr ?? term.en)}
                   >
-                    <AnimatedIcon variant="tilt"><SpeakerHigh size={19} /></AnimatedIcon>
+                    <SpeakerHigh size={19} />
                   </button>
                   <button
                     type="button"
@@ -75,7 +75,7 @@ export function AbbreviationsDirectory({ favorites, onToggleFavorite, initialQue
                     title="حفظ"
                     aria-label={isFavorite ? 'إزالة من المحفوظات' : 'حفظ الاختصار'}
                   >
-                    <AnimatedIcon active={isFavorite} variant="pulse"><Heart size={19} weight={isFavorite ? 'fill' : 'regular'} /></AnimatedIcon>
+                    <MedicalSiteIcon name="saved" play={isFavorite} size={25} />
                   </button>
                 </div>
 
