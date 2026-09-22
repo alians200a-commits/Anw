@@ -14,7 +14,21 @@ import {
   NotificationStackMenu,
   type StackMenuItem
 } from './ui/NotificationStackMenu';
-import { MedicalSiteIcon } from './ui/MedicalSiteIcon';
+import { MedicalSiteIcon, type MedicalSiteIconName } from './ui/MedicalSiteIcon';
+
+const equipmentCategoryIcon: Record<'all' | EquipmentCategory, MedicalSiteIconName> = {
+  all: 'equipment',
+  machine: 'equipment',
+  'gas-supply': 'gas',
+  breathing: 'breathing',
+  airway: 'airway',
+  monitoring: 'monitoring',
+  tools: 'tools'
+};
+
+function equipmentIcon(item: AnesthesiaEquipment): MedicalSiteIconName {
+  return equipmentCategoryIcon[item.category];
+}
 
 function SoftList({
   title,
@@ -98,10 +112,15 @@ function EquipmentSheet({
             >
               <X size={17} weight="bold" />
             </button>
-            <div className="flex-1 text-right">
+            <div className="flex min-w-0 flex-1 items-start justify-end gap-3">
+              <div className="min-w-0 flex-1 text-right">
               <p className="text-[11px] font-black text-[#526F85]">{item.categoryAr}</p>
               <h3 className="mt-0.5 text-lg font-black text-[#183149]">{item.nameAr}</h3>
               <p className="mt-0.5 text-sm font-bold text-[#526675]" dir="ltr">{item.nameEn}</p>
+              </div>
+              <span className="grid h-11 w-11 shrink-0 place-items-center rounded-[13px] border border-[#D7E2E9] bg-white">
+                <MedicalSiteIcon name={equipmentIcon(item)} play size={28} />
+              </span>
             </div>
           </div>
         </div>
@@ -163,7 +182,7 @@ export function EquipmentDirectory({
     id: item.id,
     title: item.label,
     description: item.id === 'all' ? 'كل المعدات والأدوات' : 'تصفية هذا القسم',
-    leading: <MedicalSiteIcon name="equipment" play size={24} />,
+    leading: <MedicalSiteIcon name={equipmentCategoryIcon[item.id]} play size={24} />,
     onSelect: () => setCategory(item.id as 'all' | EquipmentCategory)
   }));
 
@@ -209,7 +228,7 @@ export function EquipmentDirectory({
       <NotificationStackMenu
         title={currentCategory}
         description="قسم عربة التخدير والمعدات"
-        icon={<MedicalSiteIcon name="equipment" play size={27} />}
+        icon={<MedicalSiteIcon name={equipmentCategoryIcon[category]} play size={27} />}
         items={categoryItems}
         selectedId={category}
       />
