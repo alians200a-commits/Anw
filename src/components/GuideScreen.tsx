@@ -34,6 +34,7 @@ interface GuideScreenProps {
   onToggleFavorite: (id: string) => void;
   initialDrugClass: 'all' | DrugClass;
   initialQuery: string;
+  onRecentItem?: (section: GuideSection, query: string) => void;
 }
 
 const sectionLabels: Record<GuideSection, string> = {
@@ -52,7 +53,8 @@ export function GuideScreen({
   favorites,
   onToggleFavorite,
   initialDrugClass,
-  initialQuery
+  initialQuery,
+  onRecentItem
 }: GuideScreenProps) {
   const sectionItems: StackMenuItem[] = [
     {
@@ -130,12 +132,33 @@ export function GuideScreen({
           onToggleFavorite={onToggleFavorite}
           initialClassification={initialDrugClass}
           initialQuery={initialQuery}
+          onOpenDrug={(query) => onRecentItem?.('drugs', query)}
         />
       )}
-      {section === 'fluids' && <FluidsDirectory initialQuery={initialQuery} />}
-      {section === 'equipment' && <EquipmentDirectory initialQuery={initialQuery} />}
-      {section === 'stages' && <AnesthesiaStagesDirectory initialQuery={initialQuery} />}
-      {section === 'clinical' && <ClinicalGuidesDirectory initialQuery={initialQuery} />}
+      {section === 'fluids' && (
+        <FluidsDirectory
+          initialQuery={initialQuery}
+          onOpenItem={(query) => onRecentItem?.('fluids', query)}
+        />
+      )}
+      {section === 'equipment' && (
+        <EquipmentDirectory
+          initialQuery={initialQuery}
+          onOpenItem={(query) => onRecentItem?.('equipment', query)}
+        />
+      )}
+      {section === 'stages' && (
+        <AnesthesiaStagesDirectory
+          initialQuery={initialQuery}
+          onOpenItem={(query) => onRecentItem?.('stages', query)}
+        />
+      )}
+      {section === 'clinical' && (
+        <ClinicalGuidesDirectory
+          initialQuery={initialQuery}
+          onOpenItem={(query) => onRecentItem?.('clinical', query)}
+        />
+      )}
       {section === 'terms' && (
         <TermsDirectory
           favorites={favorites}
