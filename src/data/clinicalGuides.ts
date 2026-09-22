@@ -1655,6 +1655,14 @@ export const CLINICAL_GUIDES: ClinicalGuide[] = [
     summary: 'فشل القلب | Heart failure يزيد خطر المضاعفات حول الجراحة؛ التخطيط يعتمد على شدة الأعراض، وظيفة البطين، السبب، الجراحة والأدوية الحالية.',
     sections: [
       {
+        title: 'علامات سريرية يبرزها المصدر | Clinical clues',
+        items: [
+          'ضيق النفس | Dyspnea وضيق النفس الاضطجاعي | Orthopnea.',
+          'ارتفاع الضغط الوريدي/الاحتقان الوريدي | Raised venous pressure / venous congestion.',
+          'وجود هذه العلامات يستدعي تقييم سبب وشدة فشل القلب وتحسين الحالة قبل الجراحة متى كان ذلك ممكنًا.'
+        ]
+      },
+      {
         title: 'أهداف التخدير | Anesthetic goals',
         items: [
           'الحفاظ على تروية مناسبة وتجنب هبوط الضغط المطول | Maintain perfusion / avoid prolonged hypotension.',
