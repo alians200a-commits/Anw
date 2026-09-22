@@ -15,7 +15,36 @@ import {
   NotificationStackMenu,
   type StackMenuItem
 } from './ui/NotificationStackMenu';
-import { MedicalSiteIcon } from './ui/MedicalSiteIcon';
+import { MedicalSiteIcon, type MedicalSiteIconName } from './ui/MedicalSiteIcon';
+
+const drugClassIcon: Record<'all' | DrugClass, MedicalSiteIconName> = {
+  all: 'drugs',
+  intravenous: 'drugs',
+  inhalational: 'inhalational',
+  hypnotic: 'drugs',
+  analgesic: 'drugs',
+  sedative: 'drugs',
+  'muscle-relaxant': 'drugs',
+  antiemetic: 'drugs',
+  emergency: 'monitoring',
+  'local-anesthetic': 'drugs',
+  reversal: 'drugs',
+  vasopressor: 'monitoring',
+  cardiovascular: 'monitoring',
+  adjunct: 'drugs'
+};
+
+function iconForDrug(classes: DrugClass[]): MedicalSiteIconName {
+  if (classes.includes('inhalational')) return 'inhalational';
+  if (
+    classes.includes('cardiovascular') ||
+    classes.includes('vasopressor') ||
+    classes.includes('emergency')
+  ) {
+    return 'monitoring';
+  }
+  return 'drugs';
+}
 
 interface DrugDirectoryProps {
   favorites: Set<string>;
@@ -79,7 +108,14 @@ export function DrugDirectory({
     id: item.id,
     title: item.label,
     description: item.id === 'all' ? 'جميع الأدوية' : 'تصفية حسب هذا التصنيف',
-    leading: <MedicalSiteIcon name="drugs" play loop size={24} />,
+    leading: (
+      <MedicalSiteIcon
+        name={drugClassIcon[item.id as 'all' | DrugClass]}
+        play
+        loop
+        size={24}
+      />
+    ),
     onSelect: () => setClassification(item.id as 'all' | DrugClass)
   }));
 
@@ -104,7 +140,14 @@ export function DrugDirectory({
       <NotificationStackMenu
         title={currentFilter}
         description="تصنيف الأدوية"
-        icon={<MedicalSiteIcon name="drugs" play loop size={27} />}
+        icon={
+          <MedicalSiteIcon
+            name={drugClassIcon[classification]}
+            play
+            loop
+            size={27}
+          />
+        }
         items={filterItems}
         selectedId={classification}
       />
@@ -162,7 +205,7 @@ export function DrugDirectory({
                     </span>
                   </div>
                   <div className="grid h-11 w-11 shrink-0 place-items-center rounded-[14px] border border-[#D7E2E9] bg-[#EEF3F6] text-[#315672]">
-                    <MedicalSiteIcon name="drugs" size={28} />
+                    <MedicalSiteIcon name={iconForDrug(drug.classes)} size={28} />
                   </div>
                 </div>
               </div>
