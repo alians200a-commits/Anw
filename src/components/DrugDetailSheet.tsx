@@ -331,22 +331,6 @@ export function DrugDetailSheet({ drug, detail, onClose }: DrugDetailSheetProps)
           <DetailSection title="تحذيرات واحتياطات | Warnings" items={detail.warnings} tone="warning" />
           <DetailSection title="آثار جانبية مهمة | Important adverse effects" items={detail.adverseEffects} tone="effect" />
 
-          <div className="border-t border-[#EEE8F2] pt-3 text-center text-[9px] leading-4 text-[#8B8192]">
-            {(detail.sourceLabel || detail.sourcePages) && (
-              <p>
-                {detail.sourceLabel?.includes('+') ? 'المصادر | Sources' : 'المصدر | Source'}:{' '}
-                {detail.sourceLabel ?? 'مبادئ التخدير'}
-              </p>
-            )}
-            {detail.sourcePages && (
-              <p className="mt-1">
-                {detail.sourceLabel?.includes('+')
-                  ? 'أرقام الصفحات/الأقسام مجمعة من المصادر أعلاه | Combined source page/section numbers'
-                  : 'صفحات/أقسام المصدر | Source pages/sections'}
-                : {detail.sourcePages.join('، ')}
-              </p>
-            )}
-          </div>
         </div>
       </motion.div>
     </motion.div>

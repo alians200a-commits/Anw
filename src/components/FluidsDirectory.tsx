@@ -91,10 +91,6 @@ function FluidSheet({ item, onClose }: { item: IntravenousFluid; onClose: () => 
           <FluidList title="الدور والاستخدام | Role" items={item.role} tone="use" />
           <FluidList title="محاذير | Cautions" items={item.cautions} tone="caution" />
 
-          <div className="border-t border-[#E4ECEA] pt-3 text-center text-[9px] leading-4 text-[#84918F]">
-            <p>المصدر | Source: مبادئ التخدير</p>
-            <p className="mt-1">صفحات المصدر | Source pages: {item.sourcePages.join('، ')}</p>
-          </div>
         </div>
       </motion.div>
     </motion.div>

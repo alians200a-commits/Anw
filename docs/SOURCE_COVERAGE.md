@@ -61,11 +61,12 @@ A content-audit rule now requires educational dose data for every drug record so
 Known standalone emergency-drug gap: NONE.
 
 ## Source metadata note
-Some existing Drug Details merge more than one source in one record, so a single sourcePages array can contain page numbers originating from different source documents.
+Source metadata is retained internally for audit, provenance and future maintenance.
 
-Coverage decisions in this report therefore use the source content + topic identity + source labels, not a raw union of page numbers.
-
-A future source-reference UI refinement can split merged references into source-specific page groups if exact per-source display is required.
+- `sourceLabel` and `sourcePages` remain in the data layer.
+- Source names and page numbers are not shown in the user-facing app UI.
+- Coverage decisions use the source content + topic identity + source labels, not a raw union of page numbers.
+- Mixed-source records may still contain page numbers from more than one document; this is acceptable internally because the metadata is for audit rather than presentation.
 
 ## UI / mobile QA status
 
@@ -80,7 +81,7 @@ Static code-path and CI QA completed on 2026-09-22:
 - Mobile viewport includes `viewport-fit=cover`: PASS.
 - Bottom navigation uses safe-area bottom inset: PASS.
 - Drug/clinical/equipment/fluid detail sheets use safe-area bottom padding: PASS.
-- Equipment and fluid source names are explicit; mixed drug source page numbers are labeled as combined references: PASS.
+- Source metadata remains available internally but is intentionally hidden from the user-facing UI: PASS.
 - Locked header geometry/branding was not changed: PASS.
 - Forbidden visible terms search: 0 matches for `تحريض`, `محطة التخدير`, `محطات التخدير`, and `Anesthesia Workstation`.
 - Latest code verification after UI fixes: TypeScript + Content Audit + Build = PASS.

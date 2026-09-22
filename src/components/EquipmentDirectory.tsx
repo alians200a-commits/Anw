@@ -101,10 +101,6 @@ function EquipmentSheet({
           <SoftList title="الوظيفة | Purpose" items={item.purpose} tone="green" />
           <SoftList title="نقاط مهمة | Key points" items={item.keyPoints} tone="blue" />
 
-          <div className="border-t border-[#E8EEF3] pt-3 text-center text-[9px] leading-4 text-[#84919C]">
-            <p>المصدر | Source: مبادئ التخدير</p>
-            <p className="mt-1">صفحات المصدر | Source pages: {item.sourcePages.join('، ')}</p>
-          </div>
         </div>
       </motion.div>
     </motion.div>

@@ -86,12 +86,6 @@ function ClinicalGuideSheet({
             <GuideItems key={section.title} title={section.title} items={section.items} />
           ))}
 
-          <div className="border-t border-[#E7EEE8] pt-3 text-center text-[9px] leading-4 text-[#849087]">
-            <p>المصدر | Source: {guide.sourceLabel ?? 'مبادئ التخدير'}</p>
-            <p className="mt-1">
-              صفحات/أقسام المصدر | Source pages/sections: {guide.sourcePages.join('، ')}
-            </p>
-          </div>
         </div>
       </motion.div>
     </motion.div>
