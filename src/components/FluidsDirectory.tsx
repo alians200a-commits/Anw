@@ -204,6 +204,7 @@ export function FluidsDirectory({
         description="نوع السوائل الوريدية"
         icon={<Drop size={22} weight="fill" />}
         items={categoryItems}
+        selectedId={category}
       />
 
       <div className="space-y-2">
