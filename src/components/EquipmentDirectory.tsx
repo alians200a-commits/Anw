@@ -121,11 +121,9 @@ function EquipmentSheet({
 }
 
 export function EquipmentDirectory({
-  initialQuery = '',
-  onOpenItem
+  initialQuery = ''
 }: {
   initialQuery?: string;
-  onOpenItem?: (query: string) => void;
 }) {
   const [query, setQuery] = useState(initialQuery);
   const [category, setCategory] = useState<'all' | EquipmentCategory>('all');
@@ -210,10 +208,7 @@ export function EquipmentDirectory({
           <motion.button
             key={item.id}
             type="button"
-            onClick={() => {
-              setSelected(item);
-              onOpenItem?.(item.nameEn);
-            }}
+            onClick={() => setSelected(item)}
             initial={{ opacity: 0, y: 5 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.12, delay: Math.min(index, 8) * 0.015 }}
