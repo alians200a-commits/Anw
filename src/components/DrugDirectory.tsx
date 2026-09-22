@@ -12,6 +12,7 @@ import { MixedDirectionText } from './MixedDirectionText';
 import { useEffect, useMemo, useState } from 'react';
 import { MedicinesHealthIcon } from './MedicalIcons';
 import { playPronunciation } from '../utils/speech';
+import { MEDICAL_ANIMATED_GIFS } from '../data/animatedMedicalIcons';
 import {
   NotificationStackMenu,
   type StackMenuItem
@@ -106,6 +107,7 @@ export function DrugDirectory({
         title={currentFilter}
         description="تصنيف الأدوية"
         icon={<MedicinesHealthIcon className="h-[22px] w-[22px]" />}
+        animatedIconSrc={MEDICAL_ANIMATED_GIFS.drugs}
         items={filterItems}
         selectedId={classification}
       />
