@@ -46,6 +46,23 @@ const sectionLabels: Record<GuideSection, string> = {
   abbreviations: 'الاختصارات'
 };
 
+function SectionIcon({ section }: { section: GuideSection }) {
+  if (section === 'drugs') {
+    return <MedicinesHealthIcon className="h-[22px] w-[22px]" />;
+  }
+  if (section === 'equipment') {
+    return <Wrench size={22} weight="bold" />;
+  }
+  if (section === 'fluids') {
+    return <Drop size={22} weight="fill" />;
+  }
+  if (section === 'abbreviations') {
+    return <TextAa size={22} weight="bold" />;
+  }
+  return <BookOpenText size={22} weight="bold" />;
+}
+
+
 export function GuideScreen({
   section,
   onSectionChange,
@@ -116,8 +133,8 @@ export function GuideScreen({
         <NotificationStackMenu
           title={sectionLabels[section]}
           description="اضغط لتغيير قسم الدليل"
-          icon={<BookOpenText size={22} weight="bold" />}
-          items={sectionItems}
+          icon={<SectionIcon section={section} />}
+          items={sectionItems.filter((item) => item.id !== section)}
         />
       </section>
 
