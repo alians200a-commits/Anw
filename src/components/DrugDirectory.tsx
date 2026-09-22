@@ -3,6 +3,7 @@ import { CaretDown, Heart, MagnifyingGlass, SpeakerHigh } from '@phosphor-icons/
 import { ANESTHESIA_DRUGS, DRUG_CLASS_LABELS, DRUG_FILTERS, type DrugClass } from '../data/drugs';
 import { DRUG_DETAILS } from '../data/drugDetails';
 import { DrugDetailSheet } from './DrugDetailSheet';
+import { MixedDirectionText } from './MixedDirectionText';
 import { useEffect, useMemo, useState } from 'react';
 import { MedicinesHealthIcon } from './MedicalIcons';
 import { playPronunciation } from '../utils/speech';
@@ -146,8 +147,8 @@ export function DrugDirectory({
 
                 <div className="flex flex-1 items-start justify-end gap-3 text-right">
                   <div>
-                    <h3 className="text-sm font-black text-[#34293F]" dir="ltr">{drug.en}</h3>
-                    <p className="mt-0.5 text-xs font-bold text-[#655A6F]">{drug.ar}</p>
+                    <h3 className="text-sm font-black text-[#34293F]">{drug.ar}</h3>
+                    <p className="mt-0.5 text-xs font-bold text-[#655A6F]" dir="ltr">{drug.en}</p>
                     <span className="mt-2 inline-flex rounded-full bg-[#6C4AA5]/8 px-2.5 py-0.5 text-[9px] font-bold text-[#6C4AA5]">
                       {drug.classes.map((item) => DRUG_CLASS_LABELS[item]).join(' • ')}
                     </span>
@@ -157,7 +158,7 @@ export function DrugDirectory({
                   </div>
                 </div>
               </div>
-              <p className="mt-3 text-[10px] leading-5 text-[#766C7E]">{drug.short}</p>
+              <p className="mt-3 text-[10px] leading-5 text-[#766C7E]"><MixedDirectionText text={drug.short} /></p>
               {DRUG_DETAILS[drug.id] && (
                 <button
                   onClick={() => setSelectedDrugId(drug.id)}

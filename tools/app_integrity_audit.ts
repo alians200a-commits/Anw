@@ -356,6 +356,7 @@ if (/<option[^>]*>[^<]*\|[^<]*<\/option>/.test(guideScreen)) {
 const appCode = readFileSync('src/App.tsx', 'utf8');
 const homeCode = readFileSync('src/components/HomeScreen.tsx', 'utf8');
 const favoritesCode = readFileSync('src/components/FavoritesScreen.tsx', 'utf8');
+const drugDirectoryCode = readFileSync('src/components/DrugDirectory.tsx', 'utf8');
 
 if (!appCode.includes('initialQuery={guideQuery}')) errors.push('App: guide deep-link query contract missing');
 if (!homeCode.includes("openGuide('drugs', 'all', drug.en)")) errors.push('Home search: drug deep-link missing');
@@ -363,6 +364,12 @@ if (!homeCode.includes("openGuide('clinical', 'all', guide.titleEn)")) errors.pu
 if (!homeCode.includes("openGuide('stages', 'all', guide.titleEn)")) errors.push('Home search: stage deep-link missing');
 if (!favoritesCode.includes('<DrugDetailSheet')) errors.push('Favorites: saved drug no longer opens DrugDetailSheet');
 if (!favoritesCode.includes("onToggleFavorite('drug:' + drug.id)")) errors.push('Favorites: separate drug remove control missing');
+if (!drugDirectoryCode.includes('>{drug.ar}</h3>') || !drugDirectoryCode.includes('dir="ltr">{drug.en}</p>')) {
+  errors.push('DrugDirectory: Arabic-first card order missing');
+}
+if (!drugDirectoryCode.includes('MixedDirectionText text={drug.short}')) {
+  errors.push('DrugDirectory: mixed-direction short description renderer missing');
+}
 
 // Track hidden corrections that still require domain-by-domain review.
 const hiddenCorrections = {
