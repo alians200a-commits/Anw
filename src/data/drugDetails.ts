@@ -887,6 +887,10 @@ export const DRUG_DETAILS: Record<string, DrugDetail> = {
     mechanism: 'مضاد لمستقبلات Dopamine D2 أساسًا مع تأثيرات 5-HT4 agonism و5-HT3 antagonism بجرعات أعلى، ما يعزز إفراغ المعدة ويؤثر في مركز القيء.',
     tradeNames: ['Plasil', 'Reglan'],
     routes: ['وريدي | Intravenous', 'عضلي | Intramuscular', 'فموي | Oral حسب المستحضر'],
+    educationalDoses: [
+      'للبالغ في الوقاية من الغثيان والقيء بعد العملية حسب ملصق Metoclopramide injection الحالي: 10–20 mg IM كجرعة مفردة قرب نهاية الجراحة؛ أما استعمال IV فيُحدد حسب الاستطباب ويُعطى بالسرعة الموصى بها لتقليل التفاعلات الحركية.',
+      'في gastroparesis الشديد لدى البالغ: 10 mg IM أو IV ببطء خلال 1–2 دقيقة كجرعة علاجية حسب الملصق، مع تجنب العلاج المطول قدر الإمكان بسبب خطر tardive dyskinesia.'
+    ],
     uses: ['الغثيان والقيء في سياقات مختارة | Nausea/vomiting', 'Diabetic gastroparesis', 'عامل مساعد في بعض حالات migraine-associated nausea'],
     contraindications: ['قصة Tardive dyskinesia أو dystonic reaction بسبب Metoclopramide', 'انسداد/نزف/انثقاب هضمي عندما تكون زيادة الحركة خطرة', 'Pheochromocytoma أو catecholamine-releasing paraganglioma', 'Epilepsy', 'فرط التحسس'],
     warnings: ['Tardive dyskinesia قد تكون غير عكوسة ويزداد خطرها مع المدة والجرعة التراكمية', 'Extrapyramidal symptoms / acute dystonia خصوصًا في الشباب', 'Neuroleptic malignant syndrome نادر', 'نعاس وRestlessness'],
@@ -913,6 +917,10 @@ export const DRUG_DETAILS: Record<string, DrugDetail> = {
     mechanism: 'يثبط Cyclooxygenase COX-1/COX-2 ويقلل تصنيع prostaglandins المسؤولة عن الألم والالتهاب.',
     tradeNames: ['Voltaren'],
     routes: ['فموي/شرجي/موضعي، وتوجد مستحضرات حقن في بعض البلدان | Route depends on formulation and market'],
+    educationalDoses: [
+      'المصدر يذكر مستحضر Voltaren injection بتركيز 75 mg/3 mL (25 mg/mL). هذا يطابق مستحضرات حقن diclofenac المتداولة في بعض البلدان.',
+      'الجرعة والطريق يعتمدان على المستحضر والسياق؛ لا تُفهم 75 mg كجرعة مناسبة تلقائيًا لكل مريض بسبب مخاطر الكلى والنزف والجهاز القلبي الوعائي.'
+    ],
     uses: ['ألم حاد والتهاب | Acute pain/inflammation', 'جزء من multimodal postoperative analgesia في مرضى مختارين'],
     contraindications: ['حساسية NSAID أو aspirin-sensitive asthma', 'Active GI bleeding/peptic ulcer بحسب المستحضر', 'CABG perioperative pain في الملصقات الأمريكية', 'قصور كلوي شديد أو حالات عالية الخطورة حسب المستحضر والسياق'],
     warnings: ['خطر cardiovascular thrombotic events مثل MI/stroke', 'GI bleeding/ulceration/perforation قد يحدث دون إنذار', 'قد يسبب acute kidney injury واحتباس السوائل', 'قد يؤثر في platelet function والنزف'],
@@ -940,6 +948,10 @@ export const DRUG_DETAILS: Record<string, DrugDetail> = {
     mechanism: 'مضاد تنافسي لمستقبل Histamine H2 في الخلايا الجدارية بالمعدة | H2-receptor antagonist، فيقلل gastric acid secretion.',
     tradeNames: ['Zantac'],
     routes: ['تختلف حسب المستحضر والبلد؛ المصدر القديم يذكر الحقن، بينما FDA أعاد في 2025 اعتماد أقراص reformulated ranitidine بعد معالجة مشكلة NDMA'],
+    educationalDoses: [
+      'المصدر القديم يذكر Ranitidine injection بجرعة 50 mg بتركيز 25 mg/mL = 2 mL.',
+      'هذه المعلومة تُحفظ كمرجع للمصدر فقط؛ لا تُستخدم كجرعة معاصرة تلقائيًا لأن المنتجات القديمة سُحبت بسبب NDMA، بينما عودة ranitidine للولايات المتحدة في 2025 كانت بصيغة أقراص reformulated وبملصق جديد.'
+    ],
     uses: ['Acid suppression في GERD/peptic-ulcer related indications بحسب المنتج الحالي', 'ليس علاجًا مباشرًا لـpulmonary aspiration بعد حدوثه'],
     contraindications: ['فرط التحسس للمستحضر؛ وتُراجع النشرة الحالية للمنتج المتوفر لأن التركيبة والتنظيم تغيرا'],
     warnings: ['يجب عدم استعمال عبوات/مستحضرات ranitidine قديمة أو غير موثوقة المصدر', 'التوفر والتنظيم يختلفان بين البلدان'],
