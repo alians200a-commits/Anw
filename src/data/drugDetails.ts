@@ -261,10 +261,6 @@ export const DRUG_DETAILS: Record<string, DrugDetail> = {
     mechanism: 'مرخٍ غير مستقطب تنافسي | Competitive nondepolarizing neuromuscular blocker يُستقلب بواسطة Butyrylcholinesterase في البلازما.',
     tradeNames: ['Mivacron'],
     routes: ['وريدي | Intravenous (IV)'],
-    educationalDoses: [
-      'جرعة ابتدائية مرجعية للتنبيب غير الطارئ: 0.08–0.1 mg/kg IV.',
-      'بهذه الجرعة تظهر عادة شروط تنبيب جيدة خلال نحو 2.5–3 دقائق، ويستمر الحصار المطلوب سريريًا قرابة 25–30 دقيقة تحت التخدير المتوازن؛ العوامل الاستنشاقية قد تقوّي الحصار.'
-    ],
     sourcePages: [71],
     uses: ['تسهيل التنبيب', 'إرخاء العضلات في الإجراءات القصيرة'],
     contraindications: ['فرط التحسس للميفاكوريوم'],
@@ -276,6 +272,10 @@ export const DRUG_DETAILS: Record<string, DrugDetail> = {
     mechanism: 'مضاد تنافسي لمستقبلات النيكوتين العضلية | Competitive nondepolarizing neuromuscular blocker.',
     tradeNames: ['Norcuron'],
     routes: ['وريدي | Intravenous (IV)'],
+    educationalDoses: [
+      'جرعة ابتدائية مرجعية للتنبيب غير الطارئ: 0.08–0.1 mg/kg IV.',
+      'بهذه الجرعة تظهر عادة شروط تنبيب جيدة خلال نحو 2.5–3 دقائق، ويستمر الحصار المطلوب سريريًا قرابة 25–30 دقيقة تحت التخدير المتوازن؛ العوامل الاستنشاقية قد تقوّي الحصار.'
+    ],
     sourcePages: [71],
     uses: ['تسهيل التنبيب', 'إرخاء العضلات أثناء التخدير والتهوية'],
     contraindications: ['فرط التحسس للفيكورونيوم'],
