@@ -1882,8 +1882,32 @@ export const CLINICAL_GUIDES: ClinicalGuide[] = [
         items: [
           'السعة الرئوية الكلية | Total Lung Capacity (TLC) = VT + IRV + ERV + RV.',
           'السعة الحيوية | Vital Capacity (VC) = IRV + VT + ERV.',
-          'السعة المتبقية الوظيفية | Functional Residual Capacity (FRC) = ERV + RV.',
+          'السعة المتبقية الوظيفية | Functional Residual Capacity (FRC) = ERV + RV؛ وهي حجم الرئة عند نهاية الزفير الطبيعي.',
           'السعة الشهيقية | Inspiratory Capacity (IC) = VT + IRV.'
+        ]
+      },
+      {
+        title: 'المساحة الميتة والتهوية الفعالة | Dead space / effective ventilation',
+        items: [
+          'المساحة الميتة التنفسية | Respiratory dead space هي حجم الغاز الذي لا يشارك في تبادل الغازات، إما لبقائه في الممرات الموصلة أو لوصوله إلى وحدات قليلة/عديمة التروية.',
+          'حجم المد الفعال | Effective tidal volume يمكن تبسيطه كـTidal volume مطروحًا منه Dead-space volume.',
+          'التهوية الدقيقة | Minute ventilation = Respiratory rate × Tidal volume؛ أما التهوية السنخية فتخص الغاز الذي يصل فعليًا إلى الحويصلات المشاركة في تبادل الغازات.'
+        ]
+      },
+      {
+        title: 'عوامل تغيّر FRC | Factors affecting FRC',
+        items: [
+          'هيئة الجسم والطول والسمنة ومطاوعة جدار الصدر والرئة | Body habitus / obesity / compliance.',
+          'الوضعية | Position: تنخفض FRC عادةً عند الانتقال من الجلوس/الوقوف إلى الاستلقاء، ويتأثر التغير أيضًا بوضعية المريض والجراحة.',
+          'الجنس والعمر وأمراض الرئة تؤثر في القيم المرجعية.',
+          'توتر الحجاب الحاجز | Diaphragm tone والتخدير العام قد يغيران FRC أيضًا.'
+        ]
+      },
+      {
+        title: 'RQ وعدم تطابق V/Q | Respiratory quotient / V-Q mismatch',
+        items: [
+          'الحاصل التنفسي | Respiratory Quotient (RQ) = حجم CO₂ المنتج ÷ حجم O₂ المستهلك؛ يعتمد على نوع الركيزة الأيضية، ويقترب من 1 للكربوهيدرات.',
+          'عدم تطابق التهوية/التروية | V/Q mismatch هو عدم التوازن بين التهوية السنخية | V وتدفق الدم الرئوي | Q، وهو مفهوم مهم في تفسير نقص الأكسجة أثناء التخدير.'
         ]
       },
       {
