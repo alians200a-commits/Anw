@@ -243,7 +243,7 @@ export const DRUG_DETAILS: Record<string, DrugDetail> = {
   },
   atracurium: {
     feature: 'مرخٍ غير مستقطب يتحلل جزئيًا بآلية Hofmann، لذلك يعتمد بدرجة أقل على الكبد والكلى من عدة مرخيات أخرى.',
-    mechanism: 'مضاد تنافسي لمستقبلات النيكوتين العضلية | Competitive nondepolarizing neuromuscular blocker. يُعطّل في البلازما بطريقين مهمين: Hofmann elimination غير الإنزيمي عند pH فسيولوجي وEster hydrolysis بواسطة esterases غير نوعية.'
+    mechanism: 'مضاد تنافسي لمستقبلات النيكوتين العضلية | Competitive nondepolarizing neuromuscular blocker. يُعطّل في البلازما بطريقين مهمين: Hofmann elimination غير الإنزيمي عند pH فسيولوجي وEster hydrolysis بواسطة esterases غير نوعية.',
     tradeNames: ['Tracrium'],
     routes: ['وريدي | Intravenous (IV)'],
     educationalDoses: [
