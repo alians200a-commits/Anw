@@ -9,6 +9,10 @@ import {
 } from '../data/fluids';
 import { BilingualLabel } from './BilingualLabel';
 import { MixedDirectionText } from './MixedDirectionText';
+import {
+  NotificationStackMenu,
+  type StackMenuItem
+} from './ui/NotificationStackMenu';
 
 function FluidList({
   title,
@@ -38,7 +42,7 @@ function FluidList({
 
   return (
     <details className={'group rounded-2xl border px-3.5 py-3 ' + box}>
-      <summary className="flex cursor-pointer list-none items-center justify-between gap-3">
+      <summary className="flex min-h-11 cursor-pointer list-none items-center justify-between gap-3">
         <CaretDown size={15} weight="bold" className="text-[#708282] transition group-open:rotate-180" />
         <div className="flex items-center gap-2">
           <span className="rounded-full bg-white/75 px-2 py-0.5 text-[9px] font-black text-[#647477]">{items.length}</span>
@@ -53,7 +57,7 @@ function FluidList({
 function FluidSheet({ item, onClose }: { item: IntravenousFluid; onClose: () => void }) {
   return (
     <motion.div
-      className="fixed inset-0 z-[87] bg-[#2F2145]/35 backdrop-blur-[2px]"
+      className="fixed inset-0 z-[87] bg-[#0A2037]/42 backdrop-blur-[2px]"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
@@ -71,7 +75,7 @@ function FluidSheet({ item, onClose }: { item: IntravenousFluid; onClose: () => 
           <div className="flex items-start justify-between gap-3">
             <button
               onClick={onClose}
-              className="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-[#D3E5E2] bg-white text-[#607B78]"
+              className="grid h-11 w-11 shrink-0 place-items-center rounded-full border border-[#D6E1EA] bg-white text-[#526675] outline-none focus-visible:ring-2 focus-visible:ring-[#CCA039]/55"
               aria-label="إغلاق"
             >
               <X size={17} weight="bold" />
@@ -115,6 +119,17 @@ export function FluidsDirectory({ initialQuery = '' }: { initialQuery?: string }
     setQuery(initialQuery);
   }, [initialQuery]);
 
+  const currentCategory =
+    FLUID_FILTERS.find((item) => item.id === category)?.label ?? 'الكل';
+
+  const categoryItems: StackMenuItem[] = FLUID_FILTERS.map((item) => ({
+    id: item.id,
+    title: item.label,
+    description: item.id === 'all' ? 'كل السوائل الوريدية' : 'تصفية هذا النوع',
+    leading: <Drop size={19} weight="fill" />,
+    onSelect: () => setCategory(item.id as 'all' | FluidCategory)
+  }));
+
   const filtered = useMemo(() => {
     const normalized = query.trim().toLowerCase();
     return INTRAVENOUS_FLUIDS.filter((item) => {
@@ -141,35 +156,22 @@ export function FluidsDirectory({ initialQuery = '' }: { initialQuery?: string }
         <MagnifyingGlass
           size={18}
           weight="bold"
-          className="absolute right-3 top-1/2 -translate-y-1/2 text-[#4E7D77]"
+          className="absolute right-3 top-1/2 -translate-y-1/2 text-[#526F85]"
         />
         <input
           value={query}
           onChange={(event) => setQuery(event.target.value)}
           placeholder="Normal Saline، Ringer، Albumin..."
-          className="h-11 w-full rounded-xl border border-[#D8E8E5] bg-white pr-10 pl-3 text-xs font-semibold text-[#344342] outline-none placeholder:text-[#99A6A4] focus:border-[#A7C6C0]"
+          className="h-11 w-full rounded-xl border border-[#DCE4EA] bg-white pr-10 pl-3 text-xs font-semibold text-[#183149] outline-none placeholder:text-[#83919C] focus:border-[#B58B2A] focus:ring-2 focus:ring-[#CCA039]/15"
         />
       </div>
 
-      <div className="flex gap-1.5 overflow-x-auto pb-1 [scrollbar-width:none]">
-        {FLUID_FILTERS.map((item) => {
-          const active = category === item.id;
-          return (
-            <button
-              key={item.id}
-              onClick={() => setCategory(item.id)}
-              className={
-                'shrink-0 rounded-full border px-3 py-1.5 text-[10px] font-black transition ' +
-                (active
-                  ? 'border-[#CCA039]/35 bg-[#CCA039]/12 text-[#E5C979]'
-                  : 'border-white/6 bg-white/[0.02] text-[#778B9B]')
-              }
-            >
-              {item.label}
-            </button>
-          );
-        })}
-      </div>
+      <NotificationStackMenu
+        title={currentCategory}
+        description="نوع السوائل الوريدية"
+        icon={<Drop size={22} weight="fill" />}
+        items={categoryItems}
+      />
 
       <div className="space-y-2">
         {filtered.map((item, index) => (
