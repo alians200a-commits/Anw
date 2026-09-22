@@ -1,3 +1,9 @@
+import {
+  BookOpenText,
+  Drop,
+  TextAa,
+  Wrench
+} from '@phosphor-icons/react';
 import { DrugDirectory } from './DrugDirectory';
 import { TermsDirectory } from './TermsDirectory';
 import { AbbreviationsDirectory } from './AbbreviationsDirectory';
@@ -5,9 +11,21 @@ import { EquipmentDirectory } from './EquipmentDirectory';
 import { ClinicalGuidesDirectory } from './ClinicalGuidesDirectory';
 import { FluidsDirectory } from './FluidsDirectory';
 import { AnesthesiaStagesDirectory } from './AnesthesiaStagesDirectory';
+import { MedicinesHealthIcon } from './MedicalIcons';
+import {
+  NotificationStackMenu,
+  type StackMenuItem
+} from './ui/NotificationStackMenu';
 import type { DrugClass } from '../data/drugs';
 
-export type GuideSection = 'drugs' | 'fluids' | 'equipment' | 'stages' | 'clinical' | 'terms' | 'abbreviations';
+export type GuideSection =
+  | 'drugs'
+  | 'fluids'
+  | 'equipment'
+  | 'stages'
+  | 'clinical'
+  | 'terms'
+  | 'abbreviations';
 
 interface GuideScreenProps {
   section: GuideSection;
@@ -18,6 +36,16 @@ interface GuideScreenProps {
   initialQuery: string;
 }
 
+const sectionLabels: Record<GuideSection, string> = {
+  drugs: 'الأدوية',
+  equipment: 'عربة التخدير والمعدات',
+  fluids: 'السوائل الوريدية',
+  stages: 'مراحل التخدير',
+  clinical: 'المفاهيم والإجراءات',
+  terms: 'المصطلحات',
+  abbreviations: 'الاختصارات'
+};
+
 export function GuideScreen({
   section,
   onSectionChange,
@@ -26,28 +54,75 @@ export function GuideScreen({
   initialDrugClass,
   initialQuery
 }: GuideScreenProps) {
+  const sectionItems: StackMenuItem[] = [
+    {
+      id: 'drugs',
+      title: 'الأدوية',
+      description: 'Drug Reference',
+      leading: <MedicinesHealthIcon className="h-5 w-5" />,
+      onSelect: () => onSectionChange('drugs')
+    },
+    {
+      id: 'equipment',
+      title: 'عربة التخدير والمعدات',
+      description: 'Machine • Airway • Monitoring',
+      leading: <Wrench size={19} weight="bold" />,
+      onSelect: () => onSectionChange('equipment')
+    },
+    {
+      id: 'fluids',
+      title: 'السوائل الوريدية',
+      description: 'IV Fluids',
+      leading: <Drop size={19} weight="fill" />,
+      onSelect: () => onSectionChange('fluids')
+    },
+    {
+      id: 'stages',
+      title: 'مراحل التخدير',
+      description: 'Stages of Anesthesia',
+      leading: <BookOpenText size={19} />,
+      onSelect: () => onSectionChange('stages')
+    },
+    {
+      id: 'clinical',
+      title: 'المفاهيم والإجراءات',
+      description: 'Clinical Guides',
+      leading: <BookOpenText size={19} />,
+      onSelect: () => onSectionChange('clinical')
+    },
+    {
+      id: 'terms',
+      title: 'المصطلحات',
+      description: 'Clinical Terms',
+      leading: <BookOpenText size={19} />,
+      onSelect: () => onSectionChange('terms')
+    },
+    {
+      id: 'abbreviations',
+      title: 'الاختصارات',
+      description: 'Abbreviations',
+      leading: <TextAa size={19} weight="bold" />,
+      onSelect: () => onSectionChange('abbreviations')
+    }
+  ];
+
   return (
     <div className="space-y-4">
-      <div className="rounded-[18px] border border-[#E5DCEF] bg-[#FAF8FC] p-3.5">
-        <div className="mb-2.5 text-right">
-          <h2 className="text-lg font-black text-[#34293F]">الدليل التخديري</h2>
-          <p className="mt-0.5 text-[10px] text-[#81758A]">اختار القسم، وبعدها التصنيف من داخل القسم</p>
+      <section>
+        <div className="mb-1 px-1 text-right">
+          <h2 className="text-lg font-black text-[#183149]">الدليل التخديري</h2>
+          <p className="mt-0.5 text-[10px] font-semibold text-[#657784]">
+            القسم الحالي: {sectionLabels[section]}
+          </p>
         </div>
-        <select
-          value={section}
-          onChange={(e) => onSectionChange(e.target.value as GuideSection)}
-          className="h-11 w-full rounded-xl border border-[#DCCFEB] bg-white px-3 text-xs font-bold text-[#463653] outline-none"
-          aria-label="اختيار قسم الدليل"
-        >
-          <option value="drugs">الأدوية</option>
-          <option value="equipment">الأجهزة والأدوات</option>
-          <option value="fluids">السوائل الوريدية</option>
-          <option value="stages">مراحل التخدير</option>
-          <option value="clinical">المفاهيم والإجراءات</option>
-          <option value="terms">المصطلحات</option>
-          <option value="abbreviations">الاختصارات</option>
-        </select>
-      </div>
+
+        <NotificationStackMenu
+          title={sectionLabels[section]}
+          description="اضغط لتغيير قسم الدليل"
+          icon={<BookOpenText size={22} weight="bold" />}
+          items={sectionItems}
+        />
+      </section>
 
       {section === 'drugs' && (
         <DrugDirectory
@@ -62,10 +137,18 @@ export function GuideScreen({
       {section === 'stages' && <AnesthesiaStagesDirectory initialQuery={initialQuery} />}
       {section === 'clinical' && <ClinicalGuidesDirectory initialQuery={initialQuery} />}
       {section === 'terms' && (
-        <TermsDirectory favorites={favorites} onToggleFavorite={onToggleFavorite} initialQuery={initialQuery} />
+        <TermsDirectory
+          favorites={favorites}
+          onToggleFavorite={onToggleFavorite}
+          initialQuery={initialQuery}
+        />
       )}
       {section === 'abbreviations' && (
-        <AbbreviationsDirectory favorites={favorites} onToggleFavorite={onToggleFavorite} initialQuery={initialQuery} />
+        <AbbreviationsDirectory
+          favorites={favorites}
+          onToggleFavorite={onToggleFavorite}
+          initialQuery={initialQuery}
+        />
       )}
     </div>
   );
