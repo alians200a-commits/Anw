@@ -109,6 +109,18 @@ export default function App() {
         >
           {screen}
         </motion.div>
+
+        <p className="mt-5 text-center text-[10px] font-semibold text-[#66737F]">
+          Animated medical icons by{' '}
+          <a
+            href="https://www.flaticon.com/"
+            target="_blank"
+            rel="noreferrer"
+            className="underline underline-offset-2"
+          >
+            Flaticon
+          </a>
+        </p>
       </main>
 
         <BottomNav active={activeTab} onChange={handleTabChange} />
