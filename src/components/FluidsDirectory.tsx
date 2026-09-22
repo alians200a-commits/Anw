@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
-import { CaretDown, Drop, MagnifyingGlass, X } from '@phosphor-icons/react';
+import { CaretDown, MagnifyingGlass, X } from '@phosphor-icons/react';
 import {
   FLUID_FILTERS,
   INTRAVENOUS_FLUIDS,
@@ -14,6 +14,7 @@ import {
   NotificationStackMenu,
   type StackMenuItem
 } from './ui/NotificationStackMenu';
+import { MedicalSiteIcon } from './ui/MedicalSiteIcon';
 
 function FluidList({
   title,
@@ -157,7 +158,7 @@ export function FluidsDirectory({
     id: item.id,
     title: item.label,
     description: item.id === 'all' ? 'كل السوائل الوريدية' : 'تصفية هذا النوع',
-    leading: <Drop size={19} weight="fill" />,
+    leading: <MedicalSiteIcon name="fluids" size={24} />,
     onSelect: () => setCategory(item.id as 'all' | FluidCategory)
   }));
 
@@ -202,7 +203,7 @@ export function FluidsDirectory({
       <NotificationStackMenu
         title={currentCategory}
         description="نوع السوائل الوريدية"
-        icon={<Drop size={22} weight="fill" />}
+        icon={<MedicalSiteIcon name="fluids" size={27} />}
         items={categoryItems}
         selectedId={category}
       />
@@ -228,7 +229,7 @@ export function FluidsDirectory({
             </div>
             <div className="mt-2 flex items-center justify-between border-t border-[#DDE6EB] pt-2">
               <span className="text-[11px] text-[#5F7280]">تركيب • استخدام • محاذير</span>
-              <Drop size={15} weight="fill" className="text-[#405E75]" />
+              <MedicalSiteIcon name="fluids" size={18} />
             </div>
           </motion.button>
         ))}
