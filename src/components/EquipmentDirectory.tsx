@@ -133,6 +133,20 @@ export function EquipmentDirectory({
 
   useEffect(() => {
     setQuery(initialQuery);
+
+    const normalized = initialQuery.trim().toLowerCase();
+    if (!normalized) {
+      setSelected(null);
+      return;
+    }
+
+    const exact = ANESTHESIA_EQUIPMENT.find(
+      (item) =>
+        item.nameEn.toLowerCase() === normalized ||
+        item.nameAr.toLowerCase() === normalized
+    );
+
+    if (exact) setSelected(exact);
   }, [initialQuery]);
 
   const currentCategory =
