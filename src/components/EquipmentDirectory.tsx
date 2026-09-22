@@ -241,7 +241,7 @@ export function EquipmentDirectory({
             onClick={() => setSelected(item)}
             className="w-full rounded-[18px] border border-[#DCE5EA] bg-[#F7F9FA] px-3.5 py-3 text-right outline-none transition active:bg-[#EEF3F6] focus-visible:ring-2 focus-visible:ring-[#CCA039]/55"
           >
-            <div className="flex items-start justify-between gap-3">
+            <div className="flex items-start gap-3">
               <span className="shrink-0 rounded-full bg-white/80 px-2.5 py-1 text-[11px] font-black text-[#405E75]">
                 {item.categoryAr}
               </span>
@@ -251,6 +251,9 @@ export function EquipmentDirectory({
                   {item.nameEn}
                 </p>
               </div>
+              <span className="grid h-10 w-10 shrink-0 place-items-center rounded-[12px] border border-[#D7E2E9] bg-white">
+                <MedicalSiteIcon name={equipmentIcon(item)} size={26} />
+              </span>
             </div>
             <p className="mt-2 line-clamp-2 text-[11px] leading-5 text-[#526675]">{item.summary}</p>
             <div className="mt-2 border-t border-[#DDE6EB] pt-2 text-[11px] font-black text-[#405E75]">
