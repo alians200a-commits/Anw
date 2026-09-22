@@ -341,6 +341,21 @@
       "spoken_text": "Malignant Hyperthermia",
       "file": "/audio/abbreviations/mh.mp3"
     },
+    "terms/premedication": {
+      "source_text": "Premedication",
+      "spoken_text": "Premedication",
+      "file": "/audio/terms/premedication.mp3"
+    },
+    "terms/induction": {
+      "source_text": "Induction",
+      "spoken_text": "Induction",
+      "file": "/audio/terms/induction.mp3"
+    },
+    "terms/maintenance": {
+      "source_text": "Maintenance",
+      "spoken_text": "Maintenance",
+      "file": "/audio/terms/maintenance.mp3"
+    },
     "abbreviations/iv": {
       "source_text": "Intravenous",
       "spoken_text": "Intravenous",
