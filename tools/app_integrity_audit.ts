@@ -88,6 +88,20 @@ const REVIEWED_STAGE_GUIDES = new Set([
   'delayed-emergence'
 ]);
 
+const REVIEWED_REGIONAL_GUIDES = new Set([
+  'local-anesthesia',
+  'last',
+  'bier-block',
+  'spinal-anesthesia',
+  'epidural-anesthesia',
+  'spinal-vs-epidural'
+]);
+
+const REVIEWED_CLINICAL_GUIDES = new Set([
+  ...REVIEWED_STAGE_GUIDES,
+  ...REVIEWED_REGIONAL_GUIDES
+]);
+
 // Clinical guides.
 const guideIds = new Set(CLINICAL_GUIDES.map((guide) => guide.id));
 for (const guide of CLINICAL_GUIDES) {
@@ -96,7 +110,7 @@ for (const guide of CLINICAL_GUIDES) {
   if (!nonEmpty(guide.summary)) errors.push(`guide "${guide.id}": empty summary`);
   if (!guide.sourcePages.length) errors.push(`guide "${guide.id}": missing internal sourcePages`);
   if (!guide.tags.length) errors.push(`guide "${guide.id}": no tags`);
-  if (REVIEWED_STAGE_GUIDES.has(guide.id) && guide.correction?.trim() && !nonEmpty(guide.clinicalNote)) {
+  if (REVIEWED_CLINICAL_GUIDES.has(guide.id) && guide.correction?.trim() && !nonEmpty(guide.clinicalNote)) {
     errors.push(`clinical guide "${guide.id}": reviewed correction missing clinicalNote`);
   }
   if (!guide.sections.length) errors.push(`guide "${guide.id}": no sections`);
@@ -278,9 +292,9 @@ if (!favoritesCode.includes("onToggleFavorite('drug:' + drug.id)")) errors.push(
 
 // Track hidden corrections that still require domain-by-domain review.
 const hiddenCorrections = {
-  clinicalGuides: CLINICAL_GUIDES.filter((item) => item.correction?.trim()).length,
-  equipment: ANESTHESIA_EQUIPMENT.filter((item) => item.correction?.trim()).length,
-  fluids: INTRAVENOUS_FLUIDS.filter((item) => item.correction?.trim()).length
+  clinicalGuides: CLINICAL_GUIDES.filter((item) => item.correction?.trim() && !item.clinicalNote?.trim()).length,
+  equipment: ANESTHESIA_EQUIPMENT.filter((item) => item.correction?.trim() && !item.clinicalNote?.trim()).length,
+  fluids: INTRAVENOUS_FLUIDS.filter((item) => item.correction?.trim() && !item.clinicalNote?.trim()).length
 };
 if (hiddenCorrections.clinicalGuides) warnings.push(`Clinical guide corrections awaiting reviewed clinical-note integration: ${hiddenCorrections.clinicalGuides}`);
 if (hiddenCorrections.equipment) warnings.push(`Equipment corrections awaiting reviewed clinical-note integration: ${hiddenCorrections.equipment}`);
@@ -295,7 +309,7 @@ if (errors.length) {
 console.log('App integrity audit passed.');
 console.log(`Drugs: ${ANESTHESIA_DRUGS.length}`);
 console.log(`Clinical guides: ${CLINICAL_GUIDES.length}`);
-console.log(`Reviewed stage guides: ${REVIEWED_STAGE_GUIDES.size}/${stageGuideRefs.size}`);
+console.log(`Reviewed clinical guides: ${REVIEWED_CLINICAL_GUIDES.size}/${CLINICAL_GUIDES.length} (stages: ${REVIEWED_STAGE_GUIDES.size}, regional: ${REVIEWED_REGIONAL_GUIDES.size})`);
 console.log(`Stage guide references: ${stageGuideRefs.size}`);
 console.log(`Equipment: ${ANESTHESIA_EQUIPMENT.length}`);
 console.log(`Reviewed equipment: ${REVIEWED_EQUIPMENT.size}/${ANESTHESIA_EQUIPMENT.length}`);

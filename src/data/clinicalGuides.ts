@@ -425,6 +425,7 @@ export const CLINICAL_GUIDES: ClinicalGuide[] = [
       }
     ],
     correction: 'إضافة الأدرينالين | Epinephrine إلى المخدر الموضعي ليست ممنوعة تلقائيًا في الأصابع عند كل المرضى؛ الممارسة الحديثة تعتبره آمنًا غالبًا بتركيزات مناسبة مع الحذر الشديد عند وجود قصور وعائي أو نقص تروية.',
+    clinicalNote: 'إضافة Epinephrine إلى المخدر الموضعي ليست ممنوعة تلقائيًا في كل digital block؛ القرار يعتمد على التركيز، الجرعة، التروية الطرفية وعوامل الخطورة الوعائية، مع الحذر عند وجود نقص تروية أو مرض وعائي.',
     tags: ['local anesthetic','sodium channel','infiltration','nerve block']
   },
   {
@@ -472,6 +473,7 @@ export const CLINICAL_GUIDES: ClinicalGuide[] = [
       }
     ],
     correction: 'العلاج الوارد في بعض المذكرات القديمة بالثيوبنتال وحده لا يمثل خوارزمية LAST الحديثة؛ المستحلب الدهني الوريدي جزء أساسي من الإنقاذ عند السمية الجهازية المهمة.',
+    clinicalNote: 'LAST حالة إسعافية مهددة للحياة. التدبير الحديث لا يقتصر على علاج الاختلاجات؛ يشمل إيقاف المخدر الموضعي، دعم airway/ventilation/circulation، السيطرة على الاختلاجات والبدء المبكر بـ20% lipid emulsion عند السمية المهمة وفق خوارزمية LAST.',
     tags: ['LAST','local anesthetic toxicity','lipid emulsion','سمية']
   },
   {
@@ -510,6 +512,7 @@ export const CLINICAL_GUIDES: ClinicalGuide[] = [
       }
     ],
     correction: 'اختيار الدواء والتركيز والجرعة ومدة العاصبة يجب أن يتبع بروتوكولًا حديثًا؛ لا تُستخدم وصفات حجم ثابتة لكل المرضى.',
+    clinicalNote: 'في Bier block لا تُحفظ جرعة المخدر الموضعي كحجم ثابت لكل مريض. الجرعة، التركيز، ضغط ومدة العاصبة وتوقيت تفريغها تُحدد حسب الدواء، الوزن والطرف والبروتوكول مع الاستعداد لـLAST.',
     tags: ['Bier block','IVRA','tourniquet','regional anesthesia']
   },
   {
@@ -580,6 +583,7 @@ export const CLINICAL_GUIDES: ClinicalGuide[] = [
       }
     ],
     correction: 'ألم الظهر، صغر العمر أو فقر الدم ليست موانع مطلقة بحد ذاتها. التقييم الحديث يفرق بين موانع مطلقة ونسبية ويعتمد على حالة المريض ونوع الجراحة.',
+    clinicalNote: 'الموانع في neuraxial anesthesia ليست قائمة حفظ جامدة. رفض المريض، عدوى موقع الإدخال وبعض اضطرابات التخثر/الضغط داخل القحف حالات مهمة، بينما anticoagulants ونقص الحجم والأمراض العصبية تحتاج تقييمًا حسب الدواء والتوقيت والخطر.',
     tags: ['spinal','subarachnoid','neuraxial','L3 L4','L4 L5']
   },
   {
@@ -610,6 +614,7 @@ export const CLINICAL_GUIDES: ClinicalGuide[] = [
       }
     ],
     correction: 'جرعة الاختبار التقليدية Lidocaine 1.5% + Epinephrine ليست بروتوكولًا واحدًا عالميًا؛ مكونات وجرعة اختبار القسطرة تختلف حسب السياق والمريض والممارسة المحلية.',
+    clinicalNote: 'Epidural test dose ليست وصفة عالمية ثابتة. نوع وجرعة الاختبار وتفسيره يعتمد على المريض، الأدوية المستخدمة والممارسة المحلية؛ الأهم تجنب الحقن داخل الوعاء أو داخل السحايا ومراقبة الاستجابة.',
     tags: ['epidural','loss of resistance','Tuohy','catheter']
   },
   {
@@ -647,6 +652,7 @@ export const CLINICAL_GUIDES: ClinicalGuide[] = [
         ]
       }
     ],
+    clinicalNote: 'Spinal وEpidural تقنيتان neuraxial مختلفتان: Spinal عادة أسرع وبجرعة أصغر وحصار أكثف، بينما Epidural أبطأ وقابل للمعايرة والاستمرار بالقسطرة؛ الاختيار يعتمد على المريض والإجراء والهدف.',
     tags: ['spinal','epidural','neuraxial','comparison','PDPH']
   },
   {
