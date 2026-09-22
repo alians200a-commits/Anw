@@ -90,7 +90,7 @@ export function NotificationStackMenu({
         }
       >
         {icon ? (
-          <span className="grid h-10 w-10 shrink-0 place-items-center rounded-[12px] bg-[#EEF3F6] text-[#315672]">
+          <span className="grid h-10 w-10 shrink-0 place-items-center text-[#315672]">
             {icon}
           </span>
         ) : null}
@@ -159,8 +159,8 @@ export function NotificationStackMenu({
                       className={
                         'grid h-9 w-9 shrink-0 place-items-center rounded-[10px] transition ' +
                         (selected
-                          ? 'bg-white text-[#315672]'
-                          : 'bg-[#F3F6F8] text-[#526F85] group-hover:bg-white')
+                          ? 'bg-[#CCA039]/10 text-[#315672]'
+                          : 'bg-transparent text-[#526F85]')
                       }
                     >
                       {item.leading}
