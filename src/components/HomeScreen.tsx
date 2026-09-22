@@ -62,7 +62,7 @@ const equipmentSearchIcon: Record<EquipmentCategory, MedicalSiteIconName> = {
 function searchIconPair(name: MedicalSiteIconName) {
   return {
     leading: <MedicalSiteIcon name={name} size={24} />,
-    leadingActive: <MedicalSiteIcon name={name} play size={24} />
+    leadingActive: <MedicalSiteIcon name={name} play loop size={24} />
   };
 }
 
