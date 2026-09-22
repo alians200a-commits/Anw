@@ -60,7 +60,7 @@ export const ANESTHESIA_EQUIPMENT: AnesthesiaEquipment[] = [
       'يوجد ضمن منظومة الضغط صمام أمان داخلي | Pressure-relief safety valve لحماية مكونات الجهاز من ارتفاع الضغط؛ قيمة الفتح تعتمد على تصميم الشركة ولا تُعامل كرقم ثابت لكل الأجهزة.',
       'صمام أمان الجهاز الداخلي يختلف عن صمام APL الموجود في دائرة تنفس المريض.'
     ],
-    correction: 'مصطلح عربة بويل | Boyle machine تاريخي؛ الأجهزة الحالية أدق وصفًا كمحطة تخدير | Anesthesia workstation.',
+    correction: 'مصطلح عربة بويل | Boyle machine تاريخي؛ الاسم المعتمد هنا للأجهزة الحديثة هو عربة التخدير | Anesthesia Machine.',
     tags: ['machine','workstation','boyle','عربة التخدير','جهاز التخدير']
   },
   {
