@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
-import { CaretDown, MagnifyingGlass, X } from '@phosphor-icons/react';
+import { CaretDown, MagnifyingGlass, Wrench, X } from '@phosphor-icons/react';
 import {
   ANESTHESIA_EQUIPMENT,
   EQUIPMENT_FILTERS,
@@ -9,6 +9,10 @@ import {
 } from '../data/equipment';
 import { BilingualLabel } from './BilingualLabel';
 import { MixedDirectionText } from './MixedDirectionText';
+import {
+  NotificationStackMenu,
+  type StackMenuItem
+} from './ui/NotificationStackMenu';
 
 function SoftList({
   title,
@@ -62,7 +66,7 @@ function EquipmentSheet({
 }) {
   return (
     <motion.div
-      className="fixed inset-0 z-[85] bg-[#2F2145]/35 backdrop-blur-[2px]"
+      className="fixed inset-0 z-[85] bg-[#0A2037]/42 backdrop-blur-[2px]"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
@@ -81,7 +85,7 @@ function EquipmentSheet({
           <div className="flex items-start justify-between gap-3">
             <button
               onClick={onClose}
-              className="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-[#D6E1EA] bg-white text-[#607487]"
+              className="grid h-11 w-11 shrink-0 place-items-center rounded-full border border-[#D6E1EA] bg-white text-[#526675] outline-none focus-visible:ring-2 focus-visible:ring-[#CCA039]/55"
               aria-label="إغلاق"
             >
               <X size={17} weight="bold" />
@@ -125,6 +129,17 @@ export function EquipmentDirectory({ initialQuery = '' }: { initialQuery?: strin
     setQuery(initialQuery);
   }, [initialQuery]);
 
+  const currentCategory =
+    EQUIPMENT_FILTERS.find((item) => item.id === category)?.label ?? 'الكل';
+
+  const categoryItems: StackMenuItem[] = EQUIPMENT_FILTERS.map((item) => ({
+    id: item.id,
+    title: item.label,
+    description: item.id === 'all' ? 'كل المعدات والأدوات' : 'تصفية هذا القسم',
+    leading: <Wrench size={19} weight="bold" />,
+    onSelect: () => setCategory(item.id as 'all' | EquipmentCategory)
+  }));
+
   const filtered = useMemo(() => {
     const normalized = query.trim().toLowerCase();
     return ANESTHESIA_EQUIPMENT.filter((item) => {
@@ -158,29 +173,16 @@ export function EquipmentDirectory({ initialQuery = '' }: { initialQuery?: strin
           value={query}
           onChange={(event) => setQuery(event.target.value)}
           placeholder="Laryngoscope، منظار الحنجرة، OPA..."
-          className="h-11 w-full rounded-xl border border-[#D9E4ED] bg-white pr-10 pl-3 text-xs font-semibold text-[#33404C] outline-none placeholder:text-[#98A5B0] focus:border-[#9FB5C8]"
+          className="h-11 w-full rounded-xl border border-[#DCE4EA] bg-white pr-10 pl-3 text-xs font-semibold text-[#183149] outline-none placeholder:text-[#83919C] focus:border-[#B58B2A] focus:ring-2 focus:ring-[#CCA039]/15"
         />
       </div>
 
-      <div className="flex gap-1.5 overflow-x-auto pb-1 [scrollbar-width:none]">
-        {EQUIPMENT_FILTERS.map((item) => {
-          const active = category === item.id;
-          return (
-            <button
-              key={item.id}
-              onClick={() => setCategory(item.id)}
-              className={
-                'shrink-0 rounded-full border px-3 py-1.5 text-[10px] font-black transition ' +
-                (active
-                  ? 'border-[#9FB5C8] bg-[#EAF2F8] text-[#4D6D89]'
-                  : 'border-[#E2E8ED] bg-white text-[#778693]')
-              }
-            >
-              {item.label}
-            </button>
-          );
-        })}
-      </div>
+      <NotificationStackMenu
+        title={currentCategory}
+        description="قسم عربة التخدير والمعدات"
+        icon={<Wrench size={22} weight="bold" />}
+        items={categoryItems}
+      />
 
       <div className="space-y-2">
         {filtered.map((item, index) => (
