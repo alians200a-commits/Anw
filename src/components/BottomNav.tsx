@@ -43,14 +43,8 @@ export function BottomNav({ active, onChange }: BottomNavProps) {
                 aria-label={item.label}
                 className="flex h-full w-full min-w-[48px] flex-col items-center justify-center gap-1 rounded-2xl px-1 text-[#183149] outline-none transition focus-visible:ring-2 focus-visible:ring-[#CCA039]/70"
               >
-                <span
-                  className={
-                    'grid h-9 w-9 place-items-center rounded-full transition ' +
-                    (isActive
-                      ? 'bg-[#CCA039]/12 shadow-[0_3px_12px_rgba(204,160,57,0.14)]'
-                      : 'bg-transparent')
-                  }
-                >
+                <span className="grid h-9 w-9 place-items-center bg-transparent">
+
                   <MedicalSiteIcon
                     name={item.siteIcon}
                     play
@@ -61,6 +55,7 @@ export function BottomNav({ active, onChange }: BottomNavProps) {
                 <span className={'text-[11px] font-black leading-none ' + (isActive ? 'text-[#8A6426]' : 'text-[#183149]')}>
                   {item.label}
                 </span>
+                {isActive ? <span aria-hidden="true" className="h-1 w-4 rounded-full bg-[#D9A441]" /> : null}
               </button>
             </DockIcon>
           );
