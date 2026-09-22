@@ -7,6 +7,7 @@ import {
   type FluidCategory,
   type IntravenousFluid
 } from '../data/fluids';
+import { BilingualLabel } from './BilingualLabel';
 
 function FluidList({
   title,
@@ -40,7 +41,7 @@ function FluidList({
         <CaretDown size={15} weight="bold" className="text-[#708282] transition group-open:rotate-180" />
         <div className="flex items-center gap-2">
           <span className="rounded-full bg-white/75 px-2 py-0.5 text-[9px] font-black text-[#647477]">{items.length}</span>
-          <span className={'text-[10px] font-black ' + titleClass}>{title}</span>
+          <BilingualLabel label={title} className={'text-[10px] font-black ' + titleClass} />
         </div>
       </summary>
       <div className="mt-3 border-t border-black/[0.05] pt-3">{body}</div>
@@ -84,7 +85,7 @@ function FluidSheet({ item, onClose }: { item: IntravenousFluid; onClose: () => 
 
         <div className="space-y-3 px-4 pb-[max(1.75rem,env(safe-area-inset-bottom))] pt-4">
           <section className="rounded-2xl border border-[#D7EAE7] bg-[#F7FBFA] px-3.5 py-3">
-            <p className="text-[10px] font-black text-[#4E7D77]">التركيب | Composition</p>
+            <BilingualLabel label="التركيب | Composition" className="text-[10px] font-black text-[#4E7D77]" />
             <p className="mt-1.5 text-[12px] leading-6 text-[#455250]">{item.composition}</p>
           </section>
 

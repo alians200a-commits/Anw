@@ -7,6 +7,7 @@ import {
   type AnesthesiaEquipment,
   type EquipmentCategory
 } from '../data/equipment';
+import { BilingualLabel } from './BilingualLabel';
 
 function SoftList({
   title,
@@ -43,7 +44,7 @@ function SoftList({
           <span className="rounded-full bg-white/75 px-2 py-0.5 text-[9px] font-black text-[#647486]">
             {items.length}
           </span>
-          <span className={'text-[10px] font-black ' + titleClass}>{title}</span>
+          <BilingualLabel label={title} className={'text-[10px] font-black ' + titleClass} />
         </div>
       </summary>
       <div className="mt-3 border-t border-black/[0.05] pt-3">{body}</div>
@@ -94,7 +95,7 @@ function EquipmentSheet({
 
         <div className="space-y-3 px-4 pb-[max(1.75rem,env(safe-area-inset-bottom))] pt-4">
           <section className="rounded-2xl border border-[#DCE7F0] bg-[#F8FBFD] px-3.5 py-3">
-            <p className="text-[10px] font-black text-[#567594]">ما هو؟ | What is it?</p>
+            <BilingualLabel label="ما هو؟ | What is it?" className="text-[10px] font-black text-[#567594]" />
             <p className="mt-1.5 text-[12px] leading-6 text-[#44505B]">{item.summary}</p>
           </section>
 
@@ -196,7 +197,7 @@ export function EquipmentDirectory({ initialQuery = '' }: { initialQuery?: strin
             </div>
             <p className="mt-2 line-clamp-2 text-[10px] leading-5 text-[#687784]">{item.summary}</p>
             <div className="mt-2 border-t border-[#DCE6EE] pt-2 text-[9px] font-black text-[#557491]">
-              التفاصيل | Details
+              <BilingualLabel label="التفاصيل | Details" />
             </div>
           </motion.button>
         ))}
