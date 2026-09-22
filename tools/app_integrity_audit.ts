@@ -97,9 +97,21 @@ const REVIEWED_REGIONAL_GUIDES = new Set([
   'spinal-vs-epidural'
 ]);
 
+const REVIEWED_AIRWAY_GUIDES = new Set([
+  'vomiting-regurgitation-aspiration',
+  'laryngospasm',
+  'airway-obstruction',
+  'apnea',
+  'hypoxemia-cyanosis',
+  'tracheal-intubation',
+  'ett-placement-confirmation',
+  'tracheal-intubation-complications'
+]);
+
 const REVIEWED_CLINICAL_GUIDES = new Set([
   ...REVIEWED_STAGE_GUIDES,
-  ...REVIEWED_REGIONAL_GUIDES
+  ...REVIEWED_REGIONAL_GUIDES,
+  ...REVIEWED_AIRWAY_GUIDES
 ]);
 
 // Clinical guides.
@@ -112,6 +124,9 @@ for (const guide of CLINICAL_GUIDES) {
   if (!guide.tags.length) errors.push(`guide "${guide.id}": no tags`);
   if (REVIEWED_CLINICAL_GUIDES.has(guide.id) && guide.correction?.trim() && !nonEmpty(guide.clinicalNote)) {
     errors.push(`clinical guide "${guide.id}": reviewed correction missing clinicalNote`);
+  }
+  if (REVIEWED_AIRWAY_GUIDES.has(guide.id) && !nonEmpty(guide.clinicalNote)) {
+    errors.push(`clinical guide "${guide.id}": reviewed airway guide missing clinicalNote`);
   }
   if (!guide.sections.length) errors.push(`guide "${guide.id}": no sections`);
 
@@ -309,7 +324,7 @@ if (errors.length) {
 console.log('App integrity audit passed.');
 console.log(`Drugs: ${ANESTHESIA_DRUGS.length}`);
 console.log(`Clinical guides: ${CLINICAL_GUIDES.length}`);
-console.log(`Reviewed clinical guides: ${REVIEWED_CLINICAL_GUIDES.size}/${CLINICAL_GUIDES.length} (stages: ${REVIEWED_STAGE_GUIDES.size}, regional: ${REVIEWED_REGIONAL_GUIDES.size})`);
+console.log(`Reviewed clinical guides: ${REVIEWED_CLINICAL_GUIDES.size}/${CLINICAL_GUIDES.length} (stages: ${REVIEWED_STAGE_GUIDES.size}, regional: ${REVIEWED_REGIONAL_GUIDES.size}, airway: ${REVIEWED_AIRWAY_GUIDES.size})`);
 console.log(`Stage guide references: ${stageGuideRefs.size}`);
 console.log(`Equipment: ${ANESTHESIA_EQUIPMENT.length}`);
 console.log(`Reviewed equipment: ${REVIEWED_EQUIPMENT.size}/${ANESTHESIA_EQUIPMENT.length}`);

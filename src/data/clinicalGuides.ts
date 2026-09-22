@@ -1219,6 +1219,7 @@ export const CLINICAL_GUIDES: ClinicalGuide[] = [
       }
     ],
     correction: 'Metoclopramide | ميتوكلوبراميد ليس “مضاد حموضة”؛ هو دواء محفز لحركة المعدة ومضاد للقيء | Prokinetic antiemetic. كما أن المضادات الحيوية | Antibiotics والكورتيكوستيرويدات | Corticosteroids لا تُعطى روتينيًا لكل حالة aspiration pneumonitis؛ معظم الحالات الكيميائية تُعالج دعمياً وتُستخدم المضادات عند وجود دلائل عدوى أو استمرار/تدهور مناسب.',
+    clinicalNote: 'إذا حدث aspiration فالأولوية لتأمين Airway ودعم oxygenation/ventilation وشفط المادة المرئية. Metoclopramide دواء prokinetic/antiemetic وليس antacid، والمضادات الحيوية أو corticosteroids ليست علاجًا روتينيًا لكل aspiration pneumonitis.',
     tags: ['aspiration','vomiting','regurgitation','Mendelson','قيء','قلس','استنشاق رئوي']
   },
   {
@@ -1250,6 +1251,7 @@ export const CLINICAL_GUIDES: ClinicalGuide[] = [
       }
     ],
     correction: 'تشنج الحنجرة الكامل حالة طارئة ولا يُنتظر أن “تنتهي خلال 20–30 دقيقة”. الأولوية للعلاج الفوري. إدخال airway فموي وحده لا يفتح الأحبال الصوتية المغلقة، ومحاولة التهوية العنيفة قد تنفخ المعدة.',
+    clinicalNote: 'Laryngospasm الكامل طارئ يحتاج علاجًا فوريًا؛ لا يُنتظر أن يزول تلقائيًا. إزالة المحفز، jaw thrust، 100% O₂/CPAP وتعميق التخدير هي البداية، والحالات المستمرة قد تحتاج مرخيًا سريعًا.',
     tags: ['laryngospasm','airway obstruction','succinylcholine','CPAP','تشنج الحنجرة']
   },
   {
@@ -1294,6 +1296,7 @@ export const CLINICAL_GUIDES: ClinicalGuide[] = [
       }
     ],
     correction: 'الزرقة | Cyanosis علامة متأخرة وغير حساسة لنقص الأكسجة، لذلك لا ينبغي انتظار ظهورها؛ المراقبة بـPulse oximetry وCapnography وكشف تغير التهوية أبكر وأكثر فائدة.',
+    clinicalNote: 'Cyanosis علامة متأخرة وغير حساسة. أي تغير في حركة الصدر، مقاومة التهوية، waveform capnography أو SpO₂ يحتاج تقييم Airway والدائرة والأنبوب مبكرًا قبل حدوث نقص أكسجة شديد.',
     tags: ['airway obstruction','kinking','disconnection','cyanosis','انسداد مجرى الهواء']
   },
   {
@@ -1396,6 +1399,7 @@ export const CLINICAL_GUIDES: ClinicalGuide[] = [
       }
     ],
     correction: 'الانسداد | Airway obstruction ليس مرادفًا لانقطاع النفس | Apnea؛ قد يكون المريض يبذل جهدًا تنفسيًا ضد مجرى هوائي مغلق. كذلك فشل مصدر الأوكسجين مشكلة منفصلة عن تعريف apnea.',
+    clinicalNote: 'Apnea تعني غياب التنفس التلقائي، وهي ليست مرادفًا لانسداد مجرى الهواء؛ قد يبذل المريض جهدًا ضد انسداد كامل. العلاج يبدأ بفتح/تأمين Airway والتهوية ثم تحديد السبب.',
     tags: ['apnea','ventilation','respiratory depression','انقطاع النفس']
   },
   {
@@ -1427,6 +1431,7 @@ export const CLINICAL_GUIDES: ClinicalGuide[] = [
       }
     ],
     correction: 'الزرقة قد تكون غائبة رغم نقص أكسجة مهم، وقد تتأخر خصوصًا في فقر الدم. لا تُستخدم وحدها كمؤشر للأكسجة.',
+    clinicalNote: 'لا يُنتظر ظهور cyanosis لاكتشاف نقص الأكسجة؛ قد تغيب حتى مع hypoxemia مهمة، خصوصًا في فقر الدم. Pulse oximetry وCapnography والتقييم السريري تُستخدم معًا.',
     tags: ['hypoxemia','cyanosis','SpO2','oxygenation','نقص الاكسجة']
   },
   {
@@ -2061,6 +2066,7 @@ export const CLINICAL_GUIDES: ClinicalGuide[] = [
       }
     ],
     correction: 'المصدر يقول إن الأنبوب غير ذي الكفة يُستخدم تحت عمر 8 سنوات. هذه قاعدة قديمة؛ الأنابيب ذات الكفة | Cuffed ETTs شائعة وآمنة في الأطفال عند اختيار الحجم الصحيح ومراقبة ضغط الكفة.',
+    clinicalNote: 'اختيار ETT يعتمد على المريض والإجراء. Cuffed ETTs شائعة وآمنة في الأطفال عند اختيار الحجم وضبط cuff pressure، والكفة تقلل التسرب/aspiration risk لكنها لا تمنع aspiration بصورة مطلقة.',
     tags: ['intubation','ETT','cuffed tube','double lumen','تنبيب']
   },
   {
@@ -2090,6 +2096,7 @@ export const CLINICAL_GUIDES: ClinicalGuide[] = [
       }
     ],
     correction: 'تحسس الكفة خارجيًا أو ارتفاع SpO₂ وحدهما لا يكفيان لتأكيد موضع الأنبوب. Capnography الموجي المستمر هو الوسيلة الأساسية لتأكيد ومراقبة وضع الأنبوب في معظم حالات التخدير والإنعاش.',
+    clinicalNote: 'التأكيد المستمر لوضع ETT يعتمد أساسًا على sustained waveform capnography مع التقييم السريري. SpO₂ أو ارتفاع الصدر وحدهما لا يكفيان لاستبعاد التنبيب المريئي أو مشكلة موضع الأنبوب.',
     tags: ['ETT confirmation','capnography','intubation','EtCO2','تأكيد الانبوب']
   },
   {
@@ -2122,6 +2129,7 @@ export const CLINICAL_GUIDES: ClinicalGuide[] = [
         ]
       }
     ],
+    clinicalNote: 'عند تدهور مفاجئ بعد التنبيب: عالج المريض أولًا بالأوكسجين والتهوية المناسبة، ثم افحص موضع/انسداد الأنبوب، الدائرة، الجهاز، الضغط وCapnography بدل افتراض سبب واحد.',
     tags: ['ETT complications','endobronchial','kinking','disconnection','accidental extubation']
   },
   {
