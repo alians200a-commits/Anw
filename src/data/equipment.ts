@@ -17,6 +17,7 @@ export interface AnesthesiaEquipment {
   purpose: string[];
   keyPoints: string[];
   correction?: string;
+  clinicalNote?: string;
   tags: string[];
 }
 
@@ -62,6 +63,7 @@ export const ANESTHESIA_EQUIPMENT: AnesthesiaEquipment[] = [
       'صمام أمان الجهاز الداخلي يختلف عن صمام APL الموجود في دائرة تنفس المريض.'
     ],
     correction: 'مصطلح عربة بويل | Boyle machine تاريخي؛ الاسم المعتمد هنا للأجهزة الحديثة هو عربة التخدير | Anesthesia Machine.',
+    clinicalNote: 'مصطلح Boyle machine تاريخي. في التطبيق نستخدم «عربة التخدير | Anesthesia Machine» للأجهزة الحديثة التي تدمج الغاز، التهوية، المراقبة وأنظمة الأمان.',
     tags: ['machine','workstation','boyle','عربة التخدير','جهاز التخدير']
   },
   {
@@ -85,6 +87,7 @@ export const ANESTHESIA_EQUIPMENT: AnesthesiaEquipment[] = [
       'نظام فهرس الدبابيس | Pin Index Safety System يقلل خطر تركيب أسطوانة غاز في موضع غاز آخر.'
     ],
     correction: 'ألوان الأسطوانات ليست موحّدة عالميًا. لا تعتمد على اللون وحده؛ تحقق من الملصق ووصلة الغاز الخاصة.',
+    clinicalNote: 'لون الأسطوانة ليس هوية كافية للغاز لأن أنظمة الألوان تختلف بين البلدان؛ التحقق يكون من الملصق، نوع الغاز والموصل/نظام الأمان المخصص.',
     tags: ['cylinder','oxygen','nitrous oxide','PISS','اسطوانة','غازات']
   },
   {
@@ -122,6 +125,7 @@ export const ANESTHESIA_EQUIPMENT: AnesthesiaEquipment[] = [
       'ترتبط به في عربات التخدير الحديثة منظومات تقلل أو توقف N₂O عند انخفاض ضغط O₂.'
     ],
     correction: 'القول إن جهاز الإنذار يجب ألا يستخدم كهرباء أو بطارية ليس قاعدة عامة للمحطات الحديثة؛ المهم أن يكون نظام الأمان موثوقًا ويكشف انخفاض ضغط الأوكسجين.',
+    clinicalNote: 'الهدف هو كشف انخفاض ضغط الأوكسجين بموثوقية وإنذار الفريق مبكرًا؛ وجود مكونات إلكترونية أو بطارية في الأجهزة الحديثة لا يجعل نظام الإنذار غير صحيح بحد ذاته.',
     tags: ['oxygen failure','alarm','fail safe','إنذار','اوكسجين']
   },
   {
@@ -163,6 +167,7 @@ export const ANESTHESIA_EQUIPMENT: AnesthesiaEquipment[] = [
       'في التصميم التقليدي تجتمع تدفقات الغازات بعد مقاييس الجريان في مسار مشترك قبل دخول المبخرات.'
     ],
     correction: 'بعض عربات التخدير الحديثة تستخدم حساسات وتحكمًا إلكترونيًا بالتدفق بدل الروتامترات الزجاجية التقليدية.',
+    clinicalNote: 'الروتامتر الزجاجي هو التصميم التقليدي، لكن بعض العربات الحديثة تستخدم قياسًا وتحكمًا إلكترونيًا بالتدفق؛ المبدأ السريري هو ضبط وقياس تدفق كل غاز بدقة.',
     tags: ['flowmeter','rotameter','fresh gas flow','مقياس الجريان']
   },
   {
@@ -185,6 +190,7 @@ export const ANESTHESIA_EQUIPMENT: AnesthesiaEquipment[] = [
       'الحد الأدنى للتركيز السنخي | Minimum Alveolar Concentration (MAC) مقياس لقوة العامل الاستنشاقي.'
     ],
     correction: 'النسبة التي تمر داخل حجرة التبخير ليست رقمًا ثابتًا مثل 20% لكل المبخرات؛ تتغير باختلاف التصميم والعامل والإعداد والحرارة.',
+    clinicalNote: 'نسبة الغاز التي تمر داخل حجرة التبخير ليست رقمًا ثابتًا عامًا؛ تعتمد على تصميم المبخر، العامل المتطاير، الإعداد ودرجة الحرارة.',
     tags: ['vaporizer','volatile','MAC','مبخر']
   },
   {
@@ -207,6 +213,7 @@ export const ANESTHESIA_EQUIPMENT: AnesthesiaEquipment[] = [
       'أفضل علامة عملية على قرب نفاد المادة الماصة هي ارتفاع CO₂ المستنشق | Inspired CO₂ وليس اللون وحده.'
     ],
     correction: 'لا تُحدد صلاحية الـCanister بقاعدة ثابتة مثل ساعتين أو 6 ساعات. العمر يعتمد على نوع المادة، حجمها، التهوية وتدفق الغاز؛ ويجب الاعتماد على مراقبة inspired CO₂ وتعليمات الشركة.',
+    clinicalNote: 'لا توجد مدة ثابتة تصلح لكل Canister. مراقبة inspired CO₂ وتعليمات المادة الماصة والجهاز أهم من الاعتماد على الوقت أو تغير اللون وحده.',
     tags: ['canister','soda lime','CO2 absorber','جير الصودا']
   },
   {
@@ -227,6 +234,7 @@ export const ANESTHESIA_EQUIPMENT: AnesthesiaEquipment[] = [
       'مبادل الحرارة والرطوبة | Heat and Moisture Exchanger (HME) يحتفظ بجزء من حرارة ورطوبة الزفير ويعيدها للشهيق.'
     ],
     correction: 'تقطير المحلول الملحي مباشرة داخل الأنبوب الرغامي ليس طريقة روتينية موصى بها لترطيب مجرى الهواء؛ وسائل الترطيب الحديثة هي HME أو المرطب المسخن عند الحاجة.',
+    clinicalNote: 'تقطير Normal Saline داخل الأنبوب الرغامي ليس وسيلة روتينية لترطيب الغاز. عند الحاجة تُستخدم وسائل مثل HME أو heated humidifier بحسب الحالة.',
     tags: ['humidifier','HME','humidity','ترطيب']
   },
   {
@@ -314,6 +322,7 @@ export const ANESTHESIA_EQUIPMENT: AnesthesiaEquipment[] = [
       'التعرجات تزيد المرونة وتقلل احتمال انثناء الأنبوب.'
     ],
     correction: 'الطول ليس ثابتًا 100 cm لكل الأنظمة؛ يختلف حسب الدائرة والتصميم.',
+    clinicalNote: 'قطر ووصلات الدائرة تُختار حسب النظام والمريض، أما طول الأنبوب فليس رقمًا ثابتًا عامًا مثل 100 cm.',
     tags: ['corrugated tube','breathing circuit','22 mm','دائرة تنفس']
   },
   {
@@ -355,6 +364,7 @@ export const ANESTHESIA_EQUIPMENT: AnesthesiaEquipment[] = [
       'APL جزء من دائرة تنفس المريض؛ لا يُخلط مع Pressure-relief safety valve الداخلي لعربة التخدير.'
     ],
     correction: 'عند التهوية الميكانيكية في أجهزة كثيرة يتم عزل APL عن الدائرة بدل اعتباره ببساطة “مغلقًا تمامًا” في كل تصميم.',
+    clinicalNote: 'في كثير من عربات التخدير الحديثة يُعزل APL أثناء وضع التهوية الميكانيكية، لذلك عبارة «مغلق دائمًا» ليست قاعدة لكل جهاز.',
     tags: ['APL','pop-off','valve','صمام']
   },
   {
@@ -373,6 +383,7 @@ export const ANESTHESIA_EQUIPMENT: AnesthesiaEquipment[] = [
       'لتقليل إعادة استنشاق CO₂ أثناء التنفس التلقائي يحتاج تدفق غاز طازج يقارب التهوية الدقيقة | Minute ventilation.'
     ],
     correction: 'استخدام رقم ثابت مثل 5 L/min لكل مريض غير دقيق؛ المتطلب يرتبط بالتهوية الدقيقة للمريض.',
+    clinicalNote: 'كفاءة Mapleson A أثناء التنفس التلقائي تعتمد على Fresh Gas Flow بالنسبة للتهوية الدقيقة للمريض؛ لا يُستخدم رقم L/min واحد لكل المرضى.',
     tags: ['Mapleson A','Magill','breathing system','دائرة ماغيل']
   },
   {
@@ -393,6 +404,7 @@ export const ANESTHESIA_EQUIPMENT: AnesthesiaEquipment[] = [
       'Jackson-Rees modification يضيف كيسًا مفتوح الذيل ويُصنّف Mapleson F، ويساعد الكيس على مراقبة التنفس وإجراء تهوية مساعدة/مضبوطة.'
     ],
     correction: 'متطلبات تدفق الغاز الطازج تعتمد على نمط التهوية والدائرة؛ لا تُحفظ كرقم واحد ثابت لجميع الحالات.',
+    clinicalNote: 'متطلب Fresh Gas Flow في Ayre/Mapleson E-F يعتمد على نمط التهوية وحجم التهوية الدقيقة، لذلك لا يُحفظ كرقم واحد ثابت لكل الحالات.',
     tags: ['Ayre','T-piece','Mapleson E','Jackson Rees','Mapleson F']
   },
   {

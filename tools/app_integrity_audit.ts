@@ -108,6 +108,24 @@ for (const stage of ANESTHESIA_STAGES) {
   }
 }
 
+const REVIEWED_EQUIPMENT_BATCH_1 = new Set([
+  'anesthesia-workstation',
+  'medical-gas-cylinders',
+  'oxygen-flush-valve',
+  'oxygen-supply-failure-alarm',
+  'pressure-regulator',
+  'flowmeter',
+  'vaporizer',
+  'co2-absorber',
+  'humidification',
+  'corrugated-breathing-tube',
+  'reservoir-bag',
+  'apl-valve',
+  'mapleson-a',
+  'ayre-t-piece',
+  'anesthesia-ventilator'
+]);
+
 // Equipment.
 for (const item of ANESTHESIA_EQUIPMENT) {
   if (!nonEmpty(item.nameAr) || !nonEmpty(item.nameEn)) errors.push(`equipment "${item.id}": missing bilingual name`);
@@ -118,6 +136,9 @@ for (const item of ANESTHESIA_EQUIPMENT) {
   if (!item.keyPoints.length) errors.push(`equipment "${item.id}": no keyPoints`);
   if (!item.tags.length) errors.push(`equipment "${item.id}": no tags`);
   item.purpose.forEach((value) => checkBilingualStored(value, `equipment "${item.id}" purpose`));
+  if (REVIEWED_EQUIPMENT_BATCH_1.has(item.id) && item.correction?.trim() && !nonEmpty(item.clinicalNote)) {
+    errors.push(`equipment "${item.id}": reviewed correction missing clinicalNote`);
+  }
 }
 
 // Fluids.

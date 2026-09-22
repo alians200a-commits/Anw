@@ -99,6 +99,13 @@ function EquipmentSheet({
             <p className="mt-1.5 text-[12px] leading-6 text-[#44505B]">{item.summary}</p>
           </section>
 
+          {item.clinicalNote && (
+            <section className="rounded-2xl border border-[#E8DFC9] bg-[#FFF9EE] px-3.5 py-3">
+              <BilingualLabel label="ملاحظة سريرية | Clinical note" className="text-[10px] font-black text-[#8A6426]" />
+              <p className="mt-1.5 text-[11px] leading-5 text-[#5B5142]">{item.clinicalNote}</p>
+            </section>
+          )}
+
           <SoftList title="الوظيفة | Purpose" items={item.purpose} tone="green" />
           <SoftList title="نقاط مهمة | Key points" items={item.keyPoints} tone="blue" />
 
@@ -130,6 +137,7 @@ export function EquipmentDirectory({ initialQuery = '' }: { initialQuery?: strin
           item.summary,
           ...item.purpose,
           ...item.keyPoints,
+          item.clinicalNote ?? '',
           ...item.tags
         ].some((value) => value.toLowerCase().includes(normalized));
 
