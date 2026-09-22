@@ -39,7 +39,7 @@ export function AbbreviationsDirectory({ favorites, onToggleFavorite, initialQue
           aria-label="البحث في الاختصارات"
           dir="auto"
           placeholder="مثال: MAC، ICP، CBF..."
-          className="h-11 w-full rounded-xl border border-[#DCE4EA] bg-white pr-10 pl-3 text-sm text-[#183149] outline-none placeholder:text-[#83919C] focus:border-[#B58B2A] focus:ring-2 focus:ring-[#CCA039]/15"
+          className="h-11 w-full rounded-xl border border-[#DCE4EA] bg-white pr-10 pl-3 text-sm text-[#183149] outline-none placeholder:text-[#66737F] focus:border-[#B58B2A] focus:ring-2 focus:ring-[#CCA039]/15"
         />
       </div>
 
