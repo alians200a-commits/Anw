@@ -6,6 +6,7 @@ on:
     paths:
       - "src/**"
       - "public/**"
+      - "tools/**"
       - "package.json"
       - "tsconfig.json"
       - "vite.config.*"
