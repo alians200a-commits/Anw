@@ -36,5 +36,8 @@ jobs:
       - name: Drug integrity audit
         run: npm run audit:drugs
 
+      - name: App integrity audit
+        run: npm run audit:app
+
       - name: Build
         run: npm run build
