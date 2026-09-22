@@ -55,7 +55,7 @@ export function BottomNav({ active, onChange }: BottomNavProps) {
                 >
                   <Icon size={19} weight={isActive ? 'fill' : 'regular'} />
                 </span>
-                <span className="text-[9px] font-black leading-none text-[#183149]">
+                <span className="text-[11px] font-black leading-none text-[#183149]">
                   {item.label}
                 </span>
               </button>
