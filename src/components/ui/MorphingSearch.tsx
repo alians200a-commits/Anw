@@ -20,6 +20,7 @@ export interface MorphingSearchItem {
   description?: string;
   keywords?: string[];
   leading?: ReactNode;
+  leadingActive?: ReactNode;
   onSelect?: () => void;
 }
 
@@ -294,11 +295,11 @@ export function MorphingSearch({
                     : 'bg-white hover:bg-[#F7F9FA] active:bg-[#EEF3F6]')
                 }
               >
-                {item.leading ? (
+                {item.leading || item.leadingActive ? (
                   <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl border border-[#DCE5EA] bg-[#F5F8FA] text-[#315672]">
-                    <AnimatedIcon variant="pop">
-                      {item.leading}
-                    </AnimatedIcon>
+                    {index === activeIndex && item.leadingActive
+                      ? item.leadingActive
+                      : item.leading}
                   </span>
                 ) : null}
                 <span className="min-w-0 flex-1">
