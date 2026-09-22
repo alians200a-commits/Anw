@@ -43,7 +43,7 @@ export function AbbreviationsDirectory({ favorites, onToggleFavorite, initialQue
         />
       </div>
 
-      <p className="px-1 text-[11px] text-[#657784]">{filtered.length} اختصار</p>
+      <p className="px-1 text-[11px] text-[#5F7280]">{filtered.length} اختصار</p>
 
       <div className="space-y-2">
         {filtered.map((term) => {
