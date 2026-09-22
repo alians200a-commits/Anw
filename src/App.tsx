@@ -93,7 +93,7 @@ export default function App() {
   return (
     <div
       dir="rtl"
-      className="min-h-screen bg-white text-[#30283D] selection:bg-[#EADFFC] selection:text-[#3D285F]"
+      className="min-h-screen bg-white text-[#183149] selection:bg-[#CCA039]/30 selection:text-[#0A2037]"
     >
       <KingdomHeader />
 
