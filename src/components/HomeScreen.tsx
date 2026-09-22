@@ -1,8 +1,6 @@
-import { useMemo, useState } from 'react';
+import { useMemo } from 'react';
 import {
   BookOpenText,
-  CaretLeft,
-  ClockCounterClockwise,
   Drop,
   TextAa,
   Wrench
@@ -10,7 +8,6 @@ import {
 import {
   ANESTHESIA_DRUGS,
   DRUG_CLASS_LABELS,
-  DRUG_FILTERS,
   type DrugClass
 } from '../data/drugs';
 import { CLINICAL_TERMS } from '../data/clinicalTerms';
@@ -29,26 +26,15 @@ import {
   type StackMenuItem
 } from './ui/NotificationStackMenu';
 
-export interface RecentGuideItem {
-  section: GuideSection;
-  query: string;
-}
-
 interface HomeScreenProps {
   openGuide: (
     section: GuideSection,
     drugClass?: 'all' | DrugClass,
     initialQuery?: string
   ) => void;
-  recentItems: RecentGuideItem[];
 }
 
-export function HomeScreen({
-  openGuide,
-  recentItems
-}: HomeScreenProps) {
-  const [openGuideSubmenu, setOpenGuideSubmenu] = useState<'drugs' | null>(null);
-
+export function HomeScreen({ openGuide }: HomeScreenProps) {
   const searchItems = useMemo<MorphingSearchItem[]>(() => {
     const drugs: MorphingSearchItem[] = ANESTHESIA_DRUGS.map((drug) => ({
       id: 'drug:' + drug.id,
@@ -153,82 +139,15 @@ export function HomeScreen({
         )
     }));
 
-    return [...drugs, ...fluids, ...equipment, ...stageGuides, ...clinicalGuides, ...terms];
+    return [
+      ...drugs,
+      ...fluids,
+      ...equipment,
+      ...stageGuides,
+      ...clinicalGuides,
+      ...terms
+    ];
   }, [openGuide]);
-
-  const recentCards = useMemo(() => {
-    return recentItems.slice(0, 3).map((recent) => {
-      if (recent.section === 'drugs') {
-        const item = ANESTHESIA_DRUGS.find(
-          (drug) => drug.en.toLowerCase() === recent.query.toLowerCase()
-        );
-        return {
-          ...recent,
-          title: item?.ar ?? recent.query,
-          subtitle: item?.en ?? 'دواء',
-          icon: <MedicinesHealthIcon className="h-5 w-5" />
-        };
-      }
-
-      if (recent.section === 'fluids') {
-        const item = INTRAVENOUS_FLUIDS.find(
-          (fluid) => fluid.nameEn.toLowerCase() === recent.query.toLowerCase()
-        );
-        return {
-          ...recent,
-          title: item?.nameAr ?? recent.query,
-          subtitle: item?.nameEn ?? 'سائل وريدي',
-          icon: <Drop size={19} weight="fill" />
-        };
-      }
-
-      if (recent.section === 'equipment') {
-        const item = ANESTHESIA_EQUIPMENT.find(
-          (equipment) =>
-            equipment.nameEn.toLowerCase() === recent.query.toLowerCase()
-        );
-        return {
-          ...recent,
-          title: item?.nameAr ?? recent.query,
-          subtitle: item?.nameEn ?? 'معدات',
-          icon: <Wrench size={19} weight="bold" />
-        };
-      }
-
-      if (recent.section === 'stages' || recent.section === 'clinical') {
-        const item = CLINICAL_GUIDES.find(
-          (guide) =>
-            guide.titleEn.toLowerCase() === recent.query.toLowerCase()
-        );
-        return {
-          ...recent,
-          title: item?.titleAr ?? recent.query,
-          subtitle: item?.titleEn ?? 'دليل سريري',
-          icon: <BookOpenText size={19} />
-        };
-      }
-
-      const item = CLINICAL_TERMS.find((term) =>
-        recent.section === 'abbreviations'
-          ? term.abbr?.toLowerCase() === recent.query.toLowerCase()
-          : term.en.toLowerCase() === recent.query.toLowerCase()
-      );
-
-      return {
-        ...recent,
-        title: item?.ar ?? recent.query,
-        subtitle: item?.abbr
-          ? item.abbr + ' — ' + item.en
-          : item?.en ?? 'مصطلح',
-        icon:
-          recent.section === 'abbreviations' ? (
-            <TextAa size={19} weight="bold" />
-          ) : (
-            <BookOpenText size={19} />
-          )
-      };
-    });
-  }, [recentItems]);
 
   const guideItems: StackMenuItem[] = [
     {
@@ -236,16 +155,13 @@ export function HomeScreen({
       title: 'الأدوية',
       description: 'Drug Reference',
       leading: <MedicinesHealthIcon className="h-5 w-5" />,
-      trailing: 'تصنيفات',
-      onSelect: () =>
-        setOpenGuideSubmenu((current) => (current === 'drugs' ? null : 'drugs'))
+      onSelect: () => openGuide('drugs')
     },
     {
       id: 'equipment',
       title: 'عربة التخدير والمعدات',
       description: 'Machine • Airway • Monitoring • Tools',
       leading: <Wrench size={19} weight="bold" />,
-      trailing: '6 أقسام',
       onSelect: () => openGuide('equipment')
     },
     {
@@ -285,20 +201,16 @@ export function HomeScreen({
     }
   ];
 
-  const drugClassItems: StackMenuItem[] = DRUG_FILTERS.map((item) => ({
-    id: item.id,
-    title: item.label,
-    description: item.id === 'all' ? 'جميع الأدوية' : 'فتح هذا التصنيف',
-    leading: <MedicinesHealthIcon className="h-5 w-5" />,
-    onSelect: () => openGuide('drugs', item.id as 'all' | DrugClass)
-  }));
-
   return (
     <div className="space-y-5">
       <section>
         <div className="mb-3">
-          <p className="text-[11px] font-bold text-[#526675]">دليلك السريع في التخدير</p>
-          <h2 className="mt-1 text-xl font-black text-[#183149]">ابحث أو اختار القسم</h2>
+          <p className="text-[11px] font-bold text-[#526675]">
+            دليلك السريع في التخدير
+          </p>
+          <h2 className="mt-1 text-xl font-black text-[#183149]">
+            ابحث أو اختار القسم
+          </h2>
         </div>
 
         <MorphingSearch
@@ -307,51 +219,6 @@ export function HomeScreen({
         />
       </section>
 
-      {recentCards.length ? (
-        <section aria-label="آخر استخدام">
-          <div className="mb-2 flex items-center justify-between px-1">
-            <span className="text-[9px] font-black text-[#7A8995]">
-              آخر {recentCards.length} عناصر
-            </span>
-            <div className="flex items-center gap-1.5 text-[#405E75]">
-              <span className="text-[11px] font-black">آخر استخدام</span>
-              <ClockCounterClockwise size={17} weight="bold" />
-            </div>
-          </div>
-
-          <div className="flex gap-2 overflow-x-auto pb-1 [scrollbar-width:none]">
-            {recentCards.map((item) => (
-              <button
-                key={item.section + ':' + item.query}
-                type="button"
-                onClick={() => openGuide(item.section, 'all', item.query)}
-                className="flex min-h-[58px] w-[190px] shrink-0 items-center gap-2.5 rounded-[16px] border border-[#DCE5EA] bg-[#F8FAFB] px-3 py-2.5 text-right outline-none transition active:bg-[#EEF3F6] focus-visible:ring-2 focus-visible:ring-[#CCA039]/50 sm:w-[210px]"
-              >
-                <CaretLeft
-                  size={14}
-                  weight="bold"
-                  className="shrink-0 text-[#7A8995]"
-                />
-                <span className="min-w-0 flex-1">
-                  <span className="block truncate text-[11px] font-black text-[#183149]">
-                    {item.title}
-                  </span>
-                  <span
-                    className="mt-0.5 block truncate text-[9px] font-semibold text-[#657784]"
-                    dir="auto"
-                  >
-                    {item.subtitle}
-                  </span>
-                </span>
-                <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-[#EEF3F6] text-[#315672]">
-                  {item.icon}
-                </span>
-              </button>
-            ))}
-          </div>
-        </section>
-      ) : null}
-
       <section>
         <NotificationStackMenu
           title="الدليل التخديري"
@@ -359,23 +226,7 @@ export function HomeScreen({
           icon={<BookOpenText size={22} weight="bold" />}
           items={guideItems}
         />
-
-        {openGuideSubmenu === 'drugs' ? (
-          <div className="mt-3">
-            <NotificationStackMenu
-              title="تصنيفات الأدوية"
-              description="اختار التصنيف المطلوب"
-              icon={<MedicinesHealthIcon className="h-[22px] w-[22px]" />}
-              items={drugClassItems}
-              defaultExpanded
-              onExpandedChange={(expanded) => {
-                if (!expanded) setOpenGuideSubmenu(null);
-              }}
-            />
-          </div>
-        ) : null}
       </section>
-
     </div>
   );
 }
