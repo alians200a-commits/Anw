@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
-import { Heart, MagnifyingGlass, SpeakerHigh, TextAa } from '@phosphor-icons/react';
+import { Heart, MagnifyingGlass, SpeakerHigh } from '@phosphor-icons/react';
 import { CLINICAL_TERMS } from '../data/clinicalTerms';
 import { playPronunciation } from '../utils/speech';
 import { BilingualLabel } from './BilingualLabel';
@@ -52,13 +52,16 @@ export function AbbreviationsDirectory({ favorites, onToggleFavorite, initialQue
               <div className="flex items-start gap-3">
                 <div className="flex shrink-0 gap-1">
                   <button
+                    type="button"
                     onClick={() => playPronunciation('abbreviations', term.id)}
-                    className="grid h-11 w-11 place-items-center rounded-xl border border-[#315672]/12 bg-[#315672]/7 text-[#315672]"
+                    className="grid h-11 w-11 place-items-center rounded-xl border border-[#D7E2E9] bg-white text-[#315672] outline-none transition active:bg-[#EEF3F6] focus-visible:ring-2 focus-visible:ring-[#CCA039]/55"
                     title="نطق الاسم الإنجليزي"
+                    aria-label={'نطق ' + (term.abbr ?? term.en)}
                   >
                     <SpeakerHigh size={19} />
                   </button>
                   <button
+                    type="button"
                     onClick={() => onToggleFavorite(favoriteId)}
                     className={
                       'grid h-11 w-11 place-items-center rounded-xl border ' +
@@ -67,16 +70,14 @@ export function AbbreviationsDirectory({ favorites, onToggleFavorite, initialQue
                         : 'border-[#D7E2E9] bg-white/75 text-[#5F7280]')
                     }
                     title="حفظ"
+                    aria-label={isFavorite ? 'إزالة من المحفوظات' : 'حفظ الاختصار'}
                   >
                     <Heart size={19} weight={isFavorite ? 'fill' : 'regular'} />
                   </button>
                 </div>
 
                 <div className="flex-1 text-right">
-                  <div className="flex items-center justify-end gap-2">
-                    <h3 className="text-base font-black text-[#315672]" dir="ltr">{term.abbr}</h3>
-                    <TextAa size={20} className="text-[#526675]" />
-                  </div>
+                  <h3 className="text-base font-black text-[#315672]" dir="ltr">{term.abbr}</h3>
                   <p className="mt-1 text-[11px] font-bold text-[#183149]">{term.ar}</p>
                   <p className="mt-1 text-xs text-[#526675]" dir="ltr">{term.en}</p>
                   <p className="mt-2 text-[10px] leading-5 text-[#526675]"><MixedDirectionText text={term.definition} /></p>
