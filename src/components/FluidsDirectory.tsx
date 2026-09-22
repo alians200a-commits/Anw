@@ -110,7 +110,13 @@ function FluidSheet({ item, onClose }: { item: IntravenousFluid; onClose: () => 
   );
 }
 
-export function FluidsDirectory({ initialQuery = '' }: { initialQuery?: string }) {
+export function FluidsDirectory({
+  initialQuery = '',
+  onOpenItem
+}: {
+  initialQuery?: string;
+  onOpenItem?: (query: string) => void;
+}) {
   const [query, setQuery] = useState(initialQuery);
   const [category, setCategory] = useState<'all' | FluidCategory>('all');
   const [selected, setSelected] = useState<IntravenousFluid | null>(null);
@@ -178,7 +184,10 @@ export function FluidsDirectory({ initialQuery = '' }: { initialQuery?: string }
           <motion.button
             key={item.id}
             type="button"
-            onClick={() => setSelected(item)}
+            onClick={() => {
+              setSelected(item);
+              onOpenItem?.(item.nameEn);
+            }}
             initial={{ opacity: 0, y: 5 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.12, delay: Math.min(index, 8) * 0.015 }}
