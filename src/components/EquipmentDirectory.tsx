@@ -163,7 +163,7 @@ export function EquipmentDirectory({
     id: item.id,
     title: item.label,
     description: item.id === 'all' ? 'كل المعدات والأدوات' : 'تصفية هذا القسم',
-    leading: <MedicalSiteIcon name="equipment" size={24} />,
+    leading: <MedicalSiteIcon name="equipment" play size={24} />,
     onSelect: () => setCategory(item.id as 'all' | EquipmentCategory)
   }));
 
@@ -209,7 +209,7 @@ export function EquipmentDirectory({
       <NotificationStackMenu
         title={currentCategory}
         description="قسم عربة التخدير والمعدات"
-        icon={<MedicalSiteIcon name="equipment" size={27} />}
+        icon={<MedicalSiteIcon name="equipment" play size={27} />}
         items={categoryItems}
         selectedId={category}
       />
