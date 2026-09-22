@@ -77,7 +77,7 @@ export function GuideScreen({
                 : id === 'terms'
                   ? 'Clinical Terms'
                   : 'Abbreviations',
-    leading: <MedicalSiteIcon name={sectionIcons[id]} play={id === section} size={25} />,
+    leading: <MedicalSiteIcon name={sectionIcons[id]} play size={25} />,
     onSelect: () => onSectionChange(id)
   }));
 
