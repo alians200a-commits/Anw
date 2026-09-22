@@ -311,7 +311,7 @@ export function MorphingSearch({
           <MagnifyingGlass size={20} weight="bold" className="shrink-0 text-[#B58B2A]" />
           <span className="min-w-0 flex-1">
             <span className="block text-xs font-black text-[#183149]">{placeholder}</span>
-            <span className="mt-0.5 block truncate text-[9px] font-semibold text-[#778793]">
+            <span className="mt-0.5 block truncate text-[10px] font-semibold text-[#778793]">
               دواء، جهاز، مصطلح، إجراء...
             </span>
           </span>

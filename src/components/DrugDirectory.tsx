@@ -94,6 +94,7 @@ export function DrugDirectory({
         <input
           value={query}
           onChange={(event) => setQuery(event.target.value)}
+          aria-label="البحث في الأدوية"
           placeholder="ابحث عن دواء..."
           className="h-11 w-full rounded-xl border border-[#DCE4EA] bg-white pr-10 pl-3 text-sm font-semibold text-[#183149] outline-none placeholder:text-[#83919C] focus:border-[#B58B2A] focus:ring-2 focus:ring-[#CCA039]/15"
         />

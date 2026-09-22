@@ -289,6 +289,7 @@ export function DrugDetailSheet({ drug, detail, onClose }: DrugDetailSheetProps)
       <motion.div
         role="dialog"
         aria-modal="true"
+        aria-label={`تفاصيل ${drug.ar}`}
         className="absolute inset-x-0 bottom-0 mx-auto max-h-[90vh] w-full max-w-3xl overflow-y-auto rounded-t-[28px] border-t border-[#DCE5EA] bg-white shadow-2xl"
         initial={{ y: 40, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
@@ -300,6 +301,7 @@ export function DrugDetailSheet({ drug, detail, onClose }: DrugDetailSheetProps)
           <div className="mx-auto mb-3 h-1 w-10 rounded-full bg-[#AFC0CC]" />
           <div className="flex items-start justify-between gap-3">
             <button
+              type="button"
               onClick={onClose}
               className="grid h-11 w-11 shrink-0 place-items-center rounded-full border border-[#D6E1EA] bg-white text-[#526675] outline-none focus-visible:ring-2 focus-visible:ring-[#CCA039]/55"
               aria-label="إغلاق"

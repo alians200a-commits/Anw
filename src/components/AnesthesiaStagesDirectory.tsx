@@ -100,6 +100,7 @@ function StageGuideSheet({
       <motion.div
         role="dialog"
         aria-modal="true"
+        aria-label={`تفاصيل ${guide.titleAr}`}
         className="absolute inset-x-0 bottom-0 mx-auto max-h-[90vh] w-full max-w-3xl overflow-y-auto rounded-t-[28px] border-t border-[#DCE5EA] bg-white shadow-2xl"
         initial={{ y: 38, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}

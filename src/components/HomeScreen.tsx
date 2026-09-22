@@ -117,7 +117,7 @@ export function HomeScreen({ openGuide }: HomeScreenProps) {
 
     const terms: MorphingSearchItem[] = CLINICAL_TERMS.map((term) => ({
       id: 'term:' + term.id,
-      title: (term.abbr ? term.abbr + ' — ' : '') + term.ar,
+      title: term.ar + (term.abbr ? ' — ' + term.abbr : ''),
       description: term.en,
       keywords: [
         term.abbr ?? '',
@@ -209,7 +209,7 @@ export function HomeScreen({ openGuide }: HomeScreenProps) {
             دليلك السريع في التخدير
           </p>
           <h2 className="mt-1 text-xl font-black text-[#183149]">
-            ابحث أو اختار القسم
+            ابحث أو اختر القسم
           </h2>
         </div>
 

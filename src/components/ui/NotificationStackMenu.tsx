@@ -32,6 +32,7 @@ export function NotificationStackMenu({
 }: NotificationStackMenuProps) {
   const [expanded, setExpanded] = useState(defaultExpanded);
   const rootRef = useRef<HTMLDivElement>(null);
+  const pointerTypeRef = useRef<string | null>(null);
   const reduceMotion = useReducedMotion();
 
   const setOpen = (next: boolean) => {
@@ -52,6 +53,7 @@ export function NotificationStackMenu({
       }}
       onPointerLeave={(event) => {
         if (event.pointerType !== 'mouse') return;
+        pointerTypeRef.current = null;
         const active = document.activeElement;
         if (active instanceof Node && rootRef.current?.contains(active)) return;
         setOpen(false);
@@ -97,8 +99,13 @@ export function NotificationStackMenu({
           data-stack-trigger
           type="button"
           aria-expanded={expanded}
-          onClick={() => setOpen(!expanded)}
-          onFocus={() => setOpen(true)}
+          onPointerDown={(event) => {
+            pointerTypeRef.current = event.pointerType;
+          }}
+          onClick={(event) => {
+            if (event.detail > 0 && pointerTypeRef.current === 'mouse') return;
+            setOpen(!expanded);
+          }}
           className="relative z-20 flex min-h-[66px] w-full items-center gap-3 rounded-[20px] border border-[#DCE4EA] bg-white px-3.5 py-3 text-right shadow-[0_8px_24px_rgba(10,32,55,0.07)] outline-none focus-visible:ring-2 focus-visible:ring-[#CCA039]/60"
           animate={{ y: expanded ? 0 : 0 }}
           transition={spring}
@@ -176,14 +183,14 @@ export function NotificationStackMenu({
                     {item.title}
                   </span>
                   {item.description ? (
-                    <span className="mt-0.5 block text-[9px] font-semibold leading-4 text-[#6D7E8A]">
+                    <span className="mt-0.5 block text-[10px] font-semibold leading-4 text-[#6D7E8A]">
                       {item.description}
                     </span>
                   ) : null}
                 </span>
 
                 {item.trailing ? (
-                  <span className="shrink-0 rounded-full bg-[#EEF3F6] px-2 py-1 text-[8px] font-black text-[#536A7A]">
+                  <span className="shrink-0 rounded-full bg-[#EEF3F6] px-2 py-1 text-[10px] font-black text-[#536A7A]">
                     {item.trailing}
                   </span>
                 ) : null}

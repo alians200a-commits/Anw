@@ -74,6 +74,7 @@ function ClinicalGuideSheet({
       <motion.div
         role="dialog"
         aria-modal="true"
+        aria-label={`تفاصيل ${guide.titleAr}`}
         className="absolute inset-x-0 bottom-0 mx-auto max-h-[90vh] w-full max-w-3xl overflow-y-auto rounded-t-[28px] border-t border-[#DCE5EA] bg-white shadow-2xl"
         initial={{ y: 38, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
@@ -85,6 +86,7 @@ function ClinicalGuideSheet({
           <div className="mx-auto mb-3 h-1 w-10 rounded-full bg-[#AFC0CC]" />
           <div className="flex items-start justify-between gap-3">
             <button
+              type="button"
               onClick={onClose}
               className="grid h-11 w-11 shrink-0 place-items-center rounded-full border border-[#D6E1EA] bg-white text-[#526675] outline-none focus-visible:ring-2 focus-visible:ring-[#CCA039]/55"
               aria-label="إغلاق"
@@ -195,6 +197,7 @@ export function ClinicalGuidesDirectory({
         <input
           value={query}
           onChange={(event) => setQuery(event.target.value)}
+          aria-label="البحث في المفاهيم والإجراءات"
           placeholder="RSI، Spinal، حركية الدواء..."
           className="h-11 w-full rounded-xl border border-[#DCE4EA] bg-white pr-10 pl-3 text-xs font-semibold text-[#183149] outline-none placeholder:text-[#83919C] focus:border-[#B58B2A] focus:ring-2 focus:ring-[#CCA039]/15"
         />
