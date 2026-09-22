@@ -207,6 +207,7 @@ export function MorphingSearch({
             ref={inputRef}
             value={query}
             dir="auto"
+            aria-label="ابحث في دليلي"
             onChange={(event) => updateQuery(event.target.value)}
             onKeyDown={(event) => {
               if (event.key === 'ArrowDown') {
