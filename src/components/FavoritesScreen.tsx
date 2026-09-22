@@ -21,8 +21,7 @@ export function FavoritesScreen({ favorites, onToggleFavorite }: FavoritesScreen
   return (
     <div className="space-y-5">
       <section>
-        <p className="text-xs font-bold text-[#315672]">SAVED</p>
-        <h2 className="mt-1 text-2xl font-black text-[#183149]">المحفوظات</h2>
+        <h2 className="text-2xl font-black text-[#183149]">المحفوظات</h2>
         <p className="mt-2 text-sm text-[#657784]">كل العناصر اللي علمت عليها ترجع لها من هنا.</p>
       </section>
 
