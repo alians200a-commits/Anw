@@ -21,15 +21,6 @@ function GuideItems({ title, items }: { title: string; items: string[] }) {
     </div>
   );
 
-  if (items.length <= 1) {
-    return (
-      <section className="rounded-2xl border border-[#DDEBE1] bg-[#F2F8F4] px-3.5 py-3">
-        <p className="text-[10px] font-black text-[#4F765F]">{title}</p>
-        <div className="mt-2">{body}</div>
-      </section>
-    );
-  }
-
   return (
     <details className="group rounded-2xl border border-[#DDEBE1] bg-[#F2F8F4] px-3.5 py-3">
       <summary className="flex cursor-pointer list-none items-center justify-between gap-3">
