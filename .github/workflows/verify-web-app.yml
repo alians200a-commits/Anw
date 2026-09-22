@@ -39,5 +39,8 @@ jobs:
       - name: App integrity audit
         run: npm run audit:app
 
+      - name: Term integrity audit
+        run: npm run audit:terms
+
       - name: Build
         run: npm run build

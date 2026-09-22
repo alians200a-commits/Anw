@@ -11,7 +11,8 @@
     "lint": "tsc --noEmit",
     "audit:content": "tsx tools/content_audit.ts",
     "audit:drugs": "tsx tools/drug_integrity_audit.ts",
-    "audit:app": "tsx tools/app_integrity_audit.ts"
+    "audit:app": "tsx tools/app_integrity_audit.ts",
+    "audit:terms": "tsx tools/term_integrity_audit.ts"
   },
   "dependencies": {
     "@google/genai": "^2.4.0",
