@@ -70,12 +70,27 @@ const REVIEWED_BATCH_5 = new Set([
   'nitroglycerin'
 ]);
 
+const REVIEWED_BATCH_6 = new Set([
+  'albuterol',
+  'aminophylline',
+  'alteplase',
+  'calcium-gluconate',
+  'calcium-chloride',
+  'dexamethasone',
+  'esomeprazole',
+  'furosemide',
+  'hydrocortisone',
+  'glucagon',
+  'regular-insulin'
+]);
+
 const REVIEWED_DRUGS = new Set([
   ...REVIEWED_BATCH_1,
   ...REVIEWED_BATCH_2,
   ...REVIEWED_BATCH_3_VERIFIED,
   ...REVIEWED_BATCH_4,
-  ...REVIEWED_BATCH_5
+  ...REVIEWED_BATCH_5,
+  ...REVIEWED_BATCH_6
 ]);
 
 const hasIvRoute = (routes: string[] = []) =>
@@ -161,6 +176,6 @@ if (errors.length) {
 
 console.log('Drug integrity audit passed.');
 console.log(`Core completeness: ${ANESTHESIA_DRUGS.length}/${ANESTHESIA_DRUGS.length}`);
-console.log(`Reviewed drugs: ${REVIEWED_DRUGS.size}/${ANESTHESIA_DRUGS.length} (B1: ${REVIEWED_BATCH_1.size}, B2: ${REVIEWED_BATCH_2.size}, B3: ${REVIEWED_BATCH_3_VERIFIED.size}, B4: ${REVIEWED_BATCH_4.size}, B5: ${REVIEWED_BATCH_5.size})`);
+console.log(`Reviewed drugs: ${REVIEWED_DRUGS.size}/${ANESTHESIA_DRUGS.length} (B1: ${REVIEWED_BATCH_1.size}, B2: ${REVIEWED_BATCH_2.size}, B3: ${REVIEWED_BATCH_3_VERIFIED.size}, B4: ${REVIEWED_BATCH_4.size}, B5: ${REVIEWED_BATCH_5.size}, B6: ${REVIEWED_BATCH_6.size})`);
 console.log(`Onset/duration coverage: ${onsetComplete}/${ANESTHESIA_DRUGS.length}`);
 console.log(`Clinical-note coverage: ${notesComplete}/${ANESTHESIA_DRUGS.length}`);

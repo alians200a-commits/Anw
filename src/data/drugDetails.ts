@@ -794,12 +794,17 @@ export const DRUG_DETAILS: Record<string, DrugDetail> = {
   },
   albuterol: {
     feature: 'موسع قصبي سريع | Short-acting β2 agonist (SABA) يرخّي العضلات الملساء في القصبات، وله تأثير مساعد مؤقت على خفض البوتاسيوم بنقله إلى داخل الخلايا.',
+    clinicalNote: 'Albuterol/Salbutamol هو SABA للاستنشاق. في hyperkalemia يُستخدم كعلاج مساعد لنقل K⁺ إلى داخل الخلايا ولا يعوض Calcium عند وجود تغيرات ECG ولا العلاجات التي تخفض/تزيل البوتاسيوم.',
     mechanism: 'ناهض انتقائي نسبيًا لمستقبل β2 | β2-adrenergic agonist يزيد cAMP في العضلات الملساء القصبية.',
     tradeNames: ['Ventolin', 'Salbutamol', 'Albuterol'],
     routes: ['استنشاق/نيبولايزر | Inhaled / nebulized'],
     educationalDoses: [
       'للتشنج القصبي/نوبة الربو الحادة لدى البالغ: يمكن إعطاء Salbutamol/Albuterol بالاستنشاق بشكل متكرر في الساعة الأولى؛ عند استخدام nebulizer تُستعمل عادةً 2.5–5 mg كل 20 دقيقة حتى 3 جرعات ثم تُعاد معايرة العلاج حسب الاستجابة.',
       'لفرط البوتاسيوم المتوسط أو الشديد لدى البالغ: 10–20 mg nebulized كعلاج مساعد لنقل البوتاسيوم إلى داخل الخلايا؛ لا يُستخدم وحده بدل العلاجات الأساسية.'
+    ],
+    onsetDuration: [
+      'بعد nebulized albuterol يتحسن FEV₁ لدى معظم المرضى خلال نحو 5 دقائق.',
+      'يبلغ التحسن المتوسط ذروته قرب ساعة ويستمر التأثير المهم سريريًا عادة 3–4 ساعات، وقد يمتد حتى 6 ساعات عند بعض المرضى.'
     ],
     uses: ['التشنج القصبي الحاد | Acute bronchospasm', 'عامل مساعد في فرط البوتاسيوم | Adjunct in hyperkalemia'],
     contraindications: ['فرط التحسس للمستحضر'],
@@ -811,11 +816,16 @@ export const DRUG_DETAILS: Record<string, DrugDetail> = {
   },
   aminophylline: {
     feature: 'مركب Methylxanthine ذو هامش علاجي ضيق | Narrow therapeutic index؛ يمكن أن يوسع القصبات لكنه أصبح أقل استخدامًا في النوبات الحادة بسبب السمية والتداخلات.',
+    clinicalNote: 'Aminophylline ذو هامش علاجي ضيق وتداخلات كثيرة، والسمية قد تسبب arrhythmias أو seizures. لا يُستخدم روتينيًا كخط أول في acute asthma؛ إذا استُخدم فيحتاج حساب الجرعة من التعرض السابق ومراقبة Theophylline حسب السياق.',
     mechanism: 'يثبط Phosphodiesterase بصورة غير نوعية ويعاكس Adenosine receptors، ما يرفع cAMP ويؤدي إلى Bronchodilation مع تأثيرات قلبية وعصبية.',
     routes: ['وريدي بالتسريب | Intravenous infusion'],
     educationalDoses: [
       'إذا استُخدم IV في بروتوكول مختار ولم يكن المريض قد تلقى Theophylline/Aminophylline حديثًا: loading dose نحو 5 mg/kg بالتسريب البطيء خلال 20–30 دقيقة، ثم maintenance نحو 0.5 mg/kg/hour في البالغ مع تعديل الجرعة حسب العمر والتدخين ووظائف الكبد والتداخلات ومستوى Theophylline.',
       'لا يُستخدم IV aminophylline روتينيًا لعلاج نوبات الربو الحادة الحديثة بسبب هامش الأمان الضيق وعدم تفوقه على العلاج الاستنشاقي القياسي.'
+    ],
+    onsetDuration: [
+      'بدء التأثير مرتبط بسرعة التسريب والوصول إلى تركيز Theophylline علاجي، لذلك لا يُختصر بزمن ثابت مستقل عن جرعة التحميل.',
+      'مدة التأثير والتصفية تختلفان بصورة كبيرة مع العمر، التدخين، الحمى، أمراض الكبد والقلب والتداخلات الدوائية؛ لذلك تُبنى الصيانة على المراقبة لا على مدة محفوظة واحدة.'
     ],
     uses: ['استخدام محدود في bronchospasm شديد مختار عندما لا تكفي العلاجات القياسية وبحسب البروتوكول المحلي'],
     contraindications: ['فرط التحسس للثيوفيلين/الأمينوفيلين', 'اضطرابات نظم خطرة غير مسيطر عليها تُعد مانعًا أو سببًا قويًا للتجنب'],
@@ -846,11 +856,16 @@ export const DRUG_DETAILS: Record<string, DrugDetail> = {
   },
   alteplase: {
     feature: 'عامل حالّ للخثرة | Fibrinolytic/thrombolytic يمكنه إذابة خثرة غنية بالفبرين في استطبابات محددة جدًا.',
+    clinicalNote: 'Alteplase thrombolytic عالي الخطورة؛ الجرعة وموانع الاستعمال ومعايير الأهلية تختلف جذريًا بين ischemic stroke وSTEMI وhigh-risk PE. وجود active significant bleeding أو خطر نزف داخل القحف يغيّر القرار فورًا.',
     mechanism: 'منشّط نسيجي للبلازمينوجين | Recombinant tissue plasminogen activator (rt-PA) يحوّل plasminogen إلى plasmin الذي يحلل fibrin.',
     tradeNames: ['Activase', 'Actilyse'],
     routes: ['وريدي | Intravenous infusion بحسب الاستطباب'],
     educationalDoses: [
       'للـAcute massive pulmonary embolism لدى البالغ وفق ملصق Activase: 100 mg IV infusion over 2 hours؛ أنظمة الجرعات للسكتة الدماغية الإقفارية وAMI مختلفة ولا تُستبدل بهذا النظام.'
+    ],
+    onsetDuration: [
+      'التحليل الخثري يبدأ أثناء التسريب، لكن زمن reperfusion والاستجابة السريرية يعتمد على مكان وحجم الخثرة والاستطباب ولا يوجد onset واحد يضمن النجاح.',
+      'بعد إعطاء Alteplase يبقى خطر النزف مهمًا خلال الفترة المبكرة، لذلك تُتجنب الإجراءات الغازية غير الضرورية وتُتبع بروتوكولات الاستطباب.'
     ],
     uses: ['سكتة دماغية إقفارية حادة عند استيفاء المعايير | Selected acute ischemic stroke', 'STEMI في سياقات محددة عندما تكون reperfusion strategy مناسبة', 'انصمام رئوي عالي الخطورة مع عدم استقرار ديناميكي في مرضى مختارين | High-risk PE'],
     contraindications: ['نزف فعال مهم | Active significant bleeding', 'قصة حديثة لنزف داخل القحف أو آفة عالية الخطورة حسب الاستطباب', 'تختلف الموانع بدقة باختلاف Stroke/PE/STEMI ويجب الرجوع لخوارزمية الاستطباب'],
@@ -862,15 +877,20 @@ export const DRUG_DETAILS: Record<string, DrugDetail> = {
   },
   'calcium-gluconate': {
     feature: 'ملح كالسيوم وريدي أقل إحداثًا لأذية النسيج عند التسرب من Calcium chloride ويستخدم لتثبيت غشاء القلب في hyperkalemia ولعلاج hypocalcemia.',
+    clinicalNote: 'Calcium gluconate 10% يحتوي نحو 9.3 mg elemental calcium لكل mL؛ ليس مكافئًا gram-for-gram لـCalcium chloride. في hyperkalemia يثبت غشاء القلب لكنه لا يخفض K⁺ نفسه، ويُعطى IV ببطء مع ECG.',
     mechanism: 'يزيد الكالسيوم المتأين | Ionized calcium ويثبت غشاء الخلية القلبية عند فرط البوتاسيوم دون أن يُخفض تركيز البوتاسيوم نفسه.',
     routes: ['وريدي | Intravenous'],
     educationalDoses: [
       'المصدر يذكر أن محلول Calcium gluconate بتركيز 10% يحتوي 1 g في 10 mL.',
       'للأطفال يذكر المصدر جرعة 0.2–0.3 mL/kg من محلول 10%؛ ولا يحدد في هذه الصفحة جرعة bolus موحدة للبالغين.'
     ],
+    onsetDuration: [
+      'ارتفاع ionized calcium وتأثير تثبيت غشاء القلب يبدأ أثناء/بعد الإعطاء الوريدي البطيء ويُقيّم عبر ECG والحالة السريرية بدل توقيت ثابت.',
+      'مدة الحاجة لإعادة الجرعة تعتمد على السبب وionized calcium وECG؛ لا تُكرر الجرعات آليًا دون إعادة تقييم.'
+    ],
     uses: ['فرط بوتاسيوم مع تغيرات ECG أو عدم استقرار | Hyperkalemia with ECG changes', 'نقص كالسيوم عرضي | Symptomatic hypocalcemia', 'حالات مختارة مثل hypermagnesemia'],
-    contraindications: ['فرط كالسيوم الدم | Hypercalcemia', 'الحذر الشديد مع Digoxin toxicity حسب السياق والتوصيات الحديثة'],
-    warnings: ['Extravasation قد يسبب أذية لكنه أقل قسوة من Calcium chloride', 'لا يعالج مستوى البوتاسيوم نفسه؛ دوره تثبيت myocardium', 'يجب الانتباه للتوافق مع bicarbonate/phosphate في الخط الوريدي'],
+    contraindications: ['فرط كالسيوم الدم | Hypercalcemia', 'حديثو الولادة ≤28 يومًا الذين يتلقون Ceftriaxone IV', 'الحذر الشديد مع Cardiac glycosides/Digoxin حسب السياق'],
+    warnings: ['Extravasation قد يسبب necrosis/calcinosis ويستلزم إيقاف الخط فورًا', 'لا يُعطى Ceftriaxone وCalcium gluconate بالتزامن عبر Y-site بسبب خطر ceftriaxone-calcium precipitates', 'الإعطاء السريع قد يسبب hypotension/bradycardia/arrhythmias؛ يُخفف ويُعطى ببطء مع ECG', 'لا يعالج مستوى البوتاسيوم نفسه؛ دوره تثبيت myocardium', 'يجب الانتباه للتوافق مع bicarbonate/phosphate في الخط الوريدي'],
     adverseEffects: ['بطء القلب أو اضطراب نظم عند إعطاء سريع | Bradycardia/arrhythmia', 'غثيان', 'تهيج وريدي'],
     correction: 'المصدر يجمع Calcium gluconate وCalcium chloride كأنهما متكافئان gram-for-gram؛ 10% Calcium chloride يعطي تقريبًا ثلاثة أضعاف elemental calcium مقارنةً بـ10% Calcium gluconate.',
     sourcePages: [8],
@@ -878,15 +898,20 @@ export const DRUG_DETAILS: Record<string, DrugDetail> = {
   },
   'calcium-chloride': {
     feature: 'ملح كالسيوم وريدي مركز يوفر elemental calcium أكثر من Calcium gluconate، لذلك يفيد عندما نحتاج تأثيرًا سريعًا وقويًا مع انتباه شديد للتسرب.',
+    clinicalNote: 'Calcium chloride 10% يوفر نحو ثلاثة أضعاف elemental calcium مقارنةً بـ10% Calcium gluconate، لذلك لا يُستبدلان gram-for-gram. المستحضر Vesicant نسبيًا ويُعطى ببطء في central أو deep vein؛ extravasation قد يسبب necrosis.',
     mechanism: 'يرفع ionized calcium ويثبت cardiomyocyte membrane في hyperkalemia؛ لا يزيل البوتاسيوم من الجسم.',
-    routes: ['وريدي | Intravenous؛ يُفضّل خط مركزي عند توفره بسبب خطر النخر مع extravasation'],
+    routes: ['وريدي ببطء في central أو deep vein | Slow IV infusion in a central or deep vein؛ لا يُعطى IM أو SC'],
     educationalDoses: [
       'المصدر يذكر أن محلول Calcium chloride بتركيز 10% يحتوي 1 g في 10 mL.',
       'للأطفال يذكر المصدر جرعة 0.2–0.3 mL/kg من محلول 10%؛ ويؤكد أن Calcium chloride أقوى بنحو ثلاثة أضعاف من Calcium gluconate من حيث elemental calcium ولا يُعاملان gram-for-gram.'
     ],
+    onsetDuration: [
+      'رفع ionized calcium وتأثير تثبيت الغشاء يبدأ أثناء/بعد التسريب الوريدي؛ الاستجابة تُقاس سريريًا وبـECG/ionized calcium.',
+      'لا يوجد زمن ثابت لإعادة الجرعة؛ يعاد التقييم حسب السبب والاستجابة لأن الكالسيوم قد يُطرح سريعًا في بعض الحالات.'
+    ],
     uses: ['Hyperkalemia مع تغيرات قلبية', 'Hypocalcemia الشديدة', 'حالات إنعاش مختارة مثل calcium-channel blocker toxicity حسب البروتوكول'],
     contraindications: ['Hypercalcemia', 'حذر شديد في Digoxin toxicity'],
-    warnings: ['Vesicant نسبيًا؛ extravasation قد يسبب tissue necrosis', 'إعطاء سريع قد يسبب Bradycardia/Arrhythmias', 'التوافق الوريدي مهم مع bicarbonate/phosphate'],
+    warnings: ['Vesicant نسبيًا؛ extravasation قد يسبب tissue necrosis/calcinosis', 'وفق الملصق الحالي لا تتجاوز سرعة 10% Calcium chloride نحو 1 mL/min، ويُعطى في central أو deep vein', 'لا يُخلط أو يُعطى بالتزامن مع Ceftriaxone عبر Y-site بسبب precipitates', 'إعطاء سريع قد يسبب Bradycardia/Arrhythmias', 'التوافق الوريدي مهم مع bicarbonate/phosphate'],
     adverseEffects: ['تلف نسيجي عند extravasation', 'بطء القلب', 'اضطرابات نظم', 'Hypercalcemia'],
     correction: 'ليس ممنوعًا “قطعًا” في كل peripheral vein، لكن Calcium chloride مخرش بشدة ويفضّل central access متى أمكن؛ إذا استُخدم طرفيًا في طارئ فيحتاج وريدًا جيدًا ومراقبة دقيقة.',
     sourcePages: [8],
@@ -975,11 +1000,16 @@ export const DRUG_DETAILS: Record<string, DrugDetail> = {
   },
   esomeprazole: {
     feature: 'مثبط مضخة بروتون | Proton pump inhibitor يقلل إفراز حمض المعدة بشكل قوي.',
+    clinicalNote: 'نظام 80 mg IV bolus ثم 8 mg/hour لمدة 72 ساعة مخصص لـhigh-risk peptic ulcer bleeding بعد endoscopic hemostasis، وليس جرعة طوارئ عامة لكل upper GI bleed. توجد high-dose intermittent alternatives حسب البروتوكول.',
     mechanism: 'يثبط بصورة غير عكوسة H+/K+-ATPase في parietal cells بعد تفعيله في البيئة الحمضية.',
     tradeNames: ['Nexium'],
     routes: ['وريدي | Intravenous', 'فموي | Oral'],
     educationalDoses: [
       'في نزف القرحة عالي الخطورة بعد السيطرة بالمنظار | High-risk peptic ulcer bleeding after endoscopic hemostasis: يمكن إعطاء نظام PPI عالي الجرعة كـ 80 mg IV bolus ثم 8 mg/hour continuous infusion لمدة 72 ساعة؛ ويمكن استخدام نظم high-dose intermittent IV أو oral بديلة بحسب الإرشاد والبروتوكول.'
+    ],
+    onsetDuration: [
+      'تثبيط إفراز الحمض يبدأ بعد الجرعة الوريدية، لكن الهدف في نزف القرحة عالي الخطورة هو المحافظة المستمرة على تثبيط الحمض خلال الساعات/الأيام التالية وليس تأثيرًا لحظيًا لإيقاف النزف.',
+      'النظام عالي الجرعة في هذا السياق يمتد 72 ساعة بعد endoscopic hemostasis قبل الانتقال إلى خطة PPI لاحقة حسب الإرشاد.'
     ],
     uses: ['Acid suppression', 'جزء من علاج upper GI bleeding بعد/حول endoscopic therapy حسب سبب النزف والبروتوكول'],
     contraindications: ['فرط التحسس لـPPI أو مكونات المستحضر'],
@@ -991,12 +1021,17 @@ export const DRUG_DETAILS: Record<string, DrugDetail> = {
   },
   furosemide: {
     feature: 'مدر عروة قوي | Loop diuretic يقلل احتقان الحجم عندما يكون لدى المريض volume overload.',
+    clinicalNote: 'Furosemide يفيد عندما يكون هناك volume overload/احتقان ويحتاج تقييم الحجم والكلى والشوارد. ليس العلاج الأساسي أو الأسرع لـhyperkalemia ولا يُعتمد عليه وحده لتثبيت مريض لديه تغيرات ECG.',
     mechanism: 'يثبط ناقل Na-K-2Cl في thick ascending limb of loop of Henle فيزيد طرح الصوديوم والماء والبوتاسيوم.',
     tradeNames: ['Lasix'],
     routes: ['وريدي | Intravenous', 'عضلي | Intramuscular', 'فموي | Oral حسب المستحضر'],
     educationalDoses: [
       'للوذمة عند البالغ: 20–40 mg IV أو IM كجرعة أولية، والجرعة الوريدية تُعطى ببطء خلال 1–2 دقيقة؛ يمكن تكرار/زيادة الجرعة بعد ساعتين حسب الاستجابة.',
       'في Acute pulmonary edema كعلاج مساعد: 40 mg IV ببطء خلال 1–2 دقيقة؛ إذا كانت الاستجابة غير كافية يمكن إعطاء 80 mg IV ببطء بعد نحو ساعة وفق الملصق والحالة.'
+    ],
+    onsetDuration: [
+      'بعد IV يبدأ diuresis خلال نحو 5 دقائق ويبلغ peak effect خلال أول 30 دقيقة.',
+      'مدة التأثير المدر للبول تقارب ساعتين بعد الجرعة الوريدية في الملصق، مع تغير الاستجابة حسب الكلى والجرعة والحجم.'
     ],
     uses: ['Acute cardiogenic pulmonary edema مع volume overload', 'احتقان وفشل قلب | Congestive heart failure', 'حالات وذمة أخرى حسب السبب'],
     contraindications: ['Anuria غير القابلة للاستجابة', 'فرط التحسس الشديد للمستحضر'],
@@ -1008,12 +1043,17 @@ export const DRUG_DETAILS: Record<string, DrugDetail> = {
   },
   hydrocortisone: {
     feature: 'Glucocorticoid قصير/متوسط المفعول نسبيًا مع نشاط mineralocorticoid ملحوظ، مهم في adrenal crisis وله أدوار مساعدة محددة في الطوارئ.',
+    clinicalNote: 'Hydrocortisone مهم في adrenal crisis وله دور في vasopressor-dependent septic shock لدى مرضى مختارين، لكنه ليس علاجًا أوليًا روتينيًا لـAnaphylaxis ولا بديلًا عن IM Adrenaline لأن التأثير الستيرويدي ليس إنقاذيًا فوريًا.',
     mechanism: 'ينشط glucocorticoid receptors ويعدل التعبير الجيني للالتهاب، مع تأثير mineralocorticoid بدرجة مهمة.',
     tradeNames: ['Solu-Cortef'],
     routes: ['وريدي | Intravenous', 'عضلي | Intramuscular حسب المستحضر'],
     educationalDoses: [
       'Adrenal crisis للبالغ: 100 mg Hydrocortisone parenteral فورًا، ثم 200 mg خلال 24 ساعة كتسريب مستمر أو 50 mg كل 6 ساعات مع الإنعاش بالسوائل.',
       'في septic shock المعتمد على vasopressors تُستخدم في بروتوكولات العناية جرعة إجمالية شائعة 200 mg/day IV، مثل 50 mg كل 6 ساعات أو continuous infusion؛ القرار حسب بروتوكول العناية وحالة المريض.'
+    ],
+    onsetDuration: [
+      'التأثير الجيني المضاد للالتهاب للستيرويد يتطور على مدى ساعات ولا يُعد rescue effect فوريًا في التأق.',
+      'في adrenal crisis تُعطى الجرعة فورًا لأن نقص الكورتيزول مهدد للحياة، لكن الاستجابة السريرية تُقيّم مع السوائل، الضغط، الشوارد والغلوكوز وليس بزمن onset واحد.'
     ],
     uses: ['Acute adrenal insufficiency / adrenal crisis', 'Severe asthma كعلاج مساعد بعد bronchodilators', 'Vasopressor-dependent septic shock في مرضى مختارين حسب البروتوكول'],
     contraindications: ['فرط التحسس؛ في الحالات المنقذة للحياة تكون الموانع النسبية أقل أهمية'],
@@ -1065,9 +1105,14 @@ export const DRUG_DETAILS: Record<string, DrugDetail> = {
   },
   glucagon: {
     feature: 'يرفع سكر الدم بسرعة نسبيًا من مخزون الكبد، كما يزيد cAMP القلبي بآلية مستقلة عن مستقبلات β؛ لذلك له استعمالات مختلفة تمامًا حسب الحالة.',
+    clinicalNote: 'في severe hypoglycemia يعتمد نجاح Glucagon على وجود glycogen كبدي كافٍ؛ بعد الاستجابة يُعطى carbohydrate فموي عند القدرة على البلع لمنع النكس. جرعة الأطفال تعتمد على الوزن والمنتج، والـIV يكون تحت إشراف طبي.',
     mechanism: 'يرتبط بمستقبل Glucagon المقترن بـGs في الكبد والقلب | Gs-coupled glucagon receptor، فيزيد cAMP؛ يحفز glycogenolysis/gluconeogenesis ويزيد inotropy/chronotropy بآلية لا تعتمد على β-receptors.',
     routes: ['تحت الجلد | Subcutaneous', 'عضلي | Intramuscular', 'وريدي | Intravenous'],
-    educationalDoses: ['Severe hypoglycemia حسب FDA: للبالغ أو الطفل >25 kg: 1 mg SC/IM/IV؛ ويمكن تكرار الجرعة بعد 15 دقيقة إذا لم تحدث استجابة أثناء انتظار المساعدة.', 'Life-threatening β-blocker poisoning: AHA toxicology guidance يدعم bolus ثم infusion؛ الجرعات المستخدمة في الأدبيات أكبر بكثير من جرعة hypoglycemia وتحتاج toxicology/critical-care protocol.'],
+    educationalDoses: ['Severe hypoglycemia حسب ملصق Glucagon for Injection الحالي: للبالغ أو الطفل ≥20 kg: 1 mg SC/IM، ويمكن لمقدم الرعاية إعطاؤه IV؛ إذا لم تحدث استجابة بعد 15 دقيقة يمكن تكرار 1 mg أثناء انتظار المساعدة. للطفل <20 kg: 0.5 mg أو 20–30 mcg/kg، ويمكن تكرارها بعد 15 دقيقة إذا لزم.', 'Life-threatening β-blocker poisoning: AHA toxicology guidance يدعم bolus ثم infusion؛ الجرعات المستخدمة في الأدبيات أكبر بكثير من جرعة hypoglycemia وتحتاج toxicology/critical-care protocol.'],
+    onsetDuration: [
+      'بعد 1 mg SC ترتفع glucose عادة خلال نحو 10 دقائق وتبلغ mean peak قرب 30 دقيقة؛ بعد IM يكون mean peak glucose قرب 26 دقيقة.',
+      'نصف عمر Glucagon قصير نسبيًا نحو 8–18 دقيقة، لذلك يجب معالجة سبب hypoglycemia وإعطاء carbohydrate بعد الإفاقة عندما يكون آمنًا.'
+    ],
     uses: ['نقص السكر الشديد عندما يتعذر إعطاء الغلوكوز فمويًا | Severe hypoglycemia', 'علاج مساعد في تسمم β-blocker المهدد للحياة | Life-threatening beta-blocker poisoning', 'دوره في severe calcium-channel blocker poisoning أقل يقينًا | Adjunct with uncertain benefit in CCB poisoning'],
     contraindications: ['Pheochromocytoma', 'Insulinoma', 'فرط التحسس للغلوكاغون أو مكونات المستحضر'],
     warnings: ['غثيان وقيء | Nausea/vomiting وقد يزيد aspiration risk عند فاقد الوعي', 'قد يسبب ارتفاع ضغط شديد في pheochromocytoma', 'قد لا يفيد في hypoglycemia عند نفاد مخزون glycogen مثل starvation المطول أو بعض حالات adrenal insufficiency/chronic hypoglycemia'],
@@ -1078,10 +1123,15 @@ export const DRUG_DETAILS: Record<string, DrugDetail> = {
   },
   'regular-insulin': {
     feature: 'إنسولين قصير المفعول | Short-acting insulin قابل للمعايرة، وهو النوع المستخدم وريدياً في بروتوكولات DKA/HHS وفي نقل البوتاسيوم إلى داخل الخلايا في hyperkalemia.',
+    clinicalNote: 'Regular insulin دواء high-alert وتختلف جرعته جذريًا بين DKA وhyperkalemia وhigh-dose insulin toxicology. كل استعمال يحتاج بروتوكول مكتوب ومراقبة glucose وK⁺؛ في DKA يُؤخر insulin إذا كان K⁺ <3.5 mmol/L حتى التصحيح.',
     mechanism: 'يرتبط بمستقبل insulin receptor ويزيد دخول الغلوكوز والبوتاسيوم إلى الخلايا عبر مسارات خلوية منها تنشيط Na⁺/K⁺-ATPase، ويثبط lipolysis وketogenesis.',
     tradeNames: ['Actrapid', 'Humulin R', 'Novolin R حسب البلد'],
     routes: ['وريدي بالتسريب في بروتوكولات حرجة | IV infusion', 'تحت الجلد | Subcutaneous'],
     educationalDoses: ['DKA للبالغ وفق Consensus 2024: fixed-rate IV infusion 0.1 unit/kg/hour؛ إذا كان K⁺ <3.5 mmol/L يُؤخر insulin حتى تصحيح البوتاسيوم. عند glucose <250 mg/dL يُضاف dextrose وتُخفض السرعة عادةً إلى 0.05 unit/kg/hour حتى زوال ketoacidosis.', 'Acute hyperkalemia — UK Kidney Association: 10 units soluble insulin + 25 g glucose مع مراقبة glucose مكثفة؛ المرضى ذوو glucose منخفض قبل العلاج يحتاجون دعم glucose إضافيًا حسب البروتوكول.', 'β-blocker/CCB poisoning: high-dose insulin euglycemia therapy يستخدم جرعات أعلى بكثير من علاج السكري ولا يُنفذ إلا داخل بروتوكول toxicology/critical care مع glucose وK⁺ monitoring مستمر.'],
+    onsetDuration: [
+      'بعد IV يبدأ تأثير Insulin على نقل glucose/K⁺ داخل الخلايا بسرعة، لكن زمن الاستجابة يعتمد على indication والجرعة والـdextrose المصاحب.',
+      'نصف عمر insulin في البلازما قصير، لكن التأثير الأيضي يستمر بعد انخفاض التركيز؛ لذلك hypoglycemia/hypokalemia قد تظهر لاحقًا وتحتاج مراقبة متكررة.'
+    ],
     uses: ['Diabetic ketoacidosis | DKA', 'Hyperosmolar hyperglycemic state | HHS وفق النمط والبروتوكول', 'خفض البوتاسيوم مؤقتًا في acute hyperkalemia | Intracellular K⁺ shift', 'High-dose insulin therapy في تسمم β-blocker/CCB شديد'],
     contraindications: ['Hypoglycemia الحالية', 'Hypokalemia غير المصححة في DKA تُعد سببًا لتأخير بدء insulin حتى تصحيح K⁺'],
     warnings: ['Hypoglycemia أخطر مضاعفة حادة', 'Hypokalemia قد تكون شديدة وتسبب arrhythmia', 'أخطاء الوحدات والتركيز والتسريب high-alert medication errors', 'يحتاج glucose/K⁺ monitoring متكررًا حسب indication'],
