@@ -106,6 +106,7 @@ export function DrugDirectory({
         description="تصنيف الأدوية"
         icon={<MedicinesHealthIcon className="h-[22px] w-[22px]" />}
         items={filterItems}
+        selectedId={classification}
       />
 
       <div className="px-1 text-left">
