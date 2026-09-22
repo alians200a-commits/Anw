@@ -301,6 +301,11 @@ export const DRUG_DETAILS: Record<string, DrugDetail> = {
     mechanism: 'مرخٍ غير مستقطب تنافسي | Competitive nondepolarizing neuromuscular blocker يُستقلب بواسطة Butyrylcholinesterase في البلازما.',
     tradeNames: ['Mivacron'],
     routes: ['وريدي | Intravenous (IV)'],
+    educationalDoses: [
+      'للتنبيب عند البالغ بعد بدء تخدير كافٍ: 0.15 mg/kg IV خلال 5–15 ثانية أو 0.2 mg/kg IV خلال نحو 30 ثانية؛ تعطي 0.2 mg/kg عادةً شروط تنبيب جيدة خلال نحو 2–2.5 دقيقة.',
+      'يمكن استخدام 0.25 mg/kg كجرعة مقسمة 0.15 mg/kg ثم 0.1 mg/kg بعد 30 ثانية في سياقات مختارة؛ الجرعات الأعلى أو الأسرع تزيد احتمال هبوط الضغط المرتبط بتحرر الهيستامين.',
+      'Maintenance bolus شائع 0.1 mg/kg بحسب عودة الحصار والمراقبة العصبية العضلية.'
+    ],
     sourcePages: [71],
     uses: ['تسهيل التنبيب', 'إرخاء العضلات في الإجراءات القصيرة'],
     contraindications: ['فرط التحسس للميفاكوريوم'],
@@ -327,6 +332,11 @@ export const DRUG_DETAILS: Record<string, DrugDetail> = {
     mechanism: 'مرخٍ غير مستقطب تنافسي | Competitive nondepolarizing neuromuscular blocker مع تأثير vagolytic نسبي يفسر الميل لتسرع القلب.',
     tradeNames: ['Pavulon'],
     routes: ['وريدي | Intravenous (IV)'],
+    educationalDoses: [
+      'كجرعة أولية ضمن balanced anesthesia: نحو 0.04–0.1 mg/kg IV وتُفرد حسب الاستجابة.',
+      'لتسهيل التنبيب الرغامي: 0.06–0.1 mg/kg IV؛ تظهر شروط تنبيب مناسبة عادةً خلال 2–3 دقائق.',
+      'جرعات الصيانة تبدأ عادةً من نحو 0.01 mg/kg IV عند الحاجة مع مراقبة neuromuscular block؛ تراكمه يطيل مدة الحصار.'
+    ],
     correction: 'اليرقان أو “الفشل المزمن” ليست عبارات مانع استعمال مطلق عامة؛ الأهم أن الإطراح قد يطول في القصور الكلوي/الكبدي ويجب معايرة الجرعة ومراقبة الحصار.',
     sourcePages: [54, 71],
     uses: ['إرخاء العضلات أثناء العمليات الطويلة أو التهوية في سياقات مختارة'],
@@ -455,7 +465,10 @@ export const DRUG_DETAILS: Record<string, DrugDetail> = {
     mechanism: 'مضاد تنافسي للأستيل كولين عند المستقبلات النيكوتينية في الوصلة العصبية العضلية | Competitive nicotinic ACh receptor blockade.',
     tradeNames: ['Nimbex'],
     routes: ['وريدي | Intravenous (IV)'],
-    educationalDoses: ['جرعة تنبيب شائعة للبالغين: 0.15 mg/kg IV | Typical adult intubating dose؛ تُعدّل حسب السياق والمراقبة العصبية العضلية.'],
+    educationalDoses: [
+      'جرعة البدء الموصى بها للتنبيب عند البالغ: 0.15–0.2 mg/kg IV bolus مع المعايرة حسب وقت التنبيب المتوقع وطول العملية والعوامل المرافقة.',
+      'يُستخدم peripheral nerve stimulator / quantitative monitoring لتحديد الحاجة إلى جرعات إضافية وتقييم التعافي.'
+    ],
     uses: ['تسهيل التنبيب | Facilitation of tracheal intubation', 'إرخاء العضلات أثناء الجراحة أو التهوية | Surgical relaxation / mechanical ventilation'],
     contraindications: ['فرط التحسس للسيساتراكوريوم | Cisatracurium hypersensitivity'],
     warnings: ['يسبب شللًا دون تسكين أو فقدان وعي | Paralysis without analgesia or unconsciousness', 'قد يحدث تأق | Anaphylaxis مع المرخيات العصبية العضلية', 'يجب استخدام مراقبة الحصار العصبي العضلي | Neuromuscular monitoring مثل TOF عند الإمكان'],
