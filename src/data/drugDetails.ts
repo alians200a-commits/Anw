@@ -751,11 +751,14 @@ export const DRUG_DETAILS: Record<string, DrugDetail> = {
     mechanism: 'يثبط بصورة غير عكوسة H+/K+-ATPase في parietal cells بعد تفعيله في البيئة الحمضية.',
     tradeNames: ['Nexium'],
     routes: ['وريدي | Intravenous', 'فموي | Oral'],
+    educationalDoses: [
+      'في نزف القرحة عالي الخطورة بعد السيطرة بالمنظار | High-risk peptic ulcer bleeding after endoscopic hemostasis: يمكن إعطاء نظام PPI عالي الجرعة كـ 80 mg IV bolus ثم 8 mg/hour continuous infusion لمدة 72 ساعة؛ ويمكن استخدام نظم high-dose intermittent IV أو oral بديلة بحسب الإرشاد والبروتوكول.'
+    ],
     uses: ['Acid suppression', 'جزء من علاج upper GI bleeding بعد/حول endoscopic therapy حسب سبب النزف والبروتوكول'],
     contraindications: ['فرط التحسس لـPPI أو مكونات المستحضر'],
     warnings: ['التداخلات الدوائية تختلف حسب الأدوية المصاحبة', 'الاستخدام المطول قد يرتبط بنقص Mg/B12 وعدوى C. difficile وكسور في بعض الفئات'],
     adverseEffects: ['صداع', 'ألم بطن', 'إسهال أو إمساك', 'تفاعلات تحسسية نادرة'],
-    correction: 'جرعة 80 mg bolus ثم 8 mg/h ليست جرعة “طوارئ عامة”؛ هي أحد أنظمة high-dose PPI في نزف القرحة عالي الخطورة بعد endoscopic hemostasis، وتوجد أنظمة intermittent مكافئة في إرشادات حديثة.',
+    correction: 'نظام 80 mg IV bolus ثم 8 mg/hour هو نظام high-dose PPI لحالات نزف القرحة عالي الخطورة بعد endoscopic hemostasis، وليس جرعة “طوارئ عامة” لكل نزف علوي؛ وتوجد نظم high-dose intermittent بديلة بحسب الإرشادات والبروتوكول.',
     sourcePages: [15],
     sourceLabel: 'أدوية الطوارئ 2021 — Esomeprazole'
   },
