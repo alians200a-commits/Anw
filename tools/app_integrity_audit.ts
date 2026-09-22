@@ -315,6 +315,22 @@ for (const path of userFacingComponents) {
   if (/\.correction\b/.test(code)) errors.push(`${path}: renders raw internal correction metadata`);
 }
 
+const mixedDirectionSurfaces = [
+  'src/components/DrugDetailSheet.tsx',
+  'src/components/ClinicalGuidesDirectory.tsx',
+  'src/components/AnesthesiaStagesDirectory.tsx',
+  'src/components/EquipmentDirectory.tsx',
+  'src/components/FluidsDirectory.tsx',
+  'src/components/TermsDirectory.tsx',
+  'src/components/AbbreviationsDirectory.tsx',
+  'src/components/FavoritesScreen.tsx'
+];
+
+for (const path of mixedDirectionSurfaces) {
+  const code = readFileSync(path, 'utf8');
+  if (!code.includes('MixedDirectionText')) errors.push(`${path}: mixed Arabic/English body text is not direction-isolated`);
+}
+
 // Core detail surfaces must use the bidi-safe bilingual component.
 for (const path of [
   'src/components/DrugDetailSheet.tsx',

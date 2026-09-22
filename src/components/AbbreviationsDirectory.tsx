@@ -3,6 +3,7 @@ import { Heart, MagnifyingGlass, SpeakerHigh, TextAa } from '@phosphor-icons/rea
 import { CLINICAL_TERMS } from '../data/clinicalTerms';
 import { playPronunciation } from '../utils/speech';
 import { BilingualLabel } from './BilingualLabel';
+import { MixedDirectionText } from './MixedDirectionText';
 
 interface AbbreviationsDirectoryProps {
   favorites: Set<string>;
@@ -78,11 +79,11 @@ export function AbbreviationsDirectory({ favorites, onToggleFavorite, initialQue
                   </div>
                   <p className="mt-1 text-[11px] font-bold text-[#34293F]">{term.ar}</p>
                   <p className="mt-1 text-xs text-[#6E6477]" dir="ltr">{term.en}</p>
-                  <p className="mt-2 text-[10px] leading-5 text-[#766D7E]">{term.definition}</p>
+                  <p className="mt-2 text-[10px] leading-5 text-[#766D7E]"><MixedDirectionText text={term.definition} /></p>
                   {term.clinicalNote && (
                     <div className="mt-2 border-r-2 border-[#6C4AA5]/50 pr-2.5">
                       <BilingualLabel label="ملاحظة تخديرية | Clinical note" className="text-[9px] font-black text-[#6C4AA5]" />
-                      <p className="mt-1 text-[10px] leading-5 text-[#756B7D]">{term.clinicalNote}</p>
+                      <p className="mt-1 text-[10px] leading-5 text-[#756B7D]"><MixedDirectionText text={term.clinicalNote} /></p>
                     </div>
                   )}
                 </div>

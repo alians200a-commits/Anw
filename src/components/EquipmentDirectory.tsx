@@ -8,6 +8,7 @@ import {
   type EquipmentCategory
 } from '../data/equipment';
 import { BilingualLabel } from './BilingualLabel';
+import { MixedDirectionText } from './MixedDirectionText';
 
 function SoftList({
   title,
@@ -96,13 +97,13 @@ function EquipmentSheet({
         <div className="space-y-3 px-4 pb-[max(1.75rem,env(safe-area-inset-bottom))] pt-4">
           <section className="rounded-2xl border border-[#DCE7F0] bg-[#F8FBFD] px-3.5 py-3">
             <BilingualLabel label="ما هو؟ | What is it?" className="text-[10px] font-black text-[#567594]" />
-            <p className="mt-1.5 text-[12px] leading-6 text-[#44505B]">{item.summary}</p>
+            <p className="mt-1.5 text-[12px] leading-6 text-[#44505B]"><MixedDirectionText text={item.summary} /></p>
           </section>
 
           {item.clinicalNote && (
             <section className="rounded-2xl border border-[#E8DFC9] bg-[#FFF9EE] px-3.5 py-3">
               <BilingualLabel label="ملاحظة سريرية | Clinical note" className="text-[10px] font-black text-[#8A6426]" />
-              <p className="mt-1.5 text-[11px] leading-5 text-[#5B5142]">{item.clinicalNote}</p>
+              <p className="mt-1.5 text-[11px] leading-5 text-[#5B5142]"><MixedDirectionText text={item.clinicalNote} /></p>
             </section>
           )}
 

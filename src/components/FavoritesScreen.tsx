@@ -6,6 +6,7 @@ import { DRUG_DETAILS } from '../data/drugDetails';
 import { CLINICAL_TERMS } from '../data/clinicalTerms';
 import { DrugDetailSheet } from './DrugDetailSheet';
 import { BilingualLabel } from './BilingualLabel';
+import { MixedDirectionText } from './MixedDirectionText';
 
 interface FavoritesScreenProps {
   favorites: Set<string>;
@@ -91,13 +92,13 @@ export function FavoritesScreen({ favorites, onToggleFavorite }: FavoritesScreen
               </div>
 
               <p className="mt-3 whitespace-pre-line text-[10px] leading-5 text-[#766D7E]">
-                {term.definition}
+                <MixedDirectionText text={term.definition} />
               </p>
 
               {term.clinicalNote && (
                 <div className="mt-2 border-r-2 border-[#6C4AA5]/40 pr-2.5">
                   <BilingualLabel label="ملاحظة تخديرية | Clinical note" className="text-[9px] font-black text-[#6C4AA5]" />
-                  <p className="mt-1 text-[10px] leading-5 text-[#756B7D]">{term.clinicalNote}</p>
+                  <p className="mt-1 text-[10px] leading-5 text-[#756B7D]"><MixedDirectionText text={term.clinicalNote} /></p>
                 </div>
               )}
             </article>

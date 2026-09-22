@@ -8,6 +8,7 @@ import {
   type IntravenousFluid
 } from '../data/fluids';
 import { BilingualLabel } from './BilingualLabel';
+import { MixedDirectionText } from './MixedDirectionText';
 
 function FluidList({
   title,
@@ -86,13 +87,13 @@ function FluidSheet({ item, onClose }: { item: IntravenousFluid; onClose: () => 
         <div className="space-y-3 px-4 pb-[max(1.75rem,env(safe-area-inset-bottom))] pt-4">
           <section className="rounded-2xl border border-[#D7EAE7] bg-[#F7FBFA] px-3.5 py-3">
             <BilingualLabel label="التركيب | Composition" className="text-[10px] font-black text-[#4E7D77]" />
-            <p className="mt-1.5 text-[12px] leading-6 text-[#455250]">{item.composition}</p>
+            <p className="mt-1.5 text-[12px] leading-6 text-[#455250]"><MixedDirectionText text={item.composition} /></p>
           </section>
 
           {item.clinicalNote && (
             <section className="rounded-2xl border border-[#E8DFC9] bg-[#FFF9EE] px-3.5 py-3">
               <BilingualLabel label="ملاحظة سريرية | Clinical note" className="text-[10px] font-black text-[#8A6426]" />
-              <p className="mt-1.5 text-[11px] leading-5 text-[#5B5142]">{item.clinicalNote}</p>
+              <p className="mt-1.5 text-[11px] leading-5 text-[#5B5142]"><MixedDirectionText text={item.clinicalNote} /></p>
             </section>
           )}
 
