@@ -243,7 +243,7 @@ export function MorphingSearch({
           {!query.trim() ? (
             <div className="px-4 py-9 text-center">
               <p className="text-xs font-black text-[#405E75]">ابدأ بالكتابة للبحث</p>
-              <p className="mt-1.5 text-[10px] font-semibold text-[#778793]">
+              <p className="mt-1.5 text-[11px] font-semibold text-[#778793]">
                 دواء، جهاز، سائل، مصطلح أو إجراء
               </p>
             </div>
@@ -279,7 +279,7 @@ export function MorphingSearch({
                   {item.description ? (
                     <span
                       dir="auto"
-                      className="mt-0.5 block truncate text-[10px] font-medium text-[#657784]"
+                      className="mt-0.5 block truncate text-[11px] font-medium text-[#657784]"
                     >
                       {item.description}
                     </span>
@@ -315,7 +315,7 @@ export function MorphingSearch({
           <MagnifyingGlass size={20} weight="bold" className="shrink-0 text-[#B58B2A]" />
           <span className="min-w-0 flex-1">
             <span className="block text-xs font-black text-[#183149]">{placeholder}</span>
-            <span className="mt-0.5 block truncate text-[10px] font-semibold text-[#778793]">
+            <span className="mt-0.5 block truncate text-[11px] font-semibold text-[#778793]">
               دواء، جهاز، مصطلح، إجراء...
             </span>
           </span>
