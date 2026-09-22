@@ -154,7 +154,7 @@ export function ClinicalGuidesDirectory({
     id: item.id,
     title: item.label,
     description: item.id === 'all' ? 'كل المفاهيم والإجراءات' : 'تصفية هذا القسم',
-    leading: <MedicalSiteIcon name="clinical" size={24} />,
+    leading: <MedicalSiteIcon name="clinical" play size={24} />,
     onSelect: () => setCategory(item.id as 'all' | ClinicalGuideCategory)
   }));
 
@@ -201,7 +201,7 @@ export function ClinicalGuidesDirectory({
       <NotificationStackMenu
         title={currentCategory}
         description="تصنيف المفاهيم والإجراءات"
-        icon={<MedicalSiteIcon name="clinical" size={27} />}
+        icon={<MedicalSiteIcon name="clinical" play size={27} />}
         items={categoryItems}
         selectedId={category}
       />
