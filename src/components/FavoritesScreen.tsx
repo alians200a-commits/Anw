@@ -58,7 +58,7 @@ export function FavoritesScreen({ favorites, onToggleFavorite }: FavoritesScreen
                 <div className="min-w-0 flex-1">
                   <h3 className="truncate font-black text-[#183149]">{drug.ar}</h3>
                   <p className="mt-0.5 text-xs text-[#526675]" dir="ltr">{drug.en}</p>
-                  <p className="mt-1 text-[10px] font-bold text-[#315672]">افتح التفاصيل الدوائية</p>
+                  <p className="mt-1 text-[11px] font-bold text-[#315672]">افتح التفاصيل الدوائية</p>
                 </div>
                 <Pill size={20} className="shrink-0 text-[#315672]" />
               </button>
@@ -90,14 +90,14 @@ export function FavoritesScreen({ favorites, onToggleFavorite }: FavoritesScreen
                 </div>
               </div>
 
-              <p className="mt-3 whitespace-pre-line text-[10px] leading-5 text-[#526675]">
+              <p className="mt-3 whitespace-pre-line text-[11px] leading-5 text-[#526675]">
                 <MixedDirectionText text={term.definition} />
               </p>
 
               {term.clinicalNote && (
                 <div className="mt-2 border-r-2 border-[#315672]/40 pr-2.5">
-                  <BilingualLabel label="ملاحظة تخديرية | Clinical note" className="text-[9px] font-black text-[#315672]" />
-                  <p className="mt-1 text-[10px] leading-5 text-[#5B6770]"><MixedDirectionText text={term.clinicalNote} /></p>
+                  <BilingualLabel label="ملاحظة تخديرية | Clinical note" className="text-[11px] font-black text-[#315672]" />
+                  <p className="mt-1 text-[11px] leading-5 text-[#5B6770]"><MixedDirectionText text={term.clinicalNote} /></p>
                 </div>
               )}
             </article>
