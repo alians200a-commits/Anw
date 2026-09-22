@@ -43,7 +43,7 @@ export function AbbreviationsDirectory({ favorites, onToggleFavorite, initialQue
         />
       </div>
 
-      <p className="px-1 text-[10px] text-[#657784]">{filtered.length} اختصار</p>
+      <p className="px-1 text-[11px] text-[#657784]">{filtered.length} اختصار</p>
 
       <div className="space-y-2">
         {filtered.map((term) => {
@@ -83,11 +83,11 @@ export function AbbreviationsDirectory({ favorites, onToggleFavorite, initialQue
                   <p className="mt-1 truncate text-xs font-bold text-[#315672]" dir="ltr">
                     {term.abbr} — {term.en}
                   </p>
-                  <p className="mt-2 text-[10px] leading-5 text-[#526675]"><MixedDirectionText text={term.definition} /></p>
+                  <p className="mt-2 text-[11px] leading-5 text-[#526675]"><MixedDirectionText text={term.definition} /></p>
                   {term.clinicalNote && (
                     <div className="mt-2 border-r-2 border-[#315672]/50 pr-2.5">
-                      <BilingualLabel label="ملاحظة تخديرية | Clinical note" className="text-[9px] font-black text-[#315672]" />
-                      <p className="mt-1 text-[10px] leading-5 text-[#5B6770]"><MixedDirectionText text={term.clinicalNote} /></p>
+                      <BilingualLabel label="ملاحظة تخديرية | Clinical note" className="text-[11px] font-black text-[#315672]" />
+                      <p className="mt-1 text-[11px] leading-5 text-[#5B6770]"><MixedDirectionText text={term.clinicalNote} /></p>
                     </div>
                   )}
                 </div>
