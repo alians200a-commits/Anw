@@ -156,9 +156,11 @@ function StageGuideSheet({
 }
 
 export function AnesthesiaStagesDirectory({
-  initialQuery = ''
+  initialQuery = '',
+  onOpenItem
 }: {
   initialQuery?: string;
+  onOpenItem?: (query: string) => void;
 }) {
   const stageEntries = useMemo(
     () =>
@@ -254,7 +256,10 @@ export function AnesthesiaStagesDirectory({
           <motion.button
             key={guide.id}
             type="button"
-            onClick={() => setSelectedGuide(guide)}
+            onClick={() => {
+              setSelectedGuide(guide);
+              onOpenItem?.(guide.titleEn);
+            }}
             initial={{ opacity: 0, y: 5 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{
