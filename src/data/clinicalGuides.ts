@@ -618,6 +618,54 @@ export const CLINICAL_GUIDES: ClinicalGuide[] = [
   },
 
   {
+    id: 'opioids-in-anesthesia',
+    titleAr: 'المسكنات الأفيونية في التخدير',
+    titleEn: 'Opioids in Anesthesia',
+    category: 'pharmacology',
+    categoryAr: 'علم الأدوية',
+    sourcePages: [19,20,21,23],
+    sourceLabel: 'ملف كتابة أدوية التخدير',
+    summary: 'الأفيونات | Opioids أدوية مسكنة تعمل على مستقبلات أفيونية في الجهاز العصبي المركزي والمحيطي وأماكن أخرى مثل الجهاز الهضمي، ويكون تأثير μ مهمًا جدًا في التخدير والتسكين.',
+    sections: [
+      {
+        title: 'المستقبلات | Opioid receptors',
+        items: [
+          'مستقبل μ | Mu: أهم مستقبل سريري لمعظم الأفيونات المستخدمة في التخدير؛ يرتبط بالتسكين والتهدئة وتقبض الحدقة وتثبيط التنفس وتقليل حركة الجهاز الهضمي والاعتماد الجسدي.',
+          'مستقبل κ | Kappa: يساهم في التسكين والتهدئة وقد يرتبط بـDysphoria.',
+          'مستقبل δ | Delta: يشارك في تنظيم الألم والمزاج؛ لا تُعامل عبارة المصدر القديمة بأنه يسبب “إخماد القلب” كقاعدة دوائية مستقلة.'
+        ]
+      },
+      {
+        title: 'أمثلة مهمة | Key examples',
+        items: [
+          'Morphine: أبطأ وأطول نسبيًا، ومفيد للتسكين لكنه قد يسبب histamine release وتثبيط التنفس.',
+          'Fentanyl: قوي وسريع نسبيًا ويُستخدم كثيرًا أثناء التخدير لتسكين الألم وتخفيف الاستجابة للتنبيب والجراحة.',
+          'Remifentanil: فائق القصر ويُستقلب بسرعة بواسطة esterases غير نوعية، لذلك يمكن معايرته بسرعة كبيرة أثناء التخدير.',
+          'Pethidine / Meperidine: استخدامه أصبح أضيق بسبب Normeperidine والتداخلات والسمية العصبية.'
+        ]
+      },
+      {
+        title: 'الاستخدام في التخدير | Perioperative use',
+        items: [
+          'يمكن استخدام الأفيونات كجزء من التخدير العام المتوازن | Balanced anesthesia لتوفير analgesia وتقليل الاستجابة الودية للمنبهات الجراحية.',
+          'بعض الأفيونات مثل Morphine أو Fentanyl يمكن استخدامها Neuraxially في مستحضرات وجرعات مخصصة.',
+          'Remifentanil لا يُعطى Epidural أو Intrathecal بسبب مكونات المستحضر، ويستخدم وريديًا فقط.'
+        ]
+      },
+      {
+        title: 'مخاطر مهمة | Important risks',
+        items: [
+          'تثبيط التنفس | Respiratory depression قد يكون مهددًا للحياة ويزداد مع Benzodiazepines أو sedatives أخرى.',
+          'غثيان وقيء، حكة، احتباس بول، نعاس وهبوط ضغط قد تحدث حسب الدواء والجرعة.',
+          'Fentanyl وRemifentanil قد يسببان muscle/chest-wall rigidity خاصة مع الجرعات العالية أو الإعطاء السريع.',
+          'وجود Naloxone وخطة دعم مجرى الهواء والتهوية مهم عند استخدام الأفيونات القوية.'
+        ]
+      }
+    ],
+    tags: ['opioids','mu receptor','morphine','fentanyl','remifentanil','pethidine','analgesia','respiratory depression']
+  },
+
+  {
     id: 'pharmacokinetics',
     titleAr: 'حركية الدواء',
     titleEn: 'Pharmacokinetics',
