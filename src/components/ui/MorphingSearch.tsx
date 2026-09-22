@@ -10,6 +10,7 @@ import {
 import { createPortal } from 'react-dom';
 import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
 import { MagnifyingGlass, X } from '@phosphor-icons/react';
+import { AnimatedIcon } from './AnimatedIcon';
 
 export interface MorphingSearchItem {
   id: string;
@@ -216,7 +217,9 @@ export function MorphingSearch({
         }
       >
         <div className="flex min-h-14 items-center gap-2 border-b border-[#E7EDF1] px-3">
-          <MagnifyingGlass size={21} weight="bold" className="shrink-0 text-[#B58B2A]" />
+          <AnimatedIcon active={open} variant="pulse" className="shrink-0 text-[#B58B2A]">
+            <MagnifyingGlass size={21} weight="bold" />
+          </AnimatedIcon>
           <input
             ref={inputRef}
             value={query}
@@ -293,7 +296,9 @@ export function MorphingSearch({
               >
                 {item.leading ? (
                   <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl border border-[#DCE5EA] bg-[#F5F8FA] text-[#315672]">
-                    {item.leading}
+                    <AnimatedIcon variant="pop">
+                      {item.leading}
+                    </AnimatedIcon>
                   </span>
                 ) : null}
                 <span className="min-w-0 flex-1">
@@ -347,7 +352,9 @@ export function MorphingSearch({
               : { type: 'spring', stiffness: 260, damping: 28, mass: 0.7 }
           }
         >
-          <MagnifyingGlass size={20} weight="bold" className="shrink-0 text-[#B58B2A]" />
+          <AnimatedIcon variant="pulse" className="shrink-0 text-[#B58B2A]">
+            <MagnifyingGlass size={20} weight="bold" />
+          </AnimatedIcon>
           <span className="min-w-0 flex-1">
             <span className="block text-xs font-black text-[#183149]">{placeholder}</span>
             <span className="mt-0.5 block truncate text-[11px] font-semibold text-[#66737F]">

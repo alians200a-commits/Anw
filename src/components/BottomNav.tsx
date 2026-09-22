@@ -5,6 +5,7 @@ import {
   House
 } from '@phosphor-icons/react';
 import { Dock, DockIcon } from './ui/MagicDock';
+import { AnimatedIcon, type AnimatedIconVariant } from './ui/AnimatedIcon';
 
 export type AppTab = 'home' | 'guide' | 'games' | 'favorites';
 
@@ -13,11 +14,16 @@ interface BottomNavProps {
   onChange: (tab: AppTab) => void;
 }
 
-const items = [
-  { id: 'home' as const, label: 'الرئيسية', icon: House },
-  { id: 'guide' as const, label: 'الدليل', icon: BookOpenText },
-  { id: 'games' as const, label: 'تعلّم', icon: GameController },
-  { id: 'favorites' as const, label: 'المحفوظات', icon: BookmarkSimple }
+const items: Array<{
+  id: AppTab;
+  label: string;
+  icon: typeof House;
+  animation: AnimatedIconVariant;
+}> = [
+  { id: 'home', label: 'الرئيسية', icon: House, animation: 'lift' },
+  { id: 'guide', label: 'الدليل', icon: BookOpenText, animation: 'tilt' },
+  { id: 'games', label: 'تعلّم', icon: GameController, animation: 'pop' },
+  { id: 'favorites', label: 'المحفوظات', icon: BookmarkSimple, animation: 'pulse' }
 ];
 
 export function BottomNav({ active, onChange }: BottomNavProps) {
@@ -53,7 +59,9 @@ export function BottomNav({ active, onChange }: BottomNavProps) {
                       : 'bg-[#EEF3F6] text-[#315672]')
                   }
                 >
-                  <Icon size={19} weight={isActive ? 'fill' : 'regular'} />
+                  <AnimatedIcon active={isActive} variant={item.animation}>
+                    <Icon size={19} weight={isActive ? 'fill' : 'regular'} />
+                  </AnimatedIcon>
                 </span>
                 <span className="text-[11px] font-black leading-none text-[#183149]">
                   {item.label}

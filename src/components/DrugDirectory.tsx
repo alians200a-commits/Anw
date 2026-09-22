@@ -16,6 +16,7 @@ import {
   NotificationStackMenu,
   type StackMenuItem
 } from './ui/NotificationStackMenu';
+import { AnimatedIcon } from './ui/AnimatedIcon';
 
 interface DrugDirectoryProps {
   favorites: Set<string>;
@@ -133,7 +134,7 @@ export function DrugDirectory({
                     title="نطق اسم الدواء"
                     aria-label={'نطق اسم ' + drug.ar}
                   >
-                    <SpeakerHigh size={19} />
+                    <AnimatedIcon variant="tilt"><SpeakerHigh size={19} /></AnimatedIcon>
                   </button>
                   <button
                     type="button"
@@ -147,7 +148,7 @@ export function DrugDirectory({
                     title="حفظ"
                     aria-label={isFavorite ? 'إزالة من المحفوظات' : 'حفظ الدواء'}
                   >
-                    <Heart size={19} weight={isFavorite ? 'fill' : 'regular'} />
+                    <AnimatedIcon active={isFavorite} variant="pulse"><Heart size={19} weight={isFavorite ? 'fill' : 'regular'} /></AnimatedIcon>
                   </button>
                 </div>
 
@@ -162,7 +163,7 @@ export function DrugDirectory({
                     </span>
                   </div>
                   <div className="grid h-11 w-11 shrink-0 place-items-center rounded-[14px] border border-[#D7E2E9] bg-[#EEF3F6] text-[#315672]">
-                    <MedicinesHealthIcon className="h-6 w-6" />
+                    <AnimatedIcon variant="pop"><MedicinesHealthIcon className="h-6 w-6" /></AnimatedIcon>
                   </div>
                 </div>
               </div>

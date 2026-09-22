@@ -4,6 +4,7 @@ import { CLINICAL_TERMS } from '../data/clinicalTerms';
 import { playPronunciation } from '../utils/speech';
 import { BilingualLabel } from './BilingualLabel';
 import { MixedDirectionText } from './MixedDirectionText';
+import { AnimatedIcon } from './ui/AnimatedIcon';
 
 interface AbbreviationsDirectoryProps {
   favorites: Set<string>;
@@ -60,7 +61,7 @@ export function AbbreviationsDirectory({ favorites, onToggleFavorite, initialQue
                     title="نطق الاسم الإنجليزي"
                     aria-label={'نطق ' + (term.abbr ?? term.en)}
                   >
-                    <SpeakerHigh size={19} />
+                    <AnimatedIcon variant="tilt"><SpeakerHigh size={19} /></AnimatedIcon>
                   </button>
                   <button
                     type="button"
@@ -74,7 +75,7 @@ export function AbbreviationsDirectory({ favorites, onToggleFavorite, initialQue
                     title="حفظ"
                     aria-label={isFavorite ? 'إزالة من المحفوظات' : 'حفظ الاختصار'}
                   >
-                    <Heart size={19} weight={isFavorite ? 'fill' : 'regular'} />
+                    <AnimatedIcon active={isFavorite} variant="pulse"><Heart size={19} weight={isFavorite ? 'fill' : 'regular'} /></AnimatedIcon>
                   </button>
                 </div>
 
