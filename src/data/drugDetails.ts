@@ -52,9 +52,13 @@ export const DRUG_DETAILS: Record<string, DrugDetail> = {
     feature: 'منوم وريدي يتميز عادةً بتأثير أقل على ضغط الدم والدورة الدموية مقارنةً بعدة أدوية أخرى لبدء التخدير.',
     mechanism: 'يعزز النقل المثبط عبر GABA-A | GABA-A receptor modulation ويعمل كمنوم وريدي دون تأثير مسكن مهم.',
     routes: ['وريدي | Intravenous (IV)'],
+    educationalDoses: [
+      'لبدء التخدير عند البالغ: 0.3 mg/kg IV عادةً خلال 30–60 ثانية؛ كبار السن قد يحتاجون جرعة أقل حسب الاستجابة والحالة.'
+    ],
     onsetDuration: ['بدء سريع خلال نحو دقيقة | Rapid onset.', 'مدة التنويم قصيرة بعد الجرعة المفردة | Short duration after a bolus.'],
     correction: 'التأثير الأقل على الضغط ميزة نسبية وليس “لا تأثير على القلب” كما في بعض المذكرات. Etomidate قد يسبب hypotension أقل من بدائل كثيرة لكنه لا يضمن الاستقرار، كما أن adrenal suppression قد يستمر ساعات بعد جرعة بدء التخدير.',
-    sourcePages: [68, 70],
+    sourcePages: [16, 68, 70],
+    sourceLabel: 'مبادئ التخدير + أدوية الطوارئ 2021',
     uses: ['بدء التخدير العام', 'البدء السريع في التخدير والتنبيب في حالات مختارة'],
     contraindications: ['فرط التحسس المعروف للإيتوميديت'],
     warnings: ['يثبط تصنيع الكورتيزول مؤقتًا بعد الجرعة؛ لذلك يُتجنب التسريب المستمر', 'لا يمتلك تأثيرًا مسكنًا للألم', 'الحذر عند المرضى الذين تكون وظيفة الغدة الكظرية لديهم موضع قلق سريري'],
@@ -158,11 +162,17 @@ export const DRUG_DETAILS: Record<string, DrugDetail> = {
     feature: 'بنزوديازيبين متوسط إلى طويل التأثير مفيد للتهدئة والسيطرة على الاختلاجات.',
     mechanism: 'بنزوديازيبين يعزز GABA-A | Benzodiazepine GABA-A positive allosteric modulation.',
     tradeNames: ['Ativan'],
-    routes: ['وريدي | Intravenous', 'فموي | Oral'],
-    sourcePages: [69, 70],
+    routes: ['وريدي | Intravenous', 'عضلي | Intramuscular', 'فموي | Oral'],
+    educationalDoses: [
+      'Status epilepticus للبالغ: 4 mg IV ببطء بسرعة لا تتجاوز 2 mg/min؛ إذا استمرت أو عادت الاختلاجات بعد 10–15 دقيقة يمكن تكرار 4 mg مرة إضافية.',
+      'كـPreanesthetic medication بالحقن العضلي: 0.05 mg/kg IM حتى حد أقصى 4 mg وفق الملصق.'
+    ],
+    onsetDuration: ['الطريق الوريدي أسرع من العضلي؛ وقد يستمر التهدئة لساعات، لذلك يجب الانتباه لتراكم التأثير بعد الجرعات المتكررة.'],
+    sourcePages: [30, 69, 70],
+    sourceLabel: 'مبادئ التخدير + أدوية الطوارئ 2021',
     uses: ['التهدئة', 'الحالة الصرعية والاختلاجات', 'الهياج في سياقات مختارة'],
     contraindications: ['فرط التحسس للبنزوديازيبينات'],
-    warnings: ['قد يسبب تثبيط التنفس وهبوط الضغط، خصوصًا مع الأفيونات', 'التسريب المطول لبعض مستحضرات الحقن قد يؤدي لتراكم المذيبات مثل Propylene glycol'],
+    warnings: ['قد يسبب تثبيط التنفس وهبوط الضغط، خصوصًا مع الأفيونات', 'في Status epilepticus يجب تأمين مجرى الهواء ومراقبة التنفس وتجهيز التهوية', 'التسريب المطول لبعض مستحضرات الحقن قد يؤدي لتراكم المذيبات مثل Propylene glycol'],
     adverseEffects: ['نعاس', 'تثبيط التنفس', 'هبوط الضغط', 'ارتباك أو ترنح']
   },
   fentanyl: {
@@ -518,11 +528,17 @@ export const DRUG_DETAILS: Record<string, DrugDetail> = {
     mechanism: 'حجب مستقبلات β1 الأدرينرجية | Beta-1 adrenergic blockade؛ يُستقلب سريعًا بواسطة إستيرازات كريات الدم الحمراء.',
     tradeNames: ['Brevibloc'],
     routes: ['وريدي | Intravenous (IV)'],
+    educationalDoses: [
+      'لـSVT أو noncompensatory sinus tachycardia: جرعة تحميل اختيارية 500 mcg/kg IV خلال دقيقة، ثم 50 mcg/kg/min لمدة 4 دقائق وتُعاير تدريجيًا حسب الاستجابة؛ الحد المعتاد لخفض النبض 200 mcg/kg/min.',
+      'لـPerioperative tachycardia / hypertension: 500 mcg/kg خلال دقيقة للسيطرة التدريجية ثم 50 mcg/kg/min؛ قد تصل المعايرة إلى 200 mcg/kg/min للتسرع و300 mcg/kg/min لارتفاع الضغط حسب الملصق.'
+    ],
+    onsetDuration: ['بداية التأثير سريعة خلال نحو 1–2 دقيقة | Rapid onset.', 'بعد إيقاف التسريب يتراجع التأثير سريعًا؛ نصف العمر نحو 9 دقائق.'],
     uses: ['تسرع القلب فوق البطيني والتحكم السريع بمعدل البطين | Supraventricular tachycardia / ventricular rate control', 'تسرع القلب أو ارتفاع الضغط حول الجراحة | Perioperative tachycardia / hypertension في سياقات مختارة'],
     contraindications: ['بطء قلب جيبي شديد | Severe sinus bradycardia', 'حصار AV أكبر من الدرجة الأولى | >1st degree AV block', 'متلازمة العقدة الجيبية المريضة | Sick sinus syndrome', 'فشل قلب غير معاوض | Decompensated heart failure', 'صدمة قلبية | Cardiogenic shock'],
     warnings: ['هبوط الضغط | Hypotension', 'بطء القلب | Bradycardia أو حصار القلب | Heart block', 'الحذر مع أدوية مثبطة للقلب مثل Verapamil IV | Cardiovascular depression'],
     adverseEffects: ['هبوط الضغط | Hypotension', 'بطء القلب | Bradycardia', 'دوخة | Dizziness', 'تفاعلات موقع الحقن | Infusion-site reactions'],
-    sourcePages: [71]
+    sourcePages: [14, 71],
+    sourceLabel: 'مبادئ التخدير + أدوية الطوارئ 2021'
   },
   lidocaine: {
     feature: 'مخدر موضعي أميدي | Amide local anesthetic متوسط المفعول وسريع نسبيًا، وله استخدامات عديدة في التخدير الموضعي والإقليمي.',
@@ -738,6 +754,11 @@ export const DRUG_DETAILS: Record<string, DrugDetail> = {
     feature: 'حاصر مختلط α1 وβ | Mixed alpha/beta blocker يخفض الضغط مع تقليل أو منع التسرع القلبي الانعكاسي.',
     mechanism: 'يحجب β1/β2 وα1 adrenergic receptors؛ نسبة التأثير تختلف حسب طريق الإعطاء.',
     routes: ['وريدي | Intravenous', 'فموي | Oral'],
+    educationalDoses: [
+      'للخفض العاجل للضغط داخل المستشفى: 20 mg IV ببطء خلال نحو دقيقتين كجرعة أولى، ثم 40 أو 80 mg كل 10 دقائق حسب الاستجابة حتى الوصول للهدف أو مجموع 300 mg.',
+      'يمكن استخدام slow continuous infusion بدل الجرعات المتقطعة، وتُعاير الجرعة بحسب الضغط والاستجابة والبروتوكول.'
+    ],
+    onsetDuration: ['يظهر أقصى تأثير لكل جرعة IV عادةً خلال نحو 5 دقائق؛ يجب مراقبة الضغط بوضعية الاستلقاء والانتباه لهبوط الضغط الوضعي.'],
     uses: ['Hypertensive emergency في حالات مناسبة', 'Severe perioperative hypertension', 'استخدامات توليدية/عصبية محددة حسب البروتوكول'],
     contraindications: ['Bronchial asthma أو bronchospastic disease مهم', 'Severe bradycardia', '2nd/3rd degree AV block دون pacemaker', 'Cardiogenic shock أو overt cardiac failure'],
     warnings: ['Hypotension وBradycardia', 'Bronchospasm بسبب β2 blockade', 'قد يفاقم heart failure', 'الحذر مع أدوية أخرى تبطئ AV conduction'],
