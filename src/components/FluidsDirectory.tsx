@@ -123,6 +123,20 @@ export function FluidsDirectory({
 
   useEffect(() => {
     setQuery(initialQuery);
+
+    const normalized = initialQuery.trim().toLowerCase();
+    if (!normalized) {
+      setSelected(null);
+      return;
+    }
+
+    const exact = INTRAVENOUS_FLUIDS.find(
+      (item) =>
+        item.nameEn.toLowerCase() === normalized ||
+        item.nameAr.toLowerCase() === normalized
+    );
+
+    if (exact) setSelected(exact);
   }, [initialQuery]);
 
   const currentCategory =
