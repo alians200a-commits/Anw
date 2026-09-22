@@ -91,12 +91,12 @@ export function HomeScreen({
       onSelect: () => openGuide('equipment', 'all', item.nameEn)
     }));
 
-    const guides: MorphingSearchItem[] = CLINICAL_GUIDES.map((guide) => {
-      const isStage = ANESTHESIA_STAGE_GUIDE_IDS.has(guide.id);
-      return {
-        id: (isStage ? 'stage:' : 'clinical:') + guide.id,
+    const stageGuides: MorphingSearchItem[] = CLINICAL_GUIDES
+      .filter((guide) => ANESTHESIA_STAGE_GUIDE_IDS.has(guide.id))
+      .map((guide) => ({
+        id: 'stage:' + guide.id,
         title: guide.titleAr + ' | ' + guide.titleEn,
-        description: isStage ? 'مراحل التخدير' : guide.categoryAr,
+        description: 'مراحل التخدير',
         keywords: [
           guide.titleAr,
           guide.titleEn,
@@ -105,10 +105,25 @@ export function HomeScreen({
           ...guide.tags
         ],
         leading: <BookOpenText size={19} />,
-        onSelect: () =>
-          openGuide(isStage ? 'stages' : 'clinical', 'all', guide.titleEn)
-      };
-    });
+        onSelect: () => openGuide('stages', 'all', guide.titleEn)
+      }));
+
+    const clinicalGuides: MorphingSearchItem[] = CLINICAL_GUIDES
+      .filter((guide) => !ANESTHESIA_STAGE_GUIDE_IDS.has(guide.id))
+      .map((guide) => ({
+        id: 'clinical:' + guide.id,
+        title: guide.titleAr + ' | ' + guide.titleEn,
+        description: guide.categoryAr,
+        keywords: [
+          guide.titleAr,
+          guide.titleEn,
+          guide.categoryAr,
+          guide.summary,
+          ...guide.tags
+        ],
+        leading: <BookOpenText size={19} />,
+        onSelect: () => openGuide('clinical', 'all', guide.titleEn)
+      }));
 
     const terms: MorphingSearchItem[] = CLINICAL_TERMS.map((term) => ({
       id: 'term:' + term.id,
@@ -134,7 +149,7 @@ export function HomeScreen({
         )
     }));
 
-    return [...drugs, ...fluids, ...equipment, ...guides, ...terms];
+    return [...drugs, ...fluids, ...equipment, ...stageGuides, ...clinicalGuides, ...terms];
   }, [openGuide]);
 
   const guideItems: StackMenuItem[] = [
@@ -240,14 +255,6 @@ export function HomeScreen({
         ) : null}
       </section>
 
-      <section
-        aria-label="ملاحظة التنقل"
-        className="rounded-[16px] border border-[#E0E7EC] bg-[#F6F8FA] px-3.5 py-3"
-      >
-        <p className="text-[10px] font-semibold leading-5 text-[#657784]">
-          التعلّم والمحفوظات موجودان في شريط التنقل السفلي حتى تبقى الرئيسية نظيفة بدون تكرار.
-        </p>
-      </section>
     </div>
   );
 }
