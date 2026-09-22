@@ -124,3 +124,76 @@ The drug module reaches 100% only when:
 - onset/duration coverage is 63/63,
 - clinically material corrections have been integrated,
 - final mobile rendered smoke test passes.
+
+
+## Batch 2 — CLOSED
+
+Drugs:
+- Midazolam
+- Diazepam
+- Lorazepam
+- Fentanyl
+- Morphine
+- Alfentanil
+- Remifentanil
+- Pethidine / Meperidine
+
+### Issues found and fixed
+
+- Added missing onset/duration data to Midazolam, Fentanyl, Morphine, Alfentanil, Remifentanil and Pethidine.
+- Added visible clinical notes to all eight reviewed drugs.
+- Expanded Midazolam contraindications to include acute narrow-angle glaucoma.
+- Expanded Diazepam injection contraindications to include glaucoma restrictions.
+- Expanded Lorazepam injection contraindications to include vehicle sensitivity, acute narrow-angle glaucoma, sleep apnea and severe respiratory insufficiency context.
+- Morphine contraindications were materially incomplete; added significant respiratory depression, severe asthma in an unmonitored setting/no resuscitative equipment, MAOI use within 14 days and GI obstruction/paralytic ileus.
+- Pethidine/Meperidine now explicitly includes hypersensitivity and keeps the MAOI/normeperidine safety restrictions.
+- Fentanyl onset/duration and rapid/high-dose rigidity risk are now represented visibly.
+- Remifentanil rapid offset and need for alternative postoperative analgesia before stopping infusion are represented visibly.
+
+Status:
+- Identity/classification: PASS
+- Route consistency: PASS
+- Dose reference: PASS
+- Onset/duration: PASS
+- Contraindications/warnings: PASS after fixes
+- Clinical-note integration: PASS
+- CI gate: PASS
+
+## Batch 3 — IN PROGRESS
+
+Scope:
+- Rocuronium
+- Suxamethonium
+- Atracurium
+- Mivacurium
+- Vecuronium
+- Pancuronium
+- Cisatracurium
+- Neostigmine
+- Sugammadex
+- Naloxone
+
+Verified and locked so far:
+- Rocuronium
+- Suxamethonium
+- Atracurium
+- Vecuronium
+- Cisatracurium
+- Neostigmine
+- Sugammadex
+- Naloxone
+
+Pending stronger source verification before PASS:
+- Mivacurium
+- Pancuronium
+
+Important changes:
+- Added onset/duration and visible clinical notes to the eight verified records.
+- Neuromuscular blockers are explicitly framed as paralysis without analgesia/unconsciousness where relevant.
+- Neostigmine reversal now ties timing to spontaneous recovery/TOF and records the typical 10–20 minute path to TOF 0.9 under appropriate conditions.
+- Sugammadex clinical note emphasizes depth-based dosing and that severe renal impairment (CrCl <30 mL/min) is not recommended in the current label.
+- Naloxone records rapid IV onset and the risk of recurrent respiratory depression when the opioid outlasts naloxone.
+
+Current strict lock:
+- Reviewed and CI-protected drugs: 27 / 63.
+- Remaining drugs are not treated as fully audited until they enter a reviewed batch.
