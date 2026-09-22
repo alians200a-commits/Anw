@@ -2,7 +2,6 @@ import { useEffect, useId, useRef, useState, type ReactNode } from 'react';
 import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
 import { CaretDown, Check } from '@phosphor-icons/react';
 import { AnimatedIcon } from './AnimatedIcon';
-import { RemoteAnimatedAssetIcon } from './RemoteAnimatedAssetIcon';
 
 export interface StackMenuItem {
   id: string;
@@ -17,7 +16,6 @@ interface NotificationStackMenuProps {
   title: ReactNode;
   description?: ReactNode;
   icon?: ReactNode;
-  animatedIconSrc?: string;
   items: StackMenuItem[];
   selectedId?: string;
   defaultExpanded?: boolean;
@@ -29,7 +27,6 @@ export function NotificationStackMenu({
   title,
   description,
   icon,
-  animatedIconSrc,
   items,
   selectedId,
   defaultExpanded = false,
@@ -95,23 +92,9 @@ export function NotificationStackMenu({
       >
         {icon ? (
           <span className="grid h-10 w-10 shrink-0 place-items-center rounded-[12px] bg-[#EEF3F6] text-[#315672]">
-            {animatedIconSrc ? (
-              <RemoteAnimatedAssetIcon
-                src={animatedIconSrc}
-                play={expanded}
-                durationMs={850}
-                className="h-7 w-7"
-                fallback={
-                  <AnimatedIcon active={expanded} variant="lift">
-                    {icon}
-                  </AnimatedIcon>
-                }
-              />
-            ) : (
-              <AnimatedIcon active={expanded} variant="lift">
-                {icon}
-              </AnimatedIcon>
-            )}
+            <AnimatedIcon active={expanded} variant="lift">
+              {icon}
+            </AnimatedIcon>
           </span>
         ) : null}
 
