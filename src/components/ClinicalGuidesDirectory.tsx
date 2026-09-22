@@ -232,7 +232,7 @@ export function ClinicalGuidesDirectory({
       </div>
 
       {filtered.length === 0 && (
-        <div className="rounded-[18px] border border-dashed border-[#C9D6DF] bg-[#F8FAFB] p-7 text-center text-xs text-[#667A89]">
+        <div className="rounded-[18px] border border-dashed border-[#C9D6DF] bg-[#F8FAFB] p-7 text-center text-xs text-[#5F7280]">
           ماكو موضوع مطابق للبحث.
         </div>
       )}
