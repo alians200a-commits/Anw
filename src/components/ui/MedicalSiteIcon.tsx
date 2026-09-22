@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 export type MedicalSiteIconName =
   | 'home'
@@ -14,7 +14,8 @@ export type MedicalSiteIconName =
   | 'abbreviations';
 
 type AssetRecord = {
-  iconScoutId: number;
+  iconScoutId?: number;
+  iconScoutLabel: string;
   iconScoutPage: string;
   flaticonId: number;
   flaticonPage: string;
@@ -25,6 +26,7 @@ type AssetRecord = {
 export const MEDICAL_SITE_ICON_ASSETS: Record<MedicalSiteIconName, AssetRecord> = {
   home: {
     iconScoutId: 7140714,
+    iconScoutLabel: 'Mobile Health App',
     iconScoutPage: 'https://iconscout.com/lottie-animation/mobile-health-app-animation_7140714',
     flaticonId: 15968683,
     flaticonPage: 'https://www.flaticon.com/free-animated-icon/medical-cross_15968683',
@@ -33,6 +35,7 @@ export const MEDICAL_SITE_ICON_ASSETS: Record<MedicalSiteIconName, AssetRecord> 
   },
   guide: {
     iconScoutId: 7140709,
+    iconScoutLabel: 'Medical Symbol',
     iconScoutPage: 'https://iconscout.com/lottie-animation/medical-symbol-animation_7140709',
     flaticonId: 11880586,
     flaticonPage: 'https://www.flaticon.com/free-animated-icon/medical-history_11880586',
@@ -41,6 +44,7 @@ export const MEDICAL_SITE_ICON_ASSETS: Record<MedicalSiteIconName, AssetRecord> 
   },
   learn: {
     iconScoutId: 7140713,
+    iconScoutLabel: 'Microscope',
     iconScoutPage: 'https://iconscout.com/lottie-animation/microscope-animation_7140713',
     flaticonId: 19009028,
     flaticonPage: 'https://www.flaticon.com/free-animated-icon/microscope_19009028',
@@ -49,6 +53,7 @@ export const MEDICAL_SITE_ICON_ASSETS: Record<MedicalSiteIconName, AssetRecord> 
   },
   saved: {
     iconScoutId: 7140721,
+    iconScoutLabel: 'Health Record',
     iconScoutPage: 'https://iconscout.com/lottie-animation/health-record-animation_7140721',
     flaticonId: 19036882,
     flaticonPage: 'https://www.flaticon.com/free-animated-icon/heart_19036882',
@@ -56,24 +61,24 @@ export const MEDICAL_SITE_ICON_ASSETS: Record<MedicalSiteIconName, AssetRecord> 
     animatedSrc: 'https://cdn-icons-gif.flaticon.com/19036/19036882.gif'
   },
   drugs: {
-    iconScoutId: 7140711,
-    iconScoutPage: 'https://iconscout.com/lottie-animation/medication-animation_7140711',
-    flaticonId: 15968752,
-    flaticonPage: 'https://www.flaticon.com/free-animated-icon/pill_15968752',
-    staticSrc: 'https://cdn-icons-png.flaticon.com/512/15968/15968752.png',
-    animatedSrc: 'https://cdn-icons-gif.flaticon.com/15968/15968752.gif'
+    iconScoutLabel: 'Syringe + vial / ampoule',
+    iconScoutPage: 'https://iconscout.com/lottie-animations/syringe-anesthesia-injection-drugs-medicine',
+    flaticonId: 19031949,
+    flaticonPage: 'https://www.flaticon.com/free-animated-icon/medicine-bottle_19031949',
+    staticSrc: 'https://cdn-icons-png.flaticon.com/512/19031/19031949.png',
+    animatedSrc: 'https://cdn-icons-gif.flaticon.com/19031/19031949.gif'
   },
   equipment: {
-    iconScoutId: 7140696,
-    iconScoutPage: 'https://iconscout.com/lottie-animation/stethoscope-animation_7140696',
-    flaticonId: 14122763,
-    flaticonPage: 'https://www.flaticon.com/free-animated-icon/medical-kit_14122763',
-    staticSrc: 'https://cdn-icons-png.flaticon.com/512/14122/14122763.png',
-    animatedSrc: 'https://cdn-icons-gif.flaticon.com/14122/14122763.gif'
+    iconScoutLabel: 'Anesthesia machine / laryngoscope / airway equipment',
+    iconScoutPage: 'https://iconscout.com/lottie-animations/anesthesia-machine',
+    flaticonId: 10606547,
+    flaticonPage: 'https://www.flaticon.com/free-animated-icon/scalpel_10606547',
+    staticSrc: 'https://cdn-icons-png.flaticon.com/512/10606/10606547.png',
+    animatedSrc: 'https://cdn-icons-gif.flaticon.com/10606/10606547.gif'
   },
   fluids: {
-    iconScoutId: 7140712,
-    iconScoutPage: 'https://iconscout.com/lottie-animation/medicine-animation_7140712',
+    iconScoutLabel: 'IV bag / infusion',
+    iconScoutPage: 'https://iconscout.com/lottie-animations/iv-infusion-bottle',
     flaticonId: 19017296,
     flaticonPage: 'https://www.flaticon.com/free-animated-icon/iv-bag_19017296',
     staticSrc: 'https://cdn-icons-png.flaticon.com/512/19017/19017296.png',
@@ -81,6 +86,7 @@ export const MEDICAL_SITE_ICON_ASSETS: Record<MedicalSiteIconName, AssetRecord> 
   },
   stages: {
     iconScoutId: 7140725,
+    iconScoutLabel: 'Heart Rate',
     iconScoutPage: 'https://iconscout.com/lottie-animation/heart-rate-animation_7140725',
     flaticonId: 6449707,
     flaticonPage: 'https://www.flaticon.com/free-animated-icon/heartbeat_6449707',
@@ -89,6 +95,7 @@ export const MEDICAL_SITE_ICON_ASSETS: Record<MedicalSiteIconName, AssetRecord> 
   },
   clinical: {
     iconScoutId: 7140710,
+    iconScoutLabel: 'Medical Treatment',
     iconScoutPage: 'https://iconscout.com/lottie-animation/medical-treatment-animation_7140710',
     flaticonId: 19003377,
     flaticonPage: 'https://www.flaticon.com/free-animated-icon/medical-care_19003377',
@@ -97,6 +104,7 @@ export const MEDICAL_SITE_ICON_ASSETS: Record<MedicalSiteIconName, AssetRecord> 
   },
   terms: {
     iconScoutId: 7140720,
+    iconScoutLabel: 'Health Question',
     iconScoutPage: 'https://iconscout.com/lottie-animation/health-question-animation_7140720',
     flaticonId: 19031946,
     flaticonPage: 'https://www.flaticon.com/free-animated-icon/medical-record_19031946',
@@ -105,6 +113,7 @@ export const MEDICAL_SITE_ICON_ASSETS: Record<MedicalSiteIconName, AssetRecord> 
   },
   abbreviations: {
     iconScoutId: 7140721,
+    iconScoutLabel: 'Health Record',
     iconScoutPage: 'https://iconscout.com/lottie-animation/health-record-animation_7140721',
     flaticonId: 19031946,
     flaticonPage: 'https://www.flaticon.com/free-animated-icon/medical-record_19031946',
@@ -129,13 +138,25 @@ export function MedicalSiteIcon({
   const [gifFailed, setGifFailed] = useState(false);
   const [pngFailed, setPngFailed] = useState(false);
   const [run, setRun] = useState(0);
+  const stopTimerRef = useRef<number | null>(null);
+
+  const clearStopTimer = () => {
+    if (stopTimerRef.current !== null) {
+      window.clearTimeout(stopTimerRef.current);
+      stopTimerRef.current = null;
+    }
+  };
 
   useEffect(() => {
+    clearStopTimer();
     setGifFailed(false);
     setPngFailed(false);
+    return clearStopTimer;
   }, [name]);
 
   useEffect(() => {
+    clearStopTimer();
+
     if (!play || gifFailed) {
       setAnimated(false);
       return;
@@ -143,8 +164,8 @@ export function MedicalSiteIcon({
 
     setRun((value) => value + 1);
     setAnimated(true);
-    const timer = window.setTimeout(() => setAnimated(false), 900);
-    return () => window.clearTimeout(timer);
+
+    return clearStopTimer;
   }, [play, gifFailed, name]);
 
   if (pngFailed && (!animated || gifFailed)) {
@@ -159,7 +180,7 @@ export function MedicalSiteIcon({
 
   return (
     <img
-      key={animated ? run : 'static'}
+      key={animated ? name + '-animated-' + run : name + '-static'}
       src={animated && !gifFailed ? asset.animatedSrc : asset.staticSrc}
       alt=""
       aria-hidden="true"
@@ -169,7 +190,18 @@ export function MedicalSiteIcon({
       width={size}
       height={size}
       className={'pointer-events-none shrink-0 object-contain ' + className}
+      onLoad={() => {
+        if (!animated) return;
+
+        clearStopTimer();
+        stopTimerRef.current = window.setTimeout(() => {
+          setAnimated(false);
+          stopTimerRef.current = null;
+        }, 1400);
+      }}
       onError={() => {
+        clearStopTimer();
+
         if (animated) {
           setGifFailed(true);
           setAnimated(false);
