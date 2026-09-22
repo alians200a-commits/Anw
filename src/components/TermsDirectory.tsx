@@ -43,7 +43,7 @@ export function TermsDirectory({ favorites, onToggleFavorite, initialQuery = '' 
         />
       </div>
 
-      <p className="px-1 text-[10px] text-[#657784]">{filtered.length} مصطلح</p>
+      <p className="px-1 text-[11px] text-[#657784]">{filtered.length} مصطلح</p>
 
       <div className="space-y-2">
         {filtered.map((term) => {
@@ -83,11 +83,11 @@ export function TermsDirectory({ favorites, onToggleFavorite, initialQuery = '' 
                   <p className="mt-1 text-xs font-bold text-[#526675]" dir="ltr">{term.en}</p>
                 </div>
               </div>
-              <p className="mt-3 whitespace-pre-line text-[10px] leading-5 text-[#526675]"><MixedDirectionText text={term.definition} /></p>
+              <p className="mt-3 whitespace-pre-line text-[11px] leading-5 text-[#526675]"><MixedDirectionText text={term.definition} /></p>
               {term.clinicalNote && (
                 <div className="mt-2 border-r-2 border-[#315672]/50 pr-2.5">
-                  <BilingualLabel label="ملاحظة تخديرية | Clinical note" className="text-[9px] font-black text-[#315672]" />
-                  <p className="mt-1 text-[10px] leading-5 text-[#5B6770]"><MixedDirectionText text={term.clinicalNote} /></p>
+                  <BilingualLabel label="ملاحظة تخديرية | Clinical note" className="text-[11px] font-black text-[#315672]" />
+                  <p className="mt-1 text-[11px] leading-5 text-[#5B6770]"><MixedDirectionText text={term.clinicalNote} /></p>
                 </div>
               )}
             </article>

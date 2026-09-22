@@ -25,7 +25,7 @@ function StageSection({
       <section className="rounded-2xl border border-[#DCE5EA] bg-[#F7F9FA] px-3.5 py-3">
         <BilingualLabel
           label={title}
-          className="text-[10px] font-black text-[#405E75]"
+          className="text-[11px] font-black text-[#405E75]"
         />
         <p className="mt-2 text-[11px] leading-5 text-[#526675]">
           <MixedDirectionText text={items[0]} />
@@ -43,12 +43,12 @@ function StageSection({
           className="shrink-0 text-[#526F85] transition group-open:rotate-180"
         />
         <div className="flex items-center gap-2">
-          <span className="rounded-full bg-[#EAF0F4] px-2 py-1 text-[9px] font-black text-[#405E75]">
+          <span className="rounded-full bg-[#EAF0F4] px-2 py-1 text-[11px] font-black text-[#405E75]">
             {items.length}
           </span>
           <BilingualLabel
             label={title}
-            className="text-[10px] font-black text-[#405E75]"
+            className="text-[11px] font-black text-[#405E75]"
           />
         </div>
       </summary>
@@ -121,7 +121,7 @@ function StageGuideSheet({
             </button>
 
             <div className="min-w-0 flex-1 text-right">
-              <p className="text-[10px] font-black text-[#526F85]">
+              <p className="text-[11px] font-black text-[#526F85]">
                 {guide.categoryAr}
               </p>
               <h3 className="mt-0.5 text-lg font-black text-[#183149]">
@@ -141,7 +141,7 @@ function StageGuideSheet({
           <section className="rounded-2xl border border-[#DCE5EA] bg-[#F7F9FA] px-3.5 py-3">
             <BilingualLabel
               label="الخلاصة | Summary"
-              className="text-[10px] font-black text-[#405E75]"
+              className="text-[11px] font-black text-[#405E75]"
             />
             <p className="mt-1.5 text-[12px] leading-6 text-[#465866]">
               <MixedDirectionText text={guide.summary} />
@@ -152,7 +152,7 @@ function StageGuideSheet({
             <section className="rounded-2xl border border-[#E8DFC9] bg-[#FFF9EE] px-3.5 py-3">
               <BilingualLabel
                 label="ملاحظة سريرية | Clinical note"
-                className="text-[10px] font-black text-[#8A6426]"
+                className="text-[11px] font-black text-[#8A6426]"
               />
               <p className="mt-1.5 text-[11px] leading-5 text-[#5B5142]">
                 <MixedDirectionText text={guide.clinicalNote} />
@@ -242,7 +242,7 @@ export function AnesthesiaStagesDirectory({
     <div className="space-y-3">
       <section className="px-1 text-right">
         <h2 className="text-base font-black text-[#183149]">مراحل التخدير</h2>
-        <p className="mt-1 text-[10px] font-semibold text-[#657784]" dir="ltr">
+        <p className="mt-1 text-[11px] font-semibold text-[#657784]" dir="ltr">
           Stages of Anesthesia
         </p>
       </section>
@@ -259,7 +259,7 @@ export function AnesthesiaStagesDirectory({
       />
 
       <div className="px-1 text-left">
-        <span className="rounded-full border border-[#DCE5EA] bg-[#EEF3F6] px-2.5 py-1 text-[9px] font-black text-[#405E75]">
+        <span className="rounded-full border border-[#DCE5EA] bg-[#EEF3F6] px-2.5 py-1 text-[11px] font-black text-[#405E75]">
           {currentEntry.guides.length} موضوع
         </span>
       </div>
@@ -270,12 +270,6 @@ export function AnesthesiaStagesDirectory({
             key={guide.id}
             type="button"
             onClick={() => setSelectedGuide(guide)}
-            initial={{ opacity: 0, y: 5 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{
-              duration: 0.14,
-              delay: Math.min(index, 8) * 0.018
-            }}
             className="flex min-h-[68px] w-full items-center gap-3 rounded-[18px] border border-[#DCE5EA] bg-[#F7F9FA] px-3.5 py-3 text-right outline-none transition active:bg-[#EEF3F6] focus-visible:ring-2 focus-visible:ring-[#CCA039]/50"
           >
             <div className="grid h-11 w-11 shrink-0 place-items-center rounded-[14px] border border-[#D7E2E9] bg-[#EEF3F6] text-[#315672]">
@@ -287,12 +281,12 @@ export function AnesthesiaStagesDirectory({
                 {guide.titleAr}
               </h3>
               <p
-                className="mt-0.5 truncate text-[10px] font-bold text-[#526675]"
+                className="mt-0.5 truncate text-[11px] font-bold text-[#526675]"
                 dir="ltr"
               >
                 {guide.titleEn}
               </p>
-              <p className="mt-1 line-clamp-1 text-[9px] leading-4 text-[#71808B]">
+              <p className="mt-1 line-clamp-1 text-[11px] leading-4 text-[#71808B]">
                 <MixedDirectionText text={guide.summary} />
               </p>
             </div>

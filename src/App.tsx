@@ -37,7 +37,7 @@ export default function App() {
       setGuideQuery('');
     }
     setActiveTab(tab);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
   };
 
   const handleGuideSectionChange = (section: GuideSection) => {
@@ -55,7 +55,7 @@ export default function App() {
     setGuideQuery(initialQuery);
     if (section === 'drugs') setGuideDrugClass(drugClass);
     setActiveTab('guide');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
   };
 
   const toggleFavorite = (id: string) => {

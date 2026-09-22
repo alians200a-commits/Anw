@@ -46,10 +46,10 @@ function SoftList({
       <summary className="flex min-h-11 cursor-pointer list-none items-center justify-between gap-3">
         <CaretDown size={15} weight="bold" className="text-[#526F85] transition group-open:rotate-180" />
         <div className="flex items-center gap-2">
-          <span className="rounded-full bg-white/75 px-2 py-0.5 text-[9px] font-black text-[#5F7280]">
+          <span className="rounded-full bg-white/75 px-2 py-0.5 text-[11px] font-black text-[#5F7280]">
             {items.length}
           </span>
-          <BilingualLabel label={title} className={'text-[10px] font-black ' + titleClass} />
+          <BilingualLabel label={title} className={'text-[11px] font-black ' + titleClass} />
         </div>
       </summary>
       <div className="mt-3 border-t border-black/[0.05] pt-3">{body}</div>
@@ -110,7 +110,7 @@ function EquipmentSheet({
               <X size={17} weight="bold" />
             </button>
             <div className="flex-1 text-right">
-              <p className="text-[10px] font-black text-[#526F85]">{item.categoryAr}</p>
+              <p className="text-[11px] font-black text-[#526F85]">{item.categoryAr}</p>
               <h3 className="mt-0.5 text-lg font-black text-[#183149]">{item.nameAr}</h3>
               <p className="mt-0.5 text-sm font-bold text-[#526675]" dir="ltr">{item.nameEn}</p>
             </div>
@@ -119,13 +119,13 @@ function EquipmentSheet({
 
         <div className="space-y-3 px-4 pb-[max(1.75rem,env(safe-area-inset-bottom))] pt-4">
           <section className="rounded-2xl border border-[#DCE5EA] bg-[#F8FAFB] px-3.5 py-3">
-            <BilingualLabel label="ما هو؟ | What is it?" className="text-[10px] font-black text-[#405E75]" />
+            <BilingualLabel label="ما هو؟ | What is it?" className="text-[11px] font-black text-[#405E75]" />
             <p className="mt-1.5 text-[12px] leading-6 text-[#465866]"><MixedDirectionText text={item.summary} /></p>
           </section>
 
           {item.clinicalNote && (
             <section className="rounded-2xl border border-[#E8DFC9] bg-[#FFF9EE] px-3.5 py-3">
-              <BilingualLabel label="ملاحظة سريرية | Clinical note" className="text-[10px] font-black text-[#8A6426]" />
+              <BilingualLabel label="ملاحظة سريرية | Clinical note" className="text-[11px] font-black text-[#8A6426]" />
               <p className="mt-1.5 text-[11px] leading-5 text-[#5B5142]"><MixedDirectionText text={item.clinicalNote} /></p>
             </section>
           )}
@@ -230,24 +230,21 @@ export function EquipmentDirectory({
             key={item.id}
             type="button"
             onClick={() => setSelected(item)}
-            initial={{ opacity: 0, y: 5 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.12, delay: Math.min(index, 8) * 0.015 }}
             className="w-full rounded-[18px] border border-[#DCE5EA] bg-[#F7F9FA] px-3.5 py-3 text-right active:bg-[#EEF3F6]"
           >
             <div className="flex items-start justify-between gap-3">
-              <span className="shrink-0 rounded-full bg-white/80 px-2.5 py-1 text-[9px] font-black text-[#405E75]">
+              <span className="shrink-0 rounded-full bg-white/80 px-2.5 py-1 text-[11px] font-black text-[#405E75]">
                 {item.categoryAr}
               </span>
               <div className="min-w-0 flex-1">
                 <h3 className="text-[13px] font-black text-[#183149]">{item.nameAr}</h3>
-                <p className="mt-0.5 truncate text-[10px] font-bold text-[#526675]" dir="ltr">
+                <p className="mt-0.5 truncate text-[11px] font-bold text-[#526675]" dir="ltr">
                   {item.nameEn}
                 </p>
               </div>
             </div>
-            <p className="mt-2 line-clamp-2 text-[10px] leading-5 text-[#526675]">{item.summary}</p>
-            <div className="mt-2 border-t border-[#DDE6EB] pt-2 text-[9px] font-black text-[#405E75]">
+            <p className="mt-2 line-clamp-2 text-[11px] leading-5 text-[#526675]">{item.summary}</p>
+            <div className="mt-2 border-t border-[#DDE6EB] pt-2 text-[11px] font-black text-[#405E75]">
               <BilingualLabel label="التفاصيل | Details" />
             </div>
           </motion.button>

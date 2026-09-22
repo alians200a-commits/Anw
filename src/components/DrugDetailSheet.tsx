@@ -189,10 +189,10 @@ function CollapsibleList({
       <summary className="flex min-h-11 cursor-pointer list-none items-center justify-between gap-3">
         <CaretDown size={15} weight="bold" className="text-[#526F85] transition group-open:rotate-180" />
         <div className="flex items-center gap-2">
-          <span className="rounded-full bg-white/70 px-2 py-0.5 text-[9px] font-black text-[#5F7280]">
+          <span className="rounded-full bg-white/70 px-2 py-0.5 text-[11px] font-black text-[#5F7280]">
             {items.length}
           </span>
-          <BilingualLabel label={title} className={'text-[10px] font-black ' + titleClass} />
+          <BilingualLabel label={title} className={'text-[11px] font-black ' + titleClass} />
         </div>
       </summary>
       <div className="mt-3 border-t border-black/[0.05] pt-3">
@@ -227,7 +227,7 @@ function ReferenceBlock({
 
   return (
     <section className="rounded-2xl border border-[#DCE5EA] bg-[#F7F9FA] px-3.5 py-3">
-      <BilingualLabel label={title} className="text-[10px] font-black text-[#405E75]" />
+      <BilingualLabel label={title} className="text-[11px] font-black text-[#405E75]" />
       {text && (
         <p className="mt-1.5 text-[11px] leading-5 text-[#526675]">
           <BilingualMedicalText text={text} />
@@ -248,10 +248,10 @@ function DetailSection({ title, items, tone }: DetailSectionProps) {
       <summary className="flex min-h-11 cursor-pointer list-none items-center justify-between gap-3">
         <CaretDown size={15} weight="bold" className="text-[#526F85] transition group-open:rotate-180" />
         <div className="flex items-center gap-2">
-          <span className="rounded-full bg-white/70 px-2 py-0.5 text-[9px] font-black text-[#5F7280]">
+          <span className="rounded-full bg-white/70 px-2 py-0.5 text-[11px] font-black text-[#5F7280]">
             {items.length}
           </span>
-          <BilingualLabel label={title} className={'text-[10px] font-black ' + config.title} />
+          <BilingualLabel label={title} className={'text-[11px] font-black ' + config.title} />
           <Icon size={16} weight="bold" className={config.title} />
         </div>
       </summary>
@@ -310,7 +310,7 @@ export function DrugDetailSheet({ drug, detail, onClose }: DrugDetailSheetProps)
             </button>
 
             <div className="flex-1 text-right">
-              <p className="text-[10px] font-black text-[#526F85]">{drug.categoryAr}</p>
+              <p className="text-[11px] font-black text-[#526F85]">{drug.categoryAr}</p>
               <h3 className="mt-0.5 text-xl font-black text-[#183149]">{drug.ar}</h3>
               <p className="mt-0.5 text-sm font-bold text-[#526675]" dir="ltr">{drug.en}</p>
             </div>
@@ -320,7 +320,7 @@ export function DrugDetailSheet({ drug, detail, onClose }: DrugDetailSheetProps)
             {drug.classes.map((item) => (
               <span
                 key={item}
-                className="rounded-full border border-[#D7E2E9] bg-white px-2.5 py-1 text-[9px] font-bold text-[#315672]"
+                className="rounded-full border border-[#D7E2E9] bg-white px-2.5 py-1 text-[11px] font-bold text-[#315672]"
               >
                 {DRUG_CLASS_LABELS[item]}
               </span>
@@ -331,7 +331,7 @@ export function DrugDetailSheet({ drug, detail, onClose }: DrugDetailSheetProps)
         <div className="space-y-3 px-4 pb-[max(1.75rem,env(safe-area-inset-bottom))] pt-4">
           <section className="rounded-2xl border border-[#DCE5EA] bg-[#F7F9FA] px-3.5 py-3">
             <div className="flex items-center justify-end gap-2">
-              <BilingualLabel label="ميزة الدواء | Key feature" className="text-[10px] font-black text-[#315672]" />
+              <BilingualLabel label="ميزة الدواء | Key feature" className="text-[11px] font-black text-[#315672]" />
               <Sparkle size={16} weight="fill" className="text-[#B58B2A]" />
             </div>
             <p className="mt-1.5 text-[12px] leading-6 text-[#465866]">
@@ -341,7 +341,7 @@ export function DrugDetailSheet({ drug, detail, onClose }: DrugDetailSheetProps)
 
           {detail.clinicalNote && (
             <section className="rounded-2xl border border-[#E8DFC9] bg-[#FFF9EE] px-3.5 py-3">
-              <BilingualLabel label="ملاحظة سريرية | Clinical note" className="text-[10px] font-black text-[#8A6426]" />
+              <BilingualLabel label="ملاحظة سريرية | Clinical note" className="text-[11px] font-black text-[#8A6426]" />
               <p className="mt-1.5 text-[11px] leading-5 text-[#5B5142]">
                 <BilingualMedicalText text={detail.clinicalNote} />
               </p>
