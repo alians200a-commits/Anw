@@ -10,6 +10,11 @@ Selection rule: best semantically accurate IconScout medical Lottie → Flaticon
 | saved | المحفوظات | Health Record | 7140721 | Flaticon Bookmark animated |
 | drugs | الأدوية | Syringe And Bottle | 9709030 | Flaticon Syringe Injection animated |
 | equipment | عربة التخدير والمعدات | Anesthesia Machine | 12020193 | Flaticon Health Monitoring animated |
+| equipment/gas | الغازات والضغط | Oxygen Cylinder | 9429418 | Flaticon Oxygen animated |
+| equipment/breathing | دائرة التنفس | Ventilator Meter | 8537024 | Flaticon Lungs animated |
+| equipment/airway | مجرى الهواء | Anesthesia Mask | 3644300 | Flaticon Face Mask animated |
+| equipment/monitoring | المراقبة | Monitoring Patient Blood | 9472910 | Flaticon Health Monitoring animated |
+| equipment/tools | أدوات | Medical Kit | 5950723 | Flaticon Medical Kit animated |
 | fluids | السوائل الوريدية | IV Bag | — | Flaticon IV Bag animated |
 | stages | مراحل التخدير | Anesthesia Mask | 3644300 | Flaticon Heartbeat animated |
 | clinical | المفاهيم والإجراءات | Medical Treatment | 3277635 | Flaticon Medical Care animated |
@@ -24,7 +29,11 @@ Selection rule: best semantically accurate IconScout medical Lottie → Flaticon
 - Saved: https://iconscout.com/lottie-animation/health-record-animation_7140721
 - Drugs — Syringe And Bottle: https://iconscout.com/lottie-animation/syringe-and-bottle-animation_9709030
 - Equipment — Anesthesia Machine: https://iconscout.com/lottie-animation/anesthesia-machine-animation_12020193
-- Equipment alternate — Macintosh Laryngoscope animated results: https://iconscout.com/lottie-animations/macintosh-laryngoscope-3d-model
+- Gas supply — Oxygen Cylinder: https://iconscout.com/lottie-animation/oxygen-cylinder-animation_9429418
+- Breathing — Ventilator Meter: https://iconscout.com/lottie-animation/ventilator-meter-animation_8537024
+- Airway — Anesthesia Mask: https://iconscout.com/lottie-animation/anesthesia-mask-animation_3644300
+- Monitoring — Monitoring Patient Blood: https://iconscout.com/lottie-animation/monitoring-patient-blood-animation_9472910
+- Tools — Medical Kit: https://iconscout.com/lottie-animation/medical-kit-animation_5950723
 - Fluids — IV Bag: https://iconscout.com/lottie-animation/iv-bag-11577392_9449357
 - Stages — Anesthesia Mask: https://iconscout.com/lottie-animation/anesthesia-mask-animation_3644300
 - Clinical — Medical Treatment: https://iconscout.com/lottie-animation/medical-treatment-animation_3277635
@@ -40,3 +49,11 @@ Selection rule: best semantically accurate IconScout medical Lottie → Flaticon
 - Do not animate a static Phosphor/Lucide icon and call it the final animated asset.
 - Keep Header / Footer / Logo unchanged.
 - Do not change medical copy while performing icon work.
+
+
+## Laryngoscope target
+
+- Laryngoscope remains a required anesthesia-equipment visual target.
+- The IconScout "Macintosh Laryngoscope 3D Model Animations" search result is currently misindexed and returns unrelated fruit assets, so it is rejected as a production source.
+- Do not substitute a static laryngoscope and call it animated.
+- Until a verified animated laryngoscope asset is found, laryngoscope items use the airway-category animation rather than a false match.
