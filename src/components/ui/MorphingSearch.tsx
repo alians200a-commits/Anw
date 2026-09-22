@@ -163,7 +163,7 @@ export function MorphingSearch({
       animate={{ opacity: 1 }}
       exit={reduceMotion ? undefined : { opacity: 0 }}
       transition={{ duration: reduceMotion ? 0 : 0.18 }}
-      onMouseDown={(event) => {
+      onPointerDown={(event) => {
         if (event.target === event.currentTarget) closeSearch();
       }}
     >
@@ -206,6 +206,7 @@ export function MorphingSearch({
           <input
             ref={inputRef}
             value={query}
+            dir="auto"
             onChange={(event) => updateQuery(event.target.value)}
             onKeyDown={(event) => {
               if (event.key === 'ArrowDown') {
@@ -276,7 +277,10 @@ export function MorphingSearch({
                     {item.title}
                   </span>
                   {item.description ? (
-                    <span className="mt-0.5 block truncate text-[10px] font-medium text-[#657784]">
+                    <span
+                      dir="auto"
+                      className="mt-0.5 block truncate text-[10px] font-medium text-[#657784]"
+                    >
                       {item.description}
                     </span>
                   ) : null}
