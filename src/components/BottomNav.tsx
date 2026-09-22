@@ -24,13 +24,13 @@ export function BottomNav({ active, onChange }: BottomNavProps) {
   return (
     <nav
       aria-label="التنقل الرئيسي"
-      className="fixed inset-x-0 bottom-0 z-50 border-t border-[#0A2037] bg-[#0A2037] px-3 pb-[max(0.45rem,env(safe-area-inset-bottom))] pt-1.5"
+      className="fixed inset-x-0 bottom-0 z-50 border-t border-[#0A2037] bg-[#0A2037] px-3 pb-[max(0.55rem,env(safe-area-inset-bottom))] pt-2"
     >
       <Dock
         iconSize={52}
         iconMagnification={60}
         iconDistance={92}
-        className="mx-auto flex h-[58px] max-w-md items-center justify-around gap-1"
+        className="mx-auto flex h-[62px] max-w-md items-center justify-around gap-1 rounded-[22px] border border-white/70 bg-white/95 px-1.5 shadow-[0_10px_30px_rgba(0,0,0,0.22)] backdrop-blur-xl"
       >
         {items.map((item) => {
           const Icon = item.icon;
@@ -43,15 +43,21 @@ export function BottomNav({ active, onChange }: BottomNavProps) {
                 onClick={() => onChange(item.id)}
                 aria-current={isActive ? 'page' : undefined}
                 aria-label={item.label}
-                className={
-                  'flex h-full w-full min-w-[48px] flex-col items-center justify-center gap-0.5 rounded-2xl px-1 outline-none transition focus-visible:ring-2 focus-visible:ring-[#CCA039]/70 ' +
-                  (isActive
-                    ? 'bg-[#CCA039]/12 text-[#CCA039]'
-                    : 'text-[#A9B7C4] active:bg-white/8 active:text-white')
-                }
+                className="flex h-full w-full min-w-[48px] flex-col items-center justify-center gap-1 rounded-2xl px-1 text-[#183149] outline-none transition focus-visible:ring-2 focus-visible:ring-[#CCA039]/70"
               >
-                <Icon size={22} weight={isActive ? 'fill' : 'regular'} />
-                <span className="text-[9px] font-bold leading-none">{item.label}</span>
+                <span
+                  className={
+                    'grid h-8 w-8 place-items-center rounded-xl transition ' +
+                    (isActive
+                      ? 'bg-[#CCA039] text-[#0A2037] shadow-[0_4px_12px_rgba(204,160,57,0.28)]'
+                      : 'bg-[#EEF3F6] text-[#315672]')
+                  }
+                >
+                  <Icon size={19} weight={isActive ? 'fill' : 'regular'} />
+                </span>
+                <span className="text-[9px] font-black leading-none text-[#183149]">
+                  {item.label}
+                </span>
               </button>
             </DockIcon>
           );
