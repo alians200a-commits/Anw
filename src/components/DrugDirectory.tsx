@@ -122,8 +122,7 @@ export function DrugDirectory({
           const isFavorite = favorites.has(favoriteId);
 
           return (
-            <motion.article
-              layout
+            <article
               key={drug.id}
               className="rounded-[18px] border border-[#DCE5EA] bg-[#F7F9FA] p-3.5"
             >
@@ -184,7 +183,7 @@ export function DrugDirectory({
                   <span>التفاصيل الدوائية</span>
                 </button>
               )}
-            </motion.article>
+            </article>
           );
         })}
       </div>
