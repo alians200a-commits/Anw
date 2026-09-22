@@ -1232,7 +1232,9 @@ export const CLINICAL_GUIDES: ClinicalGuide[] = [
           'المرخيات العضلية | Neuromuscular blockers.',
           'حصار عضلي متبقٍ أو Suxamethonium apnea | Residual block / prolonged succinylcholine apnea.',
           'تخدير عميق جدًا | Excessive anesthetic depth.',
-          'أسباب عصبية أو استقلابية | Neurologic / metabolic causes.'
+          'Hypocapnia بعد فرط التهوية الميكانيكية قد تؤخر عودة التنفس التلقائي في بعض السياقات.',
+          'أسباب عصبية أو داخل القحف | Neurologic / intracranial causes.',
+          'توقف القلب | Cardiac arrest يسبب غياب التنفس ويتطلب بروتوكول الإنعاش الكامل.'
         ]
       },
       {
@@ -1397,8 +1399,13 @@ export const CLINICAL_GUIDES: ClinicalGuide[] = [
           'توسع الأوعية أو تثبيط عضلة القلب بالأدوية | Vasodilation / myocardial depression.',
           'نقص حجم الدم أو النزف | Hypovolemia / hemorrhage.',
           'حساسية مفرطة أو إنتان | Anaphylaxis / sepsis.',
-          'اضطراب نظم أو فشل قلبي | Arrhythmia / heart failure.',
-          'استرواح صدر ضاغط أو اندكاك قلبي | Tension pneumothorax / cardiac tamponade.'
+          'اضطراب نظم أو فشل قلبي أو نقص تروية قلبية | Arrhythmia / heart failure / myocardial ischemia.',
+          'تحفيز المبهم | Vagal stimulation.',
+          'ضغط الأبهر والأجوف | Aortocaval compression في الحالات المناسبة مثل الحمل المتقدم.',
+          'التهوية بالضغط الإيجابي | Positive-pressure ventilation قد تخفض venous return لدى المريض الحساس للحمل المسبق.',
+          'تفاعل نقل دم غير متوافق | Incompatible transfusion.',
+          'استرواح صدر ضاغط أو اندكاك قلبي | Tension pneumothorax / cardiac tamponade.',
+          'نقص الأكسجة أو فرط CO₂ قد يترافقان مع عدم استقرار دوري ويجب تصحيحهما فورًا.'
         ]
       },
       {
