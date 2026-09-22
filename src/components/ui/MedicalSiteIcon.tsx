@@ -242,6 +242,38 @@ export function MedicalSiteIcon({
     );
   }
 
+  if (name === 'inhalational') {
+    const mask = MEDICAL_SITE_ICON_ASSETS.inhalational;
+    const gas = MEDICAL_SITE_ICON_ASSETS.gas;
+    const maskSrc = play && !gifFailed ? mask.animatedSrc : mask.staticSrc;
+    const gasSrc = play && !gifFailed ? gas.animatedSrc : gas.staticSrc;
+
+    return (
+      <span
+        aria-hidden="true"
+        className={'relative inline-grid shrink-0 place-items-center overflow-visible ' + className}
+        style={{ width: size, height: size }}
+      >
+        <img
+          src={maskSrc}
+          alt=""
+          draggable={false}
+          decoding="async"
+          loading={play ? 'eager' : 'lazy'}
+          className="pointer-events-none absolute h-[78%] w-[78%] object-contain mix-blend-multiply"
+        />
+        <img
+          src={gasSrc}
+          alt=""
+          draggable={false}
+          decoding="async"
+          loading={play ? 'eager' : 'lazy'}
+          className="pointer-events-none absolute bottom-[-4%] left-[-5%] h-[42%] w-[42%] object-contain mix-blend-multiply"
+        />
+      </span>
+    );
+  }
+
   if (name === 'equipment') {
     const monitor = MEDICAL_SITE_ICON_ASSETS.monitoring;
     const mask = MEDICAL_SITE_ICON_ASSETS.inhalational;
