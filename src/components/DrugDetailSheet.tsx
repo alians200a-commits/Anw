@@ -294,8 +294,8 @@ export function DrugDetailSheet({ drug, detail, onClose }: DrugDetailSheetProps)
 
             <div className="flex-1 text-right">
               <p className="text-[10px] font-black text-[#72519A]">{drug.categoryAr}</p>
-              <h3 className="mt-0.5 text-xl font-black text-[#30263F]" dir="ltr">{drug.en}</h3>
-              <p className="mt-0.5 text-sm font-bold text-[#655B70]">{drug.ar}</p>
+              <h3 className="mt-0.5 text-xl font-black text-[#30263F]">{drug.ar}</h3>
+              <p className="mt-0.5 text-sm font-bold text-[#655B70]" dir="ltr">{drug.en}</p>
             </div>
           </div>
 
