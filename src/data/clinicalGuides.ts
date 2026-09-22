@@ -2123,10 +2123,12 @@ export const CLINICAL_GUIDES: ClinicalGuide[] = [
       {
         title: 'المذكور في المصدر | Traditional formulas in source',
         items: [
-          'قاعدة 4-2-1 لحساب maintenance rate | 4-2-1 maintenance rule.',
-          'عجز الصيام = معدل الساعة × ساعات الصيام | Fasting deficit calculation.',
-          'تعويض فقد الدم/السوائل بنسبة 3 mL crystalloid لكل 1 mL loss | Traditional 3:1 replacement.',
-          'إضافة سوائل ثابتة لما يسمى third-space loss بحسب شدة العملية.'
+          'قاعدة 4-2-1 التقليدية: أول 10 kg × 4 mL/kg/h، ثاني 10 kg × 2 mL/kg/h، وما تبقى من الوزن × 1 mL/kg/h.',
+          'مثال المصدر: وزن 30 kg → 40 + 20 + 10 = 70 mL/h.',
+          'يعرض المصدر أيضًا طريقة تقريبية: وزن الجسم × 1.5 mL/h؛ حسابيًا وزن 50 kg يساوي 75 mL/h، لذلك لا نعتمد الرقم المطبوع إذا خالف العملية الحسابية.',
+          'عجز الصيام | NPO deficit = معدل السوائل بالساعة × عدد ساعات الصيام.',
+          'تعويض الفقد بالطريقة التقليدية: 3 mL crystalloid لكل 1 mL loss، بينما colloid ذُكر بنسبة 1:1.',
+          'تعويض third-space التقليدي حسب شدة العملية: نحو 1–2 ثم 3–4 ثم 5–6 ثم 8–10 mL/kg/h مع ازدياد شدة/اتساع الجراحة.'
         ]
       },
       {
