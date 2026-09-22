@@ -270,12 +270,6 @@ export function AnesthesiaStagesDirectory({
             key={guide.id}
             type="button"
             onClick={() => setSelectedGuide(guide)}
-            initial={{ opacity: 0, y: 5 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{
-              duration: 0.14,
-              delay: Math.min(index, 8) * 0.018
-            }}
             className="flex min-h-[68px] w-full items-center gap-3 rounded-[18px] border border-[#DCE5EA] bg-[#F7F9FA] px-3.5 py-3 text-right outline-none transition active:bg-[#EEF3F6] focus-visible:ring-2 focus-visible:ring-[#CCA039]/50"
           >
             <div className="grid h-11 w-11 shrink-0 place-items-center rounded-[14px] border border-[#D7E2E9] bg-[#EEF3F6] text-[#315672]">
