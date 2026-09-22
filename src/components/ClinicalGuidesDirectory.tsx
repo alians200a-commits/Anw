@@ -11,6 +11,7 @@ import { ANESTHESIA_STAGE_GUIDE_IDS } from '../data/anesthesiaStages';
 import { BilingualLabel } from './BilingualLabel';
 import { MixedDirectionText } from './MixedDirectionText';
 import { useModalSheetA11y } from '../hooks/useModalSheetA11y';
+import { MEDICAL_ANIMATED_GIFS } from '../data/animatedMedicalIcons';
 import {
   NotificationStackMenu,
   type StackMenuItem
