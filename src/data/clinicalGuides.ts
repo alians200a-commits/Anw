@@ -506,6 +506,24 @@ export const CLINICAL_GUIDES: ClinicalGuide[] = [
         ]
       },
       {
+        title: 'مزايا واستخدامات مختارة | Advantages / selected uses',
+        items: [
+          'يبقى المريض واعيًا ويمكن تجنب فقدان الوعي الكامل في الجراحات المناسبة.',
+          'يوفر حصرًا حسيًا وحركيًا جيدًا لعمليات الجزء السفلي من الجسم، ويُستخدم كثيرًا في الولادة القيصرية | Cesarean section.',
+          'قد يقلل الحاجة إلى التلاعب بمجرى الهواء والتهوية الميكانيكية عندما تكون العملية والمريض مناسبين.',
+          'قد يكون مفيدًا عندما نريد تقليل التعرض لبعض أدوية التخدير العام، لكن وجود مرض كبدي أو كلوي لا يجعل Spinal الخيار الأفضل تلقائيًا.'
+        ]
+      },
+      {
+        title: 'السلبيات والمضاعفات المحتملة | Disadvantages',
+        items: [
+          'هبوط الضغط وبطء القلب بسبب sympathetic block.',
+          'صداع ما بعد ثقب الجافية | PDPH.',
+          'صعوبة تقنية أو فشل الحصار | Difficult / failed block.',
+          'مضاعفات نادرة مثل infection أو nerve injury أو hematoma تحتاج انتباهًا للوقاية والموانع.'
+        ]
+      },
+      {
         title: 'التأثيرات والمضاعفات | Effects / complications',
         items: [
           'حصر ودي | Sympathetic block قد يسبب توسع الأوعية وهبوط الضغط | Hypotension.',
@@ -646,6 +664,47 @@ export const CLINICAL_GUIDES: ClinicalGuide[] = [
       }
     ],
     tags: ['neuromuscular blocker','muscle relaxant','suxamethonium','rocuronium','atracurium','pancuronium','reversal','TOF']
+  },
+
+  {
+    id: 'benzodiazepines-in-anesthesia',
+    titleAr: 'البنزوديازيبينات في التخدير',
+    titleEn: 'Benzodiazepines in Anesthesia',
+    category: 'pharmacology',
+    categoryAr: 'علم الأدوية',
+    sourcePages: [68],
+    summary: 'البنزوديازيبينات | Benzodiazepines أدوية مهدئة ومزيلة للقلق ومسببة لفقدان الذاكرة، وتستخدم في التهيئة قبل التخدير والتهدئة والسيطرة على الاختلاجات؛ لكنها لا توفر تسكينًا للألم.',
+    sections: [
+      {
+        title: 'التأثيرات | Effects',
+        items: [
+          'إزالة القلق | Anxiolysis والتهدئة | Sedation.',
+          'فقدان الذاكرة الأمامي | Anterograde amnesia.',
+          'تأثير مضاد للاختلاجات | Anticonvulsant effect.',
+          'الجرعات الأعلى قد تسبب فقدان الوعي | Hypnosis / unconsciousness.',
+          'التأثير القلبي الوعائي يكون عادةً محدودًا نسبيًا عند الجرعات المعايرة، لكنه قد يصبح مهمًا لدى المريض الهش أو مع أدوية أخرى.',
+          'قد تقلل CMRO₂ وCBF وICP بدرجات تختلف حسب الدواء والسياق، لكنها ليست علاجًا مستقلًا لارتفاع ICP.'
+        ]
+      },
+      {
+        title: 'الاستخدامات في التخدير | Perioperative uses',
+        items: [
+          'مرحلة ما قبل التخدير | Premedication.',
+          'التهدئة الوريدية | IV sedation.',
+          'بدء التخدير في سياقات مختارة | IV induction in selected cases.',
+          'قمع نشاط الاختلاجات | Seizure control.'
+        ]
+      },
+      {
+        title: 'العيوب والمخاطر | Limitations / risks',
+        items: [
+          'لا توفر Analgesia؛ لذلك وجود الألم يحتاج مسكنًا مناسبًا بصورة مستقلة.',
+          'قد تسبب تأخر الإفاقة، خاصةً مع الجرعات المتكررة وكبار السن ومرضى الكبد.',
+          'يزداد خطر تثبيط التنفس بصورة مهمة عند دمجها مع Opioids أو مثبطات CNS الأخرى.'
+        ]
+      }
+    ],
+    tags: ['benzodiazepines','midazolam','diazepam','lorazepam','premedication','sedation','amnesia']
   },
 
   {
