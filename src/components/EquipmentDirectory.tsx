@@ -120,7 +120,13 @@ function EquipmentSheet({
   );
 }
 
-export function EquipmentDirectory({ initialQuery = '' }: { initialQuery?: string }) {
+export function EquipmentDirectory({
+  initialQuery = '',
+  onOpenItem
+}: {
+  initialQuery?: string;
+  onOpenItem?: (query: string) => void;
+}) {
   const [query, setQuery] = useState(initialQuery);
   const [category, setCategory] = useState<'all' | EquipmentCategory>('all');
   const [selected, setSelected] = useState<AnesthesiaEquipment | null>(null);
@@ -189,7 +195,10 @@ export function EquipmentDirectory({ initialQuery = '' }: { initialQuery?: strin
           <motion.button
             key={item.id}
             type="button"
-            onClick={() => setSelected(item)}
+            onClick={() => {
+              setSelected(item);
+              onOpenItem?.(item.nameEn);
+            }}
             initial={{ opacity: 0, y: 5 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.12, delay: Math.min(index, 8) * 0.015 }}
