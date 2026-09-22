@@ -211,9 +211,14 @@ const REVIEWED_EQUIPMENT_BATCH_2 = new Set([
   'pulse-oximeter'
 ]);
 
+const REVIEWED_EQUIPMENT_BATCH_3 = new Set([
+  'suction-apparatus'
+]);
+
 const REVIEWED_EQUIPMENT = new Set([
   ...REVIEWED_EQUIPMENT_BATCH_1,
-  ...REVIEWED_EQUIPMENT_BATCH_2
+  ...REVIEWED_EQUIPMENT_BATCH_2,
+  ...REVIEWED_EQUIPMENT_BATCH_3
 ]);
 
 // Equipment.
