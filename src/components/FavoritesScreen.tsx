@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { AnimatePresence } from 'motion/react';
-import { BookOpenText, Heart, Pill } from 'lucide-react';
+import { BookOpenText, Heart, Pill } from '@phosphor-icons/react';
 import { ANESTHESIA_DRUGS } from '../data/drugs';
 import { DRUG_DETAILS } from '../data/drugDetails';
 import { CLINICAL_TERMS } from '../data/clinicalTerms';
@@ -28,7 +28,7 @@ export function FavoritesScreen({ favorites, onToggleFavorite }: FavoritesScreen
       {drugs.length === 0 && terms.length === 0 ? (
         <div className="rounded-[28px] border border-dashed border-[#DCE4EA] bg-[#F8FAFB] p-8 text-center">
           <div className="mx-auto grid h-12 w-12 place-items-center rounded-2xl bg-[#315672]/10 text-[#315672]">
-            <Heart className="h-5 w-5" />
+            <Heart size={20} />
           </div>
           <h3 className="mt-4 font-black text-[#183149]">بعد ما حفظت أي عنصر</h3>
           <p className="mt-2 text-xs leading-5 text-[#667A89]">اضغط على القلب بأي دواء أو مصطلح حتى يظهر هنا.</p>
@@ -47,7 +47,7 @@ export function FavoritesScreen({ favorites, onToggleFavorite }: FavoritesScreen
                 aria-label={`إزالة ${drug.ar} من المحفوظات`}
                 title="إزالة من المحفوظات"
               >
-                <Heart className="h-[18px] w-[18px]" fill="currentColor" />
+                <Heart size={18} weight="fill" />
               </button>
 
               <button
@@ -60,7 +60,7 @@ export function FavoritesScreen({ favorites, onToggleFavorite }: FavoritesScreen
                   <p className="mt-0.5 text-xs text-[#526675]" dir="ltr">{drug.en}</p>
                   <p className="mt-1 text-[9px] font-bold text-[#315672]">افتح التفاصيل الدوائية</p>
                 </div>
-                <Pill className="h-5 w-5 shrink-0 text-[#315672]" />
+                <Pill size={20} className="shrink-0 text-[#315672]" />
               </button>
             </article>
           ))}
@@ -86,7 +86,7 @@ export function FavoritesScreen({ favorites, onToggleFavorite }: FavoritesScreen
                     <h3 className="truncate font-black text-[#183149]">{term.ar}</h3>
                     <p className="mt-0.5 text-xs text-[#526675]" dir="ltr">{term.abbr ? `${term.abbr} — ${term.en}` : term.en}</p>
                   </div>
-                  <BookOpenText className="h-5 w-5 shrink-0 text-[#315672]" />
+                  <BookOpenText size={20} className="shrink-0 text-[#315672]" />
                 </div>
               </div>
 
