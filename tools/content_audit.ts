@@ -55,6 +55,13 @@ for (const id of drugIds) {
   if (!detail.warnings.length) errors.push(`drug "${id}" has no warnings`);
   if (!detail.adverseEffects.length) errors.push(`drug "${id}" has no adverse effects`);
   if (!detail.sourcePages?.length) errors.push(`drug "${id}" has no sourcePages`);
+
+  const sourceRequiresDose =
+    detail.sourceLabel?.includes('ملف كتابة أدوية التخدير') ||
+    detail.sourceLabel?.includes('أدوية الطوارئ');
+  if (sourceRequiresDose && !detail.educationalDoses?.length) {
+    errors.push(`drug "${id}" is sourced from an anesthesia/emergency drug file but has no educationalDoses`);
+  }
 }
 
 for (const id of detailIds) {
