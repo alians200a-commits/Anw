@@ -686,6 +686,10 @@ export const DRUG_DETAILS: Record<string, DrugDetail> = {
     feature: 'ملح كالسيوم وريدي أقل إحداثًا لأذية النسيج عند التسرب من Calcium chloride ويستخدم لتثبيت غشاء القلب في hyperkalemia ولعلاج hypocalcemia.',
     mechanism: 'يزيد الكالسيوم المتأين | Ionized calcium ويثبت غشاء الخلية القلبية عند فرط البوتاسيوم دون أن يُخفض تركيز البوتاسيوم نفسه.',
     routes: ['وريدي | Intravenous'],
+    educationalDoses: [
+      'المصدر يذكر أن محلول Calcium gluconate بتركيز 10% يحتوي 1 g في 10 mL.',
+      'للأطفال يذكر المصدر جرعة 0.2–0.3 mL/kg من محلول 10%؛ ولا يحدد في هذه الصفحة جرعة bolus موحدة للبالغين.'
+    ],
     uses: ['فرط بوتاسيوم مع تغيرات ECG أو عدم استقرار | Hyperkalemia with ECG changes', 'نقص كالسيوم عرضي | Symptomatic hypocalcemia', 'حالات مختارة مثل hypermagnesemia'],
     contraindications: ['فرط كالسيوم الدم | Hypercalcemia', 'الحذر الشديد مع Digoxin toxicity حسب السياق والتوصيات الحديثة'],
     warnings: ['Extravasation قد يسبب أذية لكنه أقل قسوة من Calcium chloride', 'لا يعالج مستوى البوتاسيوم نفسه؛ دوره تثبيت myocardium', 'يجب الانتباه للتوافق مع bicarbonate/phosphate في الخط الوريدي'],
@@ -698,6 +702,10 @@ export const DRUG_DETAILS: Record<string, DrugDetail> = {
     feature: 'ملح كالسيوم وريدي مركز يوفر elemental calcium أكثر من Calcium gluconate، لذلك يفيد عندما نحتاج تأثيرًا سريعًا وقويًا مع انتباه شديد للتسرب.',
     mechanism: 'يرفع ionized calcium ويثبت cardiomyocyte membrane في hyperkalemia؛ لا يزيل البوتاسيوم من الجسم.',
     routes: ['وريدي | Intravenous؛ يُفضّل خط مركزي عند توفره بسبب خطر النخر مع extravasation'],
+    educationalDoses: [
+      'المصدر يذكر أن محلول Calcium chloride بتركيز 10% يحتوي 1 g في 10 mL.',
+      'للأطفال يذكر المصدر جرعة 0.2–0.3 mL/kg من محلول 10%؛ ويؤكد أن Calcium chloride أقوى بنحو ثلاثة أضعاف من Calcium gluconate من حيث elemental calcium ولا يُعاملان gram-for-gram.'
+    ],
     uses: ['Hyperkalemia مع تغيرات قلبية', 'Hypocalcemia الشديدة', 'حالات إنعاش مختارة مثل calcium-channel blocker toxicity حسب البروتوكول'],
     contraindications: ['Hypercalcemia', 'حذر شديد في Digoxin toxicity'],
     warnings: ['Vesicant نسبيًا؛ extravasation قد يسبب tissue necrosis', 'إعطاء سريع قد يسبب Bradycardia/Arrhythmias', 'التوافق الوريدي مهم مع bicarbonate/phosphate'],
