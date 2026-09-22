@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
 import { CaretDown, Drop, MagnifyingGlass, X } from '@phosphor-icons/react';
 import {
@@ -9,6 +9,7 @@ import {
 } from '../data/fluids';
 import { BilingualLabel } from './BilingualLabel';
 import { MixedDirectionText } from './MixedDirectionText';
+import { useModalSheetA11y } from '../hooks/useModalSheetA11y';
 import {
   NotificationStackMenu,
   type StackMenuItem
@@ -55,20 +56,10 @@ function FluidList({
 }
 
 function FluidSheet({ item, onClose }: { item: IntravenousFluid; onClose: () => void }) {
-  useEffect(() => {
-    const previous = document.body.style.overflow;
-    document.body.style.overflow = 'hidden';
 
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') onClose();
-    };
-    window.addEventListener('keydown', handleKeyDown);
 
-    return () => {
-      document.body.style.overflow = previous;
-      window.removeEventListener('keydown', handleKeyDown);
-    };
-  }, [onClose]);
+  const dialogRef = useRef<HTMLDivElement>(null);
+  useModalSheetA11y(dialogRef, onClose);
 
   return (
     <motion.div
@@ -79,6 +70,8 @@ function FluidSheet({ item, onClose }: { item: IntravenousFluid; onClose: () => 
       onClick={onClose}
     >
       <motion.div
+        ref={dialogRef}
+        tabIndex={-1}
         role="dialog"
         aria-modal="true"
         aria-label={`تفاصيل ${item.nameAr}`}
