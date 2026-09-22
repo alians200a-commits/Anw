@@ -666,8 +666,8 @@ export const DRUG_DETAILS: Record<string, DrugDetail> = {
     warnings: ['ارتفاع السكر | Hyperglycemia', 'تثبيط المناعة وزيادة خطر العدوى مع الجرعات المتكررة/الممتدة', 'تأخر التئام الجروح وتهيج/نزف هضمي مع عوامل خطورة'],
     adverseEffects: ['Hyperglycemia', 'عسر هضم', 'تغيرات مزاجية', 'ضعف عضلي مع الاستخدام المطول'],
     correction: 'جرعة واحدة مضادة للقيء حول الجراحة تختلف جذريًا في مخاطرها عن العلاج الستيرويدي المطول؛ لا ينبغي نسخ قائمة أضرار chronic steroid كما لو كانت متوقعة من جرعة واحدة.',
-    sourcePages: [9],
-    sourceLabel: 'أدوية الطوارئ 2021 — Dexamethasone'
+    sourcePages: [9, 14, 15],
+    sourceLabel: 'أدوية الطوارئ 2021 + ملف كتابة أدوية التخدير — Dexamethasone'
   },
   diltiazem: {
     feature: 'حاصر قنوات كالسيوم non-dihydropyridine يبطئ AV nodal conduction ويقلل معدل البطين في اضطرابات نظم فوق بطينية مختارة.',
@@ -742,13 +742,17 @@ export const DRUG_DETAILS: Record<string, DrugDetail> = {
     mechanism: 'ينشط glucocorticoid receptors ويعدل التعبير الجيني للالتهاب، مع تأثير mineralocorticoid بدرجة مهمة.',
     tradeNames: ['Solu-Cortef'],
     routes: ['وريدي | Intravenous', 'عضلي | Intramuscular حسب المستحضر'],
-    uses: ['Acute adrenal insufficiency / adrenal crisis', 'Severe asthma كعلاج مساعد بعد bronchodilators', 'Refractory septic shock في مرضى مختارين حسب البروتوكول'],
+    educationalDoses: [
+      'Adrenal crisis للبالغ: 100 mg Hydrocortisone parenteral فورًا، ثم 200 mg خلال 24 ساعة كتسريب مستمر أو 50 mg كل 6 ساعات مع الإنعاش بالسوائل.',
+      'في septic shock المعتمد على vasopressors تُستخدم في بروتوكولات العناية جرعة إجمالية شائعة 200 mg/day IV، مثل 50 mg كل 6 ساعات أو continuous infusion؛ القرار حسب بروتوكول العناية وحالة المريض.'
+    ],
+    uses: ['Acute adrenal insufficiency / adrenal crisis', 'Severe asthma كعلاج مساعد بعد bronchodilators', 'Vasopressor-dependent septic shock في مرضى مختارين حسب البروتوكول'],
     contraindications: ['فرط التحسس؛ في الحالات المنقذة للحياة تكون الموانع النسبية أقل أهمية'],
     warnings: ['Hyperglycemia', 'زيادة خطر العدوى مع الاستخدام المطول', 'احتباس الصوديوم/السوائل', 'اضطرابات نفسية أو هضمية مع جرعات/مدد أكبر'],
     adverseEffects: ['ارتفاع السكر', 'احتباس سوائل', 'ارتفاع الضغط', 'تغيرات مزاجية', 'زيادة قابلية العدوى مع العلاج المطول'],
     correction: 'المصدر يذكره ضمن “allergy/blood transfusion reaction”. في anaphylaxis لا يُعد Hydrocortisone علاجًا أوليًا ولا بديلًا عن IM adrenaline؛ الإرشادات الحديثة لا توصي بالستيرويد كعلاج روتيني أولي للتأق.',
-    sourcePages: [21],
-    sourceLabel: 'أدوية الطوارئ 2021 — Hydrocortisone'
+    sourcePages: [14, 15, 21],
+    sourceLabel: 'ملف كتابة أدوية التخدير + أدوية الطوارئ 2021'
   },
   labetalol: {
     feature: 'حاصر مختلط α1 وβ | Mixed alpha/beta blocker يخفض الضغط مع تقليل أو منع التسرع القلبي الانعكاسي.',
