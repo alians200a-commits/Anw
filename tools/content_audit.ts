@@ -118,8 +118,7 @@ walkStrings(visibleCollections, (text) => {
 if (errors.length) {
   console.error('\nContent audit failed:\n');
   for (const error of errors) console.error(`- ${error}`);
-  console.error(`\nTotal errors: ${errors.length}\n`);
-  process.exit(1);
+  throw new Error(`Content audit failed with ${errors.length} error(s).`);
 }
 
 console.log('Content audit passed.');
