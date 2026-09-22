@@ -38,6 +38,18 @@ const guideIcon: Record<GuideSection, MedicalSiteIconName> = {
   abbreviations: 'abbreviations'
 };
 
+function drugSearchIcon(classes: DrugClass[]): MedicalSiteIconName {
+  if (classes.includes('inhalational')) return 'inhalational';
+  if (
+    classes.includes('cardiovascular') ||
+    classes.includes('vasopressor') ||
+    classes.includes('emergency')
+  ) {
+    return 'monitoring';
+  }
+  return 'drugs';
+}
+
 const equipmentSearchIcon: Record<EquipmentCategory, MedicalSiteIconName> = {
   machine: 'equipment',
   'gas-supply': 'gas',
@@ -69,7 +81,7 @@ export function HomeScreen({ openGuide }: HomeScreenProps) {
         ...drug.classes.map((item) => DRUG_CLASS_LABELS[item]),
         ...drug.tags
       ],
-      ...searchIconPair('drugs'),
+      ...searchIconPair(drugSearchIcon(drug.classes)),
       onSelect: () => openGuide('drugs', 'all', drug.en)
     }));
 
