@@ -6,6 +6,7 @@ export type MedicalSiteIconName =
   | 'learn'
   | 'saved'
   | 'drugs'
+  | 'inhalational'
   | 'equipment'
   | 'gas'
   | 'breathing'
@@ -73,6 +74,15 @@ export const MEDICAL_SITE_ICON_ASSETS: Record<MedicalSiteIconName, AssetRecord> 
     flaticonPage: 'https://www.flaticon.com/free-animated-icon/syringe_19035782',
     staticSrc: 'https://cdn-icons-png.flaticon.com/512/19035/19035782.png',
     animatedSrc: 'https://cdn-icons-gif.flaticon.com/19035/19035782.gif'
+  },
+  inhalational: {
+    iconScoutId: 3644300,
+    iconScoutLabel: 'Anesthesia Mask',
+    iconScoutPage: 'https://iconscout.com/lottie-animation/anesthesia-mask-animation_3644300',
+    flaticonId: 10823452,
+    flaticonPage: 'https://www.flaticon.com/free-animated-icon/face-mask_10823452',
+    staticSrc: 'https://cdn-icons-png.flaticon.com/512/10823/10823452.png',
+    animatedSrc: 'https://cdn-icons-gif.flaticon.com/10823/10823452.gif'
   },
   equipment: {
     iconScoutId: 12020193,
@@ -232,6 +242,38 @@ export function MedicalSiteIcon({
     );
   }
 
+  if (name === 'equipment') {
+    const monitor = MEDICAL_SITE_ICON_ASSETS.monitoring;
+    const mask = MEDICAL_SITE_ICON_ASSETS.inhalational;
+    const monitorSrc = play && !gifFailed ? monitor.animatedSrc : monitor.staticSrc;
+    const maskSrc = play && !gifFailed ? mask.animatedSrc : mask.staticSrc;
+
+    return (
+      <span
+        aria-hidden="true"
+        className={'relative inline-grid shrink-0 place-items-center overflow-visible ' + className}
+        style={{ width: size, height: size }}
+      >
+        <img
+          src={monitorSrc}
+          alt=""
+          draggable={false}
+          decoding="async"
+          loading={play ? 'eager' : 'lazy'}
+          className="pointer-events-none absolute h-[86%] w-[86%] object-contain mix-blend-multiply"
+        />
+        <img
+          src={maskSrc}
+          alt=""
+          draggable={false}
+          decoding="async"
+          loading={play ? 'eager' : 'lazy'}
+          className="pointer-events-none absolute bottom-[-2%] left-[-2%] h-[46%] w-[46%] rounded-full object-contain mix-blend-multiply"
+        />
+      </span>
+    );
+  }
+
   return (
     <img
       key={animated ? name + '-animated-' + run : name + '-static'}
@@ -243,7 +285,7 @@ export function MedicalSiteIcon({
       loading={play ? 'eager' : 'lazy'}
       width={size}
       height={size}
-      className={'pointer-events-none shrink-0 object-contain ' + className}
+      className={'pointer-events-none shrink-0 scale-[0.92] object-contain mix-blend-multiply ' + className}
       onLoad={() => {
         if (!animated || loop) return;
 
