@@ -77,7 +77,7 @@ export function GuideScreen({
                 : id === 'terms'
                   ? 'Clinical Terms'
                   : 'Abbreviations',
-    leading: <MedicalSiteIcon name={sectionIcons[id]} play size={25} />,
+    leading: <MedicalSiteIcon name={sectionIcons[id]} play loop size={25} />,
     onSelect: () => onSectionChange(id)
   }));
 
@@ -91,7 +91,7 @@ export function GuideScreen({
         <NotificationStackMenu
           title={sectionLabels[section]}
           description="اضغط لتغيير قسم الدليل"
-          icon={<MedicalSiteIcon name={sectionIcons[section]} play size={27} />}
+          icon={<MedicalSiteIcon name={sectionIcons[section]} play loop size={27} />}
           items={sectionItems}
           selectedId={section}
         />
