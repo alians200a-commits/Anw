@@ -230,9 +230,6 @@ export function EquipmentDirectory({
             key={item.id}
             type="button"
             onClick={() => setSelected(item)}
-            initial={{ opacity: 0, y: 5 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.12, delay: Math.min(index, 8) * 0.015 }}
             className="w-full rounded-[18px] border border-[#DCE5EA] bg-[#F7F9FA] px-3.5 py-3 text-right active:bg-[#EEF3F6]"
           >
             <div className="flex items-start justify-between gap-3">
