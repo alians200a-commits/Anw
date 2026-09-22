@@ -273,15 +273,23 @@ export function MedicalSiteIcon({
 
   if (name === 'learn') {
     return (
-      <svg aria-hidden="true" viewBox="0 0 64 64" width={size} height={size} className={'pointer-events-none shrink-0 overflow-visible ' + className}>
+      <svg
+        aria-hidden="true"
+        viewBox="0 0 64 64"
+        width={size}
+        height={size}
+        className={'pointer-events-none shrink-0 overflow-visible ' + className}
+      >
         <g fill="none" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M25 12l10 6-6 11-10-6z" stroke="#173A63" strokeWidth="3"/>
-          <path d="M29 29l8 8M20 48h27M31 37c-8 0-13 5-13 11" stroke="#2F69A8" strokeWidth="3"/>
-          <path d="M37 37l6-6 5 5-6 6z" stroke="#173A63" strokeWidth="3"/>
-          <circle cx="46" cy="20" r="4" fill="#D9A441" stroke="#173A63" strokeWidth="2.4">
-            {play && loop ? <animate attributeName="r" values="3.2;4.7;3.2" dur="1.4s" repeatCount="indefinite"/> : null}
-          </circle>
-          <path d="M22 48c1 4 5 7 10 7" stroke="#173A63" strokeWidth="3"/>
+          <path d="M8 17c8-3 15-1 24 5v31c-9-6-16-8-24-5z" fill="#EEF3F8" stroke="#173A63" strokeWidth="3"/>
+          <path d="M56 17c-8-3-15-1-24 5v31c9-6 16-8 24-5z" fill="#EEF3F8" stroke="#173A63" strokeWidth="3"/>
+          <path d="M16 27c5 0 9 1 12 3M16 34c5 0 9 1 12 3M48 27c-5 0-9 1-12 3M48 34c-5 0-9 1-12 3" stroke="#2F69A8" strokeWidth="2.5">
+            {play && loop ? <animate attributeName="opacity" values=".45;1;.45" dur="1.6s" repeatCount="indefinite"/> : null}
+          </path>
+          <path d="M32 22v31" stroke="#173A63" strokeWidth="2.4"/>
+          <path d="M43 10l2 5 5 2-5 2-2 5-2-5-5-2 5-2z" fill="#D9A441" stroke="#173A63" strokeWidth="1.8">
+            {play && loop ? <animateTransform attributeName="transform" type="scale" values=".8;1.15;.8" additive="sum" dur="1.4s" repeatCount="indefinite"/> : null}
+          </path>
         </g>
       </svg>
     );
@@ -386,34 +394,36 @@ export function MedicalSiteIcon({
   }
 
   if (name === 'stages') {
-    const mask = MEDICAL_SITE_ICON_ASSETS.inhalational;
-    const pulse = MEDICAL_SITE_ICON_ASSETS.monitoring;
-    const maskSrc = play && !gifFailed ? mask.animatedSrc : mask.staticSrc;
-    const pulseSrc = play && !gifFailed ? pulse.animatedSrc : pulse.staticSrc;
-
     return (
-      <span
+      <svg
         aria-hidden="true"
-        className={'relative inline-grid shrink-0 place-items-center overflow-visible ' + className}
-        style={{ width: size, height: size }}
+        viewBox="0 0 72 72"
+        width={size}
+        height={size}
+        className={'pointer-events-none shrink-0 overflow-visible ' + className}
       >
-        <img
-          src={maskSrc}
-          alt=""
-          draggable={false}
-          decoding="async"
-          loading={play ? 'eager' : 'lazy'}
-          className="pointer-events-none absolute h-[82%] w-[82%] object-contain mix-blend-multiply"
-        />
-        <img
-          src={pulseSrc}
-          alt=""
-          draggable={false}
-          decoding="async"
-          loading={play ? 'eager' : 'lazy'}
-          className="pointer-events-none absolute bottom-[-3%] right-[-4%] h-[42%] w-[42%] rounded-full object-contain mix-blend-multiply"
-        />
-      </span>
+        <g fill="none" strokeLinecap="round" strokeLinejoin="round">
+          <circle cx="27" cy="21" r="10" fill="#EEF3F8" stroke="#173A63" strokeWidth="2.8"/>
+          <path d="M18 48c2-10 7-16 14-16s12 6 14 16" stroke="#173A63" strokeWidth="3"/>
+          <path d="M22 20c2 2 8 2 10 0" stroke="#2F69A8" strokeWidth="2.4"/>
+          <path d="M18 20c3-5 7-8 12-8" stroke="#173A63" strokeWidth="2.4"/>
+
+          <path d="M21 22c2-4 10-4 12 0l-2 7c-2 2-6 2-8 0z" fill="#D9E6F2" stroke="#2F69A8" strokeWidth="2.5">
+            {play && loop ? <animateTransform attributeName="transform" type="scale" values="1;1.06;1" additive="sum" dur="1.6s" repeatCount="indefinite"/> : null}
+          </path>
+          <path d="M33 26c8 0 11 5 11 10" stroke="#2F69A8" strokeWidth="2.5"/>
+          <path d="M44 36c4 0 7 2 8 5" stroke="#2F69A8" strokeWidth="2.5"/>
+
+          <path d="M10 56h10l4-7 5 14 5-9 4 5h8l4-6 4 6h8" stroke="#D9A441" strokeWidth="2.8" strokeDasharray="18 7">
+            {play && loop ? <animate attributeName="stroke-dashoffset" from="25" to="0" dur="1.05s" repeatCount="indefinite"/> : null}
+          </path>
+
+          <circle cx="56" cy="18" r="5" fill="#EEF3F8" stroke="#173A63" strokeWidth="2.4"/>
+          <path d="M56 14v8M52 18h8" stroke="#2F69A8" strokeWidth="2.2">
+            {play && loop ? <animate attributeName="opacity" values="1;.35;1" dur="1.2s" repeatCount="indefinite"/> : null}
+          </path>
+        </g>
+      </svg>
     );
   }
 
