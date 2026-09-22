@@ -28,10 +28,10 @@ export const MEDICAL_SITE_ICON_ASSETS: Record<MedicalSiteIconName, AssetRecord> 
     iconScoutId: 7140714,
     iconScoutLabel: 'Mobile Health App',
     iconScoutPage: 'https://iconscout.com/lottie-animation/mobile-health-app-animation_7140714',
-    flaticonId: 15968683,
-    flaticonPage: 'https://www.flaticon.com/free-animated-icon/medical-cross_15968683',
-    staticSrc: 'https://cdn-icons-png.flaticon.com/512/15968/15968683.png',
-    animatedSrc: 'https://cdn-icons-gif.flaticon.com/15968/15968683.gif'
+    flaticonId: 18997678,
+    flaticonPage: 'https://www.flaticon.com/free-animated-icon/home_18997678',
+    staticSrc: 'https://cdn-icons-png.flaticon.com/512/18997/18997678.png',
+    animatedSrc: 'https://cdn-icons-gif.flaticon.com/18997/18997678.gif'
   },
   guide: {
     iconScoutId: 7140709,
@@ -55,10 +55,10 @@ export const MEDICAL_SITE_ICON_ASSETS: Record<MedicalSiteIconName, AssetRecord> 
     iconScoutId: 7140721,
     iconScoutLabel: 'Health Record',
     iconScoutPage: 'https://iconscout.com/lottie-animation/health-record-animation_7140721',
-    flaticonId: 19036882,
-    flaticonPage: 'https://www.flaticon.com/free-animated-icon/heart_19036882',
-    staticSrc: 'https://cdn-icons-png.flaticon.com/512/19036/19036882.png',
-    animatedSrc: 'https://cdn-icons-gif.flaticon.com/19036/19036882.gif'
+    flaticonId: 18996514,
+    flaticonPage: 'https://www.flaticon.com/free-animated-icon/bookmark_18996514',
+    staticSrc: 'https://cdn-icons-png.flaticon.com/512/18996/18996514.png',
+    animatedSrc: 'https://cdn-icons-gif.flaticon.com/18996/18996514.gif'
   },
   drugs: {
     iconScoutLabel: 'Syringe + vial / ampoule',
@@ -115,10 +115,10 @@ export const MEDICAL_SITE_ICON_ASSETS: Record<MedicalSiteIconName, AssetRecord> 
     iconScoutId: 7140721,
     iconScoutLabel: 'Health Record',
     iconScoutPage: 'https://iconscout.com/lottie-animation/health-record-animation_7140721',
-    flaticonId: 19031946,
-    flaticonPage: 'https://www.flaticon.com/free-animated-icon/medical-record_19031946',
-    staticSrc: 'https://cdn-icons-png.flaticon.com/512/19031/19031946.png',
-    animatedSrc: 'https://cdn-icons-gif.flaticon.com/19031/19031946.gif'
+    flaticonId: 8800763,
+    flaticonPage: 'https://www.flaticon.com/free-animated-icon/text-box_8800763',
+    staticSrc: 'https://cdn-icons-png.flaticon.com/512/8800/8800763.png',
+    animatedSrc: 'https://cdn-icons-gif.flaticon.com/8800/8800763.gif'
   }
 };
 
