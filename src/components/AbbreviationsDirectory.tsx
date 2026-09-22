@@ -64,9 +64,9 @@ export function AbbreviationsDirectory({ favorites, onToggleFavorite, initialQue
                     type="button"
                     onClick={() => onToggleFavorite(favoriteId)}
                     className={
-                      'grid h-11 w-11 place-items-center rounded-xl border ' +
+                      'grid h-11 w-11 place-items-center rounded-xl border outline-none transition focus-visible:ring-2 focus-visible:ring-[#CCA039]/55 ' +
                       (isFavorite
-                        ? 'border-[#315672]/30 bg-[#315672]/12 text-[#315672]'
+                        ? 'border-[#CCA039]/45 bg-[#CCA039]/12 text-[#9B7420]'
                         : 'border-[#D7E2E9] bg-white/75 text-[#5F7280]')
                     }
                     title="حفظ"
@@ -76,10 +76,11 @@ export function AbbreviationsDirectory({ favorites, onToggleFavorite, initialQue
                   </button>
                 </div>
 
-                <div className="flex-1 text-right">
-                  <h3 className="text-base font-black text-[#315672]" dir="ltr">{term.abbr}</h3>
-                  <p className="mt-1 text-[11px] font-bold text-[#183149]">{term.ar}</p>
-                  <p className="mt-1 text-xs text-[#526675]" dir="ltr">{term.en}</p>
+                <div className="min-w-0 flex-1 text-right">
+                  <h3 className="text-sm font-black text-[#183149]">{term.ar}</h3>
+                  <p className="mt-1 truncate text-xs font-bold text-[#315672]" dir="ltr">
+                    {term.abbr} — {term.en}
+                  </p>
                   <p className="mt-2 text-[10px] leading-5 text-[#526675]"><MixedDirectionText text={term.definition} /></p>
                   {term.clinicalNote && (
                     <div className="mt-2 border-r-2 border-[#315672]/50 pr-2.5">
