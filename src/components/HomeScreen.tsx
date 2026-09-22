@@ -38,7 +38,9 @@ export function HomeScreen({ openGuide }: HomeScreenProps) {
   const searchItems = useMemo<MorphingSearchItem[]>(() => {
     const drugs: MorphingSearchItem[] = ANESTHESIA_DRUGS.map((drug) => ({
       id: 'drug:' + drug.id,
-      title: drug.ar + ' | ' + drug.en,
+      title: drug.ar,
+      titleAr: drug.ar,
+      titleEn: drug.en,
       description: drug.categoryAr,
       keywords: [
         drug.en,
@@ -53,7 +55,9 @@ export function HomeScreen({ openGuide }: HomeScreenProps) {
 
     const fluids: MorphingSearchItem[] = INTRAVENOUS_FLUIDS.map((item) => ({
       id: 'fluid:' + item.id,
-      title: item.nameAr + ' | ' + item.nameEn,
+      title: item.nameAr,
+      titleAr: item.nameAr,
+      titleEn: item.nameEn,
       description: item.categoryAr,
       keywords: [
         item.nameAr,
@@ -85,7 +89,9 @@ export function HomeScreen({ openGuide }: HomeScreenProps) {
       .filter((guide) => ANESTHESIA_STAGE_GUIDE_IDS.has(guide.id))
       .map((guide) => ({
         id: 'stage:' + guide.id,
-        title: guide.titleAr + ' | ' + guide.titleEn,
+        title: guide.titleAr,
+        titleAr: guide.titleAr,
+        titleEn: guide.titleEn,
         description: 'مراحل التخدير',
         keywords: [
           guide.titleAr,
@@ -102,7 +108,9 @@ export function HomeScreen({ openGuide }: HomeScreenProps) {
       .filter((guide) => !ANESTHESIA_STAGE_GUIDE_IDS.has(guide.id))
       .map((guide) => ({
         id: 'clinical:' + guide.id,
-        title: guide.titleAr + ' | ' + guide.titleEn,
+        title: guide.titleAr,
+        titleAr: guide.titleAr,
+        titleEn: guide.titleEn,
         description: guide.categoryAr,
         keywords: [
           guide.titleAr,
@@ -117,8 +125,9 @@ export function HomeScreen({ openGuide }: HomeScreenProps) {
 
     const terms: MorphingSearchItem[] = CLINICAL_TERMS.map((term) => ({
       id: 'term:' + term.id,
-      title: term.ar + (term.abbr ? ' — ' + term.abbr : ''),
-      description: term.en,
+      title: term.ar,
+      titleAr: term.ar,
+      titleEn: term.abbr ? term.abbr + ' — ' + term.en : term.en,
       keywords: [
         term.abbr ?? '',
         term.en,
