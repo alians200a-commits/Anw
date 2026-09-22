@@ -42,8 +42,8 @@ const toneMap = {
   },
   warning: {
     icon: ShieldWarning,
-    title: 'text-[#9A6B24]',
-    dot: 'bg-[#C8994B]',
+    title: 'text-[#8A6426]',
+    dot: 'bg-[#9A6B24]',
     box: 'border-[#F1E3C8] bg-[#FFF9ED]'
   },
   effect: {
