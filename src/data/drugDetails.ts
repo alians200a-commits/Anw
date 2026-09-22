@@ -624,6 +624,10 @@ export const DRUG_DETAILS: Record<string, DrugDetail> = {
     mechanism: 'ناهض انتقائي نسبيًا لمستقبل β2 | β2-adrenergic agonist يزيد cAMP في العضلات الملساء القصبية.',
     tradeNames: ['Ventolin', 'Salbutamol', 'Albuterol'],
     routes: ['استنشاق/نيبولايزر | Inhaled / nebulized'],
+    educationalDoses: [
+      'للتشنج القصبي/نوبة الربو الحادة لدى البالغ: يمكن إعطاء Salbutamol/Albuterol بالاستنشاق بشكل متكرر في الساعة الأولى؛ عند استخدام nebulizer تُستعمل عادةً 2.5–5 mg كل 20 دقيقة حتى 3 جرعات ثم تُعاد معايرة العلاج حسب الاستجابة.',
+      'لفرط البوتاسيوم المتوسط أو الشديد لدى البالغ: 10–20 mg nebulized كعلاج مساعد لنقل البوتاسيوم إلى داخل الخلايا؛ لا يُستخدم وحده بدل العلاجات الأساسية.'
+    ],
     uses: ['التشنج القصبي الحاد | Acute bronchospasm', 'عامل مساعد في فرط البوتاسيوم | Adjunct in hyperkalemia'],
     contraindications: ['فرط التحسس للمستحضر'],
     warnings: ['تسرع القلب | Tachycardia ورجفان | Tremor', 'قد يسبب نقص البوتاسيوم | Hypokalemia خاصةً بجرعات عالية', 'قد يرفع السكر | Hyperglycemia ويزيد اللاكتات | Lactic acidosis في بعض الحالات'],
@@ -636,6 +640,10 @@ export const DRUG_DETAILS: Record<string, DrugDetail> = {
     feature: 'مركب Methylxanthine ذو هامش علاجي ضيق | Narrow therapeutic index؛ يمكن أن يوسع القصبات لكنه أصبح أقل استخدامًا في النوبات الحادة بسبب السمية والتداخلات.',
     mechanism: 'يثبط Phosphodiesterase بصورة غير نوعية ويعاكس Adenosine receptors، ما يرفع cAMP ويؤدي إلى Bronchodilation مع تأثيرات قلبية وعصبية.',
     routes: ['وريدي بالتسريب | Intravenous infusion'],
+    educationalDoses: [
+      'إذا استُخدم IV في بروتوكول مختار ولم يكن المريض قد تلقى Theophylline/Aminophylline حديثًا: loading dose نحو 5 mg/kg بالتسريب البطيء خلال 20–30 دقيقة، ثم maintenance نحو 0.5 mg/kg/hour في البالغ مع تعديل الجرعة حسب العمر والتدخين ووظائف الكبد والتداخلات ومستوى Theophylline.',
+      'لا يُستخدم IV aminophylline روتينيًا لعلاج نوبات الربو الحادة الحديثة بسبب هامش الأمان الضيق وعدم تفوقه على العلاج الاستنشاقي القياسي.'
+    ],
     uses: ['استخدام محدود في bronchospasm شديد مختار عندما لا تكفي العلاجات القياسية وبحسب البروتوكول المحلي'],
     contraindications: ['فرط التحسس للثيوفيلين/الأمينوفيلين', 'اضطرابات نظم خطرة غير مسيطر عليها تُعد مانعًا أو سببًا قويًا للتجنب'],
     warnings: ['هامش علاجي ضيق ويتطلب مراقبة مستوى Theophylline عند الاستخدام المطول/المهم', 'تداخلات دوائية كثيرة وتغير التخليص مع العمر وأمراض الكبد والحمى', 'السمية قد تسبب Arrhythmias أو Seizures'],
@@ -663,6 +671,9 @@ export const DRUG_DETAILS: Record<string, DrugDetail> = {
     mechanism: 'منشّط نسيجي للبلازمينوجين | Recombinant tissue plasminogen activator (rt-PA) يحوّل plasminogen إلى plasmin الذي يحلل fibrin.',
     tradeNames: ['Activase', 'Actilyse'],
     routes: ['وريدي | Intravenous infusion بحسب الاستطباب'],
+    educationalDoses: [
+      'للـAcute massive pulmonary embolism لدى البالغ وفق ملصق Activase: 100 mg IV infusion over 2 hours؛ أنظمة الجرعات للسكتة الدماغية الإقفارية وAMI مختلفة ولا تُستبدل بهذا النظام.'
+    ],
     uses: ['سكتة دماغية إقفارية حادة عند استيفاء المعايير | Selected acute ischemic stroke', 'STEMI في سياقات محددة عندما تكون reperfusion strategy مناسبة', 'انصمام رئوي عالي الخطورة مع عدم استقرار ديناميكي في مرضى مختارين | High-risk PE'],
     contraindications: ['نزف فعال مهم | Active significant bleeding', 'قصة حديثة لنزف داخل القحف أو آفة عالية الخطورة حسب الاستطباب', 'تختلف الموانع بدقة باختلاف Stroke/PE/STEMI ويجب الرجوع لخوارزمية الاستطباب'],
     warnings: ['النزف داخل القحف | Intracranial hemorrhage أخطر المضاعفات', 'تحتاج جرعة ومعايير أهلية خاصة بكل indication', 'تجنب الإجراءات الغازية غير الضرورية بعد التحليل الخثري'],
@@ -700,6 +711,9 @@ export const DRUG_DETAILS: Record<string, DrugDetail> = {
     mechanism: 'يرتبط بمستقبل Glucocorticoid ويعدّل التعبير الجيني للوسطاء الالتهابيين؛ آلية تأثيره المضاد للقيء متعددة العوامل.',
     tradeNames: ['Decadron'],
     routes: ['وريدي | Intravenous', 'فموي | Oral بحسب الاستطباب'],
+    educationalDoses: [
+      'للوقاية من PONV لدى البالغ: 4–8 mg IV عند بدء التخدير | At induction ضمن خطة الوقاية متعددة الوسائط؛ الجرعات في الوذمة الدماغية أو التهابات/وذمة مجرى الهواء تعتمد على الاستطباب.'
+    ],
     uses: ['الوقاية من PONV | Postoperative nausea/vomiting prophylaxis', 'وذمة دماغية مرتبطة بأورام في سياقات محددة | Tumor-related cerebral edema', 'وذمة مجرى الهواء/التهاب شديد حسب السبب'],
     contraindications: ['فرط التحسس', 'العدوى الفطرية الجهازية عند استخدام جرعات جهازية ممتدة تُعد مانعًا مهمًا'],
     warnings: ['ارتفاع السكر | Hyperglycemia', 'تثبيط المناعة وزيادة خطر العدوى مع الجرعات المتكررة/الممتدة', 'تأخر التئام الجروح وتهيج/نزف هضمي مع عوامل خطورة'],
@@ -713,6 +727,10 @@ export const DRUG_DETAILS: Record<string, DrugDetail> = {
     mechanism: 'يحجب L-type calcium channels في القلب والعضلات الوعائية؛ التأثير المهم في الطوارئ هو إبطاء conduction وإطالة refractoriness في AV node.',
     tradeNames: ['Cardizem'],
     routes: ['وريدي | Intravenous', 'فموي | Oral'],
+    educationalDoses: [
+      'للتحكم بمعدل البطين في AF/Atrial flutter المستقر: 0.25 mg/kg IV over 2 min كجرعة أولى؛ إذا كانت الاستجابة غير كافية يمكن 0.35 mg/kg IV after 15 min.',
+      'بعد الاستجابة للـbolus يمكن بدء infusion عادةً 10 mg/hour؛ بعض المرضى يستجيبون لـ5 mg/hour، ويمكن الزيادة حتى 15 mg/hour حسب الاستجابة ولمدة تصل إلى 24 ساعة.'
+    ],
     uses: ['Rate control في AF/flutter المستقر', 'بعض حالات SVT المستقرة بحسب النظم والخوارزمية'],
     contraindications: ['Severe hypotension', '2nd/3rd degree AV block دون Pacemaker', 'Sick sinus syndrome دون Pacemaker', 'AF/flutter مع accessory pathway مثل WPW', 'الحذر/التجنب في HFrEF الحاد حسب الحالة'],
     warnings: ['Bradycardia وAV block', 'Hypotension', 'قد يفاقم heart failure بسبب negative inotropy'],
@@ -725,6 +743,9 @@ export const DRUG_DETAILS: Record<string, DrugDetail> = {
     feature: 'Inotrope يغلب عليه β1 يزيد contractility وcardiac output، وقد يخفض SVR بسبب β2 لذلك لا يُفهم كدواء “رفع ضغط” بسيط.',
     mechanism: 'ناهض أدرينرجي مباشر يغلب β1 مع β2 وα1 أقل | Predominantly β1 agonist.',
     routes: ['وريدي بالتسريب | Continuous IV infusion'],
+    educationalDoses: [
+      'Continuous IV infusion لزيادة cardiac output: المدى المعتاد 2.5–15 mcg/kg/min مع المعايرة حسب الاستجابة والديناميكا الدموية؛ قد تُحتاج جرعات أعلى نادرًا في ظروف مختارة.'
+    ],
     uses: ['Low-output acute heart failure / cardiogenic shock مع ضغط يسمح بالاستخدام', 'دعم النتاج القلبي في حالات مختارة بعد الجراحة القلبية أو الصدمة'],
     contraindications: ['Idiopathic hypertrophic subaortic stenosis', 'فرط التحسس للمستحضر/السلفيت في بعض التركيبات'],
     warnings: ['Tachycardia وventricular ectopy/arrhythmias', 'قد يسبب أو يفاقم hypotension إذا كانت vasodilation أو hypovolemia بارزة', 'قد يزيد myocardial oxygen demand'],
@@ -818,6 +839,10 @@ export const DRUG_DETAILS: Record<string, DrugDetail> = {
     mechanism: 'يتحول إلى nitric oxide ويزيد cGMP في العضلات الملساء الوعائية، ما يسبب vasodilation.',
     tradeNames: ['GTN', 'Angised', 'Nitrostat حسب المستحضر'],
     routes: ['تحت اللسان | Sublingual', 'وريدي بالتسريب | Intravenous infusion', 'لاصقة/موضعي | Transdermal'],
+    educationalDoses: [
+      'للتسريب الوريدي باستخدام non-adsorptive tubing: جرعة بدء شائعة 5 mcg/min، ثم الزيادة أولًا بمقدار 5 mcg/min كل 3–5 دقائق حتى ظهور الاستجابة؛ بعد ذلك تُصغّر الزيادات وتُباعد حسب الضغط والاستجابة.',
+      'لا توجد جرعة IV مثلى ثابتة لكل المرضى؛ يلزم titration مع مراقبة ضغط الدم والنبض والحفاظ على perfusion pressure.'
+    ],
     onsetDuration: [
       'بعد الجرعة تحت اللسان يبدأ تأثير توسع الأوعية عادة خلال 1–3 دقائق ويصل إلى أقصى تأثير تقريبًا خلال 5 دقائق.',
       'يستمر تأثير القرص تحت اللسان عادةً 25 دقيقة على الأقل؛ أما التسريب واللاصقات فتختلف مدتهما بحسب الطريق والجرعة.'
