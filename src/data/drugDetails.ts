@@ -447,12 +447,17 @@ export const DRUG_DETAILS: Record<string, DrugDetail> = {
   },
   atropine: {
     feature: 'مضاد مسكاريني يرفع النبض ويقلل الإفرازات.',
+    clinicalNote: 'في symptomatic bradycardia للبالغ تُستخدم جرعة 1 mg IV كل 3–5 دقائق حتى 3 mg حسب AHA 2025. لا يُستخدم Atropine كدواء تمهيدي روتيني لكل مريض، وتُعاير الجرعة حسب الاستطباب والنبض والضغط.',
     mechanism: 'مضاد تنافسي لمستقبلات المسكارين | Competitive muscarinic acetylcholine receptor antagonist.',
     routes: ['وريدي | Intravenous', 'عضلي | Intramuscular حسب الاستطباب/المستحضر'],
     educationalDoses: [
       'AHA 2025 للبالغ في symptomatic bradycardia: 1 mg IV bolus، يُكرر كل 3–5 دقائق، والحد الأقصى 3 mg.',
       'كـAntisialagogue / antivagal قبل التخدير عند وجود استطباب: 0.5–1 mg IV/IM/SC قبل العملية بنحو 30–60 دقيقة وفق ملصقات الحقن الحالية؛ ليس دواءً تمهيديًا روتينيًا لكل مريض.',
       'عند استخدامه مع Neostigmine لعكس الحصار العضلي تُحدد جرعتهما حسب عمق الحصار والبروتوكول/المستحضر، ولا تعتمد خلطة ثابتة 1 cc + 1 cc لكل المرضى.'
+    ],
+    onsetDuration: [
+      'بعد IV يكون التأثير vagolytic سريعًا ويُقيّم مباشرة عبر HR/PR/BP والأعراض.',
+      'مدة التأثير تعتمد على الجرعة والاستطباب وقد تمتد أكثر من الحاجة الإسعافية القصيرة؛ لا تُكرر الجرعات آليًا خارج الحد والبروتوكول.'
     ],
     correction: 'الملف القديم يذكر 0.5 mg للبالغ في bradycardia؛ خوارزمية AHA 2025 تستخدم 1 mg IV كجرعة أولى. كما أنه ليس مطلوبًا روتينيًا لكل مريض قبل التخدير.',
     sourcePages: [7, 15, 16, 54, 71, 81],
@@ -464,10 +469,15 @@ export const DRUG_DETAILS: Record<string, DrugDetail> = {
   },
   adrenaline: {
     feature: 'دواء إنعاش أساسي ودواء الخط الأول في التأق؛ ينبه مستقبلات ألفا وبيتا الأدرينرجية.',
+    clinicalNote: 'Adrenaline هو الخط الأول في Anaphylaxis ويُعطى IM في منتصف الجانب الأمامي الوحشي للفخذ؛ IV adrenaline يُحجز للخبراء في بيئة مراقبة للحالات المقاومة. تركيز وطريق جرعة anaphylaxis يختلفان جذريًا عن cardiac arrest.',
     mechanism: 'ناهض أدرينرجي غير انتقائي لمستقبلات α1/α2/β1/β2 | Nonselective adrenergic agonist.',
     tradeNames: ['Epinephrine', 'Adrenaline'],
     routes: ['عضلي | Intramuscular في التأق', 'وريدي | Intravenous في الإنعاش أو الحالات المراقبة المناسبة'],
     educationalDoses: ['Cardiac arrest — AHA 2025: Epinephrine 1 mg IV/IO كل 3–5 دقائق.', 'Anaphylaxis للبالغ: Adrenaline 0.5 mg IM (1 mg/mL) في الجانب الأمامي الوحشي من منتصف الفخذ؛ يُكرر بعد 5 دقائق إذا استمر ABC compromise وفق بروتوكول التأق.'],
+    onsetDuration: [
+      'بعد IM في Anaphylaxis يبدأ التأثير سريعًا ويُعاد التقييم خلال دقائق؛ يمكن تكرار الجرعة إذا استمر ABC compromise وفق البروتوكول.',
+      'بعد IV/IO في cardiac arrest يكون التأثير فوريًا عمليًا، لكن هذا سياق وجرعة مختلفان تمامًا عن علاج التأق.'
+    ],
     correction: 'الملف القديم يوصي IV adrenaline بجرعة 50–100 mcg للتأق بصورة عامة؛ هذا ليس طريق الاختيار لمعظم مقدمي الرعاية. العلاج الأولي هو IM adrenaline، أما IV فيُحجز للخبراء في بيئة مراقبة للحالات المقاومة. طريق وتركيز Adrenaline يختلفان جذريًا عن cardiac arrest.',
     sourcePages: [2, 15, 71, 105],
     sourceLabel: 'مبادئ التخدير + ملف كتابة أدوية التخدير + أدوية الطوارئ 2021',
@@ -639,9 +649,14 @@ export const DRUG_DETAILS: Record<string, DrugDetail> = {
   },
   ephedrine: {
     feature: 'رافع ضغط | Vasopressor ذو تأثير مباشر وغير مباشر على المستقبلات الأدرينرجية، ويرفع الضغط غالبًا مع زيادة معدل القلب.',
+    clinicalNote: 'حقن Ephedrine الحديث مخصص أساسًا لانخفاض الضغط المهم سريريًا أثناء التخدير. الجرعة IV 5–10 mg تُعاير للضغط، ومع التكرار قد يحدث tachyphylaxis؛ إذا ضعفت الاستجابة نحتاج تقييم السبب وpressor بديل.',
     mechanism: 'ينبه مستقبلات α وβ ويزيد تحرير النورأدرينالين | Alpha/beta agonism + norepinephrine release.',
     routes: ['وريدي | Intravenous (IV)'],
     educationalDoses: ['في ملصقات حقن حديثة لعلاج انخفاض الضغط أثناء التخدير: 5–10 mg IV bolus حسب الحاجة، بحد إجمالي مذكور 50 mg؛ تُعاير للهدف وبحسب المستحضر.'],
+    onsetDuration: [
+      'بعد IV bolus يرتفع الضغط بسرعة ويُعاد تقييم الاستجابة بعد كل جرعة.',
+      'التأثير ليس ثابتًا مع التكرار لأن tachyphylaxis قد تقلل الاستجابة؛ لذلك تُعاير الجرعات بدل الاعتماد على مدة واحدة محفوظة.'
+    ],
     uses: ['علاج انخفاض الضغط المهم سريريًا أثناء التخدير | Clinically important hypotension during anesthesia'],
     contraindications: ['لا توجد موانع مطلقة مدرجة في بعض ملصقات الحقن الحديثة | No listed absolute contraindications in current US injection labels'],
     warnings: ['تسرع القلب | Tachycardia', 'قد يحدث تحمل سريع | Tachyphylaxis مع التكرار', 'قد يزداد ارتفاع الضغط مع أدوية مقوية للرحم | Oxytocic drugs'],
@@ -652,9 +667,14 @@ export const DRUG_DETAILS: Record<string, DrugDetail> = {
   },
   phenylephrine: {
     feature: 'رافع ضغط α1 انتقائي نسبيًا | Alpha-1 vasopressor يرفع المقاومة الوعائية الجهازية وقد يسبب بطء قلب انعكاسي.',
+    clinicalNote: 'Phenylephrine α1 vasopressor يرفع SVR وقد يسبب reflex bradycardia ويخفض cardiac output عند بعض المرضى؛ لذلك يُستخدم حسب الفيزيولوجيا وليس لمجرد أي انخفاض ضغط.',
     mechanism: 'ناهض مباشر لمستقبل α1 الأدرينرجي | Direct alpha-1 adrenergic agonist.',
     routes: ['وريدي | Intravenous (IV)'],
     educationalDoses: ['علاج انخفاض الضغط أثناء التخدير في ملصق حديث: 40–100 mcg IV bolus، ويمكن تكرار جرعات حسب الاستجابة؛ أو تسريب وريدي معاير حسب الضغط.'],
+    onsetDuration: [
+      'ارتفاع الضغط بعد IV bolus سريع، وقد يستمر تأثير الجرعة حتى نحو 20 دقيقة.',
+      'مع infusion يكون effective half-life نحو 5 دقائق، لذلك يمكن معايرة التأثير بسرعة نسبيًا حسب الضغط.'
+    ],
     uses: ['علاج انخفاض الضغط الناتج أساسًا عن توسع الأوعية أثناء التخدير | Vasodilatory hypotension during anesthesia'],
     contraindications: ['تُراجع النشرة الخاصة بالمستحضر والحالة السريرية؛ التركيز على تصحيح نقص الحجم والحماض قبل/أثناء الاستخدام.'],
     warnings: ['ارتفاع الضغط | Hypertension', 'بطء القلب الانعكاسي | Reflex bradycardia', 'نقص تروية الأنسجة عند الإفراط في التضيق الوعائي | Tissue ischemia'],
@@ -664,11 +684,16 @@ export const DRUG_DETAILS: Record<string, DrugDetail> = {
   },
   metoprolol: {
     feature: 'حاصر بيتا-1 انتقائي نسبيًا | Relatively beta-1 selective blocker يخفض معدل القلب والانقباضية.',
+    clinicalNote: 'Metoprolol β1-selective نسبيًا وليس خاليًا من خطر bronchospasm أو heart block. الحقن الوريدي يحتاج مراقبة HR/BP/ECG ويُتجنب في bradycardia الشديدة أو AV block أو decompensated heart failure.',
     mechanism: 'حجب مستقبلات β1 الأدرينرجية القلبية | Beta-1 adrenergic blockade.',
     tradeNames: ['Lopressor'],
     routes: ['وريدي | Intravenous', 'فموي | Oral'],
     educationalDoses: [
       'في Acute MI المستقر ديناميكيًا وفق ملصق الحقن: 5 mg IV bolus، تُكرر ثلاث جرعات بفاصل يقارب دقيقتين مع مراقبة BP/HR/ECG، ثم الانتقال إلى الجرعة الفموية وفق البروتوكول.'
+    ],
+    onsetDuration: [
+      'بعد التسريب الوريدي يظهر حصر β تدريجيًا، ويبلغ maximal beta-blocking effect تقريبًا خلال 20 دقيقة في المتطوعين.',
+      'نصف العمر البلازمي عادة نحو 3–7 ساعات ويتأثر بـCYP2D6، لذلك قد يطول التأثير لدى poor metabolizers.'
     ],
     uses: ['علاج احتشاء عضلة القلب الحاد لدى مرضى مستقرين ديناميكيًا وفق الاستطباب المعتمد | Acute myocardial infarction', 'التحكم بمعدل القلب/الضغط في ممارسات سريرية مختارة حسب البروتوكول'],
     contraindications: ['بطء قلب شديد | Severe bradycardia', 'حصار قلبي من الدرجة الثانية/الثالثة دون ناظمة | 2nd/3rd degree AV block without pacemaker', 'متلازمة العقدة الجيبية المريضة | Sick sinus syndrome', 'فشل قلب غير معاوض | Decompensated heart failure'],
@@ -680,6 +705,7 @@ export const DRUG_DETAILS: Record<string, DrugDetail> = {
   },
   esmolol: {
     feature: 'حاصر بيتا-1 فائق القصر | Ultra-short-acting beta-1 blocker، مفيد عندما نحتاج تأثيرًا سريع التعديل.',
+    clinicalNote: 'Esmolol β1 blocker فائق القصر مناسب عندما نحتاج titration سريعًا. يبدأ خلال 1–2 دقيقة ونصف عمره نحو 9 دقائق، لكن hypotension/bradycardia/heart block تبقى مخاطر مهمة.',
     mechanism: 'حجب مستقبلات β1 الأدرينرجية | Beta-1 adrenergic blockade؛ يُستقلب سريعًا بواسطة إستيرازات كريات الدم الحمراء.',
     tradeNames: ['Brevibloc'],
     routes: ['وريدي | Intravenous (IV)'],
@@ -742,6 +768,7 @@ export const DRUG_DETAILS: Record<string, DrugDetail> = {
 
   adenosine: {
     feature: 'دواء فائق القصر | Ultra-short acting antiarrhythmic يوقف التوصيل عبر العقدة الأذينية البطينية بشكل عابر، لذلك يفيد في بعض حالات SVT المنتظم.',
+    clinicalNote: 'Adenosine يعمل عبر A1 receptors في AV node وليس α1. يُستخدم فقط في tachyarrhythmia منتظمة مناسبة؛ لا يُعطى بصورة عمياء لـirregular أو polymorphic wide-complex rhythms، ويجب الاستعداد لـbronchospasm أو pause عابر.',
     mechanism: 'ينشّط مستقبلات الأدينوسين A1 في العقدة الأذينية البطينية | A1 adenosine receptors، فيزيد خروج البوتاسيوم ويقلل دخول الكالسيوم ويبطئ/يوقف التوصيل عبر AV node مؤقتًا.',
     tradeNames: ['Adenocor', 'Adenocard'],
     routes: ['وريدي سريع جدًا | Rapid IV/IO bolus يتبعه Flush مباشر'],
@@ -790,10 +817,15 @@ export const DRUG_DETAILS: Record<string, DrugDetail> = {
   },
   amiodarone: {
     feature: 'مضاد اضطراب نظم واسع الطيف | Broad-spectrum antiarrhythmic يُصنف أساسًا Class III لكنه يمتلك خواص Class I/II/IV أيضًا.',
+    clinicalNote: 'Amiodarone يُستخدم في سياقات مختلفة بجرعات مختلفة؛ جرعة VF/pulseless VT ليست نفسها جرعة stable wide-QRS tachycardia. التسريب IV قد يسبب hypotension/bradycardia، ويحتاج مراقبة rhythm وQT والضغط.',
     mechanism: 'يحجب قنوات البوتاسيوم أساسًا ويطيل repolarization، مع حجب قنوات الصوديوم والكالسيوم وتأثير حاصر β بدرجات مختلفة.',
     tradeNames: ['Cordarone'],
     routes: ['وريدي | Intravenous', 'فموي | Oral للاستخدام المزمن'],
     educationalDoses: ['AHA 2025 في VF/pulseless VT المقاوم للصدمة: 300 mg IV/IO bolus ثم 150 mg إذا لزم.', 'Stable wide-QRS tachycardia: 150 mg IV over 10 min ثم infusion حسب الخوارزمية/البروتوكول.'],
+    onsetDuration: [
+      'بعد IV يبدأ التأثير المضاد لاضطراب النظم خلال الدقائق الأولى، لكن الاستجابة تختلف حسب النظم والجرعة وسرعة الإعطاء.',
+      'Amiodarone ذو توزيع ونصف عمر نهائي طويل جدًا؛ لذلك لا يُفهم انتهاء التسريب على أنه انتهاء سريع لكل التأثيرات.'
+    ],
     uses: ['VF/pulseless VT المقاوم للصدمات | Refractory shockable cardiac arrest', 'بعض حالات wide-complex tachycardia المستقرة'],
     contraindications: ['بطء جيبي شديد أو AV block متقدم دون Pacemaker في الاستخدام غير الإسعافي', 'فرط التحسس للمستحضر'],
     warnings: ['هبوط الضغط | Hypotension وبطء القلب | Bradycardia خاصةً مع IV', 'إطالة QT واضطرابات نظم', 'الاستخدام المزمن قد يؤثر في الرئة والكبد والغدة الدرقية والعين'],
@@ -873,12 +905,17 @@ export const DRUG_DETAILS: Record<string, DrugDetail> = {
   },
   diltiazem: {
     feature: 'حاصر قنوات كالسيوم non-dihydropyridine يبطئ AV nodal conduction ويقلل معدل البطين في اضطرابات نظم فوق بطينية مختارة.',
+    clinicalNote: 'Diltiazem يبطئ AV nodal conduction ويفيد للتحكم بمعدل البطين في AF/AFlutter المستقر. يجب تجنبه مع accessory pathway مثل WPW، ومع hypotension/advanced AV block، والحذر في HFrEF بسبب negative inotropy.',
     mechanism: 'يحجب L-type calcium channels في القلب والعضلات الوعائية؛ التأثير المهم في الطوارئ هو إبطاء conduction وإطالة refractoriness في AV node.',
     tradeNames: ['Cardizem'],
     routes: ['وريدي | Intravenous', 'فموي | Oral'],
     educationalDoses: [
       'للتحكم بمعدل البطين في AF/Atrial flutter المستقر: 0.25 mg/kg IV over 2 min كجرعة أولى؛ إذا كانت الاستجابة غير كافية يمكن 0.35 mg/kg IV after 15 min.',
       'بعد الاستجابة للـbolus يمكن بدء infusion عادةً 10 mg/hour؛ بعض المرضى يستجيبون لـ5 mg/hour، ويمكن الزيادة حتى 15 mg/hour حسب الاستجابة ولمدة تصل إلى 24 ساعة.'
+    ],
+    onsetDuration: [
+      'بعد IV bolus يظهر تأثير إبطاء AV conduction ومعدل البطين خلال دقائق ويُعاد تقييم الاستجابة قبل الجرعة الثانية.',
+      'بعد bolus قد يلزم infusion للمحافظة على rate control؛ مدة التأثير تعتمد على الجرعة والتسريب ووظيفة الكبد.'
     ],
     uses: ['Rate control في AF/flutter المستقر', 'بعض حالات SVT المستقرة بحسب النظم والخوارزمية'],
     contraindications: ['Severe hypotension', '2nd/3rd degree AV block دون Pacemaker', 'Sick sinus syndrome دون Pacemaker', 'AF/flutter مع accessory pathway مثل WPW', 'الحذر/التجنب في HFrEF الحاد حسب الحالة'],
@@ -890,10 +927,15 @@ export const DRUG_DETAILS: Record<string, DrugDetail> = {
   },
   dobutamine: {
     feature: 'Inotrope يغلب عليه β1 يزيد contractility وcardiac output، وقد يخفض SVR بسبب β2 لذلك لا يُفهم كدواء “رفع ضغط” بسيط.',
+    clinicalNote: 'Dobutamine inotrope لرفع cardiac output عند ضعف contractility، وليس pressor بسيطًا. قد يخفض SVR ويسبب tachyarrhythmia، لذلك يجب تقييم volume status والضغط والتروية وتعديل infusion حسب الاستجابة.',
     mechanism: 'ناهض أدرينرجي مباشر يغلب β1 مع β2 وα1 أقل | Predominantly β1 agonist.',
     routes: ['وريدي بالتسريب | Continuous IV infusion'],
     educationalDoses: [
       'Continuous IV infusion لزيادة cardiac output: المدى المعتاد 2.5–15 mcg/kg/min مع المعايرة حسب الاستجابة والديناميكا الدموية؛ قد تُحتاج جرعات أعلى نادرًا في ظروف مختارة.'
+    ],
+    onsetDuration: [
+      'يبدأ التأثير خلال 1–2 دقيقة، وقد يحتاج نحو 10 دقائق للوصول إلى peak effect لسرعة infusion معينة.',
+      'نصف العمر البلازمي نحو دقيقتين، لذلك يتغير التأثير بسرعة نسبيًا عند تعديل التسريب.'
     ],
     uses: ['Low-output acute heart failure / cardiogenic shock مع ضغط يسمح بالاستخدام', 'دعم النتاج القلبي في حالات مختارة بعد الجراحة القلبية أو الصدمة'],
     contraindications: ['Idiopathic hypertrophic subaortic stenosis', 'فرط التحسس للمستحضر/السلفيت في بعض التركيبات'],
@@ -905,9 +947,14 @@ export const DRUG_DETAILS: Record<string, DrugDetail> = {
   },
   dopamine: {
     feature: 'كاتيكولامين ذو تأثيرات جرعية على مستقبلات dopaminergic وβ1 وα1؛ استعماله أضيق حاليًا من السابق بسبب arrhythmias ووجود بدائل أفضل في كثير من الصدمات.',
+    clinicalNote: 'Dopamine له تأثيرات جرعية ومتغيرة بين المرضى، واستعماله أضيق حاليًا بسبب arrhythmias وبدائل أفضل في كثير من حالات shock. لا يوجد دور موصى به لـrenal-dose dopamine لحماية الكلى.',
     mechanism: 'ينشط Dopamine receptors بجرعات منخفضة ثم β1 وα1 بدرجات متزايدة مع الجرعة، مع اختلاف كبير بين المرضى.',
     routes: ['وريدي بالتسريب | Continuous IV infusion؛ يمكن البدء طرفيًا في طارئ بخط جيد ومراقبة ثم تحويله لمركزي عند استمرار الحاجة'],
     educationalDoses: ['AHA 2025 في symptomatic bradycardia عندما لا يفيد atropine/كجسر: 5–20 mcg/kg/min titrated to response.'],
+    onsetDuration: [
+      'يبدأ التأثير خلال نحو 5 دقائق من IV infusion.',
+      'بسبب half-life يقارب دقيقتين تكون مدة التأثير أقل من نحو 10 دقائق بعد تغير/إيقاف التسريب.'
+    ],
     uses: ['Symptomatic bradycardia كخيار infusion ضمن ACLS', 'دعم hemodynamics في صدمة مختارة عندما يكون مناسبًا'],
     contraindications: ['Pheochromocytoma', 'Tachyarrhythmias أو ventricular fibrillation غير المصححة'],
     warnings: ['Tachyarrhythmias وmyocardial ischemia', 'Extravasation قد يسبب tissue ischemia/necrosis', 'الاستجابة للجرعة غير ثابتة بين المرضى'],
@@ -968,6 +1015,7 @@ export const DRUG_DETAILS: Record<string, DrugDetail> = {
   },
   labetalol: {
     feature: 'حاصر مختلط α1 وβ | Mixed alpha/beta blocker يخفض الضغط مع تقليل أو منع التسرع القلبي الانعكاسي.',
+    clinicalNote: 'Labetalol يحجب α1 وβ ويخفض الضغط دون reflex tachycardia واضح، لكنه قد يسبب bradycardia/bronchospasm/hypotension. deliberate hypotension أثناء الجراحة تقنية تخصصية وليست استعمالًا افتراضيًا.',
     mechanism: 'يحجب β1/β2 وα1 adrenergic receptors؛ نسبة التأثير تختلف حسب طريق الإعطاء.',
     routes: ['وريدي | Intravenous', 'فموي | Oral'],
     educationalDoses: [
@@ -985,6 +1033,7 @@ export const DRUG_DETAILS: Record<string, DrugDetail> = {
   },
   nitroglycerin: {
     feature: 'موسع وعائي نتراتي | Nitrate vasodilator يغلب تأثيره على الأوردة، فيخفض preload ويقلل wall stress واستهلاك عضلة القلب للأوكسجين.',
+    clinicalNote: 'Nitroglycerin يقلل preload أساسًا ويُعاير حسب indication والضغط والتروية. يُمنع مع PDE-5 inhibitors ضمن الفترة المحظورة بسبب خطر hypotension شديد، ويحتاج حذرًا في preload-dependent states.',
     mechanism: 'يتحول إلى nitric oxide ويزيد cGMP في العضلات الملساء الوعائية، ما يسبب vasodilation.',
     tradeNames: ['GTN', 'Angised', 'Nitrostat حسب المستحضر'],
     routes: ['تحت اللسان | Sublingual', 'وريدي بالتسريب | Intravenous infusion', 'لاصقة/موضعي | Transdermal'],
