@@ -17,7 +17,7 @@ export const ANESTHESIA_STAGES: AnesthesiaStage[] = [
     number: '01',
     titleAr: 'مرحلة ما قبل التخدير',
     titleEn: 'Premedication',
-    guideIds: ['premedication']
+    guideIds: ['preoperative-assessment', 'anesthesia-room-check', 'premedication']
   },
   {
     id: 'induction',
@@ -31,7 +31,7 @@ export const ANESTHESIA_STAGES: AnesthesiaStage[] = [
     number: '03',
     titleAr: 'إدامة التخدير',
     titleEn: 'Maintenance',
-    guideIds: ['anesthesia-maintenance']
+    guideIds: ['anesthesia-maintenance', 'intraoperative-monitoring', 'unconscious-patient-care']
   },
   {
     id: 'recovery',
