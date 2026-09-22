@@ -261,6 +261,10 @@ export const DRUG_DETAILS: Record<string, DrugDetail> = {
     mechanism: 'مرخٍ غير مستقطب تنافسي | Competitive nondepolarizing neuromuscular blocker يُستقلب بواسطة Butyrylcholinesterase في البلازما.',
     tradeNames: ['Mivacron'],
     routes: ['وريدي | Intravenous (IV)'],
+    educationalDoses: [
+      'جرعة ابتدائية مرجعية للتنبيب غير الطارئ: 0.08–0.1 mg/kg IV.',
+      'بهذه الجرعة تظهر عادة شروط تنبيب جيدة خلال نحو 2.5–3 دقائق، ويستمر الحصار المطلوب سريريًا قرابة 25–30 دقيقة تحت التخدير المتوازن؛ العوامل الاستنشاقية قد تقوّي الحصار.'
+    ],
     sourcePages: [71],
     uses: ['تسهيل التنبيب', 'إرخاء العضلات في الإجراءات القصيرة'],
     contraindications: ['فرط التحسس للميفاكوريوم'],
@@ -335,6 +339,11 @@ export const DRUG_DETAILS: Record<string, DrugDetail> = {
     mechanism: 'مثبط عكوس لإنزيم Acetylcholinesterase | Reversible acetylcholinesterase inhibitor يرفع الأستيل كولين في الوصلة العصبية العضلية.',
     tradeNames: ['Prostigmin'],
     routes: ['وريدي | Intravenous (IV)'],
+    educationalDoses: [
+      'لعكس الحصار غير المستقطب بعد ظهور تعافٍ مناسب: 0.03 mg/kg IV عندما تكون الاستجابة الأولى >10% بوضوح أو يظهر twitch ثانٍ، وقد تصل إلى 0.07 mg/kg في الحصار الأعمق أو مع المرخيات الأطول مفعولًا.',
+      'الحد الأعلى في ملصقات حديثة: 0.07 mg/kg أو 5 mg إجمالًا أيهما أقل.',
+      'يُعطى مضاد مسكاريني قبل Neostigmine أو بالتزامن معه؛ مثال مرجعي من الملصق: Atropine نحو 15 mcg/kg أو Glycopyrrolate نحو 10 mcg/kg IV، مع اتباع المستحضر والبروتوكول.'
+    ],
     correction: 'يُعطى مع مضاد مسكاريني مثل Glycopyrrolate أو Atropine، لكن الجرعة تعتمد على عمق الحصار والوزن؛ لا تُستخدم وصفة ثابتة 2.5 mg + 1 mg لكل مريض.',
     sourcePages: [54, 71],
     uses: ['عكس الحصار العصبي العضلي غير المستقطب بعد توفر درجة مناسبة من التعافي'],
@@ -405,6 +414,10 @@ export const DRUG_DETAILS: Record<string, DrugDetail> = {
     mechanism: 'مضاد تنافسي لمستقبلات الأفيونات | Competitive opioid receptor antagonist، مع أعلى ألفة وظيفية لمستقبل μ.',
     tradeNames: ['Narcan'],
     routes: ['وريدي | Intravenous', 'عضلي | Intramuscular', 'تحت الجلد | Subcutaneous', 'أنفي | Intranasal حسب المستحضر'],
+    educationalDoses: [
+      'لعكس التثبيط التنفسي بعد الأفيونات أثناء/بعد الجراحة: 0.1–0.2 mg IV على دفعات كل 2–3 دقائق وتُعاير للوصول إلى تهوية ووعي مناسبين من دون إلغاء التسكين أكثر من اللازم.',
+      'في الجرعة الأفيونية الزائدة المعروفة أو المشتبه بها لدى البالغ: 0.4–2 mg IV كجرعة أولية ويمكن التكرار كل 2–3 دقائق بحسب الاستجابة؛ تختلف الخطة حسب طريق الإعطاء ونوع الأفيون.'
+    ],
     uses: ['عكس التثبيط التنفسي الناتج عن الأفيونات | Reversal of opioid-induced respiratory depression', 'الاشتباه بجرعة أفيونية زائدة | Suspected opioid overdose'],
     contraindications: ['فرط التحسس للنالوكسون | Naloxone hypersensitivity'],
     warnings: ['قد يسبب انسحابًا أفيونيًا حادًا | Acute opioid withdrawal لدى المعتمدين على الأفيونات', 'قد يعود التثبيط التنفسي | Recurrent respiratory depression لأن مدة بعض الأفيونات أطول من النالوكسون؛ يلزم تكرار المراقبة والجرعات حسب الحالة'],
@@ -417,7 +430,12 @@ export const DRUG_DETAILS: Record<string, DrugDetail> = {
     mechanism: 'يُكوّن معقدًا مع جزيئات الروكورونيوم/الفيكورونيوم في البلازما | Encapsulation، فيخفض تركيزها الحر ويدفع الدواء بعيدًا عن الوصلة العصبية العضلية.',
     tradeNames: ['Bridion'],
     routes: ['وريدي | Intravenous (IV)'],
-    educationalDoses: ['الجرعة تعتمد على عمق الحصار العصبي العضلي | Depth of neuromuscular block وتُختار باستخدام TOF/PTC؛ لا تُعطى كجرعة ثابتة لكل المرضى.'],
+    educationalDoses: [
+      '2 mg/kg IV عند عودة الـT2 في TOF.',
+      '4 mg/kg IV عند وجود 1–2 PTC من دون twitch على TOF.',
+      '16 mg/kg IV للعكس الفوري في البالغ عند الحاجة بعد نحو 3 دقائق من Rocuronium 1.2 mg/kg؛ ليست جرعة روتينية.',
+      'تعتمد الجرعة على الوزن الفعلي وعمق الحصار المقاس بـTOF/PTC.'
+    ],
     uses: ['عكس الحصار العصبي العضلي الناتج عن Rocuronium أو Vecuronium | Reversal of rocuronium/vecuronium blockade'],
     contraindications: ['فرط التحسس للسوغاماديكس | Sugammadex hypersensitivity'],
     warnings: ['تأق | Anaphylaxis قد يحدث حتى دون تعرض سابق', 'بطء قلب شديد | Marked bradycardia ونادرًا توقف القلب | Cardiac arrest خلال دقائق من الإعطاء', 'يعتمد الإطراح على الكلى | Renal elimination؛ الاستخدام في القصور الكلوي الشديد يحتاج اتباع النشرة والبروتوكول المحلي'],
