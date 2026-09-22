@@ -24,10 +24,10 @@ function FluidList({
   tone: 'use' | 'caution';
 }) {
   const box = tone === 'use'
-    ? 'border-[#D7EAE7] bg-[#F0F8F7]'
+    ? 'border-[#DCE5EA] bg-[#F7F9FA]'
     : 'border-[#F0DDE1] bg-[#FFF5F6]';
-  const titleClass = tone === 'use' ? 'text-[#4E7D77]' : 'text-[#A05D68]';
-  const dot = tone === 'use' ? 'bg-[#6DA39C]' : 'bg-[#C47A86]';
+  const titleClass = tone === 'use' ? 'text-[#405E75]' : 'text-[#A05D68]';
+  const dot = tone === 'use' ? 'bg-[#5F7E95]' : 'bg-[#C47A86]';
 
   const body = (
     <div className="space-y-2">
@@ -43,9 +43,9 @@ function FluidList({
   return (
     <details className={'group rounded-2xl border px-3.5 py-3 ' + box}>
       <summary className="flex min-h-11 cursor-pointer list-none items-center justify-between gap-3">
-        <CaretDown size={15} weight="bold" className="text-[#708282] transition group-open:rotate-180" />
+        <CaretDown size={15} weight="bold" className="text-[#526F85] transition group-open:rotate-180" />
         <div className="flex items-center gap-2">
-          <span className="rounded-full bg-white/75 px-2 py-0.5 text-[9px] font-black text-[#647477]">{items.length}</span>
+          <span className="rounded-full bg-white/75 px-2 py-0.5 text-[9px] font-black text-[#5F7280]">{items.length}</span>
           <BilingualLabel label={title} className={'text-[10px] font-black ' + titleClass} />
         </div>
       </summary>
@@ -64,14 +64,14 @@ function FluidSheet({ item, onClose }: { item: IntravenousFluid; onClose: () => 
       onClick={onClose}
     >
       <motion.div
-        className="absolute inset-x-0 bottom-0 mx-auto max-h-[90vh] w-full max-w-3xl overflow-y-auto rounded-t-[28px] border-t border-[#D7EAE7] bg-white shadow-2xl"
+        className="absolute inset-x-0 bottom-0 mx-auto max-h-[90vh] w-full max-w-3xl overflow-y-auto rounded-t-[28px] border-t border-[#DCE5EA] bg-white shadow-2xl"
         initial={{ y: 38, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         exit={{ y: 32, opacity: 0 }}
         onClick={(event) => event.stopPropagation()}
       >
-        <div className="sticky top-0 z-10 border-b border-[#E1EEEC] bg-[#F0F8F7]/95 px-4 pb-3 pt-3 backdrop-blur-xl">
-          <div className="mx-auto mb-3 h-1 w-10 rounded-full bg-[#AAC9C4]" />
+        <div className="sticky top-0 z-10 border-b border-[#E3EAF0] bg-[#F7F9FA]/95 px-4 pb-3 pt-3 backdrop-blur-xl">
+          <div className="mx-auto mb-3 h-1 w-10 rounded-full bg-[#AFC0CC]" />
           <div className="flex items-start justify-between gap-3">
             <button
               onClick={onClose}
@@ -81,17 +81,17 @@ function FluidSheet({ item, onClose }: { item: IntravenousFluid; onClose: () => 
               <X size={17} weight="bold" />
             </button>
             <div className="flex-1 text-right">
-              <p className="text-[10px] font-black text-[#4E7D77]">{item.categoryAr}</p>
-              <h3 className="mt-0.5 text-lg font-black text-[#2F3C3B]">{item.nameAr}</h3>
-              <p className="mt-0.5 text-sm font-bold text-[#687876]" dir="ltr">{item.nameEn}</p>
+              <p className="text-[10px] font-black text-[#405E75]">{item.categoryAr}</p>
+              <h3 className="mt-0.5 text-lg font-black text-[#183149]">{item.nameAr}</h3>
+              <p className="mt-0.5 text-sm font-bold text-[#526675]" dir="ltr">{item.nameEn}</p>
             </div>
           </div>
         </div>
 
         <div className="space-y-3 px-4 pb-[max(1.75rem,env(safe-area-inset-bottom))] pt-4">
-          <section className="rounded-2xl border border-[#D7EAE7] bg-[#F7FBFA] px-3.5 py-3">
-            <BilingualLabel label="التركيب | Composition" className="text-[10px] font-black text-[#4E7D77]" />
-            <p className="mt-1.5 text-[12px] leading-6 text-[#455250]"><MixedDirectionText text={item.composition} /></p>
+          <section className="rounded-2xl border border-[#DCE5EA] bg-[#F8FAFB] px-3.5 py-3">
+            <BilingualLabel label="التركيب | Composition" className="text-[10px] font-black text-[#405E75]" />
+            <p className="mt-1.5 text-[12px] leading-6 text-[#465866]"><MixedDirectionText text={item.composition} /></p>
           </section>
 
           {item.clinicalNote && (
@@ -182,29 +182,29 @@ export function FluidsDirectory({ initialQuery = '' }: { initialQuery?: string }
             initial={{ opacity: 0, y: 5 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.12, delay: Math.min(index, 8) * 0.015 }}
-            className="w-full rounded-[18px] border border-[#D7EAE7] bg-[#F0F8F7] px-3.5 py-3 text-right active:bg-[#E8F4F2]"
+            className="w-full rounded-[18px] border border-[#DCE5EA] bg-[#F7F9FA] px-3.5 py-3 text-right active:bg-[#EEF3F6]"
           >
             <div className="flex items-start justify-between gap-3">
-              <span className="shrink-0 rounded-full bg-white/80 px-2.5 py-1 text-[9px] font-black text-[#4E7D77]">
+              <span className="shrink-0 rounded-full bg-white/80 px-2.5 py-1 text-[9px] font-black text-[#405E75]">
                 {item.categoryAr}
               </span>
               <div className="min-w-0 flex-1">
-                <h3 className="text-[13px] font-black text-[#2F3C3B]">{item.nameAr}</h3>
-                <p className="mt-0.5 truncate text-[10px] font-bold text-[#6B7B78]" dir="ltr">
+                <h3 className="text-[13px] font-black text-[#183149]">{item.nameAr}</h3>
+                <p className="mt-0.5 truncate text-[10px] font-bold text-[#526675]" dir="ltr">
                   {item.nameEn}
                 </p>
               </div>
             </div>
-            <div className="mt-2 flex items-center justify-between border-t border-[#D7E5E2] pt-2">
-              <span className="text-[9px] text-[#6B7D79]">تركيب • استخدام • محاذير</span>
-              <Drop size={15} weight="fill" className="text-[#4E7D77]" />
+            <div className="mt-2 flex items-center justify-between border-t border-[#DDE6EB] pt-2">
+              <span className="text-[9px] text-[#657784]">تركيب • استخدام • محاذير</span>
+              <Drop size={15} weight="fill" className="text-[#405E75]" />
             </div>
           </motion.button>
         ))}
       </div>
 
       {filtered.length === 0 && (
-        <div className="rounded-[18px] border border-dashed border-[#C6DCD8] bg-[#F7FBFA] p-7 text-center text-xs text-[#7C8D89]">
+        <div className="rounded-[18px] border border-dashed border-[#C9D6DF] bg-[#F8FAFB] p-7 text-center text-xs text-[#667A89]">
           ماكو سائل مطابق للبحث.
         </div>
       )}
