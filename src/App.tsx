@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { AnimatePresence, motion } from 'motion/react';
+import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
 import { BottomNav, type AppTab } from './components/BottomNav';
 import { FavoritesScreen } from './components/FavoritesScreen';
 import { GamesHub } from './components/GamesHub';
@@ -21,6 +21,7 @@ function loadFavorites() {
 }
 
 export default function App() {
+  const reduceMotion = useReducedMotion();
   const [activeTab, setActiveTab] = useState<AppTab>('home');
   const [guideSection, setGuideSection] = useState<GuideSection>('drugs');
   const [guideDrugClass, setGuideDrugClass] = useState<'all' | DrugClass>('all');
@@ -102,10 +103,10 @@ export default function App() {
         <AnimatePresence mode="wait" initial={false}>
           <motion.div
             key={activeTab + ':' + guideSection}
-            initial={{ opacity: 0, y: 6 }}
+            initial={reduceMotion ? false : { opacity: 0, y: 6 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -4 }}
-            transition={{ duration: 0.16 }}
+            exit={reduceMotion ? undefined : { opacity: 0, y: -4 }}
+            transition={{ duration: reduceMotion ? 0 : 0.16 }}
           >
             {screen}
           </motion.div>
