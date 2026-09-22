@@ -48,7 +48,6 @@ export default function App() {
   const [guideSection, setGuideSection] = useState<GuideSection>('drugs');
   const [guideDrugClass, setGuideDrugClass] = useState<'all' | DrugClass>('all');
   const [guideQuery, setGuideQuery] = useState('');
-  const [query, setQuery] = useState('');
   const [favorites, setFavorites] = useState<Set<string>>(() => loadFavorites());
   const [recentGuideItems, setRecentGuideItems] = useState<RecentGuideItem[]>(
     () => loadRecentGuideItems()
@@ -134,10 +133,7 @@ export default function App() {
   } else {
     screen = (
       <HomeScreen
-        query={query}
-        setQuery={setQuery}
         openGuide={openGuide}
-        goTo={handleTabChange}
         recentItems={recentGuideItems}
       />
     );
