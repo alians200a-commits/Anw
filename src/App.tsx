@@ -32,6 +32,9 @@ export default function App() {
   }, [favorites]);
 
   const handleTabChange = (tab: AppTab) => {
+    if (tab === 'guide' && activeTab !== 'guide') {
+      setGuideQuery('');
+    }
     setActiveTab(tab);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -39,6 +42,7 @@ export default function App() {
   const handleGuideSectionChange = (section: GuideSection) => {
     setGuideSection(section);
     setGuideQuery('');
+    if (section === 'drugs') setGuideDrugClass('all');
   };
 
   const openGuide = (
