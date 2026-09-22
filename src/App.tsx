@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { AnimatePresence, MotionConfig, motion, useReducedMotion } from 'motion/react';
+import { MotionConfig, motion, useReducedMotion } from 'motion/react';
 import { BottomNav, type AppTab } from './components/BottomNav';
 import { FavoritesScreen } from './components/FavoritesScreen';
 import { GamesHub } from './components/GamesHub';
@@ -101,17 +101,14 @@ export default function App() {
       <KingdomHeader />
 
       <main className="relative mx-auto w-full max-w-3xl px-4 pb-24 pt-4 sm:px-6 sm:pt-5">
-        <AnimatePresence mode="wait" initial={false}>
-          <motion.div
-            key={activeTab + ':' + guideSection}
-            initial={reduceMotion ? false : { opacity: 0, y: 6 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={reduceMotion ? undefined : { opacity: 0, y: -4 }}
-            transition={{ duration: reduceMotion ? 0 : 0.16 }}
-          >
-            {screen}
-          </motion.div>
-        </AnimatePresence>
+        <motion.div
+          key={activeTab}
+          initial={reduceMotion ? false : { opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: reduceMotion ? 0 : 0.1 }}
+        >
+          {screen}
+        </motion.div>
       </main>
 
         <BottomNav active={activeTab} onChange={handleTabChange} />
