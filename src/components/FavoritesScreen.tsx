@@ -8,10 +8,6 @@ import { DrugDetailSheet } from './DrugDetailSheet';
 import { BilingualLabel } from './BilingualLabel';
 import { MixedDirectionText } from './MixedDirectionText';
 import { AnimatedIcon } from './ui/AnimatedIcon';
-import {
-  DALEELI_ANIMATED_ASSETS,
-  RemoteAnimatedAssetIcon
-} from './ui/RemoteAnimatedAssetIcon';
 
 interface FavoritesScreenProps {
   favorites: Set<string>;
@@ -33,13 +29,7 @@ export function FavoritesScreen({ favorites, onToggleFavorite }: FavoritesScreen
       {drugs.length === 0 && terms.length === 0 ? (
         <div className="rounded-[28px] border border-dashed border-[#DCE4EA] bg-[#F8FAFB] p-8 text-center">
           <div className="mx-auto grid h-12 w-12 place-items-center rounded-2xl bg-[#315672]/10 text-[#315672]">
-            <RemoteAnimatedAssetIcon
-              src={DALEELI_ANIMATED_ASSETS.saved}
-              play
-              durationMs={900}
-              className="h-8 w-8"
-              fallback={<AnimatedIcon variant="pulse"><Heart size={20} /></AnimatedIcon>}
-            />
+            <AnimatedIcon variant="pulse"><Heart size={20} /></AnimatedIcon>
           </div>
           <h3 className="mt-4 font-black text-[#183149]">لم تحفظ أي عنصر بعد</h3>
           <p className="mt-2 text-xs leading-5 text-[#5F7280]">اضغط على رمز القلب في أي دواء أو مصطلح ليظهر هنا.</p>
