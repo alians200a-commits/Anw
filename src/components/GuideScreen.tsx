@@ -17,6 +17,7 @@ import {
   type StackMenuItem
 } from './ui/NotificationStackMenu';
 import type { DrugClass } from '../data/drugs';
+import { DALEELI_ANIMATED_ASSETS } from './ui/RemoteAnimatedAssetIcon';
 
 export type GuideSection =
   | 'drugs'
@@ -117,6 +118,7 @@ export function GuideScreen({
           title={sectionLabels[section]}
           description="اضغط لتغيير قسم الدليل"
           icon={<BookOpenText size={22} weight="bold" />}
+          animatedIconSrc={DALEELI_ANIMATED_ASSETS.guide}
           items={sectionItems}
           selectedId={section}
         />
