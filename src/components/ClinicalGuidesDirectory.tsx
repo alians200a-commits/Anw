@@ -83,6 +83,13 @@ function ClinicalGuideSheet({
             <p className="mt-1.5 text-[12px] leading-6 text-[#465149]">{guide.summary}</p>
           </section>
 
+          {guide.clinicalNote && (
+            <section className="rounded-2xl border border-[#E8DFC9] bg-[#FFF9EE] px-3.5 py-3">
+              <BilingualLabel label="ملاحظة سريرية | Clinical note" className="text-[10px] font-black text-[#8A6426]" />
+              <p className="mt-1.5 text-[11px] leading-5 text-[#5B5142]">{guide.clinicalNote}</p>
+            </section>
+          )}
+
           {guide.sections.map((section) => (
             <GuideItems key={section.title} title={section.title} items={section.items} />
           ))}
@@ -115,6 +122,7 @@ export function ClinicalGuidesDirectory({ initialQuery = '' }: { initialQuery?: 
           guide.titleEn,
           guide.categoryAr,
           guide.summary,
+          guide.clinicalNote ?? '',
           ...guide.sections.flatMap((section) => [section.title, ...section.items]),
           ...guide.tags
         ].some((value) => value.toLowerCase().includes(normalized));

@@ -21,6 +21,7 @@ export interface ClinicalGuide {
   summary: string;
   sections: ClinicalGuideSection[];
   correction?: string;
+  clinicalNote?: string;
   tags: string[];
 }
 
@@ -174,6 +175,7 @@ export const CLINICAL_GUIDES: ClinicalGuide[] = [
       }
     ],
     correction: 'الوصف التقليدي لـRSI تغيّر مع الممارسة الحديثة: منع التهوية بالقناع بصورة مطلقة، تطبيق الضغط الحلقي على الجميع، أو استخدام NG tube لكل مريض ليست قواعد ثابتة. الأساس هو تأمين مجرى الهواء بسرعة مع تقليل خطر aspiration ومنع hypoxia وhemodynamic instability.',
+    clinicalNote: 'RSI الحديثة تركز على تقليل زمن مجرى الهواء غير المحمي مع منع hypoxia وعدم الاستقرار. منع bag-mask ventilation أو تطبيق cricoid pressure أو إدخال NG tube ليست خطوات إلزامية لكل مريض.',
     tags: ['RSI','rapid sequence','cricoid','aspiration','preoxygenation','full stomach','not fasted','emergency surgery']
   },
   {
@@ -914,6 +916,7 @@ export const CLINICAL_GUIDES: ClinicalGuide[] = [
       }
     ],
     correction: 'في النسخة المعدلة الحديثة، درجة 9 أو أكثر من 10 تُستخدم عادةً كأحد معايير الجاهزية للخروج من Phase I PACU، وليس 8 كقاعدة عامة، مع بقاء الحكم السريري وبروتوكول المؤسسة ضروريين.',
+    clinicalNote: 'في الاستخدام الحديث تُستعمل درجة 9/10 أو أكثر غالبًا كجزء من الجاهزية للخروج من Phase I PACU، مع بقاء بروتوكول المؤسسة والحكم السريري ضروريين.',
     tags: ['Aldrete','PACU','recovery score','إفاقة']
   },
   {
@@ -955,6 +958,7 @@ export const CLINICAL_GUIDES: ClinicalGuide[] = [
       }
     ],
     correction: 'الفحص الحديث لا يقتصر على قائمة ثابتة عامة؛ يجب اتباع قائمة فحص الشركة/المؤسسة وعربة التخدير نفسها، مع فحص آلي ويدوي حسب الجهاز.',
+    clinicalNote: 'فحص ما قبل الحالة يجب أن يتبع عربة التخدير الموجودة فعليًا وتعليمات الشركة وقائمة المؤسسة، مع التأكد من مصدر الأوكسجين، التهوية، الدائرة، الشفط، المراقبة وأجهزة الإنقاذ.',
     tags: ['machine check','pre anesthesia check','OR checklist','جهاز التخدير','صالة العمليات']
   },
   {
@@ -1046,6 +1050,7 @@ export const CLINICAL_GUIDES: ClinicalGuide[] = [
       }
     ],
     correction: 'قاعدة “ECG لكل مريض فوق 40 سنة” وطلب البول/الأشعة/التحاليل بصورة روتينية ليست ممارسة حديثة. الفحوصات قبل الجراحة تُطلب انتقائيًا عندما قد تؤثر النتيجة في التدبير.',
+    clinicalNote: 'الفحوصات قبل العملية تُطلب بشكل انتقائي حسب التاريخ المرضي، الفحص، نوع العملية وما إذا كانت النتيجة ستغير التدبير؛ العمر وحده ليس سببًا كافيًا لطلب ECG أو تحاليل روتينية لكل مريض.',
     tags: ['preoperative assessment','preanesthesia','history','airway assessment','testing']
   },
   {
@@ -1136,6 +1141,7 @@ export const CLINICAL_GUIDES: ClinicalGuide[] = [
       }
     ],
     correction: '“30 mL/hour طبيعي للجميع” ليس هدفًا ثابتًا. إخراج البول يُفسر بالنسبة للوزن والسياق ومدة الجراحة، كما أن معالجة كل نقص عابر بإعطاء سوائل ليست مدعومة تلقائيًا.',
+    clinicalNote: 'إدرار البول لا يُفسر برقم ثابت مثل 30 mL/hour لكل بالغ، ولا يعالج كل انخفاض عابر بالسوائل تلقائيًا؛ يُفسر حسب الوزن، السياق، مدة الجراحة وحالة الدوران.',
     tags: ['monitoring','SpO2','EtCO2','ECG','blood pressure','temperature','urine output']
   },
   {
@@ -1324,6 +1330,7 @@ export const CLINICAL_GUIDES: ClinicalGuide[] = [
       }
     ],
     correction: 'الإدرار القسري | Forced diuresis ليس علاجًا روتينيًا لتأخر الإفاقة من أدوية التخدير. التدبير الصحيح هو دعم الوظائف الحيوية وتحديد السبب وعلاجه.',
+    clinicalNote: 'Forced diuresis ليس علاجًا روتينيًا لتأخر الإفاقة. الأولوية لدعم Airway/Breathing/Circulation ثم البحث المنظم عن الأسباب الدوائية، الاستقلابية، التنفسية والعصبية وعلاج السبب.',
     tags: ['delayed emergence','recovery','hypothermia','hypercapnia','تأخر الإفاقة']
   },
   {
@@ -1348,6 +1355,7 @@ export const CLINICAL_GUIDES: ClinicalGuide[] = [
       }
     ],
     correction: 'لا توجد مجموعة أرقام ثابتة مثل VT >6 mL/kg وRR 12–20 وSpO₂ >95% تصلح لكل المرضى. بعد استخدام المرخيات غير المزيلة للاستقطاب، الهدف الحديث هو TOF ratio ≥0.9 بقياس كمي قبل نزع الأنبوب. وعدد وحدات الدم المنقولة ليس معيارًا لنزع الأنبوب.',
+    clinicalNote: 'لا توجد مجموعة أرقام واحدة تكفي لكل المرضى قبل نزع الأنبوب. بعد المرخيات غير المزيلة للاستقطاب، القياس الكمي للحصار وTOF ratio ≥0.9 عنصر أمان مهم قبل extubation.',
     tags: ['extubation','TOF','neuromuscular recovery','airway reflexes','نزع الانبوب']
   },
   {

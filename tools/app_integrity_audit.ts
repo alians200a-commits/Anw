@@ -71,6 +71,23 @@ for (const id of detailIds) {
   if (!drugIds.has(id)) errors.push(`orphan DrugDetail "${id}"`);
 }
 
+const REVIEWED_STAGE_GUIDES = new Set([
+  'preoperative-assessment',
+  'anesthesia-room-check',
+  'premedication',
+  'anesthesia-induction',
+  'intravenous-induction',
+  'inhalational-induction',
+  'rapid-sequence-induction',
+  'anesthesia-maintenance',
+  'intraoperative-monitoring',
+  'unconscious-patient-care',
+  'anesthesia-recovery',
+  'modified-aldrete',
+  'extubation-readiness',
+  'delayed-emergence'
+]);
+
 // Clinical guides.
 const guideIds = new Set(CLINICAL_GUIDES.map((guide) => guide.id));
 for (const guide of CLINICAL_GUIDES) {
@@ -79,6 +96,9 @@ for (const guide of CLINICAL_GUIDES) {
   if (!nonEmpty(guide.summary)) errors.push(`guide "${guide.id}": empty summary`);
   if (!guide.sourcePages.length) errors.push(`guide "${guide.id}": missing internal sourcePages`);
   if (!guide.tags.length) errors.push(`guide "${guide.id}": no tags`);
+  if (REVIEWED_STAGE_GUIDES.has(guide.id) && guide.correction?.trim() && !nonEmpty(guide.clinicalNote)) {
+    errors.push(`clinical guide "${guide.id}": reviewed correction missing clinicalNote`);
+  }
   if (!guide.sections.length) errors.push(`guide "${guide.id}": no sections`);
 
   for (const section of guide.sections) {
@@ -275,6 +295,7 @@ if (errors.length) {
 console.log('App integrity audit passed.');
 console.log(`Drugs: ${ANESTHESIA_DRUGS.length}`);
 console.log(`Clinical guides: ${CLINICAL_GUIDES.length}`);
+console.log(`Reviewed stage guides: ${REVIEWED_STAGE_GUIDES.size}/${stageGuideRefs.size}`);
 console.log(`Stage guide references: ${stageGuideRefs.size}`);
 console.log(`Equipment: ${ANESTHESIA_EQUIPMENT.length}`);
 console.log(`Reviewed equipment: ${REVIEWED_EQUIPMENT.size}/${ANESTHESIA_EQUIPMENT.length}`);
