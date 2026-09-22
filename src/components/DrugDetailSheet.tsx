@@ -329,7 +329,7 @@ export function DrugDetailSheet({ drug, detail, onClose }: DrugDetailSheetProps)
           </section>
 
           {detail.clinicalNote && (
-            <section className="rounded-2xl border border-[#F0DFC2] bg-[#FFF9EE] px-3.5 py-3">
+            <section className="rounded-2xl border border-[#E8DFC9] bg-[#FFF9EE] px-3.5 py-3">
               <BilingualLabel label="ملاحظة سريرية | Clinical note" className="text-[10px] font-black text-[#8A6426]" />
               <p className="mt-1.5 text-[11px] leading-5 text-[#5B5142]">
                 <BilingualMedicalText text={detail.clinicalNote} />
