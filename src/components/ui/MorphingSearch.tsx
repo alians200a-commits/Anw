@@ -300,7 +300,7 @@ export function MorphingSearch({
                   {item.description ? (
                     <span
                       dir="auto"
-                      className="mt-0.5 block truncate text-[11px] font-medium text-[#657784]"
+                      className="mt-0.5 block truncate text-[11px] font-medium text-[#5F7280]"
                     >
                       {item.description}
                     </span>
