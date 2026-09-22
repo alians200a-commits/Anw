@@ -22,6 +22,10 @@ export function MedicalAnimatedIcon({
   const [failed, setFailed] = useState(false);
 
   useEffect(() => {
+    setFailed(false);
+  }, [src]);
+
+  useEffect(() => {
     if (!play || reduceMotion || failed) {
       setShowGif(false);
       return;
@@ -29,9 +33,13 @@ export function MedicalAnimatedIcon({
 
     setLoaded(false);
     setShowGif(true);
+  }, [play, reduceMotion, failed, src]);
+
+  useEffect(() => {
+    if (!showGif || !loaded) return;
     const timer = window.setTimeout(() => setShowGif(false), durationMs);
     return () => window.clearTimeout(timer);
-  }, [play, reduceMotion, failed, durationMs, src]);
+  }, [showGif, loaded, durationMs]);
 
   return (
     <span className={'relative inline-grid place-items-center ' + className}>
