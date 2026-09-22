@@ -29,9 +29,9 @@ interface DetailSectionProps {
 const toneMap = {
   use: {
     icon: Target,
-    title: 'text-[#47745C]',
-    dot: 'bg-[#6AA582]',
-    box: 'border-[#D8EADF] bg-[#F2F8F4]'
+    title: 'text-[#405E75]',
+    dot: 'bg-[#5F7E95]',
+    box: 'border-[#DCE5EA] bg-[#F7F9FA]'
   },
   contra: {
     icon: Prohibit,
@@ -47,9 +47,9 @@ const toneMap = {
   },
   effect: {
     icon: FirstAid,
-    title: 'text-[#586D8E]',
-    dot: 'bg-[#7890B5]',
-    box: 'border-[#DCE4F0] bg-[#F4F7FB]'
+    title: 'text-[#405E75]',
+    dot: 'bg-[#5F7E95]',
+    box: 'border-[#DCE5EA] bg-[#F7F9FA]'
   }
 } as const;
 
@@ -149,17 +149,17 @@ function BilingualToken({ arabic, english }: { arabic: string; english: string }
     <BilingualLabel
       label={`${arabic} | ${english}`}
       className="inline-flex align-baseline"
-      englishClassName="font-semibold text-[#6C4AA5]"
+      englishClassName="font-semibold text-[#315672]"
     />
   );
 }
 
-function ListBody({ items, dot = 'bg-[#8E79B4]' }: { items: string[]; dot?: string }) {
+function ListBody({ items, dot = 'bg-[#5F7E95]' }: { items: string[]; dot?: string }) {
   return (
     <div className="space-y-2">
       {items.map((item, index) => (
         <div key={index} className="flex items-start justify-end gap-2 text-right">
-          <p className="flex-1 text-[11px] leading-5 text-[#51495D]">
+          <p className="flex-1 text-[11px] leading-5 text-[#526675]">
             <BilingualMedicalText text={item} />
           </p>
           <span className={'mt-[8px] h-1.5 w-1.5 shrink-0 rounded-full ' + dot} />
@@ -186,10 +186,10 @@ function CollapsibleList({
 
   return (
     <details className={'group rounded-2xl border px-3.5 py-3 ' + className}>
-      <summary className="flex cursor-pointer list-none items-center justify-between gap-3">
-        <CaretDown size={15} weight="bold" className="text-[#7A688F] transition group-open:rotate-180" />
+      <summary className="flex min-h-11 cursor-pointer list-none items-center justify-between gap-3">
+        <CaretDown size={15} weight="bold" className="text-[#526F85] transition group-open:rotate-180" />
         <div className="flex items-center gap-2">
-          <span className="rounded-full bg-white/70 px-2 py-0.5 text-[9px] font-black text-[#6B5A78]">
+          <span className="rounded-full bg-white/70 px-2 py-0.5 text-[9px] font-black text-[#5F7280]">
             {items.length}
           </span>
           <BilingualLabel label={title} className={'text-[10px] font-black ' + titleClass} />
@@ -218,18 +218,18 @@ function ReferenceBlock({
       <CollapsibleList
         title={title}
         items={items}
-        className="border-[#E5DDF0] bg-[#F8F4FC]"
-        titleClass="text-[#61447F]"
-        dot="bg-[#8E6AB0]"
+        className="border-[#DCE5EA] bg-[#F7F9FA]"
+        titleClass="text-[#405E75]"
+        dot="bg-[#5F7E95]"
       />
     );
   }
 
   return (
-    <section className="rounded-2xl border border-[#E5DDF0] bg-[#F8F4FC] px-3.5 py-3">
-      <BilingualLabel label={title} className="text-[10px] font-black text-[#61447F]" />
+    <section className="rounded-2xl border border-[#DCE5EA] bg-[#F7F9FA] px-3.5 py-3">
+      <BilingualLabel label={title} className="text-[10px] font-black text-[#405E75]" />
       {text && (
-        <p className="mt-1.5 text-[11px] leading-5 text-[#51495D]">
+        <p className="mt-1.5 text-[11px] leading-5 text-[#526675]">
           <BilingualMedicalText text={text} />
         </p>
       )}
@@ -245,10 +245,10 @@ function DetailSection({ title, items, tone }: DetailSectionProps) {
 
   return (
     <details className={'group rounded-2xl border px-3.5 py-3 ' + config.box}>
-      <summary className="flex cursor-pointer list-none items-center justify-between gap-3">
-        <CaretDown size={15} weight="bold" className="text-[#7A688F] transition group-open:rotate-180" />
+      <summary className="flex min-h-11 cursor-pointer list-none items-center justify-between gap-3">
+        <CaretDown size={15} weight="bold" className="text-[#526F85] transition group-open:rotate-180" />
         <div className="flex items-center gap-2">
-          <span className="rounded-full bg-white/70 px-2 py-0.5 text-[9px] font-black text-[#6B5A78]">
+          <span className="rounded-full bg-white/70 px-2 py-0.5 text-[9px] font-black text-[#5F7280]">
             {items.length}
           </span>
           <BilingualLabel label={title} className={'text-[10px] font-black ' + config.title} />
@@ -273,35 +273,35 @@ export function DrugDetailSheet({ drug, detail, onClose }: DrugDetailSheetProps)
 
   return (
     <motion.div
-      className="fixed inset-0 z-[80] bg-[#2F2145]/35 backdrop-blur-[2px]"
+      className="fixed inset-0 z-[80] bg-[#0A2037]/42 backdrop-blur-[2px]"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       onClick={onClose}
     >
       <motion.div
-        className="absolute inset-x-0 bottom-0 mx-auto max-h-[90vh] w-full max-w-3xl overflow-y-auto rounded-t-[28px] border-t border-[#E2D5F1] bg-white shadow-2xl"
+        className="absolute inset-x-0 bottom-0 mx-auto max-h-[90vh] w-full max-w-3xl overflow-y-auto rounded-t-[28px] border-t border-[#DCE5EA] bg-white shadow-2xl"
         initial={{ y: 40, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         exit={{ y: 35, opacity: 0 }}
         transition={{ duration: 0.18 }}
         onClick={(event) => event.stopPropagation()}
       >
-        <div className="sticky top-0 z-10 border-b border-[#E9E2F1] bg-[#F7F1FB]/95 px-4 pb-3 pt-3 backdrop-blur-xl">
-          <div className="mx-auto mb-3 h-1 w-10 rounded-full bg-[#B9A5CF]" />
+        <div className="sticky top-0 z-10 border-b border-[#E3EAF0] bg-[#F5F8FA]/95 px-4 pb-3 pt-3 backdrop-blur-xl">
+          <div className="mx-auto mb-3 h-1 w-10 rounded-full bg-[#AFC0CC]" />
           <div className="flex items-start justify-between gap-3">
             <button
               onClick={onClose}
-              className="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-[#DED3EA] bg-white text-[#695A78]"
+              className="grid h-11 w-11 shrink-0 place-items-center rounded-full border border-[#D6E1EA] bg-white text-[#526675] outline-none focus-visible:ring-2 focus-visible:ring-[#CCA039]/55"
               aria-label="إغلاق"
             >
               <X size={17} weight="bold" />
             </button>
 
             <div className="flex-1 text-right">
-              <p className="text-[10px] font-black text-[#72519A]">{drug.categoryAr}</p>
-              <h3 className="mt-0.5 text-xl font-black text-[#30263F]">{drug.ar}</h3>
-              <p className="mt-0.5 text-sm font-bold text-[#655B70]" dir="ltr">{drug.en}</p>
+              <p className="text-[10px] font-black text-[#526F85]">{drug.categoryAr}</p>
+              <h3 className="mt-0.5 text-xl font-black text-[#183149]">{drug.ar}</h3>
+              <p className="mt-0.5 text-sm font-bold text-[#526675]" dir="ltr">{drug.en}</p>
             </div>
           </div>
 
@@ -309,7 +309,7 @@ export function DrugDetailSheet({ drug, detail, onClose }: DrugDetailSheetProps)
             {drug.classes.map((item) => (
               <span
                 key={item}
-                className="rounded-full border border-[#DECEE9] bg-white px-2.5 py-1 text-[9px] font-bold text-[#6C4AA5]"
+                className="rounded-full border border-[#D7E2E9] bg-white px-2.5 py-1 text-[9px] font-bold text-[#315672]"
               >
                 {DRUG_CLASS_LABELS[item]}
               </span>
@@ -318,18 +318,18 @@ export function DrugDetailSheet({ drug, detail, onClose }: DrugDetailSheetProps)
         </div>
 
         <div className="space-y-3 px-4 pb-[max(1.75rem,env(safe-area-inset-bottom))] pt-4">
-          <section className="rounded-2xl border border-[#E9DFF2] bg-[#FBF8FD] px-3.5 py-3">
+          <section className="rounded-2xl border border-[#DCE5EA] bg-[#F7F9FA] px-3.5 py-3">
             <div className="flex items-center justify-end gap-2">
-              <BilingualLabel label="ميزة الدواء | Key feature" className="text-[10px] font-black text-[#6C4AA5]" />
-              <Sparkle size={16} weight="fill" className="text-[#8C69B4]" />
+              <BilingualLabel label="ميزة الدواء | Key feature" className="text-[10px] font-black text-[#315672]" />
+              <Sparkle size={16} weight="fill" className="text-[#B58B2A]" />
             </div>
-            <p className="mt-1.5 text-[12px] leading-6 text-[#42384D]">
+            <p className="mt-1.5 text-[12px] leading-6 text-[#465866]">
               <BilingualMedicalText text={detail.feature} />
             </p>
           </section>
 
           {detail.clinicalNote && (
-            <section className="rounded-2xl border border-[#F0DFC2] bg-[#FFF9EE] px-3.5 py-3">
+            <section className="rounded-2xl border border-[#E8DFC9] bg-[#FFF9EE] px-3.5 py-3">
               <BilingualLabel label="ملاحظة سريرية | Clinical note" className="text-[10px] font-black text-[#8A6426]" />
               <p className="mt-1.5 text-[11px] leading-5 text-[#5B5142]">
                 <BilingualMedicalText text={detail.clinicalNote} />

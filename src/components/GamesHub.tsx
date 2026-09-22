@@ -1,7 +1,7 @@
 import { GameController } from '@phosphor-icons/react';
-import { Brain, Clock3, Layers3, Sparkles } from 'lucide-react';
+import { Brain, Clock3, Layers3 } from 'lucide-react';
 
-const games = [
+const learningModes = [
   {
     title: 'تحدّي 60 ثانية',
     subtitle: 'أسئلة سريعة ونقاط متتالية',
@@ -22,43 +22,60 @@ const games = [
 export function GamesHub() {
   return (
     <div className="space-y-4">
-      <section>
-        <p className="text-[10px] font-bold text-[#5D7897]">LEARN BY PLAYING</p>
-        <h2 className="mt-1 text-lg font-black text-[#2F3945]">ألعاب مملكة التخدير</h2>
-        <p className="mt-1.5 text-xs leading-5 text-[#75818C]">
-          هذه معاينة للألعاب اللي راح نركبها بعد تثبيت الواجهة.
-        </p>
+      <section className="rounded-[20px] border border-[#DCE5EA] bg-[#F8FAFB] px-4 py-4">
+        <div className="flex items-center justify-end gap-3 text-right">
+          <div className="min-w-0">
+            <p className="text-[10px] font-black text-[#7A8995]" dir="ltr">
+              LEARN & TEST
+            </p>
+            <h2 className="mt-1 text-lg font-black text-[#183149]">
+              تعلّم واختبر نفسك
+            </h2>
+            <p className="mt-1 text-[10px] font-semibold leading-5 text-[#657784]">
+              مساحة التحديات والأنشطة التعليمية في مملكة التخدير.
+            </p>
+          </div>
+          <div className="grid h-12 w-12 shrink-0 place-items-center rounded-[15px] border border-[#D7E2E9] bg-[#EEF3F6] text-[#315672]">
+            <GameController size={25} weight="bold" />
+          </div>
+        </div>
       </section>
 
-      <div className="space-y-2">
-        {games.map((game) => {
-          const Icon = game.icon;
+      <section className="space-y-2" aria-label="أنماط التعلّم">
+        {learningModes.map((mode) => {
+          const Icon = mode.icon;
+
           return (
             <div
-              key={game.title}
-              className="flex items-center justify-between rounded-[17px] border border-[#DCE7F0] bg-[#F2F7FB] p-3.5"
+              key={mode.title}
+              className="flex min-h-[70px] items-center gap-3 rounded-[18px] border border-[#DCE5EA] bg-white px-3.5 py-3"
             >
-              <span className="rounded-full border border-[#5D7897]/14 bg-[#5D7897]/7 px-2.5 py-1 text-[9px] font-bold text-[#5D7897]">
+              <span className="shrink-0 rounded-full border border-[#DCE5EA] bg-[#F8FAFB] px-2.5 py-1 text-[9px] font-black text-[#657784]">
                 قريباً
               </span>
-              <div className="flex items-center gap-3 text-right">
-                <div>
-                  <h3 className="text-sm font-black text-[#2F3945]">{game.title}</h3>
-                  <p className="mt-0.5 text-[10px] text-[#74828D]">{game.subtitle}</p>
+
+              <div className="min-w-0 flex flex-1 items-center justify-end gap-3 text-right">
+                <div className="min-w-0">
+                  <h3 className="text-[13px] font-black text-[#183149]">
+                    {mode.title}
+                  </h3>
+                  <p className="mt-0.5 text-[10px] font-semibold leading-5 text-[#657784]">
+                    {mode.subtitle}
+                  </p>
                 </div>
-                <div className="grid h-9 w-9 place-items-center rounded-xl bg-[#5D7897]/8 text-[#5D7897]">
-                  <Icon size={20} />
+
+                <div className="grid h-11 w-11 shrink-0 place-items-center rounded-[14px] border border-[#D7E2E9] bg-[#EEF3F6] text-[#315672]">
+                  <Icon size={21} />
                 </div>
               </div>
             </div>
           );
         })}
-      </div>
+      </section>
 
-      <div className="flex items-center gap-3 rounded-[16px] border border-[#DCE7F0] bg-[#F7FAFC] p-3.5">
-        <Sparkles className="h-[18px] w-[18px] shrink-0 text-[#5D7897]" />
-        <p className="text-[10px] leading-5 text-[#6E7A84]">الألعاب تظهر هنا عند تفعيلها.</p>
-      </div>
+      <p className="px-1 text-[9px] font-semibold leading-5 text-[#7A8995]">
+        ما راح تظهر أي أسئلة تجريبية هنا إلا بعد ربط بنك الأسئلة الفعلي.
+      </p>
     </div>
   );
 }
