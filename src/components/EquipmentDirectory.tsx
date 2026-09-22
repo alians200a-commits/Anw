@@ -10,6 +10,7 @@ import {
 import { BilingualLabel } from './BilingualLabel';
 import { MixedDirectionText } from './MixedDirectionText';
 import { useModalSheetA11y } from '../hooks/useModalSheetA11y';
+import { MEDICAL_ANIMATED_GIFS } from '../data/animatedMedicalIcons';
 import {
   NotificationStackMenu,
   type StackMenuItem
@@ -209,6 +210,11 @@ export function EquipmentDirectory({
         title={currentCategory}
         description="قسم عربة التخدير والمعدات"
         icon={<Wrench size={22} weight="bold" />}
+        animatedIconSrc={
+          category === 'gas-supply'
+            ? MEDICAL_ANIMATED_GIFS.oxygen
+            : MEDICAL_ANIMATED_GIFS.equipment
+        }
         items={categoryItems}
         selectedId={category}
       />
