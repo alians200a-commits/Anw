@@ -92,7 +92,7 @@ export function NotificationStackMenu({
       >
         {icon ? (
           <span className="grid h-10 w-10 shrink-0 place-items-center rounded-[12px] bg-[#EEF3F6] text-[#315672]">
-            <AnimatedIcon active={expanded} ambient={expanded} variant="lift">
+            <AnimatedIcon active={expanded} variant="lift">
               {icon}
             </AnimatedIcon>
           </span>
