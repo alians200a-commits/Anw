@@ -92,7 +92,7 @@ function EquipmentSheet({
           </div>
         </div>
 
-        <div className="space-y-3 px-4 pb-7 pt-4">
+        <div className="space-y-3 px-4 pb-[max(1.75rem,env(safe-area-inset-bottom))] pt-4">
           <section className="rounded-2xl border border-[#DCE7F0] bg-[#F8FBFD] px-3.5 py-3">
             <p className="text-[10px] font-black text-[#567594]">ما هو؟ | What is it?</p>
             <p className="mt-1.5 text-[12px] leading-6 text-[#44505B]">{item.summary}</p>
@@ -101,9 +101,10 @@ function EquipmentSheet({
           <SoftList title="الوظيفة | Purpose" items={item.purpose} tone="green" />
           <SoftList title="نقاط مهمة | Key points" items={item.keyPoints} tone="blue" />
 
-          <p className="border-t border-[#E8EEF3] pt-3 text-center text-[9px] text-[#84919C]">
-            من المصدر المرفوع: الصفحات {item.sourcePages.join('، ')}
-          </p>
+          <div className="border-t border-[#E8EEF3] pt-3 text-center text-[9px] leading-4 text-[#84919C]">
+            <p>المصدر | Source: مبادئ التخدير</p>
+            <p className="mt-1">صفحات المصدر | Source pages: {item.sourcePages.join('، ')}</p>
+          </div>
         </div>
       </motion.div>
     </motion.div>

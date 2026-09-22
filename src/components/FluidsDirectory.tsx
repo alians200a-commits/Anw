@@ -82,7 +82,7 @@ function FluidSheet({ item, onClose }: { item: IntravenousFluid; onClose: () => 
           </div>
         </div>
 
-        <div className="space-y-3 px-4 pb-7 pt-4">
+        <div className="space-y-3 px-4 pb-[max(1.75rem,env(safe-area-inset-bottom))] pt-4">
           <section className="rounded-2xl border border-[#D7EAE7] bg-[#F7FBFA] px-3.5 py-3">
             <p className="text-[10px] font-black text-[#4E7D77]">التركيب | Composition</p>
             <p className="mt-1.5 text-[12px] leading-6 text-[#455250]">{item.composition}</p>
@@ -91,9 +91,10 @@ function FluidSheet({ item, onClose }: { item: IntravenousFluid; onClose: () => 
           <FluidList title="الدور والاستخدام | Role" items={item.role} tone="use" />
           <FluidList title="محاذير | Cautions" items={item.cautions} tone="caution" />
 
-          <p className="border-t border-[#E4ECEA] pt-3 text-center text-[9px] text-[#84918F]">
-            صفحات المصدر | Source pages: {item.sourcePages.join('، ')}
-          </p>
+          <div className="border-t border-[#E4ECEA] pt-3 text-center text-[9px] leading-4 text-[#84918F]">
+            <p>المصدر | Source: مبادئ التخدير</p>
+            <p className="mt-1">صفحات المصدر | Source pages: {item.sourcePages.join('، ')}</p>
+          </div>
         </div>
       </motion.div>
     </motion.div>

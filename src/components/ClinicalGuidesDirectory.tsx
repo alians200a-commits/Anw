@@ -76,7 +76,7 @@ function ClinicalGuideSheet({
           </div>
         </div>
 
-        <div className="space-y-3 px-4 pb-7 pt-4">
+        <div className="space-y-3 px-4 pb-[max(1.75rem,env(safe-area-inset-bottom))] pt-4">
           <section className="rounded-2xl border border-[#DDEBE1] bg-[#F8FBF9] px-3.5 py-3">
             <p className="text-[10px] font-black text-[#4F765F]">الخلاصة | Summary</p>
             <p className="mt-1.5 text-[12px] leading-6 text-[#465149]">{guide.summary}</p>

@@ -309,7 +309,7 @@ export function DrugDetailSheet({ drug, detail, onClose }: DrugDetailSheetProps)
           </div>
         </div>
 
-        <div className="space-y-3 px-4 pb-7 pt-4">
+        <div className="space-y-3 px-4 pb-[max(1.75rem,env(safe-area-inset-bottom))] pt-4">
           <section className="rounded-2xl border border-[#E9DFF2] bg-[#FBF8FD] px-3.5 py-3">
             <div className="flex items-center justify-end gap-2">
               <span className="text-[10px] font-black text-[#6C4AA5]">ميزة الدواء</span>
