@@ -12,6 +12,9 @@
 - Clinical terms: 221
 - TypeScript: PASS
 - Content audit: PASS
+- Drug integrity audit: PASS — 63/63 reviewed, 63/63 onset/duration, 63/63 clinical notes
+- App integrity audit: PASS
+- Term integrity audit: PASS — 221 terms/abbreviations
 - Build: PASS
 
 ## Principles of Anesthesia
@@ -84,7 +87,11 @@ Static code-path and CI QA completed on 2026-09-22:
 - Source metadata remains available internally but is intentionally hidden from the user-facing UI: PASS.
 - Locked header geometry/branding was not changed: PASS.
 - Forbidden visible terms search: 0 matches for `تحريض`, `محطة التخدير`, `محطات التخدير`, and `Anesthesia Workstation`.
-- Latest code verification after UI fixes: TypeScript + Content Audit + Build = PASS.
+- Latest strict verification: TypeScript + Content Audit + Drug Integrity Audit + App Integrity Audit + Term Integrity Audit + Build = PASS.
+- Clinical guides reviewed: 52/52.
+- Equipment reviewed: 32/32.
+- Fluids reviewed: 8/8.
+- Drugs reviewed: 63/63.
 
 Latest verified UI code commit: `db1374bceda435978667bcd2a77b43909f913bd3`.
 
