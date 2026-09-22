@@ -202,6 +202,7 @@ export function ClinicalGuidesDirectory({
         description="تصنيف المفاهيم والإجراءات"
         icon={<BookOpenText size={22} weight="bold" />}
         items={categoryItems}
+        selectedId={category}
       />
 
       <div className="space-y-2">
