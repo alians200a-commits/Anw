@@ -79,7 +79,7 @@ export function DrugDirectory({
     id: item.id,
     title: item.label,
     description: item.id === 'all' ? 'جميع الأدوية' : 'تصفية حسب هذا التصنيف',
-    leading: <MedicalSiteIcon name="drugs" size={24} />,
+    leading: <MedicalSiteIcon name="drugs" play size={24} />,
     onSelect: () => setClassification(item.id as 'all' | DrugClass)
   }));
 
@@ -104,7 +104,7 @@ export function DrugDirectory({
       <NotificationStackMenu
         title={currentFilter}
         description="تصنيف الأدوية"
-        icon={<MedicalSiteIcon name="drugs" size={27} />}
+        icon={<MedicalSiteIcon name="drugs" play size={27} />}
         items={filterItems}
         selectedId={classification}
       />
