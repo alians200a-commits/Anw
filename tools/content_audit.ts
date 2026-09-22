@@ -33,6 +33,22 @@ function walkStrings(value: unknown, visit: (text: string) => void): void {
   }
 }
 
+const arabicPattern = /[\u0600-\u06FF]/;
+const latinPattern = /[A-Za-z]/;
+
+function checkBilingualTitle(label: string, context: string) {
+  if (!label.includes('|')) return;
+
+  const [first, ...rest] = label.split('|').map((part) => part.trim());
+  const second = rest.join(' | ').trim();
+
+  if (!arabicPattern.test(first) || !latinPattern.test(second)) {
+    errors.push(
+      `${context}: bilingual title must be stored as "العربي | English", got "${label}"`
+    );
+  }
+}
+
 checkUnique('drugs', ANESTHESIA_DRUGS);
 checkUnique('clinical guides', CLINICAL_GUIDES);
 checkUnique('equipment', ANESTHESIA_EQUIPMENT);
@@ -62,6 +78,15 @@ for (const id of drugIds) {
   if (sourceRequiresDose && !detail.educationalDoses?.length) {
     errors.push(`drug "${id}" is sourced from an anesthesia/emergency drug file but has no educationalDoses`);
   }
+
+  const routeText = (detail.routes ?? []).join(' ').toLowerCase();
+  const hasIvRoute = /وريدي|intravenous|\biv\b/.test(routeText);
+  const hasNonIvRoute = /استنشاق|inhal|فموي|oral|عضلي|intramuscular|im\b|موضعي|topical|neuraxial|epidural|spinal/.test(routeText);
+  const featureLooksInhalational = /عامل\s+استنشاقي|inhalational\s+anesthetic|inhaled\s+anesthetic/.test(detail.feature.toLowerCase());
+
+  if (hasIvRoute && !hasNonIvRoute && featureLooksInhalational) {
+    errors.push(`drug "${id}" is IV-only but its feature describes it as inhalational`);
+  }
 }
 
 for (const id of detailIds) {
@@ -89,6 +114,7 @@ for (const guide of CLINICAL_GUIDES) {
   if (!guide.sections.length) errors.push(`clinical guide "${guide.id}" has no sections`);
   for (const section of guide.sections) {
     if (!section.title.trim()) errors.push(`clinical guide "${guide.id}" has a section with empty title`);
+    checkBilingualTitle(section.title, `clinical guide "${guide.id}" section title`);
     if (!section.items.length) errors.push(`clinical guide "${guide.id}" section "${section.title}" has no items`);
   }
 }
