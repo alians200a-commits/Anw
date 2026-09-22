@@ -355,6 +355,14 @@ export const CLINICAL_GUIDES: ClinicalGuide[] = [
           'يجب أن يكون المريض متيقظًا أو مستجيبًا بصورة مناسبة، مع تهوية وأكسجة ودورة دموية مستقرة.',
           'يمكن استخدام Modified Aldrete Score كجزء من قرار الخروج من Phase I PACU مع الحكم السريري وبروتوكول المؤسسة.'
         ]
+      },
+      {
+        title: 'المتابعة بعد العملية | Postoperative follow-up',
+        items: [
+          'تقييم وعلاج ألم ما بعد العملية | Postoperative pain.',
+          'مراقبة أي مشكلة مرتبطة بالتخدير خلال فترة ما بعد العملية بحسب الحالة وبروتوكول المؤسسة.',
+          'استمرار تقييم مجرى الهواء والتنفس والدورة الدموية والغثيان والقيء قبل الانتقال أو الخروج.'
+        ]
       }
     ],
     tags: ['recovery','PACU','emergence','extubation','monitoring','TOF','Aldrete']
@@ -792,14 +800,14 @@ export const CLINICAL_GUIDES: ClinicalGuide[] = [
   {
     id: 'anesthesia-room-check',
     titleAr: 'فحص صالة وعربة التخدير قبل الحالة',
-    titleEn: 'Pre-Anesthesia Room / Workstation Check',
+    titleEn: 'Pre-Anesthesia Room / Machine Check',
     category: 'general',
     categoryAr: 'التخدير العام',
     sourcePages: [77],
     summary: 'فحص منظم قبل بدء التخدير للتأكد من مصادر الغازات، عربة التخدير، مجرى الهواء، الشفط، المراقبة، الأدوية وخطة الطوارئ.',
     sections: [
       {
-        title: 'المحطة والغازات | Workstation & gases',
+        title: 'عربة التخدير والغازات | Anesthesia Machine & gases',
         items: [
           'تشغيل وفحص عربة التخدير | Anesthesia Machine check.',
           'التحقق من مصدر الأوكسجين والغازات | Oxygen / medical gas supply.',
@@ -870,8 +878,17 @@ export const CLINICAL_GUIDES: ClinicalGuide[] = [
     category: 'general',
     categoryAr: 'التخدير العام',
     sourcePages: [79,80],
-    summary: 'تقييم منظم للتاريخ المرضي والفحص ومجرى الهواء والأدوية والمخاطر، ثم طلب الفحوصات التي ستغيّر الخطة فعليًا.',
+    summary: 'تقييم منظم قبل التخدير لتحديد مدى جاهزية المريض للعملية، بناء علاقة مهنية مطمئنة، كشف عوامل الخطورة ووضع خطة التخدير والفحوصات المناسبة.',
     sections: [
+      {
+        title: 'أهداف التقييم | Goals',
+        items: [
+          'تطوير علاقة مهنية بين المريض وفريق التخدير تساعد على الطمأنة والتحضير النفسي.',
+          'تقدير ملاءمة المريض للعملية والتخدير | Fitness for surgery and anesthesia.',
+          'كشف الأمراض والعوامل التي قد تغير خطة التخدير أو تحتاج تحضيرًا إضافيًا.',
+          'تحديد خطة التخدير والمراقبة والأدوية المطلوبة بصورة مسبقة.'
+        ]
+      },
       {
         title: 'التاريخ المرضي | History',
         items: [
