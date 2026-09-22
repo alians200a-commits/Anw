@@ -91,6 +91,10 @@ export const DRUG_DETAILS: Record<string, DrugDetail> = {
     mechanism: 'عامل متطاير متعدد الأهداف يعزز النقل المثبط ويؤثر في قنوات أيونية متعددة | Multi-target volatile anesthetic actions.',
     tradeNames: ['Sevoflurane', 'Ultane'],
     routes: ['استنشاقي | Inhalational'],
+    educationalDoses: [
+      'ملف كتابة أدوية التخدير يذكر MAC تقريبيًا 2.1% لـSevoflurane؛ هذه قيمة مرجعية لقوة العامل وليست جرعة ثابتة لكل مريض.',
+      'التركيز المستنشق/الزفيري يُعاير حسب العمر، بقية الأدوية، الاستجابة السريرية والمراقبة بدل اعتماد نسبة واحدة ثابتة.'
+    ],
     onsetDuration: ['قليل الذوبان نسبيًا في الدم لذلك يسمح ببدء التخدير بسرعة عادة خلال دقائق والإفاقة بسرعة نسبيًا | Low blood-gas solubility.', 'تهييج مجرى الهواء والسعال أقل من Desflurane وIsoflurane، ما يجعله مناسبًا أكثر للـMask induction.'],
     sourcePages: [11, 58, 71],
     sourceLabel: 'مبادئ التخدير + ملف كتابة أدوية التخدير',
@@ -104,6 +108,10 @@ export const DRUG_DETAILS: Record<string, DrugDetail> = {
     mechanism: 'عامل تخدير متطاير متعدد الأهداف في الجهاز العصبي المركزي | Multi-target volatile anesthetic.',
     tradeNames: ['Forane'],
     routes: ['استنشاقي | Inhalational'],
+    educationalDoses: [
+      'جدول مبادئ التخدير يذكر Isoflurane بمرجع MAC يقارب 1.2% للبالغ؛ MAC مقياس قوة وليس “جرعة” ثابتة لكل مريض.',
+      'يُعاير التركيز المستنشق/الزفيري حسب العمر والحالة والأدوية المصاحبة والاستجابة، ويُستخدم Isoflurane غالبًا للإدامة أكثر من البدء بالقناع.'
+    ],
     onsetDuration: ['أبطأ نسبيًا من Sevoflurane وDesflurane في تغيير العمق بسبب ذوبانية أعلى في الدم | Higher blood-gas solubility.'],
     correction: 'يُستخدم أساسًا للمحافظة على التخدير وليس لبدء التخدير بالقناع بسبب الرائحة اللاذعة وتهييج مجرى الهواء.',
     sourcePages: [11, 57, 71],
