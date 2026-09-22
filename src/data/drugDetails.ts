@@ -16,7 +16,7 @@ export interface DrugDetail {
 
 export const DRUG_DETAILS: Record<string, DrugDetail> = {
   propofol: {
-    feature: 'بدء سريع واستيقاظ سريع نسبيًا، مع تأثير مضاد للغثيان مقارنةً بكثير من عوامل التخدير الاستنشاقية.',
+    feature: 'عامل تخدير وريدي سريع البدء وقصير المفعول نسبيًا، مع إفاقة سريعة وتأثير معروف بتقليل الغثيان والقيء بعد العملية.',
     mechanism: 'يعزز النقل المثبط عبر مستقبلات GABA-A | GABA-A receptor positive allosteric modulation، ما يؤدي إلى التنويم وفقدان الوعي.',
     tradeNames: ['Diprivan'],
     routes: ['وريدي | Intravenous (IV)'],
