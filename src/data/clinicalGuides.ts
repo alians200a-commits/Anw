@@ -1708,14 +1708,54 @@ export const CLINICAL_GUIDES: ClinicalGuide[] = [
     tags: ['mechanism','Meyer Overton','GABA','NMDA','general anesthesia']
   },
   {
+    id: 'minimum-alveolar-concentration',
+    titleAr: 'الحد الأدنى للتركيز السنخي',
+    titleEn: 'Minimum Alveolar Concentration (MAC)',
+    category: 'pharmacology',
+    categoryAr: 'علم الأدوية',
+    sourcePages: [14],
+    summary: 'MAC هو التركيز السنخي لنهاية الزفير من مخدر استنشاقي الذي يمنع الحركة استجابةً لمنبه جراحي قياسي في 50% من المرضى؛ وهو مقياس لقوة العامل وليس “عمق تخدير كامل” بمفرده.',
+    sections: [
+      {
+        title: 'قيم مرجعية عند عمر 40 سنة | Reference MAC at age 40',
+        items: [
+          'Halothane ≈ 0.75%.',
+          'Isoflurane ≈ 1.17%.',
+          'Enflurane ≈ 1.63%.',
+          'Sevoflurane ≈ 1.80%.',
+          'Desflurane ≈ 6.6%.',
+          'Nitrous oxide ≈ 104%؛ لذلك لا يمكن تحقيق 1 MAC من N₂O وحده عند الضغط الجوي الطبيعي.'
+        ]
+      },
+      {
+        title: 'تأثير العمر | Effect of age',
+        items: [
+          'بعد السنة الأولى تقريبًا تنخفض متطلبات MAC تدريجيًا مع التقدم بالعمر.',
+          'القيم المرجعية ليست رقمًا ثابتًا لكل مريض؛ العمر والحرارة والأدوية المصاحبة والحالة الفيزيولوجية تؤثر في المتطلب.',
+          'يُفسر End-tidal agent concentration مع العمر والسياق السريري وبقية علامات التخدير.'
+        ]
+      }
+    ],
+    tags: ['MAC','minimum alveolar concentration','volatile anesthetic','sevoflurane','isoflurane','desflurane']
+  },
+
+  {
     id: 'respiratory-muscle-mechanics',
     titleAr: 'عضلات وميكانيكية التنفس',
     titleEn: 'Respiratory Muscles and Mechanics',
     category: 'general',
     categoryAr: 'التخدير العام',
-    sourcePages: [6],
-    summary: 'الشهيق الهادئ | Quiet inspiration عملية فعالة يقودها الحجاب الحاجز، بينما الزفير الهادئ | Quiet expiration يحدث غالبًا بالارتداد المرن السلبي.',
+    sourcePages: [5,6],
+    summary: 'التنفس يشمل تبادل الغازات بين الجسم والبيئة وبين الدم والأنسجة، بينما التهوية | Ventilation هي حركة الهواء إلى داخل الرئتين وخارجهما.',
     sections: [
+      {
+        title: 'مفاهيم أساسية | Basic concepts',
+        items: [
+          'التنفس الخارجي | External respiration: امتصاص O₂ من الرئتين وطرح CO₂ من الجسم عبر تبادل الغازات الرئوي.',
+          'التنفس الداخلي | Internal respiration: استعمال الأنسجة للأوكسجين وإنتاج CO₂ مع تبادل الغازات بين الدم والأنسجة.',
+          'التهوية | Ventilation: حركة الغاز إلى داخل الرئتين وخارجهما، وهي عملية مختلفة عن تبادل الغازات نفسه.'
+        ]
+      },
       {
         title: 'الشهيق | Inspiration',
         items: [
