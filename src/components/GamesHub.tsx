@@ -6,10 +6,7 @@ export function GamesHub() {
       <section className="rounded-[20px] border border-[#DCE5EA] bg-[#F8FAFB] px-4 py-4">
         <div className="flex items-center justify-end gap-3 text-right">
           <div className="min-w-0 flex-1">
-            <p className="text-[10px] font-black text-[#7A8995]" dir="ltr">
-              LEARN & TEST
-            </p>
-            <h2 className="mt-1 text-lg font-black text-[#183149]">
+            <h2 className="text-lg font-black text-[#183149]">
               تعلّم واختبر نفسك
             </h2>
             <p className="mt-1 text-[10px] font-semibold leading-5 text-[#657784]">
