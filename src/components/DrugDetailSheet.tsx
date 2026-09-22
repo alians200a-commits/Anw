@@ -11,6 +11,7 @@ import {
 } from '@phosphor-icons/react';
 import { DRUG_CLASS_LABELS, type AnesthesiaDrug } from '../data/drugs';
 import type { DrugDetail } from '../data/drugDetails';
+import { BilingualLabel } from './BilingualLabel';
 
 interface DrugDetailSheetProps {
   drug: AnesthesiaDrug;
@@ -139,10 +140,11 @@ function BilingualMedicalText({ text }: { text: string }) {
 
 function BilingualToken({ arabic, english }: { arabic: string; english: string }) {
   return (
-    <span>
-      {arabic}
-      <span dir="ltr" className="font-semibold text-[#6C4AA5]"> | {english}</span>
-    </span>
+    <BilingualLabel
+      label={`${arabic} | ${english}`}
+      className="inline-flex align-baseline"
+      englishClassName="font-semibold text-[#6C4AA5]"
+    />
   );
 }
 
@@ -184,7 +186,7 @@ function CollapsibleList({
           <span className="rounded-full bg-white/70 px-2 py-0.5 text-[9px] font-black text-[#6B5A78]">
             {items.length}
           </span>
-          <span className={'text-[10px] font-black ' + titleClass}>{title}</span>
+          <BilingualLabel label={title} className={'text-[10px] font-black ' + titleClass} />
         </div>
       </summary>
       <div className="mt-3 border-t border-black/[0.05] pt-3">
@@ -219,7 +221,7 @@ function ReferenceBlock({
 
   return (
     <section className="rounded-2xl border border-[#E5DDF0] bg-[#F8F4FC] px-3.5 py-3">
-      <p className="text-[10px] font-black text-[#61447F]">{title}</p>
+      <BilingualLabel label={title} className="text-[10px] font-black text-[#61447F]" />
       {text && (
         <p className="mt-1.5 text-[11px] leading-5 text-[#51495D]">
           <BilingualMedicalText text={text} />
@@ -243,7 +245,7 @@ function DetailSection({ title, items, tone }: DetailSectionProps) {
           <span className="rounded-full bg-white/70 px-2 py-0.5 text-[9px] font-black text-[#6B5A78]">
             {items.length}
           </span>
-          <h4 className={'text-[10px] font-black ' + config.title}>{title}</h4>
+          <BilingualLabel label={title} className={'text-[10px] font-black ' + config.title} />
           <Icon size={16} weight="bold" className={config.title} />
         </div>
       </summary>
@@ -312,7 +314,7 @@ export function DrugDetailSheet({ drug, detail, onClose }: DrugDetailSheetProps)
         <div className="space-y-3 px-4 pb-[max(1.75rem,env(safe-area-inset-bottom))] pt-4">
           <section className="rounded-2xl border border-[#E9DFF2] bg-[#FBF8FD] px-3.5 py-3">
             <div className="flex items-center justify-end gap-2">
-              <span className="text-[10px] font-black text-[#6C4AA5]">ميزة الدواء</span>
+              <BilingualLabel label="ميزة الدواء | Key feature" className="text-[10px] font-black text-[#6C4AA5]" />
               <Sparkle size={16} weight="fill" className="text-[#8C69B4]" />
             </div>
             <p className="mt-1.5 text-[12px] leading-6 text-[#42384D]">
@@ -320,16 +322,15 @@ export function DrugDetailSheet({ drug, detail, onClose }: DrugDetailSheetProps)
             </p>
           </section>
 
+          <DetailSection title="الاستخدامات | Uses" items={detail.uses} tone="use" />
           <ReferenceBlock title="آلية العمل | Mechanism" text={detail.mechanism} />
-          <ReferenceBlock title="الأسماء التجارية | Trade names" items={detail.tradeNames} />
           <ReferenceBlock title="طرق الإعطاء | Routes" items={detail.routes} />
-          <ReferenceBlock title="جرعات مرجعية تعليمية | Educational reference doses" items={detail.educationalDoses} />
-          <ReferenceBlock title="بداية ومدة التأثير | Onset / duration" items={detail.onsetDuration} />
-
-          <DetailSection title="غرض الاستعمال | Uses" items={detail.uses} tone="use" />
+          <ReferenceBlock title="الجرعات المرجعية | Reference doses" items={detail.educationalDoses} />
+          <ReferenceBlock title="بداية ومدة التأثير | Onset & duration" items={detail.onsetDuration} />
           <DetailSection title="موانع الاستعمال | Contraindications" items={detail.contraindications} tone="contra" />
-          <DetailSection title="تحذيرات واحتياطات | Warnings" items={detail.warnings} tone="warning" />
-          <DetailSection title="آثار جانبية مهمة | Important adverse effects" items={detail.adverseEffects} tone="effect" />
+          <DetailSection title="التحذيرات | Warnings" items={detail.warnings} tone="warning" />
+          <DetailSection title="الآثار الجانبية | Adverse effects" items={detail.adverseEffects} tone="effect" />
+          <ReferenceBlock title="الأسماء التجارية | Trade names" items={detail.tradeNames} />
 
         </div>
       </motion.div>
