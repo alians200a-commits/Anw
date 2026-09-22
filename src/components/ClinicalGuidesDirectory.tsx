@@ -118,6 +118,21 @@ export function ClinicalGuidesDirectory({
 
   useEffect(() => {
     setQuery(initialQuery);
+
+    const normalized = initialQuery.trim().toLowerCase();
+    if (!normalized) {
+      setSelected(null);
+      return;
+    }
+
+    const exact = CLINICAL_GUIDES.find(
+      (guide) =>
+        !ANESTHESIA_STAGE_GUIDE_IDS.has(guide.id) &&
+        (guide.titleEn.toLowerCase() === normalized ||
+          guide.titleAr.toLowerCase() === normalized)
+    );
+
+    if (exact) setSelected(exact);
   }, [initialQuery]);
 
   const currentCategory =
