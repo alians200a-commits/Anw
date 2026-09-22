@@ -235,7 +235,7 @@ export function AnesthesiaStagesDirectory({
     <div className="space-y-3">
       <section className="px-1 text-right">
         <h2 className="text-base font-black text-[#183149]">مراحل التخدير</h2>
-        <p className="mt-1 text-[11px] font-semibold text-[#657784]" dir="ltr">
+        <p className="mt-1 text-[11px] font-semibold text-[#5F7280]" dir="ltr">
           Stages of Anesthesia
         </p>
       </section>
