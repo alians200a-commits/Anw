@@ -26,14 +26,14 @@ function FluidList({
   const box = tone === 'use'
     ? 'border-[#DCE5EA] bg-[#F7F9FA]'
     : 'border-[#F0DDE1] bg-[#FFF5F6]';
-  const titleClass = tone === 'use' ? 'text-[#405E75]' : 'text-[#A05D68]';
-  const dot = tone === 'use' ? 'bg-[#5F7E95]' : 'bg-[#C47A86]';
+  const titleClass = tone === 'use' ? 'text-[#405E75]' : 'text-[#A15C68]';
+  const dot = tone === 'use' ? 'bg-[#5F7E95]' : 'bg-[#C77A88]';
 
   const body = (
     <div className="space-y-2">
       {items.map((text, index) => (
         <div key={index} className="flex items-start justify-end gap-2">
-          <p className="flex-1 text-right text-[11px] leading-5 text-[#4E575B]">{text}</p>
+          <p className="flex-1 text-right text-[11px] leading-5 text-[#526675]">{text}</p>
           <span className={'mt-2 h-1.5 w-1.5 shrink-0 rounded-full ' + dot} />
         </div>
       ))}
