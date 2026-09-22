@@ -1,4 +1,4 @@
-import { useId, useRef, useState, type ReactNode } from 'react';
+import { useEffect, useId, useRef, useState, type ReactNode } from 'react';
 import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
 import { CaretDown, Check } from '@phosphor-icons/react';
 import { AnimatedIcon } from './AnimatedIcon';
@@ -43,6 +43,19 @@ export function NotificationStackMenu({
     onExpandedChange?.(next);
   };
 
+  useEffect(() => {
+    if (!expanded) return;
+
+    const handlePointerDown = (event: PointerEvent) => {
+      const target = event.target;
+      if (target instanceof Node && rootRef.current?.contains(target)) return;
+      setOpen(false);
+    };
+
+    document.addEventListener('pointerdown', handlePointerDown, true);
+    return () => document.removeEventListener('pointerdown', handlePointerDown, true);
+  }, [expanded]);
+
   return (
     <div
       ref={rootRef}
@@ -66,10 +79,11 @@ export function NotificationStackMenu({
         data-dropdown-trigger
         type="button"
         aria-expanded={expanded}
+        aria-haspopup="menu"
         aria-controls={listId}
         onClick={() => setOpen(!expanded)}
         className={
-          'flex min-h-[58px] w-full items-center gap-3 rounded-[16px] border bg-white px-3.5 py-2.5 text-right outline-none transition ' +
+          'group flex min-h-[58px] w-full items-center gap-3 rounded-[16px] border bg-white px-3.5 py-2.5 text-right outline-none transition ' +
           (expanded
             ? 'border-[#B8C7D2] shadow-[0_8px_24px_rgba(10,32,55,0.08)]'
             : 'border-[#DCE4EA] shadow-[0_2px_10px_rgba(10,32,55,0.035)] hover:border-[#C8D4DD]') +
