@@ -72,6 +72,25 @@ export default function App() {
     setGuideQuery('');
   };
 
+  const recordRecentGuideItem = (section: GuideSection, query: string) => {
+    const normalizedQuery = query.trim();
+    if (!normalizedQuery) return;
+
+    setRecentGuideItems((current) => {
+      const next = [
+        { section, query: normalizedQuery },
+        ...current.filter(
+          (item) =>
+            !(
+              item.section === section &&
+              item.query.toLowerCase() === normalizedQuery.toLowerCase()
+            )
+        )
+      ];
+      return next.slice(0, 6);
+    });
+  };
+
   const openGuide = (
     section: GuideSection,
     drugClass: 'all' | DrugClass = 'all',
@@ -79,20 +98,7 @@ export default function App() {
   ) => {
     setGuideSection(section);
     setGuideQuery(initialQuery);
-
-    const normalizedQuery = initialQuery.trim();
-    if (normalizedQuery) {
-      setRecentGuideItems((current) => {
-        const next = [
-          { section, query: normalizedQuery },
-          ...current.filter(
-            (item) =>
-              !(item.section === section && item.query === normalizedQuery)
-          )
-        ];
-        return next.slice(0, 6);
-      });
-    }
+    recordRecentGuideItem(section, initialQuery);
 
     if (section === 'drugs') setGuideDrugClass(drugClass);
     setActiveTab('guide');
@@ -118,6 +124,7 @@ export default function App() {
         onToggleFavorite={toggleFavorite}
         initialDrugClass={guideDrugClass}
         initialQuery={guideQuery}
+        onRecentItem={recordRecentGuideItem}
       />
     );
   } else if (activeTab === 'games') {
