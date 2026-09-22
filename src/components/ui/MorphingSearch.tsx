@@ -236,13 +236,13 @@ export function MorphingSearch({
               }
             }}
             placeholder="Propofol، بروبوفول، MAC..."
-            className="h-12 min-w-0 flex-1 bg-transparent text-sm font-bold text-[#183149] outline-none placeholder:font-medium placeholder:text-[#8795A0]"
+            className="h-12 min-w-0 flex-1 bg-transparent text-sm font-bold text-[#183149] outline-none placeholder:font-medium placeholder:text-[#66737F]"
           />
           <button
             type="button"
             onClick={closeSearch}
             aria-label="إغلاق البحث"
-            className="grid h-11 w-11 shrink-0 place-items-center rounded-xl text-[#526675] transition active:bg-[#EEF3F6]"
+            className="grid h-11 w-11 shrink-0 place-items-center rounded-xl text-[#526675] outline-none transition active:bg-[#EEF3F6] focus-visible:ring-2 focus-visible:ring-[#CCA039]/55"
           >
             <X size={20} weight="bold" />
           </button>
@@ -256,7 +256,7 @@ export function MorphingSearch({
           {!query.trim() ? (
             <div className="px-4 py-9 text-center">
               <p className="text-xs font-black text-[#405E75]">ابدأ بالكتابة للبحث</p>
-              <p className="mt-1.5 text-[11px] font-semibold text-[#778793]">
+              <p className="mt-1.5 text-[11px] font-semibold text-[#66737F]">
                 دواء، جهاز، سائل، مصطلح أو إجراء
               </p>
             </div>
@@ -271,7 +271,7 @@ export function MorphingSearch({
                 onFocus={() => setActiveIndex(index)}
                 onClick={() => selectItem(item)}
                 className={
-                  'flex min-h-[64px] w-full items-center gap-3 rounded-[14px] px-3 py-2.5 text-right transition ' +
+                  'flex min-h-[64px] w-full items-center gap-3 rounded-[14px] px-3 py-2.5 text-right outline-none transition focus-visible:ring-2 focus-visible:ring-[#CCA039]/55 ' +
                   (index === activeIndex
                     ? 'bg-[#EEF3F6]'
                     : 'bg-white hover:bg-[#F7F9FA] active:bg-[#EEF3F6]')
@@ -309,7 +309,7 @@ export function MorphingSearch({
               </button>
             ))
           ) : (
-            <div className="px-4 py-10 text-center text-xs font-semibold text-[#687986]">
+            <div className="px-4 py-10 text-center text-xs font-semibold text-[#66737F]">
               {emptyMessage}
             </div>
           )}
@@ -336,7 +336,7 @@ export function MorphingSearch({
           <MagnifyingGlass size={20} weight="bold" className="shrink-0 text-[#B58B2A]" />
           <span className="min-w-0 flex-1">
             <span className="block text-xs font-black text-[#183149]">{placeholder}</span>
-            <span className="mt-0.5 block truncate text-[11px] font-semibold text-[#778793]">
+            <span className="mt-0.5 block truncate text-[11px] font-semibold text-[#66737F]">
               دواء، جهاز، مصطلح، إجراء...
             </span>
           </span>
