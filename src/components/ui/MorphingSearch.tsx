@@ -1,6 +1,7 @@
 import {
   useCallback,
   useEffect,
+  useId,
   useMemo,
   useRef,
   useState,
@@ -53,6 +54,7 @@ export function MorphingSearch({
   const triggerRef = useRef<HTMLButtonElement>(null);
   const dialogRef = useRef<HTMLDivElement>(null);
   const previousFocus = useRef<HTMLElement | null>(null);
+  const resultsId = useId();
   const reduceMotion = useReducedMotion();
 
   const filteredItems = useMemo(() => {
@@ -219,7 +221,16 @@ export function MorphingSearch({
             ref={inputRef}
             value={query}
             dir="auto"
+            role="combobox"
             aria-label="ابحث في دليلي"
+            aria-expanded={open}
+            aria-controls={resultsId}
+            aria-autocomplete="list"
+            aria-activedescendant={
+              query.trim() && filteredItems[activeIndex]
+                ? resultsId + '-option-' + activeIndex
+                : undefined
+            }
             onChange={(event) => updateQuery(event.target.value)}
             onKeyDown={(event) => {
               if (event.key === 'ArrowDown') {
@@ -249,6 +260,7 @@ export function MorphingSearch({
         </div>
 
         <div
+          id={resultsId}
           role="listbox"
           aria-label="نتائج البحث"
           className="max-h-[min(68vh,34rem)] overflow-y-auto p-2"
@@ -264,8 +276,10 @@ export function MorphingSearch({
             filteredItems.map((item, index) => (
               <button
                 key={item.id}
+                id={resultsId + '-option-' + index}
                 type="button"
                 role="option"
+                tabIndex={-1}
                 aria-selected={index === activeIndex}
                 onMouseEnter={() => setActiveIndex(index)}
                 onFocus={() => setActiveIndex(index)}
@@ -309,7 +323,7 @@ export function MorphingSearch({
               </button>
             ))
           ) : (
-            <div className="px-4 py-10 text-center text-xs font-semibold text-[#66737F]">
+            <div role="status" className="px-4 py-10 text-center text-xs font-semibold text-[#66737F]">
               {emptyMessage}
             </div>
           )}
