@@ -1,9 +1,3 @@
-import {
-  BookOpenText,
-  Drop,
-  TextAa,
-  Wrench
-} from '@phosphor-icons/react';
 import { DrugDirectory } from './DrugDirectory';
 import { TermsDirectory } from './TermsDirectory';
 import { AbbreviationsDirectory } from './AbbreviationsDirectory';
@@ -11,11 +5,11 @@ import { EquipmentDirectory } from './EquipmentDirectory';
 import { ClinicalGuidesDirectory } from './ClinicalGuidesDirectory';
 import { FluidsDirectory } from './FluidsDirectory';
 import { AnesthesiaStagesDirectory } from './AnesthesiaStagesDirectory';
-import { MedicinesHealthIcon } from './MedicalIcons';
 import {
   NotificationStackMenu,
   type StackMenuItem
 } from './ui/NotificationStackMenu';
+import { MedicalSiteIcon, type MedicalSiteIconName } from './ui/MedicalSiteIcon';
 import type { DrugClass } from '../data/drugs';
 
 export type GuideSection =
@@ -46,6 +40,16 @@ const sectionLabels: Record<GuideSection, string> = {
   abbreviations: 'الاختصارات'
 };
 
+const sectionIcons: Record<GuideSection, MedicalSiteIconName> = {
+  drugs: 'drugs',
+  equipment: 'equipment',
+  fluids: 'fluids',
+  stages: 'stages',
+  clinical: 'clinical',
+  terms: 'terms',
+  abbreviations: 'abbreviations'
+};
+
 export function GuideScreen({
   section,
   onSectionChange,
@@ -54,57 +58,28 @@ export function GuideScreen({
   initialDrugClass,
   initialQuery
 }: GuideScreenProps) {
-  const sectionItems: StackMenuItem[] = [
-    {
-      id: 'drugs',
-      title: 'الأدوية',
-      description: 'Drug Reference',
-      leading: <MedicinesHealthIcon className="h-5 w-5" />,
-      onSelect: () => onSectionChange('drugs')
-    },
-    {
-      id: 'equipment',
-      title: 'عربة التخدير والمعدات',
-      description: 'Machine • Airway • Monitoring',
-      leading: <Wrench size={19} weight="bold" />,
-      onSelect: () => onSectionChange('equipment')
-    },
-    {
-      id: 'fluids',
-      title: 'السوائل الوريدية',
-      description: 'IV Fluids',
-      leading: <Drop size={19} weight="fill" />,
-      onSelect: () => onSectionChange('fluids')
-    },
-    {
-      id: 'stages',
-      title: 'مراحل التخدير',
-      description: 'Stages of Anesthesia',
-      leading: <BookOpenText size={19} />,
-      onSelect: () => onSectionChange('stages')
-    },
-    {
-      id: 'clinical',
-      title: 'المفاهيم والإجراءات',
-      description: 'Clinical Guides',
-      leading: <BookOpenText size={19} />,
-      onSelect: () => onSectionChange('clinical')
-    },
-    {
-      id: 'terms',
-      title: 'المصطلحات',
-      description: 'Clinical Terms',
-      leading: <BookOpenText size={19} />,
-      onSelect: () => onSectionChange('terms')
-    },
-    {
-      id: 'abbreviations',
-      title: 'الاختصارات',
-      description: 'Abbreviations',
-      leading: <TextAa size={19} weight="bold" />,
-      onSelect: () => onSectionChange('abbreviations')
-    }
-  ];
+  const sectionItems: StackMenuItem[] = (
+    Object.keys(sectionLabels) as GuideSection[]
+  ).map((id) => ({
+    id,
+    title: sectionLabels[id],
+    description:
+      id === 'drugs'
+        ? 'Drug Reference'
+        : id === 'equipment'
+          ? 'Machine • Airway • Monitoring'
+          : id === 'fluids'
+            ? 'IV Fluids'
+            : id === 'stages'
+              ? 'Stages of Anesthesia'
+              : id === 'clinical'
+                ? 'Clinical Guides'
+                : id === 'terms'
+                  ? 'Clinical Terms'
+                  : 'Abbreviations',
+    leading: <MedicalSiteIcon name={sectionIcons[id]} size={25} />,
+    onSelect: () => onSectionChange(id)
+  }));
 
   return (
     <div className="space-y-4">
@@ -116,7 +91,7 @@ export function GuideScreen({
         <NotificationStackMenu
           title={sectionLabels[section]}
           description="اضغط لتغيير قسم الدليل"
-          icon={<BookOpenText size={22} weight="bold" />}
+          icon={<MedicalSiteIcon name={sectionIcons[section]} size={27} />}
           items={sectionItems}
           selectedId={section}
         />
