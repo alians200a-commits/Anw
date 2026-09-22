@@ -211,7 +211,7 @@ export function FluidsDirectory({
 
       <div className="space-y-2">
         {filtered.map((item, index) => (
-          <motion.button
+          <button
             key={item.id}
             type="button"
             onClick={() => setSelected(item)}
@@ -232,7 +232,7 @@ export function FluidsDirectory({
               <span className="text-[11px] text-[#5F7280]">تركيب • استخدام • محاذير</span>
               <Drop size={15} weight="fill" className="text-[#405E75]" />
             </div>
-          </motion.button>
+          </button>
         ))}
       </div>
 
