@@ -223,7 +223,7 @@ export function AnesthesiaStagesDirectory({
     title: stage.titleAr,
     description: stage.titleEn,
     trailing: stage.number,
-    leading: <MedicalSiteIcon name="stages" play size={24} />,
+    leading: <MedicalSiteIcon name="stages" play loop size={24} />,
     onSelect: () => {
       setSelectedStageId(stage.id);
       setSelectedGuide(null);
@@ -244,7 +244,7 @@ export function AnesthesiaStagesDirectory({
       <NotificationStackMenu
         title={currentEntry.stage.titleAr}
         description={currentEntry.stage.titleEn}
-        icon={<MedicalSiteIcon name="stages" play size={27} />}
+        icon={<MedicalSiteIcon name="stages" play loop size={27} />}
         items={stageItems}
         selectedId={selectedStageId}
       />
@@ -264,7 +264,7 @@ export function AnesthesiaStagesDirectory({
             className="flex min-h-[68px] w-full items-center gap-3 rounded-[18px] border border-[#DCE5EA] bg-[#F7F9FA] px-3.5 py-3 text-right outline-none transition active:bg-[#EEF3F6] focus-visible:ring-2 focus-visible:ring-[#CCA039]/50"
           >
             <div className="grid h-11 w-11 shrink-0 place-items-center rounded-[14px] border border-[#D7E2E9] bg-[#EEF3F6] text-[#315672]">
-              <MedicalSiteIcon name="stages" play size={27} />
+              <MedicalSiteIcon name="stages" play loop size={27} />
             </div>
 
             <div className="min-w-0 flex-1">
