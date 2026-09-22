@@ -376,7 +376,6 @@ export const CLINICAL_TERMS: ClinicalTerm[] = [
     id: "delta-pyramidal",
     en: "Pyramidal Tract (source-specific symbol)",
     ar: "السبيل الهرمي – حسب رمز المصدر",
-    abbr: "Δ",
     category: "abbreviations",
     definition: "السبيل الهرمي يشير إلى المسارات الحركية النازلة، وخصوصًا القشري الشوكي والقشري البصلي، المسؤولة عن التحكم الحركي الإرادي.",
     clinicalNote: "تنبيه: الرمز Δ ليس اختصارًا طبيًا عالميًا معتمدًا للسبيل الهرمي؛ يُفهم بهذه الدلالة فقط إذا عرّفه المرجع أو الجدول صراحة.",
@@ -464,10 +463,10 @@ export const CLINICAL_TERMS: ClinicalTerm[] = [
   },
   {
     id: "cop-source",
-    en: "Cardiac Output",
-    ar: "النتاج القلبي",
+    en: "COP — Non-standard Cardiac Output Abbreviation",
+    ar: "اختصار COP غير القياسي للنتاج القلبي",
     abbr: "COP",
-    category: "cardio",
+    category: "abbreviations",
     definition: "حجم الدم الذي يضخه البطين في الدقيقة، ويُحسب تقريبًا من حاصل ضرب معدل القلب HR في حجم الضربة SV.",
     clinicalNote: "تنبيه: الاختصار القياسي الشائع للنتاج القلبي هو CO، أما COP فيظهر في بعض المذكرات التعليمية لكنه غير مفضل لأنه غير قياسي وقد يسبب التباسًا.",
     tags: ["cardiac output","CO","hemodynamics"]
@@ -566,7 +565,7 @@ export const CLINICAL_TERMS: ClinicalTerm[] = [
     id: "hour",
     en: "Hour",
     ar: "ساعة",
-    abbr: "hr",
+    abbr: "h",
     category: "abbreviations",
     definition: "وحدة زمن تساوي 60 دقيقة.",
     clinicalNote: "في الكتابة العلمية رمز SI المقبول للساعة هو h؛ hr شائع لكنه أقل معيارية.",
@@ -574,9 +573,9 @@ export const CLINICAL_TERMS: ClinicalTerm[] = [
   },
   {
     id: "htn",
-    en: "Hypertension",
-    ar: "ارتفاع ضغط الدم",
-    abbr: "Htn",
+    en: "Hypertension (HTN)",
+    ar: "اختصار HTN لارتفاع ضغط الدم",
+    abbr: "HTN",
     category: "cardio",
     definition: "ارتفاع مزمن أو متكرر في ضغط الدم الشرياني فوق الحدود التشخيصية المعتمدة سريريًا.",
     clinicalNote: "الاختصار الشائع سريريًا هو HTN. ضبط الضغط قبل وأثناء التخدير مهم لتقليل اختلال التروية القلبية والدماغية والكلوية.",
@@ -826,7 +825,6 @@ export const CLINICAL_TERMS: ClinicalTerm[] = [
     id: "vc-source",
     en: "Vasoconstriction",
     ar: "تضيّق الأوعية",
-    abbr: "VC",
     category: "cardio",
     definition: "انقباض العضلات الملساء الوعائية بما يقلل قطر الوعاء ويزيد المقاومة الوعائية موضعيًا أو جهازيًا بحسب الموقع.",
     clinicalNote: "VC اختصار ملتبس وقد يعني Vital Capacity في الجهاز التنفسي؛ في التوثيق السريري يجب توضيح المقصود.",
@@ -836,7 +834,6 @@ export const CLINICAL_TERMS: ClinicalTerm[] = [
     id: "vd-vasodilation-source",
     en: "Vasodilation",
     ar: "توسّع الأوعية",
-    abbr: "VD",
     category: "cardio",
     definition: "ارتخاء العضلات الملساء الوعائية بما يزيد قطر الوعاء ويقلل المقاومة الوعائية.",
     clinicalNote: "VD اختصار غير نوعي وقد يلتبس مع دلالات أخرى؛ لا ينبغي خلطه مع Vd المستخدم لVolume of Distribution.",
@@ -969,6 +966,7 @@ export const CLINICAL_TERMS: ClinicalTerm[] = [
     ar: "تخطيط ثاني أوكسيد الكربون",
     category: "critical",
     definition: "قياس وعرض ثاني أوكسيد الكربون في غازات التنفس على شكل موجة زمنية.",
+    clinicalNote: "الموجة المستمرة تساعد على تقييم التهوية وتأكيد ومراقبة موضع ETT؛ اختفاء الموجة أو تغيرها المفاجئ يستلزم تقييم المجرى الهوائي والدائرة والتهوية والدورة الدموية فورًا.",
     tags: ["capnography","EtCO2","CO2"]
   },
   {
@@ -1076,6 +1074,7 @@ export const CLINICAL_TERMS: ClinicalTerm[] = [
     ar: "التنفس",
     category: "critical",
     definition: "مصطلح يشمل تبادل الغازات واستخدام الأوكسجين | Oxygen وإنتاج ثاني أوكسيد الكربون | Carbon dioxide في الجسم، وليس مجرد حركة الهواء.",
+    clinicalNote: "لا تساوي التهوية وحدها؛ تقييم المريض يحتاج التفريق بين حركة الهواء، تبادل الغازات، الأكسجة واستخدام الأوكسجين على مستوى الأنسجة.",
     tags: ["respiration","gas exchange","تنفس"]
   },
   {
@@ -1084,6 +1083,7 @@ export const CLINICAL_TERMS: ClinicalTerm[] = [
     ar: "التنفس الخارجي",
     category: "critical",
     definition: "تبادل الأوكسجين | Oxygen وثاني أوكسيد الكربون | Carbon dioxide بين الحويصلات الرئوية | Alveoli والدم في الشعيرات الرئوية.",
+    clinicalNote: "يتأثر تبادل الغازات بالتهوية والتروية والانتشار؛ اضطراب V/Q قد يسبب hypoxemia حتى مع وجود حركة هواء.",
     tags: ["external respiration","alveoli","gas exchange","تنفس خارجي"]
   },
   {
@@ -1092,6 +1092,7 @@ export const CLINICAL_TERMS: ClinicalTerm[] = [
     ar: "التنفس الداخلي",
     category: "critical",
     definition: "تبادل الغازات بين الدم والأنسجة واستخدام الخلايا للأوكسجين | Cellular oxygen utilization مع إنتاج ثاني أوكسيد الكربون | Carbon dioxide.",
+    clinicalNote: "وصول الأوكسجين إلى الأنسجة يعتمد على الأكسجة والتروية ومحتوى الدم بالأوكسجين؛ SpO₂ طبيعية لا تضمن وحدها تروية نسيجية كافية.",
     tags: ["internal respiration","cellular respiration","تنفس داخلي"]
   },
   {
@@ -1100,6 +1101,7 @@ export const CLINICAL_TERMS: ClinicalTerm[] = [
     ar: "التهوية",
     category: "critical",
     definition: "حركة الهواء إلى داخل الرئتين وخارجهما | Movement of air into and out of the lungs؛ وهي تختلف عن الأكسجة | Oxygenation وتبادل الغازات | Gas exchange.",
+    clinicalNote: "Capnography وEtCO₂ مفيدان لتقييم التهوية. إعطاء أوكسجين قد يحسن SpO₂ من دون تصحيح hypoventilation، لذلك لا تُستخدم الأكسجة وحدها للحكم على التهوية.",
     tags: ["ventilation","breathing","تهوية"]
   },
   {
@@ -1108,6 +1110,7 @@ export const CLINICAL_TERMS: ClinicalTerm[] = [
     ar: "الحيز التنفسي الميت",
     category: "critical",
     definition: "حجم الغاز الذي لا يشارك في تبادل الغازات | Gas exchange؛ يشمل الحيز التشريحي | Anatomic dead space، ويشمل الحيز الفيزيولوجي أيضًا حويصلات مهواة لكن غير مروّاة بشكل كافٍ.",
+    clinicalNote: "زيادة dead space تقلل alveolar ventilation الفعالة وقد توسع الفجوة بين PaCO₂ وEtCO₂؛ تفسيرها يعتمد على التهوية والتروية الرئوية.",
     tags: ["dead space","anatomic dead space","physiologic dead space","حيز ميت"]
   },
   {
@@ -1209,6 +1212,7 @@ export const CLINICAL_TERMS: ClinicalTerm[] = [
     ar: "الاستنشاق الرئوي",
     category: "critical",
     definition: "دخول محتويات الفم أو المعدة إلى مجرى الهواء والرئتين | Entry of oropharyngeal or gastric contents into the lower respiratory tract.",
+    clinicalNote: "الأولوية للوقاية وتقييم خطر المعدة ومجرى الهواء. إذا حدث aspiration تُدعم الأكسجة والتهوية ويُشفط ما يمكن رؤيته؛ المضادات الحيوية أو الستيرويد ليست روتينية لمجرد aspiration pneumonitis.",
     tags: ["aspiration","airway","استنشاق رئوي"]
   },
   {
@@ -1225,6 +1229,7 @@ export const CLINICAL_TERMS: ClinicalTerm[] = [
     ar: "تشنج الحنجرة",
     category: "critical",
     definition: "انغلاق انعكاسي مستمر للمزمار | Sustained reflex closure of the glottis يسبب انسدادًا جزئيًا أو كاملًا لمجرى الهواء.",
+    clinicalNote: "يحتاج تدبيرًا فوريًا: إزالة المحفز، فتح المجرى الهوائي، 100% O₂ مع ضغط إيجابي مناسب وتعميق التخدير؛ الحالات المستمرة الشديدة قد تحتاج مرخيًا عضليًا سريعًا.",
     tags: ["laryngospasm","airway","تشنج الحنجرة"]
   },
   {
@@ -1233,6 +1238,7 @@ export const CLINICAL_TERMS: ClinicalTerm[] = [
     ar: "نقص أكسجة الدم",
     category: "critical",
     definition: "انخفاض الأوكسجين في الدم الشرياني | Abnormally low arterial blood oxygen.",
+    clinicalNote: "انخفاض SpO₂ يستلزم تأكيد جودة الإشارة ثم تقييم Airway/Breathing/Circulation، زيادة الأوكسجين، تصحيح التهوية والبحث عن السبب مثل انسداد أو انخماص أو مشكلة دائرة/أنبوب.",
     tags: ["hypoxemia","oxygen","PaO2","نقص أكسجة"]
   },
   {
@@ -1241,6 +1247,7 @@ export const CLINICAL_TERMS: ClinicalTerm[] = [
     ar: "فرط ثاني أوكسيد الكربون في الدم",
     category: "critical",
     definition: "ارتفاع ضغط ثاني أوكسيد الكربون الشرياني | Elevated arterial carbon dioxide tension (PaCO₂).",
+    clinicalNote: "غالبًا تعكس نقص alveolar ventilation أو إعادة استنشاق CO₂ أو زيادة إنتاجه؛ يُفحص المريض والـETT والدائرة وCO₂ absorber والتهوية بدل علاج الرقم وحده.",
     tags: ["hypercapnia","CO2","PaCO2","فرط ثاني اوكسيد الكربون"]
   },
   {
@@ -1266,6 +1273,7 @@ export const CLINICAL_TERMS: ClinicalTerm[] = [
     ar: "النقل الدموي الكبير",
     category: "critical",
     definition: "إعطاء كميات كبيرة من مكونات الدم بسرعة بسبب نزف شديد | Rapid replacement of a major proportion of blood volume with blood components.",
+    clinicalNote: "يستلزم بروتوكولًا منظمًا ومراقبة الحرارة، الشوارد خصوصًا ionized calcium والبوتاسيوم، الحمض–القاعدة والتخثر مع تعويض مكونات الدم حسب النزف والبروتوكول.",
     tags: ["massive transfusion","blood","hemorrhage","نقل دم"]
   },
   {
@@ -1274,6 +1282,7 @@ export const CLINICAL_TERMS: ClinicalTerm[] = [
     ar: "اعتلال التخثر",
     category: "critical",
     definition: "اضطراب في قدرة الدم على التخثر بصورة طبيعية | Impaired blood coagulation.",
+    clinicalNote: "التدبير يعتمد على السبب والنزف والفحوصات؛ في النزف الكبير يمكن استخدام اختبارات التخثر و/أو viscoelastic testing عند توفرها لتوجيه مكونات الدم والعلاج.",
     tags: ["coagulopathy","bleeding","clotting","تخثر"]
   },
   {
@@ -1282,6 +1291,7 @@ export const CLINICAL_TERMS: ClinicalTerm[] = [
     ar: "نقص كالسيوم الدم",
     category: "critical",
     definition: "انخفاض تركيز الكالسيوم في الدم | Low blood calcium؛ ويُراقب الكالسيوم المتأين | Ionized calcium خصوصًا في النقل الدموي الكبير.",
+    clinicalNote: "قد تظهر أثناء النقل الدموي الكبير بسبب citrate؛ الأهم مراقبة ionized calcium ومعالجة النقص المهم سريريًا مع متابعة ECG والديناميكا الدموية.",
     tags: ["hypocalcemia","calcium","transfusion","كالسيوم"]
   },
   {
@@ -1324,6 +1334,7 @@ export const CLINICAL_TERMS: ClinicalTerm[] = [
     ar: "الصدمة الدورانية",
     category: "critical",
     definition: "فشل دوراني حاد يسبب نقص تروية الأنسجة وعدم كفاية توصيل الأوكسجين | Acute circulatory failure with tissue hypoperfusion.",
+    clinicalNote: "Shock يعني فشل تروية الأنسجة وليس مجرد انخفاض ضغط. التدبير يبدأ بتحديد النوع والسبب مع دعم Airway/Breathing/Circulation وتصحيح السبب القابل للعلاج.",
     tags: ["shock","perfusion","صدمة"]
   },
   {
@@ -1332,6 +1343,7 @@ export const CLINICAL_TERMS: ClinicalTerm[] = [
     ar: "صدمة نقص حجم الدم",
     category: "critical",
     definition: "صدمة ناتجة عن نقص الحجم داخل الأوعية | Shock caused by critical loss of intravascular volume.",
+    clinicalNote: "الأولوية لإيقاف النزف أو فقد السوائل وتعويض الحجم المناسب؛ في النزف الشديد تُستخدم مكونات الدم وبروتوكول النزف بدل الاعتماد على vasopressor وحده.",
     tags: ["hypovolemic shock","hemorrhage","volume","صدمة"]
   },
   {
@@ -1340,6 +1352,7 @@ export const CLINICAL_TERMS: ClinicalTerm[] = [
     ar: "الصدمة التوزيعية",
     category: "critical",
     definition: "صدمة ناتجة أساسًا عن توسع وعائي وسوء توزيع الجريان | Shock caused by pathologic vasodilation and maldistribution of blood flow.",
+    clinicalNote: "يتميز غالبًا بانخفاض المقاومة الوعائية؛ العلاج يعتمد على السبب وقد يشمل سوائل مناسبة وvasopressor ومعالجة السبب مثل sepsis أو anaphylaxis.",
     tags: ["distributive shock","sepsis","anaphylaxis","صدمة"]
   },
   {
@@ -1348,6 +1361,7 @@ export const CLINICAL_TERMS: ClinicalTerm[] = [
     ar: "الصدمة القلبية",
     category: "critical",
     definition: "صدمة ناتجة عن فشل القلب كمضخة | Shock caused by primary failure of cardiac output.",
+    clinicalNote: "المشكلة الأساسية فشل الضخ القلبي؛ الإفراط العشوائي بالسوائل قد يفاقم الاحتقان، ويحتاج العلاج تقييم السبب والديناميكا الدموية ودعم القلب حسب الحالة.",
     tags: ["cardiogenic shock","heart failure","صدمة"]
   },
   {
@@ -1356,6 +1370,7 @@ export const CLINICAL_TERMS: ClinicalTerm[] = [
     ar: "الصدمة الانسدادية",
     category: "critical",
     definition: "صدمة بسبب عائق ميكانيكي أمام امتلاء القلب أو إخراج الدم | Shock from mechanical obstruction to cardiac filling or outflow.",
+    clinicalNote: "الدعم الدوري وحده لا يكفي إذا استمر الانسداد؛ يجب التعرف سريعًا على السبب القابل للإزالة مثل tension pneumothorax أو tamponade أو انسداد وعائي رئوي شديد.",
     tags: ["obstructive shock","tamponade","tension pneumothorax","صدمة"]
   },
   {
@@ -1364,6 +1379,7 @@ export const CLINICAL_TERMS: ClinicalTerm[] = [
     ar: "اندكاك القلب",
     category: "critical",
     definition: "ضغط السائل أو الدم داخل التامور على القلب بما يعيق امتلاءه | Pericardial pressure impairing cardiac filling.",
+    clinicalNote: "اندكاك القلب قد يسبب obstructive shock. العلاج الحاسم هو تخفيف الضغط التاموري عند الاستطباب مع دعم الديناميكا الدموية أثناء التحضير للتدخل.",
     tags: ["cardiac tamponade","pericardium","obstructive shock","اندكاك"]
   },
   {
@@ -1372,6 +1388,7 @@ export const CLINICAL_TERMS: ClinicalTerm[] = [
     ar: "استرواح الصدر الضاغط",
     category: "critical",
     definition: "تجمع هواء تحت ضغط في الحيز الجنبي يضغط الرئة ويقلل العود الوريدي | Pressurized pleural air causing respiratory and hemodynamic compromise.",
+    clinicalNote: "عند المريض غير المستقر هو تشخيص سريري إسعافي ويحتاج إزالة الضغط فورًا ثم تدبير صدري نهائي؛ لا يُؤخر العلاج بانتظار التصوير إذا كانت العلامات واضحة.",
     tags: ["tension pneumothorax","obstructive shock","pleura","استرواح"]
   }
 ,
@@ -1619,7 +1636,7 @@ export const CLINICAL_TERMS: ClinicalTerm[] = [
   },
   {
     id: "premedication-term",
-    en: "Premedication",
+    en: "Preanesthetic Medication",
     ar: "أدوية ما قبل التخدير",
     category: "pharmacology",
     definition: "أدوية أو تدخلات تُعطى قبل التخدير لتحقيق أهداف محددة مثل anxiolysis أو PONV prophylaxis أو تقليل aspiration risk عند المختارين.",
@@ -1832,7 +1849,7 @@ export const CLINICAL_TERMS: ClinicalTerm[] = [
   {
     id: 'refrigeration-analgesia',
     en: 'Refrigeration Analgesia',
-    ar: 'Refrigeration Analgesia',
+    ar: "التسكين بالتبريد",
     category: 'pharmacology',
     definition: 'تقنية تاريخية تعتمد على تبريد الأنسجة لتقليل الإحساس بالألم بصورة مؤقتة.',
     clinicalNote: 'وردت ضمن تصنيفات التخدير الموضعي في المصدر؛ استخدامها الحديث محدود مقارنةً بتقنيات التخدير الموضعي والإقليمي الأخرى.',
@@ -1882,6 +1899,7 @@ export const CLINICAL_TERMS: ClinicalTerm[] = [
     ar: 'تنفس تشاين–ستوكس',
     category: 'critical',
     definition: 'نمط تنفس دوري يتزايد فيه عمق التنفس تدريجيًا ثم يتناقص ويتبعه توقف تنفس مؤقت | Apnea.',
+    clinicalNote: "هو نمط تنفس وليس تشخيصًا سببيًا بحد ذاته؛ قد يظهر مع حالات قلبية أو عصبية أو أثناء النوم، ويُبحث عن السبب والسياق بدل علاج شكل الموجة وحده.",
     tags: ['Cheyne-Stokes', 'respiration', 'apnea']
   },
   {
@@ -1890,6 +1908,7 @@ export const CLINICAL_TERMS: ClinicalTerm[] = [
     ar: 'التسمم الدرقي',
     category: 'critical',
     definition: 'حالة زيادة تأثير هرمونات الغدة الدرقية في الأنسجة، وقد تترافق مع Tachycardia وArrhythmias.',
+    clinicalNote: "عدم السيطرة الشديدة يرفع خطر tachyarrhythmia وعدم الاستقرار حول الجراحة؛ Thyroid storm حالة إسعافية تحتاج علاجًا متخصصًا سريعًا ودعم الوظائف الحيوية.",
     tags: ['thyrotoxicosis', 'thyroid', 'tachycardia', 'arrhythmia']
   },
   {
