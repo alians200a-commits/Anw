@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { AnimatePresence, MotionConfig, motion, useReducedMotion } from 'motion/react';
+import { MotionConfig } from 'motion/react';
 import { BottomNav, type AppTab } from './components/BottomNav';
 import { FavoritesScreen } from './components/FavoritesScreen';
 import { GamesHub } from './components/GamesHub';
@@ -21,7 +21,6 @@ function loadFavorites() {
 }
 
 export default function App() {
-  const reduceMotion = useReducedMotion();
   const [activeTab, setActiveTab] = useState<AppTab>('home');
   const [guideSection, setGuideSection] = useState<GuideSection>('drugs');
   const [guideDrugClass, setGuideDrugClass] = useState<'all' | DrugClass>('all');
@@ -37,7 +36,7 @@ export default function App() {
       setGuideQuery('');
     }
     setActiveTab(tab);
-    window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
+    window.scrollTo({ top: 0, behavior: 'auto' });
   };
 
   const handleGuideSectionChange = (section: GuideSection) => {
@@ -55,7 +54,7 @@ export default function App() {
     setGuideQuery(initialQuery);
     if (section === 'drugs') setGuideDrugClass(drugClass);
     setActiveTab('guide');
-    window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
+    window.scrollTo({ top: 0, behavior: 'auto' });
   };
 
   const toggleFavorite = (id: string) => {
@@ -101,17 +100,7 @@ export default function App() {
       <KingdomHeader />
 
       <main className="relative mx-auto w-full max-w-3xl px-4 pb-24 pt-4 sm:px-6 sm:pt-5">
-        <AnimatePresence mode="sync" initial={false}>
-          <motion.div
-            key={activeTab}
-            initial={reduceMotion ? false : { opacity: 0, y: 6 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={reduceMotion ? undefined : { opacity: 0, y: -4 }}
-            transition={{ duration: reduceMotion ? 0 : 0.11 }}
-          >
-            {screen}
-          </motion.div>
-        </AnimatePresence>
+        <div key={activeTab}>{screen}</div>
       </main>
 
         <BottomNav active={activeTab} onChange={handleTabChange} />
