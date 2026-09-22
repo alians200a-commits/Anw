@@ -7,6 +7,11 @@ export type MedicalSiteIconName =
   | 'saved'
   | 'drugs'
   | 'equipment'
+  | 'gas'
+  | 'breathing'
+  | 'airway'
+  | 'monitoring'
+  | 'tools'
   | 'fluids'
   | 'stages'
   | 'clinical'
@@ -77,6 +82,51 @@ export const MEDICAL_SITE_ICON_ASSETS: Record<MedicalSiteIconName, AssetRecord> 
     flaticonPage: 'https://www.flaticon.com/free-animated-icon/health-monitoring_18995029',
     staticSrc: 'https://cdn-icons-png.flaticon.com/512/18995/18995029.png',
     animatedSrc: 'https://cdn-icons-gif.flaticon.com/18995/18995029.gif'
+  },
+  gas: {
+    iconScoutId: 9429418,
+    iconScoutLabel: 'Oxygen Cylinder',
+    iconScoutPage: 'https://iconscout.com/lottie-animation/oxygen-cylinder-animation_9429418',
+    flaticonId: 9859811,
+    flaticonPage: 'https://www.flaticon.com/free-animated-icon/oxygen_9859811',
+    staticSrc: 'https://cdn-icons-png.flaticon.com/512/9859/9859811.png',
+    animatedSrc: 'https://cdn-icons-gif.flaticon.com/9859/9859811.gif'
+  },
+  breathing: {
+    iconScoutId: 8537024,
+    iconScoutLabel: 'Ventilator Meter',
+    iconScoutPage: 'https://iconscout.com/lottie-animation/ventilator-meter-animation_8537024',
+    flaticonId: 12620003,
+    flaticonPage: 'https://www.flaticon.com/free-animated-icon/lungs_12620003',
+    staticSrc: 'https://cdn-icons-png.flaticon.com/512/12620/12620003.png',
+    animatedSrc: 'https://cdn-icons-gif.flaticon.com/12620/12620003.gif'
+  },
+  airway: {
+    iconScoutId: 3644300,
+    iconScoutLabel: 'Anesthesia Mask',
+    iconScoutPage: 'https://iconscout.com/lottie-animation/anesthesia-mask-animation_3644300',
+    flaticonId: 10823452,
+    flaticonPage: 'https://www.flaticon.com/free-animated-icon/face-mask_10823452',
+    staticSrc: 'https://cdn-icons-png.flaticon.com/512/10823/10823452.png',
+    animatedSrc: 'https://cdn-icons-gif.flaticon.com/10823/10823452.gif'
+  },
+  monitoring: {
+    iconScoutId: 9472910,
+    iconScoutLabel: 'Monitoring Patient Blood',
+    iconScoutPage: 'https://iconscout.com/lottie-animation/monitoring-patient-blood-animation_9472910',
+    flaticonId: 18995029,
+    flaticonPage: 'https://www.flaticon.com/free-animated-icon/health-monitoring_18995029',
+    staticSrc: 'https://cdn-icons-png.flaticon.com/512/18995/18995029.png',
+    animatedSrc: 'https://cdn-icons-gif.flaticon.com/18995/18995029.gif'
+  },
+  tools: {
+    iconScoutId: 5950723,
+    iconScoutLabel: 'Medical Kit',
+    iconScoutPage: 'https://iconscout.com/lottie-animation/medical-kit-animation_5950723',
+    flaticonId: 14122763,
+    flaticonPage: 'https://www.flaticon.com/free-animated-icon/medical-kit_14122763',
+    staticSrc: 'https://cdn-icons-png.flaticon.com/512/14122/14122763.png',
+    animatedSrc: 'https://cdn-icons-gif.flaticon.com/14122/14122763.gif'
   },
   fluids: {
     iconScoutLabel: 'IV Bag',
