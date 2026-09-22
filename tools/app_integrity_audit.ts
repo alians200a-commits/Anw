@@ -126,6 +126,30 @@ const REVIEWED_EQUIPMENT_BATCH_1 = new Set([
   'anesthesia-ventilator'
 ]);
 
+const REVIEWED_EQUIPMENT_BATCH_2 = new Set([
+  'simple-face-mask',
+  'non-rebreather-mask',
+  'nasal-cannula',
+  'tracheostomy-mask',
+  'oropharyngeal-airway',
+  'endotracheal-tube',
+  'airway-stylet',
+  'magill-forceps',
+  'laryngoscope',
+  'laryngeal-mask-airway',
+  'self-inflating-bag',
+  'capnograph',
+  'ecg-monitor',
+  'nibp-monitor',
+  'temperature-monitor',
+  'pulse-oximeter'
+]);
+
+const REVIEWED_EQUIPMENT = new Set([
+  ...REVIEWED_EQUIPMENT_BATCH_1,
+  ...REVIEWED_EQUIPMENT_BATCH_2
+]);
+
 // Equipment.
 for (const item of ANESTHESIA_EQUIPMENT) {
   if (!nonEmpty(item.nameAr) || !nonEmpty(item.nameEn)) errors.push(`equipment "${item.id}": missing bilingual name`);
@@ -136,7 +160,7 @@ for (const item of ANESTHESIA_EQUIPMENT) {
   if (!item.keyPoints.length) errors.push(`equipment "${item.id}": no keyPoints`);
   if (!item.tags.length) errors.push(`equipment "${item.id}": no tags`);
   item.purpose.forEach((value) => checkBilingualStored(value, `equipment "${item.id}" purpose`));
-  if (REVIEWED_EQUIPMENT_BATCH_1.has(item.id) && item.correction?.trim() && !nonEmpty(item.clinicalNote)) {
+  if (REVIEWED_EQUIPMENT.has(item.id) && item.correction?.trim() && !nonEmpty(item.clinicalNote)) {
     errors.push(`equipment "${item.id}": reviewed correction missing clinicalNote`);
   }
 }
@@ -253,6 +277,7 @@ console.log(`Drugs: ${ANESTHESIA_DRUGS.length}`);
 console.log(`Clinical guides: ${CLINICAL_GUIDES.length}`);
 console.log(`Stage guide references: ${stageGuideRefs.size}`);
 console.log(`Equipment: ${ANESTHESIA_EQUIPMENT.length}`);
+console.log(`Reviewed equipment: ${REVIEWED_EQUIPMENT.size}/${ANESTHESIA_EQUIPMENT.length}`);
 console.log(`Fluids: ${INTRAVENOUS_FLUIDS.length}`);
 console.log(`Clinical terms/abbreviations: ${CLINICAL_TERMS.length}`);
 warnings.forEach((warning) => console.warn(`WARN: ${warning}`));
