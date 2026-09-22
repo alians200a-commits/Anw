@@ -20,7 +20,7 @@ function GuideItems({ title, items }: { title: string; items: string[] }) {
     <div className="space-y-2">
       {items.map((item, index) => (
         <div key={index} className="flex items-start justify-end gap-2">
-          <p className="flex-1 text-right text-[11px] leading-5 text-[#4D5A52]"><MixedDirectionText text={item} /></p>
+          <p className="flex-1 text-right text-[11px] leading-5 text-[#526675]"><MixedDirectionText text={item} /></p>
           <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#5F7E95]" />
         </div>
       ))}
