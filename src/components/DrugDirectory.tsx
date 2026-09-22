@@ -44,6 +44,20 @@ export function DrugDirectory({
 
   useEffect(() => {
     setQuery(initialQuery);
+
+    const normalized = initialQuery.trim().toLowerCase();
+    if (!normalized) {
+      setSelectedDrugId(null);
+      return;
+    }
+
+    const exact = ANESTHESIA_DRUGS.find(
+      (drug) =>
+        drug.en.toLowerCase() === normalized ||
+        drug.ar.toLowerCase() === normalized
+    );
+
+    if (exact && DRUG_DETAILS[exact.id]) setSelectedDrugId(exact.id);
   }, [initialQuery]);
 
   const filtered = useMemo(() => {
