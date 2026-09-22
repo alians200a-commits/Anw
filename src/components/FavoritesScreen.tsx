@@ -60,7 +60,10 @@ export function FavoritesScreen({ favorites, onToggleFavorite }: FavoritesScreen
                   <p className="mt-0.5 text-xs text-[#526675]" dir="ltr">{drug.en}</p>
                   <p className="mt-1 text-[11px] font-bold text-[#315672]">افتح التفاصيل الدوائية</p>
                 </div>
-                <MedicalSiteIcon name="drugs" size={26} />
+                <MedicalSiteIcon
+                  name={drug.classes.includes('inhalational') ? 'inhalational' : 'drugs'}
+                  size={26}
+                />
               </button>
             </article>
           ))}
@@ -86,7 +89,10 @@ export function FavoritesScreen({ favorites, onToggleFavorite }: FavoritesScreen
                     <h3 className="truncate font-black text-[#183149]">{term.ar}</h3>
                     <p className="mt-0.5 text-xs text-[#526675]" dir="ltr">{term.abbr ? `${term.abbr} — ${term.en}` : term.en}</p>
                   </div>
-                  <MedicalSiteIcon name="terms" size={26} />
+                  <MedicalSiteIcon
+                    name={term.abbr ? 'abbreviations' : 'terms'}
+                    size={26}
+                  />
                 </div>
               </div>
 
