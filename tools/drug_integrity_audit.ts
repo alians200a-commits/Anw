@@ -28,9 +28,21 @@ const REVIEWED_BATCH_2 = new Set([
   'pethidine'
 ]);
 
+const REVIEWED_BATCH_3_VERIFIED = new Set([
+  'rocuronium',
+  'suxamethonium',
+  'atracurium',
+  'vecuronium',
+  'cisatracurium',
+  'neostigmine',
+  'sugammadex',
+  'naloxone'
+]);
+
 const REVIEWED_DRUGS = new Set([
   ...REVIEWED_BATCH_1,
-  ...REVIEWED_BATCH_2
+  ...REVIEWED_BATCH_2,
+  ...REVIEWED_BATCH_3_VERIFIED
 ]);
 
 const hasIvRoute = (routes: string[] = []) =>
@@ -116,6 +128,6 @@ if (errors.length) {
 
 console.log('Drug integrity audit passed.');
 console.log(`Core completeness: ${ANESTHESIA_DRUGS.length}/${ANESTHESIA_DRUGS.length}`);
-console.log(`Reviewed drugs: ${REVIEWED_DRUGS.size}/${ANESTHESIA_DRUGS.length} (Batch 1: ${REVIEWED_BATCH_1.size}, Batch 2: ${REVIEWED_BATCH_2.size})`);
+console.log(`Reviewed drugs: ${REVIEWED_DRUGS.size}/${ANESTHESIA_DRUGS.length} (Batch 1: ${REVIEWED_BATCH_1.size}, Batch 2: ${REVIEWED_BATCH_2.size}, Batch 3 verified: ${REVIEWED_BATCH_3_VERIFIED.size})`);
 console.log(`Onset/duration coverage: ${onsetComplete}/${ANESTHESIA_DRUGS.length}`);
 console.log(`Clinical-note coverage: ${notesComplete}/${ANESTHESIA_DRUGS.length}`);
