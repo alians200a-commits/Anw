@@ -49,7 +49,7 @@ export function BottomNav({ active, onChange }: BottomNavProps) {
                 onClick={() => onChange(item.id)}
                 aria-current={isActive ? 'page' : undefined}
                 aria-label={item.label}
-                className="flex h-full w-full min-w-[48px] flex-col items-center justify-center gap-1 rounded-2xl px-1 text-[#183149] outline-none transition focus-visible:ring-2 focus-visible:ring-[#CCA039]/70"
+                className="group flex h-full w-full min-w-[48px] flex-col items-center justify-center gap-1 rounded-2xl px-1 text-[#183149] outline-none transition focus-visible:ring-2 focus-visible:ring-[#CCA039]/70"
               >
                 <span
                   className={
