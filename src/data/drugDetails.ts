@@ -442,7 +442,7 @@ export const DRUG_DETAILS: Record<string, DrugDetail> = {
     sourceLabel: 'مبادئ التخدير + ملف كتابة أدوية التخدير',
     uses: ['الوقاية والعلاج من الغثيان والقيء بعد العمليات', 'الغثيان والقيء المرتبط ببعض العلاجات بحسب الاستطباب'],
     contraindications: ['فرط التحسس للأوندانسيترون أو مكونات المستحضر', 'الاستخدام المتزامن مع Apomorphine'],
-    warnings: ['قد يطيل QT ويزيد خطر Torsades، خاصة مع اضطراب الشوارد أو أدوية أخرى تطيل QT', 'قد تحدث متلازمة السيروتونين خاصة مع الأدوية السيروتونينية', 'الحذر في المرضى ذوي متلازمة QT الطويلة الخلقية'],
+    warnings: ['قد يطيل QT ويزيد خطر Torsades، خاصة مع اضطراب الشوارد أو أدوية أخرى تطيل QT', 'في القصور الكبدي الشديد لا يتجاوز المجموع اليومي 8 mg حسب الملصق', 'قد تحدث متلازمة السيروتونين خاصة مع الأدوية السيروتونينية', 'الحذر في المرضى ذوي متلازمة QT الطويلة الخلقية'],
     adverseEffects: ['صداع', 'إمساك', 'إطالة QT', 'تفاعلات تحسسية نادرة']
   },
   atropine: {
@@ -734,7 +734,7 @@ export const DRUG_DETAILS: Record<string, DrugDetail> = {
     ],
     uses: ['التخدير والتسكين الموضعي أو الإقليمي | Local / regional anesthesia and analgesia'],
     contraindications: ['التخدير الإقليمي الوريدي Bier block | Intravenous regional anesthesia', 'فرط التحسس للبوبيفاكائين أو مخدرات الأميد | Amide local anesthetic hypersensitivity', 'الحصر جانب عنق الرحم في التوليد | Obstetrical paracervical block'],
-    warnings: ['سمية قلبية وعصبية مرتبطة بالجرعة | Dose-related cardiotoxicity / neurotoxicity', 'الحقن داخل وعائي غير المقصود قد يسبب LAST شديدًا | Severe local anesthetic systemic toxicity', 'يجب إعطاء جرعات متدرجة ومراقبة الاستجابة عند الحصر الكبير'],
+    warnings: ['سمية قلبية وعصبية مرتبطة بالجرعة | Dose-related cardiotoxicity / neurotoxicity', 'تم الإبلاغ عن Methemoglobinemia مع المخدرات الموضعية', 'Continuous intra-articular infusion غير معتمد وارتبط بـChondrolysis', 'الحقن داخل وعائي غير المقصود قد يسبب LAST شديدًا | Severe local anesthetic systemic toxicity', 'يجب إعطاء جرعات متدرجة ومراقبة الاستجابة عند الحصر الكبير'],
     adverseEffects: ['اختلاجات | Seizures', 'هبوط الضغط | Hypotension', 'بطء القلب | Bradycardia', 'اضطرابات نظم بطينية | Ventricular arrhythmias أو توقف القلب في السمية الشديدة'],
     correction: 'المصدر يضع Bupivacaine ضمن “local, spinal, regional” بجرعة عامة 1–2 mg/kg؛ الاستعمال والتركيز والحد الأقصى يختلفان حسب التقنية والمستحضر، وBier block ممنوع.',
     sourcePages: [45, 71]
@@ -1055,9 +1055,14 @@ export const DRUG_DETAILS: Record<string, DrugDetail> = {
   },
   glycopyrrolate: {
     feature: 'مضاد مسكاريني رباعي الأمونيوم | Quaternary antimuscarinic يقلل الإفرازات ويعبر الحاجز الدموي الدماغي بدرجة قليلة، لذلك تأثيراته المركزية أقل من Atropine.',
+    clinicalNote: 'Glycopyrrolate مضاد مسكاريني محيطي نسبيًا ولا يعبر BBB بسهولة. لا يُعطى تلقائيًا مع كل Ketamine؛ يُستخدم حسب الإفرازات أو bradycardia أو مع Neostigmine حسب الاستطباب.',
     mechanism: 'مضاد تنافسي لمستقبلات muscarinic acetylcholine | Competitive muscarinic antagonist.',
     routes: ['وريدي | Intravenous', 'عضلي | Intramuscular'],
     educationalDoses: ['FDA preanesthetic adult/pediatric dosing: 0.004 mg/kg IM قبل بدء التخدير بـ30–60 دقيقة عند وجود استطباب.', 'مع Neostigmine لعكس الحصار: 0.2 mg Glycopyrrolate لكل 1 mg Neostigmine حسب الملصق؛ يمكن إعطاؤهما متزامنين IV.'],
+    onsetDuration: [
+      'بعد IV يظهر التأثير عادة خلال نحو دقيقة واحدة.',
+      'بعد IM يبدأ خلال 15–30 دقيقة ويبلغ الذروة خلال 30–45 دقيقة؛ vagal blockade يستمر تقريبًا 2–3 ساعات وتأثير تقليل الإفرازات قد يستمر حتى 7 ساعات.'
+    ],
     uses: ['تقليل إفرازات الفم/البلعوم قبل التخدير عند الحاجة | Antisialagogue', 'علاج بعض reflex bradycardia أثناء الجراحة', 'تقليل التأثيرات muscarinic عند إعطاء Neostigmine لعكس الحصار'],
     contraindications: ['فرط التحسس؛ وتُراعى الموانع/المحاذير المعتادة لمضادات المسكارين مثل احتباس البول أو انسداد GI أو narrow-angle glaucoma حسب السياق'],
     warnings: ['Tachycardia', 'جفاف الفم وتثخن الإفرازات', 'احتباس البول', 'قد يقلل التعرق ويسهم في hyperthermia'],
@@ -1068,12 +1073,17 @@ export const DRUG_DETAILS: Record<string, DrugDetail> = {
   },
   diclofenac: {
     feature: 'NSAID قوي للتسكين ومضاد للالتهاب، ويمكن أن يقلل الحاجة للأفيونات ضمن multimodal analgesia عندما لا توجد موانع.',
+    clinicalNote: 'Diclofenac NSAID فعال ضمن multimodal analgesia لكنه ليس مسكنًا بسيطًا لكل مريض. القرار يعتمد على خطر GI bleeding، الكلى، القلب، السوائل والتداخلات؛ وتُستخدم أقل جرعة فعالة لأقصر مدة مناسبة.',
     mechanism: 'يثبط Cyclooxygenase COX-1/COX-2 ويقلل تصنيع prostaglandins المسؤولة عن الألم والالتهاب.',
     tradeNames: ['Voltaren'],
     routes: ['فموي/شرجي/موضعي، وتوجد مستحضرات حقن في بعض البلدان | Route depends on formulation and market'],
     educationalDoses: [
       'المصدر يذكر مستحضر Voltaren injection بتركيز 75 mg/3 mL (25 mg/mL). هذا يطابق مستحضرات حقن diclofenac المتداولة في بعض البلدان.',
       'الجرعة والطريق يعتمدان على المستحضر والسياق؛ لا تُفهم 75 mg كجرعة مناسبة تلقائيًا لكل مريض بسبب مخاطر الكلى والنزف والجهاز القلبي الوعائي.'
+    ],
+    onsetDuration: [
+      'بدء ومدة التسكين يعتمدان على المستحضر والطريق؛ مستحضرات الحقن والفم ليست متكافئة في onset بصورة تُختصر برقم واحد.',
+      'عند استخدامه حول العملية يُقيّم تأثيره المسكن خلال الساعات التالية للجرعة مع الانتباه إلى المخاطر الكلوية والهضمية والقلبية.'
     ],
     uses: ['ألم حاد والتهاب | Acute pain/inflammation', 'جزء من multimodal postoperative analgesia في مرضى مختارين'],
     contraindications: ['حساسية NSAID أو aspirin-sensitive asthma', 'Active GI bleeding/peptic ulcer بحسب المستحضر', 'CABG perioperative pain في الملصقات الأمريكية', 'قصور كلوي شديد أو حالات عالية الخطورة حسب المستحضر والسياق'],
@@ -1085,10 +1095,15 @@ export const DRUG_DETAILS: Record<string, DrugDetail> = {
   },
   'hyoscine-butylbromide': {
     feature: 'مضاد مسكاريني محيطي | Peripheral antimuscarinic antispasmodic يرخي العضلات الملساء في GI/GU tract.',
+    clinicalNote: 'Buscopan هو Hyoscine butylbromide محيطي مضاد للتشنج، وليس نفس Hyoscine/Scopolamine المستخدم لدوار الحركة. الحقن IV يُعطى ببطء لأن هبوط ضغط شديدًا نادرًا قد يحدث.',
     mechanism: 'يحجب مستقبلات muscarinic المحيطية في العضلات الملساء والعقد العصبية بدرجة تؤدي إلى تقليل التشنج.',
     tradeNames: ['Buscopan'],
     routes: ['وريدي ببطء | Slow IV', 'عضلي | IM', 'فموي | Oral حسب المستحضر'],
     educationalDoses: ['وفق SmPC الحقن المحدث 2026 للبالغ: 20 mg IV ببطء أو IM، ويمكن تكرارها بعد 30 دقيقة عند الحاجة؛ الحد الأقصى 100 mg/day للمستحضر المذكور.'],
+    onsetDuration: [
+      'بعد IV يكون التأثير antispasmodic سريعًا، بينما IM أبطأ؛ التوقيت السريري يعتمد على شدة التشنج والطريق.',
+      'يمكن تكرار 20 mg بعد 30 دقيقة وفق SmPC الحقن عند الحاجة، بحد أقصى 100 mg/day للمستحضر المذكور.'
+    ],
     uses: ['Acute smooth-muscle spasm مثل renal/biliary colic', 'تقليل spasm في بعض الإجراءات التشخيصية'],
     contraindications: ['Narrow-angle glaucoma', 'Myasthenia gravis', 'Mechanical GI stenosis أو paralytic/obstructive ileus', 'Megacolon', 'Tachycardia', 'Prostatic hypertrophy مع urinary retention للمستحضر الحقني'],
     warnings: ['قد يسبب Tachycardia أو Hypotension', 'حالات Anaphylaxis نادرة بعد الحقن', 'الحذر في أمراض القلب والحمى', 'IM غير مناسب مع anticoagulation بسبب خطر hematoma'],
@@ -1099,12 +1114,17 @@ export const DRUG_DETAILS: Record<string, DrugDetail> = {
   },
   ranitidine: {
     feature: 'حاصر H2 يقلل إفراز الحمض المعدي. وضع المستحضرات تغير تنظيميًا بسبب مشكلة NDMA، لذلك لا يعتمد التطبيق على معلومات العبوة القديمة في المصدر.',
+    clinicalNote: 'معلومة Ranitidine injection هنا تاريخية من المصدر وليست توصية لاستخدام حقن قديم. في الولايات المتحدة عادت Ranitidine في 2025 كأقراص reformulated بملصق جديد؛ التوفر والطريق الحاليان يعتمدان على المنتج والبلد.',
     mechanism: 'مضاد تنافسي لمستقبل Histamine H2 في الخلايا الجدارية بالمعدة | H2-receptor antagonist، فيقلل gastric acid secretion.',
     tradeNames: ['Zantac'],
     routes: ['تختلف حسب المستحضر والبلد؛ المصدر القديم يذكر الحقن، بينما FDA أعاد في 2025 اعتماد أقراص reformulated ranitidine بعد معالجة مشكلة NDMA'],
     educationalDoses: [
       'المصدر القديم يذكر Ranitidine injection بجرعة 50 mg بتركيز 25 mg/mL = 2 mL.',
       'هذه المعلومة تُحفظ كمرجع للمصدر فقط؛ لا تُستخدم كجرعة معاصرة تلقائيًا لأن المنتجات القديمة سُحبت بسبب NDMA، بينما عودة ranitidine للولايات المتحدة في 2025 كانت بصيغة أقراص reformulated وبملصق جديد.'
+    ],
+    onsetDuration: [
+      'لا نستخدم onset/duration للمستحضر الحقني القديم كمرجع علاجي معاصر لأن المنتجات القديمة سُحبت تنظيميًا.',
+      'أي توقيت حالي للـRanitidine يجب أخذه من نشرة المنتج reformulated المتوفر فعليًا في البلد، لا من عبوة الحقن التاريخية.'
     ],
     uses: ['Acid suppression في GERD/peptic-ulcer related indications بحسب المنتج الحالي', 'ليس علاجًا مباشرًا لـpulmonary aspiration بعد حدوثه'],
     contraindications: ['فرط التحسس للمستحضر؛ وتُراجع النشرة الحالية للمنتج المتوفر لأن التركيبة والتنظيم تغيرا'],
@@ -1116,12 +1136,17 @@ export const DRUG_DETAILS: Record<string, DrugDetail> = {
   },
   diphenhydramine: {
     feature: 'H1 antihistamine مع تأثيرات Sedative وAnticholinergic.',
+    clinicalNote: 'Diphenhydramine علاج مساعد للأعراض الهيستامينية وليس بديلًا عن Adrenaline في Anaphylaxis. تأثيره المهدئ والمضاد للمسكارين قد يزيد مع مثبطات CNS ويؤثر في اليقظة.',
     mechanism: 'يتنافس مع Histamine على مستقبلات H1 وله تأثيرات مركزية ومضادة للمسكارين.',
     tradeNames: ['Allermin', 'Benadryl'],
     routes: ['وريدي | Intravenous', 'عضلي | Intramuscular', 'فموي | Oral حسب المستحضر'],
     educationalDoses: [
       'للمستحضر الحقني عند البالغ عندما يتعذر الفموي: 10–50 mg IV بسرعة لا تتجاوز عادةً 25 mg/min أو deep IM؛ قد تصل الجرعة الواحدة إلى 100 mg عند الحاجة حسب الملصق، والحد اليومي 400 mg.',
       'في Anaphylaxis لا تُستخدم هذه الجرعة بدل Adrenaline؛ Diphenhydramine علاج مساعد للأعراض الهيستامينية بعد العلاج الأساسي.'
+    ],
+    onsetDuration: [
+      'بعد IV يكون بدء التأثير سريعًا، بينما IM أبطأ؛ الاستجابة السريرية تعتمد على الجرعة والحالة.',
+      'النعاس والتأثيرات المضادة للهيستامين قد تستمر لعدة ساعات، لذلك تُراعى اليقظة والأدوية المصاحبة.'
     ],
     uses: ['الحساسية الحادة عندما يتعذر العلاج الفموي | Acute allergic reactions', 'علاج مساعد بعد Adrenaline في Anaphylaxis وليس بديلًا عنه'],
     contraindications: ['فرط التحسس', 'حديثو الولادة والخدج للمستحضر الحقني بحسب الملصق'],
@@ -1146,7 +1171,7 @@ export const DRUG_DETAILS: Record<string, DrugDetail> = {
     ],
     uses: ['تقليل الغثيان والقيء المرتبطين بالإجراءات الجراحية والتشخيصية | Perioperative nausea/vomiting'],
     contraindications: ['Known or suspected QT prolongation', 'Congenital long-QT syndrome', 'فرط التحسس'],
-    warnings: ['QT prolongation وTorsades risk', 'الحذر مع Bradycardia أو Hypokalemia أو Hypomagnesemia أو أدوية تطيل QT', 'قد يسبب Hypotension وSedation'],
+    warnings: ['QT prolongation وTorsades risk', 'وفق الملصق الأمريكي: 12-lead ECG قبل الإعطاء ومراقبة ECG لمدة 2–3 ساعات بعد العلاج', 'يُحجز للمرضى الذين فشلت لديهم علاجات كافية أخرى للغثيان/القيء', 'الحذر مع Bradycardia أو Hypokalemia أو Hypomagnesemia أو أدوية تطيل QT', 'قد يسبب Hypotension وSedation'],
     adverseEffects: ['نعاس | Sedation', 'هبوط الضغط | Hypotension', 'إطالة QT | QT prolongation', 'Extrapyramidal reactions'],
     correction: 'المصدر يصفه كمضاد قيء ومهدئ/منوم؛ الاستخدام الحديث يحتاج الانتباه الشديد إلى QT وموانع الاستعمال القلبية.',
     sourcePages: [80],
