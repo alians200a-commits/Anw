@@ -20,6 +20,10 @@ export const DRUG_DETAILS: Record<string, DrugDetail> = {
     mechanism: 'يعزز النقل المثبط عبر مستقبلات GABA-A | GABA-A receptor positive allosteric modulation، ما يؤدي إلى التنويم وفقدان الوعي.',
     tradeNames: ['Diprivan'],
     routes: ['وريدي | Intravenous (IV)'],
+    educationalDoses: [
+      'لبدء التخدير العام في البالغ السليم عادةً 2–2.5 mg/kg IV مع المعايرة للاستجابة؛ كبار السن أو المرضى الهشّون/ASA III–IV يحتاجون غالبًا جرعات أقل مثل 1–1.5 mg/kg.',
+      'الجرعة ليست رقمًا ثابتًا؛ Premedication، العمر، نقص الحجم والاحتياطي القلبي تغير المتطلب.'
+    ],
     onsetDuration: ['بدء التأثير بعد الحقن الوريدي سريع، عادة خلال عشرات الثواني | Rapid IV onset.', 'مدة التنويم بعد جرعة واحدة لبدء التخدير قصيرة نسبيًا بسبب إعادة التوزيع | Short hypnotic duration after a bolus.'],
     correction: 'المصدر يعرض حساسية البيض/الصويا بصورة واسعة. الملصقات الأمريكية الحديثة تذكر تحديدًا تاريخ التأق | Anaphylaxis للبيض/منتجاته أو الصويا/منتجاتها ضمن الموانع، إضافة إلى الحساسية للبروبوفول أو مكونات المستحضر؛ ولا تُحوّل حساسية غذائية بسيطة تلقائيًا إلى نفس درجة الخطر دون تقييم. كذلك الربو | Asthma ليس مانعًا روتينيًا للبروبوفول كما ورد في ملف الملاحظات.',
     sourcePages: [64, 65, 70],
@@ -33,6 +37,9 @@ export const DRUG_DETAILS: Record<string, DrugDetail> = {
     mechanism: 'باربيتورات يعزز فعل GABA-A | GABA-A receptor enhancement ويثبط النشاط العصبي المركزي، ما ينتج التنويم | Hypnosis ومضاد الاختلاجات | Anticonvulsant effect.',
     tradeNames: ['Pentothal'],
     routes: ['وريدي | Intravenous (IV)'],
+    educationalDoses: [
+      'جرعة تعليمية شائعة لبدء التخدير في البالغ: 3–5 mg/kg IV، مع خفض الجرعة عند كبار السن أو الهشاشة أو نقص الحجم أو بعد Premedication.'
+    ],
     onsetDuration: ['بدء سريع جدًا بعد الحقن الوريدي | Rapid IV onset.', 'الوعي يعود غالبًا خلال دقائق بعد جرعة مفردة بسبب إعادة التوزيع | Redistribution.'],
     correction: 'المصدر يذكر الربو كمانع استعمال. الربو ليس مانعًا مطلقًا للثيوبنتال، لكن الدواء قد يثير تفاعلات مجرى الهواء عند التخدير الخفيف؛ المانع المهم فعلًا هو البورفيريا الحادة | Acute porphyria إضافة إلى فرط الحساسية.',
     sourcePages: [61, 62, 63, 70],
@@ -58,7 +65,11 @@ export const DRUG_DETAILS: Record<string, DrugDetail> = {
     mechanism: 'مضاد غير تنافسي لمستقبل NMDA | Noncompetitive NMDA receptor antagonist يسبب التخدير الانفصالي | Dissociative anesthesia مع تسكين واضح.',
     tradeNames: ['Ketalar'],
     routes: ['وريدي | Intravenous (IV)', 'عضلي | Intramuscular (IM)'],
-    onsetDuration: ['البدء الوريدي أسرع من العضلي | IV onset faster than IM.', 'مدة التأثير تعتمد على الجرعة والطريق | Dose/route dependent.'],
+    educationalDoses: [
+      'لبدء التخدير: الجرعة الوريدية الأولية قد تكون 1–4.5 mg/kg، والمتوسط الشائع نحو 2 mg/kg IV ويُعطى ببطء على نحو 60 ثانية.',
+      'الطريق العضلي لبدء التخدير يحتاج جرعة أعلى؛ الملصقات الحالية تذكر 6.5–13 mg/kg IM، وتُفرد الجرعة حسب الهدف والمريض.'
+    ],
+    onsetDuration: ['البدء الوريدي أسرع من العضلي | IV onset faster than IM.', 'بعد نحو 2 mg/kg IV قد يبدأ التخدير خلال قرابة 30 ثانية ويستمر عادةً 5–10 دقائق؛ الطريق العضلي أبطأ ويدوم أطول نسبيًا.'],
     correction: 'زيادة الضغط داخل القحف | Intracranial pressure ليست مانعًا مطلقًا عامًا كما في المراجع القديمة؛ القرار يعتمد على الحالة والتهوية والديناميكا الدموية. المانع الرسمي الأوضح هو عندما يشكل ارتفاع ضغط الدم خطرًا كبيرًا.',
     sourcePages: [66, 67, 70],
     uses: ['بدء التخدير', 'التهدئة الإجرائية', 'التسكين', 'حالات يكون فيها تشنج القصبات أو انخفاض الضغط موضع اعتبار'],
@@ -121,6 +132,10 @@ export const DRUG_DETAILS: Record<string, DrugDetail> = {
     mechanism: 'بنزوديازيبين يعزز تأثير GABA-A عبر موقع البنزوديازيبين | Benzodiazepine-site positive allosteric modulation.',
     tradeNames: ['Versed'],
     routes: ['وريدي | Intravenous', 'عضلي | Intramuscular', 'فموي/أنفي في مستحضرات وسياقات محددة | Oral / intranasal formulations'],
+    educationalDoses: [
+      'Premedication للبالغ الجيد الخطورة تحت 60 سنة: نحو 0.07–0.08 mg/kg IM حتى ساعة قبل الجراحة؛ تُخفض الجرعة بوضوح في كبار السن والمرضى عاليي الخطورة ومع الأفيونات أو مثبطات CNS.',
+      'جرعات IV للتهدئة أو بدء التخدير تُعاير تدريجيًا حسب العمر والحالة والأدوية المصاحبة؛ لا تُعطى كجرعة ثابتة سريعة.'
+    ],
     correction: 'البنزوديازيبينات لا توفر تسكينًا للألم | Analgesia؛ ويزداد خطر تثبيط التنفس بشدة عند جمعها مع الأفيونات.',
     sourcePages: [69, 70],
     uses: ['التهدئة قبل وأثناء الإجراءات', 'Premedication', 'عامل مساعد في التخدير'],
@@ -199,6 +214,10 @@ export const DRUG_DETAILS: Record<string, DrugDetail> = {
     mechanism: 'مضاد تنافسي لمستقبلات الأستيل كولين النيكوتينية في الوصلة العصبية العضلية | Competitive nicotinic ACh receptor antagonist.',
     tradeNames: ['Esmeron', 'Zemuron'],
     routes: ['وريدي | Intravenous (IV)'],
+    educationalDoses: [
+      'للتنبيب الاعتيادي: 0.6 mg/kg IV جرعة ابتدائية مرجعية.',
+      'لـRSI: نحو 0.6–1.2 mg/kg IV حسب سرعة الشروط المطلوبة والحالة؛ تُفرد الجرعة ويُستخدم Neuromuscular monitoring.'
+    ],
     correction: 'المصدر يذكر 0.5–0.9 mg/kg بصورة عامة؛ جرعة التنبيب أو RSI تختلف حسب الهدف، ويجب متابعة الحصار كمياً عند الإمكان. كما أن وصف Rocuronium بأنه يسبب vagal blockade مع زيادة النبض والضغط ليس صفة نموذجية له؛ تأثيره القلبي الوعائي عادةً محدود مقارنةً بـPancuronium. والقصور الكلوي | Renal failure ليس مانعًا مطلقًا؛ قد تتغير مدة الحصار ويجب الاعتماد على neuromuscular monitoring.',
     sourcePages: [54, 71],
     uses: ['تسهيل التنبيب الرغامي', 'إرخاء العضلات أثناء الجراحة والتهوية الميكانيكية'],
@@ -211,6 +230,10 @@ export const DRUG_DETAILS: Record<string, DrugDetail> = {
     mechanism: 'ناهض نيكوتيني مزيل للاستقطاب | Depolarizing nicotinic acetylcholine receptor agonist يسبب إزالة استقطاب مستمرة ثم شللًا عضليًا.',
     tradeNames: ['Succinylcholine', 'Scoline'],
     routes: ['وريدي | Intravenous', 'عضلي | Intramuscular عند غياب IV في سياقات محددة'],
+    educationalDoses: [
+      'للبالغ في التنبيب القصير: متوسط الجرعة الوريدية نحو 0.6 mg/kg، والمدى المرجعي في الملصقات 0.3–1.1 mg/kg حسب الاستجابة والسياق.',
+      'بعد الجرعات الوريدية المعتادة يبدأ الحصار غالبًا خلال نحو دقيقة ويكون قصير المدة؛ الجرعات الكبيرة أو المتكررة قد تطيل الحصار.'
+    ],
     correction: 'لا يوجد “ترياق Anticholinesterase” روتيني لانقطاع النفس المطول بسبب نقص Butyrylcholinesterase؛ العلاج الأساسي هو التهوية والتهدئة المستمرة حتى عودة النقل العصبي العضلي. إعطاء Neostigmine قد يطيل Phase I block. وبالنسبة للحروق، عبارة “مسموح فقط أول 24 ساعة” تبسيط؛ الملصق يحظر Succinylcholine بعد المرحلة الحادة من الحروق الكبيرة/الرضوض/denervation، ويذكر أن خطر hyperkalemia يزداد مع الزمن ويبلغ ذروته غالبًا 7–10 أيام، مع عدم تحديد بداية/نهاية دقيقة للخطر.',
     sourcePages: [52, 53, 71],
     uses: ['تسهيل التنبيب الرغامي', 'إرخاء العضلات قصير المدة أثناء الجراحة أو التهوية'],
@@ -223,6 +246,9 @@ export const DRUG_DETAILS: Record<string, DrugDetail> = {
     mechanism: 'مضاد تنافسي لمستقبلات النيكوتين العضلية | Competitive nondepolarizing neuromuscular blocker.',
     tradeNames: ['Tracrium'],
     routes: ['وريدي | Intravenous (IV)'],
+    educationalDoses: [
+      'جرعة تنبيب تعليمية شائعة للبالغ: 0.4–0.5 mg/kg IV؛ يبدأ الحصار المناسب للتنبيب عادة خلال 2–2.5 دقيقة وتدوم الحاجة السريرية للحصار قرابة 20–35 دقيقة تحت التخدير المتوازن.'
+    ],
     correction: 'ليس “دواء الاختيار الوحيد” في الفشل الكلوي، لكنه مفيد لأن التخلص يعتمد بدرجة كبيرة على Hofmann elimination والتحلل الإستري بدل الكلية.',
     sourcePages: [54, 71],
     uses: ['تسهيل التنبيب', 'إرخاء العضلات أثناء الجراحة والتهوية'],
