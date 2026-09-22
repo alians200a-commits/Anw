@@ -239,7 +239,7 @@ export function HomeScreen({ openGuide }: HomeScreenProps) {
         <NotificationStackMenu
           title="الدليل التخديري"
           description="أدوية، سوائل، معدات، مراحل التخدير، إجراءات ومصطلحات"
-          icon={<MedicalSiteIcon name="guide" size={27} />}
+          icon={<MedicalSiteIcon name="guide" play size={27} />}
           items={guideItems}
         />
       </section>
