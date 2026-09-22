@@ -34,9 +34,9 @@ export const MEDICAL_SITE_ICON_ASSETS: Record<MedicalSiteIconName, AssetRecord> 
     animatedSrc: 'https://cdn-icons-gif.flaticon.com/18997/18997678.gif'
   },
   guide: {
-    iconScoutId: 7140709,
-    iconScoutLabel: 'Medical Symbol',
-    iconScoutPage: 'https://iconscout.com/lottie-animation/medical-symbol-animation_7140709',
+    iconScoutId: 10435818,
+    iconScoutLabel: 'Medical Record',
+    iconScoutPage: 'https://iconscout.com/lottie-animation/medical-record-animation_10435818',
     flaticonId: 11880586,
     flaticonPage: 'https://www.flaticon.com/free-animated-icon/medical-history_11880586',
     staticSrc: 'https://cdn-icons-png.flaticon.com/512/11880/11880586.png',
@@ -87,18 +87,18 @@ export const MEDICAL_SITE_ICON_ASSETS: Record<MedicalSiteIconName, AssetRecord> 
     animatedSrc: 'https://cdn-icons-gif.flaticon.com/19017/19017296.gif'
   },
   stages: {
-    iconScoutId: 7140725,
-    iconScoutLabel: 'Heart Rate',
-    iconScoutPage: 'https://iconscout.com/lottie-animation/heart-rate-animation_7140725',
+    iconScoutId: 3644300,
+    iconScoutLabel: 'Anesthesia Mask',
+    iconScoutPage: 'https://iconscout.com/lottie-animation/anesthesia-mask-animation_3644300',
     flaticonId: 6449707,
     flaticonPage: 'https://www.flaticon.com/free-animated-icon/heartbeat_6449707',
     staticSrc: 'https://cdn-icons-png.flaticon.com/512/6449/6449707.png',
     animatedSrc: 'https://cdn-icons-gif.flaticon.com/6449/6449707.gif'
   },
   clinical: {
-    iconScoutId: 7140710,
+    iconScoutId: 3277635,
     iconScoutLabel: 'Medical Treatment',
-    iconScoutPage: 'https://iconscout.com/lottie-animation/medical-treatment-animation_7140710',
+    iconScoutPage: 'https://iconscout.com/lottie-animation/medical-treatment-animation_3277635',
     flaticonId: 19003377,
     flaticonPage: 'https://www.flaticon.com/free-animated-icon/medical-care_19003377',
     staticSrc: 'https://cdn-icons-png.flaticon.com/512/19003/19003377.png',
