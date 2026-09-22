@@ -1,5 +1,6 @@
 import { CaretDown } from '@phosphor-icons/react';
 import { ANESTHESIA_STAGES, getStageGuides } from '../data/anesthesiaStages';
+import { BilingualLabel } from './BilingualLabel';
 
 export function AnesthesiaStagesDirectory({ initialQuery = '' }: { initialQuery?: string }) {
   const normalized = initialQuery.trim().toLowerCase();
@@ -102,9 +103,7 @@ export function AnesthesiaStagesDirectory({ initialQuery = '' }: { initialQuery?
                             weight="bold"
                             className="shrink-0 text-[#9789A2] transition group-open/section:rotate-180"
                           />
-                          <span className="text-[9px] font-black text-[#5A4B66]">
-                            {section.title}
-                          </span>
+                          <BilingualLabel label={section.title} className="text-[9px] font-black text-[#5A4B66]" />
                         </summary>
 
                         <div className="space-y-1.5 border-t border-[#EEE7F4] px-2.5 py-2">
