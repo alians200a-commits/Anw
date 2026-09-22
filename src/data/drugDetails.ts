@@ -314,8 +314,14 @@ export const DRUG_DETAILS: Record<string, DrugDetail> = {
     feature: 'مضاد انتقائي لمستقبلات 5-HT3 ومستخدم على نطاق واسع للوقاية أو العلاج من الغثيان والقيء.',
     mechanism: 'مضاد انتقائي لمستقبل 5-HT3 | Selective serotonin 5-HT3 receptor antagonist.',
     tradeNames: ['Zofran'],
-    routes: ['وريدي | Intravenous', 'فموي | Oral'],
-    sourcePages: [82],
+    routes: ['وريدي | Intravenous', 'عضلي | Intramuscular', 'فموي | Oral'],
+    educationalDoses: [
+      'للوقاية من PONV عند البالغ ومن هم أكبر من 12 سنة: 4 mg IV أو IM كجرعة مفردة؛ إذا أُعطي IV فيُعطى خلال 30 ثانية على الأقل ويفضل خلال 2–5 دقائق.',
+      'يمكن إعطاؤه مباشرة قبل بدء التخدير، أو بعد العملية إذا لم يتلق المريض prophylaxis وحدث الغثيان/القيء خلال الساعتين الأوليين.',
+      'للأطفال 1 شهر–12 سنة: 0.1 mg/kg إذا كان الوزن ≤40 kg، و4 mg إذا كان >40 kg وفق ملصق الحقن.'
+    ],
+    sourcePages: [13, 82],
+    sourceLabel: 'مبادئ التخدير + ملف كتابة أدوية التخدير',
     uses: ['الوقاية والعلاج من الغثيان والقيء بعد العمليات', 'الغثيان والقيء المرتبط ببعض العلاجات بحسب الاستطباب'],
     contraindications: ['فرط التحسس للأوندانسيترون أو مكونات المستحضر', 'الاستخدام المتزامن مع Apomorphine'],
     warnings: ['قد يطيل QT ويزيد خطر Torsades، خاصة مع اضطراب الشوارد أو أدوية أخرى تطيل QT', 'قد تحدث متلازمة السيروتونين خاصة مع الأدوية السيروتونينية', 'الحذر في المرضى ذوي متلازمة QT الطويلة الخلقية'],
@@ -331,7 +337,8 @@ export const DRUG_DETAILS: Record<string, DrugDetail> = {
       'عند استخدامه مع Neostigmine لعكس الحصار العضلي تُحدد جرعتهما حسب عمق الحصار والبروتوكول/المستحضر، ولا تعتمد خلطة ثابتة 1 cc + 1 cc لكل المرضى.'
     ],
     correction: 'الملف القديم يذكر 0.5 mg للبالغ في bradycardia؛ خوارزمية AHA 2025 تستخدم 1 mg IV كجرعة أولى. كما أنه ليس مطلوبًا روتينيًا لكل مريض قبل التخدير.',
-    sourcePages: [54, 71, 81],
+    sourcePages: [15, 16, 54, 71, 81],
+    sourceLabel: 'مبادئ التخدير + ملف كتابة أدوية التخدير',
     uses: ['علاج بطء القلب العرضي في سياقات مناسبة', 'تقليل الإفرازات', 'مرافقة بعض خطط عكس الحصار العصبي العضلي'],
     contraindications: ['فرط التحسس؛ وفي الحالات الإسعافية المنقذة للحياة قد لا توجد موانع مطلقة عملية'],
     warnings: ['قد يسبب تسرع القلب ويفاقم نقص التروية عند بعض المرضى', 'الحذر في الزرق ضيق الزاوية واحتباس البول وانسداد الجهاز الهضمي', 'قد يسبب ارتفاع الحرارة خصوصًا مع الجرعات الكبيرة'],
@@ -473,7 +480,8 @@ export const DRUG_DETAILS: Record<string, DrugDetail> = {
     warnings: ['تسرع القلب | Tachycardia', 'قد يحدث تحمل سريع | Tachyphylaxis مع التكرار', 'قد يزداد ارتفاع الضغط مع أدوية مقوية للرحم | Oxytocic drugs'],
     adverseEffects: ['تسرع القلب | Tachycardia', 'غثيان وقيء | Nausea & vomiting', 'ارتفاع الضغط | Hypertension'],
     correction: 'وصفه في المصدر بأنه لعلاج “مشاكل تنفسية” غير دقيق كاستطباب حقن حديث؛ الاستخدام المعتمد لحقن الإيفيدرين هو انخفاض الضغط المهم سريريًا في سياق التخدير.',
-    sourcePages: [71]
+    sourcePages: [22, 71],
+    sourceLabel: 'مبادئ التخدير + ملف كتابة أدوية التخدير'
   },
   phenylephrine: {
     feature: 'رافع ضغط α1 انتقائي نسبيًا | Alpha-1 vasopressor يرفع المقاومة الوعائية الجهازية وقد يسبب بطء قلب انعكاسي.',
@@ -484,7 +492,8 @@ export const DRUG_DETAILS: Record<string, DrugDetail> = {
     contraindications: ['تُراجع النشرة الخاصة بالمستحضر والحالة السريرية؛ التركيز على تصحيح نقص الحجم والحماض قبل/أثناء الاستخدام.'],
     warnings: ['ارتفاع الضغط | Hypertension', 'بطء القلب الانعكاسي | Reflex bradycardia', 'نقص تروية الأنسجة عند الإفراط في التضيق الوعائي | Tissue ischemia'],
     adverseEffects: ['بطء القلب | Bradycardia', 'ارتفاع الضغط | Hypertension', 'انخفاض النتاج القلبي لدى بعض المرضى | Reduced cardiac output'],
-    sourcePages: [32, 47]
+    sourcePages: [22, 32, 47],
+    sourceLabel: 'مبادئ التخدير + ملف كتابة أدوية التخدير + أدوية الطوارئ'
   },
   metoprolol: {
     feature: 'حاصر بيتا-1 انتقائي نسبيًا | Relatively beta-1 selective blocker يخفض معدل القلب والانقباضية.',
@@ -499,7 +508,8 @@ export const DRUG_DETAILS: Record<string, DrugDetail> = {
     warnings: ['بطء القلب | Bradycardia وحصار التوصيل | Heart block', 'قد يفاقم تشنج القصبات | Bronchospasm رغم انتقائيته النسبية لـβ1', 'قد يفاقم فشل القلب غير المستقر | Worsening heart failure'],
     adverseEffects: ['بطء القلب | Bradycardia', 'هبوط الضغط | Hypotension', 'دوخة | Dizziness', 'تعب | Fatigue'],
     correction: 'المصدر يختصر الاستعمال إلى “Heart attack” مع جرعة وزنية؛ الملصق الوريدي الحديث يستخدم جرعات ثابتة صغيرة تحت مراقبة ECG/BP/HR في احتشاء القلب المستقر، وليس قاعدة mg/kg عامة.',
-    sourcePages: [71]
+    sourcePages: [17, 71],
+    sourceLabel: 'مبادئ التخدير + ملف كتابة أدوية التخدير'
   },
   esmolol: {
     feature: 'حاصر بيتا-1 فائق القصر | Ultra-short-acting beta-1 blocker، مفيد عندما نحتاج تأثيرًا سريع التعديل.',
@@ -574,8 +584,8 @@ export const DRUG_DETAILS: Record<string, DrugDetail> = {
     warnings: ['هامش علاجي ضيق ويتطلب مراقبة مستوى Theophylline عند الاستخدام المطول/المهم', 'تداخلات دوائية كثيرة وتغير التخليص مع العمر وأمراض الكبد والحمى', 'السمية قد تسبب Arrhythmias أو Seizures'],
     adverseEffects: ['غثيان وقيء | Nausea/vomiting', 'تسرع القلب | Tachycardia', 'رجفان | Tremor', 'اضطرابات نظم | Arrhythmias', 'اختلاجات | Seizures عند السمية'],
     correction: 'المصدر يعرضه كدواء روتيني نسبيًا؛ في الممارسة الحديثة ليس First-line لمعظم نوبات الربو/التشنج القصبي بسبب السمية وعدم تفوقه على العلاجات الاستنشاقية القياسية.',
-    sourcePages: [4],
-    sourceLabel: 'أدوية الطوارئ 2021 — Aminophylline'
+    sourcePages: [4, 19],
+    sourceLabel: 'أدوية الطوارئ 2021 + ملف كتابة أدوية التخدير — Aminophylline'
   },
   amiodarone: {
     feature: 'مضاد اضطراب نظم واسع الطيف | Broad-spectrum antiarrhythmic يُصنف أساسًا Class III لكنه يمتلك خواص Class I/II/IV أيضًا.',
@@ -706,8 +716,8 @@ export const DRUG_DETAILS: Record<string, DrugDetail> = {
     warnings: ['نقص الحجم | Hypovolemia وهبوط الضغط', 'Hypokalemia/Hyponatremia/Metabolic alkalosis', 'Ototoxicity خصوصًا مع الجرعات العالية أو الإعطاء السريع', 'تحتاج متابعة الكرياتينين والشوارد'],
     adverseEffects: ['كثرة التبول', 'هبوط الضغط', 'نقص البوتاسيوم', 'نقص الصوديوم', 'ارتفاع حمض اليوريك', 'Ototoxicity نادرة'],
     correction: 'المصدر يذكر Hyperkalemia كاستطباب. Furosemide قد يزيد طرح البوتاسيوم إذا كانت الكلية تنتج بولًا، لكنه ليس العلاج الأساسي أو الأسرع لتثبيت مريض hyperkalemia ولا يُعتمد عليه منفردًا.',
-    sourcePages: [19],
-    sourceLabel: 'أدوية الطوارئ 2021 — Furosemide'
+    sourcePages: [14, 19],
+    sourceLabel: 'ملف كتابة أدوية التخدير + أدوية الطوارئ 2021 — Furosemide'
   },
   hydrocortisone: {
     feature: 'Glucocorticoid قصير/متوسط المفعول نسبيًا مع نشاط mineralocorticoid ملحوظ، مهم في adrenal crisis وله أدوار مساعدة محددة في الطوارئ.',
@@ -748,8 +758,8 @@ export const DRUG_DETAILS: Record<string, DrugDetail> = {
     warnings: ['Hypotension وSyncope', 'Reflex tachycardia', 'Tolerance مع التعرض المستمر', 'Methemoglobinemia نادرة بجرعات عالية'],
     adverseEffects: ['صداع | Headache', 'احمرار | Flushing', 'دوخة | Dizziness', 'هبوط الضغط | Hypotension', 'تسرع قلب انعكاسي | Reflex tachycardia'],
     correction: 'المصدر يعطي infusion 0.5–10 mcg/kg/min كمدى عام؛ في الممارسة يُعاير Nitroglycerin حسب indication والضغط والاستجابة، وغالبًا توصف جرعات IV بوحدة mcg/min بدل mg/kg.',
-    sourcePages: [33],
-    sourceLabel: 'أدوية الطوارئ 2021 — Nitroglycerin'
+    sourcePages: [16, 17, 33],
+    sourceLabel: 'ملف كتابة أدوية التخدير + أدوية الطوارئ 2021 — Nitroglycerin'
   },
   glucagon: {
     feature: 'يرفع سكر الدم بسرعة نسبيًا من مخزون الكبد، كما يزيد cAMP القلبي بآلية مستقلة عن مستقبلات β؛ لذلك له استعمالات مختلفة تمامًا حسب الحالة.',
