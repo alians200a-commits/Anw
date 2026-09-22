@@ -69,10 +69,10 @@ export const MEDICAL_SITE_ICON_ASSETS: Record<MedicalSiteIconName, AssetRecord> 
     iconScoutId: 9709030,
     iconScoutLabel: 'Syringe And Bottle',
     iconScoutPage: 'https://iconscout.com/lottie-animation/syringe-and-bottle-animation_9709030',
-    flaticonId: 19036725,
-    flaticonPage: 'https://www.flaticon.com/free-animated-icon/syringe-injection_19036725',
-    staticSrc: 'https://cdn-icons-png.flaticon.com/512/19036/19036725.png',
-    animatedSrc: 'https://cdn-icons-gif.flaticon.com/19036/19036725.gif'
+    flaticonId: 19035782,
+    flaticonPage: 'https://www.flaticon.com/free-animated-icon/syringe_19035782',
+    staticSrc: 'https://cdn-icons-png.flaticon.com/512/19035/19035782.png',
+    animatedSrc: 'https://cdn-icons-gif.flaticon.com/19035/19035782.gif'
   },
   equipment: {
     iconScoutId: 12020193,
@@ -177,11 +177,13 @@ export const MEDICAL_SITE_ICON_ASSETS: Record<MedicalSiteIconName, AssetRecord> 
 export function MedicalSiteIcon({
   name,
   play = false,
+  loop = false,
   size = 24,
   className = ''
 }: {
   name: MedicalSiteIconName;
   play?: boolean;
+  loop?: boolean;
   size?: number;
   className?: string;
 }) {
@@ -243,7 +245,7 @@ export function MedicalSiteIcon({
       height={size}
       className={'pointer-events-none shrink-0 object-contain ' + className}
       onLoad={() => {
-        if (!animated) return;
+        if (!animated || loop) return;
 
         clearStopTimer();
         stopTimerRef.current = window.setTimeout(() => {
