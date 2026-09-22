@@ -238,7 +238,7 @@ export function MedicalSiteIcon({
       aria-hidden="true"
       draggable={false}
       decoding="async"
-      loading="eager"
+      loading={play ? 'eager' : 'lazy'}
       width={size}
       height={size}
       className={'pointer-events-none shrink-0 object-contain ' + className}
