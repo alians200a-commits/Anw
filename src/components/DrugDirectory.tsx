@@ -22,13 +22,15 @@ interface DrugDirectoryProps {
   onToggleFavorite: (id: string) => void;
   initialClassification?: 'all' | DrugClass;
   initialQuery?: string;
+  onOpenDrug?: (query: string) => void;
 }
 
 export function DrugDirectory({
   favorites,
   onToggleFavorite,
   initialClassification = 'all',
-  initialQuery = ''
+  initialQuery = '',
+  onOpenDrug
 }: DrugDirectoryProps) {
   const [classification, setClassification] = useState<'all' | DrugClass>(
     initialClassification
@@ -160,7 +162,10 @@ export function DrugDirectory({
               {DRUG_DETAILS[drug.id] && (
                 <button
                   type="button"
-                  onClick={() => setSelectedDrugId(drug.id)}
+                  onClick={() => {
+                    setSelectedDrugId(drug.id);
+                    onOpenDrug?.(drug.en);
+                  }}
                   className="mt-2 flex min-h-11 w-full items-center justify-between border-t border-[#DDE6EB] pt-2 text-[10px] font-black text-[#315672] outline-none focus-visible:ring-2 focus-visible:ring-[#CCA039]/50"
                 >
                   <span className="text-[#667A89]">الاستخدام • الموانع • التحذيرات</span>
