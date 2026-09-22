@@ -260,7 +260,7 @@ export function MedicalSiteIcon({
           draggable={false}
           decoding="async"
           loading={play ? 'eager' : 'lazy'}
-          className="pointer-events-none absolute h-[86%] w-[86%] object-contain mix-blend-multiply"
+          className="pointer-events-none absolute h-[82%] w-[82%] object-contain mix-blend-multiply"
         />
         <img
           src={maskSrc}
@@ -268,7 +268,39 @@ export function MedicalSiteIcon({
           draggable={false}
           decoding="async"
           loading={play ? 'eager' : 'lazy'}
-          className="pointer-events-none absolute bottom-[-2%] left-[-2%] h-[46%] w-[46%] rounded-full object-contain mix-blend-multiply"
+          className="pointer-events-none absolute bottom-[-3%] left-[-3%] h-[48%] w-[48%] rounded-full object-contain mix-blend-multiply"
+        />
+      </span>
+    );
+  }
+
+  if (name === 'stages') {
+    const mask = MEDICAL_SITE_ICON_ASSETS.inhalational;
+    const pulse = MEDICAL_SITE_ICON_ASSETS.monitoring;
+    const maskSrc = play && !gifFailed ? mask.animatedSrc : mask.staticSrc;
+    const pulseSrc = play && !gifFailed ? pulse.animatedSrc : pulse.staticSrc;
+
+    return (
+      <span
+        aria-hidden="true"
+        className={'relative inline-grid shrink-0 place-items-center overflow-visible ' + className}
+        style={{ width: size, height: size }}
+      >
+        <img
+          src={maskSrc}
+          alt=""
+          draggable={false}
+          decoding="async"
+          loading={play ? 'eager' : 'lazy'}
+          className="pointer-events-none absolute h-[82%] w-[82%] object-contain mix-blend-multiply"
+        />
+        <img
+          src={pulseSrc}
+          alt=""
+          draggable={false}
+          decoding="async"
+          loading={play ? 'eager' : 'lazy'}
+          className="pointer-events-none absolute bottom-[-3%] right-[-4%] h-[42%] w-[42%] rounded-full object-contain mix-blend-multiply"
         />
       </span>
     );
