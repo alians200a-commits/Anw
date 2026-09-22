@@ -208,7 +208,7 @@ export function ClinicalGuidesDirectory({
 
       <div className="space-y-2">
         {filtered.map((guide, index) => (
-          <motion.button
+          <button
             key={guide.id}
             type="button"
             onClick={() => setSelected(guide)}
@@ -229,7 +229,7 @@ export function ClinicalGuidesDirectory({
             <div className="mt-2 border-t border-[#DDE6EB] pt-2 text-[11px] font-black text-[#405E75]">
               <BilingualLabel label="افتح التفاصيل | Open details" />
             </div>
-          </motion.button>
+          </button>
         ))}
       </div>
 
