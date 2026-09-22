@@ -1688,7 +1688,7 @@ export const CLINICAL_GUIDES: ClinicalGuide[] = [
     titleEn: 'Liver Disease and Anesthesia',
     category: 'general',
     categoryAr: 'التخدير العام',
-    sourcePages: [106],
+    sourcePages: [106,107],
     summary: 'أمراض الكبد | Liver disease قد تغيّر الاستقلاب والارتباط بالبروتين والحجم الظاهري والتخثر والديناميكا الدموية، لذلك تُعاير أدوية التخدير بحسب شدة المرض وتأثيرها.',
     sections: [
       {
