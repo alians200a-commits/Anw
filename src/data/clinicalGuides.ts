@@ -1054,6 +1054,15 @@ export const CLINICAL_GUIDES: ClinicalGuide[] = [
         ]
       },
       {
+        title: 'الوقاية | Prevention',
+        items: [
+          'تقييم الصيام وخطر امتلاء المعدة قبل التخدير | Fasting / aspiration-risk assessment.',
+          'استخدام أنبوب رغامي ذي كفة | Cuffed ETT عندما تكون حماية مجرى الهواء مطلوبة؛ الكفة تقلل التسرب لكنها لا تجعل aspiration مستحيلًا.',
+          'عند ارتفاع خطر aspiration قد تُستخدم طريقة البدء في التخدير والتنبيب التسلسلي السريع | RSI حسب حالة المريض وخطة مجرى الهواء.',
+          'اختيار الوضعية والخطة الدوائية يعتمد على المريض؛ لا توجد وضعية واحدة تمنع القلس في كل الحالات.'
+        ]
+      },
+      {
         title: 'إذا حدث الاستنشاق | If aspiration occurs',
         items: [
           'إيقاف المنبه وشفط الفم والبلعوم سريعًا | Prompt oropharyngeal suction.',
@@ -1271,6 +1280,44 @@ export const CLINICAL_GUIDES: ClinicalGuide[] = [
     tags: ['hypoxemia','cyanosis','SpO2','oxygenation','نقص الاكسجة']
   },
   {
+    id: 'blood-transfusion-complications',
+    titleAr: 'مضاعفات نقل الدم',
+    titleEn: 'Complications of Blood Transfusion',
+    category: 'general',
+    categoryAr: 'التخدير العام',
+    sourcePages: [93,94,95,96],
+    summary: 'مضاعفات نقل الدم قد تكون مناعية أو غير مناعية، وقد تظهر أثناء النقل أو بعده؛ أثناء التخدير قد تُحجب بعض الأعراض لذلك تعتمد الملاحظة على العلامات الحيوية والتغيرات المفاجئة.',
+    sections: [
+      {
+        title: 'التصنيف | Classification',
+        items: [
+          'مضاعفات مناعية | Immune complications مثل التفاعل الانحلالي أو التحسسي.',
+          'مضاعفات غير مناعية | Non-immune complications تشمل مشكلات النقل الكبير واضطرابات الحجم والشوارد والحرارة.',
+          'مضاعفات معدية | Infectious complications كانت تشمل تاريخيًا انتقال hepatitis وHIV وHTLV وCMV إضافة إلى بعض البكتيريا والطفيليات؛ خطرها اليوم يعتمد على أنظمة الفحص والسلامة الحديثة.'
+        ]
+      },
+      {
+        title: 'علامات مهمة أثناء التخدير | Warning signs under anesthesia',
+        items: [
+          'هبوط ضغط مفاجئ أو متفاقم | Hypotension.',
+          'تسرع القلب | Tachycardia.',
+          'نزف أو رشح منتشر من الجرح | Generalized oozing.',
+          'طفح شرى | Urticarial rash.',
+          'تشنج قصبي أو ارتفاع ضغط مجرى الهواء | Bronchospasm / increased airway pressure.'
+        ]
+      },
+      {
+        title: 'مبدأ الأمان | Safety principle',
+        items: [
+          'أي تغير غير متوقع أثناء نقل الدم يستدعي إيقاف النقل وتقييم المريض والتحقق من الوحدة والهوية واتباع بروتوكول Blood bank.',
+          'التخدير والتهدئة قد يخفيان الشكاوى الذاتية للمريض، لذلك تكون المراقبة الدقيقة للضغط والنبض والأكسجة ومجرى الهواء مهمة.'
+        ]
+      }
+    ],
+    tags: ['blood transfusion','transfusion complications','hemolysis','allergic reaction','infection','نقل الدم']
+  },
+
+  {
     id: 'massive-transfusion',
     titleAr: 'النقل الدموي الكبير ومضاعفاته',
     titleEn: 'Massive Transfusion and Complications',
@@ -1415,8 +1462,11 @@ export const CLINICAL_GUIDES: ClinicalGuide[] = [
           'نقص تروية عضلة القلب | Myocardial ischemia.',
           'تحفيز المبهم | Vagal stimulation.',
           'الألم أو التحفيز الجراحي والتخدير غير الكافي | Pain / surgical stimulation / light anesthesia.',
-          'الأدوية أو السمية الدوائية | Drugs / toxicologic causes.',
-          'خلل جهاز تنظيم القلب أو تهيج القثاطر داخل القلب | Pacemaker malfunction / intracardiac catheter irritation.'
+          'الأدوية أو السمية الدوائية | Drugs / toxicologic causes؛ ويذكر المصدر Halothane وAtropine وSuxamethonium وDigoxin وTheophylline وغيرها كأمثلة سياقية.',
+          'التخدير الاستنشاقي العميق، وخصوصًا Halothane تاريخيًا، قد يزيد القابلية لاضطراب النظم مع الكاتيكولامينات.',
+          'القثاطر الوريدية المركزية أو قثاطر الشريان الرئوي قد تهيّج القلب إذا تقدمت داخله | Central venous / pulmonary-artery catheter irritation.',
+          'حالات مثل Thyrotoxicosis أو نزف تحت العنكبوتية | Subarachnoid hemorrhage قد تزيد قابلية حدوث اضطراب النظم.',
+          'خلل جهاز تنظيم القلب | Pacemaker malfunction.'
         ]
       },
       {
@@ -1461,6 +1511,15 @@ export const CLINICAL_GUIDES: ClinicalGuide[] = [
           'تقييم التعويض أو وجود فشل قلب حاد | Compensated vs decompensated HF.',
           'مراجعة Echo والأعراض والأدوية عند الحاجة | Echocardiography / symptoms / medications.',
           'اختيار التقنية والأدوية بالتدرج وبحسب الاحتياطي القلبي | Titrated anesthetic technique.'
+        ]
+      },
+      {
+        title: 'إذا تعذر تأجيل العملية | If surgery cannot be delayed',
+        items: [
+          'تجنب الزيادات المفاجئة في الحمل القلبي والحفاظ على الأكسجة والتهوية والاستقرار الدوري.',
+          'الوذمة الرئوية | Pulmonary edema قد تتطلب دعمًا تنفسيًا متقدمًا وقد تصل الحاجة إلى تهوية ميكانيكية بحسب الشدة.',
+          'قد نحتاج مراقبة غازية أو دعمًا بمقويات القلب | Inotropes في المرضى غير المستقرين، لكن اختيارها وجرعتها يعتمد على الفيزيولوجيا وليس وصفة ثابتة.',
+          'المصدر يذكر Dobutamine وتقليل afterload بموسعات الأوعية في سياقات مختارة للحفاظ على Cardiac output؛ تُفرد الخطة حسب السبب والضغط والتروية.'
         ]
       }
     ],
@@ -1553,6 +1612,14 @@ export const CLINICAL_GUIDES: ClinicalGuide[] = [
         items: [
           'سيفوفلوران وإيزوفلوران وديسفلوران | Sevoflurane / Isoflurane / Desflurane ذات استقلاب كبدي منخفض نسبيًا وتُستخدم بحسب الحالة الديناميكية.',
           'هالوثان | Halothane قد يسبب Halothane hepatitis وأصبح نادر الاستخدام؛ يُتجنب خصوصًا عند وجود مرض كبدي أو قصة أذية كبدية مرتبطة به.'
+        ]
+      },
+      {
+        title: 'التروية الكبدية حول العملية | Perioperative hepatic perfusion',
+        items: [
+          'بدء التخدير، النزف، نقص الأكسجة وهبوط الضغط قد تقلل توصيل الأوكسجين إلى الكبد عند المريض ذي الاحتياطي الكبدي المحدود.',
+          'الأدوية المؤثرة في الأوعية | Vasoactive drugs، وضعية المريض والتقنية الجراحية قد تغير التروية الكبدية أيضًا.',
+          'الهدف العملي هو تجنب نقص الأكسجة وهبوط الضغط المطول والحفاظ على تروية مناسبة بدل الاعتماد على “دواء آمن للكبد” واحد.'
         ]
       }
     ],
