@@ -26,10 +26,10 @@ export const MEDICAL_SITE_ICON_ASSETS: Record<MedicalSiteIconName, AssetRecord> 
   home: {
     iconScoutId: 7140714,
     iconScoutPage: 'https://iconscout.com/lottie-animation/mobile-health-app-animation_7140714',
-    flaticonId: 17882602,
-    flaticonPage: 'https://www.flaticon.com/free-animated-icon/health_17882602',
-    staticSrc: 'https://cdn-icons-png.flaticon.com/512/17882/17882602.png',
-    animatedSrc: 'https://cdn-icons-gif.flaticon.com/17882/17882602.gif'
+    flaticonId: 15968683,
+    flaticonPage: 'https://www.flaticon.com/free-animated-icon/medical-cross_15968683',
+    staticSrc: 'https://cdn-icons-png.flaticon.com/512/15968/15968683.png',
+    animatedSrc: 'https://cdn-icons-gif.flaticon.com/15968/15968683.gif'
   },
   guide: {
     iconScoutId: 7140709,
@@ -42,26 +42,26 @@ export const MEDICAL_SITE_ICON_ASSETS: Record<MedicalSiteIconName, AssetRecord> 
   learn: {
     iconScoutId: 7140713,
     iconScoutPage: 'https://iconscout.com/lottie-animation/microscope-animation_7140713',
-    flaticonId: 19016644,
-    flaticonPage: 'https://www.flaticon.com/free-animated-icon/test_19016644',
-    staticSrc: 'https://cdn-icons-png.flaticon.com/512/19016/19016644.png',
-    animatedSrc: 'https://cdn-icons-gif.flaticon.com/19016/19016644.gif'
+    flaticonId: 19009028,
+    flaticonPage: 'https://www.flaticon.com/free-animated-icon/microscope_19009028',
+    staticSrc: 'https://cdn-icons-png.flaticon.com/512/19009/19009028.png',
+    animatedSrc: 'https://cdn-icons-gif.flaticon.com/19009/19009028.gif'
   },
   saved: {
     iconScoutId: 7140721,
     iconScoutPage: 'https://iconscout.com/lottie-animation/health-record-animation_7140721',
-    flaticonId: 19035565,
-    flaticonPage: 'https://www.flaticon.com/free-animated-icon/heart_19035565',
-    staticSrc: 'https://cdn-icons-png.flaticon.com/512/19035/19035565.png',
-    animatedSrc: 'https://cdn-icons-gif.flaticon.com/19035/19035565.gif'
+    flaticonId: 19036882,
+    flaticonPage: 'https://www.flaticon.com/free-animated-icon/heart_19036882',
+    staticSrc: 'https://cdn-icons-png.flaticon.com/512/19036/19036882.png',
+    animatedSrc: 'https://cdn-icons-gif.flaticon.com/19036/19036882.gif'
   },
   drugs: {
     iconScoutId: 7140711,
     iconScoutPage: 'https://iconscout.com/lottie-animation/medication-animation_7140711',
-    flaticonId: 19022025,
-    flaticonPage: 'https://www.flaticon.com/free-animated-icon/medicine_19022025',
-    staticSrc: 'https://cdn-icons-png.flaticon.com/512/19022/19022025.png',
-    animatedSrc: 'https://cdn-icons-gif.flaticon.com/19022/19022025.gif'
+    flaticonId: 15968752,
+    flaticonPage: 'https://www.flaticon.com/free-animated-icon/pill_15968752',
+    staticSrc: 'https://cdn-icons-png.flaticon.com/512/15968/15968752.png',
+    animatedSrc: 'https://cdn-icons-gif.flaticon.com/15968/15968752.gif'
   },
   equipment: {
     iconScoutId: 7140696,
@@ -90,10 +90,10 @@ export const MEDICAL_SITE_ICON_ASSETS: Record<MedicalSiteIconName, AssetRecord> 
   clinical: {
     iconScoutId: 7140710,
     iconScoutPage: 'https://iconscout.com/lottie-animation/medical-treatment-animation_7140710',
-    flaticonId: 17882610,
-    flaticonPage: 'https://www.flaticon.com/free-animated-icon/medical_17882610',
-    staticSrc: 'https://cdn-icons-png.flaticon.com/512/17882/17882610.png',
-    animatedSrc: 'https://cdn-icons-gif.flaticon.com/17882/17882610.gif'
+    flaticonId: 19003377,
+    flaticonPage: 'https://www.flaticon.com/free-animated-icon/medical-care_19003377',
+    staticSrc: 'https://cdn-icons-png.flaticon.com/512/19003/19003377.png',
+    animatedSrc: 'https://cdn-icons-gif.flaticon.com/19003/19003377.gif'
   },
   terms: {
     iconScoutId: 7140720,
@@ -106,10 +106,10 @@ export const MEDICAL_SITE_ICON_ASSETS: Record<MedicalSiteIconName, AssetRecord> 
   abbreviations: {
     iconScoutId: 7140721,
     iconScoutPage: 'https://iconscout.com/lottie-animation/health-record-animation_7140721',
-    flaticonId: 19017521,
-    flaticonPage: 'https://www.flaticon.com/free-animated-icon/test-tube_19017521',
-    staticSrc: 'https://cdn-icons-png.flaticon.com/512/19017/19017521.png',
-    animatedSrc: 'https://cdn-icons-gif.flaticon.com/19017/19017521.gif'
+    flaticonId: 19031946,
+    flaticonPage: 'https://www.flaticon.com/free-animated-icon/medical-record_19031946',
+    staticSrc: 'https://cdn-icons-png.flaticon.com/512/19031/19031946.png',
+    animatedSrc: 'https://cdn-icons-gif.flaticon.com/19031/19031946.gif'
   }
 };
 
@@ -131,6 +131,11 @@ export function MedicalSiteIcon({
   const [run, setRun] = useState(0);
 
   useEffect(() => {
+    setGifFailed(false);
+    setPngFailed(false);
+  }, [name]);
+
+  useEffect(() => {
     if (!play || gifFailed) {
       setAnimated(false);
       return;
@@ -140,7 +145,7 @@ export function MedicalSiteIcon({
     setAnimated(true);
     const timer = window.setTimeout(() => setAnimated(false), 900);
     return () => window.clearTimeout(timer);
-  }, [play, gifFailed]);
+  }, [play, gifFailed, name]);
 
   if (pngFailed && (!animated || gifFailed)) {
     return (
