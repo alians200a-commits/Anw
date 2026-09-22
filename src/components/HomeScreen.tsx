@@ -325,13 +325,13 @@ export function HomeScreen({
             </div>
           </div>
 
-          <div className="grid gap-2 sm:grid-cols-3">
+          <div className="flex gap-2 overflow-x-auto pb-1 [scrollbar-width:none]">
             {recentCards.map((item) => (
               <button
                 key={item.section + ':' + item.query}
                 type="button"
                 onClick={() => openGuide(item.section, 'all', item.query)}
-                className="flex min-h-[58px] items-center gap-2.5 rounded-[16px] border border-[#DCE5EA] bg-[#F8FAFB] px-3 py-2.5 text-right outline-none transition active:bg-[#EEF3F6] focus-visible:ring-2 focus-visible:ring-[#CCA039]/50"
+                className="flex min-h-[58px] w-[190px] shrink-0 items-center gap-2.5 rounded-[16px] border border-[#DCE5EA] bg-[#F8FAFB] px-3 py-2.5 text-right outline-none transition active:bg-[#EEF3F6] focus-visible:ring-2 focus-visible:ring-[#CCA039]/50 sm:w-[210px]"
               >
                 <CaretLeft
                   size={14}
