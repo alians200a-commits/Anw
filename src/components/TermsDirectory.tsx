@@ -43,7 +43,7 @@ export function TermsDirectory({ favorites, onToggleFavorite, initialQuery = '' 
         />
       </div>
 
-      <p className="px-1 text-[11px] text-[#657784]">{filtered.length} مصطلح</p>
+      <p className="px-1 text-[11px] text-[#5F7280]">{filtered.length} مصطلح</p>
 
       <div className="space-y-2">
         {filtered.map((term) => {
