@@ -106,10 +106,7 @@ export function DrugDirectory({
         items={filterItems}
       />
 
-      <div className="flex items-center justify-between px-1">
-        <span className="rounded-full border border-[#DCE5EA] bg-[#EEF3F6] px-2.5 py-1 text-[9px] font-black text-[#405E75]">
-          {currentFilter}
-        </span>
+      <div className="px-1 text-left">
         <p className="text-[10px] font-semibold text-[#657784]">{filtered.length} دواء</p>
       </div>
 
