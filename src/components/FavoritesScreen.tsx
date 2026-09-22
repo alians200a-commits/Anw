@@ -44,7 +44,7 @@ export function FavoritesScreen({ favorites, onToggleFavorite }: FavoritesScreen
               <button
                 type="button"
                 onClick={() => onToggleFavorite('drug:' + drug.id)}
-                className="grid h-11 w-11 shrink-0 place-items-center rounded-xl border border-[#CCA039]/45 bg-[#CCA039]/12 text-[#9B7420] outline-none transition focus-visible:ring-2 focus-visible:ring-[#CCA039]/55"
+                className="group grid h-11 w-11 shrink-0 place-items-center rounded-xl border border-[#CCA039]/45 bg-[#CCA039]/12 text-[#9B7420] outline-none transition focus-visible:ring-2 focus-visible:ring-[#CCA039]/55"
                 aria-label={`إزالة ${drug.ar} من المحفوظات`}
                 title="إزالة من المحفوظات"
               >
@@ -54,7 +54,7 @@ export function FavoritesScreen({ favorites, onToggleFavorite }: FavoritesScreen
               <button
                 type="button"
                 onClick={() => setSelectedDrugId(drug.id)}
-                className="flex min-h-11 min-w-0 flex-1 items-center justify-end gap-3 rounded-xl text-right outline-none focus-visible:ring-2 focus-visible:ring-[#CCA039]/55"
+                className="group flex min-h-11 min-w-0 flex-1 items-center justify-end gap-3 rounded-xl text-right outline-none focus-visible:ring-2 focus-visible:ring-[#CCA039]/55"
               >
                 <div className="min-w-0 flex-1">
                   <h3 className="truncate font-black text-[#183149]">{drug.ar}</h3>
@@ -75,7 +75,7 @@ export function FavoritesScreen({ favorites, onToggleFavorite }: FavoritesScreen
                 <button
                   type="button"
                   onClick={() => onToggleFavorite('term:' + term.id)}
-                  className="grid h-11 w-11 shrink-0 place-items-center rounded-xl border border-[#CCA039]/45 bg-[#CCA039]/12 text-[#9B7420] outline-none transition focus-visible:ring-2 focus-visible:ring-[#CCA039]/55"
+                  className="group grid h-11 w-11 shrink-0 place-items-center rounded-xl border border-[#CCA039]/45 bg-[#CCA039]/12 text-[#9B7420] outline-none transition focus-visible:ring-2 focus-visible:ring-[#CCA039]/55"
                   aria-label={`إزالة ${term.ar} من المحفوظات`}
                   title="إزالة من المحفوظات"
                 >

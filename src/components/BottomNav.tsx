@@ -49,7 +49,7 @@ export function BottomNav({ active, onChange }: BottomNavProps) {
                 onClick={() => onChange(item.id)}
                 aria-current={isActive ? 'page' : undefined}
                 aria-label={item.label}
-                className="flex h-full w-full min-w-[48px] flex-col items-center justify-center gap-1 rounded-2xl px-1 text-[#183149] outline-none transition focus-visible:ring-2 focus-visible:ring-[#CCA039]/70"
+                className="group flex h-full w-full min-w-[48px] flex-col items-center justify-center gap-1 rounded-2xl px-1 text-[#183149] outline-none transition focus-visible:ring-2 focus-visible:ring-[#CCA039]/70"
               >
                 <span
                   className={
@@ -59,7 +59,7 @@ export function BottomNav({ active, onChange }: BottomNavProps) {
                       : 'bg-[#EEF3F6] text-[#315672]')
                   }
                 >
-                  <AnimatedIcon active={isActive} variant={item.animation}>
+                  <AnimatedIcon active={isActive} ambient={isActive} variant={item.animation}>
                     <Icon size={19} weight={isActive ? 'fill' : 'regular'} />
                   </AnimatedIcon>
                 </span>

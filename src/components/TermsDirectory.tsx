@@ -57,7 +57,7 @@ export function TermsDirectory({ favorites, onToggleFavorite, initialQuery = '' 
                   <button
                     type="button"
                     onClick={() => playPronunciation('terms', term.id)}
-                    className="grid h-11 w-11 place-items-center rounded-xl border border-[#D7E2E9] bg-white text-[#315672] outline-none transition active:bg-[#EEF3F6] focus-visible:ring-2 focus-visible:ring-[#CCA039]/55"
+                    className="group grid h-11 w-11 place-items-center rounded-xl border border-[#D7E2E9] bg-white text-[#315672] outline-none transition active:bg-[#EEF3F6] focus-visible:ring-2 focus-visible:ring-[#CCA039]/55"
                     title="نطق المصطلح"
                     aria-label={'نطق ' + term.ar}
                   >
@@ -67,7 +67,7 @@ export function TermsDirectory({ favorites, onToggleFavorite, initialQuery = '' 
                     type="button"
                     onClick={() => onToggleFavorite(favoriteId)}
                     className={
-                      'grid h-11 w-11 place-items-center rounded-xl border outline-none transition focus-visible:ring-2 focus-visible:ring-[#CCA039]/55 ' +
+                      'group grid h-11 w-11 place-items-center rounded-xl border outline-none transition focus-visible:ring-2 focus-visible:ring-[#CCA039]/55 ' +
                       (isFavorite
                         ? 'border-[#CCA039]/45 bg-[#CCA039]/12 text-[#9B7420]'
                         : 'border-[#D7E2E9] bg-white/75 text-[#5F7280]')

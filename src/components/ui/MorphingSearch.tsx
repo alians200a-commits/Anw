@@ -256,7 +256,7 @@ export function MorphingSearch({
             type="button"
             onClick={closeSearch}
             aria-label="إغلاق البحث"
-            className="grid h-11 w-11 shrink-0 place-items-center rounded-xl text-[#526675] outline-none transition active:bg-[#EEF3F6] focus-visible:ring-2 focus-visible:ring-[#CCA039]/55"
+            className="group grid h-11 w-11 shrink-0 place-items-center rounded-xl text-[#526675] outline-none transition active:bg-[#EEF3F6] focus-visible:ring-2 focus-visible:ring-[#CCA039]/55"
           >
             <X size={20} weight="bold" />
           </button>
@@ -288,7 +288,7 @@ export function MorphingSearch({
                 onFocus={() => setActiveIndex(index)}
                 onClick={() => selectItem(item)}
                 className={
-                  'flex min-h-[64px] w-full items-center gap-3 rounded-[14px] px-3 py-2.5 text-right outline-none transition focus-visible:ring-2 focus-visible:ring-[#CCA039]/55 ' +
+                  'group flex min-h-[64px] w-full items-center gap-3 rounded-[14px] px-3 py-2.5 text-right outline-none transition focus-visible:ring-2 focus-visible:ring-[#CCA039]/55 ' +
                   (index === activeIndex
                     ? 'bg-[#EEF3F6]'
                     : 'bg-white hover:bg-[#F7F9FA] active:bg-[#EEF3F6]')
@@ -345,7 +345,7 @@ export function MorphingSearch({
           layoutId="daleeli-morph-search"
           type="button"
           onClick={openSearch}
-          className="flex min-h-12 w-full items-center gap-3 rounded-[16px] border border-[#DCE4EA] bg-white px-3.5 text-right shadow-[0_3px_14px_rgba(10,32,55,0.05)] outline-none transition focus-visible:ring-2 focus-visible:ring-[#CCA039]/60 focus-visible:ring-offset-2"
+          className="group flex min-h-12 w-full items-center gap-3 rounded-[16px] border border-[#DCE4EA] bg-white px-3.5 text-right shadow-[0_3px_14px_rgba(10,32,55,0.05)] outline-none transition focus-visible:ring-2 focus-visible:ring-[#CCA039]/60 focus-visible:ring-offset-2"
           transition={
             reduceMotion
               ? { duration: 0 }

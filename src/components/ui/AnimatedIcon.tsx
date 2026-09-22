@@ -1,11 +1,11 @@
 import type { ReactNode } from 'react';
-import { motion, useReducedMotion } from 'motion/react';
 
 export type AnimatedIconVariant = 'lift' | 'tilt' | 'pop' | 'pulse';
 
 interface AnimatedIconProps {
   children: ReactNode;
   active?: boolean;
+  ambient?: boolean;
   variant?: AnimatedIconVariant;
   className?: string;
 }
@@ -13,45 +13,32 @@ interface AnimatedIconProps {
 export function AnimatedIcon({
   children,
   active = false,
+  ambient = false,
   variant = 'pop',
   className = ''
 }: AnimatedIconProps) {
-  const reduceMotion = useReducedMotion();
-
-  const hover =
+  const variantClass =
     variant === 'lift'
-      ? { y: -2, scale: 1.06 }
+      ? 'group-hover:-translate-y-0.5 group-hover:scale-110'
       : variant === 'tilt'
-        ? { rotate: -7, scale: 1.06 }
+        ? 'group-hover:-rotate-6 group-hover:scale-110'
         : variant === 'pulse'
-          ? { scale: 1.08 }
-          : { scale: 1.09 };
-
-  const tap =
-    variant === 'tilt'
-      ? { rotate: 0, scale: 0.94 }
-      : { scale: 0.94, y: 0 };
+          ? 'group-hover:scale-110'
+          : 'group-hover:scale-110';
 
   return (
-    <motion.span
+    <span
       aria-hidden="true"
-      className={'inline-grid place-items-center ' + className}
-      animate={
-        reduceMotion
-          ? undefined
-          : active
-            ? { scale: [1, 1.12, 1], y: [0, -1, 0] }
-            : { scale: 1, y: 0, rotate: 0 }
-      }
-      whileHover={reduceMotion ? undefined : hover}
-      whileTap={reduceMotion ? undefined : tap}
-      transition={
-        reduceMotion
-          ? { duration: 0 }
-          : { type: 'spring', stiffness: 420, damping: 24, mass: 0.42 }
+      className={
+        'pointer-events-none inline-grid place-items-center transform-gpu transition-transform duration-150 ease-out ' +
+        variantClass +
+        ' group-active:scale-90 group-active:translate-y-0 ' +
+        (active ? 'scale-105 ' : '') +
+        (ambient ? 'daleeli-icon-ambient ' : '') +
+        className
       }
     >
       {children}
-    </motion.span>
+    </span>
   );
 }
