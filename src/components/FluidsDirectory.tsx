@@ -55,6 +55,21 @@ function FluidList({
 }
 
 function FluidSheet({ item, onClose }: { item: IntravenousFluid; onClose: () => void }) {
+  useEffect(() => {
+    const previous = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') onClose();
+    };
+    window.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      document.body.style.overflow = previous;
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [onClose]);
+
   return (
     <motion.div
       className="fixed inset-0 z-[87] bg-[#0A2037]/42 backdrop-blur-[2px]"
@@ -64,6 +79,8 @@ function FluidSheet({ item, onClose }: { item: IntravenousFluid; onClose: () => 
       onClick={onClose}
     >
       <motion.div
+        role="dialog"
+        aria-modal="true"
         className="absolute inset-x-0 bottom-0 mx-auto max-h-[90vh] w-full max-w-3xl overflow-y-auto rounded-t-[28px] border-t border-[#DCE5EA] bg-white shadow-2xl"
         initial={{ y: 38, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
@@ -111,11 +128,9 @@ function FluidSheet({ item, onClose }: { item: IntravenousFluid; onClose: () => 
 }
 
 export function FluidsDirectory({
-  initialQuery = '',
-  onOpenItem
+  initialQuery = ''
 }: {
   initialQuery?: string;
-  onOpenItem?: (query: string) => void;
 }) {
   const [query, setQuery] = useState(initialQuery);
   const [category, setCategory] = useState<'all' | FluidCategory>('all');
@@ -123,6 +138,21 @@ export function FluidsDirectory({
 
   useEffect(() => {
     setQuery(initialQuery);
+
+    const normalized = initialQuery.trim().toLowerCase();
+    if (normalized) setCategory('all');
+    if (!normalized) {
+      setSelected(null);
+      return;
+    }
+
+    const exact = INTRAVENOUS_FLUIDS.find(
+      (item) =>
+        item.nameEn.toLowerCase() === normalized ||
+        item.nameAr.toLowerCase() === normalized
+    );
+
+    if (exact) setSelected(exact);
   }, [initialQuery]);
 
   const currentCategory =
@@ -184,10 +214,7 @@ export function FluidsDirectory({
           <motion.button
             key={item.id}
             type="button"
-            onClick={() => {
-              setSelected(item);
-              onOpenItem?.(item.nameEn);
-            }}
+            onClick={() => setSelected(item)}
             initial={{ opacity: 0, y: 5 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.12, delay: Math.min(index, 8) * 0.015 }}

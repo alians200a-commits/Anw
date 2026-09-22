@@ -74,6 +74,21 @@ function StageGuideSheet({
   guide: ClinicalGuide;
   onClose: () => void;
 }) {
+  useEffect(() => {
+    const previous = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') onClose();
+    };
+    window.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      document.body.style.overflow = previous;
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [onClose]);
+
   return (
     <motion.div
       className="fixed inset-0 z-[88] bg-[#0A2037]/42 backdrop-blur-[2px]"
@@ -83,6 +98,8 @@ function StageGuideSheet({
       onClick={onClose}
     >
       <motion.div
+        role="dialog"
+        aria-modal="true"
         className="absolute inset-x-0 bottom-0 mx-auto max-h-[90vh] w-full max-w-3xl overflow-y-auto rounded-t-[28px] border-t border-[#DCE5EA] bg-white shadow-2xl"
         initial={{ y: 38, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
@@ -156,11 +173,9 @@ function StageGuideSheet({
 }
 
 export function AnesthesiaStagesDirectory({
-  initialQuery = '',
-  onOpenItem
+  initialQuery = ''
 }: {
   initialQuery?: string;
-  onOpenItem?: (query: string) => void;
 }) {
   const stageEntries = useMemo(
     () =>
@@ -242,13 +257,10 @@ export function AnesthesiaStagesDirectory({
         items={stageItems}
       />
 
-      <div className="flex items-center justify-between px-1">
+      <div className="px-1 text-left">
         <span className="rounded-full border border-[#DCE5EA] bg-[#EEF3F6] px-2.5 py-1 text-[9px] font-black text-[#405E75]">
           {currentEntry.guides.length} موضوع
         </span>
-        <p className="text-[10px] font-semibold text-[#657784]">
-          {currentEntry.stage.titleAr}
-        </p>
       </div>
 
       <div className="space-y-2">
@@ -256,10 +268,7 @@ export function AnesthesiaStagesDirectory({
           <motion.button
             key={guide.id}
             type="button"
-            onClick={() => {
-              setSelectedGuide(guide);
-              onOpenItem?.(guide.titleEn);
-            }}
+            onClick={() => setSelectedGuide(guide)}
             initial={{ opacity: 0, y: 5 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{

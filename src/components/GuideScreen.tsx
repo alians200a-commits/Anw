@@ -34,7 +34,6 @@ interface GuideScreenProps {
   onToggleFavorite: (id: string) => void;
   initialDrugClass: 'all' | DrugClass;
   initialQuery: string;
-  onRecentItem?: (section: GuideSection, query: string) => void;
 }
 
 const sectionLabels: Record<GuideSection, string> = {
@@ -53,8 +52,7 @@ export function GuideScreen({
   favorites,
   onToggleFavorite,
   initialDrugClass,
-  initialQuery,
-  onRecentItem
+  initialQuery
 }: GuideScreenProps) {
   const sectionItems: StackMenuItem[] = [
     {
@@ -113,9 +111,6 @@ export function GuideScreen({
       <section>
         <div className="mb-1 px-1 text-right">
           <h2 className="text-lg font-black text-[#183149]">الدليل التخديري</h2>
-          <p className="mt-0.5 text-[10px] font-semibold text-[#657784]">
-            القسم الحالي: {sectionLabels[section]}
-          </p>
         </div>
 
         <NotificationStackMenu
@@ -132,32 +127,19 @@ export function GuideScreen({
           onToggleFavorite={onToggleFavorite}
           initialClassification={initialDrugClass}
           initialQuery={initialQuery}
-          onOpenDrug={(query) => onRecentItem?.('drugs', query)}
         />
       )}
       {section === 'fluids' && (
-        <FluidsDirectory
-          initialQuery={initialQuery}
-          onOpenItem={(query) => onRecentItem?.('fluids', query)}
-        />
+        <FluidsDirectory initialQuery={initialQuery} />
       )}
       {section === 'equipment' && (
-        <EquipmentDirectory
-          initialQuery={initialQuery}
-          onOpenItem={(query) => onRecentItem?.('equipment', query)}
-        />
+        <EquipmentDirectory initialQuery={initialQuery} />
       )}
       {section === 'stages' && (
-        <AnesthesiaStagesDirectory
-          initialQuery={initialQuery}
-          onOpenItem={(query) => onRecentItem?.('stages', query)}
-        />
+        <AnesthesiaStagesDirectory initialQuery={initialQuery} />
       )}
       {section === 'clinical' && (
-        <ClinicalGuidesDirectory
-          initialQuery={initialQuery}
-          onOpenItem={(query) => onRecentItem?.('clinical', query)}
-        />
+        <ClinicalGuidesDirectory initialQuery={initialQuery} />
       )}
       {section === 'terms' && (
         <TermsDirectory

@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
-import { BookOpenText, Heart, MagnifyingGlass, SpeakerHigh } from '@phosphor-icons/react';
+import { Heart, MagnifyingGlass, SpeakerHigh } from '@phosphor-icons/react';
 import { CLINICAL_TERMS } from '../data/clinicalTerms';
 import { playPronunciation } from '../utils/speech';
 import { BilingualLabel } from './BilingualLabel';
@@ -52,13 +52,16 @@ export function TermsDirectory({ favorites, onToggleFavorite, initialQuery = '' 
               <div className="flex items-start gap-3">
                 <div className="flex shrink-0 gap-1">
                   <button
+                    type="button"
                     onClick={() => playPronunciation('terms', term.id)}
-                    className="grid h-11 w-11 place-items-center rounded-xl border border-[#315672]/12 bg-[#315672]/7 text-[#315672]"
+                    className="grid h-11 w-11 place-items-center rounded-xl border border-[#D7E2E9] bg-white text-[#315672] outline-none transition active:bg-[#EEF3F6] focus-visible:ring-2 focus-visible:ring-[#CCA039]/55"
                     title="نطق المصطلح"
+                    aria-label={'نطق ' + term.ar}
                   >
                     <SpeakerHigh size={19} />
                   </button>
                   <button
+                    type="button"
                     onClick={() => onToggleFavorite(favoriteId)}
                     className={
                       'grid h-11 w-11 place-items-center rounded-xl border ' +
@@ -67,19 +70,15 @@ export function TermsDirectory({ favorites, onToggleFavorite, initialQuery = '' 
                         : 'border-[#D7E2E9] bg-white/75 text-[#5F7280]')
                     }
                     title="حفظ"
+                    aria-label={isFavorite ? 'إزالة من المحفوظات' : 'حفظ المصطلح'}
                   >
                     <Heart size={19} weight={isFavorite ? 'fill' : 'regular'} />
                   </button>
                 </div>
 
-                <div className="flex flex-1 items-start justify-end gap-3 text-right">
-                  <div>
-                    <h3 className="text-sm font-black text-[#183149]">{term.ar}</h3>
-                    <p className="mt-1 text-xs font-bold text-[#526675]" dir="ltr">{term.en}</p>
-                  </div>
-                  <div className="grid h-11 w-11 shrink-0 place-items-center rounded-[14px] border border-[#315672]/12 bg-[#315672]/7 text-[#315672]">
-                    <BookOpenText size={21} weight="regular" />
-                  </div>
+                <div className="min-w-0 flex-1 text-right">
+                  <h3 className="text-sm font-black text-[#183149]">{term.ar}</h3>
+                  <p className="mt-1 text-xs font-bold text-[#526675]" dir="ltr">{term.en}</p>
                 </div>
               </div>
               <p className="mt-3 whitespace-pre-line text-[10px] leading-5 text-[#526675]"><MixedDirectionText text={term.definition} /></p>
