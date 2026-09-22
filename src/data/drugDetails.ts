@@ -26,7 +26,7 @@ export const DRUG_DETAILS: Record<string, DrugDetail> = {
       'لـMAC sedation في البالغ السليم: initiation نحو 100–150 mcg/kg/min لمدة 3–5 دقائق أو slow injection نحو 0.5 mg/kg، ثم maintenance غالبًا 25–75 mcg/kg/min.',
       'الجرعة ليست رقمًا ثابتًا؛ Premedication، العمر، نقص الحجم والاحتياطي القلبي والأدوية المصاحبة تغير المتطلب.'
     ],
-    onsetDuration: ['بدء التأثير بعد الحقن الوريدي سريع، عادة خلال عشرات الثواني | Rapid IV onset.', 'مدة التنويم بعد جرعة واحدة لبدء التخدير قصيرة نسبيًا بسبب إعادة التوزيع | Short hypnotic duration after a bolus.'],
+    onsetDuration: ['بدء التأثير بعد الحقن الوريدي سريع، عادة خلال عشرات الثواني | Rapid IV onset، ويصل التأثير الأقصى عادةً خلال نحو دقيقتين.', 'بعد جرعة مفردة لبدء التخدير يستمر التنويم عادةً نحو 5–10 دقائق قبل أن يزول أساسًا بإعادة التوزيع | Redistribution.'],
     correction: 'المصدر يعرض حساسية البيض/الصويا بصورة واسعة. الملصقات الأمريكية الحديثة تذكر تحديدًا تاريخ التأق | Anaphylaxis للبيض/منتجاته أو الصويا/منتجاتها ضمن الموانع، إضافة إلى الحساسية للبروبوفول أو مكونات المستحضر؛ ولا تُحوّل حساسية غذائية بسيطة تلقائيًا إلى نفس درجة الخطر دون تقييم. كذلك الربو | Asthma ليس مانعًا روتينيًا للبروبوفول كما ورد في ملف الملاحظات.',
     sourcePages: [64, 65, 70],
     uses: ['بدء التخدير العام', 'المحافظة على التخدير بالتسريب الوريدي', 'التهدئة في الإجراءات والعناية المركزة وفق المراقبة المناسبة'],
@@ -84,11 +84,11 @@ export const DRUG_DETAILS: Record<string, DrugDetail> = {
     adverseEffects: ['ارتفاع الضغط أو النبض', 'زيادة الإفرازات', 'غثيان وقيء', 'رأرأة', 'أحلام حية أو هلاوس عند الاستيقاظ']
   },
   sevoflurane: {
-    feature: 'عامل استنشاقي قليل الذوبان نسبيًا في الدم؛ مناسب للتحكم السريع نسبيًا بعمق التخدير ولبدء التخدير بالقناع.',
+    feature: 'عامل استنشاقي قليل الذوبان نسبيًا في الدم، رائحته مقبولة وغير لاذع نسبيًا؛ لذلك يناسب بدء التخدير بالقناع خصوصًا لدى الأطفال، مع تحكم سريع نسبيًا بعمق التخدير وإفاقة سريعة.',
     mechanism: 'عامل متطاير متعدد الأهداف يعزز النقل المثبط ويؤثر في قنوات أيونية متعددة | Multi-target volatile anesthetic actions.',
     tradeNames: ['Sevoflurane', 'Ultane'],
     routes: ['استنشاقي | Inhalational'],
-    onsetDuration: ['قليل الذوبان نسبيًا في الدم لذلك يسمح ببدء التخدير والإفاقة بسرعة نسبيًا | Low blood-gas solubility.'],
+    onsetDuration: ['قليل الذوبان نسبيًا في الدم لذلك يسمح ببدء التخدير بسرعة عادة خلال دقائق والإفاقة بسرعة نسبيًا | Low blood-gas solubility.', 'تهييج مجرى الهواء والسعال أقل من Desflurane وIsoflurane، ما يجعله مناسبًا أكثر للـMask induction.'],
     sourcePages: [58, 71],
     uses: ['بدء التخدير العام بالاستنشاق', 'المحافظة على التخدير العام'],
     contraindications: ['قابلية معروفة أو مشتبه بها لفرط الحرارة الخبيث', 'فرط التحسس لعوامل التخدير الهالوجينية'],
@@ -426,6 +426,7 @@ export const DRUG_DETAILS: Record<string, DrugDetail> = {
     feature: 'عامل استنشاقي متطاير | Volatile anesthetic أقدم من العوامل الحديثة، وله ميل لزيادة النشاط الاختلاجي خصوصًا مع فرط التهوية.',
     mechanism: 'عامل تخدير عام مستنشق | Inhaled general anesthetic يعمل عبر عدة أهداف عصبية مركزية وليس مستقبلًا منفردًا.',
     routes: ['استنشاقي | Inhalational'],
+    onsetDuration: ['أبطأ من Sevoflurane وDesflurane في تغيير العمق والإفاقة، وهو عامل أقدم قليل الاستخدام حاليًا.'],
     uses: ['المحافظة على التخدير العام | Maintenance of general anesthesia في البيئات التي ما زال متوفرًا فيها'],
     contraindications: ['قابلية فرط الحرارة الخبيث | Malignant hyperthermia susceptibility', 'فرط التحسس للعوامل الهالوجينية | Halogenated anesthetic hypersensitivity'],
     warnings: ['قد يسبب نشاطًا اختلاجيًا | Seizure activity، ويزداد مع نقص PaCO₂ الناتج عن فرط التهوية', 'هبوط الضغط | Hypotension وتثبيط التنفس | Respiratory depression', 'محفز محتمل لفرط الحرارة الخبيث | Malignant hyperthermia trigger'],
@@ -434,10 +435,11 @@ export const DRUG_DETAILS: Record<string, DrugDetail> = {
     sourcePages: [57]
   },
   desflurane: {
-    feature: 'أقل ذوبانًا في الدم | Low blood-gas solubility لذلك يسمح بتغيير سريع لعمق التخدير وإفاقة سريعة.',
+    feature: 'من أقل العوامل المتطايرة ذوبانًا في الدم | Very low blood-gas solubility، لذلك يسمح بأسرع تغيرات تقريبًا في عمق التخدير وإفاقة سريعة جدًا.',
     mechanism: 'عامل تخدير استنشاقي متطاير | Volatile inhaled anesthetic متعدد الأهداف في الجهاز العصبي المركزي.',
     tradeNames: ['Suprane'],
     routes: ['استنشاقي | Inhalational'],
+    onsetDuration: ['بدء وزوال التأثير سريعان جدًا نسبيًا بسبب انخفاض blood-gas solubility.', 'الإفاقة عادة أسرع من Sevoflurane وIsoflurane عند ظروف جرعة/مدة متقاربة، لكن تهييج مجرى الهواء يمنع استعماله الروتيني لبدء التخدير بالقناع.'],
     uses: ['المحافظة على التخدير العام | Maintenance of general anesthesia'],
     contraindications: ['قابلية فرط الحرارة الخبيث | Malignant hyperthermia susceptibility', 'فرط التحسس للعوامل الهالوجينية | Halogenated anesthetic hypersensitivity'],
     warnings: ['مهيج لمجرى الهواء | Airway irritant وقد يسبب سعالًا | Coughing أو تشنجًا حنجريًا | Laryngospasm', 'الزيادة السريعة في التركيز قد تسبب تنبيهًا وديًا | Sympathetic stimulation مع تسرع القلب | Tachycardia وارتفاع الضغط | Hypertension', 'لا يُفضّل عادةً لبدء التخدير بالقناع | Mask induction'],
