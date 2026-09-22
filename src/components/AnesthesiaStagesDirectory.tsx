@@ -262,7 +262,7 @@ export function AnesthesiaStagesDirectory({
 
       <div className="space-y-2">
         {currentEntry.guides.map((guide, index) => (
-          <motion.button
+          <button
             key={guide.id}
             type="button"
             onClick={() => setSelectedGuide(guide)}
@@ -286,7 +286,7 @@ export function AnesthesiaStagesDirectory({
                 <MixedDirectionText text={guide.summary} />
               </p>
             </div>
-          </motion.button>
+          </button>
         ))}
       </div>
 
