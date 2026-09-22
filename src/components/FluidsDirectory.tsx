@@ -10,6 +10,7 @@ import {
 import { BilingualLabel } from './BilingualLabel';
 import { MixedDirectionText } from './MixedDirectionText';
 import { useModalSheetA11y } from '../hooks/useModalSheetA11y';
+import { MEDICAL_ANIMATED_GIFS } from '../data/animatedMedicalIcons';
 import {
   NotificationStackMenu,
   type StackMenuItem
@@ -203,6 +204,7 @@ export function FluidsDirectory({
         title={currentCategory}
         description="نوع السوائل الوريدية"
         icon={<Drop size={22} weight="fill" />}
+        animatedIconSrc={MEDICAL_ANIMATED_GIFS.fluids}
         items={categoryItems}
         selectedId={category}
       />
