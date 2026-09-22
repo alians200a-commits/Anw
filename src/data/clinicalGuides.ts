@@ -1170,6 +1170,7 @@ export const CLINICAL_GUIDES: ClinicalGuide[] = [
       }
     ],
     correction: 'قاعدة “الشاش غير الممتلئ = 5 mL، الممتلئ = 10 mL، والـpack = 30 mL” غير موثوقة. التقدير البصري لفقد الدم معروف بعدم الدقة، لذلك لا تُعرض هذه الأرقام كحقائق ثابتة.',
+    clinicalNote: 'التقدير البصري وحده لفقد الدم غير موثوق. الأفضل جمع أكثر من طريقة مثل suction minus irrigation، الوزن قبل/بعد للمواد الماصة، التحاليل المتسلسلة والاستجابة الديناميكية بدل أرقام ثابتة لكل شاش أو pack.',
     tags: ['blood loss','EBL','gravimetric','suction','نزف']
   },
   {
@@ -1482,6 +1483,7 @@ export const CLINICAL_GUIDES: ClinicalGuide[] = [
         ]
       }
     ],
+    clinicalNote: 'أثناء التخدير قد تُخفى الشكاوى الذاتية لتفاعل نقل الدم، لذلك أي هبوط ضغط أو bronchospasm أو نزف/oozing أو تغير مفاجئ يستدعي إيقاف النقل وتقييم المريض والوحدة والتفريق بين أسباب مثل hemolysis وTRALI وTACO والحساسية.',
     tags: ['blood transfusion','transfusion complications','hemolysis','allergic reaction','infection','نقل الدم']
   },
 
@@ -1515,6 +1517,7 @@ export const CLINICAL_GUIDES: ClinicalGuide[] = [
       }
     ],
     correction: 'تعريف massive transfusion ليس محصورًا بـ10–20 وحدة دائمًا؛ توجد تعريفات متعددة وتُستخدم بروتوكولات نزف كبير تعتمد على سرعة النزف واحتياجات المريض. العلاج الحديث يوازن مكونات الدم ويراقب الكالسيوم والحرارة والتخثر.',
+    clinicalNote: 'Massive transfusion ليست رقم وحدات واحدًا يصلح لكل الحالات. عند النزف الكبير تُستخدم بروتوكولات منظمة مع مراقبة الحرارة وionized calcium والبوتاسيوم والحمض–القاعدة والتخثر وتوازن مكونات الدم.',
     tags: ['massive transfusion','coagulopathy','hypocalcemia','blood products','نقل دم']
   },
   {
@@ -1548,6 +1551,7 @@ export const CLINICAL_GUIDES: ClinicalGuide[] = [
       }
     ],
     correction: 'لا توجد وصفة واحدة من مضاد هيستامين + ستيرويد + مدر بول لكل تفاعل. بعد إيقاف الدم ودعم ABC، العلاج يعتمد على نوع التفاعل؛ مثلًا TACO يختلف عن TRALI أو الانحلال الدموي.',
+    clinicalNote: 'الخطوة الأولى عند الاشتباه بتفاعل حاد هي إيقاف نقل الوحدة وتقييم ABC مع إبقاء IV access وإبلاغ Blood bank. العلاج اللاحق يعتمد على نوع التفاعل؛ TACO وTRALI والانحلال الدموي والتأق ليست لها وصفة واحدة مشتركة.',
     tags: ['transfusion reaction','ABO','TRALI','TACO','hemolysis','نقل الدم']
   },
   {
@@ -1585,6 +1589,7 @@ export const CLINICAL_GUIDES: ClinicalGuide[] = [
       }
     ],
     correction: 'تعريف SBP <100 mmHg كهبوط ضغط للجميع قديم وغير دقيق. في البالغين يرتبط MAP أقل من نحو 65 mmHg بزيادة أذية الأعضاء في عدة دراسات، لكن الهدف يجب أن يُفرد حسب خط الأساس والأمراض المزمنة مثل Hypertension.',
+    clinicalNote: 'هبوط الضغط حول الجراحة يُفسر بالنسبة لخط الأساس والمدة وحالة المريض، وليس بحد SBP واحد للجميع. المعالجة تبدأ بتحديد السبب ثم السوائل أو الدم أو vasopressor/inotrope حسب الفيزيولوجيا.',
     tags: ['hypotension','MAP','vasopressor','phenylephrine','ephedrine','هبوط الضغط']
   },
   {
@@ -1618,6 +1623,7 @@ export const CLINICAL_GUIDES: ClinicalGuide[] = [
       }
     ],
     correction: 'لا يُتعامل مع ضغط الجراحة بجدول أرقام منفصل عن خط الأساس. الأهداف تُفرد حسب المريض، ومرضى ارتفاع الضغط المزمن قد يحتاجون ضغط تروية أعلى من المرضى الأصحاء.',
+    clinicalNote: 'ارتفاع الضغط حول الجراحة يُقيّم نسبة إلى خط الأساس والمريض. قبل إضافة دواء خافض يجب البحث عن أسباب قابلة للتصحيح مثل الألم، light anesthesia، hypoxemia، hypercapnia أو امتلاء المثانة.',
     tags: ['hypertension','blood pressure','perioperative','ارتفاع الضغط']
   },
   {
@@ -1669,6 +1675,7 @@ export const CLINICAL_GUIDES: ClinicalGuide[] = [
         ]
       }
     ],
+    clinicalNote: 'المبدأ الأول هو تحديد النظم ووجود النبض والاستقرار الديناميكي وتصحيح الأسباب القابلة للعلاج مثل hypoxemia وhypercapnia والشوارد ونقص التروية. عدم الاستقرار أو النظم الخطرة يُعالج وفق خوارزمية الإنعاش المناسبة.',
     tags: ['arrhythmia','bradycardia','tachycardia','atrial fibrillation','ventricular tachycardia','heart block','WPW','نظم القلب']
   },
   {
@@ -1716,6 +1723,7 @@ export const CLINICAL_GUIDES: ClinicalGuide[] = [
       }
     ],
     correction: 'لا يوجد مخدر واحد “الأفضل” لكل مرضى فشل القلب. الاختيار يعتمد على الفيزيولوجيا؛ Etomidate قد يفيد لبدء التخدير في بعض المرضى غير المستقرين لكن له محاذير، كما أن جرعات Propofol وغيرها تحتاج معايرة حذرة.',
+    clinicalNote: 'لا يوجد عامل تخدير واحد هو الأفضل لكل مرضى Heart failure. الاختيار والجرعات والمراقبة تعتمد على درجة التعويض، وظيفة البطين، الضغط، الحجم والجراحة، مع تجنب fluid overload وهبوط الضغط المطول.',
     tags: ['heart failure','cardiac anesthesia','preload','afterload','فشل القلب']
   },
   {
@@ -1766,6 +1774,7 @@ export const CLINICAL_GUIDES: ClinicalGuide[] = [
         ]
       }
     ],
+    clinicalNote: 'Shock تعني نقص تروية الأنسجة وعدم كفاية توصيل الأوكسجين وليست مجرد رقم ضغط منخفض. الإنعاش يجب أن يكون موجهًا للسبب: نزف/نقص حجم، distributive، cardiogenic أو obstructive.',
     tags: ['shock','hypovolemic','distributive','cardiogenic','obstructive','صدمة']
   },
   {
@@ -1816,6 +1825,7 @@ export const CLINICAL_GUIDES: ClinicalGuide[] = [
       }
     ],
     correction: 'القول إن Fentanyl “لا يتأثر إطلاقًا” بخلل الكبد أو أن Isoflurane هو الخيار الوحيد الموصى به مبسّط أكثر من اللازم. الاختيار الحديث يعتمد على شدة المرض والاستجابة؛ Remifentanil أكثر استقلالًا عن الكبد، وAtracurium/Cisatracurium يملكان ميزة واضحة في التخلص غير الكبدي.',
+    clinicalNote: 'مرض الكبد يغيّر الاستقلاب والارتباط بالبروتين والتخثر والديناميكا الدموية بدرجات متفاوتة؛ لذلك لا يوجد دواء واحد آمن أو مفضل لكل المرضى، وتُعاير الجرعات حسب شدة المرض والاستجابة.',
     tags: ['liver disease','cirrhosis','hepatic failure','anesthesia','hepatic encephalopathy']
   },
   {

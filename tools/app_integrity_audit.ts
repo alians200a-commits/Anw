@@ -108,10 +108,24 @@ const REVIEWED_AIRWAY_GUIDES = new Set([
   'tracheal-intubation-complications'
 ]);
 
+const REVIEWED_PERIOPERATIVE_GUIDES = new Set([
+  'perioperative-blood-loss',
+  'blood-transfusion-complications',
+  'massive-transfusion',
+  'acute-transfusion-reaction',
+  'perioperative-hypotension',
+  'perioperative-hypertension',
+  'perioperative-arrhythmias',
+  'heart-failure-anesthesia',
+  'shock',
+  'liver-disease-anesthesia'
+]);
+
 const REVIEWED_CLINICAL_GUIDES = new Set([
   ...REVIEWED_STAGE_GUIDES,
   ...REVIEWED_REGIONAL_GUIDES,
-  ...REVIEWED_AIRWAY_GUIDES
+  ...REVIEWED_AIRWAY_GUIDES,
+  ...REVIEWED_PERIOPERATIVE_GUIDES
 ]);
 
 // Clinical guides.
@@ -127,6 +141,9 @@ for (const guide of CLINICAL_GUIDES) {
   }
   if (REVIEWED_AIRWAY_GUIDES.has(guide.id) && !nonEmpty(guide.clinicalNote)) {
     errors.push(`clinical guide "${guide.id}": reviewed airway guide missing clinicalNote`);
+  }
+  if (REVIEWED_PERIOPERATIVE_GUIDES.has(guide.id) && !nonEmpty(guide.clinicalNote)) {
+    errors.push(`clinical guide "${guide.id}": reviewed perioperative guide missing clinicalNote`);
   }
   if (!guide.sections.length) errors.push(`guide "${guide.id}": no sections`);
 
@@ -324,7 +341,7 @@ if (errors.length) {
 console.log('App integrity audit passed.');
 console.log(`Drugs: ${ANESTHESIA_DRUGS.length}`);
 console.log(`Clinical guides: ${CLINICAL_GUIDES.length}`);
-console.log(`Reviewed clinical guides: ${REVIEWED_CLINICAL_GUIDES.size}/${CLINICAL_GUIDES.length} (stages: ${REVIEWED_STAGE_GUIDES.size}, regional: ${REVIEWED_REGIONAL_GUIDES.size}, airway: ${REVIEWED_AIRWAY_GUIDES.size})`);
+console.log(`Reviewed clinical guides: ${REVIEWED_CLINICAL_GUIDES.size}/${CLINICAL_GUIDES.length} (stages: ${REVIEWED_STAGE_GUIDES.size}, regional: ${REVIEWED_REGIONAL_GUIDES.size}, airway: ${REVIEWED_AIRWAY_GUIDES.size}, perioperative: ${REVIEWED_PERIOPERATIVE_GUIDES.size})`);
 console.log(`Stage guide references: ${stageGuideRefs.size}`);
 console.log(`Equipment: ${ANESTHESIA_EQUIPMENT.length}`);
 console.log(`Reviewed equipment: ${REVIEWED_EQUIPMENT.size}/${ANESTHESIA_EQUIPMENT.length}`);
