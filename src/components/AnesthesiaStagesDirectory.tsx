@@ -249,6 +249,7 @@ export function AnesthesiaStagesDirectory({
           </span>
         }
         items={stageItems}
+        selectedId={selectedStageId}
       />
 
       <div className="px-1 text-left">

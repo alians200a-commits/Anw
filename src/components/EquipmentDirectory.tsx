@@ -210,6 +210,7 @@ export function EquipmentDirectory({
         description="قسم عربة التخدير والمعدات"
         icon={<Wrench size={22} weight="bold" />}
         items={categoryItems}
+        selectedId={category}
       />
 
       <div className="space-y-2">

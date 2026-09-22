@@ -118,6 +118,7 @@ export function GuideScreen({
           description="اضغط لتغيير قسم الدليل"
           icon={<BookOpenText size={22} weight="bold" />}
           items={sectionItems}
+          selectedId={section}
         />
       </section>
 
