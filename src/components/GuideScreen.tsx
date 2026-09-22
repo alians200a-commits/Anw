@@ -111,9 +111,6 @@ export function GuideScreen({
       <section>
         <div className="mb-1 px-1 text-right">
           <h2 className="text-lg font-black text-[#183149]">الدليل التخديري</h2>
-          <p className="mt-0.5 text-[10px] font-semibold text-[#657784]">
-            القسم الحالي: {sectionLabels[section]}
-          </p>
         </div>
 
         <NotificationStackMenu
