@@ -101,13 +101,13 @@ export default function App() {
       <KingdomHeader />
 
       <main className="relative mx-auto w-full max-w-3xl px-4 pb-24 pt-4 sm:px-6 sm:pt-5">
-        <AnimatePresence mode="wait" initial={false}>
+        <AnimatePresence mode="sync" initial={false}>
           <motion.div
-            key={activeTab + ':' + guideSection}
+            key={activeTab}
             initial={reduceMotion ? false : { opacity: 0, y: 6 }}
             animate={{ opacity: 1, y: 0 }}
             exit={reduceMotion ? undefined : { opacity: 0, y: -4 }}
-            transition={{ duration: reduceMotion ? 0 : 0.16 }}
+            transition={{ duration: reduceMotion ? 0 : 0.11 }}
           >
             {screen}
           </motion.div>
