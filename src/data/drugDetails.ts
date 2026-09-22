@@ -425,6 +425,7 @@ export const DRUG_DETAILS: Record<string, DrugDetail> = {
   },
   ondansetron: {
     feature: 'مضاد انتقائي لمستقبلات 5-HT3 ومستخدم على نطاق واسع للوقاية أو العلاج من الغثيان والقيء.',
+    clinicalNote: 'للوقاية من PONV لدى البالغ تكون 4 mg جرعة مفردة شائعة حسب ملصق الحقن. إذا فشلت جرعة 4 mg الوقائية قبل العملية، تكرار 4 mg نفسها بعد العملية لا يضيف عادةً سيطرة إضافية؛ كما يلزم الانتباه إلى QT والشوارد.',
     mechanism: 'مضاد انتقائي لمستقبل 5-HT3 | Selective serotonin 5-HT3 receptor antagonist.',
     tradeNames: ['Zofran'],
     routes: ['وريدي | Intravenous', 'عضلي | Intramuscular', 'فموي | Oral'],
@@ -432,6 +433,10 @@ export const DRUG_DETAILS: Record<string, DrugDetail> = {
       'للوقاية من PONV عند البالغ ومن هم أكبر من 12 سنة: 4 mg IV أو IM كجرعة مفردة؛ إذا أُعطي IV فيُعطى خلال 30 ثانية على الأقل ويفضل خلال 2–5 دقائق.',
       'يمكن إعطاؤه مباشرة قبل بدء التخدير، أو بعد العملية إذا لم يتلق المريض prophylaxis وحدث الغثيان/القيء خلال الساعتين الأوليين.',
       'للأطفال 1 شهر–12 سنة: 0.1 mg/kg إذا كان الوزن ≤40 kg، و4 mg إذا كان >40 kg وفق ملصق الحقن.'
+    ],
+    onsetDuration: [
+      'في PONV يُعطى مباشرة قبل بدء التخدير أو بعد العملية إذا لم يُعطَ وقائيًا وحدث الغثيان/القيء مبكرًا؛ المفعول السريري يمتد خلال فترة ما بعد العملية ويختلف حسب السياق.',
+      'لا تُفسر سرعة إعطاء الحقن كسرعة بدء ثابتة؛ الجرعة الوريدية تُعطى خلال 30 ثانية على الأقل ويفضل خلال 2–5 دقائق.'
     ],
     sourcePages: [13, 82],
     sourceLabel: 'مبادئ التخدير + ملف كتابة أدوية التخدير',
@@ -692,6 +697,7 @@ export const DRUG_DETAILS: Record<string, DrugDetail> = {
   },
   lidocaine: {
     feature: 'مخدر موضعي أميدي | Amide local anesthetic متوسط المفعول وسريع نسبيًا، وله استخدامات عديدة في التخدير الموضعي والإقليمي.',
+    clinicalNote: 'Lidocaine من المخدرات الموضعية الأميدية؛ الجرعة والبدء والمدة تعتمد على التركيز والحجم وموقع الحقن والتروية ووجود Epinephrine. يجب استخدام أقل جرعة فعالة والانتباه المبكر لأعراض LAST.',
     mechanism: 'حجب قنوات الصوديوم المعتمدة على الجهد | Voltage-gated sodium channel blockade ومنع توصيل النبض العصبي.',
     tradeNames: ['Xylocaine'],
     routes: ['ارتشاح | Infiltration', 'حصر عصب | Peripheral nerve block', 'فوق الجافية | Epidural', 'إقليمي وريدي | IV regional anesthesia حسب المستحضر/البروتوكول'],
@@ -699,6 +705,10 @@ export const DRUG_DETAILS: Record<string, DrugDetail> = {
       'في البالغ السليم دون Epinephrine: الحد الأقصى الفردي الموصى به عادةً 4.5 mg/kg وبحد إجمالي عام 300 mg، مع خفض الجرعة حسب العمر والحالة وموقع الحقن.',
       'مع Epinephrine في المستحضرات/التقنيات المناسبة قد يصل الحد الأقصى إلى 7 mg/kg وبحد إجمالي 500 mg وفق نشرة المستحضر.',
       'في Bier block للبالغ: يُستخدم Lidocaine 0.5% من مستحضر مناسب دون vasoconstrictor، ولا تتجاوز الجرعة 4 mg/kg.'
+    ],
+    onsetDuration: [
+      'بداية ومدة التخدير الموضعي تختلفان حسب الموقع والتركيز والحجم؛ زيادة التركيز/الحجم قد تسرّع البدء وتطيل المدة لكنها ترفع أيضًا التعرض الجهازي وخطر السمية.',
+      'وجود Epinephrine في التقنيات المناسبة قد يقلل الامتصاص الجهازي ويطيل التأثير؛ لا تُستخدم أرقام زمنية واحدة لكل أنواع الحصر.'
     ],
     uses: ['التخدير الموضعي والإقليمي | Local / regional anesthesia', 'تسكين إجراءات مختارة | Procedural local anesthesia'],
     contraindications: ['فرط التحسس للمخدرات الموضعية من نوع الأميد | Amide local anesthetic hypersensitivity'],
@@ -709,6 +719,7 @@ export const DRUG_DETAILS: Record<string, DrugDetail> = {
   },
   bupivacaine: {
     feature: 'مخدر موضعي أميدي طويل المفعول | Long-acting amide local anesthetic مفيد للحصر العصبي والتخدير فوق الجافية.',
+    clinicalNote: 'Bupivacaine طويل المفعول ويمتلك سمية قلبية مهمة عند الحقن داخل الوعاء أو الجرعات الزائدة. Bier block مانع استعمال؛ يجب إعطاء الجرعات تدريجيًا مع مراقبة المريض والاستعداد لعلاج LAST.',
     mechanism: 'حجب قنوات الصوديوم المعتمدة على الجهد | Voltage-gated sodium channel blockade.',
     tradeNames: ['Marcaine'],
     routes: ['ارتشاح | Infiltration', 'حصر عصب محيطي | Peripheral nerve block', 'فوق الجافية / ذيلي | Epidural / caudal حسب المستحضر'],
@@ -716,6 +727,10 @@ export const DRUG_DETAILS: Record<string, DrugDetail> = {
       'الجرعة تعتمد على التقنية والتركيز وموقع الحقن وليست mg/kg واحدة لجميع الاستعمالات.',
       'للارتشاح الموضعي عند البالغ: 0.25% حتى 175 mg دون Epinephrine، وحتى 225 mg مع Epinephrine في المستحضرات المناسبة وفق جداول الملصق.',
       'لا يتجاوز المجموع اليومي عادةً 400 mg خلال 24 ساعة وفق ملصقات Bupivacaine HCl الحديثة، مع ضرورة خفض الجرعة في المرضى الهشّين أو عند زيادة خطر السمية.'
+    ],
+    onsetDuration: [
+      'بدء التأثير يُوصف بأنه سريع نسبيًا، والتخدير طويل المدة مقارنةً بكثير من المخدرات الموضعية الأخرى.',
+      'البدء والمدة يعتمدان على التقنية والتركيز والجرعة وموقع الحقن ووجود Epinephrine؛ لذلك لا يوجد زمن واحد صالح لكل block.'
     ],
     uses: ['التخدير والتسكين الموضعي أو الإقليمي | Local / regional anesthesia and analgesia'],
     contraindications: ['التخدير الإقليمي الوريدي Bier block | Intravenous regional anesthesia', 'فرط التحسس للبوبيفاكائين أو مخدرات الأميد | Amide local anesthetic hypersensitivity', 'الحصر جانب عنق الرحم في التوليد | Obstetrical paracervical block'],
@@ -837,11 +852,16 @@ export const DRUG_DETAILS: Record<string, DrugDetail> = {
   },
   dexamethasone: {
     feature: 'غلوكوكورتيكويد طويل المفعول قوي مضاد للالتهاب، ويتميز في التخدير بدوره الشائع كجزء من الوقاية متعددة الوسائط من PONV.',
+    clinicalNote: 'جرعة Dexamethasone المفردة للوقاية من PONV تختلف في ملف السلامة عن العلاج الستيرويدي المزمن. يُعطى عادة عند بدء التخدير لأن تأثيره المضاد للقيء ليس فوريًا، مع الانتباه خصوصًا لارتفاع السكر عند المرضى المعرضين.',
     mechanism: 'يرتبط بمستقبل Glucocorticoid ويعدّل التعبير الجيني للوسطاء الالتهابيين؛ آلية تأثيره المضاد للقيء متعددة العوامل.',
     tradeNames: ['Decadron'],
     routes: ['وريدي | Intravenous', 'فموي | Oral بحسب الاستطباب'],
     educationalDoses: [
       'للوقاية من PONV لدى البالغ: 4–8 mg IV عند بدء التخدير | At induction ضمن خطة الوقاية متعددة الوسائط؛ الجرعات في الوذمة الدماغية أو التهابات/وذمة مجرى الهواء تعتمد على الاستطباب.'
+    ],
+    onsetDuration: [
+      'في الوقاية من PONV يُعطى عند بدء التخدير لأن الفائدة المضادة للقيء تتطور خلال الفترة حول العملية وليست تأثيرًا لحظيًا.',
+      'Dexamethasone غلوكوكورتيكويد طويل المفعول؛ مدة التأثير تعتمد على الاستطباب والجرعة ولا تُختصر بزمن واحد لكل استخدام.'
     ],
     uses: ['الوقاية من PONV | Postoperative nausea/vomiting prophylaxis', 'وذمة دماغية مرتبطة بأورام في سياقات محددة | Tumor-related cerebral edema', 'وذمة مجرى الهواء/التهاب شديد حسب السبب'],
     contraindications: ['فرط التحسس', 'العدوى الفطرية الجهازية عند استخدام جرعات جهازية ممتدة تُعد مانعًا مهمًا'],
@@ -1013,12 +1033,17 @@ export const DRUG_DETAILS: Record<string, DrugDetail> = {
   },
   metoclopramide: {
     feature: 'دواء مضاد للغثيان ومحفز لحركة الجهاز الهضمي | Antiemetic + prokinetic، لكنه ليس دواءً “لتجفيف الإفرازات”.',
+    clinicalNote: 'Metoclopramide مضاد قيء ومحفز لحركة المعدة وليس دواءً لتجفيف الإفرازات. خطر Tardive dyskinesia يرتفع مع مدة العلاج والجرعة التراكمية، لذلك يُتجنب العلاج المطول إلا باستطباب واضح.',
     mechanism: 'مضاد لمستقبلات Dopamine D2 أساسًا مع تأثيرات 5-HT4 agonism و5-HT3 antagonism بجرعات أعلى، ما يعزز إفراغ المعدة ويؤثر في مركز القيء.',
     tradeNames: ['Plasil', 'Reglan'],
     routes: ['وريدي | Intravenous', 'عضلي | Intramuscular', 'فموي | Oral حسب المستحضر'],
     educationalDoses: [
       'للبالغ في الوقاية من الغثيان والقيء بعد العملية حسب ملصق Metoclopramide injection الحالي: 10–20 mg IM كجرعة مفردة قرب نهاية الجراحة؛ أما استعمال IV فيُحدد حسب الاستطباب ويُعطى بالسرعة الموصى بها لتقليل التفاعلات الحركية.',
       'في gastroparesis الشديد لدى البالغ: 10 mg IM أو IV ببطء خلال 1–2 دقيقة كجرعة علاجية حسب الملصق، مع تجنب العلاج المطول قدر الإمكان بسبب خطر tardive dyskinesia.'
+    ],
+    onsetDuration: [
+      'بدء التأثير الدوائي نحو 1–3 دقائق بعد IV، و10–15 دقيقة بعد IM، و30–60 دقيقة بعد Oral.',
+      'التأثيرات الدوائية تستمر عادة نحو 1–2 ساعة، مع اختلاف ذلك حسب الاستطباب والمريض.'
     ],
     uses: ['الغثيان والقيء في سياقات مختارة | Nausea/vomiting', 'Diabetic gastroparesis', 'عامل مساعد في بعض حالات migraine-associated nausea'],
     contraindications: ['قصة Tardive dyskinesia أو dystonic reaction بسبب Metoclopramide', 'انسداد/نزف/انثقاب هضمي عندما تكون زيادة الحركة خطرة', 'Pheochromocytoma أو catecholamine-releasing paraganglioma', 'Epilepsy', 'فرط التحسس'],
@@ -1108,11 +1133,16 @@ export const DRUG_DETAILS: Record<string, DrugDetail> = {
   },
   droperidol: {
     feature: 'Neuroleptic ذو تأثير Antiemetic ومهدئ.',
+    clinicalNote: 'Droperidol مضاد قيء ومهدئ، لكن سلامة QT جزء أساسي من استعماله: تُراجع عوامل الخطورة والشوارد والأدوية المصاحبة ويُستخدم ECG monitoring بحسب الملصق والسياق.',
     mechanism: 'يعمل أساسًا كمضاد لمستقبلات Dopamine D2 مع تأثيرات إضافية على الجهاز العصبي الذاتي.',
     routes: ['وريدي | Intravenous', 'عضلي | Intramuscular'],
     educationalDoses: [
       'للبالغ وفق ملصق الحقن: الحد الأقصى للجرعة الأولية 2.5 mg IM أو slow IV، ويمكن إعطاء 1.25 mg إضافية بحذر عند الحاجة بعد تقييم الفائدة مقابل خطر اضطرابات النظم.',
       'يجب تفريد الجرعة ومراقبة العلامات الحيوية وECG، خصوصًا عند وجود عوامل تطيل QT.'
+    ],
+    onsetDuration: [
+      'بعد جرعة IM أو IV يبدأ التأثير عادة خلال 3–10 دقائق، وقد لا تصل الذروة قبل نحو 30 دقيقة.',
+      'التأثير المهدئ يستمر عادة 2–4 ساعات، وقد يستمر تغير اليقظة مدة أطول لدى بعض المرضى.'
     ],
     uses: ['تقليل الغثيان والقيء المرتبطين بالإجراءات الجراحية والتشخيصية | Perioperative nausea/vomiting'],
     contraindications: ['Known or suspected QT prolongation', 'Congenital long-QT syndrome', 'فرط التحسس'],
