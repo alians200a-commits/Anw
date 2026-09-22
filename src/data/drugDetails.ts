@@ -351,7 +351,8 @@ export const DRUG_DETAILS: Record<string, DrugDetail> = {
     routes: ['عضلي | Intramuscular في التأق', 'وريدي | Intravenous في الإنعاش أو الحالات المراقبة المناسبة'],
     educationalDoses: ['Cardiac arrest — AHA 2025: Epinephrine 1 mg IV/IO كل 3–5 دقائق.', 'Anaphylaxis للبالغ: Adrenaline 0.5 mg IM (1 mg/mL) في الجانب الأمامي الوحشي من منتصف الفخذ؛ يُكرر بعد 5 دقائق إذا استمر ABC compromise وفق بروتوكول التأق.'],
     correction: 'الملف القديم يوصي IV adrenaline بجرعة 50–100 mcg للتأق بصورة عامة؛ هذا ليس طريق الاختيار لمعظم مقدمي الرعاية. العلاج الأولي هو IM adrenaline، أما IV فيُحجز للخبراء في بيئة مراقبة للحالات المقاومة. طريق وتركيز Adrenaline يختلفان جذريًا عن cardiac arrest.',
-    sourcePages: [71, 105],
+    sourcePages: [15, 71, 105],
+    sourceLabel: 'مبادئ التخدير + ملف كتابة أدوية التخدير',
     uses: ['التأق Anaphylaxis', 'توقف القلب', 'حالات مختارة من هبوط الضغط أو التشنج القصبي حسب السياق'],
     contraindications: ['لا توجد موانع مطلقة عند استعماله لعلاج التأق أو توقف القلب المهدد للحياة'],
     warnings: ['قد يسبب اضطرابات نظم وتسرع قلب وارتفاع ضغط', 'قد يزيد استهلاك عضلة القلب للأوكسجين ويثير نقص التروية', 'يجب الانتباه للتركيز وطريق الإعطاء لأن أخطاء التركيز قد تكون خطرة'],
@@ -368,7 +369,8 @@ export const DRUG_DETAILS: Record<string, DrugDetail> = {
       'يُعطى مضاد مسكاريني قبل Neostigmine أو بالتزامن معه؛ مثال مرجعي من الملصق: Atropine نحو 15 mcg/kg أو Glycopyrrolate نحو 10 mcg/kg IV، مع اتباع المستحضر والبروتوكول.'
     ],
     correction: 'يُعطى مع مضاد مسكاريني مثل Glycopyrrolate أو Atropine، لكن الجرعة تعتمد على عمق الحصار والوزن؛ لا تُستخدم وصفة ثابتة 2.5 mg + 1 mg لكل مريض.',
-    sourcePages: [54, 71],
+    sourcePages: [25, 54, 71],
+    sourceLabel: 'مبادئ التخدير + ملف كتابة أدوية التخدير',
     uses: ['عكس الحصار العصبي العضلي غير المستقطب بعد توفر درجة مناسبة من التعافي'],
     contraindications: ['فرط التحسس للنيوستيغمين', 'التهاب الصفاق أو الانسداد الميكانيكي في الأمعاء أو المسالك البولية'],
     warnings: ['قد يسبب بطء القلب؛ يُعطى معه Atropine أو Glycopyrrolate حسب البروتوكول', 'الحذر في مرضى الشريان التاجي واضطرابات النظم', 'إعطاؤه عندما يكون الحصار العضلي شبه منتهٍ قد يسبب ضعفًا عصبيًا عضليًا بدل تحسينه'],
@@ -572,8 +574,8 @@ export const DRUG_DETAILS: Record<string, DrugDetail> = {
     warnings: ['تسرع القلب | Tachycardia ورجفان | Tremor', 'قد يسبب نقص البوتاسيوم | Hypokalemia خاصةً بجرعات عالية', 'قد يرفع السكر | Hyperglycemia ويزيد اللاكتات | Lactic acidosis في بعض الحالات'],
     adverseEffects: ['رجفان | Tremor', 'خفقان | Palpitations', 'تسرع القلب | Tachycardia', 'نقص البوتاسيوم | Hypokalemia'],
     correction: 'يُستخدم في hyperkalemia كعلاج مساعد فقط وليس بديلًا عن تثبيت القلب بالكالسيوم أو خفض البوتاسيوم بوسائل أخرى عند وجود استطباب.',
-    sourcePages: [3],
-    sourceLabel: 'أدوية الطوارئ 2021 — Albuterol'
+    sourcePages: [3, 24],
+    sourceLabel: 'أدوية الطوارئ 2021 + ملف كتابة أدوية التخدير — Albuterol / Ventolin'
   },
   aminophylline: {
     feature: 'مركب Methylxanthine ذو هامش علاجي ضيق | Narrow therapeutic index؛ يمكن أن يوسع القصبات لكنه أصبح أقل استخدامًا في النوبات الحادة بسبب السمية والتداخلات.',
