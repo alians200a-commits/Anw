@@ -1474,8 +1474,8 @@ export const CLINICAL_TERMS: ClinicalTerm[] = [
     ar: "البدء في التخدير والتنبيب التسلسلي السريع",
     abbr: "RSI",
     category: "abbreviations",
-    definition: "تقنية لتقليل الزمن بين فقد منعكسات حماية مجرى الهواء وتأمين ETT ذي كفة عندما يكون خطر aspiration مرتفعًا.",
-    clinicalNote: "تشمل عادة preoxygenation وبدءًا سريعًا للتخدير ومرخيًا سريعًا وخطة مجرى هوائي بديلة؛ Cricoid pressure والتهوية بالقناع يُفردان حسب الحالة والبروتوكول.",
+    definition: "طريقة سريعة ومخططة لبدء التخدير باستعمال دواء سريع ومرخٍ عضلي سريع ثم تأمين Cuffed ETT بأقصر وقت ممكن لتقليل خطر aspiration.",
+    clinicalNote: "تُستخدم خصوصًا عند الصيام غير الكافي أو غير المعروف وعند ارتفاع خطر aspiration مثل بعض العمليات الطارئة أو انسداد الأمعاء. تشمل عادة preoxygenation وتجهيز suction وخطة مجرى هوائي بديلة؛ Cricoid pressure والتهوية بالقناع وNG tube ليست خطوات ثابتة لكل مريض.",
     tags: ["RSI","rapid sequence","aspiration","intubation"]
   },
   {
