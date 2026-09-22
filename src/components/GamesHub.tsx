@@ -1,8 +1,4 @@
 import { GameController } from '@phosphor-icons/react';
-import {
-  DALEELI_ANIMATED_ASSETS,
-  RemoteAnimatedAssetIcon
-} from './ui/RemoteAnimatedAssetIcon';
 
 export function GamesHub() {
   return (
@@ -19,13 +15,7 @@ export function GamesHub() {
           </div>
 
           <div className="grid h-12 w-12 shrink-0 place-items-center rounded-[15px] border border-[#D7E2E9] bg-[#EEF3F6] text-[#315672]">
-            <RemoteAnimatedAssetIcon
-              src={DALEELI_ANIMATED_ASSETS.learn}
-              play
-              durationMs={900}
-              className="h-8 w-8"
-              fallback={<GameController size={25} weight="bold" />}
-            />
+            <GameController size={25} weight="bold" />
           </div>
         </div>
       </section>
