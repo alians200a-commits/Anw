@@ -4,12 +4,11 @@ import { BottomNav, type AppTab } from './components/BottomNav';
 import { FavoritesScreen } from './components/FavoritesScreen';
 import { GamesHub } from './components/GamesHub';
 import { GuideScreen, type GuideSection } from './components/GuideScreen';
-import { HomeScreen, type RecentGuideItem } from './components/HomeScreen';
+import { HomeScreen } from './components/HomeScreen';
 import { KingdomHeader } from './components/KingdomHeader';
 import type { DrugClass } from './data/drugs';
 
 const FAVORITES_KEY = 'kingdom-anesthesia:favorites';
-const RECENTS_KEY = 'kingdom-anesthesia:recent-guide-items';
 
 function loadFavorites() {
   try {
@@ -21,45 +20,16 @@ function loadFavorites() {
   }
 }
 
-function loadRecentGuideItems(): RecentGuideItem[] {
-  try {
-    const raw = localStorage.getItem(RECENTS_KEY);
-    const values = raw ? JSON.parse(raw) : [];
-    if (!Array.isArray(values)) return [];
-
-    return values
-      .filter(
-        (item): item is RecentGuideItem =>
-          Boolean(
-            item &&
-              typeof item === 'object' &&
-              typeof item.section === 'string' &&
-              typeof item.query === 'string'
-          )
-      )
-      .slice(0, 6);
-  } catch {
-    return [];
-  }
-}
-
 export default function App() {
   const [activeTab, setActiveTab] = useState<AppTab>('home');
   const [guideSection, setGuideSection] = useState<GuideSection>('drugs');
   const [guideDrugClass, setGuideDrugClass] = useState<'all' | DrugClass>('all');
   const [guideQuery, setGuideQuery] = useState('');
   const [favorites, setFavorites] = useState<Set<string>>(() => loadFavorites());
-  const [recentGuideItems, setRecentGuideItems] = useState<RecentGuideItem[]>(
-    () => loadRecentGuideItems()
-  );
 
   useEffect(() => {
     localStorage.setItem(FAVORITES_KEY, JSON.stringify(Array.from(favorites)));
   }, [favorites]);
-
-  useEffect(() => {
-    localStorage.setItem(RECENTS_KEY, JSON.stringify(recentGuideItems));
-  }, [recentGuideItems]);
 
   const handleTabChange = (tab: AppTab) => {
     setActiveTab(tab);
@@ -71,25 +41,6 @@ export default function App() {
     setGuideQuery('');
   };
 
-  const recordRecentGuideItem = (section: GuideSection, query: string) => {
-    const normalizedQuery = query.trim();
-    if (!normalizedQuery) return;
-
-    setRecentGuideItems((current) => {
-      const next = [
-        { section, query: normalizedQuery },
-        ...current.filter(
-          (item) =>
-            !(
-              item.section === section &&
-              item.query.toLowerCase() === normalizedQuery.toLowerCase()
-            )
-        )
-      ];
-      return next.slice(0, 6);
-    });
-  };
-
   const openGuide = (
     section: GuideSection,
     drugClass: 'all' | DrugClass = 'all',
@@ -97,8 +48,6 @@ export default function App() {
   ) => {
     setGuideSection(section);
     setGuideQuery(initialQuery);
-    recordRecentGuideItem(section, initialQuery);
-
     if (section === 'drugs') setGuideDrugClass(drugClass);
     setActiveTab('guide');
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -123,20 +72,19 @@ export default function App() {
         onToggleFavorite={toggleFavorite}
         initialDrugClass={guideDrugClass}
         initialQuery={guideQuery}
-        onRecentItem={recordRecentGuideItem}
       />
     );
   } else if (activeTab === 'games') {
     screen = <GamesHub />;
   } else if (activeTab === 'favorites') {
-    screen = <FavoritesScreen favorites={favorites} onToggleFavorite={toggleFavorite} />;
-  } else {
     screen = (
-      <HomeScreen
-        openGuide={openGuide}
-        recentItems={recentGuideItems}
+      <FavoritesScreen
+        favorites={favorites}
+        onToggleFavorite={toggleFavorite}
       />
     );
+  } else {
+    screen = <HomeScreen openGuide={openGuide} />;
   }
 
   return (
