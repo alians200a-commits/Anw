@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
 import { CaretDown, Drop, MagnifyingGlass, X } from '@phosphor-icons/react';
 import {
@@ -100,10 +100,14 @@ function FluidSheet({ item, onClose }: { item: IntravenousFluid; onClose: () => 
   );
 }
 
-export function FluidsDirectory() {
-  const [query, setQuery] = useState('');
+export function FluidsDirectory({ initialQuery = '' }: { initialQuery?: string }) {
+  const [query, setQuery] = useState(initialQuery);
   const [category, setCategory] = useState<'all' | FluidCategory>('all');
   const [selected, setSelected] = useState<IntravenousFluid | null>(null);
+
+  useEffect(() => {
+    setQuery(initialQuery);
+  }, [initialQuery]);
 
   const filtered = useMemo(() => {
     const normalized = query.trim().toLowerCase();

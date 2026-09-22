@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
 import { CaretDown, MagnifyingGlass, X } from '@phosphor-icons/react';
 import {
@@ -98,10 +98,14 @@ function ClinicalGuideSheet({
   );
 }
 
-export function ClinicalGuidesDirectory() {
-  const [query, setQuery] = useState('');
+export function ClinicalGuidesDirectory({ initialQuery = '' }: { initialQuery?: string }) {
+  const [query, setQuery] = useState(initialQuery);
   const [category, setCategory] = useState<'all' | ClinicalGuideCategory>('all');
   const [selected, setSelected] = useState<ClinicalGuide | null>(null);
+
+  useEffect(() => {
+    setQuery(initialQuery);
+  }, [initialQuery]);
 
   const filtered = useMemo(() => {
     const normalized = query.trim().toLowerCase();

@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
 import { CaretDown, MagnifyingGlass, X } from '@phosphor-icons/react';
 import {
@@ -110,10 +110,14 @@ function EquipmentSheet({
   );
 }
 
-export function EquipmentDirectory() {
-  const [query, setQuery] = useState('');
+export function EquipmentDirectory({ initialQuery = '' }: { initialQuery?: string }) {
+  const [query, setQuery] = useState(initialQuery);
   const [category, setCategory] = useState<'all' | EquipmentCategory>('all');
   const [selected, setSelected] = useState<AnesthesiaEquipment | null>(null);
+
+  useEffect(() => {
+    setQuery(initialQuery);
+  }, [initialQuery]);
 
   const filtered = useMemo(() => {
     const normalized = query.trim().toLowerCase();

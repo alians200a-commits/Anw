@@ -24,7 +24,7 @@ import { MedicinesHealthIcon } from './MedicalIcons';
 interface HomeScreenProps {
   query: string;
   setQuery: (value: string) => void;
-  openGuide: (section: GuideSection, drugClass?: 'all' | DrugClass) => void;
+  openGuide: (section: GuideSection, drugClass?: 'all' | DrugClass, initialQuery?: string) => void;
   goTo: (tab: AppTab) => void;
 }
 
@@ -143,7 +143,7 @@ export function HomeScreen({ query, setQuery, openGuide, goTo }: HomeScreenProps
             {drugResults.map((drug) => (
               <button
                 key={drug.id}
-                onClick={() => openGuide('drugs')}
+                onClick={() => openGuide('drugs', 'all', drug.en)}
                 className="flex w-full items-center gap-3 border-b border-[#EAE3F0] px-3 py-2.5 text-right last:border-0"
               >
                 <div className="grid h-8 w-8 place-items-center rounded-lg bg-[#EEE6F6] text-[#6C4AA5]">
@@ -160,7 +160,7 @@ export function HomeScreen({ query, setQuery, openGuide, goTo }: HomeScreenProps
             {fluidResults.map((item) => (
               <button
                 key={item.id}
-                onClick={() => openGuide('fluids')}
+                onClick={() => openGuide('fluids', 'all', item.nameEn)}
                 className="flex w-full items-center gap-3 border-b border-[#EAE3F0] px-3 py-2.5 text-right last:border-0"
               >
                 <div className="grid h-8 w-8 place-items-center rounded-lg bg-[#EEE6F6] text-[#6C4AA5]">
@@ -177,7 +177,7 @@ export function HomeScreen({ query, setQuery, openGuide, goTo }: HomeScreenProps
             {equipmentResults.map((item) => (
               <button
                 key={item.id}
-                onClick={() => openGuide('equipment')}
+                onClick={() => openGuide('equipment', 'all', item.nameEn)}
                 className="flex w-full items-center gap-3 border-b border-[#EAE3F0] px-3 py-2.5 text-right last:border-0"
               >
                 <div className="grid h-8 w-8 place-items-center rounded-lg bg-[#EEE6F6] text-[#6C4AA5]">
@@ -212,7 +212,7 @@ export function HomeScreen({ query, setQuery, openGuide, goTo }: HomeScreenProps
             {clinicalResults.map((guide) => (
               <button
                 key={guide.id}
-                onClick={() => openGuide('clinical')}
+                onClick={() => openGuide('clinical', 'all', guide.titleEn)}
                 className="flex w-full items-center gap-3 border-b border-[#EAE3F0] px-3 py-2.5 text-right last:border-0"
               >
                 <div className="grid h-8 w-8 place-items-center rounded-lg bg-[#EEE6F6] text-[#6C4AA5]">
@@ -229,7 +229,7 @@ export function HomeScreen({ query, setQuery, openGuide, goTo }: HomeScreenProps
             {abbreviationResults.map((term) => (
               <button
                 key={term.id}
-                onClick={() => openGuide('abbreviations')}
+                onClick={() => openGuide('abbreviations', 'all', term.abbr ?? term.en)}
                 className="flex w-full items-center gap-3 border-b border-[#EAE3F0] px-3 py-2.5 text-right last:border-0"
               >
                 <div className="grid h-8 w-8 place-items-center rounded-lg bg-[#EEE6F6] text-[#6C4AA5]">
@@ -246,7 +246,7 @@ export function HomeScreen({ query, setQuery, openGuide, goTo }: HomeScreenProps
             {termResults.map((term) => (
               <button
                 key={term.id}
-                onClick={() => openGuide('terms')}
+                onClick={() => openGuide('terms', 'all', term.en)}
                 className="flex w-full items-center gap-3 border-b border-[#EAE3F0] px-3 py-2.5 text-right last:border-0"
               >
                 <div className="grid h-8 w-8 place-items-center rounded-lg bg-[#EEE6F6] text-[#6C4AA5]">

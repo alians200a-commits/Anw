@@ -15,6 +15,7 @@ interface GuideScreenProps {
   favorites: Set<string>;
   onToggleFavorite: (id: string) => void;
   initialDrugClass: 'all' | DrugClass;
+  initialQuery: string;
 }
 
 export function GuideScreen({
@@ -22,7 +23,8 @@ export function GuideScreen({
   onSectionChange,
   favorites,
   onToggleFavorite,
-  initialDrugClass
+  initialDrugClass,
+  initialQuery
 }: GuideScreenProps) {
   return (
     <div className="space-y-4">
@@ -52,17 +54,18 @@ export function GuideScreen({
           favorites={favorites}
           onToggleFavorite={onToggleFavorite}
           initialClassification={initialDrugClass}
+          initialQuery={initialQuery}
         />
       )}
-      {section === 'fluids' && <FluidsDirectory />}
-      {section === 'equipment' && <EquipmentDirectory />}
+      {section === 'fluids' && <FluidsDirectory initialQuery={initialQuery} />}
+      {section === 'equipment' && <EquipmentDirectory initialQuery={initialQuery} />}
       {section === 'stages' && <AnesthesiaStagesDirectory />}
-      {section === 'clinical' && <ClinicalGuidesDirectory />}
+      {section === 'clinical' && <ClinicalGuidesDirectory initialQuery={initialQuery} />}
       {section === 'terms' && (
-        <TermsDirectory favorites={favorites} onToggleFavorite={onToggleFavorite} />
+        <TermsDirectory favorites={favorites} onToggleFavorite={onToggleFavorite} initialQuery={initialQuery} />
       )}
       {section === 'abbreviations' && (
-        <AbbreviationsDirectory favorites={favorites} onToggleFavorite={onToggleFavorite} />
+        <AbbreviationsDirectory favorites={favorites} onToggleFavorite={onToggleFavorite} initialQuery={initialQuery} />
       )}
     </div>
   );

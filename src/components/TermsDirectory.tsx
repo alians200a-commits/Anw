@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { BookOpenText, Heart, MagnifyingGlass, SpeakerHigh } from '@phosphor-icons/react';
 import { CLINICAL_TERMS } from '../data/clinicalTerms';
 import { playPronunciation } from '../utils/speech';
@@ -6,10 +6,15 @@ import { playPronunciation } from '../utils/speech';
 interface TermsDirectoryProps {
   favorites: Set<string>;
   onToggleFavorite: (id: string) => void;
+  initialQuery?: string;
 }
 
-export function TermsDirectory({ favorites, onToggleFavorite }: TermsDirectoryProps) {
-  const [query, setQuery] = useState('');
+export function TermsDirectory({ favorites, onToggleFavorite, initialQuery = '' }: TermsDirectoryProps) {
+  const [query, setQuery] = useState(initialQuery);
+
+  useEffect(() => {
+    setQuery(initialQuery);
+  }, [initialQuery]);
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();

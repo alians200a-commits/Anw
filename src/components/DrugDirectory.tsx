@@ -11,21 +11,27 @@ interface DrugDirectoryProps {
   favorites: Set<string>;
   onToggleFavorite: (id: string) => void;
   initialClassification?: 'all' | DrugClass;
+  initialQuery?: string;
 }
 
 export function DrugDirectory({
   favorites,
   onToggleFavorite,
-  initialClassification = 'all'
+  initialClassification = 'all',
+  initialQuery = ''
 }: DrugDirectoryProps) {
   const [classification, setClassification] = useState<'all' | DrugClass>(initialClassification);
   const [filterOpen, setFilterOpen] = useState(false);
-  const [query, setQuery] = useState('');
+  const [query, setQuery] = useState(initialQuery);
   const [selectedDrugId, setSelectedDrugId] = useState<string | null>(null);
 
   useEffect(() => {
     setClassification(initialClassification);
   }, [initialClassification]);
+
+  useEffect(() => {
+    setQuery(initialQuery);
+  }, [initialQuery]);
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();

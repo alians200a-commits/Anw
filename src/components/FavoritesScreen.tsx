@@ -1,6 +1,10 @@
+import { useState } from 'react';
+import { AnimatePresence } from 'motion/react';
 import { BookOpenText, Heart, Pill } from 'lucide-react';
 import { ANESTHESIA_DRUGS } from '../data/drugs';
+import { DRUG_DETAILS } from '../data/drugDetails';
 import { CLINICAL_TERMS } from '../data/clinicalTerms';
+import { DrugDetailSheet } from './DrugDetailSheet';
 
 interface FavoritesScreenProps {
   favorites: Set<string>;
@@ -8,6 +12,7 @@ interface FavoritesScreenProps {
 }
 
 export function FavoritesScreen({ favorites, onToggleFavorite }: FavoritesScreenProps) {
+  const [selectedDrugId, setSelectedDrugId] = useState<string | null>(null);
   const drugs = ANESTHESIA_DRUGS.filter((drug) => favorites.has('drug:' + drug.id));
   const terms = CLINICAL_TERMS.filter((term) => favorites.has('term:' + term.id));
 
@@ -30,40 +35,90 @@ export function FavoritesScreen({ favorites, onToggleFavorite }: FavoritesScreen
       ) : (
         <div className="space-y-3">
           {drugs.map((drug) => (
-            <button
+            <article
               key={drug.id}
-              onClick={() => onToggleFavorite('drug:' + drug.id)}
-              className="flex w-full items-center justify-between rounded-[22px] border border-[#E3D8EE] bg-[#F7F2FB] p-4 text-right"
+              className="flex w-full items-center gap-3 rounded-[22px] border border-[#E3D8EE] bg-[#F7F2FB] p-3.5"
             >
-              <Heart className="h-4 w-4 text-[#6C4AA5]" fill="currentColor" />
-              <div className="flex flex-1 items-center justify-end gap-3">
-                <div>
-                  <h3 className="font-black text-[#34293F]" dir="ltr">{drug.en}</h3>
-                  <p className="text-xs text-[#746B7A]">{drug.ar}</p>
+              <button
+                type="button"
+                onClick={() => onToggleFavorite('drug:' + drug.id)}
+                className="grid h-9 w-9 shrink-0 place-items-center rounded-xl border border-[#6C4AA5]/20 bg-white/80 text-[#6C4AA5]"
+                aria-label={`إزالة ${drug.ar} من المحفوظات`}
+                title="إزالة من المحفوظات"
+              >
+                <Heart className="h-4 w-4" fill="currentColor" />
+              </button>
+
+              <button
+                type="button"
+                onClick={() => setSelectedDrugId(drug.id)}
+                className="flex min-w-0 flex-1 items-center justify-end gap-3 text-right"
+              >
+                <div className="min-w-0 flex-1">
+                  <h3 className="truncate font-black text-[#34293F]" dir="ltr">{drug.en}</h3>
+                  <p className="mt-0.5 text-xs text-[#746B7A]">{drug.ar}</p>
+                  <p className="mt-1 text-[9px] font-bold text-[#6C4AA5]">افتح التفاصيل الدوائية</p>
                 </div>
-                <Pill className="h-5 w-5 text-[#6C4AA5]" />
-              </div>
-            </button>
+                <Pill className="h-5 w-5 shrink-0 text-[#6C4AA5]" />
+              </button>
+            </article>
           ))}
 
           {terms.map((term) => (
-            <button
+            <article
               key={term.id}
-              onClick={() => onToggleFavorite('term:' + term.id)}
-              className="flex w-full items-center justify-between rounded-[22px] border border-[#E3D8EE] bg-[#F7F2FB] p-4 text-right"
+              className="rounded-[22px] border border-[#E3D8EE] bg-[#F7F2FB] p-3.5"
             >
-              <Heart className="h-4 w-4 text-[#6C4AA5]" fill="currentColor" />
-              <div className="flex flex-1 items-center justify-end gap-3">
-                <div>
-                  <h3 className="font-black text-[#34293F]" dir="ltr">{term.abbr || term.en}</h3>
-                  <p className="text-xs text-[#746B7A]">{term.ar}</p>
+              <div className="flex items-start gap-3">
+                <button
+                  type="button"
+                  onClick={() => onToggleFavorite('term:' + term.id)}
+                  className="grid h-9 w-9 shrink-0 place-items-center rounded-xl border border-[#6C4AA5]/20 bg-white/80 text-[#6C4AA5]"
+                  aria-label={`إزالة ${term.ar} من المحفوظات`}
+                  title="إزالة من المحفوظات"
+                >
+                  <Heart className="h-4 w-4" fill="currentColor" />
+                </button>
+
+                <div className="flex min-w-0 flex-1 items-start justify-end gap-3 text-right">
+                  <div className="min-w-0 flex-1">
+                    <h3 className="truncate font-black text-[#34293F]" dir="ltr">{term.abbr || term.en}</h3>
+                    <p className="mt-0.5 text-xs text-[#746B7A]">{term.ar}</p>
+                  </div>
+                  <BookOpenText className="h-5 w-5 shrink-0 text-[#6C4AA5]" />
                 </div>
-                <BookOpenText className="h-5 w-5 text-[#6C4AA5]" />
               </div>
-            </button>
+
+              <p className="mt-3 whitespace-pre-line text-[10px] leading-5 text-[#766D7E]">
+                {term.definition}
+              </p>
+
+              {term.clinicalNote && (
+                <div className="mt-2 border-r-2 border-[#6C4AA5]/40 pr-2.5">
+                  <p className="text-[9px] font-black text-[#6C4AA5]">ملاحظة تخديرية | Clinical note</p>
+                  <p className="mt-1 text-[10px] leading-5 text-[#756B7D]">{term.clinicalNote}</p>
+                </div>
+              )}
+            </article>
           ))}
         </div>
       )}
+
+      <AnimatePresence>
+        {selectedDrugId && (() => {
+          const selectedDrug = ANESTHESIA_DRUGS.find((item) => item.id === selectedDrugId);
+          const detail = DRUG_DETAILS[selectedDrugId];
+          if (!selectedDrug || !detail) return null;
+
+          return (
+            <DrugDetailSheet
+              drug={selectedDrug}
+              detail={detail}
+              onClose={() => setSelectedDrugId(null)}
+            />
+          );
+        })()}
+      </AnimatePresence>
     </div>
   );
 }
