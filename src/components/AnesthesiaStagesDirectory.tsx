@@ -9,6 +9,7 @@ import type { ClinicalGuide } from '../data/clinicalGuides';
 import { BilingualLabel } from './BilingualLabel';
 import { MixedDirectionText } from './MixedDirectionText';
 import { useModalSheetA11y } from '../hooks/useModalSheetA11y';
+import { MEDICAL_ANIMATED_GIFS } from '../data/animatedMedicalIcons';
 import {
   NotificationStackMenu,
   type StackMenuItem
@@ -248,6 +249,7 @@ export function AnesthesiaStagesDirectory({
             {currentEntry.stage.number}
           </span>
         }
+        animatedIconSrc={MEDICAL_ANIMATED_GIFS.stages}
         items={stageItems}
         selectedId={selectedStageId}
       />
