@@ -13,6 +13,8 @@ import { MagnifyingGlass, X } from '@phosphor-icons/react';
 export interface MorphingSearchItem {
   id: string;
   title: string;
+  titleAr?: string;
+  titleEn?: string;
   description?: string;
   keywords?: string[];
   leading?: ReactNode;
@@ -60,14 +62,24 @@ export function MorphingSearch({
     return items
       .map((item) => {
         const title = item.title.toLowerCase();
+        const titleAr = (item.titleAr ?? '').toLowerCase();
+        const titleEn = (item.titleEn ?? '').toLowerCase();
         const description = (item.description ?? '').toLowerCase();
         const keywords = (item.keywords ?? []).map((value) => value.toLowerCase());
-        const searchable = [title, description, ...keywords];
+        const searchable = [title, titleAr, titleEn, description, ...keywords];
 
         let score = 0;
-        if (title === needle || keywords.includes(needle)) score = 3;
-        else if (
+        if (
+          title === needle ||
+          titleAr === needle ||
+          titleEn === needle ||
+          keywords.includes(needle)
+        ) {
+          score = 3;
+        } else if (
           title.startsWith(needle) ||
+          titleAr.startsWith(needle) ||
+          titleEn.startsWith(needle) ||
           keywords.some((value) => value.startsWith(needle))
         ) {
           score = 2;
@@ -259,7 +271,7 @@ export function MorphingSearch({
                 onFocus={() => setActiveIndex(index)}
                 onClick={() => selectItem(item)}
                 className={
-                  'flex min-h-[54px] w-full items-center gap-3 rounded-[14px] px-3 py-2.5 text-right transition ' +
+                  'flex min-h-[64px] w-full items-center gap-3 rounded-[14px] px-3 py-2.5 text-right transition ' +
                   (index === activeIndex
                     ? 'bg-[#EEF3F6]'
                     : 'bg-white hover:bg-[#F7F9FA] active:bg-[#EEF3F6]')
@@ -272,11 +284,19 @@ export function MorphingSearch({
                 ) : null}
                 <span className="min-w-0 flex-1">
                   <span
-                    dir="auto"
+                    dir={item.titleAr ? 'rtl' : 'auto'}
                     className="block truncate text-[13px] font-black text-[#183149]"
                   >
-                    {item.title}
+                    {item.titleAr ?? item.title}
                   </span>
+                  {item.titleEn ? (
+                    <span
+                      dir="ltr"
+                      className="mt-0.5 block truncate text-[11px] font-bold text-[#526675]"
+                    >
+                      {item.titleEn}
+                    </span>
+                  ) : null}
                   {item.description ? (
                     <span
                       dir="auto"
