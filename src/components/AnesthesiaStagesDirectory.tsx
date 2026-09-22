@@ -93,6 +93,13 @@ export function AnesthesiaStagesDirectory() {
                           </div>
                         </details>
                       ))}
+
+                      <div className="border-t border-[#EEE7F4] pt-2 text-center text-[8px] leading-4 text-[#94899C]">
+                        <p>المصدر | Source: {guide.sourceLabel ?? 'مبادئ التخدير'}</p>
+                        <p className="mt-0.5">
+                          صفحات/أقسام المصدر | Source pages/sections: {guide.sourcePages.join('، ')}
+                        </p>
+                      </div>
                     </div>
                   </details>
                 ))}
