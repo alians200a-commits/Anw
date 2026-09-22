@@ -9,13 +9,14 @@ import {
 } from '../data/clinicalGuides';
 import { ANESTHESIA_STAGE_GUIDE_IDS } from '../data/anesthesiaStages';
 import { BilingualLabel } from './BilingualLabel';
+import { MixedDirectionText } from './MixedDirectionText';
 
 function GuideItems({ title, items }: { title: string; items: string[] }) {
   const body = (
     <div className="space-y-2">
       {items.map((item, index) => (
         <div key={index} className="flex items-start justify-end gap-2">
-          <p className="flex-1 text-right text-[11px] leading-5 text-[#4D5A52]">{item}</p>
+          <p className="flex-1 text-right text-[11px] leading-5 text-[#4D5A52]"><MixedDirectionText text={item} /></p>
           <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#73A081]" />
         </div>
       ))}
@@ -80,13 +81,13 @@ function ClinicalGuideSheet({
         <div className="space-y-3 px-4 pb-[max(1.75rem,env(safe-area-inset-bottom))] pt-4">
           <section className="rounded-2xl border border-[#DDEBE1] bg-[#F8FBF9] px-3.5 py-3">
             <BilingualLabel label="الخلاصة | Summary" className="text-[10px] font-black text-[#4F765F]" />
-            <p className="mt-1.5 text-[12px] leading-6 text-[#465149]">{guide.summary}</p>
+            <p className="mt-1.5 text-[12px] leading-6 text-[#465149]"><MixedDirectionText text={guide.summary} /></p>
           </section>
 
           {guide.clinicalNote && (
             <section className="rounded-2xl border border-[#E8DFC9] bg-[#FFF9EE] px-3.5 py-3">
               <BilingualLabel label="ملاحظة سريرية | Clinical note" className="text-[10px] font-black text-[#8A6426]" />
-              <p className="mt-1.5 text-[11px] leading-5 text-[#5B5142]">{guide.clinicalNote}</p>
+              <p className="mt-1.5 text-[11px] leading-5 text-[#5B5142]"><MixedDirectionText text={guide.clinicalNote} /></p>
             </section>
           )}
 

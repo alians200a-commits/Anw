@@ -1,6 +1,7 @@
 import { CaretDown } from '@phosphor-icons/react';
 import { ANESTHESIA_STAGES, getStageGuides } from '../data/anesthesiaStages';
 import { BilingualLabel } from './BilingualLabel';
+import { MixedDirectionText } from './MixedDirectionText';
 
 export function AnesthesiaStagesDirectory({ initialQuery = '' }: { initialQuery?: string }) {
   const normalized = initialQuery.trim().toLowerCase();
@@ -91,12 +92,12 @@ export function AnesthesiaStagesDirectory({ initialQuery = '' }: { initialQuery?
                   </summary>
 
                   <div className="space-y-2 border-t border-[#EEE7F4] px-3 pb-3 pt-2.5">
-                    <p className="text-[10px] leading-5 text-[#62596A]">{guide.summary}</p>
+                    <p className="text-[10px] leading-5 text-[#62596A]"><MixedDirectionText text={guide.summary} /></p>
 
                     {guide.clinicalNote && (
                       <div className="rounded-lg border border-[#E8DFC9] bg-[#FFF9EE] px-2.5 py-2">
                         <BilingualLabel label="ملاحظة سريرية | Clinical note" className="text-[9px] font-black text-[#8A6426]" />
-                        <p className="mt-1 text-[10px] leading-5 text-[#5B5142]">{guide.clinicalNote}</p>
+                        <p className="mt-1 text-[10px] leading-5 text-[#5B5142]"><MixedDirectionText text={guide.clinicalNote} /></p>
                       </div>
                     )}
 
@@ -118,7 +119,7 @@ export function AnesthesiaStagesDirectory({ initialQuery = '' }: { initialQuery?
                           {section.items.map((item, index) => (
                             <div key={index} className="flex items-start justify-end gap-2">
                               <p className="flex-1 text-right text-[10px] leading-5 text-[#665D6D]">
-                                {item}
+                                <MixedDirectionText text={item} />
                               </p>
                               <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#A58DB8]" />
                             </div>

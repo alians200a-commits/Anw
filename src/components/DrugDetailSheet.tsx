@@ -12,6 +12,7 @@ import {
 import { DRUG_CLASS_LABELS, type AnesthesiaDrug } from '../data/drugs';
 import type { DrugDetail } from '../data/drugDetails';
 import { BilingualLabel } from './BilingualLabel';
+import { MixedDirectionText } from './MixedDirectionText';
 
 interface DrugDetailSheetProps {
   drug: AnesthesiaDrug;
@@ -121,7 +122,10 @@ function BilingualMedicalText({ text }: { text: string }) {
   MEDICAL_PATTERN.lastIndex = 0;
 
   while ((match = MEDICAL_PATTERN.exec(text)) !== null) {
-    if (match.index > lastIndex) parts.push(text.slice(lastIndex, match.index));
+    if (match.index > lastIndex) {
+      const plain = text.slice(lastIndex, match.index);
+      parts.push(<MixedDirectionText key={`plain-${key++}`} text={plain} />);
+    }
 
     const arabic = match[0];
     parts.push(
@@ -134,7 +138,9 @@ function BilingualMedicalText({ text }: { text: string }) {
     lastIndex = match.index + arabic.length;
   }
 
-  if (lastIndex < text.length) parts.push(text.slice(lastIndex));
+  if (lastIndex < text.length) {
+    parts.push(<MixedDirectionText key={`plain-${key++}`} text={text.slice(lastIndex)} />);
+  }
   return <>{parts}</>;
 }
 
