@@ -54,6 +54,7 @@ export function BottomNav({ active, onChange }: BottomNavProps) {
                   <MedicalSiteIcon
                     name={item.siteIcon}
                     play={isActive}
+                    loop={isActive}
                     size={27}
                   />
                 </span>
