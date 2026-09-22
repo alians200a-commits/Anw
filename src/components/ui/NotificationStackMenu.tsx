@@ -123,7 +123,7 @@ export function NotificationStackMenu({
             {description ? (
               <span
                 dir="auto"
-                className="mt-0.5 block text-[10px] font-semibold leading-5 text-[#667784]"
+                className="mt-0.5 block text-[11px] font-semibold leading-5 text-[#667784]"
               >
                 {description}
               </span>
@@ -188,7 +188,7 @@ export function NotificationStackMenu({
                   {item.description ? (
                     <span
                       dir="auto"
-                      className="mt-0.5 block text-[10px] font-semibold leading-4 text-[#6D7E8A]"
+                      className="mt-0.5 block text-[11px] font-semibold leading-4 text-[#6D7E8A]"
                     >
                       {item.description}
                     </span>
@@ -196,7 +196,7 @@ export function NotificationStackMenu({
                 </span>
 
                 {item.trailing ? (
-                  <span className="shrink-0 rounded-full bg-[#EEF3F6] px-2 py-1 text-[10px] font-black text-[#536A7A]">
+                  <span className="shrink-0 rounded-full bg-[#EEF3F6] px-2 py-1 text-[11px] font-black text-[#536A7A]">
                     {item.trailing}
                   </span>
                 ) : null}
