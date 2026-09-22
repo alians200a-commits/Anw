@@ -125,6 +125,7 @@ export function FluidsDirectory({
     setQuery(initialQuery);
 
     const normalized = initialQuery.trim().toLowerCase();
+    if (normalized) setCategory('all');
     if (!normalized) {
       setSelected(null);
       return;
