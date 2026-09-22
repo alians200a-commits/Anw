@@ -5,7 +5,7 @@ import {
   type DrugClass
 } from '../data/drugs';
 import { CLINICAL_TERMS } from '../data/clinicalTerms';
-import { ANESTHESIA_EQUIPMENT } from '../data/equipment';
+import { ANESTHESIA_EQUIPMENT, type EquipmentCategory } from '../data/equipment';
 import { CLINICAL_GUIDES } from '../data/clinicalGuides';
 import { ANESTHESIA_STAGE_GUIDE_IDS } from '../data/anesthesiaStages';
 import { INTRAVENOUS_FLUIDS } from '../data/fluids';
@@ -38,6 +38,22 @@ const guideIcon: Record<GuideSection, MedicalSiteIconName> = {
   abbreviations: 'abbreviations'
 };
 
+const equipmentSearchIcon: Record<EquipmentCategory, MedicalSiteIconName> = {
+  machine: 'equipment',
+  'gas-supply': 'gas',
+  breathing: 'breathing',
+  airway: 'airway',
+  monitoring: 'monitoring',
+  tools: 'tools'
+};
+
+function searchIconPair(name: MedicalSiteIconName) {
+  return {
+    leading: <MedicalSiteIcon name={name} size={24} />,
+    leadingActive: <MedicalSiteIcon name={name} play size={24} />
+  };
+}
+
 export function HomeScreen({ openGuide }: HomeScreenProps) {
   const searchItems = useMemo<MorphingSearchItem[]>(() => {
     const drugs: MorphingSearchItem[] = ANESTHESIA_DRUGS.map((drug) => ({
@@ -53,7 +69,7 @@ export function HomeScreen({ openGuide }: HomeScreenProps) {
         ...drug.classes.map((item) => DRUG_CLASS_LABELS[item]),
         ...drug.tags
       ],
-      leading: <MedicalSiteIcon name="drugs" size={24} />,
+      ...searchIconPair('drugs'),
       onSelect: () => openGuide('drugs', 'all', drug.en)
     }));
 
@@ -70,7 +86,7 @@ export function HomeScreen({ openGuide }: HomeScreenProps) {
         item.composition,
         ...item.tags
       ],
-      leading: <MedicalSiteIcon name="fluids" size={24} />,
+      ...searchIconPair('fluids'),
       onSelect: () => openGuide('fluids', 'all', item.nameEn)
     }));
 
@@ -87,7 +103,7 @@ export function HomeScreen({ openGuide }: HomeScreenProps) {
         item.summary,
         ...item.tags
       ],
-      leading: <MedicalSiteIcon name="equipment" size={24} />,
+      ...searchIconPair(equipmentSearchIcon[item.category]),
       onSelect: () => openGuide('equipment', 'all', item.nameEn)
     }));
 
@@ -106,7 +122,7 @@ export function HomeScreen({ openGuide }: HomeScreenProps) {
           guide.summary,
           ...guide.tags
         ],
-        leading: <MedicalSiteIcon name="stages" size={24} />,
+        ...searchIconPair('stages'),
         onSelect: () => openGuide('stages', 'all', guide.titleEn)
       }));
 
@@ -125,7 +141,7 @@ export function HomeScreen({ openGuide }: HomeScreenProps) {
           guide.summary,
           ...guide.tags
         ],
-        leading: <MedicalSiteIcon name="clinical" size={24} />,
+        ...searchIconPair('clinical'),
         onSelect: () => openGuide('clinical', 'all', guide.titleEn)
       }));
 
@@ -141,12 +157,7 @@ export function HomeScreen({ openGuide }: HomeScreenProps) {
         term.definition,
         ...term.tags
       ],
-      leading: (
-        <MedicalSiteIcon
-          name={term.abbr ? 'abbreviations' : 'terms'}
-          size={24}
-        />
-      ),
+      ...searchIconPair(term.abbr ? 'abbreviations' : 'terms'),
       onSelect: () =>
         openGuide(
           term.abbr ? 'abbreviations' : 'terms',
