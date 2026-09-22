@@ -257,13 +257,10 @@ export function AnesthesiaStagesDirectory({
         items={stageItems}
       />
 
-      <div className="flex items-center justify-between px-1">
+      <div className="px-1 text-left">
         <span className="rounded-full border border-[#DCE5EA] bg-[#EEF3F6] px-2.5 py-1 text-[9px] font-black text-[#405E75]">
           {currentEntry.guides.length} موضوع
         </span>
-        <p className="text-[10px] font-semibold text-[#657784]">
-          {currentEntry.stage.titleAr}
-        </p>
       </div>
 
       <div className="space-y-2">
