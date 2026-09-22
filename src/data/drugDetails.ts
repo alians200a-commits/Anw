@@ -1038,6 +1038,10 @@ export const DRUG_DETAILS: Record<string, DrugDetail> = {
     feature: 'Neuroleptic ذو تأثير Antiemetic ومهدئ.',
     mechanism: 'يعمل أساسًا كمضاد لمستقبلات Dopamine D2 مع تأثيرات إضافية على الجهاز العصبي الذاتي.',
     routes: ['وريدي | Intravenous', 'عضلي | Intramuscular'],
+    educationalDoses: [
+      'للبالغ وفق ملصق الحقن: الحد الأقصى للجرعة الأولية 2.5 mg IM أو slow IV، ويمكن إعطاء 1.25 mg إضافية بحذر عند الحاجة بعد تقييم الفائدة مقابل خطر اضطرابات النظم.',
+      'يجب تفريد الجرعة ومراقبة العلامات الحيوية وECG، خصوصًا عند وجود عوامل تطيل QT.'
+    ],
     uses: ['تقليل الغثيان والقيء المرتبطين بالإجراءات الجراحية والتشخيصية | Perioperative nausea/vomiting'],
     contraindications: ['Known or suspected QT prolongation', 'Congenital long-QT syndrome', 'فرط التحسس'],
     warnings: ['QT prolongation وTorsades risk', 'الحذر مع Bradycardia أو Hypokalemia أو Hypomagnesemia أو أدوية تطيل QT', 'قد يسبب Hypotension وSedation'],
