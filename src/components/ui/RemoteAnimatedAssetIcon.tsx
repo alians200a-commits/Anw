@@ -53,7 +53,7 @@ export function RemoteAnimatedAssetIcon({
 }
 
 export const DALEELI_ANIMATED_ASSETS = {
-  home: 'https://cdn-icons-gif.flaticon.com/19010/19010897.gif',
+  home: 'https://cdn-icons-gif.flaticon.com/18997/18997678.gif',
   guide: 'https://cdn-icons-gif.flaticon.com/19017/19017108.gif',
   learn: 'https://cdn-icons-gif.flaticon.com/19016/19016644.gif',
   saved: 'https://cdn-icons-gif.flaticon.com/12743/12743722.gif',
