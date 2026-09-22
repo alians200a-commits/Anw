@@ -1,11 +1,5 @@
 import { useMemo } from 'react';
 import {
-  BookOpenText,
-  Drop,
-  TextAa,
-  Wrench
-} from '@phosphor-icons/react';
-import {
   ANESTHESIA_DRUGS,
   DRUG_CLASS_LABELS,
   type DrugClass
@@ -16,7 +10,6 @@ import { CLINICAL_GUIDES } from '../data/clinicalGuides';
 import { ANESTHESIA_STAGE_GUIDE_IDS } from '../data/anesthesiaStages';
 import { INTRAVENOUS_FLUIDS } from '../data/fluids';
 import type { GuideSection } from './GuideScreen';
-import { MedicinesHealthIcon } from './MedicalIcons';
 import {
   MorphingSearch,
   type MorphingSearchItem
@@ -25,6 +18,7 @@ import {
   NotificationStackMenu,
   type StackMenuItem
 } from './ui/NotificationStackMenu';
+import { MedicalSiteIcon, type MedicalSiteIconName } from './ui/MedicalSiteIcon';
 
 interface HomeScreenProps {
   openGuide: (
@@ -33,6 +27,16 @@ interface HomeScreenProps {
     initialQuery?: string
   ) => void;
 }
+
+const guideIcon: Record<GuideSection, MedicalSiteIconName> = {
+  drugs: 'drugs',
+  fluids: 'fluids',
+  equipment: 'equipment',
+  stages: 'stages',
+  clinical: 'clinical',
+  terms: 'terms',
+  abbreviations: 'abbreviations'
+};
 
 export function HomeScreen({ openGuide }: HomeScreenProps) {
   const searchItems = useMemo<MorphingSearchItem[]>(() => {
@@ -49,7 +53,7 @@ export function HomeScreen({ openGuide }: HomeScreenProps) {
         ...drug.classes.map((item) => DRUG_CLASS_LABELS[item]),
         ...drug.tags
       ],
-      leading: <MedicinesHealthIcon className="h-5 w-5" />,
+      leading: <MedicalSiteIcon name="drugs" size={24} />,
       onSelect: () => openGuide('drugs', 'all', drug.en)
     }));
 
@@ -66,7 +70,7 @@ export function HomeScreen({ openGuide }: HomeScreenProps) {
         item.composition,
         ...item.tags
       ],
-      leading: <Drop size={19} weight="fill" />,
+      leading: <MedicalSiteIcon name="fluids" size={24} />,
       onSelect: () => openGuide('fluids', 'all', item.nameEn)
     }));
 
@@ -83,7 +87,7 @@ export function HomeScreen({ openGuide }: HomeScreenProps) {
         item.summary,
         ...item.tags
       ],
-      leading: <Wrench size={19} weight="bold" />,
+      leading: <MedicalSiteIcon name="equipment" size={24} />,
       onSelect: () => openGuide('equipment', 'all', item.nameEn)
     }));
 
@@ -102,7 +106,7 @@ export function HomeScreen({ openGuide }: HomeScreenProps) {
           guide.summary,
           ...guide.tags
         ],
-        leading: <BookOpenText size={19} />,
+        leading: <MedicalSiteIcon name="stages" size={24} />,
         onSelect: () => openGuide('stages', 'all', guide.titleEn)
       }));
 
@@ -121,7 +125,7 @@ export function HomeScreen({ openGuide }: HomeScreenProps) {
           guide.summary,
           ...guide.tags
         ],
-        leading: <BookOpenText size={19} />,
+        leading: <MedicalSiteIcon name="clinical" size={24} />,
         onSelect: () => openGuide('clinical', 'all', guide.titleEn)
       }));
 
@@ -137,10 +141,11 @@ export function HomeScreen({ openGuide }: HomeScreenProps) {
         term.definition,
         ...term.tags
       ],
-      leading: term.abbr ? (
-        <TextAa size={19} weight="bold" />
-      ) : (
-        <BookOpenText size={19} />
+      leading: (
+        <MedicalSiteIcon
+          name={term.abbr ? 'abbreviations' : 'terms'}
+          size={24}
+        />
       ),
       onSelect: () =>
         openGuide(
@@ -165,49 +170,49 @@ export function HomeScreen({ openGuide }: HomeScreenProps) {
       id: 'drugs',
       title: 'الأدوية',
       description: 'Drug Reference',
-      leading: <MedicinesHealthIcon className="h-5 w-5" />,
+      leading: <MedicalSiteIcon name="drugs" size={25} />,
       onSelect: () => openGuide('drugs')
     },
     {
       id: 'equipment',
       title: 'عربة التخدير والمعدات',
       description: 'Machine • Airway • Monitoring • Tools',
-      leading: <Wrench size={19} weight="bold" />,
+      leading: <MedicalSiteIcon name="equipment" size={25} />,
       onSelect: () => openGuide('equipment')
     },
     {
       id: 'fluids',
       title: 'السوائل الوريدية',
       description: 'IV Fluids',
-      leading: <Drop size={19} weight="fill" />,
+      leading: <MedicalSiteIcon name="fluids" size={25} />,
       onSelect: () => openGuide('fluids')
     },
     {
       id: 'stages',
       title: 'مراحل التخدير',
       description: 'Stages of Anesthesia',
-      leading: <BookOpenText size={19} />,
+      leading: <MedicalSiteIcon name="stages" size={25} />,
       onSelect: () => openGuide('stages')
     },
     {
       id: 'clinical',
       title: 'المفاهيم والإجراءات',
       description: 'Clinical Guides',
-      leading: <BookOpenText size={19} />,
+      leading: <MedicalSiteIcon name="clinical" size={25} />,
       onSelect: () => openGuide('clinical')
     },
     {
       id: 'terms',
       title: 'المصطلحات',
       description: 'Clinical Terms',
-      leading: <BookOpenText size={19} />,
+      leading: <MedicalSiteIcon name="terms" size={25} />,
       onSelect: () => openGuide('terms')
     },
     {
       id: 'abbreviations',
       title: 'الاختصارات',
       description: 'Abbreviations',
-      leading: <TextAa size={19} weight="bold" />,
+      leading: <MedicalSiteIcon name="abbreviations" size={25} />,
       onSelect: () => openGuide('abbreviations')
     }
   ];
@@ -234,7 +239,7 @@ export function HomeScreen({ openGuide }: HomeScreenProps) {
         <NotificationStackMenu
           title="الدليل التخديري"
           description="أدوية، سوائل، معدات، مراحل التخدير، إجراءات ومصطلحات"
-          icon={<BookOpenText size={22} weight="bold" />}
+          icon={<MedicalSiteIcon name="guide" size={27} />}
           items={guideItems}
         />
       </section>
