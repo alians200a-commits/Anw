@@ -56,6 +56,14 @@ export function NotificationStackMenu({
         if (active instanceof Node && rootRef.current?.contains(active)) return;
         setOpen(false);
       }}
+      onFocusCapture={() => {
+        setOpen(true);
+      }}
+      onBlurCapture={(event) => {
+        const next = event.relatedTarget;
+        if (next instanceof Node && rootRef.current?.contains(next)) return;
+        setOpen(false);
+      }}
       onKeyDown={(event) => {
         if (event.key === 'Escape') {
           event.preventDefault();
