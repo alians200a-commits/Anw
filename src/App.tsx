@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
+import { AnimatePresence, MotionConfig, motion, useReducedMotion } from 'motion/react';
 import { BottomNav, type AppTab } from './components/BottomNav';
 import { FavoritesScreen } from './components/FavoritesScreen';
 import { GamesHub } from './components/GamesHub';
@@ -93,10 +93,11 @@ export default function App() {
   }
 
   return (
-    <div
-      dir="rtl"
-      className="min-h-screen bg-white text-[#183149] selection:bg-[#CCA039]/30 selection:text-[#0A2037]"
-    >
+    <MotionConfig reducedMotion="user">
+      <div
+        dir="rtl"
+        className="min-h-screen bg-white text-[#183149] selection:bg-[#CCA039]/30 selection:text-[#0A2037]"
+      >
       <KingdomHeader />
 
       <main className="relative mx-auto w-full max-w-3xl px-4 pb-24 pt-4 sm:px-6 sm:pt-5">
@@ -113,7 +114,8 @@ export default function App() {
         </AnimatePresence>
       </main>
 
-      <BottomNav active={activeTab} onChange={handleTabChange} />
-    </div>
+        <BottomNav active={activeTab} onChange={handleTabChange} />
+      </div>
+    </MotionConfig>
   );
 }

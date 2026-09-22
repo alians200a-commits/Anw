@@ -193,7 +193,7 @@ export function ClinicalGuidesDirectory({
           aria-label="البحث في المفاهيم والإجراءات"
           dir="auto"
           placeholder="RSI، Spinal، حركية الدواء..."
-          className="h-11 w-full rounded-xl border border-[#DCE4EA] bg-white pr-10 pl-3 text-xs font-semibold text-[#183149] outline-none placeholder:text-[#83919C] focus:border-[#B58B2A] focus:ring-2 focus:ring-[#CCA039]/15"
+          className="h-11 w-full rounded-xl border border-[#DCE4EA] bg-white pr-10 pl-3 text-xs font-semibold text-[#183149] outline-none placeholder:text-[#66737F] focus:border-[#B58B2A] focus:ring-2 focus:ring-[#CCA039]/15"
         />
       </div>
 
@@ -210,7 +210,7 @@ export function ClinicalGuidesDirectory({
             key={guide.id}
             type="button"
             onClick={() => setSelected(guide)}
-            className="w-full rounded-[18px] border border-[#DCE5EA] bg-[#F7F9FA] px-3.5 py-3 text-right active:bg-[#EEF3F6]"
+            className="w-full rounded-[18px] border border-[#DCE5EA] bg-[#F7F9FA] px-3.5 py-3 text-right outline-none transition active:bg-[#EEF3F6] focus-visible:ring-2 focus-visible:ring-[#CCA039]/55"
           >
             <div className="flex items-start justify-between gap-3">
               <span className="shrink-0 rounded-full bg-white/80 px-2.5 py-1 text-[11px] font-black text-[#405E75]">
@@ -232,7 +232,7 @@ export function ClinicalGuidesDirectory({
       </div>
 
       {filtered.length === 0 && (
-        <div className="rounded-[18px] border border-dashed border-[#C9D6DF] bg-[#F8FAFB] p-7 text-center text-xs text-[#667A89]">
+        <div className="rounded-[18px] border border-dashed border-[#C9D6DF] bg-[#F8FAFB] p-7 text-center text-xs text-[#5F7280]">
           ماكو موضوع مطابق للبحث.
         </div>
       )}

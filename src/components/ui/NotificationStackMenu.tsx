@@ -123,7 +123,7 @@ export function NotificationStackMenu({
             {description ? (
               <span
                 dir="auto"
-                className="mt-0.5 block text-[11px] font-semibold leading-5 text-[#667784]"
+                className="mt-0.5 block text-[11px] font-semibold leading-5 text-[#66737F]"
               >
                 {description}
               </span>
@@ -188,7 +188,7 @@ export function NotificationStackMenu({
                   {item.description ? (
                     <span
                       dir="auto"
-                      className="mt-0.5 block text-[11px] font-semibold leading-4 text-[#6D7E8A]"
+                      className="mt-0.5 block text-[11px] font-semibold leading-4 text-[#66737F]"
                     >
                       {item.description}
                     </span>

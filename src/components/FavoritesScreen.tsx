@@ -22,7 +22,7 @@ export function FavoritesScreen({ favorites, onToggleFavorite }: FavoritesScreen
     <div className="space-y-5">
       <section>
         <h2 className="text-2xl font-black text-[#183149]">المحفوظات</h2>
-        <p className="mt-2 text-sm text-[#657784]">العناصر التي حفظتها تظهر هنا للرجوع إليها بسرعة.</p>
+        <p className="mt-2 text-sm text-[#5F7280]">العناصر التي حفظتها تظهر هنا للرجوع إليها بسرعة.</p>
       </section>
 
       {drugs.length === 0 && terms.length === 0 ? (
@@ -31,7 +31,7 @@ export function FavoritesScreen({ favorites, onToggleFavorite }: FavoritesScreen
             <Heart size={20} />
           </div>
           <h3 className="mt-4 font-black text-[#183149]">لم تحفظ أي عنصر بعد</h3>
-          <p className="mt-2 text-xs leading-5 text-[#667A89]">اضغط على رمز القلب في أي دواء أو مصطلح ليظهر هنا.</p>
+          <p className="mt-2 text-xs leading-5 text-[#5F7280]">اضغط على رمز القلب في أي دواء أو مصطلح ليظهر هنا.</p>
         </div>
       ) : (
         <div className="space-y-3">

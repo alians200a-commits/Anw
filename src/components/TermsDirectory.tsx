@@ -39,11 +39,11 @@ export function TermsDirectory({ favorites, onToggleFavorite, initialQuery = '' 
           aria-label="البحث في المصطلحات"
           dir="auto"
           placeholder="ابحث عن مصطلح..."
-          className="h-11 w-full rounded-xl border border-[#DCE4EA] bg-white pr-10 pl-3 text-sm text-[#183149] outline-none placeholder:text-[#83919C] focus:border-[#B58B2A] focus:ring-2 focus:ring-[#CCA039]/15"
+          className="h-11 w-full rounded-xl border border-[#DCE4EA] bg-white pr-10 pl-3 text-sm text-[#183149] outline-none placeholder:text-[#66737F] focus:border-[#B58B2A] focus:ring-2 focus:ring-[#CCA039]/15"
         />
       </div>
 
-      <p className="px-1 text-[11px] text-[#657784]">{filtered.length} مصطلح</p>
+      <p className="px-1 text-[11px] text-[#5F7280]">{filtered.length} مصطلح</p>
 
       <div className="space-y-2">
         {filtered.map((term) => {
