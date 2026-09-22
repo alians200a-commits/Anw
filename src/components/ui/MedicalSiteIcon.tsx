@@ -33,10 +33,10 @@ export const MEDICAL_SITE_ICON_ASSETS: Record<MedicalSiteIconName, AssetRecord> 
     iconScoutId: 7140714,
     iconScoutLabel: 'Mobile Health App',
     iconScoutPage: 'https://iconscout.com/lottie-animation/mobile-health-app-animation_7140714',
-    flaticonId: 18997678,
-    flaticonPage: 'https://www.flaticon.com/free-animated-icon/home_18997678',
-    staticSrc: 'https://cdn-icons-png.flaticon.com/512/18997/18997678.png',
-    animatedSrc: 'https://cdn-icons-gif.flaticon.com/18997/18997678.gif'
+    flaticonId: 17882602,
+    flaticonPage: 'https://www.flaticon.com/free-animated-icon/health_17882602',
+    staticSrc: 'https://cdn-icons-png.flaticon.com/512/17882/17882602.png',
+    animatedSrc: 'https://cdn-icons-gif.flaticon.com/17882/17882602.gif'
   },
   guide: {
     iconScoutId: 10435818,
@@ -60,10 +60,10 @@ export const MEDICAL_SITE_ICON_ASSETS: Record<MedicalSiteIconName, AssetRecord> 
     iconScoutId: 7140721,
     iconScoutLabel: 'Health Record',
     iconScoutPage: 'https://iconscout.com/lottie-animation/health-record-animation_7140721',
-    flaticonId: 18996514,
-    flaticonPage: 'https://www.flaticon.com/free-animated-icon/bookmark_18996514',
-    staticSrc: 'https://cdn-icons-png.flaticon.com/512/18996/18996514.png',
-    animatedSrc: 'https://cdn-icons-gif.flaticon.com/18996/18996514.gif'
+    flaticonId: 19031946,
+    flaticonPage: 'https://www.flaticon.com/free-animated-icon/medical-record_19031946',
+    staticSrc: 'https://cdn-icons-png.flaticon.com/512/19031/19031946.png',
+    animatedSrc: 'https://cdn-icons-gif.flaticon.com/19031/19031946.gif'
   },
   drugs: {
     iconScoutId: 9709030,
