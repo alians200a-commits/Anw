@@ -6,6 +6,10 @@ import {
 } from '@phosphor-icons/react';
 import { Dock, DockIcon } from './ui/MagicDock';
 import { AnimatedIcon, type AnimatedIconVariant } from './ui/AnimatedIcon';
+import {
+  DALEELI_ANIMATED_ASSETS,
+  RemoteAnimatedAssetIcon
+} from './ui/RemoteAnimatedAssetIcon';
 
 export type AppTab = 'home' | 'guide' | 'games' | 'favorites';
 
@@ -19,11 +23,36 @@ const items: Array<{
   label: string;
   icon: typeof House;
   animation: AnimatedIconVariant;
+  animatedSrc: string;
 }> = [
-  { id: 'home', label: 'الرئيسية', icon: House, animation: 'lift' },
-  { id: 'guide', label: 'الدليل', icon: BookOpenText, animation: 'tilt' },
-  { id: 'games', label: 'تعلّم', icon: GameController, animation: 'pop' },
-  { id: 'favorites', label: 'المحفوظات', icon: BookmarkSimple, animation: 'pulse' }
+  {
+    id: 'home',
+    label: 'الرئيسية',
+    icon: House,
+    animation: 'lift',
+    animatedSrc: DALEELI_ANIMATED_ASSETS.home
+  },
+  {
+    id: 'guide',
+    label: 'الدليل',
+    icon: BookOpenText,
+    animation: 'tilt',
+    animatedSrc: DALEELI_ANIMATED_ASSETS.guide
+  },
+  {
+    id: 'games',
+    label: 'تعلّم',
+    icon: GameController,
+    animation: 'pop',
+    animatedSrc: DALEELI_ANIMATED_ASSETS.learn
+  },
+  {
+    id: 'favorites',
+    label: 'المحفوظات',
+    icon: BookmarkSimple,
+    animation: 'pulse',
+    animatedSrc: DALEELI_ANIMATED_ASSETS.saved
+  }
 ];
 
 export function BottomNav({ active, onChange }: BottomNavProps) {
@@ -59,9 +88,17 @@ export function BottomNav({ active, onChange }: BottomNavProps) {
                       : 'bg-[#EEF3F6] text-[#315672]')
                   }
                 >
-                  <AnimatedIcon active={isActive} variant={item.animation}>
-                    <Icon size={19} weight={isActive ? 'fill' : 'regular'} />
-                  </AnimatedIcon>
+                  <RemoteAnimatedAssetIcon
+                    src={item.animatedSrc}
+                    play={isActive}
+                    durationMs={900}
+                    className="h-7 w-7"
+                    fallback={
+                      <AnimatedIcon active={isActive} variant={item.animation}>
+                        <Icon size={19} weight={isActive ? 'fill' : 'regular'} />
+                      </AnimatedIcon>
+                    }
+                  />
                 </span>
                 <span className="text-[11px] font-black leading-none text-[#183149]">
                   {item.label}
