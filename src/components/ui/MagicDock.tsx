@@ -2,7 +2,6 @@ import {
   createContext,
   useContext,
   useRef,
-  type HTMLAttributes,
   type ReactNode
 } from 'react';
 import {
@@ -24,8 +23,9 @@ interface DockContextValue {
 
 const DockContext = createContext<DockContextValue | null>(null);
 
-interface DockProps extends HTMLAttributes<HTMLDivElement> {
+interface DockProps {
   children: ReactNode;
+  className?: string;
   iconSize?: number;
   iconMagnification?: number;
   iconDistance?: number;
@@ -38,8 +38,7 @@ export function Dock({
   iconSize = 46,
   iconMagnification = 54,
   iconDistance = 96,
-  disableMagnification = false,
-  ...props
+  disableMagnification = false
 }: DockProps) {
   const mouseX = useMotionValue(Infinity);
   const reduceMotion = useReducedMotion();
@@ -62,7 +61,6 @@ export function Dock({
         }}
         onPointerLeave={() => mouseX.set(Infinity)}
         className={className}
-        {...props}
       >
         {children}
       </motion.div>
@@ -70,11 +68,12 @@ export function Dock({
   );
 }
 
-interface DockIconProps extends HTMLAttributes<HTMLDivElement> {
+interface DockIconProps {
   children: ReactNode;
+  className?: string;
 }
 
-export function DockIcon({ children, className = '', ...props }: DockIconProps) {
+export function DockIcon({ children, className = '' }: DockIconProps) {
   const context = useContext(DockContext);
   const ref = useRef<HTMLDivElement>(null);
   const fallbackMouseX = useMotionValue(Infinity);
@@ -108,7 +107,6 @@ export function DockIcon({ children, className = '', ...props }: DockIconProps) 
       ref={ref}
       style={{ width: springSize, height: springSize }}
       className={'flex shrink-0 items-center justify-center ' + className}
-      {...props}
     >
       {children}
     </motion.div>
