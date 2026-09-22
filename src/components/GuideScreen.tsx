@@ -59,7 +59,7 @@ export function GuideScreen({
       )}
       {section === 'fluids' && <FluidsDirectory initialQuery={initialQuery} />}
       {section === 'equipment' && <EquipmentDirectory initialQuery={initialQuery} />}
-      {section === 'stages' && <AnesthesiaStagesDirectory />}
+      {section === 'stages' && <AnesthesiaStagesDirectory initialQuery={initialQuery} />}
       {section === 'clinical' && <ClinicalGuidesDirectory initialQuery={initialQuery} />}
       {section === 'terms' && (
         <TermsDirectory favorites={favorites} onToggleFavorite={onToggleFavorite} initialQuery={initialQuery} />

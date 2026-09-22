@@ -136,7 +136,7 @@ export function HomeScreen({ query, setQuery, openGuide, goTo }: HomeScreenProps
         {normalized && (
           <div className="mt-2 overflow-hidden rounded-xl border border-[#E5DAEF] bg-[#FBF9FD]">
             <div className="flex items-center justify-between border-b border-[#EAE3F0] px-3 py-2">
-              <span className="text-[10px] text-[#7B7382]">{resultCount} نتيجة</span>
+              <span className="text-[10px] text-[#7B7382]">{resultCount} نتيجة سريعة</span>
               <span className="text-xs font-bold text-[#34293F]">نتائج البحث</span>
             </div>
 
@@ -194,7 +194,7 @@ export function HomeScreen({ query, setQuery, openGuide, goTo }: HomeScreenProps
             {stageResults.map((guide) => (
               <button
                 key={guide.id}
-                onClick={() => openGuide('stages')}
+                onClick={() => openGuide('stages', 'all', guide.titleEn)}
                 className="flex w-full items-center gap-3 border-b border-[#EAE3F0] px-3 py-2.5 text-right last:border-0"
               >
                 <div className="grid h-8 w-8 place-items-center rounded-lg bg-[#F3ECF8] text-[#6C4AA5]">
