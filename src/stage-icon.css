@@ -1,0 +1,20 @@
+/*
+ * Stages of anesthesia icon override.
+ * Primary local asset is the user-approved IconScout Anesthesia Mask Animation #3644300.
+ * Until the licensed file is present at the local path, show a ready-made animated anesthesia-mask fallback.
+ * Scope is intentionally limited to the unique 72x72 stages SVG so no other app icon changes.
+ */
+svg[aria-hidden="true"][viewBox="0 0 72 72"] {
+  background-image:
+    url('/icons/medical/anesthesia-mask-3644300.gif'),
+    url('https://cdn-icons-gif.flaticon.com/10823/10823452.gif');
+  background-position: center, center;
+  background-repeat: no-repeat, no-repeat;
+  background-size: contain, contain;
+  background-color: transparent !important;
+  isolation: isolate;
+}
+
+svg[aria-hidden="true"][viewBox="0 0 72 72"] > * {
+  display: none !important;
+}
