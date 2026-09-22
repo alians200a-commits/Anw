@@ -74,7 +74,7 @@ export const DRUG_DETAILS: Record<string, DrugDetail> = {
     sourcePages: [66, 67, 70],
     uses: ['بدء التخدير', 'التهدئة الإجرائية', 'التسكين', 'حالات يكون فيها تشنج القصبات أو انخفاض الضغط موضع اعتبار'],
     contraindications: ['عندما يكون ارتفاع ضغط الدم بشكل ملحوظ خطرًا كبيرًا على المريض', 'فرط التحسس للكيتامين أو مكونات المستحضر'],
-    warnings: ['قد يرفع الضغط والنبض ويستلزم مراقبة القلب والدورة الدموية', 'قد تحدث تفاعلات استيقاظ مثل الهياج أو الهلاوس', 'قد يحدث تثبيط تنفسي إذا أُعطي بسرعة أو بجرعات كبيرة', 'قد يزيد الإفرازات ولا يُعد وحده مناسبًا لبعض إجراءات البلعوم والحنجرة'],
+    warnings: ['قد يرفع الضغط والنبض ويستلزم مراقبة القلب والدورة الدموية', 'قد تحدث تفاعلات استيقاظ مثل الهياج أو الهلاوس', 'قد يحدث تثبيط تنفسي إذا أُعطي بسرعة أو بجرعات كبيرة', 'يزداد خطر التهدئة العميقة وتثبيط التنفس وانقطاع النفس عند دمجه مع Opioids أو Benzodiazepines أو مثبطات CNS الأخرى؛ تُعاير الجرعات وتُراقب التهوية', 'قد يزيد الإفرازات ولا يُعد وحده مناسبًا لبعض إجراءات البلعوم والحنجرة'],
     adverseEffects: ['ارتفاع الضغط أو النبض', 'زيادة الإفرازات', 'غثيان وقيء', 'رأرأة', 'أحلام حية أو هلاوس عند الاستيقاظ']
   },
   sevoflurane: {
@@ -305,7 +305,11 @@ export const DRUG_DETAILS: Record<string, DrugDetail> = {
     feature: 'مضاد مسكاريني يرفع النبض ويقلل الإفرازات.',
     mechanism: 'مضاد تنافسي لمستقبلات المسكارين | Competitive muscarinic acetylcholine receptor antagonist.',
     routes: ['وريدي | Intravenous', 'عضلي | Intramuscular حسب الاستطباب/المستحضر'],
-    educationalDoses: ['AHA 2025 للبالغ في symptomatic bradycardia: 1 mg IV bolus، يُكرر كل 3–5 دقائق، والحد الأقصى 3 mg.'],
+    educationalDoses: [
+      'AHA 2025 للبالغ في symptomatic bradycardia: 1 mg IV bolus، يُكرر كل 3–5 دقائق، والحد الأقصى 3 mg.',
+      'كـAntisialagogue / antivagal قبل التخدير عند وجود استطباب: 0.5–1 mg IV/IM/SC قبل العملية بنحو 30–60 دقيقة وفق ملصقات الحقن الحالية؛ ليس دواءً تمهيديًا روتينيًا لكل مريض.',
+      'عند استخدامه مع Neostigmine لعكس الحصار العضلي تُحدد جرعتهما حسب عمق الحصار والبروتوكول/المستحضر، ولا تعتمد خلطة ثابتة 1 cc + 1 cc لكل المرضى.'
+    ],
     correction: 'الملف القديم يذكر 0.5 mg للبالغ في bradycardia؛ خوارزمية AHA 2025 تستخدم 1 mg IV كجرعة أولى. كما أنه ليس مطلوبًا روتينيًا لكل مريض قبل التخدير.',
     sourcePages: [54, 71, 81],
     uses: ['علاج بطء القلب العرضي في سياقات مناسبة', 'تقليل الإفرازات', 'مرافقة بعض خطط عكس الحصار العصبي العضلي'],
@@ -449,6 +453,10 @@ export const DRUG_DETAILS: Record<string, DrugDetail> = {
     mechanism: 'حجب مستقبلات β1 الأدرينرجية القلبية | Beta-1 adrenergic blockade.',
     tradeNames: ['Lopressor'],
     routes: ['وريدي | Intravenous', 'فموي | Oral'],
+    educationalDoses: [
+      'للوذمة عند البالغ: جرعة ابتدائية شائعة 20–40 mg IV أو IM مرة واحدة؛ الجرعة الوريدية تُعطى ببطء خلال 1–2 دقيقة وتُعاير حسب الاستجابة.',
+      'في Acute pulmonary edema كعلاج مساعد: 40 mg IV ببطء جرعة أولية؛ إذا لم تحصل استجابة كافية يمكن أن تُرفع الجرعة وفق البروتوكول والحالة، مع مراقبة الضغط والكلية والشوارد.'
+    ],
     uses: ['علاج احتشاء عضلة القلب الحاد لدى مرضى مستقرين ديناميكيًا وفق الاستطباب المعتمد | Acute myocardial infarction', 'التحكم بمعدل القلب/الضغط في ممارسات سريرية مختارة حسب البروتوكول'],
     contraindications: ['بطء قلب شديد | Severe bradycardia', 'حصار قلبي من الدرجة الثانية/الثالثة دون ناظمة | 2nd/3rd degree AV block without pacemaker', 'متلازمة العقدة الجيبية المريضة | Sick sinus syndrome', 'فشل قلب غير معاوض | Decompensated heart failure'],
     warnings: ['بطء القلب | Bradycardia وحصار التوصيل | Heart block', 'قد يفاقم تشنج القصبات | Bronchospasm رغم انتقائيته النسبية لـβ1', 'قد يفاقم فشل القلب غير المستقر | Worsening heart failure'],
@@ -690,6 +698,10 @@ export const DRUG_DETAILS: Record<string, DrugDetail> = {
     mechanism: 'يتحول إلى nitric oxide ويزيد cGMP في العضلات الملساء الوعائية، ما يسبب vasodilation.',
     tradeNames: ['GTN', 'Angised', 'Nitrostat حسب المستحضر'],
     routes: ['تحت اللسان | Sublingual', 'وريدي بالتسريب | Intravenous infusion', 'لاصقة/موضعي | Transdermal'],
+    onsetDuration: [
+      'بعد الجرعة تحت اللسان يبدأ تأثير توسع الأوعية عادة خلال 1–3 دقائق ويصل إلى أقصى تأثير تقريبًا خلال 5 دقائق.',
+      'يستمر تأثير القرص تحت اللسان عادةً 25 دقيقة على الأقل؛ أما التسريب واللاصقات فتختلف مدتهما بحسب الطريق والجرعة.'
+    ],
     uses: ['Acute coronary ischemic chest pain عند عدم وجود مانع', 'Hypertensive acute pulmonary edema', 'Perioperative myocardial ischemia أو hypertension في حالات مختارة'],
     contraindications: ['استخدام PDE-5 inhibitors ضمن الفترة المحظورة حسب الدواء', 'Severe hypotension', 'Right ventricular infarction مع preload dependence يُحتاج فيه حذر شديد', 'Raised intracranial pressure من الموانع/المحاذير حسب المستحضر'],
     warnings: ['Hypotension وSyncope', 'Reflex tachycardia', 'Tolerance مع التعرض المستمر', 'Methemoglobinemia نادرة بجرعات عالية'],
