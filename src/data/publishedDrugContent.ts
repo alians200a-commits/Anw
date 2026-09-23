@@ -78,10 +78,9 @@ export async function loadPublishedDrugContent(): Promise<RuntimeDrugContent> {
 
   try {
     const { data, error } = await supabase
-      .from('content_items')
+      .from('published_content_items')
       .select('slug,payload')
-      .eq('content_type', 'drug')
-      .eq('status', 'published');
+      .eq('content_type', 'drug');
 
     if (error || !data?.length) return fallback;
 
