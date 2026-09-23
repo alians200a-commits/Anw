@@ -13,6 +13,14 @@ export type DrugMediaSection =
   | 'adverseEffects'
   | 'tradeNames';
 
+export type EquipmentMediaSection =
+  | 'summary'
+  | 'clinicalNote'
+  | 'purpose'
+  | 'keyPoints';
+
+export type ContentMediaSection = DrugMediaSection | EquipmentMediaSection;
+
 export interface ContentMediaItem {
   id: string;
   path: string;
@@ -20,7 +28,7 @@ export interface ContentMediaItem {
   alt: string;
   caption?: string;
   placement: ContentMediaPlacement;
-  sectionKey?: DrugMediaSection;
+  sectionKey?: ContentMediaSection;
   hidden?: boolean;
   order: number;
 }
