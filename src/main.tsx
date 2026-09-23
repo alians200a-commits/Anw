@@ -8,11 +8,13 @@ import './stages-flaticon.css';
 const AdminApp = lazy(() => import('./admin/AdminApp.tsx'));
 const AdminDrugEditorPage = lazy(() => import('./admin/AdminDrugEditorPage.tsx'));
 const AdminDrugMigrationPage = lazy(() => import('./admin/AdminDrugMigrationPage.tsx'));
+const AdminReviewPage = lazy(() => import('./admin/AdminReviewPage.tsx'));
 
 installViewportGestureGuard();
 
 const path = window.location.pathname;
 const isDrugMigrationRoute = path === '/admin/migrate/drugs' || path.startsWith('/admin/migrate/drugs/');
+const isReviewRoute = path === '/admin/review' || path.startsWith('/admin/review/');
 const isDrugEditorRoute = path === '/admin/drugs' || path.startsWith('/admin/drugs/');
 const isAdminRoute = path === '/admin' || path.startsWith('/admin/');
 
@@ -27,6 +29,10 @@ createRoot(document.getElementById('root')!).render(
     {isDrugMigrationRoute ? (
       <Suspense fallback={adminFallback}>
         <AdminDrugMigrationPage />
+      </Suspense>
+    ) : isReviewRoute ? (
+      <Suspense fallback={adminFallback}>
+        <AdminReviewPage />
       </Suspense>
     ) : isDrugEditorRoute ? (
       <Suspense fallback={adminFallback}>
