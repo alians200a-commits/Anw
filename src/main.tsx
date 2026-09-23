@@ -13,7 +13,7 @@ const AdminEquipmentHub = lazy(() => import('./admin/AdminEquipmentHub.tsx'));
 const AdminFluidEditorPage = lazy(() => import('./admin/AdminFluidEditorPage.tsx'));
 const AdminFluidHub = lazy(() => import('./admin/AdminFluidHub.tsx'));
 const AdminDrugMigrationPage = lazy(() => import('./admin/AdminDrugMigrationPage.tsx'));
-const AdminReviewPage = lazy(() => import('./admin/AdminReviewPage.tsx'));
+const AdminReviewPage = lazy(() => import('./admin/AdminReviewPageV2.tsx'));
 
 installViewportGestureGuard();
 
