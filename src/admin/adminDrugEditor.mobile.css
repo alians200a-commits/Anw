@@ -1,0 +1,124 @@
+.admin-drug-editor-host {
+  width: 100%;
+  min-width: 0;
+  min-height: 100dvh;
+  overflow-x: hidden;
+}
+
+.admin-drug-editor-host > .fixed {
+  width: 100vw;
+  max-width: 100vw;
+  min-width: 0;
+  overflow-x: hidden;
+}
+
+.admin-drug-editor-host > .fixed > div,
+.admin-drug-editor-host main,
+.admin-drug-editor-host aside,
+.admin-drug-editor-host section,
+.admin-drug-editor-host form,
+.admin-drug-editor-host label,
+.admin-drug-editor-host input,
+.admin-drug-editor-host textarea,
+.admin-drug-editor-host select {
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+/* The editor is RTL. Tailwind's justify-end resolves to the physical left in RTL,
+   which made field labels look clipped/misaligned. Keep headings on the visual right. */
+.admin-drug-editor-host .justify-end {
+  justify-content: flex-start !important;
+}
+
+.admin-drug-editor-host input,
+.admin-drug-editor-host textarea,
+.admin-drug-editor-host select {
+  width: 100%;
+}
+
+@media (max-width: 767px) {
+  .admin-drug-editor-host > .fixed {
+    padding: 0 !important;
+    background: #eef3f8 !important;
+    backdrop-filter: none !important;
+  }
+
+  .admin-drug-editor-host > .fixed > div {
+    width: 100%;
+    max-width: 100%;
+    min-height: 100dvh;
+    border-radius: 0 !important;
+    overflow-x: hidden !important;
+  }
+
+  .admin-drug-editor-host > .fixed > div > header {
+    gap: 10px !important;
+    padding: 12px 14px !important;
+  }
+
+  .admin-drug-editor-host > .fixed > div > header > div {
+    min-width: 0;
+    flex: 1 1 auto;
+  }
+
+  .admin-drug-editor-host > .fixed > div > header h2,
+  .admin-drug-editor-host > .fixed > div > header p {
+    max-width: 100%;
+    overflow-wrap: anywhere;
+  }
+
+  .admin-drug-editor-host > .fixed > div > .grid {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    width: 100%;
+    min-width: 0;
+    gap: 12px !important;
+    padding: 12px !important;
+  }
+
+  .admin-drug-editor-host main {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .admin-drug-editor-host main > section {
+    width: 100%;
+    min-width: 0;
+    padding: 16px !important;
+    border-radius: 20px !important;
+  }
+
+  .admin-drug-editor-host main > section > .grid,
+  .admin-drug-editor-host main > section .grid {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  .admin-drug-editor-host input,
+  .admin-drug-editor-host textarea,
+  .admin-drug-editor-host select {
+    width: 100% !important;
+    max-width: 100% !important;
+    font-size: 16px !important;
+  }
+
+  .admin-drug-editor-host aside {
+    position: static !important;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .admin-drug-editor-host aside > div {
+    border-radius: 20px !important;
+  }
+
+  .admin-drug-editor-host .rounded-\[30px\] {
+    border-radius: 0 !important;
+  }
+
+  .admin-drug-editor-host img {
+    max-width: 100%;
+    height: auto;
+  }
+}
