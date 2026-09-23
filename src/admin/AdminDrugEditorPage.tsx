@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import DrugEditor, { type DrugContentRow } from './DrugEditor';
+import DrugEditorV2, { type DrugContentRow } from './DrugEditorV2';
 import { supabase } from '../lib/supabase';
 
 type AdminRole = 'owner' | 'admin' | 'editor' | 'reviewer';
@@ -91,7 +91,7 @@ export default function AdminDrugEditorPage() {
   }
 
   return (
-    <DrugEditor
+    <DrugEditorV2
       profileId={profile.id}
       role={profile.role}
       initialRow={row}
