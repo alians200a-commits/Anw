@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import DrugEditorV2, { type DrugContentRow } from './DrugEditorV2';
+import MobileSelectSheet from './MobileSelectSheet';
 import { supabase } from '../lib/supabase';
 import './adminDrugEditor.mobile.css';
 
@@ -100,6 +101,7 @@ export default function AdminDrugEditorPage() {
         onSaved={() => undefined}
         onClose={() => window.location.assign('/admin')}
       />
+      <MobileSelectSheet />
     </div>
   );
 }
