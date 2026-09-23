@@ -1,0 +1,45 @@
+name: Export Drug Migration JSON
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'src/data/drugs.ts'
+      - 'src/data/drugDetails.ts'
+      - 'tools/export_drug_migration_json.ts'
+      - '.github/workflows/export-drug-migration.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  export:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Export migration JSON
+        run: npx tsx tools/export_drug_migration_json.ts
+
+      - name: Commit refreshed export
+        shell: bash
+        run: |
+          if git diff --quiet -- migration/drugs-export.json && git ls-files --error-unmatch migration/drugs-export.json >/dev/null 2>&1; then
+            echo 'Export is already current.'
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add migration/drugs-export.json
+          git commit -m 'chore: refresh drug migration export'
+          git push
