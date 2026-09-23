@@ -1,12 +1,15 @@
 import { AnimatePresence, motion } from 'motion/react';
 import { Heart, MagnifyingGlass, SpeakerHigh } from '@phosphor-icons/react';
 import {
-  ANESTHESIA_DRUGS,
   DRUG_CLASS_LABELS,
   DRUG_FILTERS,
   type DrugClass
 } from '../data/drugs';
-import { DRUG_DETAILS } from '../data/drugDetails';
+import {
+  loadPublishedDrugContent,
+  localDrugContent,
+  type RuntimeDrugContent
+} from '../data/publishedDrugContent';
 import { DrugDetailSheet } from './DrugDetailSheet';
 import { MixedDirectionText } from './MixedDirectionText';
 import { useEffect, useMemo, useState } from 'react';
@@ -64,6 +67,19 @@ export function DrugDirectory({
   );
   const [query, setQuery] = useState(initialQuery);
   const [selectedDrugId, setSelectedDrugId] = useState<string | null>(null);
+  const [drugContent, setDrugContent] = useState<RuntimeDrugContent>(() =>
+    localDrugContent()
+  );
+
+  useEffect(() => {
+    let active = true;
+    void loadPublishedDrugContent().then((content) => {
+      if (active) setDrugContent(content);
+    });
+    return () => {
+      active = false;
+    };
+  }, []);
 
   useEffect(() => {
     setClassification(initialClassification);
@@ -78,18 +94,18 @@ export function DrugDirectory({
       return;
     }
 
-    const exact = ANESTHESIA_DRUGS.find(
+    const exact = drugContent.drugs.find(
       (drug) =>
         drug.en.toLowerCase() === normalized ||
         drug.ar.toLowerCase() === normalized
     );
 
-    if (exact && DRUG_DETAILS[exact.id]) setSelectedDrugId(exact.id);
-  }, [initialQuery]);
+    if (exact && drugContent.details[exact.id]) setSelectedDrugId(exact.id);
+  }, [initialQuery, drugContent]);
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
-    return ANESTHESIA_DRUGS.filter((drug) => {
+    return drugContent.drugs.filter((drug) => {
       const matchesCategory =
         classification === 'all' || drug.classes.includes(classification);
       const matchesQuery =
@@ -99,7 +115,7 @@ export function DrugDirectory({
         );
       return matchesCategory && matchesQuery;
     });
-  }, [classification, query]);
+  }, [classification, query, drugContent.drugs]);
 
   const currentFilter =
     DRUG_FILTERS.find((item) => item.id === classification)?.label ?? 'الكل';
@@ -160,6 +176,10 @@ export function DrugDirectory({
         {filtered.map((drug) => {
           const favoriteId = 'drug:' + drug.id;
           const isFavorite = favorites.has(favoriteId);
+          const coverImage = (drugContent.mediaByDrug[drug.id] ?? [])
+            .filter((item) => !item.hidden)
+            .sort((a, b) => a.order - b.order)
+            .find((item) => item.placement === 'cover');
 
           return (
             <motion.article
@@ -204,8 +224,17 @@ export function DrugDirectory({
                         .join(' • ')}
                     </span>
                   </div>
-                  <div className="grid h-11 w-11 shrink-0 place-items-center rounded-[14px] border border-[#D7E2E9] bg-[#EEF3F6] text-[#315672]">
-                    <MedicalSiteIcon name={iconForDrug(drug.classes)} size={28} />
+                  <div className="grid h-11 w-11 shrink-0 place-items-center overflow-hidden rounded-[14px] border border-[#D7E2E9] bg-[#EEF3F6] text-[#315672]">
+                    {coverImage ? (
+                      <img
+                        src={coverImage.url}
+                        alt={coverImage.alt || drug.ar}
+                        loading="lazy"
+                        className="h-full w-full bg-white object-contain"
+                      />
+                    ) : (
+                      <MedicalSiteIcon name={iconForDrug(drug.classes)} size={28} />
+                    )}
                   </div>
                 </div>
               </div>
@@ -214,7 +243,7 @@ export function DrugDirectory({
                 <MixedDirectionText text={drug.short} />
               </p>
 
-              {DRUG_DETAILS[drug.id] && (
+              {drugContent.details[drug.id] && (
                 <button
                   type="button"
                   onClick={() => setSelectedDrugId(drug.id)}
@@ -238,16 +267,17 @@ export function DrugDirectory({
       <AnimatePresence>
         {selectedDrugId &&
           (() => {
-            const selectedDrug = ANESTHESIA_DRUGS.find(
+            const selectedDrug = drugContent.drugs.find(
               (item) => item.id === selectedDrugId
             );
-            const detail = DRUG_DETAILS[selectedDrugId];
+            const detail = drugContent.details[selectedDrugId];
             if (!selectedDrug || !detail) return null;
 
             return (
               <DrugDetailSheet
                 drug={selectedDrug}
                 detail={detail}
+                media={drugContent.mediaByDrug[selectedDrugId] ?? []}
                 onClose={() => setSelectedDrugId(null)}
               />
             );
