@@ -4,6 +4,7 @@ on:
   workflow_dispatch:
   push:
     paths:
+      - "index.html"
       - "src/**"
       - "public/**"
       - "tools/**"
