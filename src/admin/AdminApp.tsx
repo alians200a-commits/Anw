@@ -4,6 +4,8 @@ import {
   Database,
   FileClock,
   LogOut,
+  Pill,
+  Plus,
   ShieldCheck,
   UserPlus,
   Users,
@@ -11,13 +13,7 @@ import {
 import { supabase } from '../lib/supabase';
 
 type AdminRole = 'owner' | 'admin' | 'editor' | 'reviewer';
-type ContentStatus =
-  | 'draft'
-  | 'review'
-  | 'approved'
-  | 'published'
-  | 'rejected'
-  | 'archived';
+type ContentStatus = 'draft' | 'review' | 'approved' | 'published' | 'rejected' | 'archived';
 
 type AdminProfile = {
   id: string;
@@ -92,6 +88,9 @@ function AuthPanel() {
       const { data, error: signUpError } = await supabase.auth.signUp({
         email: normalizedEmail,
         password,
+        options: {
+          emailRedirectTo: `${window.location.origin}/admin`,
+        },
       });
       if (signUpError) {
         setError(signUpError.message);
@@ -114,35 +113,21 @@ function AuthPanel() {
               <ShieldCheck size={30} />
             </div>
             <h1 className="text-2xl font-black text-[#0a2037]">لوحة إدارة دليلي</h1>
-            <p className="mt-2 text-sm leading-6 text-slate-500">
-              هذه الصفحة خاصة بفريق إدارة المحتوى فقط.
-            </p>
+            <p className="mt-2 text-sm leading-6 text-slate-500">هذه الصفحة خاصة بفريق إدارة المحتوى فقط.</p>
           </div>
 
           <div className="mb-5 grid grid-cols-2 rounded-2xl bg-[#eef3f8] p-1 text-sm font-bold">
             <button
               type="button"
-              onClick={() => {
-                setMode('signin');
-                setError('');
-                setMessage('');
-              }}
-              className={`rounded-xl px-3 py-2.5 transition ${
-                mode === 'signin' ? 'bg-white text-[#173a63] shadow-sm' : 'text-slate-500'
-              }`}
+              onClick={() => { setMode('signin'); setError(''); setMessage(''); }}
+              className={`rounded-xl px-3 py-2.5 transition ${mode === 'signin' ? 'bg-white text-[#173a63] shadow-sm' : 'text-slate-500'}`}
             >
               تسجيل الدخول
             </button>
             <button
               type="button"
-              onClick={() => {
-                setMode('activate');
-                setError('');
-                setMessage('');
-              }}
-              className={`rounded-xl px-3 py-2.5 transition ${
-                mode === 'activate' ? 'bg-white text-[#173a63] shadow-sm' : 'text-slate-500'
-              }`}
+              onClick={() => { setMode('activate'); setError(''); setMessage(''); }}
+              className={`rounded-xl px-3 py-2.5 transition ${mode === 'activate' ? 'bg-white text-[#173a63] shadow-sm' : 'text-slate-500'}`}
             >
               تفعيل حساب مدعو
             </button>
@@ -175,16 +160,8 @@ function AuthPanel() {
               />
             </label>
 
-            {error && (
-              <div className="rounded-2xl border border-red-200 bg-red-50 px-4 py-3 text-sm font-semibold text-red-700">
-                {error}
-              </div>
-            )}
-            {message && (
-              <div className="rounded-2xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm font-semibold leading-6 text-emerald-800">
-                {message}
-              </div>
-            )}
+            {error && <div className="rounded-2xl border border-red-200 bg-red-50 px-4 py-3 text-sm font-semibold text-red-700">{error}</div>}
+            {message && <div className="rounded-2xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm font-semibold leading-6 text-emerald-800">{message}</div>}
 
             <button
               type="submit"
@@ -195,9 +172,7 @@ function AuthPanel() {
             </button>
           </form>
 
-          <p className="mt-5 text-center text-xs leading-5 text-slate-400">
-            تفعيل الحساب لا يمنح صلاحية تلقائيًا؛ البريد يجب أن يكون مدعوًا مسبقًا من الإدارة.
-          </p>
+          <p className="mt-5 text-center text-xs leading-5 text-slate-400">تفعيل الحساب لا يمنح صلاحية تلقائيًا؛ البريد يجب أن يكون مدعوًا مسبقًا من الإدارة.</p>
         </div>
       </div>
     </div>
@@ -211,16 +186,8 @@ function AccessDenied() {
         <div className="w-full rounded-[28px] bg-white p-7 text-center shadow-2xl">
           <ShieldCheck className="mx-auto mb-4 text-amber-600" size={42} />
           <h1 className="text-xl font-black text-[#0a2037]">الحساب غير مخوّل للإدارة</h1>
-          <p className="mt-3 text-sm leading-6 text-slate-500">
-            الحساب مسجّل في Supabase، لكن ما عنده دعوة وصلاحية داخل دليلي.
-          </p>
-          <button
-            type="button"
-            onClick={() => void supabase.auth.signOut()}
-            className="mt-6 rounded-2xl bg-[#173a63] px-5 py-3 font-bold text-white"
-          >
-            تسجيل الخروج
-          </button>
+          <p className="mt-3 text-sm leading-6 text-slate-500">الحساب مسجّل في Supabase، لكن ما عنده دعوة وصلاحية داخل دليلي.</p>
+          <button type="button" onClick={() => void supabase.auth.signOut()} className="mt-6 rounded-2xl bg-[#173a63] px-5 py-3 font-bold text-white">تسجيل الخروج</button>
         </div>
       </div>
     </div>
@@ -240,9 +207,7 @@ export default function AdminApp() {
   const [error, setError] = useState('');
 
   const loadAdminState = useCallback(async () => {
-    const {
-      data: { session },
-    } = await supabase.auth.getSession();
+    const { data: { session } } = await supabase.auth.getSession();
 
     if (!session) {
       setSignedIn(false);
@@ -298,14 +263,7 @@ export default function AdminApp() {
   }, [loadAdminState]);
 
   const statusCounts = useMemo(() => {
-    const base: Record<ContentStatus, number> = {
-      draft: 0,
-      review: 0,
-      approved: 0,
-      published: 0,
-      rejected: 0,
-      archived: 0,
-    };
+    const base: Record<ContentStatus, number> = { draft: 0, review: 0, approved: 0, published: 0, rejected: 0, archived: 0 };
     for (const item of content) base[item.status] += 1;
     return base;
   }, [content]);
@@ -343,17 +301,14 @@ export default function AdminApp() {
   };
 
   if (!authReady) {
-    return (
-      <div className="flex min-h-screen items-center justify-center bg-[#07182c] text-sm font-bold text-white">
-        جاري تحميل لوحة الإدارة…
-      </div>
-    );
+    return <div className="flex min-h-screen items-center justify-center bg-[#07182c] text-sm font-bold text-white">جاري تحميل لوحة الإدارة…</div>;
   }
 
   if (!signedIn) return <AuthPanel />;
   if (!profile) return <AccessDenied />;
 
   const canManageTeam = profile.role === 'owner' || profile.role === 'admin';
+  const canEditContent = profile.role === 'owner' || profile.role === 'admin' || profile.role === 'editor';
 
   return (
     <div dir="rtl" className="min-h-screen bg-[#eef3f8] text-[#24313f]">
@@ -366,16 +321,9 @@ export default function AdminApp() {
           <div className="flex items-center gap-3">
             <div className="hidden text-left sm:block" dir="ltr">
               <div className="text-sm font-bold">{profile.email}</div>
-              <div className="text-xs text-white/60" dir="rtl">
-                {ROLE_LABELS[profile.role]}
-              </div>
+              <div className="text-xs text-white/60" dir="rtl">{ROLE_LABELS[profile.role]}</div>
             </div>
-            <button
-              type="button"
-              onClick={() => void supabase.auth.signOut()}
-              className="flex h-10 w-10 items-center justify-center rounded-xl bg-white/10 transition hover:bg-white/20"
-              aria-label="تسجيل الخروج"
-            >
+            <button type="button" onClick={() => void supabase.auth.signOut()} className="flex h-10 w-10 items-center justify-center rounded-xl bg-white/10 transition hover:bg-white/20" aria-label="تسجيل الخروج">
               <LogOut size={18} />
             </button>
           </div>
@@ -396,9 +344,7 @@ export default function AdminApp() {
           </div>
           <div className="rounded-3xl bg-white p-5 shadow-sm ring-1 ring-slate-200/70">
             <FileClock className="mb-4 text-amber-600" size={25} />
-            <div className="text-3xl font-black text-[#0a2037]">
-              {statusCounts.review + statusCounts.approved}
-            </div>
+            <div className="text-3xl font-black text-[#0a2037]">{statusCounts.review + statusCounts.approved}</div>
             <div className="mt-1 text-sm font-bold text-slate-500">بانتظار الاعتماد/النشر</div>
           </div>
           <div className="rounded-3xl bg-white p-5 shadow-sm ring-1 ring-slate-200/70">
@@ -411,9 +357,7 @@ export default function AdminApp() {
         {canManageTeam && (
           <section className="rounded-3xl bg-white p-5 shadow-sm ring-1 ring-slate-200/70 sm:p-6">
             <div className="mb-5 flex items-center gap-3">
-              <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-[#eef3f8] text-[#173a63]">
-                <UserPlus size={22} />
-              </div>
+              <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-[#eef3f8] text-[#173a63]"><UserPlus size={22} /></div>
               <div>
                 <h2 className="font-black text-[#0a2037]">إضافة شخص لفريق الإدارة</h2>
                 <p className="text-sm text-slate-500">تحدد صلاحية كل شخص قبل ما يفعّل حسابه.</p>
@@ -421,30 +365,13 @@ export default function AdminApp() {
             </div>
 
             <form onSubmit={inviteUser} className="grid gap-3 md:grid-cols-[1fr_180px_auto]">
-              <input
-                type="email"
-                dir="ltr"
-                value={inviteEmail}
-                onChange={(event) => setInviteEmail(event.target.value)}
-                placeholder="editor@example.com"
-                className="rounded-2xl border border-[#d9e6f2] px-4 py-3 outline-none focus:border-[#2f69a8] focus:ring-4 focus:ring-[#2f69a8]/10"
-              />
-              <select
-                value={inviteRole}
-                onChange={(event) => setInviteRole(event.target.value as AdminRole)}
-                className="rounded-2xl border border-[#d9e6f2] bg-white px-4 py-3 font-bold outline-none focus:border-[#2f69a8]"
-              >
+              <input type="email" dir="ltr" value={inviteEmail} onChange={(event) => setInviteEmail(event.target.value)} placeholder="editor@example.com" className="rounded-2xl border border-[#d9e6f2] px-4 py-3 outline-none focus:border-[#2f69a8] focus:ring-4 focus:ring-[#2f69a8]/10" />
+              <select value={inviteRole} onChange={(event) => setInviteRole(event.target.value as AdminRole)} className="rounded-2xl border border-[#d9e6f2] bg-white px-4 py-3 font-bold outline-none focus:border-[#2f69a8]">
                 {profile.role === 'owner' && <option value="admin">مدير</option>}
                 <option value="editor">محرر محتوى</option>
                 <option value="reviewer">مراجع</option>
               </select>
-              <button
-                type="submit"
-                disabled={inviteBusy}
-                className="rounded-2xl bg-[#173a63] px-5 py-3 font-black text-white disabled:opacity-60"
-              >
-                {inviteBusy ? 'جاري…' : 'إضافة الدعوة'}
-              </button>
+              <button type="submit" disabled={inviteBusy} className="rounded-2xl bg-[#173a63] px-5 py-3 font-black text-white disabled:opacity-60">{inviteBusy ? 'جاري…' : 'إضافة الدعوة'}</button>
             </form>
 
             {notice && <p className="mt-3 text-sm font-semibold text-emerald-700">{notice}</p>}
@@ -453,21 +380,13 @@ export default function AdminApp() {
             {invites.length > 0 && (
               <div className="mt-5 overflow-x-auto rounded-2xl border border-slate-100">
                 <table className="w-full min-w-[560px] text-sm">
-                  <thead className="bg-[#eef3f8] text-[#173a63]">
-                    <tr>
-                      <th className="px-4 py-3 text-right">البريد</th>
-                      <th className="px-4 py-3 text-right">الصلاحية</th>
-                      <th className="px-4 py-3 text-right">الحالة</th>
-                    </tr>
-                  </thead>
+                  <thead className="bg-[#eef3f8] text-[#173a63]"><tr><th className="px-4 py-3 text-right">البريد</th><th className="px-4 py-3 text-right">الصلاحية</th><th className="px-4 py-3 text-right">الحالة</th></tr></thead>
                   <tbody>
                     {invites.map((invite) => (
                       <tr key={invite.id} className="border-t border-slate-100">
                         <td className="px-4 py-3" dir="ltr">{invite.email}</td>
                         <td className="px-4 py-3 font-bold">{ROLE_LABELS[invite.role]}</td>
-                        <td className="px-4 py-3">
-                          {invite.accepted_at ? 'مفعّل' : invite.is_active ? 'بانتظار التفعيل' : 'متوقف'}
-                        </td>
+                        <td className="px-4 py-3">{invite.accepted_at ? 'مفعّل' : invite.is_active ? 'بانتظار التفعيل' : 'متوقف'}</td>
                       </tr>
                     ))}
                   </tbody>
@@ -478,35 +397,37 @@ export default function AdminApp() {
         )}
 
         <section className="rounded-3xl bg-white p-5 shadow-sm ring-1 ring-slate-200/70 sm:p-6">
-          <div className="mb-5">
-            <h2 className="font-black text-[#0a2037]">المحتوى</h2>
-            <p className="mt-1 text-sm text-slate-500">
-              النقل يجري تدريجيًا؛ التطبيق العادي يبقى يعتمد النسخة الحالية إلى أن نتحقق من كل قسم.
-            </p>
+          <div className="mb-5 flex flex-wrap items-center justify-between gap-3">
+            {canEditContent && (
+              <a href="/admin/drugs" className="inline-flex items-center gap-2 rounded-2xl bg-[#173a63] px-4 py-3 text-sm font-black text-white shadow-lg shadow-[#173a63]/15">
+                <Plus size={17} /> إضافة دواء جديد
+              </a>
+            )}
+            <div>
+              <h2 className="font-black text-[#0a2037]">المحتوى</h2>
+              <p className="mt-1 text-sm text-slate-500">محرر الأدوية جاهز قبل نقل البيانات القديمة؛ التطبيق العادي ما زال يعتمد النسخة الحالية.</p>
+            </div>
           </div>
 
           {content.length === 0 ? (
-            <div className="rounded-2xl border border-dashed border-[#b9cee2] bg-[#f8fbfd] px-5 py-8 text-center text-sm font-semibold text-slate-500">
-              قاعدة الإدارة جاهزة. لم يتم نقل محتوى التطبيق إليها بعد.
+            <div className="rounded-2xl border border-dashed border-[#b9cee2] bg-[#f8fbfd] px-5 py-8 text-center">
+              <Pill className="mx-auto mb-3 text-[#2f69a8]" size={28} />
+              <p className="text-sm font-semibold text-slate-500">ما تم نقل المحتوى القديم بعد. تقدر هسه تجرب إنشاء دواء جديد من المحرر.</p>
             </div>
           ) : (
             <div className="space-y-2">
-              {content.slice(0, 20).map((item) => (
-                <div
-                  key={item.id}
-                  className="flex flex-col gap-2 rounded-2xl border border-slate-100 px-4 py-3 sm:flex-row sm:items-center sm:justify-between"
-                >
-                  <div>
-                    <div className="font-bold text-[#0a2037]">
-                      {item.title_ar || item.title_en || item.content_type}
-                    </div>
-                    <div className="mt-1 text-xs text-slate-400">
-                      {item.content_type} · نسخة {item.version}
-                    </div>
+              {content.slice(0, 50).map((item) => (
+                <div key={item.id} className="flex flex-col gap-2 rounded-2xl border border-slate-100 px-4 py-3 sm:flex-row sm:items-center sm:justify-between">
+                  <div className="flex items-center gap-2">
+                    {item.content_type === 'drug' && canEditContent && (
+                      <a href={`/admin/drugs?id=${encodeURIComponent(item.id)}`} className="rounded-xl border border-[#d9e6f2] bg-[#f8fbfd] px-3 py-2 text-xs font-black text-[#173a63]">تعديل</a>
+                    )}
+                    <span className="w-fit rounded-full bg-[#eef3f8] px-3 py-1 text-xs font-bold text-[#173a63]">{STATUS_LABELS[item.status]}</span>
                   </div>
-                  <span className="w-fit rounded-full bg-[#eef3f8] px-3 py-1 text-xs font-bold text-[#173a63]">
-                    {STATUS_LABELS[item.status]}
-                  </span>
+                  <div className="text-right">
+                    <div className="font-bold text-[#0a2037]">{item.title_ar || item.title_en || item.content_type}</div>
+                    <div className="mt-1 text-xs text-slate-400">{item.content_type} · نسخة {item.version}</div>
+                  </div>
                 </div>
               ))}
             </div>
