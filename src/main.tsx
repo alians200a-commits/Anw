@@ -6,7 +6,7 @@ import './index.css';
 import './stages-flaticon.css';
 import './admin/adminMobile.css';
 
-const AdminApp = lazy(() => import('./admin/AdminAppV2.tsx'));
+const AdminApp = lazy(() => import('./admin/AdminAppV3.tsx'));
 const AdminDrugEditorPage = lazy(() => import('./admin/AdminDrugEditorPage.tsx'));
 const AdminDrugMigrationPage = lazy(() => import('./admin/AdminDrugMigrationPage.tsx'));
 const AdminReviewPage = lazy(() => import('./admin/AdminReviewPage.tsx'));
