@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import DrugEditorV2, { type DrugContentRow } from './DrugEditorV2';
 import { supabase } from '../lib/supabase';
+import './adminDrugEditor.mobile.css';
 
 type AdminRole = 'owner' | 'admin' | 'editor' | 'reviewer';
 
@@ -91,12 +92,14 @@ export default function AdminDrugEditorPage() {
   }
 
   return (
-    <DrugEditorV2
-      profileId={profile.id}
-      role={profile.role}
-      initialRow={row}
-      onSaved={() => undefined}
-      onClose={() => window.location.assign('/admin')}
-    />
+    <div className="admin-drug-editor-host">
+      <DrugEditorV2
+        profileId={profile.id}
+        role={profile.role}
+        initialRow={row}
+        onSaved={() => undefined}
+        onClose={() => window.location.assign('/admin')}
+      />
+    </div>
   );
 }
