@@ -15,13 +15,22 @@ type SheetState = {
   options: SheetOption[];
 };
 
+function cleanHeading(text?: string | null) {
+  return text?.replace(/\?/g, '').replace(/\*/g, '').replace(/\s+/g, ' ').trim();
+}
+
 function fieldTitle(select: HTMLSelectElement) {
   const aria = select.getAttribute('aria-label');
   if (aria) return aria;
-  const block = select.closest('.block, div');
-  const heading = block?.querySelector('[data-field-heading]');
-  const text = heading?.textContent?.replace('?', '').replace('*', '').trim();
-  return text || 'اختر من القائمة';
+
+  const previous = cleanHeading(select.previousElementSibling?.textContent);
+  if (previous) return previous;
+
+  const parent = select.parentElement;
+  const first = cleanHeading(parent?.firstElementChild?.textContent);
+  if (first && first !== cleanHeading(select.textContent)) return first;
+
+  return 'اختر من القائمة';
 }
 
 export default function MobileSelectSheet() {
