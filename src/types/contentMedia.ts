@@ -19,7 +19,13 @@ export type EquipmentMediaSection =
   | 'purpose'
   | 'keyPoints';
 
-export type ContentMediaSection = DrugMediaSection | EquipmentMediaSection;
+export type FluidMediaSection =
+  | 'composition'
+  | 'clinicalNote'
+  | 'role'
+  | 'cautions';
+
+export type ContentMediaSection = DrugMediaSection | EquipmentMediaSection | FluidMediaSection;
 
 export interface ContentMediaItem {
   id: string;
