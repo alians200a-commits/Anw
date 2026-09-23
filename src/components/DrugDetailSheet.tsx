@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useMemo, useRef } from 'react';
 import { motion } from 'motion/react';
 import {
   CaretDown,
@@ -11,6 +11,7 @@ import {
 } from '@phosphor-icons/react';
 import { DRUG_CLASS_LABELS, type AnesthesiaDrug } from '../data/drugs';
 import type { DrugDetail } from '../data/drugDetails';
+import type { ContentMediaItem, DrugMediaSection } from '../types/contentMedia';
 import { BilingualLabel } from './BilingualLabel';
 import { MixedDirectionText } from './MixedDirectionText';
 import { useModalSheetA11y } from '../hooks/useModalSheetA11y';
@@ -18,6 +19,7 @@ import { useModalSheetA11y } from '../hooks/useModalSheetA11y';
 interface DrugDetailSheetProps {
   drug: AnesthesiaDrug;
   detail: DrugDetail;
+  media?: ContentMediaItem[];
   onClose: () => void;
 }
 
@@ -104,7 +106,7 @@ const MEDICAL_TERMS: Record<string, string> = {
 };
 
 const escapeRegExp = (value: string) =>
-  value.replace(/[.*+?^$()|[\]{}\\]/g, '\\$&');
+  value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 
 const MEDICAL_PATTERN = new RegExp(
   Object.keys(MEDICAL_TERMS)
@@ -263,11 +265,56 @@ function DetailSection({ title, items, tone }: DetailSectionProps) {
   );
 }
 
-export function DrugDetailSheet({ drug, detail, onClose }: DrugDetailSheetProps) {
+function MediaGroup({ items }: { items: ContentMediaItem[] }) {
+  if (items.length === 0) return null;
 
+  return (
+    <section className="grid gap-2 sm:grid-cols-2">
+      {items.map((item) => (
+        <figure
+          key={item.id}
+          className="overflow-hidden rounded-2xl border border-[#DCE5EA] bg-[#F7F9FA]"
+        >
+          <img
+            src={item.url}
+            alt={item.alt || 'صورة توضيحية'}
+            loading="lazy"
+            className="max-h-72 w-full bg-white object-contain"
+          />
+          {item.caption && (
+            <figcaption className="border-t border-[#E3EAF0] px-3 py-2 text-right text-[11px] leading-5 text-[#526675]">
+              {item.caption}
+            </figcaption>
+          )}
+        </figure>
+      ))}
+    </section>
+  );
+}
 
+function SectionMedia({
+  media,
+  sectionKey
+}: {
+  media: ContentMediaItem[];
+  sectionKey: DrugMediaSection;
+}) {
+  const items = media.filter(
+    (item) => !item.hidden && item.placement === 'section' && item.sectionKey === sectionKey
+  );
+  return <MediaGroup items={items} />;
+}
+
+export function DrugDetailSheet({ drug, detail, media = [], onClose }: DrugDetailSheetProps) {
   const dialogRef = useRef<HTMLDivElement>(null);
   useModalSheetA11y(dialogRef, onClose);
+
+  const sortedMedia = useMemo(
+    () => [...media].filter((item) => !item.hidden).sort((a, b) => a.order - b.order),
+    [media]
+  );
+  const coverImage = sortedMedia.find((item) => item.placement === 'cover');
+  const galleryImages = sortedMedia.filter((item) => item.placement === 'gallery');
 
   return (
     <motion.div
@@ -302,10 +349,21 @@ export function DrugDetailSheet({ drug, detail, onClose }: DrugDetailSheetProps)
               <X size={17} weight="bold" />
             </button>
 
-            <div className="flex-1 text-right">
-              <p className="text-[11px] font-black text-[#526F85]">{drug.categoryAr}</p>
-              <h3 className="mt-0.5 text-xl font-black text-[#183149]">{drug.ar}</h3>
-              <p className="mt-0.5 text-sm font-bold text-[#526675]" dir="ltr">{drug.en}</p>
+            <div className="flex min-w-0 flex-1 items-start justify-end gap-3">
+              <div className="min-w-0 flex-1 text-right">
+                <p className="text-[11px] font-black text-[#526F85]">{drug.categoryAr}</p>
+                <h3 className="mt-0.5 text-xl font-black text-[#183149]">{drug.ar}</h3>
+                <p className="mt-0.5 text-sm font-bold text-[#526675]" dir="ltr">{drug.en}</p>
+              </div>
+              {coverImage && (
+                <figure className="h-20 w-20 shrink-0 overflow-hidden rounded-2xl border border-[#DCE5EA] bg-white shadow-sm">
+                  <img
+                    src={coverImage.url}
+                    alt={coverImage.alt || drug.ar}
+                    className="h-full w-full object-contain"
+                  />
+                </figure>
+              )}
             </div>
           </div>
 
@@ -331,6 +389,7 @@ export function DrugDetailSheet({ drug, detail, onClose }: DrugDetailSheetProps)
               <BilingualMedicalText text={detail.feature} />
             </p>
           </section>
+          <SectionMedia media={sortedMedia} sectionKey="feature" />
 
           {detail.clinicalNote && (
             <section className="rounded-2xl border border-[#E8DFC9] bg-[#FFF9EE] px-3.5 py-3">
@@ -340,17 +399,36 @@ export function DrugDetailSheet({ drug, detail, onClose }: DrugDetailSheetProps)
               </p>
             </section>
           )}
+          <SectionMedia media={sortedMedia} sectionKey="clinicalNote" />
 
           <DetailSection title="الاستخدامات | Uses" items={detail.uses} tone="use" />
-          <ReferenceBlock title="آلية العمل | Mechanism" text={detail.mechanism} />
-          <ReferenceBlock title="طرق الإعطاء | Routes" items={detail.routes} />
-          <ReferenceBlock title="الجرعات المرجعية | Reference doses" items={detail.educationalDoses} />
-          <ReferenceBlock title="بداية ومدة التأثير | Onset & duration" items={detail.onsetDuration} />
-          <DetailSection title="موانع الاستعمال | Contraindications" items={detail.contraindications} tone="contra" />
-          <DetailSection title="التحذيرات | Warnings" items={detail.warnings} tone="warning" />
-          <DetailSection title="الآثار الجانبية | Adverse effects" items={detail.adverseEffects} tone="effect" />
-          <ReferenceBlock title="الأسماء التجارية | Trade names" items={detail.tradeNames} />
+          <SectionMedia media={sortedMedia} sectionKey="uses" />
 
+          <ReferenceBlock title="آلية العمل | Mechanism" text={detail.mechanism} />
+          <SectionMedia media={sortedMedia} sectionKey="mechanism" />
+
+          <ReferenceBlock title="طرق الإعطاء | Routes" items={detail.routes} />
+          <SectionMedia media={sortedMedia} sectionKey="routes" />
+
+          <ReferenceBlock title="الجرعات المرجعية | Reference doses" items={detail.educationalDoses} />
+          <SectionMedia media={sortedMedia} sectionKey="educationalDoses" />
+
+          <ReferenceBlock title="بداية ومدة التأثير | Onset & duration" items={detail.onsetDuration} />
+          <SectionMedia media={sortedMedia} sectionKey="onsetDuration" />
+
+          <DetailSection title="موانع الاستعمال | Contraindications" items={detail.contraindications} tone="contra" />
+          <SectionMedia media={sortedMedia} sectionKey="contraindications" />
+
+          <DetailSection title="التحذيرات | Warnings" items={detail.warnings} tone="warning" />
+          <SectionMedia media={sortedMedia} sectionKey="warnings" />
+
+          <DetailSection title="الآثار الجانبية | Adverse effects" items={detail.adverseEffects} tone="effect" />
+          <SectionMedia media={sortedMedia} sectionKey="adverseEffects" />
+
+          <ReferenceBlock title="الأسماء التجارية | Trade names" items={detail.tradeNames} />
+          <SectionMedia media={sortedMedia} sectionKey="tradeNames" />
+
+          <MediaGroup items={galleryImages} />
         </div>
       </motion.div>
     </motion.div>
