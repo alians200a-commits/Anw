@@ -6,21 +6,28 @@ import './index.css';
 import './stages-flaticon.css';
 
 const AdminApp = lazy(() => import('./admin/AdminApp.tsx'));
+const AdminDrugEditorPage = lazy(() => import('./admin/AdminDrugEditorPage.tsx'));
 
 installViewportGestureGuard();
 
-const isAdminRoute = window.location.pathname === '/admin' || window.location.pathname.startsWith('/admin/');
+const path = window.location.pathname;
+const isDrugEditorRoute = path === '/admin/drugs' || path.startsWith('/admin/drugs/');
+const isAdminRoute = path === '/admin' || path.startsWith('/admin/');
+
+const adminFallback = (
+  <div className="flex min-h-screen items-center justify-center bg-[#07182c] text-sm font-bold text-white">
+    جاري تحميل لوحة الإدارة…
+  </div>
+);
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    {isAdminRoute ? (
-      <Suspense
-        fallback={(
-          <div className="flex min-h-screen items-center justify-center bg-[#07182c] text-sm font-bold text-white">
-            جاري تحميل لوحة الإدارة…
-          </div>
-        )}
-      >
+    {isDrugEditorRoute ? (
+      <Suspense fallback={adminFallback}>
+        <AdminDrugEditorPage />
+      </Suspense>
+    ) : isAdminRoute ? (
+      <Suspense fallback={adminFallback}>
         <AdminApp />
       </Suspense>
     ) : (
