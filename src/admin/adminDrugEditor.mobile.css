@@ -103,6 +103,63 @@
     font-size: 16px !important;
   }
 
+  /* Native selects are intercepted by MobileSelectSheet. Keep the closed field clean. */
+  .admin-drug-editor-host select {
+    min-height: 52px;
+    cursor: pointer;
+    text-align: right;
+    direction: rtl;
+    padding-inline: 14px 42px !important;
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: linear-gradient(45deg, transparent 50%, #526f85 50%), linear-gradient(135deg, #526f85 50%, transparent 50%);
+    background-position: 18px 50%, 12px 50%;
+    background-size: 6px 6px, 6px 6px;
+    background-repeat: no-repeat;
+  }
+
+  /* Lists such as Uses / Warnings / Doses: give the text the full phone width. */
+  .admin-drug-editor-host .space-y-2 > .flex.items-start.gap-2 {
+    display: flex !important;
+    flex-direction: column-reverse !important;
+    align-items: stretch !important;
+    gap: 6px !important;
+    width: 100%;
+    min-width: 0;
+  }
+
+  .admin-drug-editor-host .space-y-2 > .flex.items-start.gap-2 > textarea {
+    width: 100% !important;
+    min-height: 84px !important;
+  }
+
+  .admin-drug-editor-host .space-y-2 > .flex.items-start.gap-2 > .flex.shrink-0 {
+    width: 100% !important;
+    justify-content: flex-start !important;
+    padding-top: 0 !important;
+  }
+
+  .admin-drug-editor-host .space-y-2 > .flex.items-start.gap-2 > .flex.shrink-0 button {
+    min-width: 44px;
+    min-height: 40px;
+  }
+
+  /* Keep section title + Add button readable instead of squeezing each other. */
+  .admin-drug-editor-host section > .mb-3.flex.items-center.justify-between {
+    flex-wrap: wrap !important;
+    align-items: center !important;
+  }
+
+  /* Image uploader and image controls should never force horizontal scrolling. */
+  .admin-drug-editor-host main > section > .mb-4.flex.flex-wrap > label {
+    width: 100% !important;
+    justify-content: center !important;
+  }
+
+  .admin-drug-editor-host .flex.flex-wrap.gap-1 {
+    gap: 6px !important;
+  }
+
   .admin-drug-editor-host aside {
     position: static !important;
     width: 100%;
