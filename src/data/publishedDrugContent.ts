@@ -92,7 +92,7 @@ export async function loadPublishedDrugContent(): Promise<RuntimeDrugContent> {
 
     for (const row of rows) {
       const payload = row.payload;
-      if (!payload || !isDrug(payload.drug) || !isDetail(payload.details)) continue;
+      if (!payload || payload.schemaVersion !== 1 || !isDrug(payload.drug) || !isDetail(payload.details)) continue;
       if (payload.drug.id !== row.slug) continue;
 
       publishedById.set(row.slug, payload.drug);
