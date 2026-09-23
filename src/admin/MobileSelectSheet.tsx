@@ -16,10 +16,12 @@ type SheetState = {
 };
 
 function fieldTitle(select: HTMLSelectElement) {
+  const aria = select.getAttribute('aria-label');
+  if (aria) return aria;
   const block = select.closest('.block, div');
   const heading = block?.querySelector('[data-field-heading]');
   const text = heading?.textContent?.replace('?', '').replace('*', '').trim();
-  return text || select.getAttribute('aria-label') || 'اختر من القائمة';
+  return text || 'اختر من القائمة';
 }
 
 export default function MobileSelectSheet() {
@@ -30,7 +32,7 @@ export default function MobileSelectSheet() {
       if (!window.matchMedia('(max-width: 767px)').matches) return;
       const target = event.target;
       if (!(target instanceof HTMLSelectElement)) return;
-      if (!target.closest('.admin-drug-editor-host')) return;
+      if (!target.closest('.admin-drug-editor-host, .admin-mobile-select-scope')) return;
       if (target.disabled) return;
 
       event.preventDefault();
@@ -67,10 +69,7 @@ export default function MobileSelectSheet() {
 
   const choose = (value: string) => {
     const select = sheet.select;
-    const descriptor = Object.getOwnPropertyDescriptor(
-      HTMLSelectElement.prototype,
-      'value',
-    );
+    const descriptor = Object.getOwnPropertyDescriptor(HTMLSelectElement.prototype, 'value');
     descriptor?.set?.call(select, value);
     select.dispatchEvent(new Event('change', { bubbles: true }));
     setSheet(null);
