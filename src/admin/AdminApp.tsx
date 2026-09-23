@@ -416,7 +416,7 @@ export default function AdminApp() {
             </div>
           ) : (
             <div className="space-y-2">
-              {content.slice(0, 50).map((item) => (
+              {content.map((item) => (
                 <div key={item.id} className="flex flex-col gap-2 rounded-2xl border border-slate-100 px-4 py-3 sm:flex-row sm:items-center sm:justify-between">
                   <div className="flex items-center gap-2">
                     {item.content_type === 'drug' && canEditContent && (
