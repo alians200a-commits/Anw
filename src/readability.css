@@ -41,9 +41,9 @@
 .readable-guide-content summary .text-\[10px\],
 .readable-guide-content summary .text-\[11px\],
 .readable-guide-content summary .text-\[12px\] {
-  font-size: 0.8125rem !important;
-  line-height: 1.45 !important;
-  font-weight: 800 !important;
+  font-size: 0.875rem !important;
+  line-height: 1.5 !important;
+  font-weight: 850 !important;
 }
 
 /* Body-copy weights should never drop below a comfortable reading weight. */
@@ -54,6 +54,126 @@
 .readable-guide-content li.font-medium,
 .readable-guide-content li.font-semibold {
   font-weight: 600 !important;
+}
+
+/* Public guide cards get a more deliberate visual hierarchy without becoming noisy. */
+.readable-guide-content article {
+  position: relative;
+  overflow: hidden;
+  border-color: #d5e0e7 !important;
+  background-image: linear-gradient(145deg, rgba(255,255,255,.98), rgba(246,249,251,.96));
+  box-shadow: 0 7px 20px rgba(23, 58, 99, 0.075), 0 1px 0 rgba(255,255,255,.9) inset;
+  transition: transform 160ms ease, box-shadow 160ms ease, border-color 160ms ease;
+}
+
+.readable-guide-content article::after {
+  content: '';
+  position: absolute;
+  inset-inline-end: 0;
+  top: 18px;
+  width: 3px;
+  height: 38px;
+  border-radius: 999px 0 0 999px;
+  background: linear-gradient(180deg, #d9a441 0%, #2f69a8 100%);
+  opacity: .78;
+  pointer-events: none;
+}
+
+@media (hover: hover) {
+  .readable-guide-content article:hover {
+    transform: translateY(-1px);
+    border-color: #c6d6e0 !important;
+    box-shadow: 0 12px 28px rgba(23, 58, 99, 0.11), 0 1px 0 rgba(255,255,255,.95) inset;
+  }
+}
+
+/* Expandable internal content: stronger cards, cleaner reveal, and richer list rows. */
+.readable-guide-content details.rounded-2xl {
+  position: relative;
+  overflow: hidden;
+  border-color: #d4e0e7 !important;
+  box-shadow: 0 5px 16px rgba(23, 58, 99, 0.07), 0 1px 0 rgba(255,255,255,.85) inset;
+  transition: transform 170ms ease, box-shadow 170ms ease, border-color 170ms ease;
+}
+
+.readable-guide-content details.rounded-2xl::before {
+  content: '';
+  position: absolute;
+  inset-inline-end: 0;
+  top: 12px;
+  bottom: 12px;
+  width: 3px;
+  border-radius: 999px 0 0 999px;
+  background: linear-gradient(180deg, #d9a441 0%, #2f69a8 100%);
+  opacity: .62;
+  pointer-events: none;
+}
+
+.readable-guide-content details.rounded-2xl > summary {
+  min-height: 3.4rem !important;
+  padding-inline: .2rem .35rem;
+  border-radius: 14px;
+  transition: background-color 150ms ease, color 150ms ease;
+}
+
+.readable-guide-content details.rounded-2xl > summary:hover {
+  background: rgba(255,255,255,.48);
+}
+
+.readable-guide-content details.rounded-2xl[open] {
+  transform: translateY(-1px);
+  border-color: #c6d7e2 !important;
+  box-shadow: 0 13px 30px rgba(23, 58, 99, 0.12), 0 1px 0 rgba(255,255,255,.95) inset;
+}
+
+.readable-guide-content details.rounded-2xl[open] > summary {
+  background: linear-gradient(90deg, rgba(217,164,65,.07), rgba(47,105,168,.045));
+}
+
+.readable-guide-content details.rounded-2xl > summary span.rounded-full {
+  min-width: 2rem;
+  min-height: 2rem;
+  display: inline-grid;
+  place-items: center;
+  padding-inline: .55rem !important;
+  background: rgba(255,255,255,.88) !important;
+  border: 1px solid rgba(204, 160, 57, .18);
+  box-shadow: 0 2px 7px rgba(23,58,99,.07);
+}
+
+.readable-guide-content details.rounded-2xl > div[class*="border-t"] {
+  border-color: rgba(23, 58, 99, .09) !important;
+}
+
+.readable-guide-content details.rounded-2xl[open] > div {
+  animation: guide-content-reveal 180ms ease-out;
+}
+
+.readable-guide-content details.rounded-2xl > div[class*="border-t"] > div[class*="space-y"] > div {
+  min-height: 2.85rem;
+  padding: .65rem .72rem;
+  border: 1px solid rgba(215, 226, 233, .75);
+  border-radius: 13px;
+  background: rgba(255,255,255,.68);
+  box-shadow: 0 2px 8px rgba(23,58,99,.045);
+}
+
+.readable-guide-content details.rounded-2xl > div[class*="border-t"] > div[class*="space-y"] > div + div {
+  margin-top: .5rem;
+}
+
+@keyframes guide-content-reveal {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .readable-guide-content article,
+  .readable-guide-content details.rounded-2xl,
+  .readable-guide-content details.rounded-2xl[open] > div {
+    animation: none !important;
+    transition: none !important;
+  }
 }
 
 @media (min-width: 640px) {
