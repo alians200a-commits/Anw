@@ -4,8 +4,14 @@ import { isSafeSlug, isSafeStoragePath } from '../utils/security';
 
 export const DRAFT_MEDIA_BUCKET = 'content-media-drafts';
 export const PUBLISHED_MEDIA_BUCKET = 'content-media';
+type MediaBucket = typeof DRAFT_MEDIA_BUCKET | typeof PUBLISHED_MEDIA_BUCKET;
 const MAX_FILE_BYTES = 5 * 1024 * 1024;
 const ALLOWED_MIME = new Set(['image/jpeg', 'image/png', 'image/webp']);
+
+function resolveMediaBucket(item: ContentMediaItem): MediaBucket | null {
+  const bucket = item.bucket ?? PUBLISHED_MEDIA_BUCKET;
+  return bucket === DRAFT_MEDIA_BUCKET || bucket === PUBLISHED_MEDIA_BUCKET ? bucket : null;
+}
 
 export type UploadDraftMediaArgs = {
   file: File;
@@ -62,8 +68,8 @@ export async function uploadDraftMedia(args: UploadDraftMediaArgs): Promise<Cont
 
 export async function hydrateAdminMedia(items: ContentMediaItem[]): Promise<ContentMediaItem[]> {
   return Promise.all(items.map(async (item) => {
-    if (!isSafeStoragePath(item.path)) return { ...item, url: '' };
-    const bucket = item.bucket ?? PUBLISHED_MEDIA_BUCKET;
+    const bucket = resolveMediaBucket(item);
+    if (!bucket || !isSafeStoragePath(item.path)) return { ...item, url: '' };
     if (bucket === DRAFT_MEDIA_BUCKET) {
       const { data, error } = await supabase.storage.from(DRAFT_MEDIA_BUCKET).createSignedUrl(item.path, 60 * 60);
       return { ...item, bucket, url: error ? '' : data?.signedUrl ?? '' };
@@ -74,7 +80,8 @@ export async function hydrateAdminMedia(items: ContentMediaItem[]): Promise<Cont
 }
 
 export async function removeAdminMedia(item: ContentMediaItem): Promise<void> {
-  const bucket = item.bucket ?? PUBLISHED_MEDIA_BUCKET;
+  const bucket = resolveMediaBucket(item);
+  if (!bucket) throw new Error('حاوية الصورة غير معروفة.');
   if (bucket !== DRAFT_MEDIA_BUCKET) return;
   if (!isSafeStoragePath(item.path)) throw new Error('مسار الصورة غير صالح.');
   const { error } = await supabase.storage.from(DRAFT_MEDIA_BUCKET).remove([item.path]);
@@ -98,33 +105,42 @@ export async function promoteMediaForPublish(
   const cleanup: string[] = [];
   const rollback: string[] = [];
 
-  for (const item of items) {
-    const bucket = item.bucket ?? PUBLISHED_MEDIA_BUCKET;
-    if (bucket === PUBLISHED_MEDIA_BUCKET) {
-      const { data } = supabase.storage.from(PUBLISHED_MEDIA_BUCKET).getPublicUrl(item.path);
-      promoted.push({ ...item, bucket: PUBLISHED_MEDIA_BUCKET, url: data.publicUrl });
-      continue;
+  try {
+    for (const item of items) {
+      const bucket = resolveMediaBucket(item);
+      if (!bucket || !isSafeStoragePath(item.path)) {
+        throw new Error('إحدى الصور تحتوي حاوية أو مسارًا غير موثوق.');
+      }
+
+      if (bucket === PUBLISHED_MEDIA_BUCKET) {
+        const { data } = supabase.storage.from(PUBLISHED_MEDIA_BUCKET).getPublicUrl(item.path);
+        promoted.push({ ...item, bucket: PUBLISHED_MEDIA_BUCKET, url: data.publicUrl });
+        continue;
+      }
+
+      const { data: blob, error: downloadError } = await supabase.storage.from(DRAFT_MEDIA_BUCKET).download(item.path);
+      if (downloadError || !blob) throw downloadError ?? new Error('تعذر قراءة صورة المسودة قبل النشر.');
+
+      const ext = item.path.split('.').pop()?.toLowerCase();
+      const safeExt = ext === 'png' || ext === 'webp' ? ext : 'jpg';
+      const publicPath = `${profileId}/${contentType}/${slug}/${Date.now()}-${crypto.randomUUID()}.${safeExt}`;
+      if (!isSafeStoragePath(publicPath)) throw new Error('مسار صورة النشر غير صالح.');
+      const contentTypeHeader = safeExt === 'png' ? 'image/png' : safeExt === 'webp' ? 'image/webp' : 'image/jpeg';
+      const { error: uploadError } = await supabase.storage
+        .from(PUBLISHED_MEDIA_BUCKET)
+        .upload(publicPath, blob, { contentType: contentTypeHeader, upsert: false });
+      if (uploadError) throw uploadError;
+
+      const { data: publicData } = supabase.storage.from(PUBLISHED_MEDIA_BUCKET).getPublicUrl(publicPath);
+      promoted.push({ ...item, bucket: PUBLISHED_MEDIA_BUCKET, path: publicPath, url: publicData.publicUrl });
+      cleanup.push(item.path);
+      rollback.push(publicPath);
     }
-    if (bucket !== DRAFT_MEDIA_BUCKET || !isSafeStoragePath(item.path)) {
-      throw new Error('إحدى الصور تحتوي مسارًا غير موثوق.');
+  } catch (error) {
+    if (rollback.length) {
+      await supabase.storage.from(PUBLISHED_MEDIA_BUCKET).remove(rollback);
     }
-
-    const { data: blob, error: downloadError } = await supabase.storage.from(DRAFT_MEDIA_BUCKET).download(item.path);
-    if (downloadError || !blob) throw downloadError ?? new Error('تعذر قراءة صورة المسودة قبل النشر.');
-
-    const ext = item.path.split('.').pop()?.toLowerCase();
-    const safeExt = ext === 'png' || ext === 'webp' ? ext : 'jpg';
-    const publicPath = `${profileId}/${contentType}/${slug}/${Date.now()}-${crypto.randomUUID()}.${safeExt}`;
-    const contentTypeHeader = safeExt === 'png' ? 'image/png' : safeExt === 'webp' ? 'image/webp' : 'image/jpeg';
-    const { error: uploadError } = await supabase.storage
-      .from(PUBLISHED_MEDIA_BUCKET)
-      .upload(publicPath, blob, { contentType: contentTypeHeader, upsert: false });
-    if (uploadError) throw uploadError;
-
-    const { data: publicData } = supabase.storage.from(PUBLISHED_MEDIA_BUCKET).getPublicUrl(publicPath);
-    promoted.push({ ...item, bucket: PUBLISHED_MEDIA_BUCKET, path: publicPath, url: publicData.publicUrl });
-    cleanup.push(item.path);
-    rollback.push(publicPath);
+    throw error;
   }
 
   return { media: promoted, draftPathsToCleanup: cleanup, publicPathsToRollback: rollback };
