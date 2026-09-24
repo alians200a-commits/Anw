@@ -1,0 +1,74 @@
+/* Reading-focused typography for public clinical content.
+   Navigation chrome, badges, controls and admin surfaces stay untouched. */
+
+.readable-guide-content {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: auto;
+}
+
+/* Explanatory body copy that was previously rendered at 11–12px. */
+.readable-guide-content p.text-\[10px\],
+.readable-guide-content p.text-\[11px\],
+.readable-guide-content p.text-\[12px\],
+.readable-guide-content li.text-\[10px\],
+.readable-guide-content li.text-\[11px\],
+.readable-guide-content li.text-\[12px\],
+.readable-guide-content figcaption.text-\[10px\],
+.readable-guide-content figcaption.text-\[11px\],
+.readable-guide-content figcaption.text-\[12px\] {
+  font-size: 0.9375rem !important;
+  line-height: 1.8 !important;
+  font-weight: 600 !important;
+}
+
+.readable-guide-content p.text-xs,
+.readable-guide-content li.text-xs,
+.readable-guide-content figcaption.text-xs {
+  font-size: 0.9375rem !important;
+  line-height: 1.8 !important;
+  font-weight: 600 !important;
+}
+
+.readable-guide-content p.text-sm,
+.readable-guide-content li.text-sm,
+.readable-guide-content figcaption.text-sm {
+  font-size: 1rem !important;
+  line-height: 1.85 !important;
+  font-weight: 600 !important;
+}
+
+/* Section labels remain compact, but no longer look faint. */
+.readable-guide-content summary .text-\[10px\],
+.readable-guide-content summary .text-\[11px\],
+.readable-guide-content summary .text-\[12px\] {
+  font-size: 0.8125rem !important;
+  line-height: 1.45 !important;
+  font-weight: 800 !important;
+}
+
+/* Body-copy weights should never drop below a comfortable reading weight. */
+.readable-guide-content p.font-normal,
+.readable-guide-content p.font-medium,
+.readable-guide-content p.font-semibold,
+.readable-guide-content li.font-normal,
+.readable-guide-content li.font-medium,
+.readable-guide-content li.font-semibold {
+  font-weight: 600 !important;
+}
+
+@media (min-width: 640px) {
+  .readable-guide-content p.text-\[10px\],
+  .readable-guide-content p.text-\[11px\],
+  .readable-guide-content p.text-\[12px\],
+  .readable-guide-content p.text-xs,
+  .readable-guide-content li.text-\[10px\],
+  .readable-guide-content li.text-\[11px\],
+  .readable-guide-content li.text-\[12px\],
+  .readable-guide-content li.text-xs,
+  .readable-guide-content figcaption.text-\[10px\],
+  .readable-guide-content figcaption.text-\[11px\],
+  .readable-guide-content figcaption.text-\[12px\],
+  .readable-guide-content figcaption.text-xs {
+    font-size: 1rem !important;
+  }
+}
