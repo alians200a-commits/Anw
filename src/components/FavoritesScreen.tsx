@@ -7,6 +7,7 @@ import { DrugDetailSheet } from './DrugDetailSheet';
 import { BilingualLabel } from './BilingualLabel';
 import { MixedDirectionText } from './MixedDirectionText';
 import { MedicalSiteIcon } from './ui/MedicalSiteIcon';
+import { VaporizerIcon } from './ui/VaporizerIcon';
 
 interface FavoritesScreenProps {
   favorites: Set<string>;
@@ -57,13 +58,14 @@ export function FavoritesScreen({ favorites, onToggleFavorite }: FavoritesScreen
               >
                 <div className="min-w-0 flex-1">
                   <h3 className="truncate font-black text-[#183149]">{drug.ar}</h3>
-                  <p className="mt-0.5 text-xs text-[#526675]" dir="ltr">{drug.en}</p>
+                  <p className="mt-0.5 truncate text-xs text-[#526675]" dir="ltr">{drug.en}</p>
                   <p className="mt-1 text-[11px] font-bold text-[#315672]">افتح التفاصيل الدوائية</p>
                 </div>
-                <MedicalSiteIcon
-                  name={drug.classes.includes('inhalational') ? 'inhalational' : 'drugs'}
-                  size={26}
-                />
+                {drug.classes.includes('inhalational') ? (
+                  <VaporizerIcon size={26} />
+                ) : (
+                  <MedicalSiteIcon name="drugs" size={26} />
+                )}
               </button>
             </article>
           ))}
@@ -87,7 +89,7 @@ export function FavoritesScreen({ favorites, onToggleFavorite }: FavoritesScreen
                 <div className="flex min-w-0 flex-1 items-start justify-end gap-3 text-right">
                   <div className="min-w-0 flex-1">
                     <h3 className="truncate font-black text-[#183149]">{term.ar}</h3>
-                    <p className="mt-0.5 text-xs text-[#526675]" dir="ltr">{term.abbr ? `${term.abbr} — ${term.en}` : term.en}</p>
+                    <p className="mt-0.5 truncate text-xs text-[#526675]" dir="ltr">{term.abbr ? `${term.abbr} — ${term.en}` : term.en}</p>
                   </div>
                   <MedicalSiteIcon
                     name={term.abbr ? 'abbreviations' : 'terms'}
