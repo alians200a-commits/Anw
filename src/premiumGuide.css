@@ -17,6 +17,15 @@
   -webkit-tap-highlight-color: transparent;
 }
 
+/* Never defer card/disclosure painting while scrolling.
+   readability.css previously used content-visibility:auto, which can create
+   visible pop-in on some Android WebViews and AI Studio preview shells. */
+.readable-guide-content :is(article.rounded-\[18px\], button.rounded-\[18px\]),
+.readable-guide-content details.rounded-2xl {
+  content-visibility: visible !important;
+  contain-intrinsic-size: none !important;
+}
+
 /* Flagship guide selector: layered premium surface, no blur filter. */
 .readable-guide-content [data-dropdown-trigger] {
   position: relative;
@@ -250,6 +259,14 @@
 
   .readable-guide-content button.rounded-\[18px\]:active {
     transform: none !important;
+  }
+
+  .readable-guide-content details.rounded-2xl,
+  .readable-guide-content details.rounded-2xl > summary,
+  .readable-guide-content details.rounded-2xl[open] > div,
+  .readable-guide-content details.rounded-2xl[open] > div[class*="border-t"] > div[class*="space-y"] > div {
+    animation: none !important;
+    transition: none !important;
   }
 
   .stack-menu-enter {
