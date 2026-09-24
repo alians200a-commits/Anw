@@ -1,19 +1,22 @@
 /* Inhalational anesthetic icon treatment.
-   Medical glyph source: Health Icons / oxygen-tank.svg (CC0 public domain)
-   https://github.com/resolvetosavelives/healthicons
-   Motion is intentionally subtle so the icon feels premium without distracting from content. */
+   Scientific rule: this icon MUST NOT imply oxygen, an O2 cylinder, or a simple face mask.
+   It represents a generic volatile-anesthetic vaporizer + vapor flow so it remains appropriate
+   for agents such as sevoflurane, isoflurane, desflurane, enflurane and halothane.
+   Visual language is adapted from open-source medical-device icon systems (Health Icons, MIT)
+   and motion patterns are intentionally subtle for mobile performance. */
 
 span:has(> img[src*="10823452"]):has(> img[src*="9859811"]) {
   position: relative;
   isolation: isolate;
   background-position: center;
   background-repeat: no-repeat;
-  background-size: 90% 90%;
-  background-image: url("data:image/svg+xml,%3Csvg width='48' height='48' viewBox='0 0 48 48' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M17 6H19V4H13V6H15V8H12.8293C12.4175 6.83481 11.3062 6 10 6C8.34315 6 7 7.34315 7 9C7 10.6569 8.34315 12 10 12C11.3062 12 12.4175 11.1652 12.8293 10H15V12.083C12.1623 12.559 10 15.027 10 18V43C10 43.5523 10.4477 44 11 44H21C21.5523 44 22 43.5523 22 43V18C22 15.027 19.8377 12.559 17 12.083V10H22V8H17V6ZM16 14C13.7909 14 12 15.7909 12 18V20H20V18C20 15.7909 18.2091 14 16 14ZM12 42V22H20V42H12ZM9 9C9 8.44772 9.44772 8 10 8C10.5523 8 11 8.44772 11 9C11 9.55228 10.5523 10 10 10C9.44772 10 9 9.55228 9 9ZM26 21C26 18.7909 27.7909 17 30 17C32.2091 17 34 18.7909 34 21V27C34 29.2091 32.2091 31 30 31C27.7909 31 26 29.2091 26 27V21ZM30 19C28.8954 19 28 19.8954 28 21V27C28 28.1046 28.8954 29 30 29C31.1046 29 32 28.1046 32 27V21C32 19.8954 31.1046 19 30 19ZM38 26H35V24H38C39.6569 24 41 25.3431 41 27C41 28.6569 39.6569 30 38 30C37.4477 30 37 30.4477 37 31V32H41V34H36C35.4477 34 35 33.5523 35 33V31C35 29.3431 36.3431 28 38 28C38.5523 28 39 27.5523 39 27C39 26.4477 38.5523 26 38 26Z' fill='%23173A63'/%3E%3C/svg%3E");
-  filter: drop-shadow(0 3px 5px rgba(23,58,99,.12));
-  animation: inhalational-icon-float 2.4s ease-in-out infinite;
+  background-size: 96% 96%;
+  background-image: url("data:image/svg+xml,%3Csvg width='64' height='64' viewBox='0 0 64 64' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='14' y='14' width='29' height='38' rx='7' fill='%23F8FBFD' stroke='%23173A63' stroke-width='3'/%3E%3Crect x='20' y='8' width='17' height='9' rx='3' fill='%23EEF3F8' stroke='%23173A63' stroke-width='3'/%3E%3Ccircle cx='28.5' cy='28' r='7.5' fill='white' stroke='%232F69A8' stroke-width='3'/%3E%3Cpath d='M28.5 28L33 24.5' stroke='%23D9A441' stroke-width='3' stroke-linecap='round'/%3E%3Ccircle cx='28.5' cy='28' r='1.8' fill='%23173A63'/%3E%3Cpath d='M21 41H36' stroke='%23AFC3D6' stroke-width='2.6' stroke-linecap='round'/%3E%3Cpath d='M23 46H34' stroke='%232F69A8' stroke-width='2.6' stroke-linecap='round'/%3E%3Cpath d='M43 25H47C50.866 25 54 28.134 54 32V34' stroke='%23173A63' stroke-width='3' stroke-linecap='round'/%3E%3Cpath d='M49 38C54 38 58 36 60 33' stroke='%232F69A8' stroke-width='2.8' stroke-linecap='round'/%3E%3Cpath d='M47 44C52 44 56 42.5 59 40' stroke='%23D9A441' stroke-width='2.8' stroke-linecap='round'/%3E%3Cpath d='M46 50C51 50 55 49 58 47' stroke='%232F69A8' stroke-width='2.8' stroke-linecap='round'/%3E%3C/svg%3E");
+  filter: drop-shadow(0 4px 7px rgba(23,58,99,.16));
+  animation: inhalational-icon-float 2.5s ease-in-out infinite;
 }
 
+/* Hide the legacy runtime images. The visible treatment above is deliberately agent-neutral. */
 span:has(> img[src*="10823452"]):has(> img[src*="9859811"]) > img {
   opacity: 0 !important;
   pointer-events: none !important;
@@ -22,42 +25,46 @@ span:has(> img[src*="10823452"]):has(> img[src*="9859811"]) > img {
 span:has(> img[src*="10823452"]):has(> img[src*="9859811"])::before {
   content: '';
   position: absolute;
-  inset: 11%;
+  inset: 6%;
   z-index: -1;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(47,105,168,.15), rgba(217,164,65,.06) 50%, transparent 72%);
-  animation: inhalational-glow 1.9s ease-in-out infinite;
+  border-radius: 42% 58% 54% 46%;
+  background:
+    radial-gradient(circle at 36% 40%, rgba(255,255,255,.95), rgba(255,255,255,.15) 38%, transparent 58%),
+    radial-gradient(circle, rgba(47,105,168,.16), rgba(217,164,65,.08) 52%, transparent 74%);
+  box-shadow: 0 8px 18px rgba(23,58,99,.08);
+  animation: inhalational-glow 2.1s ease-in-out infinite;
 }
 
+/* Vapor-flow cue: no gas-cylinder/O2 semantics, just controlled vapor movement. */
 span:has(> img[src*="10823452"]):has(> img[src*="9859811"])::after {
   content: '';
   position: absolute;
   z-index: 1;
-  top: 30%;
-  right: -2%;
-  width: 33%;
-  height: 18%;
-  border-top: 2px solid #2F69A8;
+  top: 42%;
+  right: -5%;
+  width: 31%;
+  height: 15%;
+  border-top: 2px solid rgba(47,105,168,.9);
   border-radius: 50%;
-  box-shadow: 0 5px 0 -1px #D9A441, 0 10px 0 -1px #2F69A8;
-  opacity: .72;
+  box-shadow: 0 5px 0 -1px rgba(217,164,65,.88), 0 10px 0 -1px rgba(47,105,168,.72);
+  opacity: .78;
   transform-origin: center;
-  animation: inhalational-flow 1.55s ease-in-out infinite;
+  animation: inhalational-flow 1.65s ease-in-out infinite;
 }
 
 @keyframes inhalational-icon-float {
-  0%, 100% { transform: translateY(0) scale(.98); }
-  50% { transform: translateY(-1.5px) scale(1.02); }
+  0%, 100% { transform: translateY(0) scale(.985); }
+  50% { transform: translateY(-1.25px) scale(1.018); }
 }
 
 @keyframes inhalational-flow {
-  0%, 100% { transform: translateX(-10%) rotate(-7deg); opacity: .32; }
-  50% { transform: translateX(12%) rotate(-3deg); opacity: .95; }
+  0%, 100% { transform: translateX(-8%) scaleX(.86); opacity: .36; }
+  50% { transform: translateX(13%) scaleX(1.05); opacity: .95; }
 }
 
 @keyframes inhalational-glow {
-  0%, 100% { transform: scale(.92); opacity: .45; }
-  50% { transform: scale(1.07); opacity: .9; }
+  0%, 100% { transform: scale(.94); opacity: .5; }
+  50% { transform: scale(1.04); opacity: .92; }
 }
 
 @media (prefers-reduced-motion: reduce) {
