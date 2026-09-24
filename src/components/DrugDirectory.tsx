@@ -19,6 +19,7 @@ import {
   type StackMenuItem
 } from './ui/NotificationStackMenu';
 import { MedicalSiteIcon, type MedicalSiteIconName } from './ui/MedicalSiteIcon';
+import { VaporizerIcon } from './ui/VaporizerIcon';
 
 const drugClassIcon: Record<'all' | DrugClass, MedicalSiteIconName> = {
   all: 'drugs',
@@ -48,7 +49,6 @@ function normalizeClassification(
 }
 
 function iconForDrug(classes: DrugClass[]): MedicalSiteIconName {
-  if (classes.includes('inhalational')) return 'inhalational';
   if (
     classes.includes('cardiovascular') ||
     classes.includes('vasopressor') ||
@@ -138,12 +138,15 @@ export function DrugDirectory({
     id: item.id,
     title: item.label,
     description: item.id === 'all' ? 'جميع الأدوية' : 'تصفية حسب هذا التصنيف',
-    leading: (
-      <MedicalSiteIcon
-        name={drugClassIcon[item.id as 'all' | DrugClass]}
-        size={24}
-      />
-    ),
+    leading:
+      item.id === 'inhalational' ? (
+        <VaporizerIcon size={24} />
+      ) : (
+        <MedicalSiteIcon
+          name={drugClassIcon[item.id as 'all' | DrugClass]}
+          size={24}
+        />
+      ),
     onSelect: () => setClassification(item.id as 'all' | DrugClass)
   }));
 
@@ -169,10 +172,14 @@ export function DrugDirectory({
         title={currentFilter}
         description="تصنيف الأدوية"
         icon={
-          <MedicalSiteIcon
-            name={drugClassIcon[classification]}
-            size={27}
-          />
+          classification === 'inhalational' ? (
+            <VaporizerIcon size={27} play />
+          ) : (
+            <MedicalSiteIcon
+              name={drugClassIcon[classification]}
+              size={27}
+            />
+          )
         }
         items={filterItems}
         selectedId={classification}
@@ -193,6 +200,7 @@ export function DrugDirectory({
           const classLabel = drug.classes
             .map((item) => DRUG_CLASS_LABELS[item])
             .join(' • ');
+          const isInhalational = drug.classes.includes('inhalational');
 
           return (
             <article
@@ -246,6 +254,8 @@ export function DrugDirectory({
                         decoding="async"
                         className="h-full w-full bg-white object-contain"
                       />
+                    ) : isInhalational ? (
+                      <VaporizerIcon size={26} />
                     ) : (
                       <MedicalSiteIcon name={iconForDrug(drug.classes)} size={26} />
                     )}
