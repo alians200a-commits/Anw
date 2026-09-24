@@ -1,13 +1,17 @@
-/* Replace the old mask composite with a purpose-built animated inhalational-anesthesia mark.
-   The source component still provides its fallback assets; this layer owns the visible treatment. */
+/* Inhalational anesthetic icon treatment.
+   Medical glyph source: Health Icons / oxygen-tank.svg (CC0 public domain)
+   https://github.com/resolvetosavelives/healthicons
+   Motion is intentionally subtle so the icon feels premium without distracting from content. */
 
 span:has(> img[src*="10823452"]):has(> img[src*="9859811"]) {
   position: relative;
   isolation: isolate;
   background-position: center;
   background-repeat: no-repeat;
-  background-size: 92% 92%;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 72 72'%3E%3Cg fill='none' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='16' y='24' width='30' height='35' rx='8' fill='%23EEF3F8' stroke='%23173A63' stroke-width='3'/%3E%3Cpath d='M24 24v-6h14v6' stroke='%232F69A8' stroke-width='3'/%3E%3Ccircle cx='31' cy='14' r='7' fill='%23fff' stroke='%23173A63' stroke-width='3'/%3E%3Cpath d='M31 10.5v4l3.8 2.1' stroke='%23D9A441' stroke-width='2.8'/%3E%3Crect x='22' y='33' width='18' height='15' rx='4' fill='%23D9E6F2' stroke='%232F69A8' stroke-width='2.5'/%3E%3Cpath d='M26 39h10M26 44h7' stroke='%23173A63' stroke-width='2.1'/%3E%3Cpath d='M46 34h10c4 0 6 2.5 6 6v4' stroke='%232F69A8' stroke-width='3'/%3E%3Ccircle cx='24' cy='53' r='2.2' fill='%23D9A441'/%3E%3Ccircle cx='31' cy='54' r='1.8' fill='%232F69A8'/%3E%3Ccircle cx='38' cy='52' r='2' fill='%23D9A441'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: 90% 90%;
+  background-image: url("data:image/svg+xml,%3Csvg width='48' height='48' viewBox='0 0 48 48' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M17 6H19V4H13V6H15V8H12.8293C12.4175 6.83481 11.3062 6 10 6C8.34315 6 7 7.34315 7 9C7 10.6569 8.34315 12 10 12C11.3062 12 12.4175 11.1652 12.8293 10H15V12.083C12.1623 12.559 10 15.027 10 18V43C10 43.5523 10.4477 44 11 44H21C21.5523 44 22 43.5523 22 43V18C22 15.027 19.8377 12.559 17 12.083V10H22V8H17V6ZM16 14C13.7909 14 12 15.7909 12 18V20H20V18C20 15.7909 18.2091 14 16 14ZM12 42V22H20V42H12ZM9 9C9 8.44772 9.44772 8 10 8C10.5523 8 11 8.44772 11 9C11 9.55228 10.5523 10 10 10C9.44772 10 9 9.55228 9 9ZM26 21C26 18.7909 27.7909 17 30 17C32.2091 17 34 18.7909 34 21V27C34 29.2091 32.2091 31 30 31C27.7909 31 26 29.2091 26 27V21ZM30 19C28.8954 19 28 19.8954 28 21V27C28 28.1046 28.8954 29 30 29C31.1046 29 32 28.1046 32 27V21C32 19.8954 31.1046 19 30 19ZM38 26H35V24H38C39.6569 24 41 25.3431 41 27C41 28.6569 39.6569 30 38 30C37.4477 30 37 30.4477 37 31V32H41V34H36C35.4477 34 35 33.5523 35 33V31C35 29.3431 36.3431 28 38 28C38.5523 28 39 27.5523 39 27C39 26.4477 38.5523 26 38 26Z' fill='%23173A63'/%3E%3C/svg%3E");
+  filter: drop-shadow(0 3px 5px rgba(23,58,99,.12));
+  animation: inhalational-icon-float 2.4s ease-in-out infinite;
 }
 
 span:has(> img[src*="10823452"]):has(> img[src*="9859811"]) > img {
@@ -18,10 +22,10 @@ span:has(> img[src*="10823452"]):has(> img[src*="9859811"]) > img {
 span:has(> img[src*="10823452"]):has(> img[src*="9859811"])::before {
   content: '';
   position: absolute;
-  inset: 12%;
+  inset: 11%;
   z-index: -1;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(47,105,168,.13), rgba(217,164,65,.04) 55%, transparent 72%);
+  background: radial-gradient(circle, rgba(47,105,168,.15), rgba(217,164,65,.06) 50%, transparent 72%);
   animation: inhalational-glow 1.9s ease-in-out infinite;
 }
 
@@ -29,30 +33,35 @@ span:has(> img[src*="10823452"]):has(> img[src*="9859811"])::after {
   content: '';
   position: absolute;
   z-index: 1;
-  top: 29%;
-  right: -5%;
-  width: 34%;
-  height: 21%;
+  top: 30%;
+  right: -2%;
+  width: 33%;
+  height: 18%;
   border-top: 2px solid #2F69A8;
   border-radius: 50%;
   box-shadow: 0 5px 0 -1px #D9A441, 0 10px 0 -1px #2F69A8;
-  opacity: .78;
-  transform: translateX(0) rotate(-8deg);
+  opacity: .72;
   transform-origin: center;
   animation: inhalational-flow 1.55s ease-in-out infinite;
 }
 
+@keyframes inhalational-icon-float {
+  0%, 100% { transform: translateY(0) scale(.98); }
+  50% { transform: translateY(-1.5px) scale(1.02); }
+}
+
 @keyframes inhalational-flow {
-  0%, 100% { transform: translateX(-8%) rotate(-8deg); opacity: .38; }
-  50% { transform: translateX(12%) rotate(-4deg); opacity: .95; }
+  0%, 100% { transform: translateX(-10%) rotate(-7deg); opacity: .32; }
+  50% { transform: translateX(12%) rotate(-3deg); opacity: .95; }
 }
 
 @keyframes inhalational-glow {
   0%, 100% { transform: scale(.92); opacity: .45; }
-  50% { transform: scale(1.07); opacity: .95; }
+  50% { transform: scale(1.07); opacity: .9; }
 }
 
 @media (prefers-reduced-motion: reduce) {
+  span:has(> img[src*="10823452"]):has(> img[src*="9859811"]),
   span:has(> img[src*="10823452"]):has(> img[src*="9859811"])::before,
   span:has(> img[src*="10823452"]):has(> img[src*="9859811"])::after {
     animation: none !important;
