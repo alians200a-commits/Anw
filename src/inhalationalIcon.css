@@ -1,10 +1,7 @@
-/* Inhalational anesthetic category icon.
-   Scientific rule: the category includes both volatile liquid agents (e.g. sevoflurane)
-   and inhaled gases (e.g. nitrous oxide), so the icon must NOT imply O2, a cylinder,
-   a face mask, or a vaporizer as the universal delivery device.
-   The visible symbol therefore represents an agent-neutral inhalational delivery FLOW:
-   a mixing chamber + moving anesthetic particles + circuit flow.
-   Motion remains subtle and respects reduced-motion. */
+/* Inhalational-anesthesia navigation icon.
+   Product convention: use an anesthesia vaporizer as the recognizable category symbol.
+   This is navigation shorthand, not a claim that every inhalational agent is delivered by a vaporizer.
+   The icon deliberately contains no O2 label or oxygen-cylinder imagery. */
 
 span:has(> img[src*="10823452"]):has(> img[src*="9859811"]) {
   position: relative;
@@ -12,12 +9,12 @@ span:has(> img[src*="10823452"]):has(> img[src*="9859811"]) {
   background-position: center;
   background-repeat: no-repeat;
   background-size: 98% 98%;
-  background-image: url("data:image/svg+xml,%3Csvg width='64' height='64' viewBox='0 0 64 64' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M6 32H16' stroke='%23173A63' stroke-width='3' stroke-linecap='round'/%3E%3Cpath d='M48 32H58' stroke='%23173A63' stroke-width='3' stroke-linecap='round'/%3E%3Ccircle cx='32' cy='32' r='16' fill='%23F8FBFD' stroke='%23173A63' stroke-width='3'/%3E%3Ccircle cx='32' cy='32' r='10' fill='%23EEF3F8' stroke='%232F69A8' stroke-width='2.6'/%3E%3Cpath d='M9 27C12 27 13 29 16 29' stroke='%232F69A8' stroke-width='2.5' stroke-linecap='round'/%3E%3Cpath d='M9 37C12 37 13 35 16 35' stroke='%23D9A441' stroke-width='2.5' stroke-linecap='round'/%3E%3Cpath d='M48 27C51 27 53 29 56 29' stroke='%23D9A441' stroke-width='2.5' stroke-linecap='round'/%3E%3Cpath d='M48 37C51 37 53 35 56 35' stroke='%232F69A8' stroke-width='2.5' stroke-linecap='round'/%3E%3Ccircle cx='27' cy='29' r='2.3' fill='%23D9A441'/%3E%3Ccircle cx='35' cy='27' r='2.1' fill='%232F69A8'/%3E%3Ccircle cx='37' cy='35' r='2.4' fill='%23D9A441'/%3E%3Ccircle cx='29' cy='37' r='1.9' fill='%232F69A8'/%3E%3Cpath d='M26 13C28 10 30 9 32 9C34 9 36 10 38 13' stroke='%23AFC3D6' stroke-width='2.5' stroke-linecap='round'/%3E%3Cpath d='M26 51C28 54 30 55 32 55C34 55 36 54 38 51' stroke='%23AFC3D6' stroke-width='2.5' stroke-linecap='round'/%3E%3C/svg%3E");
-  filter: drop-shadow(0 5px 8px rgba(23,58,99,.17));
-  animation: inhalational-icon-float 2.6s ease-in-out infinite;
+  background-image: url("data:image/svg+xml,%3Csvg width='64' height='64' viewBox='0 0 64 64' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='13' y='12' width='32' height='42' rx='7' fill='%23F8FBFD' stroke='%23173A63' stroke-width='3'/%3E%3Crect x='20' y='6' width='18' height='10' rx='3' fill='%23EEF3F8' stroke='%23173A63' stroke-width='3'/%3E%3Cpath d='M24 6V3H34V6' stroke='%23173A63' stroke-width='2.6' stroke-linecap='round'/%3E%3Ccircle cx='29' cy='29' r='9' fill='white' stroke='%232F69A8' stroke-width='3'/%3E%3Cpath d='M29 29L34 24' stroke='%23D9A441' stroke-width='3.2' stroke-linecap='round'/%3E%3Ccircle cx='29' cy='29' r='2' fill='%23173A63'/%3E%3Cpath d='M24 42H35' stroke='%23AFC3D6' stroke-width='2.7' stroke-linecap='round'/%3E%3Cpath d='M22 47H37' stroke='%232F69A8' stroke-width='2.7' stroke-linecap='round'/%3E%3Cpath d='M45 24H49C52.314 24 55 26.686 55 30V33' stroke='%23173A63' stroke-width='3' stroke-linecap='round'/%3E%3Cpath d='M48 38C53 38 57 36 60 33' stroke='%232F69A8' stroke-width='2.8' stroke-linecap='round'/%3E%3Cpath d='M47 44C52 44 56 42.5 59 40' stroke='%23D9A441' stroke-width='2.8' stroke-linecap='round'/%3E%3Cpath d='M46 50C51 50 55 49 58 47' stroke='%232F69A8' stroke-width='2.8' stroke-linecap='round'/%3E%3C/svg%3E");
+  filter: drop-shadow(0 5px 9px rgba(23,58,99,.18));
+  animation: vaporizer-icon-float 2.6s ease-in-out infinite;
 }
 
-/* Legacy image assets are never shown for this category. */
+/* The legacy mask / oxygen images remain only as a stable selector hook and are never visible. */
 span:has(> img[src*="10823452"]):has(> img[src*="9859811"]) > img {
   opacity: 0 !important;
   pointer-events: none !important;
@@ -26,45 +23,45 @@ span:has(> img[src*="10823452"]):has(> img[src*="9859811"]) > img {
 span:has(> img[src*="10823452"]):has(> img[src*="9859811"])::before {
   content: '';
   position: absolute;
-  inset: 4%;
+  inset: 3%;
   z-index: -1;
-  border-radius: 50%;
+  border-radius: 42% 58% 54% 46%;
   background:
-    radial-gradient(circle at 34% 28%, rgba(255,255,255,.98), rgba(255,255,255,.18) 34%, transparent 52%),
-    radial-gradient(circle, rgba(47,105,168,.17), rgba(217,164,65,.09) 50%, transparent 74%);
-  box-shadow: 0 8px 20px rgba(23,58,99,.085);
-  animation: inhalational-glow 2.15s ease-in-out infinite;
+    radial-gradient(circle at 31% 24%, rgba(255,255,255,.98), rgba(255,255,255,.2) 34%, transparent 53%),
+    radial-gradient(circle, rgba(47,105,168,.17), rgba(217,164,65,.10) 52%, transparent 74%);
+  box-shadow: 0 8px 20px rgba(23,58,99,.09);
+  animation: vaporizer-icon-glow 2.15s ease-in-out infinite;
 }
 
-/* Animated neutral flow — intentionally no O2 / cylinder / mask / vaporizer semantics. */
+/* Controlled vapor cue leaving the vaporizer. */
 span:has(> img[src*="10823452"]):has(> img[src*="9859811"])::after {
   content: '';
   position: absolute;
   z-index: 2;
-  top: 45%;
-  left: 12%;
-  width: 76%;
-  height: 10%;
-  border-top: 2px solid rgba(47,105,168,.84);
+  top: 47%;
+  right: -5%;
+  width: 31%;
+  height: 15%;
+  border-top: 2px solid rgba(47,105,168,.92);
   border-radius: 50%;
-  box-shadow: 0 5px 0 -1px rgba(217,164,65,.78);
-  opacity: .66;
+  box-shadow: 0 5px 0 -1px rgba(217,164,65,.90), 0 10px 0 -1px rgba(47,105,168,.74);
+  opacity: .8;
   transform-origin: center;
-  animation: inhalational-flow 1.7s ease-in-out infinite;
+  animation: vaporizer-flow 1.65s ease-in-out infinite;
 }
 
-@keyframes inhalational-icon-float {
+@keyframes vaporizer-icon-float {
   0%, 100% { transform: translateY(0) scale(.985); }
-  50% { transform: translateY(-1.2px) scale(1.018); }
+  50% { transform: translateY(-1.25px) scale(1.018); }
 }
 
-@keyframes inhalational-flow {
-  0%, 100% { transform: translateX(-5%) scaleX(.9); opacity: .32; }
-  50% { transform: translateX(5%) scaleX(1.04); opacity: .9; }
+@keyframes vaporizer-flow {
+  0%, 100% { transform: translateX(-8%) scaleX(.86); opacity: .34; }
+  50% { transform: translateX(13%) scaleX(1.05); opacity: .96; }
 }
 
-@keyframes inhalational-glow {
-  0%, 100% { transform: scale(.94); opacity: .52; }
+@keyframes vaporizer-icon-glow {
+  0%, 100% { transform: scale(.94); opacity: .50; }
   50% { transform: scale(1.045); opacity: .94; }
 }
 
