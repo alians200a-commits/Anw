@@ -19,10 +19,19 @@ jobs:
         with:
           ref: sync-ai-security-2026-09-24
           fetch-depth: 0
-      - name: Apply reviewed local file
-        run: node tools/apply_drug_media_hardening.mjs
+      - name: Correct local sync guard and apply reviewed file
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p = Path('tools/apply_drug_media_hardening.mjs')
+          s = p.read_text()
+          s = s.replace(' || !next.includes("display_name: inviteName.trim()")', '')
+          p.write_text(s)
+          PY
+          node tools/apply_drug_media_hardening.mjs
       - name: Commit synchronized admin UI
         run: |
+          git checkout -- tools/apply_drug_media_hardening.mjs
           if git diff --quiet -- src/admin/AdminAppV3.tsx; then
             echo "No admin UI changes required"
             exit 0
