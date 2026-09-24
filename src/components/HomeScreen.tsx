@@ -20,6 +20,7 @@ import {
   type StackMenuItem
 } from './ui/NotificationStackMenu';
 import { MedicalSiteIcon, type MedicalSiteIconName } from './ui/MedicalSiteIcon';
+import { VaporizerIcon } from './ui/VaporizerIcon';
 
 interface HomeScreenProps {
   openGuide: (
@@ -41,7 +42,6 @@ const guideIcon: Record<GuideSection, MedicalSiteIconName> = {
 };
 
 function drugSearchIcon(classes: DrugClass[]): MedicalSiteIconName {
-  if (classes.includes('inhalational')) return 'inhalational';
   if (
     classes.includes('cardiovascular') ||
     classes.includes('vasopressor') ||
@@ -64,8 +64,18 @@ const equipmentSearchIcon: Record<EquipmentCategory, MedicalSiteIconName> = {
 function searchIconPair(name: MedicalSiteIconName) {
   return {
     leading: <MedicalSiteIcon name={name} size={24} />,
-    leadingActive: <MedicalSiteIcon name={name} play loop size={24} />
+    leadingActive: <MedicalSiteIcon name={name} play size={24} />
   };
+}
+
+function drugSearchIconPair(classes: DrugClass[]) {
+  if (classes.includes('inhalational')) {
+    return {
+      leading: <VaporizerIcon size={24} />,
+      leadingActive: <VaporizerIcon size={24} play />
+    };
+  }
+  return searchIconPair(drugSearchIcon(classes));
 }
 
 export function HomeScreen({ openGuide, onOpenAbout }: HomeScreenProps) {
@@ -83,7 +93,7 @@ export function HomeScreen({ openGuide, onOpenAbout }: HomeScreenProps) {
         ...drug.classes.map((item) => DRUG_CLASS_LABELS[item]),
         ...drug.tags
       ],
-      ...searchIconPair(drugSearchIcon(drug.classes)),
+      ...drugSearchIconPair(drug.classes),
       onSelect: () => openGuide('drugs', 'all', drug.en)
     }));
 
@@ -195,49 +205,49 @@ export function HomeScreen({ openGuide, onOpenAbout }: HomeScreenProps) {
       id: 'drugs',
       title: 'الأدوية',
       description: 'Drug Reference',
-      leading: <MedicalSiteIcon name="drugs" play loop size={25} />,
+      leading: <MedicalSiteIcon name="drugs" size={25} />,
       onSelect: () => openGuide('drugs')
     },
     {
       id: 'equipment',
       title: 'عربة التخدير والمعدات',
       description: 'Machine • Airway • Monitoring • Tools',
-      leading: <MedicalSiteIcon name="equipment" play loop size={25} />,
+      leading: <MedicalSiteIcon name="equipment" size={25} />,
       onSelect: () => openGuide('equipment')
     },
     {
       id: 'fluids',
       title: 'السوائل الوريدية',
       description: 'IV Fluids',
-      leading: <MedicalSiteIcon name="fluids" play loop size={25} />,
+      leading: <MedicalSiteIcon name="fluids" size={25} />,
       onSelect: () => openGuide('fluids')
     },
     {
       id: 'stages',
       title: 'مراحل التخدير',
       description: 'Stages of Anesthesia',
-      leading: <MedicalSiteIcon name="stages" play loop size={25} />,
+      leading: <MedicalSiteIcon name="stages" size={25} />,
       onSelect: () => openGuide('stages')
     },
     {
       id: 'clinical',
       title: 'المفاهيم والإجراءات',
       description: 'Clinical Guides',
-      leading: <MedicalSiteIcon name="clinical" play loop size={25} />,
+      leading: <MedicalSiteIcon name="clinical" size={25} />,
       onSelect: () => openGuide('clinical')
     },
     {
       id: 'terms',
       title: 'المصطلحات',
       description: 'Clinical Terms',
-      leading: <MedicalSiteIcon name="terms" play loop size={25} />,
+      leading: <MedicalSiteIcon name="terms" size={25} />,
       onSelect: () => openGuide('terms')
     },
     {
       id: 'abbreviations',
       title: 'الاختصارات',
       description: 'Abbreviations',
-      leading: <MedicalSiteIcon name="abbreviations" play loop size={25} />,
+      leading: <MedicalSiteIcon name="abbreviations" size={25} />,
       onSelect: () => openGuide('abbreviations')
     }
   ];
@@ -276,7 +286,7 @@ export function HomeScreen({ openGuide, onOpenAbout }: HomeScreenProps) {
         <NotificationStackMenu
           title="الدليل التخديري"
           description="أدوية، سوائل، معدات، مراحل التخدير، إجراءات ومصطلحات"
-          icon={<MedicalSiteIcon name="guide" play loop size={27} />}
+          icon={<MedicalSiteIcon name="guide" play size={27} />}
           items={guideItems}
         />
       </section>
