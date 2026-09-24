@@ -74,17 +74,18 @@ export function AboutSheet({ onClose }: AboutSheetProps) {
             </div>
           </section>
 
-          <section className="rounded-2xl border border-[#E0E7EC] bg-white p-4">
-            <p className="text-sm font-black text-[#183149]">المصادر والحقوق</p>
+          <div className="flex items-center justify-center gap-1.5 pt-0.5 text-[10px] font-semibold text-[#98A6B1]">
+            <span>اعتمادات الأيقونات</span>
+            <span aria-hidden="true">·</span>
             <a
-              href="https://www.flaticon.com/free-animated-icons/medical"
+              href="https://www.flaticon.com/free-animated-icon/anesthesia_19009171"
               target="_blank"
               rel="noreferrer"
-              className="mt-2 inline-block text-xs font-bold text-[#607487] underline underline-offset-2"
+              className="underline decoration-[#C3CCD3] underline-offset-2 transition-colors hover:text-[#607487]"
             >
-              Animated medical icons · Flaticon
+              Flaticon
             </a>
-          </section>
+          </div>
         </div>
       </div>
     </div>
