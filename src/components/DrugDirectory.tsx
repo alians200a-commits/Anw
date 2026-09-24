@@ -228,19 +228,8 @@ export function DrugDirectory({
 
                 <div className="flex min-w-0 flex-1 items-start justify-end gap-2.5 text-right">
                   <div className="min-w-0 flex-1 overflow-hidden">
-                    <h3
-                      className="truncate whitespace-nowrap text-[13px] font-black leading-5 text-[#183149]"
-                      title={drug.ar}
-                    >
-                      {drug.ar}
-                    </h3>
-                    <p
-                      className="mt-0.5 truncate whitespace-nowrap text-[12px] font-bold leading-5 text-[#526675]"
-                      dir="ltr"
-                      title={drug.en}
-                    >
-                      {drug.en}
-                    </p>
+                    <h3 className="truncate whitespace-nowrap text-[13px] font-black leading-5 text-[#183149]">{drug.ar}</h3>
+                    <p className="mt-0.5 truncate whitespace-nowrap text-[12px] font-bold leading-5 text-[#526675]" dir="ltr">{drug.en}</p>
                     <span
                       className="mt-1.5 block max-w-full truncate whitespace-nowrap rounded-full bg-[#EAF0F4] px-2.5 py-1 text-[10.5px] font-bold leading-4 text-[#405E75]"
                       title={classLabel}
