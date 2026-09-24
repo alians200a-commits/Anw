@@ -1,0 +1,34 @@
+name: Apply Drug Media Hardening
+
+on:
+  push:
+    branches:
+      - sync-ai-security-2026-09-24
+    paths:
+      - tools/apply_drug_media_hardening.mjs
+      - .github/workflows/apply-drug-media-hardening.yml
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: sync-ai-security-2026-09-24
+          fetch-depth: 0
+      - name: Apply reviewed editor patch
+        run: node tools/apply_drug_media_hardening.mjs
+      - name: Commit patched editor
+        run: |
+          if git diff --quiet -- src/admin/DrugEditorV2.tsx; then
+            echo "No editor changes required"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src/admin/DrugEditorV2.tsx
+          git commit -m "admin: use private draft media in drug editor"
+          git push origin HEAD:sync-ai-security-2026-09-24
