@@ -1,4 +1,5 @@
 import { useMemo } from 'react';
+import { BadgeInfo } from 'lucide-react';
 import {
   ANESTHESIA_DRUGS,
   DRUG_CLASS_LABELS,
@@ -244,13 +245,25 @@ export function HomeScreen({ openGuide, onOpenAbout }: HomeScreenProps) {
   return (
     <div className="space-y-5">
       <section>
-        <div className="mb-3">
-          <p className="text-[11px] font-bold text-[#526675]">
-            دليلك السريع في التخدير
-          </p>
-          <h2 className="mt-1 text-xl font-black text-[#183149]">
-            ابحث أو اختر القسم
-          </h2>
+        <div className="mb-3 flex items-start justify-between gap-3">
+          <div>
+            <p className="text-[11px] font-bold text-[#526675]">
+              دليلك السريع في التخدير
+            </p>
+            <h2 className="mt-1 text-xl font-black text-[#183149]">
+              ابحث أو اختر القسم
+            </h2>
+          </div>
+
+          <button
+            type="button"
+            onClick={onOpenAbout}
+            aria-label="حول تطبيق دليلي"
+            title="حول التطبيق"
+            className="group grid h-11 w-11 shrink-0 place-items-center rounded-2xl border border-[#E5D3A1] bg-[linear-gradient(145deg,#FFFDF7_0%,#F7F0DE_100%)] text-[#A87916] shadow-[0_7px_18px_rgba(24,49,73,0.08)] transition duration-200 hover:-translate-y-0.5 hover:border-[#D2AE55] hover:text-[#805B0D] hover:shadow-[0_10px_24px_rgba(24,49,73,0.12)] active:translate-y-0 active:scale-95"
+          >
+            <BadgeInfo size={22} strokeWidth={2.15} />
+          </button>
         </div>
 
         <MorphingSearch
@@ -267,16 +280,6 @@ export function HomeScreen({ openGuide, onOpenAbout }: HomeScreenProps) {
           items={guideItems}
         />
       </section>
-
-      <div className="flex justify-center pt-1">
-        <button
-          type="button"
-          onClick={onOpenAbout}
-          className="rounded-full px-4 py-2 text-xs font-black text-[#607487] transition hover:bg-[#F1F5F8] hover:text-[#183149]"
-        >
-          حول
-        </button>
-      </div>
     </div>
   );
 }
