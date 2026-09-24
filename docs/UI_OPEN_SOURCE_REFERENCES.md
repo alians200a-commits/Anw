@@ -16,7 +16,7 @@ Internal engineering reference only. This file is not rendered in the public app
 - Repository: https://github.com/resolvetosavelives/healthicons
 - License: MIT
 - Used as a medical-device icon-language reference only.
-- Scientific guardrail for inhalational anesthetics: do not use an O2 cylinder or simple face-mask symbol to represent volatile anesthetic agents. The visible app treatment uses a generic vaporizer + vapor-flow concept so it remains agent-neutral for sevoflurane, isoflurane, desflurane, enflurane and halothane.
+- Scientific guardrail for the inhalational-anesthetics category: do not use an O2 cylinder, simple face mask, or a vaporizer as the universal category symbol. The category includes both volatile liquid agents (such as sevoflurane, isoflurane and desflurane) and inhaled gases (nitrous oxide), so the visible app treatment uses an agent-neutral inhalational delivery-flow concept: mixing chamber + moving anesthetic particles + circuit flow.
 - Integration approach: local visual adaptation only; public UI does not show a source card.
 
 ## Guardrails
