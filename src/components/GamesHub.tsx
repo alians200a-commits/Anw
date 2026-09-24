@@ -67,15 +67,15 @@ export function GamesHub() {
             </div>
             <h3 className="mt-2 text-base font-black text-white">أنقذ المريض أثناء التخدير</h3>
             <p className="mt-1.5 text-[11px] font-semibold leading-5 text-[#C5D3DE]">
-              Monitor متعدد الموجات، Patient strip، أدوات تقييم/سوائل/أدوية/Airway/Vent وDebrief زمني بالنهاية.
+              3 مراحل متدرجة: سهل، متوسط، صعب. Monitor كبير متعدد الموجات وتدخلات مترابطة وDebrief زمني.
             </p>
           </div>
         </div>
 
         <div className="mt-4 grid grid-cols-3 gap-2 border-t border-white/10 pt-3 text-center">
-          <div><div className="text-sm font-black text-white">5</div><div className="text-[9px] font-bold text-[#AFC3D6]">أدوات</div></div>
-          <div><div className="text-sm font-black text-white">100</div><div className="text-[9px] font-bold text-[#AFC3D6]">نقطة</div></div>
-          <div><div className="text-sm font-black text-white">~75s</div><div className="text-[9px] font-bold text-[#AFC3D6]">سيناريو</div></div>
+          <div><div className="text-sm font-black text-white">3</div><div className="text-[9px] font-bold text-[#AFC3D6]">مراحل</div></div>
+          <div><div className="text-sm font-black text-white">5</div><div className="text-[9px] font-bold text-[#AFC3D6]">مجموعات أدوات</div></div>
+          <div><div className="text-sm font-black text-white">100</div><div className="text-[9px] font-bold text-[#AFC3D6]">نقطة/مرحلة</div></div>
         </div>
       </button>
 
