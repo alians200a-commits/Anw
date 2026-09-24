@@ -1,5 +1,5 @@
 import { useRef } from 'react';
-import { X } from 'lucide-react';
+import { BadgeInfo, X } from 'lucide-react';
 import { useModalSheetA11y } from '../hooks/useModalSheetA11y';
 
 interface AboutSheetProps {
@@ -28,17 +28,22 @@ export function AboutSheet({ onClose }: AboutSheetProps) {
         className="w-full max-w-md rounded-[28px] border border-[#D7E0E7] bg-white p-5 text-[#183149] shadow-[0_24px_70px_rgba(7,24,44,0.35)] outline-none"
       >
         <div className="flex items-center justify-between gap-3">
-          <div>
-            <p className="text-[11px] font-bold text-[#6B7E8D]">دليلي</p>
-            <h2 id="about-title" className="mt-1 text-xl font-black text-[#183149]">
-              حول التطبيق
-            </h2>
+          <div className="flex items-center gap-3">
+            <div className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl border border-[#E5D3A1] bg-[linear-gradient(145deg,#FFFDF7_0%,#F7F0DE_100%)] text-[#A87916] shadow-[0_7px_18px_rgba(24,49,73,0.08)]">
+              <BadgeInfo size={22} strokeWidth={2.15} />
+            </div>
+            <div>
+              <p className="text-[11px] font-bold text-[#6B7E8D]">دليلي</p>
+              <h2 id="about-title" className="mt-1 text-xl font-black text-[#183149]">
+                حول التطبيق
+              </h2>
+            </div>
           </div>
           <button
             type="button"
             onClick={onClose}
             aria-label="إغلاق"
-            className="grid h-10 w-10 place-items-center rounded-full border border-[#D8E1E8] bg-[#F7F9FB] text-[#183149]"
+            className="grid h-10 w-10 place-items-center rounded-full border border-[#D8E1E8] bg-[#F7F9FB] text-[#183149] transition hover:bg-[#EEF3F6]"
           >
             <X size={20} />
           </button>
