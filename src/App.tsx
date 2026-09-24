@@ -111,7 +111,12 @@ export default function App() {
       <KingdomHeader />
 
       <main className="relative mx-auto w-full max-w-3xl px-4 pb-24 pt-4 sm:px-6 sm:pt-5">
-        <div key={activeTab}>{screen}</div>
+        <div
+          key={activeTab}
+          className={activeTab === 'guide' ? 'readable-guide-content' : undefined}
+        >
+          {screen}
+        </div>
       </main>
 
         <BottomNav active={activeTab} onChange={handleTabChange} />
