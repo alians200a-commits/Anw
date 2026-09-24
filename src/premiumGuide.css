@@ -1,5 +1,5 @@
-/* Premium guide visual system.
-   Adapted from the interaction language of Craft cards and Magic UI border-beam.
+/* Premium guide visual system — touch-performance edition.
+   Keeps the Craft / Magic UI visual language without continuous mobile GPU work.
    Loaded after readability.css so these rules are the final public-guide treatment. */
 
 .readable-guide-content {
@@ -9,7 +9,15 @@
   --premium-ice: #F4F8FB;
 }
 
-/* Flagship guide section selector. */
+/* Fast tactile controls. */
+.readable-guide-content button,
+.readable-guide-content [role="menuitem"],
+.readable-guide-content [data-dropdown-trigger] {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Flagship guide selector: layered premium surface, no blur filter. */
 .readable-guide-content [data-dropdown-trigger] {
   position: relative;
   isolation: isolate;
@@ -17,39 +25,37 @@
   border: 1px solid transparent !important;
   border-radius: 20px !important;
   background:
-    linear-gradient(145deg, rgba(255,255,255,.995), rgba(242,247,251,.98)) padding-box,
-    linear-gradient(120deg, rgba(217,164,65,.76), rgba(255,255,255,.9) 34%, rgba(47,105,168,.58) 72%, rgba(16,45,79,.42)) border-box !important;
+    linear-gradient(145deg, #FFFFFF, #F4F8FB) padding-box,
+    linear-gradient(120deg, rgba(217,164,65,.68), rgba(255,255,255,.94) 38%, rgba(47,105,168,.46) 76%, rgba(16,45,79,.28)) border-box !important;
   box-shadow:
-    0 22px 50px rgba(16,45,79,.15),
-    0 8px 18px rgba(16,45,79,.07),
-    0 1px 0 rgba(255,255,255,.98) inset,
-    0 -1px 0 rgba(47,105,168,.05) inset !important;
-  backdrop-filter: blur(14px) saturate(1.12);
-  -webkit-backdrop-filter: blur(14px) saturate(1.12);
+    0 9px 22px rgba(16,45,79,.095),
+    0 1px 0 rgba(255,255,255,.98) inset !important;
 }
 
 .readable-guide-content [data-dropdown-trigger]::before {
   content: '';
   position: absolute;
   z-index: 0;
-  inset: -72% 38% 18% -22%;
-  background: radial-gradient(circle, rgba(255,255,255,.98) 0%, rgba(217,164,65,.15) 33%, transparent 68%);
-  transform: rotate(-12deg);
+  width: 8rem;
+  height: 8rem;
+  inset-inline-end: -3rem;
+  top: -5rem;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(217,164,65,.15), rgba(47,105,168,.055) 52%, transparent 72%);
   pointer-events: none;
 }
 
+/* Static metallic top accent instead of an always-running beam. */
 .readable-guide-content [data-dropdown-trigger]::after {
   content: '';
   position: absolute;
-  z-index: 4;
+  z-index: 3;
   top: 0;
-  inset-inline-start: -35%;
-  width: 35%;
+  inset-inline-end: 10%;
+  width: 34%;
   height: 2px;
   border-radius: 999px;
-  background: linear-gradient(90deg, transparent, rgba(217,164,65,.98), rgba(47,105,168,.96), transparent);
-  box-shadow: 0 0 16px rgba(47,105,168,.38);
-  animation: premium-guide-beam 3.8s linear infinite;
+  background: linear-gradient(90deg, transparent, rgba(217,164,65,.88), rgba(47,105,168,.76), transparent);
   pointer-events: none;
 }
 
@@ -59,47 +65,50 @@
 }
 
 .readable-guide-content [data-dropdown-trigger] > span:first-child {
-  border: 1px solid rgba(47,105,168,.16);
+  border: 1px solid rgba(47,105,168,.14);
   border-radius: 13px;
-  background: linear-gradient(145deg, rgba(255,255,255,.99), rgba(232,241,248,.92));
-  box-shadow: 0 9px 20px rgba(16,45,79,.11), 0 1px 0 white inset;
+  background: linear-gradient(145deg, #FFFFFF, #EEF4F8);
+  box-shadow: 0 4px 10px rgba(16,45,79,.075), 0 1px 0 white inset;
 }
 
 .readable-guide-content [data-dropdown-trigger] > span:last-child {
-  border: 1px solid rgba(217,164,65,.18);
-  background: rgba(255,255,255,.72);
-  box-shadow: 0 4px 10px rgba(16,45,79,.06), 0 1px 0 white inset;
+  border: 1px solid rgba(217,164,65,.16);
+  background: rgba(255,255,255,.82);
+  box-shadow: 0 2px 7px rgba(16,45,79,.045);
 }
 
-/* Floating dropdown sheet: glass depth instead of a plain white list. */
+/* Menu surface: opaque composited surface is cheaper than backdrop-filter. */
 .readable-guide-content [role="menu"] {
-  border: 1px solid rgba(255,255,255,.84) !important;
+  border: 1px solid rgba(210,222,231,.92) !important;
   border-radius: 20px !important;
-  background: linear-gradient(155deg, rgba(255,255,255,.965), rgba(242,247,251,.93)) !important;
+  background: linear-gradient(155deg, #FFFFFF, #F5F8FA) !important;
   box-shadow:
-    0 28px 70px rgba(16,45,79,.19),
-    0 10px 24px rgba(16,45,79,.09),
+    0 14px 34px rgba(16,45,79,.13),
     0 1px 0 white inset !important;
-  backdrop-filter: blur(20px) saturate(1.18);
-  -webkit-backdrop-filter: blur(20px) saturate(1.18);
 }
 
 .readable-guide-content [role="menuitem"] {
   position: relative;
   border: 1px solid transparent;
   border-radius: 14px !important;
-  transition: transform 160ms cubic-bezier(.2,.8,.2,1), box-shadow 160ms ease, border-color 160ms ease, background 160ms ease;
 }
 
-.readable-guide-content [role="menuitem"]:hover,
 .readable-guide-content [role="menuitem"]:focus-visible {
-  transform: translateY(-1px);
-  border-color: rgba(47,105,168,.13);
-  background: linear-gradient(135deg, rgba(255,255,255,.99), rgba(236,244,249,.94)) !important;
-  box-shadow: 0 7px 16px rgba(16,45,79,.075), 0 1px 0 white inset;
+  border-color: rgba(47,105,168,.18);
 }
 
-/* Directory cards: Craft-style lift + layered edge + Magic-UI-style border beam. */
+/* One short compositor-friendly reveal only when the menu opens. */
+.stack-menu-enter {
+  transform-origin: top center;
+  animation: stack-menu-enter 105ms ease-out both;
+}
+
+@keyframes stack-menu-enter {
+  from { opacity: 0; transform: translateY(-3px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Directory cards: depth remains, continuous beams and forced GPU layers are removed. */
 .readable-guide-content button.rounded-\[18px\],
 .readable-guide-content article.rounded-\[18px\] {
   position: relative;
@@ -108,14 +117,11 @@
   border: 1px solid transparent !important;
   border-radius: 22px !important;
   background:
-    linear-gradient(148deg, rgba(255,255,255,.998), rgba(243,248,251,.985)) padding-box,
-    linear-gradient(125deg, rgba(217,164,65,.66), rgba(255,255,255,.92) 28%, rgba(47,105,168,.48) 73%, rgba(16,45,79,.30)) border-box !important;
+    linear-gradient(148deg, #FFFFFF, #F5F8FA) padding-box,
+    linear-gradient(125deg, rgba(217,164,65,.50), rgba(255,255,255,.94) 31%, rgba(47,105,168,.34) 74%, rgba(16,45,79,.20)) border-box !important;
   box-shadow:
-    0 18px 44px rgba(16,45,79,.13),
-    0 4px 12px rgba(16,45,79,.055),
+    0 8px 20px rgba(16,45,79,.085),
     0 1px 0 rgba(255,255,255,1) inset !important;
-  transform: translateZ(0);
-  transition: transform 190ms cubic-bezier(.2,.8,.2,1), box-shadow 190ms ease, filter 190ms ease;
 }
 
 .readable-guide-content button.rounded-\[18px\]::before,
@@ -123,12 +129,12 @@
   content: '';
   position: absolute;
   z-index: 0;
-  width: 12rem;
-  height: 12rem;
-  inset-inline-end: -5rem;
-  top: -7rem;
+  width: 9rem;
+  height: 9rem;
+  inset-inline-end: -4rem;
+  top: -5.5rem;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(217,164,65,.19), rgba(47,105,168,.078) 45%, transparent 70%);
+  background: radial-gradient(circle, rgba(217,164,65,.13), rgba(47,105,168,.05) 48%, transparent 70%);
   pointer-events: none;
 }
 
@@ -138,14 +144,11 @@
   position: absolute;
   z-index: 1;
   top: 0;
-  inset-inline-start: -33%;
-  width: 33%;
+  inset-inline-end: 9%;
+  width: 30%;
   height: 2px;
   border-radius: 999px;
-  background: linear-gradient(90deg, transparent, rgba(217,164,65,.98), rgba(47,105,168,.94), transparent);
-  box-shadow: 0 0 14px rgba(47,105,168,.30);
-  opacity: .88;
-  animation: premium-card-beam 5.2s linear infinite;
+  background: linear-gradient(90deg, transparent, rgba(217,164,65,.76), rgba(47,105,168,.68), transparent);
   pointer-events: none;
 }
 
@@ -155,34 +158,46 @@
   z-index: 2;
 }
 
-/* Icon/control pods become polished device tiles rather than flat circles. */
+/* Icon/control pods keep the polished device-tile treatment with cheaper shadows. */
 .readable-guide-content :is(button.rounded-\[18px\], article.rounded-\[18px\]) [class*="h-11"][class*="w-11"][class*="rounded"] {
-  border: 1px solid rgba(47,105,168,.17) !important;
-  background:
-    radial-gradient(circle at 28% 18%, white, rgba(238,245,250,.96) 54%, rgba(218,231,241,.90)) !important;
+  border: 1px solid rgba(47,105,168,.15) !important;
+  background: linear-gradient(145deg, #FFFFFF, #EAF1F6) !important;
   box-shadow:
-    0 10px 22px rgba(16,45,79,.12),
-    0 1px 0 white inset,
-    0 0 0 1px rgba(255,255,255,.55) inset !important;
+    0 4px 10px rgba(16,45,79,.075),
+    0 1px 0 white inset !important;
 }
 
-@media (hover: hover) {
+/* Premium hover is desktop-only; touch devices never pay for lift/filter effects. */
+@media (hover: hover) and (pointer: fine) {
+  .readable-guide-content [role="menuitem"] {
+    transition: background-color 120ms ease, border-color 120ms ease, transform 120ms ease;
+  }
+
+  .readable-guide-content [role="menuitem"]:hover {
+    transform: translateY(-1px);
+    border-color: rgba(47,105,168,.13);
+    background: linear-gradient(135deg, #FFFFFF, #EEF5F9) !important;
+  }
+
+  .readable-guide-content button.rounded-\[18px\],
+  .readable-guide-content article.rounded-\[18px\] {
+    transition: transform 150ms cubic-bezier(.2,.8,.2,1), box-shadow 150ms ease;
+  }
+
   .readable-guide-content button.rounded-\[18px\]:hover,
   .readable-guide-content article.rounded-\[18px\]:hover {
-    transform: translateY(-4px);
-    filter: saturate(1.045);
+    transform: translateY(-2px);
     box-shadow:
-      0 28px 58px rgba(16,45,79,.18),
-      0 8px 20px rgba(16,45,79,.078),
+      0 14px 30px rgba(16,45,79,.12),
       0 1px 0 white inset !important;
   }
 }
 
 .readable-guide-content button.rounded-\[18px\]:active {
-  transform: translateY(1px) scale(.992);
+  transform: scale(.995);
 }
 
-/* Disclosure panels get a visibly elevated open state. */
+/* Disclosure panels: keep hierarchy but suppress the old continuous border trail. */
 .readable-guide-content details.rounded-2xl {
   border-radius: 20px !important;
 }
@@ -190,34 +205,61 @@
 .readable-guide-content details.rounded-2xl[open] {
   border-color: transparent !important;
   box-shadow:
-    0 22px 52px rgba(16,45,79,.155),
-    0 5px 14px rgba(16,45,79,.06),
+    0 10px 24px rgba(16,45,79,.105),
     0 1px 0 white inset !important;
 }
 
+.readable-guide-content details.rounded-2xl[open]::after {
+  animation: none !important;
+  opacity: 0 !important;
+}
+
 .readable-guide-content details.rounded-2xl[open] > summary {
-  background:
-    linear-gradient(90deg, rgba(217,164,65,.105), rgba(47,105,168,.07), rgba(255,255,255,.22)) !important;
+  background: linear-gradient(90deg, rgba(217,164,65,.085), rgba(47,105,168,.055), rgba(255,255,255,.28)) !important;
 }
 
-@keyframes premium-guide-beam {
-  0%, 10% { inset-inline-start: -35%; opacity: 0; }
-  20% { opacity: 1; }
-  80% { opacity: .9; }
-  100% { inset-inline-start: 100%; opacity: 0; }
-}
+/* Coarse-pointer / mobile path: prioritize immediate touch response. */
+@media (hover: none), (pointer: coarse), (max-width: 768px) {
+  .readable-guide-content [data-dropdown-trigger],
+  .readable-guide-content [role="menu"],
+  .readable-guide-content button.rounded-\[18px\],
+  .readable-guide-content article.rounded-\[18px\],
+  .readable-guide-content details.rounded-2xl[open] {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
 
-@keyframes premium-card-beam {
-  0%, 18% { inset-inline-start: -33%; opacity: 0; }
-  28% { opacity: .88; }
-  70% { opacity: .74; }
-  84%, 100% { inset-inline-start: 100%; opacity: 0; }
+  .readable-guide-content [data-dropdown-trigger] {
+    box-shadow: 0 5px 13px rgba(16,45,79,.075), 0 1px 0 white inset !important;
+  }
+
+  .readable-guide-content [role="menu"] {
+    box-shadow: 0 10px 24px rgba(16,45,79,.11) !important;
+  }
+
+  .readable-guide-content button.rounded-\[18px\],
+  .readable-guide-content article.rounded-\[18px\] {
+    box-shadow: 0 5px 13px rgba(16,45,79,.065), 0 1px 0 white inset !important;
+    transition: none !important;
+  }
+
+  .readable-guide-content [role="menuitem"] {
+    transform: none !important;
+    transition: background-color 70ms linear !important;
+  }
+
+  .readable-guide-content button.rounded-\[18px\]:active {
+    transform: none !important;
+  }
+
+  .stack-menu-enter {
+    animation-duration: 85ms;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .readable-guide-content [data-dropdown-trigger]::after,
-  .readable-guide-content button.rounded-\[18px\]::after,
-  .readable-guide-content article.rounded-\[18px\]::after {
+  .stack-menu-enter,
+  .readable-guide-content details.rounded-2xl[open]::after {
     animation: none !important;
   }
 
