@@ -4,6 +4,11 @@
 .readable-guide-content {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: auto;
+  --guide-navy: #173A63;
+  --guide-blue: #2F69A8;
+  --guide-gold: #D9A441;
+  --guide-surface: #FFFFFF;
+  --guide-soft: #F5F8FA;
 }
 
 /* Explanatory body copy that was previously rendered at 11–12px. */
@@ -46,7 +51,6 @@
   font-weight: 850 !important;
 }
 
-/* Body-copy weights should never drop below a comfortable reading weight. */
 .readable-guide-content p.font-normal,
 .readable-guide-content p.font-medium,
 .readable-guide-content p.font-semibold,
@@ -56,51 +60,97 @@
   font-weight: 600 !important;
 }
 
-/* Public guide cards get a more deliberate visual hierarchy without becoming noisy. */
-.readable-guide-content article {
+/* Premium directory surface.
+   Uses a layered gradient-border treatment rather than a flat grey card so the
+   guide feels authored and premium while staying clinically restrained. */
+.readable-guide-content :is(article.rounded-\[18px\], button.rounded-\[18px\]) {
   position: relative;
+  isolation: isolate;
   overflow: hidden;
-  border-color: #d5e0e7 !important;
-  background-image: linear-gradient(145deg, rgba(255,255,255,.98), rgba(246,249,251,.96));
-  box-shadow: 0 7px 20px rgba(23, 58, 99, 0.075), 0 1px 0 rgba(255,255,255,.9) inset;
-  transition: transform 160ms ease, box-shadow 160ms ease, border-color 160ms ease;
+  border: 1px solid transparent !important;
+  background:
+    linear-gradient(150deg, rgba(255,255,255,.99), rgba(246,249,251,.98)) padding-box,
+    linear-gradient(135deg, rgba(217,164,65,.48), rgba(47,105,168,.34) 52%, rgba(23,58,99,.12)) border-box !important;
+  box-shadow:
+    0 14px 34px rgba(23,58,99,.105),
+    0 3px 9px rgba(23,58,99,.045),
+    0 1px 0 rgba(255,255,255,.96) inset;
+  transition: transform 170ms cubic-bezier(.2,.8,.2,1), box-shadow 170ms ease, filter 170ms ease;
   content-visibility: auto;
-  contain-intrinsic-size: 190px;
+  contain-intrinsic-size: 120px;
+  -webkit-tap-highlight-color: transparent;
 }
 
-.readable-guide-content article::after {
+.readable-guide-content :is(article.rounded-\[18px\], button.rounded-\[18px\])::before {
   content: '';
   position: absolute;
-  inset-inline-end: 0;
-  top: 18px;
-  width: 3px;
-  height: 38px;
-  border-radius: 999px 0 0 999px;
-  background: linear-gradient(180deg, #d9a441 0%, #2f69a8 100%);
-  opacity: .78;
+  z-index: -1;
+  width: 9rem;
+  height: 9rem;
+  inset-inline-end: -3.5rem;
+  top: -4.8rem;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(217,164,65,.2) 0%, rgba(47,105,168,.075) 46%, transparent 72%);
   pointer-events: none;
 }
 
-.readable-guide-content article:active {
-  transform: scale(.995);
-  box-shadow: 0 4px 13px rgba(23,58,99,.075), 0 1px 0 rgba(255,255,255,.9) inset;
+.readable-guide-content :is(article.rounded-\[18px\], button.rounded-\[18px\])::after {
+  content: '';
+  position: absolute;
+  z-index: 1;
+  inset-inline-end: 0;
+  top: 17px;
+  width: 3px;
+  height: 42px;
+  border-radius: 999px 0 0 999px;
+  background: linear-gradient(180deg, var(--guide-gold), var(--guide-blue));
+  box-shadow: 0 0 13px rgba(47,105,168,.16);
+  opacity: .9;
+  pointer-events: none;
+}
+
+.readable-guide-content :is(article.rounded-\[18px\], button.rounded-\[18px\]) > * {
+  position: relative;
+  z-index: 2;
+}
+
+.readable-guide-content :is(article.rounded-\[18px\], button.rounded-\[18px\]):active {
+  transform: translateY(1px) scale(.992);
+  box-shadow: 0 6px 16px rgba(23,58,99,.09), 0 1px 0 rgba(255,255,255,.92) inset;
+}
+
+/* Icon/control pods inside content cards get a subtle jewel-like finish. */
+.readable-guide-content :is(article.rounded-\[18px\], button.rounded-\[18px\]) [class*="h-11"][class*="w-11"][class*="rounded"] {
+  border-color: rgba(47,105,168,.16) !important;
+  background:
+    radial-gradient(circle at 32% 22%, rgba(255,255,255,1), rgba(238,243,248,.95) 62%, rgba(217,230,242,.82)) !important;
+  box-shadow:
+    0 7px 16px rgba(23,58,99,.09),
+    0 1px 0 rgba(255,255,255,.96) inset,
+    0 0 0 1px rgba(255,255,255,.55) inset;
 }
 
 @media (hover: hover) {
-  .readable-guide-content article:hover {
-    transform: translateY(-1px);
-    border-color: #c6d6e0 !important;
-    box-shadow: 0 12px 28px rgba(23, 58, 99, 0.11), 0 1px 0 rgba(255,255,255,.95) inset;
+  .readable-guide-content :is(article.rounded-\[18px\], button.rounded-\[18px\]):hover {
+    transform: translateY(-2px);
+    filter: saturate(1.025);
+    box-shadow:
+      0 20px 42px rgba(23,58,99,.14),
+      0 4px 12px rgba(23,58,99,.055),
+      0 1px 0 rgba(255,255,255,.98) inset;
   }
 }
 
-/* Expandable internal content: stronger cards, cleaner reveal, and richer list rows. */
+/* Expandable internal content: premium disclosure panels with a restrained metallic edge. */
 .readable-guide-content details.rounded-2xl {
   position: relative;
   overflow: hidden;
-  border-color: #d4e0e7 !important;
-  box-shadow: 0 5px 16px rgba(23, 58, 99, 0.07), 0 1px 0 rgba(255,255,255,.85) inset;
-  transition: transform 170ms ease, box-shadow 170ms ease, border-color 170ms ease, background-color 170ms ease;
+  border: 1px solid transparent !important;
+  background:
+    linear-gradient(155deg, rgba(255,255,255,.98), rgba(247,249,250,.97)) padding-box,
+    linear-gradient(135deg, rgba(217,164,65,.30), rgba(47,105,168,.23), rgba(23,58,99,.08)) border-box !important;
+  box-shadow: 0 8px 22px rgba(23,58,99,.075), 0 1px 0 rgba(255,255,255,.9) inset;
+  transition: transform 170ms ease, box-shadow 170ms ease, background-color 170ms ease;
   content-visibility: auto;
   contain-intrinsic-size: 90px;
 }
@@ -113,63 +163,66 @@
   bottom: 12px;
   width: 3px;
   border-radius: 999px 0 0 999px;
-  background: linear-gradient(180deg, #d9a441 0%, #2f69a8 100%);
-  opacity: .62;
+  background: linear-gradient(180deg, var(--guide-gold), var(--guide-blue));
+  opacity: .7;
   pointer-events: none;
 }
 
-/* Lightweight border-trail treatment inspired by the MIT Motion Primitives pattern.
-   Only the open disclosure animates, so mobile rendering stays inexpensive. */
+/* Border-trail pattern adapted from the MIT Motion Primitives visual language. */
 .readable-guide-content details.rounded-2xl[open]::after {
   content: '';
   position: absolute;
   z-index: 2;
   top: 0;
-  inset-inline-start: -34%;
-  width: 34%;
+  inset-inline-start: -36%;
+  width: 36%;
   height: 2px;
   border-radius: 999px;
-  background: linear-gradient(90deg, transparent 0%, #d9a441 35%, #2f69a8 72%, transparent 100%);
-  box-shadow: 0 0 10px rgba(47,105,168,.2);
+  background: linear-gradient(90deg, transparent 0%, var(--guide-gold) 32%, var(--guide-blue) 72%, transparent 100%);
+  box-shadow: 0 0 12px rgba(47,105,168,.26);
   pointer-events: none;
-  animation: guide-border-trail 2.7s ease-in-out infinite;
+  animation: guide-border-trail 2.8s ease-in-out infinite;
 }
 
 .readable-guide-content details.rounded-2xl > summary {
-  min-height: 3.4rem !important;
-  padding-inline: .2rem .35rem;
+  min-height: 3.55rem !important;
+  padding-inline: .3rem .45rem;
   border-radius: 14px;
   transition: background-color 150ms ease, color 150ms ease, transform 150ms ease;
   -webkit-tap-highlight-color: transparent;
 }
 
 .readable-guide-content details.rounded-2xl > summary:active {
-  transform: scale(.995);
+  transform: scale(.994);
 }
 
 .readable-guide-content details.rounded-2xl > summary:hover {
-  background: rgba(255,255,255,.48);
+  background: rgba(255,255,255,.56);
 }
 
-/* Animate the disclosure chevron instead of snapping between states. */
 .readable-guide-content details.rounded-2xl > summary > svg:first-child {
   transition: transform 190ms cubic-bezier(.2,.8,.2,1), color 190ms ease;
   transform-origin: center;
 }
 
 .readable-guide-content details.rounded-2xl[open] > summary > svg:first-child {
-  color: #2f69a8 !important;
+  color: var(--guide-blue) !important;
 }
 
 .readable-guide-content details.rounded-2xl[open] {
   transform: translateY(-1px);
-  border-color: #c6d7e2 !important;
-  background-image: radial-gradient(circle at 82% 0%, rgba(217,164,65,.08), transparent 32%);
-  box-shadow: 0 13px 30px rgba(23, 58, 99, 0.12), 0 1px 0 rgba(255,255,255,.95) inset;
+  background:
+    radial-gradient(circle at 84% 0%, rgba(217,164,65,.12), transparent 31%) padding-box,
+    linear-gradient(155deg, rgba(255,255,255,.99), rgba(247,250,252,.98)) padding-box,
+    linear-gradient(135deg, rgba(217,164,65,.48), rgba(47,105,168,.36), rgba(23,58,99,.10)) border-box !important;
+  box-shadow:
+    0 17px 38px rgba(23,58,99,.13),
+    0 4px 12px rgba(23,58,99,.045),
+    0 1px 0 rgba(255,255,255,.98) inset;
 }
 
 .readable-guide-content details.rounded-2xl[open] > summary {
-  background: linear-gradient(90deg, rgba(217,164,65,.07), rgba(47,105,168,.045));
+  background: linear-gradient(90deg, rgba(217,164,65,.085), rgba(47,105,168,.055));
 }
 
 .readable-guide-content details.rounded-2xl > summary span.rounded-full {
@@ -178,20 +231,20 @@
   display: inline-grid;
   place-items: center;
   padding-inline: .55rem !important;
-  background: rgba(255,255,255,.88) !important;
-  border: 1px solid rgba(204, 160, 57, .18);
-  box-shadow: 0 2px 7px rgba(23,58,99,.07);
+  background: linear-gradient(145deg, rgba(255,255,255,.98), rgba(243,247,250,.94)) !important;
+  border: 1px solid rgba(204,160,57,.22);
+  box-shadow: 0 4px 11px rgba(23,58,99,.075), 0 1px 0 white inset;
   transition: transform 170ms ease, box-shadow 170ms ease, border-color 170ms ease;
 }
 
 .readable-guide-content details.rounded-2xl[open] > summary span.rounded-full {
   transform: translateY(-1px);
-  border-color: rgba(47,105,168,.2);
-  box-shadow: 0 4px 10px rgba(23,58,99,.09);
+  border-color: rgba(47,105,168,.24);
+  box-shadow: 0 6px 14px rgba(23,58,99,.10), 0 1px 0 white inset;
 }
 
 .readable-guide-content details.rounded-2xl > div[class*="border-t"] {
-  border-color: rgba(23, 58, 99, .09) !important;
+  border-color: rgba(23,58,99,.09) !important;
 }
 
 .readable-guide-content details.rounded-2xl[open] > div {
@@ -199,20 +252,19 @@
 }
 
 .readable-guide-content details.rounded-2xl > div[class*="border-t"] > div[class*="space-y"] > div {
-  min-height: 2.85rem;
-  padding: .65rem .72rem;
-  border: 1px solid rgba(215, 226, 233, .75);
-  border-radius: 13px;
-  background: rgba(255,255,255,.72);
-  box-shadow: 0 2px 8px rgba(23,58,99,.045);
-  transition: transform 150ms ease, border-color 150ms ease, background-color 150ms ease;
+  min-height: 2.95rem;
+  padding: .68rem .76rem;
+  border: 1px solid rgba(215,226,233,.82);
+  border-radius: 14px;
+  background: linear-gradient(145deg, rgba(255,255,255,.9), rgba(248,250,252,.78));
+  box-shadow: 0 4px 11px rgba(23,58,99,.05), 0 1px 0 rgba(255,255,255,.95) inset;
+  transition: transform 150ms ease, border-color 150ms ease, background-color 150ms ease, box-shadow 150ms ease;
 }
 
 .readable-guide-content details.rounded-2xl > div[class*="border-t"] > div[class*="space-y"] > div + div {
-  margin-top: .5rem;
+  margin-top: .52rem;
 }
 
-/* Gentle stagger on newly revealed rows, adapted from common Motion Primitives list-reveal patterns. */
 .readable-guide-content details.rounded-2xl[open] > div[class*="border-t"] > div[class*="space-y"] > div {
   animation: guide-row-reveal 210ms both cubic-bezier(.2,.8,.2,1);
 }
@@ -225,8 +277,9 @@
 @media (hover: hover) {
   .readable-guide-content details.rounded-2xl > div[class*="border-t"] > div[class*="space-y"] > div:hover {
     transform: translateX(-1px);
-    border-color: rgba(47,105,168,.22);
-    background: rgba(255,255,255,.9);
+    border-color: rgba(47,105,168,.24);
+    background: rgba(255,255,255,.97);
+    box-shadow: 0 7px 16px rgba(23,58,99,.075);
   }
 }
 
@@ -241,14 +294,14 @@
 }
 
 @keyframes guide-border-trail {
-  0%, 12% { inset-inline-start: -34%; opacity: 0; }
-  24% { opacity: .9; }
-  70% { opacity: .75; }
+  0%, 12% { inset-inline-start: -36%; opacity: 0; }
+  24% { opacity: .92; }
+  70% { opacity: .8; }
   88%, 100% { inset-inline-start: 100%; opacity: 0; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .readable-guide-content article,
+  .readable-guide-content :is(article.rounded-\[18px\], button.rounded-\[18px\]),
   .readable-guide-content details.rounded-2xl,
   .readable-guide-content details.rounded-2xl[open]::after,
   .readable-guide-content details.rounded-2xl[open] > div,
