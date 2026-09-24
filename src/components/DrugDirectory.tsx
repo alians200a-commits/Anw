@@ -190,28 +190,31 @@ export function DrugDirectory({
             .filter((item) => !item.hidden)
             .sort((a, b) => a.order - b.order)
             .find((item) => item.placement === 'cover');
+          const classLabel = drug.classes
+            .map((item) => DRUG_CLASS_LABELS[item])
+            .join(' • ');
 
           return (
             <article
               key={drug.id}
               className="rounded-[18px] border border-[#DCE5EA] bg-[#F7F9FA] p-3.5"
             >
-              <div className="flex items-start gap-3">
+              <div className="flex items-start gap-2.5">
                 <div className="flex shrink-0 gap-1.5">
                   <button
                     type="button"
                     onClick={() => playPronunciation('drugs', drug.id)}
-                    className="group grid h-11 w-11 place-items-center rounded-xl border border-[#D7E2E9] bg-white text-[#315672] outline-none transition active:bg-[#EEF3F6] focus-visible:ring-2 focus-visible:ring-[#CCA039]/55"
+                    className="group grid h-10 w-10 place-items-center rounded-xl border border-[#D7E2E9] bg-white text-[#315672] outline-none transition active:bg-[#EEF3F6] focus-visible:ring-2 focus-visible:ring-[#CCA039]/55"
                     title="نطق اسم الدواء"
                     aria-label={'نطق اسم ' + drug.ar}
                   >
-                    <SpeakerHigh size={19} />
+                    <SpeakerHigh size={18} />
                   </button>
                   <button
                     type="button"
                     onClick={() => onToggleFavorite(favoriteId)}
                     className={
-                      'group grid h-11 w-11 place-items-center rounded-xl border outline-none transition focus-visible:ring-2 focus-visible:ring-[#CCA039]/55 ' +
+                      'group grid h-10 w-10 place-items-center rounded-xl border outline-none transition focus-visible:ring-2 focus-visible:ring-[#CCA039]/55 ' +
                       (isFavorite
                         ? 'border-[#CCA039]/45 bg-[#CCA039]/12 text-[#9B7420]'
                         : 'border-[#D7E2E9] bg-white text-[#5F7280] active:bg-[#EEF3F6]')
@@ -219,21 +222,33 @@ export function DrugDirectory({
                     title="حفظ"
                     aria-label={isFavorite ? 'إزالة من المحفوظات' : 'حفظ الدواء'}
                   >
-                    <MedicalSiteIcon name="saved" play={isFavorite} size={25} />
+                    <MedicalSiteIcon name="saved" play={isFavorite} size={23} />
                   </button>
                 </div>
 
-                <div className="flex flex-1 items-start justify-end gap-3 text-right">
-                  <div className="min-w-0">
-                    <h3 className="text-sm font-black text-[#183149]">{drug.ar}</h3>
-                    <p className="mt-0.5 text-xs font-bold text-[#526675]" dir="ltr">{drug.en}</p>
-                    <span className="mt-2 inline-flex max-w-full rounded-full bg-[#EAF0F4] px-2.5 py-1 text-[11px] font-bold leading-4 text-[#405E75]">
-                      {drug.classes
-                        .map((item) => DRUG_CLASS_LABELS[item])
-                        .join(' • ')}
+                <div className="flex min-w-0 flex-1 items-start justify-end gap-2.5 text-right">
+                  <div className="min-w-0 flex-1 overflow-hidden">
+                    <h3
+                      className="truncate whitespace-nowrap text-[13px] font-black leading-5 text-[#183149]"
+                      title={drug.ar}
+                    >
+                      {drug.ar}
+                    </h3>
+                    <p
+                      className="mt-0.5 truncate whitespace-nowrap text-[12px] font-bold leading-5 text-[#526675]"
+                      dir="ltr"
+                      title={drug.en}
+                    >
+                      {drug.en}
+                    </p>
+                    <span
+                      className="mt-1.5 block max-w-full truncate whitespace-nowrap rounded-full bg-[#EAF0F4] px-2.5 py-1 text-[10.5px] font-bold leading-4 text-[#405E75]"
+                      title={classLabel}
+                    >
+                      {classLabel}
                     </span>
                   </div>
-                  <div className="grid h-11 w-11 shrink-0 place-items-center overflow-hidden rounded-[14px] border border-[#D7E2E9] bg-[#EEF3F6] text-[#315672]">
+                  <div className="grid h-10 w-10 shrink-0 place-items-center overflow-hidden rounded-[13px] border border-[#D7E2E9] bg-[#EEF3F6] text-[#315672]">
                     {coverImage ? (
                       <img
                         src={coverImage.url}
@@ -243,7 +258,7 @@ export function DrugDirectory({
                         className="h-full w-full bg-white object-contain"
                       />
                     ) : (
-                      <MedicalSiteIcon name={iconForDrug(drug.classes)} size={28} />
+                      <MedicalSiteIcon name={iconForDrug(drug.classes)} size={26} />
                     )}
                   </div>
                 </div>
@@ -257,10 +272,12 @@ export function DrugDirectory({
                 <button
                   type="button"
                   onClick={() => setSelectedDrugId(drug.id)}
-                  className="mt-2 flex min-h-11 w-full items-center justify-between border-t border-[#DDE6EB] pt-2 text-[11px] font-black text-[#315672] outline-none focus-visible:ring-2 focus-visible:ring-[#CCA039]/50"
+                  className="mt-2 flex min-h-10 w-full items-center justify-between gap-2 border-t border-[#DDE6EB] pt-2 text-[10.5px] font-black text-[#315672] outline-none focus-visible:ring-2 focus-visible:ring-[#CCA039]/50"
                 >
-                  <span className="text-[#5F7280]">الاستخدام • الموانع • التحذيرات</span>
-                  <span>التفاصيل الدوائية</span>
+                  <span className="min-w-0 flex-1 truncate whitespace-nowrap text-right text-[#5F7280]">
+                    الاستخدام • الموانع • التحذيرات
+                  </span>
+                  <span className="shrink-0 whitespace-nowrap">التفاصيل الدوائية</span>
                 </button>
               )}
             </article>
