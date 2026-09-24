@@ -5,6 +5,7 @@ import {AppErrorBoundary} from './components/AppErrorBoundary';
 import {installViewportGestureGuard} from './utils/installViewportGestureGuard';
 import './index.css';
 import './readability.css';
+import './inhalationalIcon.css';
 import './stages-flaticon.css';
 import './admin/adminMobile.css';
 
