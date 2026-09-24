@@ -2,6 +2,26 @@
 
 Internal engineering reference only. This file is not rendered in the public app UI.
 
+## Craft
+- Repository: https://github.com/BENZOOgataga/Craft
+- License: MIT
+- Used as a visual/interaction reference for:
+  - elevated feature-card depth
+  - restrained hover lift
+  - layered top highlight
+  - glow confined to the card surface
+  - polished icon pods
+- Integration approach: patterns adapted to the existing guide cards and the Mamlakat Al-Takhdeer palette; no runtime dependency was added.
+
+## Magic UI
+- Repository: https://github.com/magicuidesign/magicui
+- License: MIT
+- Used as a visual/interaction reference for:
+  - border-beam treatment
+  - moving highlight along a premium container edge
+  - layered glass-like surfaces
+- Integration approach: the border-beam idea was reimplemented with lightweight CSS so the app keeps its existing dependency set and reduced-motion support.
+
 ## Motion Primitives
 - Repository: https://github.com/ibelick/motion-primitives
 - License: MIT
@@ -16,7 +36,8 @@ Internal engineering reference only. This file is not rendered in the public app
 - Repository: https://github.com/resolvetosavelives/healthicons
 - License: MIT
 - Used as a medical-device icon-language reference only.
-- Scientific guardrail for the inhalational-anesthetics category: do not use an O2 cylinder, simple face mask, or a vaporizer as the universal category symbol. The category includes both volatile liquid agents (such as sevoflurane, isoflurane and desflurane) and inhaled gases (nitrous oxide), so the visible app treatment uses an agent-neutral inhalational delivery-flow concept: mixing chamber + moving anesthetic particles + circuit flow.
+- Do not use an O2 cylinder as the symbol for sevoflurane or other volatile anesthetic agents.
+- Product navigation convention: the inhalational-anesthetics category intentionally uses a recognizable anesthesia vaporizer icon. This is UI shorthand. Nitrous oxide remains in the same inhalational category even though it is not delivered through a volatile-agent vaporizer.
 - Integration approach: local visual adaptation only; public UI does not show a source card.
 
 ## Guardrails
@@ -24,4 +45,4 @@ Internal engineering reference only. This file is not rendered in the public app
 - Avoid adding a new dependency when the visual pattern can be implemented with the existing stack.
 - Keep motion subtle on mobile and honor `prefers-reduced-motion`.
 - Public attribution is shown only when the source license requires it.
-- Medical iconography must not introduce a clinically misleading association just because an icon is visually attractive.
+- Medical iconography should be reviewed for clinical meaning; documented product-navigation conventions must not be presented as clinical delivery claims.
