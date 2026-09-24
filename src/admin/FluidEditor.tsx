@@ -1,11 +1,12 @@
-import { ChangeEvent, useMemo, useRef, useState } from 'react';
+import { ChangeEvent, useEffect, useMemo, useRef, useState } from 'react';
 import { ArrowDown, ArrowUp, CircleHelp, Eye, EyeOff, ImagePlus, Plus, Save, Send, Trash2, Upload, X } from 'lucide-react';
 import { FLUID_FILTERS, type FluidCategory, type IntravenousFluid } from '../data/fluids';
 import { FluidSheet } from '../components/FluidsDirectory';
 import { supabase } from '../lib/supabase';
+import type { AdminRole } from './adminTypes';
+import { cleanupPromotedDraftMedia, hydrateAdminMedia, promoteMediaForPublish, removeAdminMedia, rollbackPromotedPublicMedia, uploadDraftMedia } from '../lib/contentMediaStorage';
 import type { ContentMediaItem, ContentMediaPlacement, FluidMediaSection } from '../types/contentMedia';
 
-type AdminRole = 'owner' | 'admin' | 'editor' | 'reviewer';
 type ContentStatus = 'draft' | 'review' | 'approved' | 'published' | 'rejected' | 'archived';
 
 export type FluidContentRow = {
@@ -98,8 +99,9 @@ export default function FluidEditor({ profileId, role, initialRow, onSaved, onCl
   const [previewOpen, setPreviewOpen] = useState(false);
   const [error, setError] = useState('');
   const [notice, setNotice] = useState('');
-  const canEdit = role === 'owner' || role === 'admin' || role === 'editor';
-  const canPublish = role === 'owner' || role === 'admin';
+  useEffect(() => { let active = true; void hydrateAdminMedia(seed.media).then((hydrated) => { if (active) setMedia(hydrated); }); return () => { active = false; }; }, [seed]);
+  const canEdit = role === 'owner' || role === 'admin';
+  const canPublish = canEdit;
   const cleanList = (items: string[]) => items.map((item)=>item.trim()).filter(Boolean);
 
   const validate = () => {
@@ -108,28 +110,52 @@ export default function FluidEditor({ profileId, role, initialRow, onSaved, onCl
     if (!fluid.composition.trim()) return 'التركيب مطلوب.';
     return null;
   };
-  const buildPayload = (): FluidPayload => ({ schemaVersion:1, fluid:{...fluid,id:fluid.id.trim(),nameAr:fluid.nameAr.trim(),nameEn:fluid.nameEn.trim(),categoryAr:fluid.categoryAr.trim(),composition:fluid.composition.trim(),role:cleanList(fluid.role),cautions:cleanList(fluid.cautions),tags:cleanList(fluid.tags),clinicalNote:fluid.clinicalNote?.trim()||undefined,correction:fluid.correction?.trim()||undefined,sourcePages:fluid.sourcePages.filter((p)=>Number.isFinite(p)&&p>0)}, media:media.map((item,index)=>({...item,order:index})) });
+  const buildPayload = (mediaOverride: ContentMediaItem[] = media): FluidPayload => ({ schemaVersion:1, fluid:{...fluid,id:fluid.id.trim(),nameAr:fluid.nameAr.trim(),nameEn:fluid.nameEn.trim(),categoryAr:fluid.categoryAr.trim(),composition:fluid.composition.trim(),role:cleanList(fluid.role),cautions:cleanList(fluid.cautions),tags:cleanList(fluid.tags),clinicalNote:fluid.clinicalNote?.trim()||undefined,correction:fluid.correction?.trim()||undefined,sourcePages:fluid.sourcePages.filter((p)=>Number.isFinite(p)&&p>0)}, media:mediaOverride.map((item,index)=>({...item,order:index})) });
 
   const persist = async (targetStatus: ContentStatus) => {
     if (!canEdit) return;
     const validationError = validate(); if (validationError) { setError(validationError); return; }
     setBusy(true); setError(''); setNotice('');
+    let rollbackPublicPaths: string[] = [];
     try {
-      const payload=buildPayload(); const baseRecord={content_type:'fluid',slug:payload.fluid.id,title_ar:payload.fluid.nameAr,title_en:payload.fluid.nameEn,payload}; let currentId=rowId;
-      if (!currentId) { const insertStatus:ContentStatus=role==='editor'&&targetStatus!=='draft'?'draft':targetStatus; const {data,error:insertError}=await supabase.from('content_items').insert({...baseRecord,status:insertStatus}).select('id,status').single(); if(insertError) throw insertError; currentId=data.id as string; setRowId(currentId); setStatus(data.status as ContentStatus); }
-      else { const {error:updateError}=await supabase.from('content_items').update({...baseRecord,status:targetStatus}).eq('id',currentId); if(updateError) throw updateError; setStatus(targetStatus); }
-      if(currentId&&role==='editor'&&targetStatus==='review'){const {error:reviewError}=await supabase.from('content_items').update({status:'review'}).eq('id',currentId);if(reviewError)throw reviewError;setStatus('review');}
+      let payloadMedia = media;
+      let cleanupDraftPaths: string[] = [];
+      if (targetStatus === 'published') {
+        const promoted = await promoteMediaForPublish(media, profileId, 'fluid', fluid.id.trim());
+        payloadMedia = promoted.media;
+        cleanupDraftPaths = promoted.draftPathsToCleanup;
+        rollbackPublicPaths = promoted.publicPathsToRollback;
+      }
+      const payload=buildPayload(payloadMedia);
+      const baseRecord={content_type:'fluid',slug:payload.fluid.id,title_ar:payload.fluid.nameAr,title_en:payload.fluid.nameEn,payload};
+      let currentId=rowId;
+      if (!currentId) {
+        const {data,error:insertError}=await supabase.from('content_items').insert({...baseRecord,status:targetStatus}).select('id,status').single();
+        if(insertError) throw insertError; currentId=data.id as string; setRowId(currentId); setStatus(data.status as ContentStatus);
+      } else {
+        const {error:updateError}=await supabase.from('content_items').update({...baseRecord,status:targetStatus}).eq('id',currentId);
+        if(updateError) throw updateError; setStatus(targetStatus);
+      }
+      if (targetStatus === 'published') { setMedia(payloadMedia); await cleanupPromotedDraftMedia(cleanupDraftPaths); rollbackPublicPaths = []; }
       setNotice(targetStatus==='published'?'تم حفظ السائل ونشره.':targetStatus==='review'?'تم إرساله للمراجعة.':'تم حفظ المسودة.'); await onSaved();
-    } catch(caught){setError(caught instanceof Error?caught.message:'تعذر حفظ السائل.');} finally{setBusy(false);}
+    } catch(caught){ await rollbackPromotedPublicMedia(rollbackPublicPaths); setError(caught instanceof Error?caught.message:'تعذر حفظ السائل.'); } finally{setBusy(false);}
   };
 
   const uploadImages = async (event: ChangeEvent<HTMLInputElement>) => {
     const files=Array.from(event.target.files??[]);event.target.value='';if(!files.length)return;setUploading(true);setError('');setNotice('');
-    try{const uploaded:ContentMediaItem[]=[];const hasCover=media.some((item)=>item.placement==='cover'&&!item.hidden);for(const file of files){if(!['image/jpeg','image/png','image/webp'].includes(file.type))throw new Error(`صيغة الصورة غير مدعومة: ${file.name}`);if(file.size>5*1024*1024)throw new Error(`الصورة أكبر من 5MB: ${file.name}`);const extension=file.type==='image/png'?'png':file.type==='image/webp'?'webp':'jpg';const id=crypto.randomUUID();const folder=fluid.id.trim()&&/^[a-z0-9][a-z0-9-]*$/.test(fluid.id.trim())?fluid.id.trim():`draft-${draftUploadKey.current}`;const path=`${profileId}/fluids/${folder}/${Date.now()}-${id}.${extension}`;const {error:uploadError}=await supabase.storage.from('content-media').upload(path,file,{contentType:file.type,upsert:false});if(uploadError)throw uploadError;const {data:publicData}=supabase.storage.from('content-media').getPublicUrl(path);uploaded.push({id,path,url:publicData.publicUrl,alt:fluid.nameAr.trim()||fluid.nameEn.trim()||file.name,caption:'',placement:!hasCover&&uploaded.length===0?'cover':'gallery',order:media.length+uploaded.length});}setMedia((current)=>[...current,...uploaded]);setNotice(`تم رفع ${uploaded.length} صورة.`);setPreviewOpen(true);}catch(caught){setError(caught instanceof Error?caught.message:'تعذر رفع الصور.');}finally{setUploading(false);}
+    try {
+      const uploaded:ContentMediaItem[]=[];
+      const hasCover=media.some((item)=>item.placement==='cover'&&!item.hidden);
+      for(const file of files){
+        const folder=fluid.id.trim()&&/^[a-z0-9][a-z0-9-]*$/.test(fluid.id.trim())?fluid.id.trim():`draft-${draftUploadKey.current}`;
+        uploaded.push(await uploadDraftMedia({file,profileId,contentType:'fluid',folder,alt:fluid.nameAr.trim()||fluid.nameEn.trim()||file.name,placement:!hasCover&&uploaded.length===0?'cover':'gallery',order:media.length+uploaded.length}));
+      }
+      setMedia((current)=>[...current,...uploaded]);setNotice(`تم رفع ${uploaded.length} صورة بشكل خاص للمسودة.`);setPreviewOpen(true);
+    } catch(caught){setError(caught instanceof Error?caught.message:'تعذر رفع الصور.');}finally{setUploading(false);}
   };
   const updateMedia=(id:string,patch:Partial<ContentMediaItem>)=>setMedia((current)=>{let next=current.map((item)=>item.id===id?{...item,...patch}:item);if(patch.placement==='cover')next=next.map((item)=>item.id!==id&&item.placement==='cover'?{...item,placement:'gallery' as const,sectionKey:undefined}:item);return next;});
   const moveMedia=(index:number,direction:-1|1)=>{const target=index+direction;if(target<0||target>=media.length)return;const next=[...media];[next[index],next[target]]=[next[target],next[index]];setMedia(next);};
-  const deleteMedia=async(item:ContentMediaItem)=>{const {error:removeError}=await supabase.storage.from('content-media').remove([item.path]);if(removeError){setError(removeError.message);return;}setMedia((current)=>current.filter((x)=>x.id!==item.id));};
+  const deleteMedia=async(item:ContentMediaItem)=>{setError('');try{await removeAdminMedia(item);setMedia((current)=>current.filter((x)=>x.id!==item.id));}catch(caught){setError(caught instanceof Error?caught.message:'تعذر حذف الصورة.');}};
 
   return <div className="fixed inset-0 z-[70] overflow-y-auto bg-[#07182c]/65 p-3 backdrop-blur-sm sm:p-6" dir="rtl"><div className="mx-auto max-w-7xl overflow-hidden rounded-[30px] bg-[#eef3f8] shadow-2xl"><header className="sticky top-0 z-20 flex items-center justify-between gap-3 border-b border-white/10 bg-[#07182c] px-4 py-4 text-white sm:px-6"><button type="button" onClick={onClose} className="grid h-10 w-10 place-items-center rounded-xl bg-white/10" aria-label="إغلاق"><X size={19}/></button><div className="text-right"><p className="text-xs font-bold text-[#d9a441]">دليلي — محرر السوائل</p><h2 className="text-lg font-black">{rowId?`تعديل ${fluid.nameAr||'سائل'}`:'إضافة سائل جديد'}</h2><p className="mt-0.5 text-xs text-white/55">الحالة: {status}</p></div></header><div className="grid gap-5 p-4 sm:p-6 lg:grid-cols-[1fr_360px]"><main className="space-y-5">
     <section className="rounded-3xl bg-white p-5 shadow-sm ring-1 ring-slate-200/70"><h3 className="mb-4 font-black text-[#0a2037]">المعلومات الأساسية</h3><div className="grid gap-4 md:grid-cols-2"><TextInput label="المعرّف Slug" helpKey="slug" value={fluid.id} onChange={(value)=>setFluid({...fluid,id:value.toLowerCase().replace(/\s+/g,'-')})} dir="ltr" required/><TextInput label="الاسم الإنكليزي" helpKey="nameEn" value={fluid.nameEn} onChange={(value)=>setFluid({...fluid,nameEn:value})} dir="ltr" required/><TextInput label="الاسم العربي" helpKey="nameAr" value={fluid.nameAr} onChange={(value)=>setFluid({...fluid,nameAr:value})} required/><div className="block"><FieldHeading label="التصنيف" helpKey="category" required/><select aria-label="تصنيف السائل" value={fluid.category} onChange={(e)=>{const value=e.target.value as FluidCategory;const selected=CATEGORY_OPTIONS.find((x)=>x.value===value);setFluid({...fluid,category:value,categoryAr:selected?.categoryAr??fluid.categoryAr});}} className="w-full rounded-2xl border border-[#d9e6f2] bg-white px-4 py-3 text-sm font-bold">{CATEGORY_OPTIONS.map((x)=><option key={x.value} value={x.value}>{x.label}</option>)}</select></div><TextInput label="اسم التصنيف العربي" helpKey="categoryAr" value={fluid.categoryAr} onChange={(value)=>setFluid({...fluid,categoryAr:value})}/><TextInput label="صفحات المصدر" helpKey="sourcePages" value={fluid.sourcePages.join(', ')} onChange={(value)=>setFluid({...fluid,sourcePages:value.split(',').map((p)=>Number(p.trim())).filter((n)=>Number.isFinite(n)&&n>0)})} dir="ltr"/></div><div className="mt-4"><TextArea label="التركيب | Composition" helpKey="composition" value={fluid.composition} onChange={(value)=>setFluid({...fluid,composition:value})} required/></div><div className="mt-4"><StringListEditor label="Tags / كلمات البحث" helpKey="tags" items={fluid.tags} onChange={(tags)=>setFluid({...fluid,tags})}/></div></section>
