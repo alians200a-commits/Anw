@@ -1,4 +1,4 @@
-import { ChangeEvent, useMemo, useRef, useState } from 'react';
+import { ChangeEvent, useEffect, useMemo, useRef, useState } from 'react';
 import {
   ArrowDown,
   ArrowUp,
@@ -22,13 +22,14 @@ import {
 import type { DrugDetail } from '../data/drugDetails';
 import { DrugDetailSheet } from '../components/DrugDetailSheet';
 import { supabase } from '../lib/supabase';
+import type { AdminRole } from './adminTypes';
+import { cleanupPromotedDraftMedia, hydrateAdminMedia, promoteMediaForPublish, removeAdminMedia, rollbackPromotedPublicMedia, uploadDraftMedia } from '../lib/contentMediaStorage';
 import type {
   ContentMediaItem,
   ContentMediaPlacement,
   DrugMediaSection,
 } from '../types/contentMedia';
 
-type AdminRole = 'owner' | 'admin' | 'editor' | 'reviewer';
 type ContentStatus = 'draft' | 'review' | 'approved' | 'published' | 'rejected' | 'archived';
 
 export type DrugContentRow = {
@@ -411,8 +412,14 @@ export default function DrugEditorV2({ profileId, role, initialRow, onSaved, onC
   const [error, setError] = useState('');
   const [notice, setNotice] = useState('');
 
-  const canEdit = role === 'owner' || role === 'admin' || role === 'editor';
-  const canPublish = role === 'owner' || role === 'admin';
+  useEffect(() => {
+    let active = true;
+    void hydrateAdminMedia(seed.media).then((hydrated) => { if (active) setMedia(hydrated); });
+    return () => { active = false; };
+  }, [seed]);
+
+  const canEdit = role === 'owner' || role === 'admin';
+  const canPublish = canEdit;
 
   const setDetail = <K extends keyof DrugDetail>(key: K, value: DrugDetail[K]) => {
     setDetails((current) => ({ ...current, [key]: value }));
@@ -430,7 +437,7 @@ export default function DrugEditorV2({ profileId, role, initialRow, onSaved, onC
 
   const cleanList = (items?: string[]) => items?.map((item) => item.trim()).filter(Boolean);
 
-  const buildPayload = (): DrugPayload => ({
+  const buildPayload = (mediaOverride: ContentMediaItem[] = media): DrugPayload => ({
     schemaVersion: 1,
     drug: {
       ...drug,
@@ -458,7 +465,7 @@ export default function DrugEditorV2({ profileId, role, initialRow, onSaved, onC
       warnings: cleanList(details.warnings) ?? [],
       adverseEffects: cleanList(details.adverseEffects) ?? [],
     },
-    media: media.map((item, index) => ({ ...item, order: index })),
+    media: mediaOverride.map((item, index) => ({ ...item, order: index })),
   });
 
   const persist = async (targetStatus: ContentStatus) => {
@@ -471,8 +478,17 @@ export default function DrugEditorV2({ profileId, role, initialRow, onSaved, onC
     setBusy(true);
     setError('');
     setNotice('');
+    let rollbackPublicPaths: string[] = [];
     try {
-      const payload = buildPayload();
+      let payloadMedia = media;
+      let cleanupDraftPaths: string[] = [];
+      if (targetStatus === 'published') {
+        const promoted = await promoteMediaForPublish(media, profileId, 'drug', drug.id.trim());
+        payloadMedia = promoted.media;
+        cleanupDraftPaths = promoted.draftPathsToCleanup;
+        rollbackPublicPaths = promoted.publicPathsToRollback;
+      }
+      const payload = buildPayload(payloadMedia);
       const baseRecord = {
         content_type: 'drug',
         slug: payload.drug.id,
@@ -482,8 +498,7 @@ export default function DrugEditorV2({ profileId, role, initialRow, onSaved, onC
       };
       let currentId = rowId;
       if (!currentId) {
-        const insertStatus: ContentStatus = role === 'editor' && targetStatus !== 'draft' ? 'draft' : targetStatus;
-        const { data, error: insertError } = await supabase.from('content_items').insert({ ...baseRecord, status: insertStatus }).select('id,status').single();
+        const { data, error: insertError } = await supabase.from('content_items').insert({ ...baseRecord, status: targetStatus }).select('id,status').single();
         if (insertError) throw insertError;
         currentId = data.id as string;
         setRowId(currentId);
@@ -493,14 +508,15 @@ export default function DrugEditorV2({ profileId, role, initialRow, onSaved, onC
         if (updateError) throw updateError;
         setStatus(targetStatus);
       }
-      if (currentId && role === 'editor' && targetStatus === 'review') {
-        const { error: reviewError } = await supabase.from('content_items').update({ status: 'review' }).eq('id', currentId);
-        if (reviewError) throw reviewError;
-        setStatus('review');
+      if (targetStatus === 'published') {
+        setMedia(payloadMedia);
+        await cleanupPromotedDraftMedia(cleanupDraftPaths);
+        rollbackPublicPaths = [];
       }
       setNotice(targetStatus === 'published' ? 'تم حفظ الدواء ونشره.' : targetStatus === 'review' ? 'تم حفظ الدواء وإرساله للمراجعة.' : 'تم حفظ المسودة.');
       await onSaved();
     } catch (caught) {
+      await rollbackPromotedPublicMedia(rollbackPublicPaths);
       setError(caught instanceof Error ? caught.message : 'تعذر حفظ الدواء.');
     } finally {
       setBusy(false);
@@ -518,24 +534,16 @@ export default function DrugEditorV2({ profileId, role, initialRow, onSaved, onC
       const uploaded: ContentMediaItem[] = [];
       const hasCover = media.some((item) => item.placement === 'cover' && !item.hidden);
       for (const file of files) {
-        if (!['image/jpeg', 'image/png', 'image/webp'].includes(file.type)) throw new Error(`صيغة الصورة غير مدعومة: ${file.name}`);
-        if (file.size > 5 * 1024 * 1024) throw new Error(`الصورة أكبر من 5MB: ${file.name}`);
-        const extension = file.type === 'image/png' ? 'png' : file.type === 'image/webp' ? 'webp' : 'jpg';
-        const id = crypto.randomUUID();
         const folder = drug.id.trim() && /^[a-z0-9][a-z0-9-]*$/.test(drug.id.trim()) ? drug.id.trim() : `draft-${draftUploadKey.current}`;
-        const path = `${profileId}/drugs/${folder}/${Date.now()}-${id}.${extension}`;
-        const { error: uploadError } = await supabase.storage.from('content-media').upload(path, file, { contentType: file.type, upsert: false });
-        if (uploadError) throw uploadError;
-        const { data: publicData } = supabase.storage.from('content-media').getPublicUrl(path);
-        uploaded.push({
-          id,
-          path,
-          url: publicData.publicUrl,
+        uploaded.push(await uploadDraftMedia({
+          file,
+          profileId,
+          contentType: 'drug',
+          folder,
           alt: drug.ar.trim() || drug.en.trim() || file.name,
-          caption: '',
           placement: !hasCover && uploaded.length === 0 ? 'cover' : 'gallery',
           order: media.length + uploaded.length,
-        });
+        }));
       }
       setMedia((current) => [...current, ...uploaded]);
       setNotice(`تم رفع ${uploaded.length} صورة وظهرت بالمعاينة مباشرة. احفظ المسودة لتثبيت بياناتها.`);
@@ -567,12 +575,12 @@ export default function DrugEditorV2({ profileId, role, initialRow, onSaved, onC
 
   const deleteMedia = async (item: ContentMediaItem) => {
     setError('');
-    const { error: removeError } = await supabase.storage.from('content-media').remove([item.path]);
-    if (removeError) {
-      setError(removeError.message);
-      return;
+    try {
+      await removeAdminMedia(item);
+      setMedia((current) => current.filter((mediaItem) => mediaItem.id !== item.id));
+    } catch (caught) {
+      setError(caught instanceof Error ? caught.message : 'تعذر حذف الصورة.');
     }
-    setMedia((current) => current.filter((mediaItem) => mediaItem.id !== item.id));
   };
 
   const toggleClass = (drugClass: DrugClass) => {

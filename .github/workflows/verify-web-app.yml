@@ -8,10 +8,15 @@ on:
       - "src/**"
       - "public/**"
       - "tools/**"
+      - "docs/**"
       - "package.json"
+      - "package-lock.json"
       - "tsconfig.json"
       - "vite.config.*"
       - ".github/workflows/verify-web-app.yml"
+
+permissions:
+  contents: read
 
 jobs:
   verify:
@@ -28,20 +33,8 @@ jobs:
       - name: Install dependencies
         run: npm install --no-audit --no-fund
 
-      - name: Type check
-        run: npm run lint
+      - name: Production readiness gate
+        run: npm run verify
 
-      - name: Content audit
-        run: npm run audit:content
-
-      - name: Drug integrity audit
-        run: npm run audit:drugs
-
-      - name: App integrity audit
-        run: npm run audit:app
-
-      - name: Term integrity audit
-        run: npm run audit:terms
-
-      - name: Build
-        run: npm run build
+      - name: Dependency vulnerability gate
+        run: npm audit --omit=dev --audit-level=high

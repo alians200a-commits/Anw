@@ -26,6 +26,7 @@ interface HomeScreenProps {
     drugClass?: 'all' | DrugClass,
     initialQuery?: string
   ) => void;
+  onOpenAbout: () => void;
 }
 
 const guideIcon: Record<GuideSection, MedicalSiteIconName> = {
@@ -66,7 +67,7 @@ function searchIconPair(name: MedicalSiteIconName) {
   };
 }
 
-export function HomeScreen({ openGuide }: HomeScreenProps) {
+export function HomeScreen({ openGuide, onOpenAbout }: HomeScreenProps) {
   const searchItems = useMemo<MorphingSearchItem[]>(() => {
     const drugs: MorphingSearchItem[] = ANESTHESIA_DRUGS.map((drug) => ({
       id: 'drug:' + drug.id,
@@ -266,6 +267,16 @@ export function HomeScreen({ openGuide }: HomeScreenProps) {
           items={guideItems}
         />
       </section>
+
+      <div className="flex justify-center pt-1">
+        <button
+          type="button"
+          onClick={onOpenAbout}
+          className="rounded-full px-4 py-2 text-xs font-black text-[#607487] transition hover:bg-[#F1F5F8] hover:text-[#183149]"
+        >
+          حول
+        </button>
+      </div>
     </div>
   );
 }

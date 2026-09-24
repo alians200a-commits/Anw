@@ -1,12 +1,14 @@
 import { useEffect, useState } from 'react';
 import { MotionConfig } from 'motion/react';
 import { BottomNav, type AppTab } from './components/BottomNav';
+import { AboutSheet } from './components/AboutSheet';
 import { FavoritesScreen } from './components/FavoritesScreen';
 import { GamesHub } from './components/GamesHub';
 import { GuideScreen, type GuideSection } from './components/GuideScreen';
 import { HomeScreen } from './components/HomeScreen';
 import { KingdomHeader } from './components/KingdomHeader';
 import type { DrugClass } from './data/drugs';
+import { reportRuntimeIssue } from './utils/runtimeDiagnostics';
 
 const FAVORITES_KEY = 'kingdom-anesthesia:favorites';
 
@@ -14,8 +16,12 @@ function loadFavorites() {
   try {
     const raw = localStorage.getItem(FAVORITES_KEY);
     const values = raw ? JSON.parse(raw) : [];
-    return new Set<string>(Array.isArray(values) ? values : []);
-  } catch {
+    const safeValues = Array.isArray(values)
+      ? values.filter((value): value is string => typeof value === 'string' && value.length <= 200)
+      : [];
+    return new Set<string>(safeValues);
+  } catch (error) {
+    reportRuntimeIssue('favorites-storage', error);
     return new Set<string>();
   }
 }
@@ -26,9 +32,14 @@ export default function App() {
   const [guideDrugClass, setGuideDrugClass] = useState<'all' | DrugClass>('all');
   const [guideQuery, setGuideQuery] = useState('');
   const [favorites, setFavorites] = useState<Set<string>>(() => loadFavorites());
+  const [aboutOpen, setAboutOpen] = useState(false);
 
   useEffect(() => {
-    localStorage.setItem(FAVORITES_KEY, JSON.stringify(Array.from(favorites)));
+    try {
+      localStorage.setItem(FAVORITES_KEY, JSON.stringify(Array.from(favorites)));
+    } catch (error) {
+      reportRuntimeIssue('favorites-storage', error);
+    }
   }, [favorites]);
 
   const handleTabChange = (tab: AppTab) => {
@@ -88,7 +99,7 @@ export default function App() {
       />
     );
   } else {
-    screen = <HomeScreen openGuide={openGuide} />;
+    screen = <HomeScreen openGuide={openGuide} onOpenAbout={() => setAboutOpen(true)} />;
   }
 
   return (
@@ -104,6 +115,7 @@ export default function App() {
       </main>
 
         <BottomNav active={activeTab} onChange={handleTabChange} />
+        {aboutOpen ? <AboutSheet onClose={() => setAboutOpen(false)} /> : null}
       </div>
     </MotionConfig>
   );

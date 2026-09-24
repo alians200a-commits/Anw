@@ -1,4 +1,4 @@
-import { ChangeEvent, useMemo, useRef, useState } from 'react';
+import { ChangeEvent, useEffect, useMemo, useRef, useState } from 'react';
 import {
   ArrowDown,
   ArrowUp,
@@ -20,13 +20,14 @@ import {
 } from '../data/equipment';
 import { EquipmentSheet } from '../components/EquipmentDirectory';
 import { supabase } from '../lib/supabase';
+import type { AdminRole } from './adminTypes';
+import { cleanupPromotedDraftMedia, hydrateAdminMedia, promoteMediaForPublish, removeAdminMedia, rollbackPromotedPublicMedia, uploadDraftMedia } from '../lib/contentMediaStorage';
 import type {
   ContentMediaItem,
   ContentMediaPlacement,
   EquipmentMediaSection,
 } from '../types/contentMedia';
 
-type AdminRole = 'owner' | 'admin' | 'editor' | 'reviewer';
 type ContentStatus = 'draft' | 'review' | 'approved' | 'published' | 'rejected' | 'archived';
 
 export type EquipmentContentRow = {
@@ -170,8 +171,14 @@ export default function EquipmentEditor({ profileId, role, initialRow, onSaved, 
   const [error, setError] = useState('');
   const [notice, setNotice] = useState('');
 
-  const canEdit = role === 'owner' || role === 'admin' || role === 'editor';
-  const canPublish = role === 'owner' || role === 'admin';
+  useEffect(() => {
+    let active = true;
+    void hydrateAdminMedia(seed.media).then((hydrated) => { if (active) setMedia(hydrated); });
+    return () => { active = false; };
+  }, [seed]);
+
+  const canEdit = role === 'owner' || role === 'admin';
+  const canPublish = canEdit;
   const cleanList = (items: string[]) => items.map((item) => item.trim()).filter(Boolean);
 
   const validate = () => {
@@ -182,7 +189,7 @@ export default function EquipmentEditor({ profileId, role, initialRow, onSaved, 
     return null;
   };
 
-  const buildPayload = (): EquipmentPayload => ({
+  const buildPayload = (mediaOverride: ContentMediaItem[] = media): EquipmentPayload => ({
     schemaVersion: 1,
     equipment: {
       ...equipment,
@@ -198,7 +205,7 @@ export default function EquipmentEditor({ profileId, role, initialRow, onSaved, 
       correction: equipment.correction?.trim() || undefined,
       sourcePages: equipment.sourcePages.filter((page) => Number.isFinite(page) && page > 0),
     },
-    media: media.map((item, index) => ({ ...item, order: index })),
+    media: mediaOverride.map((item, index) => ({ ...item, order: index })),
   });
 
   const persist = async (targetStatus: ContentStatus) => {
@@ -206,13 +213,21 @@ export default function EquipmentEditor({ profileId, role, initialRow, onSaved, 
     const validationError = validate();
     if (validationError) { setError(validationError); return; }
     setBusy(true); setError(''); setNotice('');
+    let rollbackPublicPaths: string[] = [];
     try {
-      const payload = buildPayload();
+      let payloadMedia = media;
+      let cleanupDraftPaths: string[] = [];
+      if (targetStatus === 'published') {
+        const promoted = await promoteMediaForPublish(media, profileId, 'equipment', equipment.id.trim());
+        payloadMedia = promoted.media;
+        cleanupDraftPaths = promoted.draftPathsToCleanup;
+        rollbackPublicPaths = promoted.publicPathsToRollback;
+      }
+      const payload = buildPayload(payloadMedia);
       const baseRecord = { content_type: 'equipment', slug: payload.equipment.id, title_ar: payload.equipment.nameAr, title_en: payload.equipment.nameEn, payload };
       let currentId = rowId;
       if (!currentId) {
-        const insertStatus: ContentStatus = role === 'editor' && targetStatus !== 'draft' ? 'draft' : targetStatus;
-        const { data, error: insertError } = await supabase.from('content_items').insert({ ...baseRecord, status: insertStatus }).select('id,status').single();
+        const { data, error: insertError } = await supabase.from('content_items').insert({ ...baseRecord, status: targetStatus }).select('id,status').single();
         if (insertError) throw insertError;
         currentId = data.id as string;
         setRowId(currentId);
@@ -222,14 +237,15 @@ export default function EquipmentEditor({ profileId, role, initialRow, onSaved, 
         if (updateError) throw updateError;
         setStatus(targetStatus);
       }
-      if (currentId && role === 'editor' && targetStatus === 'review') {
-        const { error: reviewError } = await supabase.from('content_items').update({ status: 'review' }).eq('id', currentId);
-        if (reviewError) throw reviewError;
-        setStatus('review');
+      if (targetStatus === 'published') {
+        setMedia(payloadMedia);
+        await cleanupPromotedDraftMedia(cleanupDraftPaths);
+        rollbackPublicPaths = [];
       }
       setNotice(targetStatus === 'published' ? 'تم حفظ الجهاز ونشره.' : targetStatus === 'review' ? 'تم إرساله للمراجعة.' : 'تم حفظ المسودة.');
       await onSaved();
     } catch (caught) {
+      await rollbackPromotedPublicMedia(rollbackPublicPaths);
       setError(caught instanceof Error ? caught.message : 'تعذر حفظ الجهاز.');
     } finally { setBusy(false); }
   };
@@ -243,19 +259,19 @@ export default function EquipmentEditor({ profileId, role, initialRow, onSaved, 
       const uploaded: ContentMediaItem[] = [];
       const hasCover = media.some((item) => item.placement === 'cover' && !item.hidden);
       for (const file of files) {
-        if (!['image/jpeg', 'image/png', 'image/webp'].includes(file.type)) throw new Error(`صيغة الصورة غير مدعومة: ${file.name}`);
-        if (file.size > 5 * 1024 * 1024) throw new Error(`الصورة أكبر من 5MB: ${file.name}`);
-        const extension = file.type === 'image/png' ? 'png' : file.type === 'image/webp' ? 'webp' : 'jpg';
-        const id = crypto.randomUUID();
         const folder = equipment.id.trim() && /^[a-z0-9][a-z0-9-]*$/.test(equipment.id.trim()) ? equipment.id.trim() : `draft-${draftUploadKey.current}`;
-        const path = `${profileId}/equipment/${folder}/${Date.now()}-${id}.${extension}`;
-        const { error: uploadError } = await supabase.storage.from('content-media').upload(path, file, { contentType: file.type, upsert: false });
-        if (uploadError) throw uploadError;
-        const { data: publicData } = supabase.storage.from('content-media').getPublicUrl(path);
-        uploaded.push({ id, path, url: publicData.publicUrl, alt: equipment.nameAr.trim() || equipment.nameEn.trim() || file.name, caption: '', placement: !hasCover && uploaded.length === 0 ? 'cover' : 'gallery', order: media.length + uploaded.length });
+        uploaded.push(await uploadDraftMedia({
+          file,
+          profileId,
+          contentType: 'equipment',
+          folder,
+          alt: equipment.nameAr.trim() || equipment.nameEn.trim() || file.name,
+          placement: !hasCover && uploaded.length === 0 ? 'cover' : 'gallery',
+          order: media.length + uploaded.length,
+        }));
       }
       setMedia((current) => [...current, ...uploaded]);
-      setNotice(`تم رفع ${uploaded.length} صورة.`);
+      setNotice(`تم رفع ${uploaded.length} صورة بشكل خاص للمسودة.`);
       setPreviewOpen(true);
     } catch (caught) {
       setError(caught instanceof Error ? caught.message : 'تعذر رفع الصور.');
@@ -279,9 +295,13 @@ export default function EquipmentEditor({ profileId, role, initialRow, onSaved, 
   };
 
   const deleteMedia = async (item: ContentMediaItem) => {
-    const { error: removeError } = await supabase.storage.from('content-media').remove([item.path]);
-    if (removeError) { setError(removeError.message); return; }
-    setMedia((current) => current.filter((mediaItem) => mediaItem.id !== item.id));
+    setError('');
+    try {
+      await removeAdminMedia(item);
+      setMedia((current) => current.filter((mediaItem) => mediaItem.id !== item.id));
+    } catch (caught) {
+      setError(caught instanceof Error ? caught.message : 'تعذر حذف الصورة.');
+    }
   };
 
   return (

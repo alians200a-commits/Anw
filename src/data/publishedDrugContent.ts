@@ -2,6 +2,8 @@ import { ANESTHESIA_DRUGS, type AnesthesiaDrug } from './drugs';
 import { DRUG_DETAILS, type DrugDetail } from './drugDetails';
 import { supabase } from '../lib/supabase';
 import type { ContentMediaItem } from '../types/contentMedia';
+import { isSafePublishedMediaUrl, isSafeStoragePath } from '../utils/security';
+import { reportRuntimeIssue } from '../utils/runtimeDiagnostics';
 
 export type RuntimeDrugContent = {
   drugs: AnesthesiaDrug[];
@@ -57,7 +59,9 @@ function validMedia(value: unknown): ContentMediaItem[] {
     return (
       typeof item.id === 'string' &&
       typeof item.path === 'string' &&
+      isSafeStoragePath(item.path) &&
       typeof item.url === 'string' &&
+      isSafePublishedMediaUrl(item.url) &&
       typeof item.alt === 'string' &&
       typeof item.placement === 'string' &&
       typeof item.order === 'number'
@@ -82,7 +86,11 @@ export async function loadPublishedDrugContent(): Promise<RuntimeDrugContent> {
       .select('slug,payload')
       .eq('content_type', 'drug');
 
-    if (error || !data?.length) return fallback;
+    if (error) {
+      reportRuntimeIssue('published-drugs', error);
+      return fallback;
+    }
+    if (!data?.length) return fallback;
 
     const rows = data as PublishedDrugRow[];
     const publishedById = new Map<string, AnesthesiaDrug>();
@@ -99,7 +107,10 @@ export async function loadPublishedDrugContent(): Promise<RuntimeDrugContent> {
       publishedMedia[row.slug] = validMedia(payload.media);
     }
 
-    if (publishedById.size === 0) return fallback;
+    if (publishedById.size === 0) {
+      reportRuntimeIssue('published-drugs', new Error('Published rows were returned but none passed schema validation.'));
+      return fallback;
+    }
 
     const localIds = new Set(ANESTHESIA_DRUGS.map((drug) => drug.id));
     const drugs = ANESTHESIA_DRUGS.map(
@@ -115,7 +126,8 @@ export async function loadPublishedDrugContent(): Promise<RuntimeDrugContent> {
       details: { ...DRUG_DETAILS, ...publishedDetails },
       mediaByDrug: publishedMedia,
     };
-  } catch {
+  } catch (error) {
+    reportRuntimeIssue('published-drugs', error);
     return fallback;
   }
 }

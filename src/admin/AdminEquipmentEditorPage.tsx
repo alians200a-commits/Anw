@@ -2,9 +2,10 @@ import { useEffect, useState } from 'react';
 import EquipmentEditor, { type EquipmentContentRow } from './EquipmentEditor';
 import MobileSelectSheet from './MobileSelectSheet';
 import { supabase } from '../lib/supabase';
+import { isAdminRole } from './adminTypes';
 import './adminDrugEditor.mobile.css';
 
-type AdminRole = 'owner' | 'admin' | 'editor' | 'reviewer';
+type AdminRole = 'owner' | 'admin';
 
 type AdminProfile = {
   id: string;
@@ -35,7 +36,7 @@ export default function AdminEquipmentEditorPage() {
         .maybeSingle();
 
       if (cancelled) return;
-      if (profileError || !profileData?.is_active) {
+      if (profileError || !profileData?.is_active || !isAdminRole(profileData.role)) {
         setError('هذا الحساب لا يملك صلاحية إدارة دليلي.');
         setReady(true);
         return;
@@ -88,7 +89,7 @@ export default function AdminEquipmentEditorPage() {
         role={profile.role}
         initialRow={row}
         onSaved={() => undefined}
-        onClose={() => window.location.assign('/admin')}
+        onClose={() => window.location.assign('/admin/equipment/manage')}
       />
       <MobileSelectSheet />
     </div>
