@@ -1,22 +1,33 @@
 import React, { useState } from 'react';
 import { Brain, Droplet, ArrowRight, ArrowLeft, Wind, Gauge, Sparkles, Activity, ShieldCheck } from 'lucide-react';
 
+type GasKey = 'sevo' | 'iso' | 'des' | 'halo';
+
+type GasDefinition = {
+  name: string;
+  baseMac: number;
+  color: string;
+  bg: string;
+};
+
+const GAS_KEYS: readonly GasKey[] = ['sevo', 'iso', 'des', 'halo'];
+
+const GASES: Record<GasKey, GasDefinition> = {
+  sevo: { name: 'Sevoflurane (سيفوفلوران)', baseMac: 2.05, color: 'text-amber-400', bg: 'border-amber-500/30' },
+  iso: { name: 'Isoflurane (إيزوفلوران)', baseMac: 1.15, color: 'text-purple-400', bg: 'border-purple-500/30' },
+  des: { name: 'Desflurane (ديسفلوران)', baseMac: 6.0, color: 'text-blue-400', bg: 'border-blue-500/30' },
+  halo: { name: 'Halothane (هالوثان)', baseMac: 0.75, color: 'text-rose-400', bg: 'border-rose-500/30' },
+};
+
 export const MacAndMetabolismVisualizer: React.FC = () => {
   // Metabolism state
   const [metabolismPhase, setMetabolismPhase] = useState<'lipid' | 'liver' | 'water' | 'kidney'>('lipid');
 
   // MAC slider state (percentage of MAC e.g. 0.5 to 2.0)
   const [macMultiplier, setMacMultiplier] = useState<number>(1.0);
-  const [selectedGas, setSelectedGas] = useState<'sevo' | 'iso' | 'des' | 'halo'>('sevo');
+  const [selectedGas, setSelectedGas] = useState<GasKey>('sevo');
 
-  const gases = {
-    sevo: { name: 'Sevoflurane (سيفوفلوران)', baseMac: 2.05, color: 'text-amber-400', bg: 'border-amber-500/30' },
-    iso: { name: 'Isoflurane (إيزوفلوران)', baseMac: 1.15, color: 'text-purple-400', bg: 'border-purple-500/30' },
-    des: { name: 'Desflurane (ديسفلوران)', baseMac: 6.0, color: 'text-blue-400', bg: 'border-blue-500/30' },
-    halo: { name: 'Halothane (هالوثان)', baseMac: 0.75, color: 'text-rose-400', bg: 'border-rose-500/30' }
-  };
-
-  const currentGas = gases[selectedGas];
+  const currentGas = GASES[selectedGas];
   const deliveredConcentration = (currentGas.baseMac * macMultiplier).toFixed(2);
 
   // Response inhibition rate calculation based on MAC
@@ -175,10 +186,12 @@ export const MacAndMetabolismVisualizer: React.FC = () => {
             اختر غاز التخدير لمقارنة الـ MAC والفعالية:
           </label>
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
-            {Object.entries(gases).map(([key, gas]) => (
+            {GAS_KEYS.map((key) => {
+              const gas = GASES[key];
+              return (
               <button
                 key={key}
-                onClick={() => setSelectedGas(key as any)}
+                onClick={() => setSelectedGas(key)}
                 className={`p-3 rounded-2xl border-2 text-right transition-all ${
                   selectedGas === key
                     ? 'bg-slate-950 border-cyan-500 text-white shadow-md'
@@ -190,7 +203,8 @@ export const MacAndMetabolismVisualizer: React.FC = () => {
                   1.0 MAC = {gas.baseMac}%
                 </span>
               </button>
-            ))}
+              );
+            })}
           </div>
         </div>
 
@@ -228,66 +242,35 @@ export const MacAndMetabolismVisualizer: React.FC = () => {
           <div className="p-4 rounded-2xl bg-slate-950 border border-slate-800">
             <h4 className="text-xs font-bold text-slate-400 mb-2">نسبة منع الاستجابة الحركية للألم الجراحي:</h4>
             <div className="flex items-center gap-3">
-              <span className={`text-3xl font-mono font-black ${
-                responseInhibition >= 85 ? 'text-emerald-400' : responseInhibition === 50 ? 'text-cyan-400' : 'text-amber-400'
-              }`}>
-                {responseInhibition}%
-              </span>
-              <p className="text-xs text-slate-300 leading-normal">
-                {macMultiplier < 1.0
-                  ? 'تخدير خفيف: قد يتحرك المريض أو يرتفع الضغط والنبض استجابة للألم.'
-                  : macMultiplier === 1.0
-                  ? 'الـ 1.0 MAC القياسي: 50% من المرضى لا يستجيبون للشق الجراحي.'
-                  : 'عمق جراحي ممتاز (Surgical Anesthesia): يضمن سكون المريض تماماً بنسبة 95%+.'}
-              </p>
+              <div className="flex-1 h-2 rounded-full bg-slate-800 overflow-hidden">
+                <div
+                  className="h-full bg-cyan-400 transition-all duration-500"
+                  style={{ width: `${responseInhibition}%` }}
+                />
+              </div>
+              <span className="font-mono font-black text-cyan-400 text-lg">{responseInhibition}%</span>
             </div>
           </div>
 
           <div className="p-4 rounded-2xl bg-slate-950 border border-slate-800">
-            <h4 className="text-xs font-bold text-slate-400 mb-2">القاعدة الذهبية لقوة الغاز (Potency Rule):</h4>
-            <p className="text-xs text-slate-300 leading-relaxed">
-              توجد <strong className="text-cyan-400">علاقة عكسية</strong> بين رقم الـ MAC وقوة الغاز:
-              <br />
-              كلما كان رقم الـ MAC <strong>أقل</strong> (مثل الهالوثان 0.75%) كان الغاز <strong>أقوى وأكثر فعالية</strong>، وكلما كان رقم الـ MAC كبيراً (مثل النيتروز N2O 104%) كان الغاز أضعف ويحتاج تركيزات هائلة.
+            <h4 className="text-xs font-bold text-slate-400 mb-2">مستوى العمق المتوقع:</h4>
+            <p className="text-sm font-bold text-white">
+              {macMultiplier < 0.7
+                ? 'سطحي جداً — احتمال استجابة عالية للمؤثر الجراحي.'
+                : macMultiplier < 1.0
+                ? 'عمق متوسط — قد لا يكون كافياً للتحفيز الجراحي المؤلم.'
+                : macMultiplier < 1.3
+                ? 'تخدير بحدود MAC — يثبط الاستجابة الحركية عند نسبة من المرضى.'
+                : 'عمق جراحي مرتفع — يثبط الاستجابة الحركية لدى معظم المرضى.'}
             </p>
           </div>
         </div>
-      </div>
 
-      {/* 3. Hemodynamic Factors: CBF and ICP Quick Guide */}
-      <div className="bg-slate-900/90 border border-slate-800 rounded-3xl p-6 shadow-lg">
-        <h3 className="text-lg font-bold text-white mb-2 flex items-center gap-2">
-          <Brain className="h-5 w-5 text-purple-400" />
-          <span>تأثيرات التخدير على CBF (تدفق دم الدماغ) و ICP (الضغط داخل الجمجمة)</span>
-        </h3>
-        <p className="text-xs text-slate-400 mb-4">
-          كيف تؤثر العوامل وأدوية التخدير بـ Increase (زيادة) أو Decrease (تقليل) على الدماغ:
-        </p>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div className="p-4 rounded-2xl bg-slate-950 border border-emerald-500/30">
-            <div className="flex items-center gap-2 text-emerald-400 font-bold text-sm mb-2">
-              <span>عوامل تسوي Decrease (تقليل) للـ CBF و ICP:</span>
-            </div>
-            <ul className="text-xs text-slate-300 space-y-1.5 list-disc list-inside leading-relaxed">
-              <li><strong>Hyperventilation (فرط التهوية):</strong> تنزيل PaCO2 يسبب تضيق الأوعية الدماغية ويقلل الـ ICP.</li>
-              <li><strong>Propofol (البروبوفول):</strong> يقلل أيض الدماغ وتدفق الدم الدماغي والضغط داخل الجمجمة.</li>
-              <li><strong>Thiopental (الثيوبنتال):</strong> حامي دماغي ممتاز يقلل الـ CBF والـ ICP بقوة.</li>
-              <li><strong>رفع رأس السرير 30 درجة (Head Elevation):</strong> يحسن تصريف الأوردة ويقلل الـ ICP.</li>
-            </ul>
-          </div>
-
-          <div className="p-4 rounded-2xl bg-slate-950 border border-rose-500/30">
-            <div className="flex items-center gap-2 text-rose-400 font-bold text-sm mb-2">
-              <span>عوامل تسوي Increase (زيادة) للـ CBF و ICP:</span>
-            </div>
-            <ul className="text-xs text-slate-300 space-y-1.5 list-disc list-inside leading-relaxed">
-              <li><strong>Hypoventilation (نقص التهوية وارتفاع CO2):</strong> توسع وعائي دماغي شديد يرفع الـ ICP.</li>
-              <li><strong>Ketamine (الكيتامين):</strong> يرفع تدفق الدم الدماغي CBF وقد يرفع الـ ICP (يتجنب في إصابات الرأس).</li>
-              <li><strong>الغازات الاستنشاقية بتركيز عالي (&gt; 1 MAC):</strong> تسبب توسع الأوعية الدماغية ورفع الضغط داخل الجمجمة.</li>
-              <li><strong>السعال أثناء التنبيب (Coughing / Straining):</strong> يرفع الـ ICP بشكل حاد وخطير.</li>
-            </ul>
-          </div>
+        <div className="mt-4 flex items-start gap-2 rounded-2xl border border-amber-500/30 bg-amber-500/10 p-4 text-xs leading-relaxed text-amber-100">
+          <ShieldCheck className="mt-0.5 h-4 w-4 shrink-0 text-amber-300" />
+          <p>
+            القيم المعروضة تعليمية لتوضيح مفهوم الـ MAC ولا تُستخدم وحدها لتحديد جرعة أو عمق التخدير سريرياً؛ تتأثر قيمة MAC بعمر المريض وحرارته والأدوية المصاحبة وعوامل سريرية أخرى.
+          </p>
         </div>
       </div>
     </div>
