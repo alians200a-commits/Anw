@@ -1,5 +1,5 @@
-import { AnimatePresence, motion } from 'motion/react';
-import { Heart, MagnifyingGlass, SpeakerHigh } from '@phosphor-icons/react';
+import { AnimatePresence } from 'motion/react';
+import { MagnifyingGlass, SpeakerHigh } from '@phosphor-icons/react';
 import {
   DRUG_CLASS_LABELS,
   DRUG_FILTERS,
@@ -37,6 +37,16 @@ const drugClassIcon: Record<'all' | DrugClass, MedicalSiteIconName> = {
   adjunct: 'drugs'
 };
 
+const visibleDrugFilters = DRUG_FILTERS.filter(
+  (item) => item.id !== 'vasopressor'
+);
+
+function normalizeClassification(
+  value: 'all' | DrugClass
+): 'all' | DrugClass {
+  return value === 'vasopressor' ? 'cardiovascular' : value;
+}
+
 function iconForDrug(classes: DrugClass[]): MedicalSiteIconName {
   if (classes.includes('inhalational')) return 'inhalational';
   if (
@@ -62,8 +72,8 @@ export function DrugDirectory({
   initialClassification = 'all',
   initialQuery = ''
 }: DrugDirectoryProps) {
-  const [classification, setClassification] = useState<'all' | DrugClass>(
-    initialClassification
+  const [classification, setClassification] = useState<'all' | DrugClass>(() =>
+    normalizeClassification(initialClassification)
   );
   const [query, setQuery] = useState(initialQuery);
   const [selectedDrugId, setSelectedDrugId] = useState<string | null>(null);
@@ -82,7 +92,7 @@ export function DrugDirectory({
   }, []);
 
   useEffect(() => {
-    setClassification(initialClassification);
+    setClassification(normalizeClassification(initialClassification));
   }, [initialClassification]);
 
   useEffect(() => {
@@ -107,7 +117,11 @@ export function DrugDirectory({
     const q = query.trim().toLowerCase();
     return drugContent.drugs.filter((drug) => {
       const matchesCategory =
-        classification === 'all' || drug.classes.includes(classification);
+        classification === 'all' ||
+        (classification === 'cardiovascular'
+          ? drug.classes.includes('cardiovascular') ||
+            drug.classes.includes('vasopressor')
+          : drug.classes.includes(classification));
       const matchesQuery =
         !q ||
         [drug.en, drug.ar, drug.categoryAr, drug.short, ...drug.tags].some(
@@ -118,17 +132,15 @@ export function DrugDirectory({
   }, [classification, query, drugContent.drugs]);
 
   const currentFilter =
-    DRUG_FILTERS.find((item) => item.id === classification)?.label ?? 'الكل';
+    visibleDrugFilters.find((item) => item.id === classification)?.label ?? 'الكل';
 
-  const filterItems: StackMenuItem[] = DRUG_FILTERS.map((item) => ({
+  const filterItems: StackMenuItem[] = visibleDrugFilters.map((item) => ({
     id: item.id,
     title: item.label,
     description: item.id === 'all' ? 'جميع الأدوية' : 'تصفية حسب هذا التصنيف',
     leading: (
       <MedicalSiteIcon
         name={drugClassIcon[item.id as 'all' | DrugClass]}
-        play
-        loop
         size={24}
       />
     ),
@@ -159,8 +171,6 @@ export function DrugDirectory({
         icon={
           <MedicalSiteIcon
             name={drugClassIcon[classification]}
-            play
-            loop
             size={27}
           />
         }
@@ -182,8 +192,7 @@ export function DrugDirectory({
             .find((item) => item.placement === 'cover');
 
           return (
-            <motion.article
-              layout
+            <article
               key={drug.id}
               className="rounded-[18px] border border-[#DCE5EA] bg-[#F7F9FA] p-3.5"
             >
@@ -230,6 +239,7 @@ export function DrugDirectory({
                         src={coverImage.url}
                         alt={coverImage.alt || drug.ar}
                         loading="lazy"
+                        decoding="async"
                         className="h-full w-full bg-white object-contain"
                       />
                     ) : (
@@ -253,7 +263,7 @@ export function DrugDirectory({
                   <span>التفاصيل الدوائية</span>
                 </button>
               )}
-            </motion.article>
+            </article>
           );
         })}
       </div>
