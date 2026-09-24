@@ -9,19 +9,19 @@ const upcoming = [
   {
     id: 'airway',
     title: 'تحدي مجرى الهواء',
-    description: 'اختيارات سريعة عند تدهور التهوية والأكسجة.',
+    description: 'سيناريو حي يتدهور بيه المونيتور حسب قراراتك وتأخيرك.',
     icon: Wind,
   },
   {
     id: 'ventilator',
     title: 'اضبط جهاز التنفس',
-    description: 'غيّر الإعدادات وشوف تأثيرها على المونيتور.',
+    description: 'غيّر الإعدادات وشوف تأثيرها مباشرة على الموجات والعلامات.',
     icon: Activity,
   },
   {
     id: 'drug-response',
     title: 'استجابة المريض للأدوية',
-    description: 'محاكاة مبسطة لتغير العلامات حسب القرار الدوائي.',
+    description: 'محرك استجابة يربط القرار الدوائي بتغيّر حالة المريض.',
     icon: BrainCircuit,
   },
 ];
@@ -41,7 +41,7 @@ export function GamesHub() {
             <p className="text-[10px] font-black text-[#9A7122]">ANESTHESIA GAMES</p>
             <h2 className="mt-1 text-lg font-black text-[#183149]">تعلّم واختبر نفسك</h2>
             <p className="mt-1 text-[11px] font-semibold leading-5 text-[#5F7280]">
-              ألعاب ومحاكاة قصيرة تخليك تتخذ قرار وتشوف تأثيره مباشرة على المريض.
+              محاكاة تفاعلية تخليك تراقب المريض، تختار الإجراء وتشوف تأثير القرار مباشرة.
             </p>
           </div>
 
@@ -67,15 +67,15 @@ export function GamesHub() {
             </div>
             <h3 className="mt-2 text-base font-black text-white">أنقذ المريض أثناء التخدير</h3>
             <p className="mt-1.5 text-[11px] font-semibold leading-5 text-[#C5D3DE]">
-              Monitor حي، 4 قرارات، تغيّر بالعلامات الحيوية، Score وDebrief بالنهاية.
+              Monitor متعدد الموجات، Patient strip، أدوات تقييم/سوائل/أدوية/Airway/Vent وDebrief زمني بالنهاية.
             </p>
           </div>
         </div>
 
         <div className="mt-4 grid grid-cols-3 gap-2 border-t border-white/10 pt-3 text-center">
-          <div><div className="text-sm font-black text-white">4</div><div className="text-[9px] font-bold text-[#AFC3D6]">قرارات</div></div>
+          <div><div className="text-sm font-black text-white">5</div><div className="text-[9px] font-bold text-[#AFC3D6]">أدوات</div></div>
           <div><div className="text-sm font-black text-white">100</div><div className="text-[9px] font-bold text-[#AFC3D6]">نقطة</div></div>
-          <div><div className="text-sm font-black text-white">~3</div><div className="text-[9px] font-bold text-[#AFC3D6]">دقائق</div></div>
+          <div><div className="text-sm font-black text-white">~75s</div><div className="text-[9px] font-bold text-[#AFC3D6]">سيناريو</div></div>
         </div>
       </button>
 
