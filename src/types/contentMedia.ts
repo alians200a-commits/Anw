@@ -1,4 +1,5 @@
 export type ContentMediaPlacement = 'cover' | 'gallery' | 'section';
+export type ContentMediaBucket = 'content-media-drafts' | 'content-media';
 
 export type DrugMediaSection =
   | 'feature'
@@ -29,6 +30,7 @@ export type ContentMediaSection = DrugMediaSection | EquipmentMediaSection | Flu
 
 export interface ContentMediaItem {
   id: string;
+  bucket?: ContentMediaBucket;
   path: string;
   url: string;
   alt: string;

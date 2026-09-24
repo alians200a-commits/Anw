@@ -4,6 +4,8 @@ import {
 } from './equipment';
 import { supabase } from '../lib/supabase';
 import type { ContentMediaItem } from '../types/contentMedia';
+import { isSafePublishedMediaUrl, isSafeStoragePath } from '../utils/security';
+import { reportRuntimeIssue } from '../utils/runtimeDiagnostics';
 
 export type RuntimeEquipmentContent = {
   items: AnesthesiaEquipment[];
@@ -48,7 +50,9 @@ function validMedia(value: unknown): ContentMediaItem[] {
     return (
       typeof item.id === 'string' &&
       typeof item.path === 'string' &&
+      isSafeStoragePath(item.path) &&
       typeof item.url === 'string' &&
+      isSafePublishedMediaUrl(item.url) &&
       typeof item.alt === 'string' &&
       typeof item.placement === 'string' &&
       typeof item.order === 'number'
@@ -72,7 +76,11 @@ export async function loadPublishedEquipmentContent(): Promise<RuntimeEquipmentC
       .select('slug,payload')
       .eq('content_type', 'equipment');
 
-    if (error || !data?.length) return fallback;
+    if (error) {
+      reportRuntimeIssue('published-equipment', error);
+      return fallback;
+    }
+    if (!data?.length) return fallback;
 
     const rows = data as PublishedEquipmentRow[];
     const publishedById = new Map<string, AnesthesiaEquipment>();
@@ -86,7 +94,10 @@ export async function loadPublishedEquipmentContent(): Promise<RuntimeEquipmentC
       publishedMedia[row.slug] = validMedia(payload.media);
     }
 
-    if (publishedById.size === 0) return fallback;
+    if (publishedById.size === 0) {
+      reportRuntimeIssue('published-equipment', new Error('Published rows were returned but none passed schema validation.'));
+      return fallback;
+    }
 
     const localIds = new Set(ANESTHESIA_EQUIPMENT.map((item) => item.id));
     const items = ANESTHESIA_EQUIPMENT.map(
@@ -100,7 +111,8 @@ export async function loadPublishedEquipmentContent(): Promise<RuntimeEquipmentC
       items: [...items, ...newPublished],
       mediaByEquipment: publishedMedia,
     };
-  } catch {
+  } catch (error) {
+    reportRuntimeIssue('published-equipment', error);
     return fallback;
   }
 }

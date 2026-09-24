@@ -1,8 +1,9 @@
 import { useEffect, useMemo, useState } from 'react';
 import { ArrowRight, Pencil, Plus, Search, Wrench } from 'lucide-react';
 import { supabase } from '../lib/supabase';
+import { isAdminRole } from './adminTypes';
 
-type AdminRole = 'owner' | 'admin' | 'editor' | 'reviewer';
+type AdminRole = 'owner' | 'admin';
 type ContentStatus = 'draft' | 'review' | 'approved' | 'published' | 'rejected' | 'archived';
 
 type AdminProfile = { id: string; role: AdminRole; is_active: boolean };
@@ -34,7 +35,7 @@ export default function AdminEquipmentHub() {
       const { data: profileData, error: profileError } = await supabase
         .from('admin_profiles').select('id,role,is_active').eq('id', session.user.id).maybeSingle();
       if (cancelled) return;
-      if (profileError || !profileData?.is_active) {
+      if (profileError || !profileData?.is_active || !isAdminRole(profileData.role)) {
         setError('هذا الحساب لا يملك صلاحية إدارة دليلي.'); setReady(true); return;
       }
       const typed = profileData as AdminProfile;
@@ -61,7 +62,7 @@ export default function AdminEquipmentHub() {
   if (!ready) return <div className="flex min-h-screen items-center justify-center bg-[#07182c] text-sm font-bold text-white">جاري تحميل المعدات…</div>;
   if (error || !profile) return <div dir="rtl" className="flex min-h-screen items-center justify-center bg-[#07182c] p-5"><div className="max-w-md rounded-3xl bg-white p-6 text-center"><p className="font-bold text-red-700">{error || 'غير مخوّل.'}</p><a href="/admin" className="mt-4 inline-block rounded-xl bg-[#173a63] px-4 py-3 font-bold text-white">الرجوع</a></div></div>;
 
-  const canEdit = profile.role === 'owner' || profile.role === 'admin' || profile.role === 'editor';
+  const canEdit = profile.role === 'owner' || profile.role === 'admin';
 
   return (
     <div dir="rtl" className="min-h-screen overflow-x-hidden bg-[#eef3f8] text-[#24313f]">

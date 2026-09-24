@@ -1,6 +1,8 @@
 import { INTRAVENOUS_FLUIDS, type IntravenousFluid } from './fluids';
 import { supabase } from '../lib/supabase';
 import type { ContentMediaItem } from '../types/contentMedia';
+import { isSafePublishedMediaUrl, isSafeStoragePath } from '../utils/security';
+import { reportRuntimeIssue } from '../utils/runtimeDiagnostics';
 
 export type RuntimeFluidContent = {
   items: IntravenousFluid[];
@@ -45,7 +47,9 @@ function validMedia(value: unknown): ContentMediaItem[] {
     return (
       typeof item.id === 'string' &&
       typeof item.path === 'string' &&
+      isSafeStoragePath(item.path) &&
       typeof item.url === 'string' &&
+      isSafePublishedMediaUrl(item.url) &&
       typeof item.alt === 'string' &&
       typeof item.placement === 'string' &&
       typeof item.order === 'number'
@@ -65,7 +69,11 @@ export async function loadPublishedFluidContent(): Promise<RuntimeFluidContent> 
       .select('slug,payload')
       .eq('content_type', 'fluid');
 
-    if (error || !data?.length) return fallback;
+    if (error) {
+      reportRuntimeIssue('published-fluids', error);
+      return fallback;
+    }
+    if (!data?.length) return fallback;
 
     const publishedById = new Map<string, IntravenousFluid>();
     const publishedMedia: Record<string, ContentMediaItem[]> = {};
@@ -77,7 +85,10 @@ export async function loadPublishedFluidContent(): Promise<RuntimeFluidContent> 
       publishedMedia[row.slug] = validMedia(payload.media);
     }
 
-    if (publishedById.size === 0) return fallback;
+    if (publishedById.size === 0) {
+      reportRuntimeIssue('published-fluids', new Error('Published rows were returned but none passed schema validation.'));
+      return fallback;
+    }
 
     const localIds = new Set(INTRAVENOUS_FLUIDS.map((item) => item.id));
     const items = INTRAVENOUS_FLUIDS.map((item) => publishedById.get(item.id) ?? item);
@@ -86,7 +97,8 @@ export async function loadPublishedFluidContent(): Promise<RuntimeFluidContent> 
       .sort((a, b) => a.nameAr.localeCompare(b.nameAr, 'ar'));
 
     return { items: [...items, ...newPublished], mediaByFluid: publishedMedia };
-  } catch {
+  } catch (error) {
+    reportRuntimeIssue('published-fluids', error);
     return fallback;
   }
 }

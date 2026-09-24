@@ -3,9 +3,10 @@ import { Copy } from 'lucide-react';
 import DrugEditorV2, { type DrugContentRow } from './DrugEditorV2';
 import MobileSelectSheet from './MobileSelectSheet';
 import { supabase } from '../lib/supabase';
+import { isAdminRole } from './adminTypes';
 import './adminDrugEditor.mobile.css';
 
-type AdminRole = 'owner' | 'admin' | 'editor' | 'reviewer';
+type AdminRole = 'owner' | 'admin';
 
 type AdminProfile = {
   id: string;
@@ -76,7 +77,7 @@ export default function AdminDrugEditorPage() {
         .maybeSingle();
 
       if (cancelled) return;
-      if (profileError || !profileData?.is_active) {
+      if (profileError || !profileData?.is_active || !isAdminRole(profileData.role)) {
         setError('هذا الحساب لا يملك صلاحية إدارة دليلي.');
         setReady(true);
         return;
@@ -133,7 +134,7 @@ export default function AdminDrugEditorPage() {
     );
   }
 
-  const canDuplicate = !isDuplicate && Boolean(row?.id) && profile.role !== 'reviewer';
+  const canDuplicate = !isDuplicate && Boolean(row?.id);
 
   return (
     <div className="admin-drug-editor-host">
@@ -142,7 +143,7 @@ export default function AdminDrugEditorPage() {
         role={profile.role}
         initialRow={row}
         onSaved={() => undefined}
-        onClose={() => window.location.assign('/admin')}
+        onClose={() => window.location.assign('/admin/drugs/manage')}
       />
 
       {canDuplicate && (
