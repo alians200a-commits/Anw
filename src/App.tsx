@@ -96,10 +96,19 @@ export default function App() {
       <FavoritesScreen
         favorites={favorites}
         onToggleFavorite={toggleFavorite}
+        onExplore={() => openGuide('drugs')}
       />
     );
   } else {
-    screen = <HomeScreen openGuide={openGuide} onOpenAbout={() => setAboutOpen(true)} />;
+    screen = (
+      <HomeScreen
+        openGuide={openGuide}
+        onOpenAbout={() => setAboutOpen(true)}
+        onOpenGames={() => handleTabChange('games')}
+        onOpenFavorites={() => handleTabChange('favorites')}
+        favoritesCount={favorites.size}
+      />
+    );
   }
 
   return (
