@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import { BadgeInfo } from 'lucide-react';
+import { BadgeInfo, Bookmark, ChevronLeft, HeartPulse, Sparkles } from 'lucide-react';
 import {
   ANESTHESIA_DRUGS,
   DRUG_CLASS_LABELS,
@@ -29,6 +29,9 @@ interface HomeScreenProps {
     initialQuery?: string
   ) => void;
   onOpenAbout: () => void;
+  onOpenGames: () => void;
+  onOpenFavorites: () => void;
+  favoritesCount: number;
 }
 
 const guideIcon: Record<GuideSection, MedicalSiteIconName> = {
@@ -78,7 +81,13 @@ function drugSearchIconPair(classes: DrugClass[]) {
   return searchIconPair(drugSearchIcon(classes));
 }
 
-export function HomeScreen({ openGuide, onOpenAbout }: HomeScreenProps) {
+export function HomeScreen({
+  openGuide,
+  onOpenAbout,
+  onOpenGames,
+  onOpenFavorites,
+  favoritesCount,
+}: HomeScreenProps) {
   const searchItems = useMemo<MorphingSearchItem[]>(() => {
     const drugs: MorphingSearchItem[] = ANESTHESIA_DRUGS.map((drug) => ({
       id: 'drug:' + drug.id,
@@ -252,17 +261,26 @@ export function HomeScreen({ openGuide, onOpenAbout }: HomeScreenProps) {
     }
   ];
 
+  const quickTools: Array<{
+    id: string;
+    label: string;
+    icon: MedicalSiteIconName;
+    tone: string;
+    onClick: () => void;
+  }> = [
+    { id: 'drugs', label: 'الأدوية', icon: 'drugs', tone: 'bg-[#F4E9D2] text-[#8A6426]', onClick: () => openGuide('drugs') },
+    { id: 'equipment', label: 'المعدات', icon: 'equipment', tone: 'bg-[#E8EEF3] text-[#315672]', onClick: () => openGuide('equipment') },
+    { id: 'stages', label: 'المراحل', icon: 'stages', tone: 'bg-[#EDF1E5] text-[#5D7047]', onClick: () => openGuide('stages') },
+    { id: 'learn', label: 'تعلّم', icon: 'learn', tone: 'bg-[#EFE8F4] text-[#66527B]', onClick: onOpenGames },
+  ];
+
   return (
     <div className="space-y-5">
       <section>
         <div className="mb-3 flex items-start justify-between gap-3">
           <div>
-            <p className="text-[11px] font-bold text-[#526675]">
-              دليلك السريع في التخدير
-            </p>
-            <h2 className="mt-1 text-xl font-black text-[#183149]">
-              ابحث أو اختر القسم
-            </h2>
+            <p className="text-[11px] font-bold text-[#526675]">دليلك السريع في التخدير</p>
+            <h2 className="mt-1 text-xl font-black text-[#183149]">وين تحب تبدأ؟</h2>
           </div>
 
           <button
@@ -270,23 +288,93 @@ export function HomeScreen({ openGuide, onOpenAbout }: HomeScreenProps) {
             onClick={onOpenAbout}
             aria-label="حول تطبيق دليلي"
             title="حول التطبيق"
-            className="group grid h-11 w-11 shrink-0 place-items-center rounded-2xl border border-[#E5D3A1] bg-[linear-gradient(145deg,#FFFDF7_0%,#F7F0DE_100%)] text-[#A87916] shadow-[0_7px_18px_rgba(24,49,73,0.08)] transition duration-200 hover:-translate-y-0.5 hover:border-[#D2AE55] hover:text-[#805B0D] hover:shadow-[0_10px_24px_rgba(24,49,73,0.12)] active:translate-y-0 active:scale-95"
+            className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl border border-[#E5D3A1] bg-[linear-gradient(145deg,#FFFDF7_0%,#F7F0DE_100%)] text-[#A87916] shadow-[0_7px_18px_rgba(24,49,73,0.08)] active:scale-95"
           >
             <BadgeInfo size={22} strokeWidth={2.15} />
           </button>
         </div>
 
-        <MorphingSearch
-          items={searchItems}
-          placeholder="ابحث في دليلي"
-        />
+        <MorphingSearch items={searchItems} placeholder="ابحث في دليلي" />
+      </section>
+
+      <section className="overflow-hidden rounded-[26px] border border-[#D8E2E9] bg-[linear-gradient(105deg,#F7F0DE_0%,#F5F8FA_54%,#E7EEF3_100%)] shadow-[0_14px_32px_rgba(16,45,79,0.08)]">
+        <div className="grid min-h-[190px] grid-cols-[1.25fr_.75fr] items-stretch">
+          <div className="flex flex-col justify-between p-4 text-right">
+            <div>
+              <span className="inline-flex items-center gap-1.5 rounded-full border border-white/80 bg-white/80 px-2.5 py-1 text-[9px] font-black text-[#8A6426]">
+                <Sparkles size={12} /> حالة اليوم
+              </span>
+              <h3 className="mt-3 text-[18px] font-black leading-7 text-[#183149]">هبوط الضغط بعد البدء بالتخدير</h3>
+              <p className="mt-1.5 text-[11px] font-semibold leading-5 text-[#5F7280]">راقب المونيتور، رتّب التقييم، وتدخل بشكل منطقي حتى تستقر الحالة.</p>
+            </div>
+
+            <button
+              type="button"
+              onClick={onOpenGames}
+              className="mt-4 inline-flex min-h-10 w-fit items-center gap-2 rounded-[14px] bg-[#173A63] px-3.5 text-[10px] font-black text-white shadow-[0_7px_16px_rgba(23,58,99,0.16)] active:bg-[#102D4F]"
+            >
+              ابدأ المحاكاة <ChevronLeft size={15} />
+            </button>
+          </div>
+
+          <div className="relative grid place-items-center overflow-hidden border-r border-white/70 bg-[#173A63]/[0.035]">
+            <div className="absolute -left-8 top-5 h-28 w-28 rounded-full bg-white/55 blur-2xl" />
+            <div className="relative grid h-24 w-24 place-items-center rounded-[28px] border border-white/80 bg-white/70 text-[#173A63] shadow-[0_16px_30px_rgba(23,58,99,0.10)]">
+              <HeartPulse size={48} strokeWidth={1.8} />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div className="mb-2.5 flex items-center justify-between px-1">
+          <span className="text-[10px] font-bold text-[#8A97A1]">وصول سريع</span>
+          <h3 className="text-[13px] font-black text-[#183149]">الأدوات</h3>
+        </div>
+        <div className="grid grid-cols-4 gap-2">
+          {quickTools.map((item) => (
+            <button
+              key={item.id}
+              type="button"
+              onClick={item.onClick}
+              className="flex min-h-[82px] flex-col items-center justify-center gap-2 rounded-[18px] border border-[#DCE5EA] bg-white px-1.5 text-center shadow-[0_6px_16px_rgba(16,45,79,0.05)] active:bg-[#F6F8F9]"
+            >
+              <span className={`grid h-11 w-11 place-items-center rounded-[14px] ${item.tone}`}>
+                <MedicalSiteIcon name={item.icon} size={25} />
+              </span>
+              <span className="text-[10px] font-black text-[#183149]">{item.label}</span>
+            </button>
+          ))}
+        </div>
+      </section>
+
+      <section className="rounded-[22px] border border-[#DCE5EA] bg-[#F8FAFB] p-3.5">
+        <div className="mb-3 flex items-center justify-between gap-3">
+          <button
+            type="button"
+            onClick={onOpenFavorites}
+            className="inline-flex min-h-9 items-center gap-1.5 rounded-[12px] border border-[#DCE5EA] bg-white px-3 text-[10px] font-black text-[#526675]"
+          >
+            <Bookmark size={14} /> المحفوظات
+          </button>
+          <div className="text-right">
+            <h3 className="text-[12px] font-black text-[#183149]">نظرة سريعة</h3>
+            <p className="mt-0.5 text-[9px] font-semibold text-[#7A8995]">محتوى دليلي المتاح حاليًا</p>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-3 divide-x divide-x-reverse divide-[#DCE5EA] rounded-[16px] border border-[#E1E8ED] bg-white py-3 text-center">
+          <div><div className="text-lg font-black tabular-nums text-[#173A63]">{ANESTHESIA_DRUGS.length}</div><div className="mt-0.5 text-[9px] font-bold text-[#7A8995]">دواء</div></div>
+          <div><div className="text-lg font-black tabular-nums text-[#173A63]">{ANESTHESIA_EQUIPMENT.length}</div><div className="mt-0.5 text-[9px] font-bold text-[#7A8995]">معدة</div></div>
+          <div><div className="text-lg font-black tabular-nums text-[#9A7122]">{favoritesCount}</div><div className="mt-0.5 text-[9px] font-bold text-[#7A8995]">محفوظ</div></div>
+        </div>
       </section>
 
       <section>
         <NotificationStackMenu
           title="الدليل التخديري"
           description="أدوية، سوائل، معدات، مراحل التخدير، إجراءات ومصطلحات"
-          icon={<MedicalSiteIcon name="guide" play size={27} />}
+          icon={<MedicalSiteIcon name="guide" size={27} />}
           items={guideItems}
         />
       </section>
