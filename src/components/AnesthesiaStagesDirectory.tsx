@@ -9,10 +9,6 @@ import type { ClinicalGuide } from '../data/clinicalGuides';
 import { BilingualLabel } from './BilingualLabel';
 import { MixedDirectionText } from './MixedDirectionText';
 import { useModalSheetA11y } from '../hooks/useModalSheetA11y';
-import {
-  NotificationStackMenu,
-  type StackMenuItem
-} from './ui/NotificationStackMenu';
 import { MedicalSiteIcon } from './ui/MedicalSiteIcon';
 
 function StageSection({
@@ -76,8 +72,6 @@ function StageGuideSheet({
   guide: ClinicalGuide;
   onClose: () => void;
 }) {
-
-
   const dialogRef = useRef<HTMLDivElement>(null);
   useModalSheetA11y(dialogRef, onClose);
 
@@ -218,53 +212,64 @@ export function AnesthesiaStagesDirectory({
     stageEntries.find((entry) => entry.stage.id === selectedStageId) ??
     stageEntries[0];
 
-  const stageItems: StackMenuItem[] = stageEntries.map(({ stage, guides }) => ({
-    id: stage.id,
-    title: stage.titleAr,
-    description: stage.titleEn,
-    trailing: stage.number,
-    leading: <MedicalSiteIcon name="stages" play loop size={24} />,
-    onSelect: () => {
-      setSelectedStageId(stage.id);
-      setSelectedGuide(null);
-    }
-  }));
-
   if (!currentEntry) return null;
 
   return (
     <div className="space-y-3">
-      <section className="px-1 text-right">
-        <h2 className="text-base font-black text-[#183149]">مراحل التخدير</h2>
-        <p className="mt-1 text-[11px] font-semibold text-[#5F7280]" dir="ltr">
-          Stages of Anesthesia
-        </p>
+      <section className="rounded-[22px] border border-[#DCE5EA] bg-[#F8FAFB] p-3 shadow-[0_8px_22px_rgba(16,45,79,0.045)]">
+        <div className="overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+          <div className="flex min-w-max gap-2">
+            {stageEntries.map(({ stage, guides }) => {
+              const active = stage.id === selectedStageId;
+              return (
+                <button
+                  key={stage.id}
+                  type="button"
+                  onClick={() => {
+                    setSelectedStageId(stage.id);
+                    setSelectedGuide(null);
+                  }}
+                  className={
+                    'min-w-[138px] rounded-[16px] border px-3 py-3 text-right outline-none focus-visible:ring-2 focus-visible:ring-[#CCA039]/45 ' +
+                    (active
+                      ? 'border-[#173A63] bg-[#173A63] text-white shadow-[0_6px_14px_rgba(23,58,99,0.16)]'
+                      : 'border-[#DCE5EA] bg-white text-[#183149] active:bg-[#EEF3F6]')
+                  }
+                >
+                  <div className="flex items-center justify-between gap-2">
+                    <span className={'grid h-8 w-8 place-items-center rounded-[10px] text-[11px] font-black ' + (active ? 'bg-white/12 text-[#E7C46F]' : 'bg-[#EEF3F6] text-[#526675]')}>
+                      {stage.number}
+                    </span>
+                    <MedicalSiteIcon name="stages" size={21} />
+                  </div>
+                  <div className="mt-2 text-[11px] font-black">{stage.titleAr}</div>
+                  <div className={'mt-1 text-[9px] font-bold ' + (active ? 'text-[#C5D3DE]' : 'text-[#7A8995]')} dir="ltr">{stage.titleEn}</div>
+                  <div className={'mt-2 text-[9px] font-bold ' + (active ? 'text-[#E7C46F]' : 'text-[#66737F]')}>{guides.length} موضوع</div>
+                </button>
+              );
+            })}
+          </div>
+        </div>
+
+        <div className="mt-3 flex items-center justify-between rounded-[14px] border border-[#DCE5EA] bg-white px-3 py-2.5">
+          <span className="rounded-full bg-[#EEF3F6] px-2.5 py-1 text-[10px] font-black text-[#405E75]">{currentEntry.guides.length} موضوع</span>
+          <div className="min-w-0 flex-1 pr-3 text-right">
+            <div className="text-[11px] font-black text-[#183149]">{currentEntry.stage.titleAr}</div>
+            <div className="mt-0.5 truncate text-[9px] font-bold text-[#7A8995]" dir="ltr">{currentEntry.stage.titleEn}</div>
+          </div>
+        </div>
       </section>
 
-      <NotificationStackMenu
-        title={currentEntry.stage.titleAr}
-        description={currentEntry.stage.titleEn}
-        icon={<MedicalSiteIcon name="stages" play loop size={27} />}
-        items={stageItems}
-        selectedId={selectedStageId}
-      />
-
-      <div className="px-1 text-left">
-        <span className="rounded-full border border-[#DCE5EA] bg-[#EEF3F6] px-2.5 py-1 text-[11px] font-black text-[#405E75]">
-          {currentEntry.guides.length} موضوع
-        </span>
-      </div>
-
-      <div className="space-y-2">
-        {currentEntry.guides.map((guide, index) => (
+      <div className="space-y-2.5">
+        {currentEntry.guides.map((guide) => (
           <motion.button
             key={guide.id}
             type="button"
             onClick={() => setSelectedGuide(guide)}
-            className="flex min-h-[68px] w-full items-center gap-3 rounded-[18px] border border-[#DCE5EA] bg-[#F7F9FA] px-3.5 py-3 text-right outline-none transition active:bg-[#EEF3F6] focus-visible:ring-2 focus-visible:ring-[#CCA039]/50"
+            className="flex min-h-[72px] w-full items-center gap-3 rounded-[20px] border border-[#DCE5EA] bg-white px-3.5 py-3 text-right shadow-[0_5px_16px_rgba(16,45,79,0.045)] outline-none active:bg-[#F8FAFB] focus-visible:ring-2 focus-visible:ring-[#CCA039]/50"
           >
-            <div className="grid h-11 w-11 shrink-0 place-items-center rounded-[14px] border border-[#D7E2E9] bg-[#EEF3F6] text-[#315672]">
-              <MedicalSiteIcon name="stages" play loop size={27} />
+            <div className="grid h-11 w-11 shrink-0 place-items-center rounded-[14px] border border-[#D7E2E9] bg-[#F4F7F9] text-[#315672]">
+              <MedicalSiteIcon name="stages" size={27} />
             </div>
 
             <div className="min-w-0 flex-1">
