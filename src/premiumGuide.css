@@ -227,6 +227,19 @@
   background: linear-gradient(90deg, rgba(217,164,65,.085), rgba(47,105,168,.055), rgba(255,255,255,.28)) !important;
 }
 
+/* Simulation + global fixed controls: avoid expensive backdrop composition on mobile. */
+[aria-label="أدوات المحاكاة"] {
+  background: #FFFFFF !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  box-shadow: 0 8px 20px rgba(7,23,37,.11) !important;
+}
+
+[aria-label="أدوات المحاكاة"] button {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
 /* Coarse-pointer / mobile path: prioritize immediate touch response. */
 @media (hover: none), (pointer: coarse), (max-width: 768px) {
   .readable-guide-content [data-dropdown-trigger],
@@ -272,6 +285,14 @@
   .stack-menu-enter {
     animation-duration: 85ms;
   }
+
+  [aria-label="أدوات المحاكاة"] {
+    box-shadow: 0 5px 14px rgba(7,23,37,.10) !important;
+  }
+
+  [aria-label="أدوات المحاكاة"] button {
+    transition: none !important;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -282,7 +303,8 @@
 
   .readable-guide-content [role="menuitem"],
   .readable-guide-content button.rounded-\[18px\],
-  .readable-guide-content article.rounded-\[18px\] {
+  .readable-guide-content article.rounded-\[18px\],
+  [aria-label="أدوات المحاكاة"] button {
     transition: none !important;
   }
 }
