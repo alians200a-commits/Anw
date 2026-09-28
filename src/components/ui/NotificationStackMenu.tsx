@@ -80,7 +80,7 @@ export function NotificationStackMenu({
         aria-controls={listId}
         onClick={() => setOpen(!expanded)}
         className={
-          'group flex min-h-[58px] w-full touch-manipulation items-center gap-3 rounded-[16px] border bg-white px-3.5 py-2.5 text-right outline-none transition-colors duration-100 ' +
+          'group flex min-h-[58px] w-full touch-manipulation items-center gap-3 rounded-[16px] border bg-white px-3.5 py-2.5 text-right outline-none transition-colors duration-100 max-[360px]:gap-2 max-[360px]:px-3 ' +
           (expanded
             ? 'border-[#B8C7D2] shadow-[0_6px_16px_rgba(10,32,55,0.07)]'
             : 'border-[#DCE4EA] shadow-[0_2px_8px_rgba(10,32,55,0.03)] hover:border-[#C8D4DD]') +
@@ -88,19 +88,19 @@ export function NotificationStackMenu({
         }
       >
         {icon ? (
-          <span className="grid h-10 w-10 shrink-0 place-items-center text-[#315672]">
+          <span className="grid h-10 w-10 shrink-0 place-items-center text-[#315672] max-[360px]:h-9 max-[360px]:w-9">
             {icon}
           </span>
         ) : null}
 
-        <span className="min-w-0 flex-1">
-          <span className="block text-[13px] font-black text-[#183149]">
+        <span className="min-w-0 flex-1 overflow-hidden">
+          <span className="block truncate whitespace-nowrap text-[13px] font-black text-[#183149]">
             {title}
           </span>
           {description ? (
             <span
               dir="auto"
-              className="mt-0.5 block truncate text-[11px] font-semibold text-[#66737F]"
+              className="mt-0.5 block truncate whitespace-nowrap text-[11px] font-semibold text-[#66737F]"
             >
               {description}
             </span>
@@ -110,7 +110,7 @@ export function NotificationStackMenu({
         <span
           aria-hidden="true"
           className={
-            'grid h-9 w-9 shrink-0 place-items-center rounded-lg text-[#526675] transition-transform duration-100 ' +
+            'grid h-9 w-9 shrink-0 place-items-center rounded-lg text-[#526675] transition-transform duration-100 max-[360px]:h-8 max-[360px]:w-8 ' +
             (expanded ? 'rotate-180' : '')
           }
         >
@@ -137,7 +137,7 @@ export function NotificationStackMenu({
                   setOpen(false);
                 }}
                 className={
-                  'group flex min-h-[52px] w-full touch-manipulation items-center gap-3 rounded-[11px] px-2.5 py-2 text-right outline-none transition-colors duration-75 ' +
+                  'group flex min-h-[52px] w-full touch-manipulation items-center gap-3 rounded-[11px] px-2.5 py-2 text-right outline-none transition-colors duration-75 max-[360px]:gap-2 max-[360px]:px-2 ' +
                   (selected
                     ? 'bg-[#F3F6F8]'
                     : 'bg-white hover:bg-[#F7F9FA] active:bg-[#EEF3F6]') +
@@ -147,7 +147,7 @@ export function NotificationStackMenu({
                 {item.leading ? (
                   <span
                     className={
-                      'grid h-9 w-9 shrink-0 place-items-center rounded-[10px] ' +
+                      'grid h-9 w-9 shrink-0 place-items-center rounded-[10px] max-[360px]:h-8 max-[360px]:w-8 ' +
                       (selected
                         ? 'bg-[#CCA039]/10 text-[#315672]'
                         : 'bg-transparent text-[#526F85]')
@@ -157,14 +157,14 @@ export function NotificationStackMenu({
                   </span>
                 ) : null}
 
-                <span className="min-w-0 flex-1">
-                  <span className="block text-[12px] font-black text-[#20394F]">
+                <span className="min-w-0 flex-1 overflow-hidden">
+                  <span className="block truncate whitespace-nowrap text-[12px] font-black text-[#20394F]">
                     {item.title}
                   </span>
                   {item.description ? (
                     <span
                       dir="auto"
-                      className="mt-0.5 block truncate text-[11px] font-semibold text-[#66737F]"
+                      className="mt-0.5 block truncate whitespace-nowrap text-[11px] font-semibold text-[#66737F]"
                     >
                       {item.description}
                     </span>
@@ -176,7 +176,7 @@ export function NotificationStackMenu({
                     {item.trailing}
                   </span>
                 ) : selected ? (
-                  <span className="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-[#CCA039]/15 text-[#8A6426]">
+                  <span className="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-[#CCA039]/15 text-[#8A6426] max-[360px]:h-6 max-[360px]:w-6">
                     <Check size={15} weight="bold" />
                   </span>
                 ) : null}
