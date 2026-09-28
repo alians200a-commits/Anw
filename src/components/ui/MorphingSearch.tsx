@@ -172,13 +172,17 @@ export function MorphingSearch({
     closeSearch();
   };
 
+  const shortTransition = reduceMotion
+    ? { duration: 0 }
+    : { duration: 0.13, ease: 'easeOut' as const };
+
   const overlay = open ? (
     <motion.div
-      className="fixed inset-0 z-[90] flex items-start justify-center bg-[#0A2037]/48 px-3 pt-[max(1rem,env(safe-area-inset-top))] backdrop-blur-[3px] sm:px-5 sm:pt-10"
+      className="fixed inset-0 z-[90] flex items-start justify-center bg-[#0A2037]/52 px-3 pt-[max(1rem,env(safe-area-inset-top))] sm:px-5 sm:pt-10"
       initial={reduceMotion ? false : { opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={reduceMotion ? undefined : { opacity: 0 }}
-      transition={{ duration: reduceMotion ? 0 : 0.18 }}
+      transition={shortTransition}
       onPointerDown={(event) => {
         if (event.target === event.currentTarget) closeSearch();
       }}
@@ -210,12 +214,8 @@ export function MorphingSearch({
             first.focus();
           }
         }}
-        className="w-full max-w-2xl overflow-hidden rounded-[22px] border border-[#DCE4EA] bg-white shadow-[0_24px_70px_rgba(3,20,34,0.28)]"
-        transition={
-          reduceMotion
-            ? { duration: 0 }
-            : { type: 'spring', stiffness: 260, damping: 28, mass: 0.7 }
-        }
+        className="w-full max-w-2xl overflow-hidden rounded-[22px] border border-[#DCE4EA] bg-white shadow-[0_18px_48px_rgba(3,20,34,0.24)]"
+        transition={shortTransition}
       >
         <div className="flex min-h-14 items-center gap-2 border-b border-[#E7EDF1] px-3">
           <AnimatedIcon active={open} variant="pulse" className="shrink-0 text-[#B58B2A]">
@@ -257,7 +257,7 @@ export function MorphingSearch({
             type="button"
             onClick={closeSearch}
             aria-label="إغلاق البحث"
-            className="group grid h-11 w-11 shrink-0 place-items-center rounded-xl text-[#526675] outline-none transition active:bg-[#EEF3F6] focus-visible:ring-2 focus-visible:ring-[#CCA039]/55"
+            className="group grid h-11 w-11 shrink-0 touch-manipulation place-items-center rounded-xl text-[#526675] outline-none active:bg-[#EEF3F6] focus-visible:ring-2 focus-visible:ring-[#CCA039]/55"
           >
             <X size={20} weight="bold" />
           </button>
@@ -289,7 +289,7 @@ export function MorphingSearch({
                 onFocus={() => setActiveIndex(index)}
                 onClick={() => selectItem(item)}
                 className={
-                  'group flex min-h-[64px] w-full items-center gap-3 rounded-[14px] px-3 py-2.5 text-right outline-none transition focus-visible:ring-2 focus-visible:ring-[#CCA039]/55 ' +
+                  'group flex min-h-[64px] w-full touch-manipulation items-center gap-3 rounded-[14px] px-3 py-2.5 text-right outline-none focus-visible:ring-2 focus-visible:ring-[#CCA039]/55 ' +
                   (index === activeIndex
                     ? 'bg-[#EEF3F6]'
                     : 'bg-white hover:bg-[#F7F9FA] active:bg-[#EEF3F6]')
@@ -346,12 +346,8 @@ export function MorphingSearch({
           layoutId="daleeli-morph-search"
           type="button"
           onClick={openSearch}
-          className="group flex min-h-12 w-full items-center gap-3 rounded-[16px] border border-[#DCE4EA] bg-white px-3.5 text-right shadow-[0_3px_14px_rgba(10,32,55,0.05)] outline-none transition focus-visible:ring-2 focus-visible:ring-[#CCA039]/60 focus-visible:ring-offset-2"
-          transition={
-            reduceMotion
-              ? { duration: 0 }
-              : { type: 'spring', stiffness: 260, damping: 28, mass: 0.7 }
-          }
+          className="group flex min-h-12 w-full touch-manipulation items-center gap-3 rounded-[16px] border border-[#DCE4EA] bg-white px-3.5 text-right shadow-[0_3px_12px_rgba(10,32,55,0.05)] outline-none focus-visible:ring-2 focus-visible:ring-[#CCA039]/60 focus-visible:ring-offset-2"
+          transition={shortTransition}
         >
           <AnimatedIcon variant="pulse" className="shrink-0 text-[#B58B2A]">
             <MagnifyingGlass size={20} weight="bold" />
