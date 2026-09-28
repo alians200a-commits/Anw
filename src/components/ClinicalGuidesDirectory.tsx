@@ -18,20 +18,31 @@ import {
 import { MedicalSiteIcon } from './ui/MedicalSiteIcon';
 
 function GuideItems({ title, items }: { title: string; items: string[] }) {
+  if (!items.length) return null;
+
+  if (items.length === 1) {
+    return (
+      <section className="rounded-[18px] border border-[#DCE5EA] bg-white px-3.5 py-3.5">
+        <BilingualLabel label={title} className="text-[11px] font-black text-[#405E75]" />
+        <p className="mt-2.5 text-[11.5px] leading-[1.8] text-[#526675]"><MixedDirectionText text={items[0]} /></p>
+      </section>
+    );
+  }
+
   return (
-    <details className="group rounded-2xl border border-[#DCE5EA] bg-[#F7F9FA] px-3.5 py-3">
+    <details className="group rounded-[18px] border border-[#DCE5EA] bg-white px-3.5 py-3">
       <summary className="flex min-h-11 cursor-pointer list-none items-center justify-between gap-3">
         <CaretDown size={15} weight="bold" className="text-[#526F85] transition group-open:rotate-180" />
         <div className="flex items-center gap-2">
-          <span className="rounded-full bg-white/80 px-2 py-0.5 text-[11px] font-black text-[#5F7280]">{items.length}</span>
+          <span className="rounded-full bg-[#EEF3F6] px-2 py-0.5 text-[10px] font-black text-[#5F7280]">{items.length}</span>
           <BilingualLabel label={title} className="text-[11px] font-black text-[#405E75]" />
         </div>
       </summary>
-      <div className="mt-3 space-y-2 border-t border-black/[0.05] pt-3">
+      <div className="mt-3 space-y-2.5 border-t border-black/[0.05] pt-3">
         {items.map((item, index) => (
-          <div key={index} className="flex items-start justify-end gap-2">
-            <p className="flex-1 text-right text-[11px] leading-5 text-[#526675]"><MixedDirectionText text={item} /></p>
-            <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#5F7E95]" />
+          <div key={index} className="flex items-start justify-end gap-2.5">
+            <p className="flex-1 text-right text-[11.5px] leading-[1.8] text-[#526675]"><MixedDirectionText text={item} /></p>
+            <span className="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#5F7E95]" />
           </div>
         ))}
       </div>
@@ -48,10 +59,11 @@ function ClinicalGuideSheet({
 }) {
   const dialogRef = useRef<HTMLDivElement>(null);
   useModalSheetA11y(dialogRef, onClose);
+  const totalItems = guide.sections.reduce((sum, section) => sum + section.items.length, 0);
 
   return (
     <motion.div
-      className="fixed inset-0 z-[86] bg-[#0A2037]/42 backdrop-blur-[2px]"
+      className="fixed inset-0 z-[86] bg-[#0A2037]/48"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
@@ -63,42 +75,62 @@ function ClinicalGuideSheet({
         role="dialog"
         aria-modal="true"
         aria-label={`تفاصيل ${guide.titleAr}`}
-        className="absolute inset-x-0 bottom-0 mx-auto max-h-[90vh] w-full max-w-3xl overflow-y-auto rounded-t-[28px] border-t border-[#DCE5EA] bg-white shadow-2xl"
-        initial={{ y: 38, opacity: 0 }}
+        className="absolute inset-x-0 bottom-0 mx-auto max-h-[92vh] w-full max-w-3xl overflow-y-auto rounded-t-[30px] border-t border-[#D6E1E8] bg-[#F5F7F9] shadow-[0_-18px_55px_rgba(7,23,37,0.22)]"
+        initial={{ y: 28, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        exit={{ y: 32, opacity: 0 }}
-        transition={{ duration: 0.18 }}
+        exit={{ y: 24, opacity: 0 }}
+        transition={{ duration: 0.14 }}
         onClick={(event) => event.stopPropagation()}
       >
-        <div className="sticky top-0 z-10 border-b border-[#E3EAF0] bg-[#F7F9FA]/95 px-4 pb-3 pt-3 backdrop-blur-xl">
-          <div className="mx-auto mb-3 h-1 w-10 rounded-full bg-[#AFC0CC]" />
+        <div className="sticky top-0 z-10 border-b border-[#DDE5EA] bg-white px-4 pb-3.5 pt-3">
+          <div className="mx-auto mb-3 h-1 w-11 rounded-full bg-[#B7C5CE]" />
           <div className="flex items-start justify-between gap-3">
             <button
               type="button"
               onClick={onClose}
-              className="grid h-11 w-11 shrink-0 place-items-center rounded-full border border-[#D6E1EA] bg-white text-[#526675] outline-none focus-visible:ring-2 focus-visible:ring-[#CCA039]/55"
+              className="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-[#D6E1EA] bg-[#F7F9FA] text-[#526675] outline-none active:bg-[#EEF3F6] focus-visible:ring-2 focus-visible:ring-[#CCA039]/55"
               aria-label="إغلاق"
             >
               <X size={17} weight="bold" />
             </button>
-            <div className="flex-1 text-right">
-              <p className="text-[11px] font-black text-[#526F85]">{guide.categoryAr}</p>
-              <h3 className="mt-0.5 text-lg font-black text-[#183149]">{guide.titleAr}</h3>
-              <p className="mt-0.5 text-sm font-bold text-[#526675]" dir="ltr">{guide.titleEn}</p>
+            <div className="flex min-w-0 flex-1 items-start justify-end gap-3">
+              <div className="min-w-0 flex-1 text-right">
+                <span className="inline-flex rounded-full border border-[#DCE5EA] bg-[#EEF3F6] px-2.5 py-1 text-[10px] font-black text-[#405E75]">{guide.categoryAr}</span>
+                <h3 className="mt-2 text-[21px] font-black leading-7 text-[#183149]">{guide.titleAr}</h3>
+                <p className="mt-0.5 truncate text-[13px] font-bold text-[#526675]" dir="ltr">{guide.titleEn}</p>
+              </div>
+              <span className="grid h-[72px] w-[72px] shrink-0 place-items-center rounded-[20px] border border-[#D7E2E9] bg-[linear-gradient(145deg,#F8FBFC,#EEF4F7)] text-[#315672]">
+                <MedicalSiteIcon name="clinical" size={35} />
+              </span>
             </div>
           </div>
         </div>
 
         <div className="space-y-3 px-4 pb-[max(1.75rem,env(safe-area-inset-bottom))] pt-4">
-          <section className="rounded-2xl border border-[#DCE5EA] bg-[#F8FAFB] px-3.5 py-3">
-            <BilingualLabel label="الخلاصة | Summary" className="text-[11px] font-black text-[#405E75]" />
-            <p className="mt-1.5 text-[12px] leading-6 text-[#465866]"><MixedDirectionText text={guide.summary} /></p>
+          <section className="overflow-hidden rounded-[22px] border border-[#DCE5EA] bg-white">
+            <div className="grid grid-cols-2 border-b border-[#E3EAF0] bg-[#F8FAFB] text-center">
+              <div className="px-2 py-2.5">
+                <div className="text-[15px] font-black text-[#183149]">{guide.sections.length}</div>
+                <div className="mt-0.5 text-[9px] font-bold text-[#71808B]">محاور</div>
+              </div>
+              <div className="border-r border-[#E3EAF0] px-2 py-2.5">
+                <div className="text-[15px] font-black text-[#183149]">{totalItems}</div>
+                <div className="mt-0.5 text-[9px] font-bold text-[#71808B]">نقاط</div>
+              </div>
+            </div>
+            <div className="px-3.5 py-3.5">
+              <BilingualLabel label="الخلاصة | Summary" className="text-[11px] font-black text-[#405E75]" />
+              <p className="mt-2 text-[12px] leading-6 text-[#465866]"><MixedDirectionText text={guide.summary} /></p>
+            </div>
           </section>
 
           {guide.clinicalNote && (
-            <section className="rounded-2xl border border-[#E8DFC9] bg-[#FFF9EE] px-3.5 py-3">
-              <BilingualLabel label="ملاحظة سريرية | Clinical note" className="text-[11px] font-black text-[#8A6426]" />
-              <p className="mt-1.5 text-[11px] leading-5 text-[#5B5142]"><MixedDirectionText text={guide.clinicalNote} /></p>
+            <section className="rounded-[18px] border border-[#E8DFC9] bg-[#FFF9EE] px-3.5 py-3.5">
+              <div className="flex items-center justify-end gap-2">
+                <BilingualLabel label="ملاحظة سريرية | Clinical note" className="text-[11px] font-black text-[#8A6426]" />
+                <span className="h-2 w-2 rounded-full bg-[#D9A441]" />
+              </div>
+              <p className="mt-2 text-[11.5px] leading-[1.8] text-[#5B5142]"><MixedDirectionText text={guide.clinicalNote} /></p>
             </section>
           )}
 
