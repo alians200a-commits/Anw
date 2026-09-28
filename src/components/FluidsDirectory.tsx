@@ -163,7 +163,7 @@ export function FluidsDirectory({ initialQuery = '' }: { initialQuery?: string }
     id: item.id,
     title: item.label,
     description: item.id === 'all' ? 'كل السوائل الوريدية' : 'تصفية هذا النوع',
-    leading: <MedicalSiteIcon name="fluids" play loop size={24} />,
+    leading: <MedicalSiteIcon name="fluids" size={24} />,
     onSelect: () => setCategory(item.id as 'all' | FluidCategory),
   }));
 
@@ -177,25 +177,35 @@ export function FluidsDirectory({ initialQuery = '' }: { initialQuery?: string }
   }, [category, query, fluidContent.items]);
 
   const selected = selectedId ? fluidContent.items.find((item) => item.id === selectedId) ?? null : null;
+  const clearFilters = () => { setQuery(''); setCategory('all'); };
 
   return (
     <div className="space-y-3">
-      <div className="relative">
-        <MagnifyingGlass size={18} weight="bold" className="absolute right-3 top-1/2 -translate-y-1/2 text-[#526F85]" />
-        <input value={query} onChange={(event) => setQuery(event.target.value)} aria-label="البحث في السوائل الوريدية" dir="auto" placeholder="Normal Saline، Ringer، Albumin..." className="h-11 w-full rounded-xl border border-[#DCE4EA] bg-white pr-10 pl-3 text-xs font-semibold text-[#183149] outline-none placeholder:text-[#66737F] focus:border-[#B58B2A] focus:ring-2 focus:ring-[#CCA039]/15" />
-      </div>
+      <section className="rounded-[22px] border border-[#DCE5EA] bg-[#F8FAFB] p-3 shadow-[0_8px_22px_rgba(16,45,79,0.045)]">
+        <div className="relative">
+          <MagnifyingGlass size={19} weight="bold" className="absolute right-4 top-1/2 -translate-y-1/2 text-[#526F85]" />
+          <input value={query} onChange={(event) => setQuery(event.target.value)} aria-label="البحث في السوائل الوريدية" dir="auto" placeholder="Normal Saline، Ringer، Albumin..." className="h-12 w-full rounded-[16px] border border-[#D8E2E9] bg-white pr-11 pl-3 text-xs font-semibold text-[#183149] outline-none placeholder:text-[#7A8995] focus:border-[#B58B2A] focus:ring-2 focus:ring-[#CCA039]/15" />
+        </div>
 
-      <NotificationStackMenu title={currentCategory} description="نوع السوائل الوريدية" icon={<MedicalSiteIcon name="fluids" play loop size={27} />} items={categoryItems} selectedId={category} />
+        <div className="mt-2.5">
+          <NotificationStackMenu title={currentCategory} description="نوع السوائل الوريدية" icon={<MedicalSiteIcon name="fluids" size={27} />} items={categoryItems} selectedId={category} />
+        </div>
 
-      <div className="space-y-2">
+        <div className="mt-2.5 flex items-center justify-between px-1 text-[10px] font-bold text-[#66737F]">
+          {(query || category !== 'all') ? <button type="button" onClick={clearFilters} className="rounded-full px-2 py-1 text-[#8A6426] active:bg-[#F2E9D5]">مسح التصفية</button> : <span />}
+          <span>عرض {filtered.length} من {fluidContent.items.length}</span>
+        </div>
+      </section>
+
+      <div className="space-y-2.5">
         {filtered.map((item) => {
           const cover = coverImage(fluidContent.mediaByFluid[item.id] ?? []);
           return (
-            <motion.button key={item.id} type="button" onClick={() => setSelectedId(item.id)} className="w-full rounded-[18px] border border-[#DCE5EA] bg-[#F7F9FA] px-3.5 py-3 text-right outline-none transition active:bg-[#EEF3F6] focus-visible:ring-2 focus-visible:ring-[#CCA039]/55">
+            <motion.button key={item.id} type="button" onClick={() => setSelectedId(item.id)} className="w-full rounded-[20px] border border-[#DCE5EA] bg-white px-3.5 py-3 text-right shadow-[0_5px_16px_rgba(16,45,79,0.045)] outline-none active:bg-[#F8FAFB] focus-visible:ring-2 focus-visible:ring-[#CCA039]/55">
               <div className="flex items-start justify-between gap-3">
-                <span className="shrink-0 rounded-full bg-white/80 px-2.5 py-1 text-[11px] font-black text-[#405E75]">{item.categoryAr}</span>
+                <span className="shrink-0 rounded-full bg-[#EEF3F6] px-2.5 py-1 text-[11px] font-black text-[#405E75]">{item.categoryAr}</span>
                 <div className="min-w-0 flex-1"><h3 className="text-[13px] font-black text-[#183149]">{item.nameAr}</h3><p className="mt-0.5 truncate text-[11px] font-bold text-[#526675]" dir="ltr">{item.nameEn}</p></div>
-                <span className="grid h-10 w-10 shrink-0 place-items-center overflow-hidden rounded-[12px] border border-[#D7E2E9] bg-white">{cover ? <img src={cover.url} alt={cover.alt || item.nameAr} className="h-full w-full object-contain" /> : <MedicalSiteIcon name="fluids" size={22} />}</span>
+                <span className="grid h-10 w-10 shrink-0 place-items-center overflow-hidden rounded-[12px] border border-[#D7E2E9] bg-[#F4F7F9]">{cover ? <img src={cover.url} alt={cover.alt || item.nameAr} className="h-full w-full object-contain" /> : <MedicalSiteIcon name="fluids" size={22} />}</span>
               </div>
               <div className="mt-2 flex items-center justify-between border-t border-[#DDE6EB] pt-2"><span className="text-[11px] text-[#5F7280]">تركيب • استخدام • محاذير</span><MedicalSiteIcon name="fluids" size={18} /></div>
             </motion.button>
@@ -203,7 +213,14 @@ export function FluidsDirectory({ initialQuery = '' }: { initialQuery?: string }
         })}
       </div>
 
-      {filtered.length === 0 && <div className="rounded-[18px] border border-dashed border-[#C9D6DF] bg-[#F8FAFB] p-7 text-center text-xs text-[#5F7280]">ماكو سائل مطابق للبحث.</div>}
+      {filtered.length === 0 && (
+        <div className="rounded-[24px] border border-dashed border-[#C9D6DF] bg-[linear-gradient(145deg,#F8FAFB,#F2F6F9)] p-7 text-center">
+          <div className="mx-auto grid h-12 w-12 place-items-center rounded-[15px] border border-[#D7E2E9] bg-white"><MedicalSiteIcon name="fluids" size={28} /></div>
+          <h3 className="mt-3 text-[13px] font-black text-[#183149]">ماكو سائل مطابق</h3>
+          <p className="mt-1.5 text-[10px] font-semibold text-[#66737F]">غيّر كلمة البحث أو اعرض كل الأنواع.</p>
+          <button type="button" onClick={clearFilters} className="mt-3 min-h-10 rounded-[13px] bg-[#173A63] px-4 text-[10px] font-black text-white">عرض كل السوائل</button>
+        </div>
+      )}
 
       <AnimatePresence>
         {selected && <FluidSheet item={selected} media={fluidContent.mediaByFluid[selected.id] ?? []} onClose={() => setSelectedId(null)} />}
