@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
-import { BookOpenText, CaretDown, MagnifyingGlass, X } from '@phosphor-icons/react';
+import { CaretDown, MagnifyingGlass, X } from '@phosphor-icons/react';
 import {
   CLINICAL_GUIDES,
   CLINICAL_GUIDE_FILTERS,
@@ -18,17 +18,6 @@ import {
 import { MedicalSiteIcon } from './ui/MedicalSiteIcon';
 
 function GuideItems({ title, items }: { title: string; items: string[] }) {
-  const body = (
-    <div className="space-y-2">
-      {items.map((item, index) => (
-        <div key={index} className="flex items-start justify-end gap-2">
-          <p className="flex-1 text-right text-[11px] leading-5 text-[#526675]"><MixedDirectionText text={item} /></p>
-          <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#5F7E95]" />
-        </div>
-      ))}
-    </div>
-  );
-
   return (
     <details className="group rounded-2xl border border-[#DCE5EA] bg-[#F7F9FA] px-3.5 py-3">
       <summary className="flex min-h-11 cursor-pointer list-none items-center justify-between gap-3">
@@ -38,7 +27,14 @@ function GuideItems({ title, items }: { title: string; items: string[] }) {
           <BilingualLabel label={title} className="text-[11px] font-black text-[#405E75]" />
         </div>
       </summary>
-      <div className="mt-3 border-t border-black/[0.05] pt-3">{body}</div>
+      <div className="mt-3 space-y-2 border-t border-black/[0.05] pt-3">
+        {items.map((item, index) => (
+          <div key={index} className="flex items-start justify-end gap-2">
+            <p className="flex-1 text-right text-[11px] leading-5 text-[#526675]"><MixedDirectionText text={item} /></p>
+            <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#5F7E95]" />
+          </div>
+        ))}
+      </div>
     </details>
   );
 }
@@ -50,8 +46,6 @@ function ClinicalGuideSheet({
   guide: ClinicalGuide;
   onClose: () => void;
 }) {
-
-
   const dialogRef = useRef<HTMLDivElement>(null);
   useModalSheetA11y(dialogRef, onClose);
 
@@ -111,7 +105,6 @@ function ClinicalGuideSheet({
           {guide.sections.map((section) => (
             <GuideItems key={section.title} title={section.title} items={section.items} />
           ))}
-
         </div>
       </motion.div>
     </motion.div>
@@ -154,15 +147,18 @@ export function ClinicalGuidesDirectory({
     id: item.id,
     title: item.label,
     description: item.id === 'all' ? 'كل المفاهيم والإجراءات' : 'تصفية هذا القسم',
-    leading: <MedicalSiteIcon name="clinical" play loop size={24} />,
+    leading: <MedicalSiteIcon name="clinical" size={24} />,
     onSelect: () => setCategory(item.id as 'all' | ClinicalGuideCategory)
   }));
 
+  const allGuides = useMemo(
+    () => CLINICAL_GUIDES.filter((guide) => !ANESTHESIA_STAGE_GUIDE_IDS.has(guide.id)),
+    []
+  );
+
   const filtered = useMemo(() => {
     const normalized = query.trim().toLowerCase();
-    return CLINICAL_GUIDES.filter((guide) => {
-      if (ANESTHESIA_STAGE_GUIDE_IDS.has(guide.id)) return false;
-
+    return allGuides.filter((guide) => {
       const categoryMatch = category === 'all' || guide.category === category;
       const queryMatch =
         !normalized ||
@@ -178,44 +174,60 @@ export function ClinicalGuidesDirectory({
 
       return categoryMatch && queryMatch;
     });
-  }, [category, query]);
+  }, [allGuides, category, query]);
+
+  const clearFilters = () => {
+    setQuery('');
+    setCategory('all');
+  };
 
   return (
     <div className="space-y-3">
-      <div className="relative">
-        <MagnifyingGlass
-          size={18}
-          weight="bold"
-          className="absolute right-3 top-1/2 -translate-y-1/2 text-[#526F85]"
-        />
-        <input
-          value={query}
-          onChange={(event) => setQuery(event.target.value)}
-          aria-label="البحث في المفاهيم والإجراءات"
-          dir="auto"
-          placeholder="RSI، Spinal، حركية الدواء..."
-          className="h-11 w-full rounded-xl border border-[#DCE4EA] bg-white pr-10 pl-3 text-xs font-semibold text-[#183149] outline-none placeholder:text-[#66737F] focus:border-[#B58B2A] focus:ring-2 focus:ring-[#CCA039]/15"
-        />
-      </div>
+      <section className="rounded-[22px] border border-[#DCE5EA] bg-[#F8FAFB] p-3 shadow-[0_8px_22px_rgba(16,45,79,0.045)]">
+        <div className="relative">
+          <MagnifyingGlass
+            size={19}
+            weight="bold"
+            className="absolute right-4 top-1/2 -translate-y-1/2 text-[#526F85]"
+          />
+          <input
+            value={query}
+            onChange={(event) => setQuery(event.target.value)}
+            aria-label="البحث في المفاهيم والإجراءات"
+            dir="auto"
+            placeholder="RSI، Spinal، حركية الدواء..."
+            className="h-12 w-full rounded-[16px] border border-[#D8E2E9] bg-white pr-11 pl-3 text-xs font-semibold text-[#183149] outline-none placeholder:text-[#7A8995] focus:border-[#B58B2A] focus:ring-2 focus:ring-[#CCA039]/15"
+          />
+        </div>
 
-      <NotificationStackMenu
-        title={currentCategory}
-        description="تصنيف المفاهيم والإجراءات"
-        icon={<MedicalSiteIcon name="clinical" play loop size={27} />}
-        items={categoryItems}
-        selectedId={category}
-      />
+        <div className="mt-2.5">
+          <NotificationStackMenu
+            title={currentCategory}
+            description="تصنيف المفاهيم والإجراءات"
+            icon={<MedicalSiteIcon name="clinical" size={27} />}
+            items={categoryItems}
+            selectedId={category}
+          />
+        </div>
 
-      <div className="space-y-2">
-        {filtered.map((guide, index) => (
+        <div className="mt-2.5 flex items-center justify-between px-1 text-[10px] font-bold text-[#66737F]">
+          {(query || category !== 'all') ? (
+            <button type="button" onClick={clearFilters} className="rounded-full px-2 py-1 text-[#8A6426] active:bg-[#F2E9D5]">مسح التصفية</button>
+          ) : <span />}
+          <span>عرض {filtered.length} من {allGuides.length}</span>
+        </div>
+      </section>
+
+      <div className="space-y-2.5">
+        {filtered.map((guide) => (
           <motion.button
             key={guide.id}
             type="button"
             onClick={() => setSelected(guide)}
-            className="w-full rounded-[18px] border border-[#DCE5EA] bg-[#F7F9FA] px-3.5 py-3 text-right outline-none transition active:bg-[#EEF3F6] focus-visible:ring-2 focus-visible:ring-[#CCA039]/55"
+            className="w-full rounded-[20px] border border-[#DCE5EA] bg-white px-3.5 py-3 text-right shadow-[0_5px_16px_rgba(16,45,79,0.045)] outline-none active:bg-[#F8FAFB] focus-visible:ring-2 focus-visible:ring-[#CCA039]/55"
           >
             <div className="flex items-start justify-between gap-3">
-              <span className="shrink-0 rounded-full bg-white/80 px-2.5 py-1 text-[11px] font-black text-[#405E75]">
+              <span className="shrink-0 rounded-full bg-[#EEF3F6] px-2.5 py-1 text-[11px] font-black text-[#405E75]">
                 {guide.categoryAr}
               </span>
               <div className="min-w-0 flex-1">
@@ -224,6 +236,9 @@ export function ClinicalGuidesDirectory({
                   {guide.titleEn}
                 </p>
               </div>
+              <span className="grid h-10 w-10 shrink-0 place-items-center rounded-[12px] border border-[#D7E2E9] bg-[#F4F7F9] text-[#315672]">
+                <MedicalSiteIcon name="clinical" size={24} />
+              </span>
             </div>
             <p className="mt-2 line-clamp-2 text-[11px] leading-5 text-[#526675]">{guide.summary}</p>
             <div className="mt-2 border-t border-[#DDE6EB] pt-2 text-[11px] font-black text-[#405E75]">
@@ -234,8 +249,11 @@ export function ClinicalGuidesDirectory({
       </div>
 
       {filtered.length === 0 && (
-        <div className="rounded-[18px] border border-dashed border-[#C9D6DF] bg-[#F8FAFB] p-7 text-center text-xs text-[#5F7280]">
-          ماكو موضوع مطابق للبحث.
+        <div className="rounded-[24px] border border-dashed border-[#C9D6DF] bg-[linear-gradient(145deg,#F8FAFB,#F2F6F9)] p-7 text-center">
+          <div className="mx-auto grid h-12 w-12 place-items-center rounded-[15px] border border-[#D7E2E9] bg-white"><MedicalSiteIcon name="clinical" size={29} /></div>
+          <h3 className="mt-3 text-[13px] font-black text-[#183149]">ماكو موضوع مطابق</h3>
+          <p className="mt-1.5 text-[10px] font-semibold text-[#66737F]">جرّب كلمة بحث ثانية أو اعرض كل التصنيفات.</p>
+          <button type="button" onClick={clearFilters} className="mt-3 min-h-10 rounded-[13px] bg-[#173A63] px-4 text-[10px] font-black text-white">عرض كل المواضيع</button>
         </div>
       )}
 
