@@ -42,12 +42,12 @@ export function TermsDirectory({ favorites, onToggleFavorite, initialQuery = '' 
             aria-label="البحث في المصطلحات"
             dir="auto"
             placeholder="ابحث عن مصطلح عربي أو إنكليزي..."
-            className="h-12 w-full rounded-[16px] border border-[#D8E2E9] bg-white pr-11 pl-3 text-sm text-[#183149] outline-none placeholder:text-[#7A8995] focus:border-[#B58B2A] focus:ring-2 focus:ring-[#CCA039]/15"
+            className="h-12 w-full rounded-[16px] border border-[#D8E2E9] bg-white pr-11 pl-3 text-sm text-[#183149] outline-none placeholder:text-[#7A8995] focus:border-[#B58B2A] focus:ring-2 focus:ring-[#CCA039]/15 max-[360px]:text-xs"
           />
         </div>
         <div className="mt-2.5 flex items-center justify-between px-1 text-[10px] font-bold text-[#66737F]">
-          {query ? <button type="button" onClick={() => setQuery('')} className="rounded-full px-2 py-1 text-[#8A6426] active:bg-[#F2E9D5]">مسح البحث</button> : <span />}
-          <span>عرض {filtered.length} من {allTerms.length}</span>
+          {query ? <button type="button" onClick={() => setQuery('')} className="touch-manipulation rounded-full px-2 py-1 text-[#8A6426] active:bg-[#F2E9D5]">مسح البحث</button> : <span />}
+          <span className="whitespace-nowrap">عرض {filtered.length} من {allTerms.length}</span>
         </div>
       </section>
 
@@ -56,13 +56,13 @@ export function TermsDirectory({ favorites, onToggleFavorite, initialQuery = '' 
           const favoriteId = 'term:' + term.id;
           const isFavorite = favorites.has(favoriteId);
           return (
-            <article key={term.id} className="rounded-[20px] border border-[#DCE5EA] bg-white p-3.5 shadow-[0_5px_16px_rgba(16,45,79,0.045)]">
-              <div className="flex items-start gap-3">
+            <article key={term.id} className="rounded-[20px] border border-[#DCE5EA] bg-white p-3.5 shadow-[0_5px_16px_rgba(16,45,79,0.045)] max-[360px]:p-3">
+              <div className="flex min-w-0 items-start gap-3 max-[360px]:gap-2">
                 <div className="flex shrink-0 gap-1">
                   <button
                     type="button"
                     onClick={() => playPronunciation('terms', term.id)}
-                    className="group grid h-10 w-10 place-items-center rounded-xl border border-[#D7E2E9] bg-[#F8FAFB] text-[#315672] outline-none active:bg-[#EEF3F6] focus-visible:ring-2 focus-visible:ring-[#CCA039]/55"
+                    className="group grid h-10 w-10 touch-manipulation place-items-center rounded-xl border border-[#D7E2E9] bg-[#F8FAFB] text-[#315672] outline-none active:bg-[#EEF3F6] focus-visible:ring-2 focus-visible:ring-[#CCA039]/55 max-[360px]:h-9 max-[360px]:w-9"
                     title="نطق المصطلح"
                     aria-label={'نطق ' + term.ar}
                   >
@@ -72,7 +72,7 @@ export function TermsDirectory({ favorites, onToggleFavorite, initialQuery = '' 
                     type="button"
                     onClick={() => onToggleFavorite(favoriteId)}
                     className={
-                      'group grid h-10 w-10 place-items-center rounded-xl border outline-none focus-visible:ring-2 focus-visible:ring-[#CCA039]/55 ' +
+                      'group grid h-10 w-10 touch-manipulation place-items-center rounded-xl border outline-none focus-visible:ring-2 focus-visible:ring-[#CCA039]/55 max-[360px]:h-9 max-[360px]:w-9 ' +
                       (isFavorite
                         ? 'border-[#CCA039]/45 bg-[#CCA039]/12 text-[#9B7420]'
                         : 'border-[#D7E2E9] bg-[#F8FAFB] text-[#5F7280]')
@@ -80,13 +80,13 @@ export function TermsDirectory({ favorites, onToggleFavorite, initialQuery = '' 
                     title="حفظ"
                     aria-label={isFavorite ? 'إزالة من المحفوظات' : 'حفظ المصطلح'}
                   >
-                    <MedicalSiteIcon name="saved" play={isFavorite} size={23} />
+                    <MedicalSiteIcon name="saved" play={isFavorite} size={22} />
                   </button>
                 </div>
 
-                <div className="min-w-0 flex-1 text-right">
-                  <h3 className="text-sm font-black text-[#183149]">{term.ar}</h3>
-                  <p className="mt-1 truncate text-xs font-bold text-[#526675]" dir="ltr">{term.en}</p>
+                <div className="min-w-0 flex-1 overflow-hidden text-right">
+                  <h3 className="truncate whitespace-nowrap text-sm font-black text-[#183149]" title={term.ar}>{term.ar}</h3>
+                  <p className="mt-1 truncate whitespace-nowrap text-xs font-bold text-[#526675]" dir="ltr" title={term.en}>{term.en}</p>
                 </div>
               </div>
               <p className="mt-3 whitespace-pre-line text-[11px] leading-5 text-[#526675]"><MixedDirectionText text={term.definition} /></p>
@@ -102,11 +102,11 @@ export function TermsDirectory({ favorites, onToggleFavorite, initialQuery = '' 
       </div>
 
       {filtered.length === 0 && (
-        <div className="rounded-[24px] border border-dashed border-[#C9D6DF] bg-[linear-gradient(145deg,#F8FAFB,#F2F6F9)] p-7 text-center">
+        <div className="rounded-[24px] border border-dashed border-[#C9D6DF] bg-[linear-gradient(145deg,#F8FAFB,#F2F6F9)] p-7 text-center max-[360px]:p-5">
           <div className="mx-auto grid h-12 w-12 place-items-center rounded-[15px] border border-[#D7E2E9] bg-white"><MedicalSiteIcon name="terms" size={29} /></div>
           <h3 className="mt-3 text-[13px] font-black text-[#183149]">ماكو مصطلح مطابق</h3>
           <p className="mt-1.5 text-[10px] font-semibold text-[#66737F]">جرّب كلمة أقصر أو ابحث بالمصطلح الإنكليزي.</p>
-          <button type="button" onClick={() => setQuery('')} className="mt-3 min-h-10 rounded-[13px] bg-[#173A63] px-4 text-[10px] font-black text-white">عرض كل المصطلحات</button>
+          <button type="button" onClick={() => setQuery('')} className="mt-3 min-h-10 touch-manipulation rounded-[13px] bg-[#173A63] px-4 text-[10px] font-black text-white">عرض كل المصطلحات</button>
         </div>
       )}
     </div>
