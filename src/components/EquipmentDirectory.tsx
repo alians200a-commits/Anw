@@ -163,7 +163,7 @@ export function EquipmentSheet({
                 <p className="mt-0.5 text-sm font-bold text-[#526675]" dir="ltr">{item.nameEn}</p>
               </div>
               <span className="grid h-11 w-11 shrink-0 place-items-center overflow-hidden rounded-[13px] border border-[#D7E2E9] bg-white">
-                {cover ? <img src={cover.url} alt={cover.alt || item.nameAr} className="h-full w-full object-contain" /> : <MedicalSiteIcon name={equipmentIcon(item)} play loop size={28} />}
+                {cover ? <img src={cover.url} alt={cover.alt || item.nameAr} className="h-full w-full object-contain" /> : <MedicalSiteIcon name={equipmentIcon(item)} size={28} />}
               </span>
             </div>
           </div>
@@ -236,7 +236,7 @@ export function EquipmentDirectory({ initialQuery = '' }: { initialQuery?: strin
     id: item.id,
     title: item.label,
     description: item.id === 'all' ? 'كل المعدات والأدوات' : 'تصفية هذا القسم',
-    leading: <MedicalSiteIcon name={equipmentCategoryIcon[item.id]} play loop size={24} />,
+    leading: <MedicalSiteIcon name={equipmentCategoryIcon[item.id]} size={24} />,
     onSelect: () => setCategory(item.id as 'all' | EquipmentCategory),
   }));
 
@@ -259,28 +259,38 @@ export function EquipmentDirectory({ initialQuery = '' }: { initialQuery?: strin
   }, [category, query, equipmentContent.items]);
 
   const selected = selectedId ? equipmentContent.items.find((item) => item.id === selectedId) ?? null : null;
+  const clearFilters = () => { setQuery(''); setCategory('all'); };
 
   return (
     <div className="space-y-3">
-      <div className="relative">
-        <MagnifyingGlass size={18} weight="bold" className="absolute right-3 top-1/2 -translate-y-1/2 text-[#526F85]" />
-        <input value={query} onChange={(event) => setQuery(event.target.value)} aria-label="البحث في عربة التخدير والمعدات" dir="auto" placeholder="Laryngoscope، منظار الحنجرة، OPA..." className="h-11 w-full rounded-xl border border-[#DCE4EA] bg-white pr-10 pl-3 text-xs font-semibold text-[#183149] outline-none placeholder:text-[#66737F] focus:border-[#B58B2A] focus:ring-2 focus:ring-[#CCA039]/15" />
-      </div>
+      <section className="rounded-[22px] border border-[#DCE5EA] bg-[#F8FAFB] p-3 shadow-[0_8px_22px_rgba(16,45,79,0.045)]">
+        <div className="relative">
+          <MagnifyingGlass size={19} weight="bold" className="absolute right-4 top-1/2 -translate-y-1/2 text-[#526F85]" />
+          <input value={query} onChange={(event) => setQuery(event.target.value)} aria-label="البحث في عربة التخدير والمعدات" dir="auto" placeholder="Laryngoscope، منظار الحنجرة، OPA..." className="h-12 w-full rounded-[16px] border border-[#D8E2E9] bg-white pr-11 pl-3 text-xs font-semibold text-[#183149] outline-none placeholder:text-[#7A8995] focus:border-[#B58B2A] focus:ring-2 focus:ring-[#CCA039]/15" />
+        </div>
 
-      <NotificationStackMenu title={currentCategory} description="قسم عربة التخدير والمعدات" icon={<MedicalSiteIcon name={equipmentCategoryIcon[category]} play loop size={27} />} items={categoryItems} selectedId={category} />
+        <div className="mt-2.5">
+          <NotificationStackMenu title={currentCategory} description="قسم عربة التخدير والمعدات" icon={<MedicalSiteIcon name={equipmentCategoryIcon[category]} size={27} />} items={categoryItems} selectedId={category} />
+        </div>
 
-      <div className="space-y-2">
+        <div className="mt-2.5 flex items-center justify-between px-1 text-[10px] font-bold text-[#66737F]">
+          {(query || category !== 'all') ? <button type="button" onClick={clearFilters} className="rounded-full px-2 py-1 text-[#8A6426] active:bg-[#F2E9D5]">مسح التصفية</button> : <span />}
+          <span>عرض {filtered.length} من {equipmentContent.items.length}</span>
+        </div>
+      </section>
+
+      <div className="space-y-2.5">
         {filtered.map((item) => {
           const cover = coverImage(equipmentContent.mediaByEquipment[item.id] ?? []);
           return (
-            <motion.button key={item.id} type="button" onClick={() => setSelectedId(item.id)} className="w-full rounded-[18px] border border-[#DCE5EA] bg-[#F7F9FA] px-3.5 py-3 text-right outline-none transition active:bg-[#EEF3F6] focus-visible:ring-2 focus-visible:ring-[#CCA039]/55">
+            <motion.button key={item.id} type="button" onClick={() => setSelectedId(item.id)} className="w-full rounded-[20px] border border-[#DCE5EA] bg-white px-3.5 py-3 text-right shadow-[0_5px_16px_rgba(16,45,79,0.045)] outline-none active:bg-[#F8FAFB] focus-visible:ring-2 focus-visible:ring-[#CCA039]/55">
               <div className="flex items-start gap-3">
-                <span className="shrink-0 rounded-full bg-white/80 px-2.5 py-1 text-[11px] font-black text-[#405E75]">{item.categoryAr}</span>
+                <span className="shrink-0 rounded-full bg-[#EEF3F6] px-2.5 py-1 text-[11px] font-black text-[#405E75]">{item.categoryAr}</span>
                 <div className="min-w-0 flex-1">
                   <h3 className="text-[13px] font-black text-[#183149]">{item.nameAr}</h3>
                   <p className="mt-0.5 truncate text-[11px] font-bold text-[#526675]" dir="ltr">{item.nameEn}</p>
                 </div>
-                <span className="grid h-10 w-10 shrink-0 place-items-center overflow-hidden rounded-[12px] border border-[#D7E2E9] bg-white">
+                <span className="grid h-10 w-10 shrink-0 place-items-center overflow-hidden rounded-[12px] border border-[#D7E2E9] bg-[#F4F7F9]">
                   {cover ? <img src={cover.url} alt={cover.alt || item.nameAr} className="h-full w-full object-contain" /> : <MedicalSiteIcon name={equipmentIcon(item)} size={26} />}
                 </span>
               </div>
@@ -291,7 +301,14 @@ export function EquipmentDirectory({ initialQuery = '' }: { initialQuery?: strin
         })}
       </div>
 
-      {filtered.length === 0 && <div className="rounded-[18px] border border-dashed border-[#C9D6DF] bg-[#F8FAFB] p-7 text-center text-xs text-[#5F7280]">ماكو جهاز أو أداة مطابقة للبحث.</div>}
+      {filtered.length === 0 && (
+        <div className="rounded-[24px] border border-dashed border-[#C9D6DF] bg-[linear-gradient(145deg,#F8FAFB,#F2F6F9)] p-7 text-center">
+          <div className="mx-auto grid h-12 w-12 place-items-center rounded-[15px] border border-[#D7E2E9] bg-white"><MedicalSiteIcon name="equipment" size={29} /></div>
+          <h3 className="mt-3 text-[13px] font-black text-[#183149]">ماكو جهاز أو أداة مطابقة</h3>
+          <p className="mt-1.5 text-[10px] font-semibold text-[#66737F]">غيّر البحث أو ارجع لكل أقسام المعدات.</p>
+          <button type="button" onClick={clearFilters} className="mt-3 min-h-10 rounded-[13px] bg-[#173A63] px-4 text-[10px] font-black text-white">عرض كل المعدات</button>
+        </div>
+      )}
 
       <AnimatePresence>
         {selected && <EquipmentSheet item={selected} media={equipmentContent.mediaByEquipment[selected.id] ?? []} onClose={() => setSelectedId(null)} />}
