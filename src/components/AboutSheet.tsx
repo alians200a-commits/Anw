@@ -12,7 +12,7 @@ export function AboutSheet({ onClose }: AboutSheetProps) {
 
   return (
     <div
-      className="fixed inset-0 z-[90] flex items-end justify-center bg-[#07182c]/65 px-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] pt-8 backdrop-blur-sm sm:items-center"
+      className="fixed inset-0 z-[90] flex items-end justify-center bg-[#07182c]/68 px-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] pt-8 sm:items-center"
       role="presentation"
       onMouseDown={(event) => {
         if (event.target === event.currentTarget) onClose();
@@ -25,11 +25,11 @@ export function AboutSheet({ onClose }: AboutSheetProps) {
         aria-labelledby="about-title"
         tabIndex={-1}
         dir="rtl"
-        className="w-full max-w-md rounded-[28px] border border-[#D7E0E7] bg-white p-5 text-[#183149] shadow-[0_24px_70px_rgba(7,24,44,0.35)] outline-none"
+        className="w-full max-w-md rounded-[28px] border border-[#D7E0E7] bg-white p-5 text-[#183149] shadow-[0_18px_48px_rgba(7,24,44,0.28)] outline-none"
       >
         <div className="flex items-center justify-between gap-3">
           <div className="flex items-center gap-3">
-            <div className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl border border-[#E5D3A1] bg-[linear-gradient(145deg,#FFFDF7_0%,#F7F0DE_100%)] text-[#A87916] shadow-[0_7px_18px_rgba(24,49,73,0.08)]">
+            <div className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl border border-[#E5D3A1] bg-[linear-gradient(145deg,#FFFDF7_0%,#F7F0DE_100%)] text-[#A87916] shadow-[0_5px_14px_rgba(24,49,73,0.07)]">
               <BadgeInfo size={22} strokeWidth={2.15} />
             </div>
             <div>
@@ -43,7 +43,7 @@ export function AboutSheet({ onClose }: AboutSheetProps) {
             type="button"
             onClick={onClose}
             aria-label="إغلاق"
-            className="grid h-10 w-10 place-items-center rounded-full border border-[#D8E1E8] bg-[#F7F9FB] text-[#183149] transition hover:bg-[#EEF3F6]"
+            className="grid h-10 w-10 touch-manipulation place-items-center rounded-full border border-[#D8E1E8] bg-[#F7F9FB] text-[#183149] active:bg-[#EEF3F6]"
           >
             <X size={20} />
           </button>
@@ -86,7 +86,7 @@ export function AboutSheet({ onClose }: AboutSheetProps) {
               href="https://www.flaticon.com/free-animated-icon/anesthesia_19009171"
               target="_blank"
               rel="noreferrer"
-              className="underline decoration-[#C3CCD3] underline-offset-2 transition-colors hover:text-[#607487]"
+              className="underline decoration-[#C3CCD3] underline-offset-2 hover:text-[#607487]"
             >
               Flaticon
             </a>
