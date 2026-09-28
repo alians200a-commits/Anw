@@ -150,46 +150,60 @@ export function DrugDirectory({
     onSelect: () => setClassification(item.id as 'all' | DrugClass)
   }));
 
+  const clearFilters = () => {
+    setQuery('');
+    setClassification('all');
+  };
+
   return (
     <div className="space-y-3">
-      <div className="relative">
-        <MagnifyingGlass
-          size={18}
-          weight="bold"
-          className="absolute right-3.5 top-1/2 -translate-y-1/2 text-[#526F85]"
-        />
-        <input
-          value={query}
-          onChange={(event) => setQuery(event.target.value)}
-          aria-label="البحث في الأدوية"
-          dir="auto"
-          placeholder="ابحث عن دواء..."
-          className="h-11 w-full rounded-xl border border-[#DCE4EA] bg-white pr-10 pl-3 text-sm font-semibold text-[#183149] outline-none placeholder:text-[#66737F] focus:border-[#B58B2A] focus:ring-2 focus:ring-[#CCA039]/15"
-        />
-      </div>
+      <section className="rounded-[22px] border border-[#DCE5EA] bg-[#F8FAFB] p-3 shadow-[0_8px_22px_rgba(16,45,79,0.045)]">
+        <div className="relative">
+          <MagnifyingGlass
+            size={19}
+            weight="bold"
+            className="absolute right-4 top-1/2 -translate-y-1/2 text-[#526F85]"
+          />
+          <input
+            value={query}
+            onChange={(event) => setQuery(event.target.value)}
+            aria-label="البحث في الأدوية"
+            dir="auto"
+            placeholder="ابحث باسم الدواء أو الاستخدام..."
+            className="h-12 w-full rounded-[16px] border border-[#D8E2E9] bg-white pr-11 pl-3 text-sm font-semibold text-[#183149] outline-none placeholder:text-[#7A8995] focus:border-[#B58B2A] focus:ring-2 focus:ring-[#CCA039]/15"
+          />
+        </div>
 
-      <NotificationStackMenu
-        title={currentFilter}
-        description="تصنيف الأدوية"
-        icon={
-          classification === 'inhalational' ? (
-            <VaporizerIcon size={27} play />
-          ) : (
-            <MedicalSiteIcon
-              name={drugClassIcon[classification]}
-              size={27}
-            />
-          )
-        }
-        items={filterItems}
-        selectedId={classification}
-      />
+        <div className="mt-2.5">
+          <NotificationStackMenu
+            title={currentFilter}
+            description="تصنيف الأدوية"
+            icon={
+              classification === 'inhalational' ? (
+                <VaporizerIcon size={27} />
+              ) : (
+                <MedicalSiteIcon
+                  name={drugClassIcon[classification]}
+                  size={27}
+                />
+              )
+            }
+            items={filterItems}
+            selectedId={classification}
+          />
+        </div>
 
-      <div className="px-1 text-left">
-        <p className="text-[11px] font-semibold text-[#5F7280]">{filtered.length} دواء</p>
-      </div>
+        <div className="mt-2.5 flex items-center justify-between px-1 text-[10px] font-bold text-[#66737F]">
+          {(query || classification !== 'all') ? (
+            <button type="button" onClick={clearFilters} className="rounded-full px-2 py-1 text-[#8A6426] outline-none active:bg-[#F2E9D5] focus-visible:ring-2 focus-visible:ring-[#CCA039]/45">
+              مسح التصفية
+            </button>
+          ) : <span />}
+          <span>عرض {filtered.length} من {drugContent.drugs.length}</span>
+        </div>
+      </section>
 
-      <div className="space-y-2">
+      <div className="space-y-2.5">
         {filtered.map((drug) => {
           const favoriteId = 'drug:' + drug.id;
           const isFavorite = favorites.has(favoriteId);
@@ -205,14 +219,14 @@ export function DrugDirectory({
           return (
             <article
               key={drug.id}
-              className="rounded-[18px] border border-[#DCE5EA] bg-[#F7F9FA] p-3.5"
+              className="rounded-[20px] border border-[#DCE5EA] bg-white p-3.5 shadow-[0_5px_16px_rgba(16,45,79,0.045)]"
             >
               <div className="flex items-start gap-2.5">
                 <div className="flex shrink-0 gap-1.5">
                   <button
                     type="button"
                     onClick={() => playPronunciation('drugs', drug.id)}
-                    className="group grid h-10 w-10 place-items-center rounded-xl border border-[#D7E2E9] bg-white text-[#315672] outline-none transition active:bg-[#EEF3F6] focus-visible:ring-2 focus-visible:ring-[#CCA039]/55"
+                    className="group grid h-10 w-10 place-items-center rounded-xl border border-[#D7E2E9] bg-[#F8FAFB] text-[#315672] outline-none active:bg-[#EEF3F6] focus-visible:ring-2 focus-visible:ring-[#CCA039]/55"
                     title="نطق اسم الدواء"
                     aria-label={'نطق اسم ' + drug.ar}
                   >
@@ -222,10 +236,10 @@ export function DrugDirectory({
                     type="button"
                     onClick={() => onToggleFavorite(favoriteId)}
                     className={
-                      'group grid h-10 w-10 place-items-center rounded-xl border outline-none transition focus-visible:ring-2 focus-visible:ring-[#CCA039]/55 ' +
+                      'group grid h-10 w-10 place-items-center rounded-xl border outline-none focus-visible:ring-2 focus-visible:ring-[#CCA039]/55 ' +
                       (isFavorite
                         ? 'border-[#CCA039]/45 bg-[#CCA039]/12 text-[#9B7420]'
-                        : 'border-[#D7E2E9] bg-white text-[#5F7280] active:bg-[#EEF3F6]')
+                        : 'border-[#D7E2E9] bg-[#F8FAFB] text-[#5F7280] active:bg-[#EEF3F6]')
                     }
                     title="حفظ"
                     aria-label={isFavorite ? 'إزالة من المحفوظات' : 'حفظ الدواء'}
@@ -239,13 +253,13 @@ export function DrugDirectory({
                     <h3 className="truncate whitespace-nowrap text-[13px] font-black leading-5 text-[#183149]">{drug.ar}</h3>
                     <p className="mt-0.5 truncate whitespace-nowrap text-[12px] font-bold leading-5 text-[#526675]" dir="ltr">{drug.en}</p>
                     <span
-                      className="mt-1.5 block max-w-full truncate whitespace-nowrap rounded-full bg-[#EAF0F4] px-2.5 py-1 text-[10.5px] font-bold leading-4 text-[#405E75]"
+                      className="mt-1.5 block max-w-full truncate whitespace-nowrap rounded-full bg-[#EEF3F6] px-2.5 py-1 text-[10.5px] font-bold leading-4 text-[#405E75]"
                       title={classLabel}
                     >
                       {classLabel}
                     </span>
                   </div>
-                  <div className="grid h-10 w-10 shrink-0 place-items-center overflow-hidden rounded-[13px] border border-[#D7E2E9] bg-[#EEF3F6] text-[#315672]">
+                  <div className="grid h-10 w-10 shrink-0 place-items-center overflow-hidden rounded-[13px] border border-[#D7E2E9] bg-[#F4F7F9] text-[#315672]">
                     {coverImage ? (
                       <img
                         src={coverImage.url}
@@ -285,8 +299,15 @@ export function DrugDirectory({
       </div>
 
       {filtered.length === 0 && (
-        <div className="rounded-[18px] border border-dashed border-[#C9D6DF] bg-[#F8FAFB] p-7 text-center text-xs font-semibold text-[#5F7280]">
-          ماكو دواء مطابق للبحث حالياً.
+        <div className="rounded-[24px] border border-dashed border-[#C9D6DF] bg-[linear-gradient(145deg,#F8FAFB,#F2F6F9)] p-7 text-center">
+          <div className="mx-auto grid h-12 w-12 place-items-center rounded-[15px] border border-[#D7E2E9] bg-white text-[#526F85]">
+            <MedicalSiteIcon name="drugs" size={29} />
+          </div>
+          <h3 className="mt-3 text-[13px] font-black text-[#183149]">ما لقينا دواء مطابق</h3>
+          <p className="mt-1.5 text-[10px] font-semibold leading-5 text-[#66737F]">جرّب اسم مختلف أو ارجع لكل التصنيفات حتى تظهر النتائج.</p>
+          <button type="button" onClick={clearFilters} className="mt-3 min-h-10 rounded-[13px] bg-[#173A63] px-4 text-[10px] font-black text-white active:bg-[#102D4F]">
+            عرض كل الأدوية
+          </button>
         </div>
       )}
 
