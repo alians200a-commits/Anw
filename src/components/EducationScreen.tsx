@@ -1,8 +1,8 @@
 import { useState, type ReactNode } from 'react';
 import {
-  ArrowRight, BookOpen, BriefcaseMedical, ChevronDown, ChevronLeft,
-  ClipboardCheck, GraduationCap, ShieldCheck, Users, type LucideIcon
+  ArrowRight, ChevronDown, ChevronLeft
 } from 'lucide-react';
+import { FlaticonEducationIcon, type EducationIconName } from './ui/FlaticonEducationIcon';
 
 type Section = 'intro' | 'study' | 'team' | 'skills' | 'prep' | 'career';
 type Track = 'college' | 'institute';
@@ -12,15 +12,14 @@ const sections: Array<{
   id: Section;
   title: string;
   description: string;
-  icon: LucideIcon;
-  tint: string;
+  icon: EducationIconName;
 }> = [
-  { id: 'intro', title: 'عن الاختصاص', description: 'التعريف والمهام السريرية', icon: BookOpen, tint: 'bg-[#EAF1F7]' },
-  { id: 'study', title: 'الدراسة بالعراق', description: 'الكلية والمعهد والمراحل', icon: GraduationCap, tint: 'bg-[#F5EEDA]' },
-  { id: 'team', title: 'كوادر التخدير', description: 'الأدوار والمسؤوليات', icon: Users, tint: 'bg-[#EAF1F7]' },
-  { id: 'skills', title: 'تقني وفني متميز', description: 'المهارات وبناء الثقة', icon: ShieldCheck, tint: 'bg-[#EBF1E7]' },
-  { id: 'prep', title: 'التحضير للتخدير', description: 'قبل العملية وداخل الصالة', icon: ClipboardCheck, tint: 'bg-[#EAF1F7]' },
-  { id: 'career', title: 'بعد التخرج', description: 'العمل والتطور المهني', icon: BriefcaseMedical, tint: 'bg-[#F5EEDA]' }
+  { id: 'intro', title: 'عن الاختصاص', description: 'التعريف والمهام السريرية', icon: 'intro' },
+  { id: 'study', title: 'الدراسة بالعراق', description: 'الكلية والمعهد والمراحل', icon: 'study' },
+  { id: 'team', title: 'كوادر التخدير', description: 'الأدوار والمسؤوليات', icon: 'team' },
+  { id: 'skills', title: 'تقني وفني متميز', description: 'المهارات وبناء الثقة', icon: 'skills' },
+  { id: 'prep', title: 'التحضير للتخدير', description: 'قبل العملية وداخل الصالة', icon: 'prep' },
+  { id: 'career', title: 'بعد التخرج', description: 'العمل والتطور المهني', icon: 'career' }
 ];
 
 const college: Array<{ title: string; sub: string; courses: string[] }> = [
@@ -281,7 +280,7 @@ export function EducationScreen({ onBack }: { onBack: () => void }) {
           <p className="mt-1 text-[12px] font-semibold leading-6 text-[#5F7280]">{selected?.description ?? 'من أول يوم بالدراسة إلى العمل ضمن فريق التخدير'}</p>
         </div>
         <span className="grid h-16 w-16 shrink-0 place-items-center rounded-[20px] border border-[#D7E2E9] bg-white/90 text-[#315672] shadow-[0_8px_20px_rgba(24,49,73,0.08)]">
-          {selected ? <selected.icon size={32} strokeWidth={1.7} aria-hidden="true" /> : <BookOpen size={34} strokeWidth={1.7} aria-hidden="true" />}
+          <FlaticonEducationIcon name={selected?.icon ?? 'intro'} size={48} />
         </span>
       </div>
     </header>
@@ -298,7 +297,7 @@ export function EducationScreen({ onBack }: { onBack: () => void }) {
     </> : <section className="grid grid-cols-2 gap-2.5 sm:gap-3" aria-label="أقسام عالم التخدير">
       {sections.map(x => <button key={x.id} type="button" onClick={() => navigate(x.id)}
         className="group relative flex min-h-[154px] min-w-0 flex-col items-start rounded-[20px] border border-[#DCE5EA] bg-white p-3.5 text-right shadow-[0_7px_19px_rgba(16,45,79,0.05)] outline-none transition-colors hover:border-[#B6C9D8] hover:bg-[#FBFCFD] active:bg-[#F3F7FA] focus-visible:ring-2 focus-visible:ring-[#D9A441] sm:min-h-[170px] sm:p-4">
-        <span className={'grid h-12 w-12 place-items-center rounded-[15px] text-[#2F69A8] ' + x.tint}><x.icon size={27} strokeWidth={1.7} aria-hidden="true" /></span>
+        <span className="grid h-14 w-14 shrink-0 place-items-center rounded-[15px] border border-[#E4EBF0] bg-white"><FlaticonEducationIcon name={x.icon} size={44}/></span>
         <h2 className="mt-3 text-[13px] font-black leading-6 text-[#183149] sm:text-[15px]">{x.title}</h2>
         <p className="mt-0.5 text-[11px] font-semibold leading-5 text-[#7A8995]">{x.description}</p>
         <ChevronLeft size={16} className="absolute bottom-3 left-3 text-[#9BAAB5]" aria-hidden="true" />
