@@ -1,5 +1,6 @@
 import { useMemo } from 'react';
-import { BadgeInfo, Bookmark, BookOpen, ChevronLeft, HeartPulse, Sparkles } from 'lucide-react';
+import { BadgeInfo, Bookmark, ChevronLeft, HeartPulse, Sparkles } from 'lucide-react';
+import { FlaticonEducationIcon } from './ui/FlaticonEducationIcon';
 import {
   ANESTHESIA_DRUGS,
   DRUG_CLASS_LABELS,
@@ -358,7 +359,7 @@ export function HomeScreen({
           className="flex w-full items-center gap-3 rounded-[22px] border border-[#DCE5EA] bg-[linear-gradient(105deg,#F7F0DE_0%,#F5F8FA_54%,#E7EEF3_100%)] p-3.5 text-right shadow-[0_9px_24px_rgba(16,45,79,0.07)] outline-none transition-colors hover:border-[#BED0DC] active:bg-[#EFF4F8] focus-visible:ring-2 focus-visible:ring-[#CCA039]/55"
         >
           <span className="grid h-14 w-14 shrink-0 place-items-center rounded-[17px] border border-white/80 bg-white/85 text-[#315672] shadow-[0_6px_16px_rgba(24,49,73,0.06)]">
-            <BookOpen aria-hidden="true" size={30} strokeWidth={1.8} />
+            <FlaticonEducationIcon name="intro" size={42} />
           </span>
           <span className="min-w-0 flex-1">
             <span className="text-[10px] font-bold text-[#9A7122]">دليلي | مملكة التخدير</span>
