@@ -6,12 +6,12 @@ export type EducationIconName = 'intro' | 'study' | 'team' | 'skills' | 'prep' |
 export const FLATICON_EDUCATION_ICONS: Record<EducationIconName, {
   id: number; title: string; slug: string; fallback: MedicalSiteIconName;
 }> = {
-  intro: { id: 19015898, title: 'Medical Care', slug: 'medical-care', fallback: 'clinical' },
-  study: { id: 19015304, title: 'Graduation Cap', slug: 'graduation-cap', fallback: 'learn' },
-  team: { id: 19008020, title: 'Teamwork', slug: 'teamwork', fallback: 'monitoring' },
+  intro: { id: 19003377, title: 'Medical Care', slug: 'medical-care', fallback: 'clinical' },
+  study: { id: 19018113, title: 'Study', slug: 'study', fallback: 'learn' },
+  team: { id: 16767237, title: 'Brigade', slug: 'brigade', fallback: 'clinical' },
   skills: { id: 19035782, title: 'Syringe', slug: 'syringe', fallback: 'drugs' },
   prep: { id: 14705080, title: 'Medical Assistant', slug: 'medical-assistant', fallback: 'clinical' },
-  career: { id: 17204076, title: 'Briefcase', slug: 'briefcase', fallback: 'saved' }
+  career: { id: 17490060, title: 'Student', slug: 'student', fallback: 'learn' }
 };
 
 /**
