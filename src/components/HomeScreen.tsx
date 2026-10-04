@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import { BadgeInfo, Bookmark, ChevronLeft, HeartPulse, Sparkles } from 'lucide-react';
+import { BadgeInfo, Bookmark, BookOpen, ChevronLeft, HeartPulse, Sparkles } from 'lucide-react';
 import {
   ANESTHESIA_DRUGS,
   DRUG_CLASS_LABELS,
@@ -30,6 +30,7 @@ interface HomeScreenProps {
   ) => void;
   onOpenAbout: () => void;
   onOpenGames: () => void;
+  onOpenEducation: () => void;
   onOpenFavorites: () => void;
   favoritesCount: number;
 }
@@ -85,6 +86,7 @@ export function HomeScreen({
   openGuide,
   onOpenAbout,
   onOpenGames,
+  onOpenEducation,
   onOpenFavorites,
   favoritesCount,
 }: HomeScreenProps) {
@@ -346,6 +348,25 @@ export function HomeScreen({
             </button>
           ))}
         </div>
+      </section>
+
+
+      <section aria-label="عالم التخدير">
+        <button
+          type="button"
+          onClick={onOpenEducation}
+          className="flex w-full items-center justify-between gap-3 rounded-[22px] border border-[#254966] bg-[#0A2037] p-4 text-right text-white shadow-[0_12px_28px_rgba(10,32,55,0.14)] active:bg-[#14314E]"
+        >
+          <div className="min-w-0">
+            <span className="text-[10px] font-bold text-[#D9A441]">دليلي | مملكة التخدير</span>
+            <h3 className="mt-1 text-lg font-black">عالم التخدير</h3>
+            <p className="mt-1 text-[11px] font-semibold leading-5 text-[#E1EAF2]">دراسة الاختصاص، والكوادر، والمهارات والتحضير للتخدير</p>
+            <span className="mt-2 inline-flex items-center gap-1 text-[11px] font-bold text-[#E8C775]">استكشف الأقسام الستة <ChevronLeft size={14} /></span>
+          </div>
+          <span className="grid h-14 w-14 shrink-0 place-items-center rounded-2xl border border-white/20 bg-white/10 text-[#E8C775]">
+            <BookOpen aria-hidden="true" size={30} strokeWidth={1.8} />
+          </span>
+        </button>
       </section>
 
       <section className="rounded-[22px] border border-[#DCE5EA] bg-[#F8FAFB] p-3.5">
