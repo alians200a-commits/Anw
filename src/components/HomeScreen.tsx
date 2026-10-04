@@ -355,17 +355,17 @@ export function HomeScreen({
         <button
           type="button"
           onClick={onOpenEducation}
-          className="flex w-full items-center justify-between gap-3 rounded-[22px] border border-[#254966] bg-[#0A2037] p-4 text-right text-white shadow-[0_12px_28px_rgba(10,32,55,0.14)] active:bg-[#14314E]"
+          className="flex w-full items-center gap-3 rounded-[22px] border border-[#DCE5EA] bg-[linear-gradient(105deg,#F7F0DE_0%,#F5F8FA_54%,#E7EEF3_100%)] p-3.5 text-right shadow-[0_9px_24px_rgba(16,45,79,0.07)] outline-none transition-colors hover:border-[#BED0DC] active:bg-[#EFF4F8] focus-visible:ring-2 focus-visible:ring-[#CCA039]/55"
         >
-          <div className="min-w-0">
-            <span className="text-[10px] font-bold text-[#D9A441]">دليلي | مملكة التخدير</span>
-            <h3 className="mt-1 text-lg font-black">عالم التخدير</h3>
-            <p className="mt-1 text-[11px] font-semibold leading-5 text-[#E1EAF2]">دراسة الاختصاص، والكوادر، والمهارات والتحضير للتخدير</p>
-            <span className="mt-2 inline-flex items-center gap-1 text-[11px] font-bold text-[#E8C775]">استكشف الأقسام الستة <ChevronLeft size={14} /></span>
-          </div>
-          <span className="grid h-14 w-14 shrink-0 place-items-center rounded-2xl border border-white/20 bg-white/10 text-[#E8C775]">
+          <span className="grid h-14 w-14 shrink-0 place-items-center rounded-[17px] border border-white/80 bg-white/85 text-[#315672] shadow-[0_6px_16px_rgba(24,49,73,0.06)]">
             <BookOpen aria-hidden="true" size={30} strokeWidth={1.8} />
           </span>
+          <span className="min-w-0 flex-1">
+            <span className="text-[10px] font-bold text-[#9A7122]">دليلي | مملكة التخدير</span>
+            <span className="mt-1 block text-[16px] font-black text-[#183149]">عالم التخدير</span>
+            <span className="mt-1 block text-[11px] font-semibold leading-5 text-[#5F7280]">الدراسة والكوادر والمهارات والتحضير للتخدير</span>
+          </span>
+          <ChevronLeft size={19} className="shrink-0 text-[#315672]" aria-hidden="true" />
         </button>
       </section>
 
