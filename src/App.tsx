@@ -6,6 +6,7 @@ import { FavoritesScreen } from './components/FavoritesScreen';
 import { GamesHub } from './components/GamesHub';
 import { GuideScreen, type GuideSection } from './components/GuideScreen';
 import { HomeScreen } from './components/HomeScreen';
+import { EducationScreen } from './components/EducationScreen';
 import { KingdomHeader } from './components/KingdomHeader';
 import type { DrugClass } from './data/drugs';
 import { reportRuntimeIssue } from './utils/runtimeDiagnostics';
@@ -33,6 +34,7 @@ export default function App() {
   const [guideQuery, setGuideQuery] = useState('');
   const [favorites, setFavorites] = useState<Set<string>>(() => loadFavorites());
   const [aboutOpen, setAboutOpen] = useState(false);
+  const [educationOpen, setEducationOpen] = useState(false);
 
   useEffect(() => {
     try {
@@ -43,6 +45,7 @@ export default function App() {
   }, [favorites]);
 
   const handleTabChange = (tab: AppTab) => {
+    setEducationOpen(false);
     if (tab === 'guide' && activeTab !== 'guide') {
       setGuideQuery('');
     }
@@ -65,6 +68,7 @@ export default function App() {
     setGuideQuery(initialQuery);
     if (section === 'drugs') setGuideDrugClass(drugClass);
     setActiveTab('guide');
+    setEducationOpen(false);
     window.scrollTo({ top: 0, behavior: 'auto' });
   };
 
@@ -78,7 +82,9 @@ export default function App() {
   };
 
   let screen;
-  if (activeTab === 'guide') {
+  if (educationOpen) {
+    screen = <EducationScreen onBack={() => { setEducationOpen(false); window.scrollTo({ top: 0, behavior: 'auto' }); }} />;
+  } else if (activeTab === 'guide') {
     screen = (
       <GuideScreen
         section={guideSection}
@@ -105,6 +111,7 @@ export default function App() {
         openGuide={openGuide}
         onOpenAbout={() => setAboutOpen(true)}
         onOpenGames={() => handleTabChange('games')}
+        onOpenEducation={() => { setEducationOpen(true); window.scrollTo({ top: 0, behavior: 'auto' }); }}
         onOpenFavorites={() => handleTabChange('favorites')}
         favoritesCount={favorites.size}
       />
