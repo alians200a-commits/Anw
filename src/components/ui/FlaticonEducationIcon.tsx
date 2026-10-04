@@ -10,7 +10,7 @@ export const FLATICON_EDUCATION_ICONS: Record<EducationIconName, {
   study: { id: 19015304, title: 'Graduation Cap', slug: 'graduation-cap', fallback: 'learn' },
   team: { id: 19008020, title: 'Teamwork', slug: 'teamwork', fallback: 'monitoring' },
   skills: { id: 19035782, title: 'Syringe', slug: 'syringe', fallback: 'drugs' },
-  prep: { id: 19008759, title: 'Checklist', slug: 'checklist', fallback: 'equipment' },
+  prep: { id: 14705080, title: 'Medical Assistant', slug: 'medical-assistant', fallback: 'clinical' },
   career: { id: 17204076, title: 'Briefcase', slug: 'briefcase', fallback: 'saved' }
 };
 
