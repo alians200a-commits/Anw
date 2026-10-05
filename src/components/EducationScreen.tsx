@@ -199,6 +199,22 @@ function Skills() {
   return <div className="space-y-3">
     <Panel title="المهارات الأساسية">
       <p>بداية العمل فرصة لتطوير المهارات العملية وفهم الأدوية والمعدات والتعلم من الخبرة السريرية. هذه أولويات مفيدة لكل تقني وفني تخدير:</p>
+      <div className="grid grid-cols-2 gap-2" aria-label="مجالات التميز السريري">
+        <div className="flex min-w-0 items-center gap-2 rounded-[15px] border border-[#DCE5EA] bg-[#F8FAFB] p-2.5">
+          <FlaticonEducationIcon name="tools" size={42} />
+          <div className="min-w-0">
+            <h4 className="text-[12px] font-black leading-5 text-[#183149]">الأدوات الطبية</h4>
+            <p className="text-[10px] leading-4 text-[#607889]">التجهيز والفحص والاستخدام الآمن</p>
+          </div>
+        </div>
+        <div className="flex min-w-0 items-center gap-2 rounded-[15px] border border-[#DCE5EA] bg-[#F8FAFB] p-2.5">
+          <FlaticonEducationIcon name="clinicalSkill" size={42} />
+          <div className="min-w-0">
+            <h4 className="text-[12px] font-black leading-5 text-[#183149]">المهارات السريرية</h4>
+            <p className="text-[10px] leading-4 text-[#607889]">الممارسة تحت الإشراف والتعامل مع الحالات</p>
+          </div>
+        </div>
+      </div>
       <TopicCards topics={skills} />
     </Panel>
     <Panel title="كيف تتطور في اختصاصك؟">
