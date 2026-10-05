@@ -3,14 +3,13 @@ import { MedicalSiteIcon, type MedicalSiteIconName } from './MedicalSiteIcon';
 
 export type EducationIconName = 'intro' | 'study' | 'team' | 'skills' | 'prep' | 'career' | 'tools' | 'clinicalSkill';
 
-export const FLATICON_EDUCATION_ICONS: Record<Exclude<EducationIconName, 'skills'>, {
+export const FLATICON_EDUCATION_ICONS: Record<Exclude<EducationIconName, 'skills' | 'tools'>, {
   id: number; title: string; slug: string; fallback: MedicalSiteIconName;
 }> = {
   intro: { id: 19003377, title: 'Medical Care', slug: 'medical-care', fallback: 'clinical' },
   study: { id: 19018113, title: 'Study', slug: 'study', fallback: 'learn' },
   team: { id: 16767237, title: 'Brigade', slug: 'brigade', fallback: 'clinical' },
   // The skills card loads the exact user-provided animated SVG instead of a Flaticon icon.
-  tools: { id: 14122763, title: 'Medical Kit', slug: 'medical-kit', fallback: 'tools' },
   clinicalSkill: { id: 11706662, title: 'First Aid', slug: 'first-aid', fallback: 'clinical' },
   prep: { id: 14705080, title: 'Medical Assistant', slug: 'medical-assistant', fallback: 'clinical' },
   career: { id: 17490060, title: 'Student', slug: 'student', fallback: 'learn' }
@@ -43,13 +42,15 @@ export function FlaticonEducationIcon({name, size=42, className=''}: {
     return () => media.removeEventListener('change', update);
   }, []);
 
-  if (name === 'skills') {
-    // This is the exact original SMIL-animated SVG uploaded by the user.
-    // Loading it as a local asset preserves its animation and transparent background.
+  if (name === 'skills' || name === 'tools') {
+    // Use the exact original user-provided transparent, animated SVG assets.
+    const src = name === 'skills'
+      ? '/animations/anesthesia-technicians.svg'
+      : '/animations/anesthesia-tools.svg';
     return <span aria-hidden="true"
       className={'inline-flex shrink-0 items-center justify-center bg-transparent ' + className}
       style={{width:size,height:size}}>
-      <img src="/animations/anesthesia-technicians.svg" alt="" draggable={false}
+      <img src={src} alt="" draggable={false}
         width={size} height={size}
         className="block h-full w-full bg-transparent object-contain" />
     </span>;

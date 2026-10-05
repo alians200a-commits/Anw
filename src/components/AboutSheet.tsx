@@ -88,7 +88,6 @@ export function AboutSheet({ onClose }: AboutSheetProps) {
               <a href="https://www.flaticon.com/free-animated-icon/brigade_16767237" target="_blank" rel="noopener noreferrer" className="rounded-lg bg-[#F8FAFB] px-2 py-1.5 underline decoration-[#C3CCD3] underline-offset-2">كوادر التخدير</a>
               <a href="https://www.flaticon.com/free-animated-icon/medical-assistant_14705080" target="_blank" rel="noopener noreferrer" className="rounded-lg bg-[#F8FAFB] px-2 py-1.5 underline decoration-[#C3CCD3] underline-offset-2">التحضير للتخدير</a>
               <a href="https://www.flaticon.com/free-animated-icon/student_17490060" target="_blank" rel="noopener noreferrer" className="rounded-lg bg-[#F8FAFB] px-2 py-1.5 underline decoration-[#C3CCD3] underline-offset-2">بعد التخرج</a>
-              <a href="https://www.flaticon.com/free-animated-icon/medical-kit_14122763" target="_blank" rel="noopener noreferrer" className="rounded-lg bg-[#F8FAFB] px-2 py-1.5 underline decoration-[#C3CCD3] underline-offset-2">الأدوات الطبية</a>
               <a href="https://www.flaticon.com/free-animated-icon/first-aid_11706662" target="_blank" rel="noopener noreferrer" className="rounded-lg bg-[#F8FAFB] px-2 py-1.5 underline decoration-[#C3CCD3] underline-offset-2">المهارات السريرية</a>
               <a href="https://www.flaticon.com/free-animated-icon/anesthesia_19009171" target="_blank" rel="noopener noreferrer" className="rounded-lg bg-[#F8FAFB] px-2 py-1.5 underline decoration-[#C3CCD3] underline-offset-2">أيقونة التخدير</a>
             </div>
