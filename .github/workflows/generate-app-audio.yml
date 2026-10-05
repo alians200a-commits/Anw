@@ -1,20 +1,20 @@
 name: Generate App Pronunciation Audio
 
+# Audio synthesis installs large models and can take up to 60 minutes.
+# Run it explicitly only when new narration is ready; never on every push.
 on:
   workflow_dispatch:
-  push:
-    paths:
-      - "src/data/drugs.ts"
-      - "src/data/clinicalTerms.ts"
-      - "tools/tts/generate_static_audio.py"
-      - "public/audio/voice-samples/chatterbox-default.wav"
-      - ".github/workflows/generate-app-audio.yml"
+
+concurrency:
+  group: generate-app-audio-${{ github.ref }}
+  cancel-in-progress: true
 
 permissions:
   contents: write
 
 jobs:
   generate:
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     timeout-minutes: 60
     steps:
