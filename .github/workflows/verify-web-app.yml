@@ -1,37 +1,60 @@
 name: Verify Web App
 
+# Save Actions minutes: verify production pushes and non-draft pull requests,
+# not every experimental branch push. Draft work can be verified manually.
 on:
   workflow_dispatch:
   push:
+    branches: [main]
     paths:
       - "index.html"
       - "src/**"
       - "public/**"
       - "tools/**"
-      - "docs/**"
+      - "package.json"
+      - "package-lock.json"
+      - "tsconfig.json"
+      - "vite.config.*"
+      - ".github/workflows/verify-web-app.yml"
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+    branches: [main]
+    paths:
+      - "index.html"
+      - "src/**"
+      - "public/**"
+      - "tools/**"
       - "package.json"
       - "package-lock.json"
       - "tsconfig.json"
       - "vite.config.*"
       - ".github/workflows/verify-web-app.yml"
 
+# Superseded PR pushes cannot run in parallel and waste minutes.
+concurrency:
+  group: verify-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
 permissions:
   contents: read
 
 jobs:
   verify:
+    if: github.event_name != 'pull_request' || !github.event.pull_request.draft
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Set up Node
+      - name: Set up Node with npm cache
         uses: actions/setup-node@v4
         with:
           node-version: "22"
+          cache: "npm"
 
-      - name: Install dependencies
-        run: npm install --no-audit --no-fund
+      - name: Install dependencies from lockfile
+        run: npm ci --no-audit --no-fund
 
       - name: Production readiness gate
         run: npm run verify
