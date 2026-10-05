@@ -79,18 +79,20 @@ export function AboutSheet({ onClose }: AboutSheetProps) {
             </div>
           </section>
 
-          <div className="flex items-center justify-center gap-1.5 pt-0.5 text-[10px] font-semibold text-[#98A6B1]">
-            <span>اعتمادات الأيقونات</span>
-            <span aria-hidden="true">·</span>
-            <a
-              href="https://www.flaticon.com/free-animated-icon/anesthesia_19009171"
-              target="_blank"
-              rel="noreferrer"
-              className="underline decoration-[#C3CCD3] underline-offset-2 hover:text-[#607487]"
-            >
-              Flaticon
-            </a>
-          </div>
+          <details className="rounded-xl border border-[#E0E7EC] bg-white px-3 py-2 text-[11px] text-[#526675]">
+            <summary className="cursor-pointer font-bold text-[#315672]">حقوق الأيقونات المتحركة وذكر المصدر</summary>
+            <p className="mt-2 leading-5">الأيقونات المجانية من Flaticon، وجميع حقوقها لمصمميها؛ الروابط التالية للائتمان طبقًا لشروط الاستخدام.</p>
+            <div className="mt-2 grid grid-cols-2 gap-2">
+              <a href="https://www.flaticon.com/free-animated-icon/medical-care_19003377" target="_blank" rel="noopener noreferrer" className="rounded-lg bg-[#F8FAFB] px-2 py-1.5 underline decoration-[#C3CCD3] underline-offset-2">عن الاختصاص</a>
+              <a href="https://www.flaticon.com/free-animated-icon/study_19018113" target="_blank" rel="noopener noreferrer" className="rounded-lg bg-[#F8FAFB] px-2 py-1.5 underline decoration-[#C3CCD3] underline-offset-2">الدراسة بالعراق</a>
+              <a href="https://www.flaticon.com/free-animated-icon/brigade_16767237" target="_blank" rel="noopener noreferrer" className="rounded-lg bg-[#F8FAFB] px-2 py-1.5 underline decoration-[#C3CCD3] underline-offset-2">كوادر التخدير</a>
+              <a href="https://www.flaticon.com/free-animated-icon/medical-assistant_14705080" target="_blank" rel="noopener noreferrer" className="rounded-lg bg-[#F8FAFB] px-2 py-1.5 underline decoration-[#C3CCD3] underline-offset-2">التحضير للتخدير</a>
+              <a href="https://www.flaticon.com/free-animated-icon/student_17490060" target="_blank" rel="noopener noreferrer" className="rounded-lg bg-[#F8FAFB] px-2 py-1.5 underline decoration-[#C3CCD3] underline-offset-2">بعد التخرج</a>
+              <a href="https://www.flaticon.com/free-animated-icon/medical-kit_14122763" target="_blank" rel="noopener noreferrer" className="rounded-lg bg-[#F8FAFB] px-2 py-1.5 underline decoration-[#C3CCD3] underline-offset-2">الأدوات الطبية</a>
+              <a href="https://www.flaticon.com/free-animated-icon/first-aid_11706662" target="_blank" rel="noopener noreferrer" className="rounded-lg bg-[#F8FAFB] px-2 py-1.5 underline decoration-[#C3CCD3] underline-offset-2">المهارات السريرية</a>
+              <a href="https://www.flaticon.com/free-animated-icon/anesthesia_19009171" target="_blank" rel="noopener noreferrer" className="rounded-lg bg-[#F8FAFB] px-2 py-1.5 underline decoration-[#C3CCD3] underline-offset-2">أيقونة التخدير</a>
+            </div>
+          </details>
         </div>
       </div>
     </div>
