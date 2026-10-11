@@ -1,0 +1,19 @@
+{
+  "name": "Anw Refact Codespace",
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:1-22-bookworm",
+  "postCreateCommand": "npm install --no-audit --no-fund",
+  "forwardPorts": [3000],
+  "portsAttributes": {
+    "3000": {
+      "label": "Anw Vite App",
+      "onAutoForward": "notify"
+    }
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "smallcloud.codify"
+      ]
+    }
+  }
+}
