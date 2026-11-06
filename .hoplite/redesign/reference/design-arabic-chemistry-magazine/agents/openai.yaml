@@ -1,0 +1,13 @@
+interface:
+  display_name: مجلة المهندس — كيمياء الثالث المتوسط
+  short_description: إخراج مجلة كيمياء وفحص الطبقات والنص والمعادلات والتصدير
+  default_prompt: استخدم $design-arabic-chemistry-magazine لإنتاج صفحتي اختبار من ملزمة الكيمياء بمستوى مصمم خبير، مع نص حرفي وصور مولّدة من المعنى وIDML قابل للتحرير ومعاينة PDF، ثم توقف لموافقتي.
+  icon_small: assets/icon.svg
+  icon_large: assets/icon.svg
+policy:
+  products:
+  - chatgpt
+  - codex
+  - api
+  - atlas
+  allow_implicit_invocation: true
