@@ -1,0 +1,1326 @@
+{
+  "width": 210,
+  "height": 297,
+  "bleed": 10,
+  "colors": {
+    "Paper": {
+      "rgb": "#f9f7f2",
+      "cmyk": [
+        2,
+        2,
+        5,
+        0
+      ]
+    },
+    "White": {
+      "rgb": "#ffffff",
+      "cmyk": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "Ink": {
+      "rgb": "#172b3b",
+      "cmyk": [
+        80,
+        60,
+        42,
+        58
+      ]
+    },
+    "Navy": {
+      "rgb": "#173e58",
+      "cmyk": [
+        93,
+        65,
+        39,
+        32
+      ]
+    },
+    "Copper": {
+      "rgb": "#b47a33",
+      "cmyk": [
+        19,
+        47,
+        85,
+        12
+      ]
+    },
+    "CopperDark": {
+      "rgb": "#81521f",
+      "cmyk": [
+        28,
+        57,
+        91,
+        33
+      ]
+    },
+    "BlueTint": {
+      "rgb": "#e9f0f3",
+      "cmyk": [
+        8,
+        3,
+        2,
+        0
+      ]
+    },
+    "GoldTint": {
+      "rgb": "#f3e8d6",
+      "cmyk": [
+        3,
+        7,
+        16,
+        0
+      ]
+    },
+    "Muted": {
+      "rgb": "#536775",
+      "cmyk": [
+        57,
+        36,
+        30,
+        22
+      ]
+    },
+    "Rule": {
+      "rgb": "#cbd5d8",
+      "cmyk": [
+        18,
+        8,
+        9,
+        0
+      ]
+    },
+    "Red": {
+      "rgb": "#973f37",
+      "cmyk": [
+        22,
+        79,
+        74,
+        23
+      ]
+    },
+    "RedTint": {
+      "rgb": "#f7eeea",
+      "cmyk": [
+        1,
+        7,
+        7,
+        0
+      ]
+    }
+  },
+  "styles": {
+    "Masthead": {
+      "font": "Cairo",
+      "size": 11,
+      "leading": 15,
+      "weight": "Bold",
+      "color": "Navy",
+      "align": "right",
+      "direction": "rtl"
+    },
+    "Micro": {
+      "font": "Cairo",
+      "size": 9,
+      "leading": 12,
+      "weight": "SemiBold",
+      "color": "Muted",
+      "align": "right",
+      "direction": "rtl"
+    },
+    "MicroWhite": {
+      "font": "Cairo",
+      "size": 9,
+      "leading": 12,
+      "weight": "SemiBold",
+      "color": "White",
+      "align": "right",
+      "direction": "rtl"
+    },
+    "MicroCopper": {
+      "font": "Cairo",
+      "size": 9,
+      "leading": 12,
+      "weight": "Bold",
+      "color": "CopperDark",
+      "align": "right",
+      "direction": "rtl"
+    },
+    "ChapterNumber": {
+      "font": "Cairo",
+      "size": 34,
+      "leading": 40,
+      "weight": "Black",
+      "color": "Copper",
+      "align": "left",
+      "direction": "ltr"
+    },
+    "CoverTitle": {
+      "font": "Cairo",
+      "size": 43,
+      "leading": 55,
+      "weight": "Black",
+      "color": "Navy",
+      "align": "right",
+      "direction": "rtl"
+    },
+    "Intro": {
+      "font": "Cairo",
+      "size": 14.5,
+      "leading": 21,
+      "weight": "Regular",
+      "color": "Ink",
+      "align": "right",
+      "direction": "rtl"
+    },
+    "ChapterCode": {
+      "font": "Cairo",
+      "size": 18,
+      "leading": 24,
+      "weight": "Bold",
+      "color": "CopperDark",
+      "align": "left",
+      "direction": "ltr"
+    },
+    "LessonTitle": {
+      "font": "Cairo",
+      "size": 32,
+      "leading": 40,
+      "weight": "Black",
+      "color": "Navy",
+      "align": "right",
+      "direction": "rtl"
+    },
+    "LessonSub": {
+      "font": "Cairo",
+      "size": 14.5,
+      "leading": 20,
+      "weight": "Medium",
+      "color": "Muted",
+      "align": "right",
+      "direction": "rtl"
+    },
+    "Body": {
+      "font": "Cairo",
+      "size": 14.5,
+      "leading": 20,
+      "weight": "Regular",
+      "color": "Ink",
+      "align": "right",
+      "direction": "rtl"
+    },
+    "Question": {
+      "font": "Cairo",
+      "size": 15.5,
+      "leading": 22,
+      "weight": "Bold",
+      "color": "Red",
+      "align": "right",
+      "direction": "rtl"
+    },
+    "QuestionSmall": {
+      "font": "Cairo",
+      "size": 14.5,
+      "leading": 20,
+      "weight": "Bold",
+      "color": "Red",
+      "align": "right",
+      "direction": "rtl"
+    },
+    "Symbol": {
+      "font": "Cairo",
+      "size": 24,
+      "leading": 30,
+      "weight": "Bold",
+      "color": "Navy",
+      "align": "center",
+      "direction": "ltr"
+    },
+    "SymbolCopper": {
+      "font": "Cairo",
+      "size": 24,
+      "leading": 30,
+      "weight": "Bold",
+      "color": "CopperDark",
+      "align": "center",
+      "direction": "ltr"
+    },
+    "ElementName": {
+      "font": "Cairo",
+      "size": 11,
+      "leading": 15,
+      "weight": "SemiBold",
+      "color": "Navy",
+      "align": "center",
+      "direction": "rtl"
+    },
+    "Class": {
+      "font": "Cairo",
+      "size": 9.5,
+      "leading": 13,
+      "weight": "Bold",
+      "color": "Muted",
+      "align": "center",
+      "direction": "rtl"
+    },
+    "ClassCopper": {
+      "font": "Cairo",
+      "size": 9.5,
+      "leading": 13,
+      "weight": "Bold",
+      "color": "CopperDark",
+      "align": "center",
+      "direction": "rtl"
+    },
+    "Index": {
+      "font": "Cairo",
+      "size": 11,
+      "leading": 14,
+      "weight": "Bold",
+      "color": "Navy",
+      "align": "center",
+      "direction": "ltr"
+    },
+    "IndexWhite": {
+      "font": "Cairo",
+      "size": 11,
+      "leading": 14,
+      "weight": "Bold",
+      "color": "White",
+      "align": "center",
+      "direction": "ltr"
+    },
+    "IndexRed": {
+      "font": "Cairo",
+      "size": 11,
+      "leading": 14,
+      "weight": "Bold",
+      "color": "Red",
+      "align": "center",
+      "direction": "ltr"
+    },
+    "Oxidation": {
+      "font": "Cairo",
+      "size": 37,
+      "leading": 44,
+      "weight": "Black",
+      "color": "CopperDark",
+      "align": "center",
+      "direction": "ltr"
+    },
+    "Caption": {
+      "font": "Cairo",
+      "size": 11.5,
+      "leading": 16,
+      "weight": "Regular",
+      "color": "Ink",
+      "align": "center",
+      "direction": "rtl"
+    },
+    "PropertyLabel": {
+      "font": "Cairo",
+      "size": 14.5,
+      "leading": 20,
+      "weight": "Bold",
+      "color": "Navy",
+      "align": "center",
+      "direction": "rtl"
+    },
+    "Footer": {
+      "font": "Cairo",
+      "size": 9,
+      "leading": 12,
+      "weight": "SemiBold",
+      "color": "Muted",
+      "align": "right",
+      "direction": "rtl"
+    },
+    "FooterNo": {
+      "font": "Cairo",
+      "size": 10,
+      "leading": 12,
+      "weight": "Bold",
+      "color": "Navy",
+      "align": "left",
+      "direction": "ltr"
+    },
+    "FooterWhite": {
+      "font": "Cairo",
+      "size": 9,
+      "leading": 12,
+      "weight": "SemiBold",
+      "color": "White",
+      "align": "right",
+      "direction": "rtl"
+    },
+    "FooterWhiteNo": {
+      "font": "Cairo",
+      "size": 10,
+      "leading": 12,
+      "weight": "Bold",
+      "color": "White",
+      "align": "left",
+      "direction": "ltr"
+    }
+  },
+  "pages": [
+    {
+      "name": "1",
+      "items": [
+        {
+          "type": "rect",
+          "name": "warm-paper",
+          "layer": "background",
+          "x": -10,
+          "y": -10,
+          "w": 230,
+          "h": 317,
+          "fill": "Paper",
+          "stroke": null,
+          "stroke_width": 0,
+          "radius": 0
+        },
+        {
+          "type": "image",
+          "name": "cover-scene",
+          "layer": "images",
+          "x": -10,
+          "y": 78,
+          "w": 230,
+          "h": 229,
+          "file": "Links/cover-editorial.jpg"
+        },
+        {
+          "type": "text",
+          "name": "chapter-number",
+          "layer": "text",
+          "x": 15,
+          "y": 8,
+          "w": 34,
+          "h": 23,
+          "text": "03",
+          "style": "ChapterNumber"
+        },
+        {
+          "type": "text",
+          "name": "chapter-label",
+          "layer": "text",
+          "x": 52,
+          "y": 17,
+          "w": 34,
+          "h": 7,
+          "text": "الفصل الثالث",
+          "style": "MicroCopper"
+        },
+        {
+          "type": "text",
+          "name": "publication",
+          "layer": "text",
+          "x": 103,
+          "y": 13,
+          "w": 92,
+          "h": 10,
+          "text": "كيمياء الثالث المتوسط",
+          "style": "Masthead"
+        },
+        {
+          "type": "line",
+          "name": "signature-rail",
+          "layer": "furniture",
+          "x1": 168,
+          "y1": 28,
+          "x2": 182,
+          "y2": 28,
+          "stroke": "Copper",
+          "stroke_width": 0.75
+        },
+        {
+          "type": "ellipse",
+          "name": "signature-electron-0",
+          "layer": "furniture",
+          "x": 184,
+          "y": 27,
+          "w": 1.5,
+          "h": 1.5,
+          "fill": "Copper",
+          "stroke": null,
+          "stroke_width": 0
+        },
+        {
+          "type": "ellipse",
+          "name": "signature-electron-1",
+          "layer": "furniture",
+          "x": 187,
+          "y": 27,
+          "w": 1.5,
+          "h": 1.5,
+          "fill": "Copper",
+          "stroke": null,
+          "stroke_width": 0
+        },
+        {
+          "type": "ellipse",
+          "name": "signature-electron-2",
+          "layer": "furniture",
+          "x": 190,
+          "y": 27,
+          "w": 1.5,
+          "h": 1.5,
+          "fill": "Copper",
+          "stroke": null,
+          "stroke_width": 0
+        },
+        {
+          "type": "line",
+          "name": "masthead-rule",
+          "layer": "shapes",
+          "x1": 15,
+          "y1": 32,
+          "x2": 195,
+          "y2": 32,
+          "stroke": "Rule",
+          "stroke_width": 0.5
+        },
+        {
+          "type": "text",
+          "name": "chapter-title",
+          "layer": "text",
+          "x": 15,
+          "y": 35,
+          "w": 180,
+          "h": 27,
+          "text": "عناصر الزمرة الثالثة",
+          "style": "CoverTitle"
+        },
+        {
+          "type": "text",
+          "name": "group-code",
+          "layer": "text",
+          "x": 15,
+          "y": 64,
+          "w": 31,
+          "h": 13,
+          "text": "IIIA",
+          "style": "ChapterCode"
+        },
+        {
+          "type": "line",
+          "name": "intro-rule",
+          "layer": "shapes",
+          "x1": 48,
+          "y1": 65,
+          "x2": 48,
+          "y2": 83,
+          "stroke": "Copper",
+          "stroke_width": 1
+        },
+        {
+          "type": "text",
+          "name": "source-intro",
+          "layer": "text",
+          "x": 55,
+          "y": 63,
+          "w": 140,
+          "h": 23,
+          "text": "وضعت هذه العناصر في الزمرة الثالثة لأن غلافها الأخير يحتوي على ( 3 إلكترونات ).",
+          "style": "Intro"
+        },
+        {
+          "type": "line",
+          "name": "footer-rule",
+          "layer": "furniture",
+          "x1": 149,
+          "y1": 282,
+          "x2": 195,
+          "y2": 282,
+          "stroke": "Copper",
+          "stroke_width": 0.75
+        },
+        {
+          "type": "text",
+          "name": "footer-name",
+          "layer": "furniture",
+          "x": 135,
+          "y": 285,
+          "w": 60,
+          "h": 7,
+          "text": "الكيمياء / الفصل الثالث",
+          "style": "FooterWhite"
+        },
+        {
+          "type": "text",
+          "name": "footer-number",
+          "layer": "furniture",
+          "x": 190,
+          "y": 277,
+          "w": 8,
+          "h": 5,
+          "text": "01",
+          "style": "FooterWhiteNo"
+        }
+      ]
+    },
+    {
+      "name": "2",
+      "items": [
+        {
+          "type": "rect",
+          "name": "warm-paper",
+          "layer": "background",
+          "x": -10,
+          "y": -10,
+          "w": 230,
+          "h": 317,
+          "fill": "Paper",
+          "stroke": null,
+          "stroke_width": 0,
+          "radius": 0
+        },
+        {
+          "type": "text",
+          "name": "running-head",
+          "layer": "text",
+          "x": 112,
+          "y": 10,
+          "w": 83,
+          "h": 7,
+          "text": "الفصل الثالث / عناصر الزمرة الثالثة",
+          "style": "Micro"
+        },
+        {
+          "type": "text",
+          "name": "section-code",
+          "layer": "text",
+          "x": 15,
+          "y": 10,
+          "w": 28,
+          "h": 8,
+          "text": "IIIA",
+          "style": "ChapterCode"
+        },
+        {
+          "type": "text",
+          "name": "lesson-title",
+          "layer": "text",
+          "x": 15,
+          "y": 22,
+          "w": 180,
+          "h": 23,
+          "text": "الصفات العامة",
+          "style": "LessonTitle"
+        },
+        {
+          "type": "text",
+          "name": "lesson-subtitle",
+          "layer": "text",
+          "x": 75,
+          "y": 41,
+          "w": 120,
+          "h": 11,
+          "text": "لعناصر الزمرة الثالثة",
+          "style": "LessonSub"
+        },
+        {
+          "type": "line",
+          "name": "signature-rail",
+          "layer": "furniture",
+          "x1": 15,
+          "y1": 47,
+          "x2": 29,
+          "y2": 47,
+          "stroke": "Copper",
+          "stroke_width": 0.75
+        },
+        {
+          "type": "ellipse",
+          "name": "signature-electron-0",
+          "layer": "furniture",
+          "x": 31,
+          "y": 46,
+          "w": 1.5,
+          "h": 1.5,
+          "fill": "Copper",
+          "stroke": null,
+          "stroke_width": 0
+        },
+        {
+          "type": "ellipse",
+          "name": "signature-electron-1",
+          "layer": "furniture",
+          "x": 34,
+          "y": 46,
+          "w": 1.5,
+          "h": 1.5,
+          "fill": "Copper",
+          "stroke": null,
+          "stroke_width": 0
+        },
+        {
+          "type": "ellipse",
+          "name": "signature-electron-2",
+          "layer": "furniture",
+          "x": 37,
+          "y": 46,
+          "w": 1.5,
+          "h": 1.5,
+          "fill": "Copper",
+          "stroke": null,
+          "stroke_width": 0
+        },
+        {
+          "type": "rect",
+          "name": "element-field",
+          "layer": "shapes",
+          "x": 15,
+          "y": 56,
+          "w": 180,
+          "h": 44,
+          "fill": "BlueTint",
+          "stroke": null,
+          "stroke_width": 0,
+          "radius": 4
+        },
+        {
+          "type": "rect",
+          "name": "boron-field",
+          "layer": "shapes",
+          "x": 159,
+          "y": 56,
+          "w": 36,
+          "h": 44,
+          "fill": "GoldTint",
+          "stroke": null,
+          "stroke_width": 0,
+          "radius": 4
+        },
+        {
+          "type": "text",
+          "name": "metals-label",
+          "layer": "text",
+          "x": 15,
+          "y": 58,
+          "w": 144,
+          "h": 7,
+          "text": "فلزات",
+          "style": "Class"
+        },
+        {
+          "type": "text",
+          "name": "metalloid-label",
+          "layer": "text",
+          "x": 159,
+          "y": 58,
+          "w": 36,
+          "h": 7,
+          "text": "شبه فلز",
+          "style": "ClassCopper"
+        },
+        {
+          "type": "line",
+          "name": "metals-bracket",
+          "layer": "shapes",
+          "x1": 23,
+          "y1": 66,
+          "x2": 151,
+          "y2": 66,
+          "stroke": "Navy",
+          "stroke_width": 0.75
+        },
+        {
+          "type": "line",
+          "name": "metals-bracket-right",
+          "layer": "shapes",
+          "x1": 151,
+          "y1": 66,
+          "x2": 151,
+          "y2": 68,
+          "stroke": "Navy",
+          "stroke_width": 0.75
+        },
+        {
+          "type": "line",
+          "name": "metals-bracket-left",
+          "layer": "shapes",
+          "x1": 23,
+          "y1": 66,
+          "x2": 23,
+          "y2": 68,
+          "stroke": "Navy",
+          "stroke_width": 0.75
+        },
+        {
+          "type": "text",
+          "name": "element-symbol-B",
+          "layer": "text",
+          "x": 159,
+          "y": 68,
+          "w": 36,
+          "h": 16,
+          "text": "B",
+          "style": "SymbolCopper"
+        },
+        {
+          "type": "text",
+          "name": "element-name-B",
+          "layer": "text",
+          "x": 159,
+          "y": 84,
+          "w": 36,
+          "h": 10,
+          "text": "بورون",
+          "style": "ElementName"
+        },
+        {
+          "type": "text",
+          "name": "element-symbol-Al",
+          "layer": "text",
+          "x": 123,
+          "y": 68,
+          "w": 36,
+          "h": 16,
+          "text": "Al",
+          "style": "Symbol"
+        },
+        {
+          "type": "text",
+          "name": "element-name-Al",
+          "layer": "text",
+          "x": 123,
+          "y": 84,
+          "w": 36,
+          "h": 10,
+          "text": "المنيوم",
+          "style": "ElementName"
+        },
+        {
+          "type": "text",
+          "name": "element-symbol-Ga",
+          "layer": "text",
+          "x": 87,
+          "y": 68,
+          "w": 36,
+          "h": 16,
+          "text": "Ga",
+          "style": "Symbol"
+        },
+        {
+          "type": "text",
+          "name": "element-name-Ga",
+          "layer": "text",
+          "x": 87,
+          "y": 84,
+          "w": 36,
+          "h": 10,
+          "text": "كاليوم",
+          "style": "ElementName"
+        },
+        {
+          "type": "line",
+          "name": "element-divider-Ga",
+          "layer": "shapes",
+          "x1": 123,
+          "y1": 73,
+          "x2": 123,
+          "y2": 92,
+          "stroke": "Rule",
+          "stroke_width": 0.5
+        },
+        {
+          "type": "text",
+          "name": "element-symbol-In",
+          "layer": "text",
+          "x": 51,
+          "y": 68,
+          "w": 36,
+          "h": 16,
+          "text": "In",
+          "style": "Symbol"
+        },
+        {
+          "type": "text",
+          "name": "element-name-In",
+          "layer": "text",
+          "x": 51,
+          "y": 84,
+          "w": 36,
+          "h": 10,
+          "text": "انديوم",
+          "style": "ElementName"
+        },
+        {
+          "type": "line",
+          "name": "element-divider-In",
+          "layer": "shapes",
+          "x1": 87,
+          "y1": 73,
+          "x2": 87,
+          "y2": 92,
+          "stroke": "Rule",
+          "stroke_width": 0.5
+        },
+        {
+          "type": "text",
+          "name": "element-symbol-Ti",
+          "layer": "text",
+          "x": 15,
+          "y": 68,
+          "w": 36,
+          "h": 16,
+          "text": "Ti",
+          "style": "Symbol"
+        },
+        {
+          "type": "text",
+          "name": "element-name-Ti",
+          "layer": "text",
+          "x": 15,
+          "y": 84,
+          "w": 36,
+          "h": 10,
+          "text": "ثاليوم",
+          "style": "ElementName"
+        },
+        {
+          "type": "line",
+          "name": "element-divider-Ti",
+          "layer": "shapes",
+          "x1": 51,
+          "y1": 73,
+          "x2": 51,
+          "y2": 92,
+          "stroke": "Rule",
+          "stroke_width": 0.5
+        },
+        {
+          "type": "text",
+          "name": "property-1-index",
+          "layer": "text",
+          "x": 186,
+          "y": 103,
+          "w": 9,
+          "h": 8,
+          "text": "1",
+          "style": "Index"
+        },
+        {
+          "type": "text",
+          "name": "property-1",
+          "layer": "text",
+          "x": 15,
+          "y": 102,
+          "w": 167,
+          "h": 11,
+          "text": "كلها فلزات عدا البورون فهو شبه فلز.",
+          "style": "Body"
+        },
+        {
+          "type": "line",
+          "name": "property-divider",
+          "layer": "shapes",
+          "x1": 15,
+          "y1": 115,
+          "x2": 195,
+          "y2": 115,
+          "stroke": "Rule",
+          "stroke_width": 0.5
+        },
+        {
+          "type": "ellipse",
+          "name": "why-1-index-disc",
+          "layer": "shapes",
+          "x": 187,
+          "y": 119,
+          "w": 8,
+          "h": 8,
+          "fill": "RedTint",
+          "stroke": null,
+          "stroke_width": 0
+        },
+        {
+          "type": "text",
+          "name": "why-1-index",
+          "layer": "text",
+          "x": 187,
+          "y": 120,
+          "w": 8,
+          "h": 7,
+          "text": "2",
+          "style": "IndexRed"
+        },
+        {
+          "type": "text",
+          "name": "why-1-question",
+          "layer": "text",
+          "x": 15,
+          "y": 118,
+          "w": 168,
+          "h": 12,
+          "text": "علل / طاقة تأينها أقل من طاقة تأين الزمرة الثانية ؟",
+          "style": "Question"
+        },
+        {
+          "type": "text",
+          "name": "why-1-answer",
+          "layer": "text",
+          "x": 23,
+          "y": 131,
+          "w": 172,
+          "h": 32,
+          "text": "ج/ لأن عناصرها تحتوي على الكترون واحد في الغلاف الثانوي ( P ) بعد غلاف ( S ) مشبع أما عناصر الزمرة الثالثة فيكون غلافها الخارجي هو الثانوي المشبع ns².",
+          "style": "Body"
+        },
+        {
+          "type": "line",
+          "name": "why-1-accent",
+          "layer": "shapes",
+          "x1": 17,
+          "y1": 133,
+          "x2": 17,
+          "y2": 157,
+          "stroke": "Red",
+          "stroke_width": 1
+        },
+        {
+          "type": "rect",
+          "name": "why-2-tint",
+          "layer": "shapes",
+          "x": 15,
+          "y": 168,
+          "w": 180,
+          "h": 34,
+          "fill": "RedTint",
+          "stroke": null,
+          "stroke_width": 0,
+          "radius": 4
+        },
+        {
+          "type": "rect",
+          "name": "why-2-edge",
+          "layer": "shapes",
+          "x": 193,
+          "y": 173,
+          "w": 2,
+          "h": 24,
+          "fill": "Red",
+          "stroke": null,
+          "stroke_width": 0,
+          "radius": 0
+        },
+        {
+          "type": "text",
+          "name": "why-2-question",
+          "layer": "text",
+          "x": 48,
+          "y": 171,
+          "w": 139,
+          "h": 19,
+          "text": "علل/ في الزمرة الواحدة كلما اتجهنا من الأعلى الى الأسفل تقل طاقة التأين؟",
+          "style": "QuestionSmall"
+        },
+        {
+          "type": "text",
+          "name": "why-2-answer",
+          "layer": "text",
+          "x": 48,
+          "y": 191,
+          "w": 139,
+          "h": 9,
+          "text": "ج/ بسبب كبر حجومها الذرية.",
+          "style": "Body"
+        },
+        {
+          "type": "line",
+          "name": "direction-arrow-stem",
+          "layer": "shapes",
+          "x1": 30,
+          "y1": 175,
+          "x2": 30,
+          "y2": 192,
+          "stroke": "Red",
+          "stroke_width": 1
+        },
+        {
+          "type": "line",
+          "name": "direction-arrow-left",
+          "layer": "shapes",
+          "x1": 30,
+          "y1": 192,
+          "x2": 27,
+          "y2": 188,
+          "stroke": "Red",
+          "stroke_width": 1
+        },
+        {
+          "type": "line",
+          "name": "direction-arrow-right",
+          "layer": "shapes",
+          "x1": 30,
+          "y1": 192,
+          "x2": 33,
+          "y2": 188,
+          "stroke": "Red",
+          "stroke_width": 1
+        },
+        {
+          "type": "text",
+          "name": "oxidation-figure",
+          "layer": "text",
+          "x": 17,
+          "y": 205,
+          "w": 37,
+          "h": 23,
+          "text": "+3",
+          "style": "Oxidation"
+        },
+        {
+          "type": "line",
+          "name": "oxidation-rule",
+          "layer": "shapes",
+          "x1": 59,
+          "y1": 208,
+          "x2": 59,
+          "y2": 228,
+          "stroke": "Copper",
+          "stroke_width": 1
+        },
+        {
+          "type": "text",
+          "name": "property-3-index",
+          "layer": "text",
+          "x": 186,
+          "y": 207,
+          "w": 9,
+          "h": 8,
+          "text": "3",
+          "style": "Index"
+        },
+        {
+          "type": "text",
+          "name": "property-3",
+          "layer": "text",
+          "x": 66,
+          "y": 206,
+          "w": 117,
+          "h": 25,
+          "text": "الحالة التأكسدية المتوقعة لعناصر هذه الزمرة هي ( +3 ) وحالات تأكسدية أخرى.",
+          "style": "Body"
+        },
+        {
+          "type": "line",
+          "name": "lower-divider",
+          "layer": "shapes",
+          "x1": 15,
+          "y1": 234,
+          "x2": 195,
+          "y2": 234,
+          "stroke": "Rule",
+          "stroke_width": 0.5
+        },
+        {
+          "type": "text",
+          "name": "property-4-index",
+          "layer": "text",
+          "x": 186,
+          "y": 238,
+          "w": 9,
+          "h": 8,
+          "text": "4",
+          "style": "Index"
+        },
+        {
+          "type": "text",
+          "name": "property-4",
+          "layer": "text",
+          "x": 15,
+          "y": 237,
+          "w": 168,
+          "h": 21,
+          "text": "تمتاز بزيادة الصفة القاعدية لأكاسيدها وهيدروكسيداتها كلما اتجهنا من الأعلى الى الأسفل.",
+          "style": "Body"
+        },
+        {
+          "type": "text",
+          "name": "solution-base-0",
+          "layer": "text",
+          "x": 137,
+          "y": 259,
+          "w": 58,
+          "h": 9,
+          "text": "المحاليل المائية لأكاسيد",
+          "style": "Caption"
+        },
+        {
+          "type": "text",
+          "name": "solution-kind-0",
+          "layer": "text",
+          "x": 137,
+          "y": 268,
+          "w": 58,
+          "h": 10,
+          "text": "البورون حامضية.",
+          "style": "PropertyLabel"
+        },
+        {
+          "type": "line",
+          "name": "solution-underline-0",
+          "layer": "shapes",
+          "x1": 143,
+          "y1": 279,
+          "x2": 189,
+          "y2": 279,
+          "stroke": "Copper",
+          "stroke_width": 1
+        },
+        {
+          "type": "text",
+          "name": "solution-base-1",
+          "layer": "text",
+          "x": 76,
+          "y": 259,
+          "w": 58,
+          "h": 9,
+          "text": "المحاليل المائية لأكاسيد",
+          "style": "Caption"
+        },
+        {
+          "type": "text",
+          "name": "solution-kind-1",
+          "layer": "text",
+          "x": 76,
+          "y": 268,
+          "w": 58,
+          "h": 10,
+          "text": "الألمنيوم امفوتيرية.",
+          "style": "PropertyLabel"
+        },
+        {
+          "type": "line",
+          "name": "solution-underline-1",
+          "layer": "shapes",
+          "x1": 82,
+          "y1": 279,
+          "x2": 128,
+          "y2": 279,
+          "stroke": "Navy",
+          "stroke_width": 1
+        },
+        {
+          "type": "text",
+          "name": "solution-base-2",
+          "layer": "text",
+          "x": 15,
+          "y": 259,
+          "w": 58,
+          "h": 9,
+          "text": "وبقية الزمرة",
+          "style": "Caption"
+        },
+        {
+          "type": "text",
+          "name": "solution-kind-2",
+          "layer": "text",
+          "x": 15,
+          "y": 268,
+          "w": 58,
+          "h": 10,
+          "text": "قاعدية.",
+          "style": "PropertyLabel"
+        },
+        {
+          "type": "line",
+          "name": "solution-underline-2",
+          "layer": "shapes",
+          "x1": 21,
+          "y1": 279,
+          "x2": 67,
+          "y2": 279,
+          "stroke": "Navy",
+          "stroke_width": 1
+        },
+        {
+          "type": "line",
+          "name": "footer-rule",
+          "layer": "furniture",
+          "x1": 15,
+          "y1": 284,
+          "x2": 195,
+          "y2": 284,
+          "stroke": "Rule",
+          "stroke_width": 0.5
+        },
+        {
+          "type": "text",
+          "name": "footer-name",
+          "layer": "furniture",
+          "x": 100,
+          "y": 287,
+          "w": 95,
+          "h": 6,
+          "text": "الكيمياء / الفصل الثالث",
+          "style": "Footer"
+        },
+        {
+          "type": "text",
+          "name": "footer-number",
+          "layer": "furniture",
+          "x": 15,
+          "y": 287,
+          "w": 15,
+          "h": 6,
+          "text": "02",
+          "style": "FooterNo"
+        },
+        {
+          "type": "line",
+          "name": "signature-rail",
+          "layer": "furniture",
+          "x1": 42,
+          "y1": 290,
+          "x2": 56,
+          "y2": 290,
+          "stroke": "Copper",
+          "stroke_width": 0.75
+        },
+        {
+          "type": "ellipse",
+          "name": "signature-electron-0",
+          "layer": "furniture",
+          "x": 58,
+          "y": 289,
+          "w": 1.5,
+          "h": 1.5,
+          "fill": "Copper",
+          "stroke": null,
+          "stroke_width": 0
+        },
+        {
+          "type": "ellipse",
+          "name": "signature-electron-1",
+          "layer": "furniture",
+          "x": 61,
+          "y": 289,
+          "w": 1.5,
+          "h": 1.5,
+          "fill": "Copper",
+          "stroke": null,
+          "stroke_width": 0
+        },
+        {
+          "type": "ellipse",
+          "name": "signature-electron-2",
+          "layer": "furniture",
+          "x": 64,
+          "y": 289,
+          "w": 1.5,
+          "h": 1.5,
+          "fill": "Copper",
+          "stroke": null,
+          "stroke_width": 0
+        }
+      ]
+    }
+  ]
+}
