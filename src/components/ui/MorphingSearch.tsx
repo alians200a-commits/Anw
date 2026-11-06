@@ -99,6 +99,13 @@ export function MorphingSearch({
       .map((entry) => entry.item);
   }, [items, query]);
 
+  useEffect(() => {
+    if (!open || !filteredItems[activeIndex]) return;
+    document.getElementById(resultsId + '-option-' + activeIndex)?.scrollIntoView({
+      block: 'nearest'
+    });
+  }, [activeIndex, filteredItems, open, resultsId]);
+
   const updateQuery = useCallback(
     (value: string) => {
       setQuery(value);
@@ -200,7 +207,7 @@ export function MorphingSearch({
             dialogRef.current?.querySelectorAll<HTMLElement>(
               'input, button, [href], [tabindex]:not([tabindex="-1"])'
             ) ?? []
-          ).filter((element) => !element.hasAttribute('disabled'));
+          ).filter((element) => !element.hasAttribute('disabled') && element.tabIndex >= 0);
 
           if (!focusable.length) return;
           const first = focusable[0];
@@ -266,6 +273,7 @@ export function MorphingSearch({
         <div
           id={resultsId}
           role="listbox"
+          tabIndex={-1}
           aria-label="نتائج البحث"
           className="max-h-[min(68vh,34rem)] overflow-y-auto p-2"
         >
