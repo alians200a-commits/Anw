@@ -1,0 +1,310 @@
+[
+  {
+    "page": "1",
+    "name": "chapter-number",
+    "spare_pt": 25.197,
+    "scale": 1.0,
+    "font_pt": 34
+  },
+  {
+    "page": "1",
+    "name": "chapter-label",
+    "spare_pt": 7.843,
+    "scale": 1.0,
+    "font_pt": 9
+  },
+  {
+    "page": "1",
+    "name": "publication",
+    "spare_pt": 13.346,
+    "scale": 1.0,
+    "font_pt": 11
+  },
+  {
+    "page": "1",
+    "name": "chapter-title",
+    "spare_pt": 20.535,
+    "scale": 1.0,
+    "font_pt": 44
+  },
+  {
+    "page": "1",
+    "name": "group-code",
+    "spare_pt": 12.85,
+    "scale": 1.0,
+    "font_pt": 18
+  },
+  {
+    "page": "1",
+    "name": "source-intro",
+    "spare_pt": 23.197,
+    "scale": 1.0,
+    "font_pt": 14.5
+  },
+  {
+    "page": "1",
+    "name": "footer-name",
+    "spare_pt": 7.843,
+    "scale": 1.0,
+    "font_pt": 9
+  },
+  {
+    "page": "1",
+    "name": "footer-number",
+    "spare_pt": 5.008,
+    "scale": 1.0,
+    "font_pt": 10
+  },
+  {
+    "page": "2",
+    "name": "running-head",
+    "spare_pt": 7.843,
+    "scale": 1.0,
+    "font_pt": 9
+  },
+  {
+    "page": "2",
+    "name": "section-code",
+    "spare_pt": 10.016,
+    "scale": 1.0,
+    "font_pt": 18
+  },
+  {
+    "page": "2",
+    "name": "lesson-title",
+    "spare_pt": 25.197,
+    "scale": 1.0,
+    "font_pt": 32
+  },
+  {
+    "page": "2",
+    "name": "lesson-subtitle",
+    "spare_pt": 11.181,
+    "scale": 1.0,
+    "font_pt": 14.5
+  },
+  {
+    "page": "2",
+    "name": "metals-label",
+    "spare_pt": 6.843,
+    "scale": 1.0,
+    "font_pt": 9.5
+  },
+  {
+    "page": "2",
+    "name": "metalloid-label",
+    "spare_pt": 6.843,
+    "scale": 1.0,
+    "font_pt": 9.5
+  },
+  {
+    "page": "2",
+    "name": "element-symbol-B",
+    "spare_pt": 15.354,
+    "scale": 1.0,
+    "font_pt": 24
+  },
+  {
+    "page": "2",
+    "name": "element-name-B",
+    "spare_pt": 13.346,
+    "scale": 1.0,
+    "font_pt": 11
+  },
+  {
+    "page": "2",
+    "name": "element-symbol-Al",
+    "spare_pt": 15.354,
+    "scale": 1.0,
+    "font_pt": 24
+  },
+  {
+    "page": "2",
+    "name": "element-name-Al",
+    "spare_pt": 13.346,
+    "scale": 1.0,
+    "font_pt": 11
+  },
+  {
+    "page": "2",
+    "name": "element-symbol-Ga",
+    "spare_pt": 15.354,
+    "scale": 1.0,
+    "font_pt": 24
+  },
+  {
+    "page": "2",
+    "name": "element-name-Ga",
+    "spare_pt": 13.346,
+    "scale": 1.0,
+    "font_pt": 11
+  },
+  {
+    "page": "2",
+    "name": "element-symbol-In",
+    "spare_pt": 15.354,
+    "scale": 1.0,
+    "font_pt": 24
+  },
+  {
+    "page": "2",
+    "name": "element-name-In",
+    "spare_pt": 13.346,
+    "scale": 1.0,
+    "font_pt": 11
+  },
+  {
+    "page": "2",
+    "name": "element-symbol-Ti",
+    "spare_pt": 15.354,
+    "scale": 1.0,
+    "font_pt": 24
+  },
+  {
+    "page": "2",
+    "name": "element-name-Ti",
+    "spare_pt": 13.346,
+    "scale": 1.0,
+    "font_pt": 11
+  },
+  {
+    "page": "2",
+    "name": "property-1-index",
+    "spare_pt": 8.677,
+    "scale": 1.0,
+    "font_pt": 11
+  },
+  {
+    "page": "2",
+    "name": "property-1",
+    "spare_pt": 11.181,
+    "scale": 1.0,
+    "font_pt": 14.5
+  },
+  {
+    "page": "2",
+    "name": "why-1-index",
+    "spare_pt": 5.843,
+    "scale": 1.0,
+    "font_pt": 11
+  },
+  {
+    "page": "2",
+    "name": "why-1-question",
+    "spare_pt": 12.016,
+    "scale": 1.0,
+    "font_pt": 15.5
+  },
+  {
+    "page": "2",
+    "name": "why-1-answer",
+    "spare_pt": 30.866,
+    "scale": 1.0,
+    "font_pt": 14.5
+  },
+  {
+    "page": "2",
+    "name": "why-2-question",
+    "spare_pt": 13.858,
+    "scale": 1.0,
+    "font_pt": 14.5
+  },
+  {
+    "page": "2",
+    "name": "why-2-answer",
+    "spare_pt": 5.512,
+    "scale": 1.0,
+    "font_pt": 14.5
+  },
+  {
+    "page": "2",
+    "name": "oxidation-figure",
+    "spare_pt": 21.197,
+    "scale": 1.0,
+    "font_pt": 37
+  },
+  {
+    "page": "2",
+    "name": "property-3-index",
+    "spare_pt": 8.677,
+    "scale": 1.0,
+    "font_pt": 11
+  },
+  {
+    "page": "2",
+    "name": "property-3",
+    "spare_pt": 30.866,
+    "scale": 1.0,
+    "font_pt": 14.5
+  },
+  {
+    "page": "2",
+    "name": "property-4-index",
+    "spare_pt": 8.677,
+    "scale": 1.0,
+    "font_pt": 11
+  },
+  {
+    "page": "2",
+    "name": "property-4",
+    "spare_pt": 11.024,
+    "scale": 1.0,
+    "font_pt": 14.5
+  },
+  {
+    "page": "2",
+    "name": "solution-base-0",
+    "spare_pt": 9.512,
+    "scale": 1.0,
+    "font_pt": 11.5
+  },
+  {
+    "page": "2",
+    "name": "solution-kind-0",
+    "spare_pt": 8.346,
+    "scale": 1.0,
+    "font_pt": 14.5
+  },
+  {
+    "page": "2",
+    "name": "solution-base-1",
+    "spare_pt": 9.512,
+    "scale": 1.0,
+    "font_pt": 11.5
+  },
+  {
+    "page": "2",
+    "name": "solution-kind-1",
+    "spare_pt": 8.346,
+    "scale": 1.0,
+    "font_pt": 14.5
+  },
+  {
+    "page": "2",
+    "name": "solution-base-2",
+    "spare_pt": 9.512,
+    "scale": 1.0,
+    "font_pt": 11.5
+  },
+  {
+    "page": "2",
+    "name": "solution-kind-2",
+    "spare_pt": 8.346,
+    "scale": 1.0,
+    "font_pt": 14.5
+  },
+  {
+    "page": "2",
+    "name": "footer-name",
+    "spare_pt": 5.008,
+    "scale": 1.0,
+    "font_pt": 9
+  },
+  {
+    "page": "2",
+    "name": "footer-number",
+    "spare_pt": 5.008,
+    "scale": 1.0,
+    "font_pt": 10
+  }
+]
